@@ -223,8 +223,12 @@ trust, home→office does). Key durable backup = operator's item, OPEN.
 ## Still open
 
 - **Operator: durable key backup** (USB / password manager) — the one don't-forget.
-- STEP 1 chmod 700/600 on live `.env/` — optional hygiene, not run.
-- STEP 7 — home-side open test, after home pulls the key.
+- STEP 1 chmod 700/600 on live `.env/` — optional hygiene, not run (office).
+- ~~STEP 7~~ — **DONE on home 2026-07-31** (mail: flight.home-rewire-done-secrets-unified),
+  with a finding: home had NO `.env/` — it ran a May-era flat `secrets.zsh` with genuinely
+  divergent key values (the silent fork plaintext-never-syncs guarantees). Operator gaveled
+  unify-on-vault; home materialized `.env/` FROM the blob. The vault's first act was not a
+  backup — it was the unification of a two-month secrets fork nobody knew existed.
 - Whether `deploy.sh` should push the blob to the live tree at all (my lean: no — the blob is
   a repo/travel artifact; the live machine already has the plaintext). Decide when wiring deploy.
 - `.majkee/` adoption of the same two verbs — next session, its own pad.
