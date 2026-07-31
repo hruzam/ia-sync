@@ -48,6 +48,13 @@ alias hasz='openssl rand -hex 6'
 # save terminal history snapshot
 alias svt='mkdir -p ~/log && history -i >> ~/log/_terminal.txt'
 
+# virtual desktop — switch to desktop N and run command
+dsk() {
+  local desk=$1
+  shift
+  wmctrl -s "$desk" && "$@"
+}
+
 # =============================================================================
 # PATH
 # =============================================================================

@@ -44,8 +44,12 @@ alias dbps="fo && /usr/bin/mariadb -u majkee -p psdvs"
 # Heureka cron file (FO)
 alias heu="fo && subl -a cron/heureka-ostra.xml"
 
-# virtual desktop
-alias dsk="wmctrl -s"
+# virtual desktop — switch to desktop N and run command
+dsk() {
+  local desk=$1
+  shift
+  wmctrl -s "$desk" && "$@"
+}
 
 #generate hash (12numbers)
 alias hasz="openssl rand -hex 6"
