@@ -1,0 +1,21 @@
+{
+  "output": {
+    "filePath": "/home/hruzam/www/session/.shared/libraries/repomix.larva_v0_project.md",
+    "style": "markdown",
+    "removeComments": false,
+    "removeEmptyLines": false,
+    "showLineNumbers": true
+  },
+  "include": [
+    "**/**"
+  ],
+  "ignore": {
+    "useGitignore": false,
+    "useDefaultPatterns": true,
+    "customPatterns": [
+      "**/*repomix*.json",
+      "**/*repomix*.md",
+      "**/*repomix*.xml"
+    ]
+  }
+}

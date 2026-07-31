@@ -1,0 +1,29 @@
+{
+  "native-primitives-update-pattern": "~/reposoma/raw.settings/raw.card.*.md",
+  "mail-inbox-dir": "~/reposoma/_mail/toAll/inbox/",
+  "remote-control": {
+    "projects": {
+      "freya": {
+        "path": "/home/hruzam/www/imago_cz/freya",
+        "tmux_session": "rc-freya",
+        "rc_name": "Freya",
+        "service": "claude-rc-freya.service",
+        "available": true
+      },
+      "reposoma": {
+        "path": "/home/hruzam/reposoma",
+        "tmux_session": "rc-reposoma",
+        "rc_name": "Reposoma",
+        "service": "claude-rc-reposoma.service",
+        "available": true
+      },
+      "nabla-lab": {
+        "path": "/home/hruzam/nabla-lab",
+        "tmux_session": "rc-nabla-lab",
+        "rc_name": "Nabla Lab",
+        "service": "claude-rc-nabla-lab.service",
+        "available": true
+      }
+    }
+  }
+}

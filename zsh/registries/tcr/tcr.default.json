@@ -1,0 +1,10 @@
+{
+  "output": { "style": "json" },
+  "tree": { "level": 4, "showHidden": false },
+  "include": [],
+  "ignore": {
+    "useGitignore": true,
+    "useDefaultPatterns": true,
+    "customPatterns": [".git/**", "node_modules/**", "vendor/**"]
+  }
+}

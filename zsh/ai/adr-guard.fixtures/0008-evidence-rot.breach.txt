@@ -1,0 +1,10 @@
+# Evidence-rot breach: _mail/*/inbox/ citations in 0008-propagation-transport.md
+# Extracted 2026-07-07. File status at extraction: LOCKED 2026-06-25.
+# These paths are gitignored + drainable — not durable evidence.
+
+Line 8 (frontmatter):
+  `evidence: first propagation run on piql.dev (report: _mail/houston/inbox/atlas.piql-propagation-report.2026-06-25.md) · reconciliation: _mail/piql/inbox/houston.propagation-reconciliation.2026-06-25.md`
+
+Lines 288-289 (closing evidence notes):
+  *Evidence: `_mail/houston/inbox/atlas.piql-propagation-report.2026-06-25.md` (the run) ·
+  `_mail/piql/inbox/houston.propagation-reconciliation.2026-06-25.md` (the reconciliation, @majkee-gaveled).*

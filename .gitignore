@@ -1,0 +1,50 @@
+# ia-sync .gitignore — second guard (sync.sh is the primary allowlist filter)
+
+# Secrets (should never arrive via sync.sh, but belt-and-suspenders)
+.env/
+*secret*
+*credential*
+*.credentials.*
+
+# Logs and runtime
+*.log
+*.lock
+
+# Conversation/session data (should not arrive, but guard anyway)
+*.jsonl
+*.db
+*.db-wal
+*.db-shm
+*.pb
+
+# Binary / generated artefacts
+bin/
+brain/
+conversations/
+cache/
+updater/
+builtin/
+knowledge/
+implicit/
+
+# Claude project session data (not synced by sync.sh) — anchored to repo root
+/projects/
+
+# Gemini runtime state (machine-specific)
+gemini/config/projects/
+file-history/
+paste-cache/
+downloads/
+tmp/
+history/
+
+# Never commit bare config.zsh — always use config.<host>.zsh
+zsh/config.zsh
+zsh/secrets.zsh
+
+# Mail bus — ephemeral, non-canonical (Cinderella rule)
+_mail/*/archive
+
+# ~/.majkee leg — process data never committed (majkee.deny is the primary guard)
+/majkee/export/
+/majkee/cooking-recipies/

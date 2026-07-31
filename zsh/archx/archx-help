@@ -1,0 +1,126 @@
+#!/bin/bash
+# archx-help — Display help for archx monitoring commands
+
+cat <<'EOF'
+
+╔════════════════════════════════════════════════════════════════════════════╗
+║                      ARCHX MONITORING — QUICK HELP                        ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+OVERVIEW:
+  archx is a comprehensive system monitoring suite for Arch Linux / Manjaro.
+  It provides clean, human-readable CLI commands for checking system health,
+  services, and resource usage.
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+QUICK START:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  archx-services              ← Check all services (nginx, PHP, DB, etc.)
+  archx-monitor system        ← Full system snapshot
+  archx-monitor troubleshoot  ← Quick diagnostics when system is slow
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+COMMANDS:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  archx-services
+    Display service status (nginx, php74-fpm, php-fpm, mariadb, tailscale, docker)
+    Shows: ✅ for active, ❌ for inactive, with summary count
+    Usage: archx-services
+
+  archx-monitor system
+    Full system overview: load, CPU, memory, disk, top processes
+    Shows: current uptime, CPU % usage, memory breakdown, disk utilization
+    Usage: archx-monitor system
+
+  archx-monitor services
+    Detailed service health check (same info as archx-services)
+    Usage: archx-monitor services
+
+  archx-monitor cpu [N]
+    Show top N CPU-consuming processes (default: 10)
+    Usage: archx-monitor cpu
+    Usage: archx-monitor cpu 5    # Top 5 instead
+
+  archx-monitor memory [N]
+    Show top N memory-consuming processes + detailed breakdown (default: 10)
+    Shows: Total/Used/Free memory, per-process breakdown
+    Usage: archx-monitor memory
+
+  archx-monitor disk [path] [N]
+    Show top N directories by size (default: /home, 15 dirs)
+    Usage: archx-monitor disk
+    Usage: archx-monitor disk / 20  # Top 20 dirs in root
+
+  archx-monitor troubleshoot
+    Quick diagnostics: load average, top CPU/memory hogs, disk I/O
+    Usage: archx-monitor troubleshoot
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+ALIASES (After: source ~/.zshrc):
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  sysmon              Full system overview (same as: archx-monitor system)
+  services            Service check (same as: archx-services)
+  servicecheck        Health check with pass/fail summary
+  servicewatch        Live service monitoring
+  cputop              Top CPU processes
+  memtop              Top memory processes
+  diskuse             Disk usage snapshot
+  disktop             Top directories by size
+  troubleshoot        Quick diagnostics
+
+  For one-liners in non-interactive contexts, prefer: archx-monitor <cmd>
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+EXAMPLES:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  $ archx-services
+  # Shows service status with ✅/❌ indicators
+
+  $ archx-monitor system
+  # Full snapshot: load, CPU %, memory breakdown, disk usage, top processes
+
+  $ archx-monitor cpu 5
+  # Show top 5 CPU consumers
+
+  $ archx-monitor troubleshoot
+  # Quick diagnosis when performance is bad
+
+  $ archx-monitor disk / 20
+  # Find what's filling up the root filesystem
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+UNDER THE HOOD:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  Substrate Functions (for agents/scripts):
+    These commands wrap 45+ reusable monitoring functions in ~/ia-sync/zsh/archx/
+    For use in scripts or agent automation:
+      source ~/ia-sync/zsh/archx/bash.substrates.sh
+      substrate_system_overview
+      substrate_services_check
+      substrate_cpu_top 10
+      ... etc.
+
+  Guides & Documentation:
+    ~/ia-sync/zsh/archx/CHEATSHEET.txt     ← Quick reference (copy-paste commands)
+    ~/ia-sync/zsh/archx/INDEX.md           ← Complete index
+    ~/ia-sync/zsh/archx/RESOURCE_MONITORING.md  ← Detailed guide
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+SYSTEM INFO:
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+  CPU:      AMD Ryzen 5 3500U (8 cores)
+  Memory:   9.6 GB RAM (no swap)
+  Disk:     192 GB root, 128 GB /home
+  Services: nginx, PHP 7.4, PHP 8.x, MariaDB, Tailscale, Docker
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+For more details, run: archx-monitor help
+
+EOF

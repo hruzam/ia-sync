@@ -1,0 +1,55 @@
+# Use powerline
+USE_POWERLINE="true"
+# Source manjaro-zsh-configuration
+if [[ -e /usr/share/zsh/manjaro-zsh-config ]]; then
+  source /usr/share/zsh/manjaro-zsh-config
+fi
+# Use manjaro zsh prompt
+if [[ -e /usr/share/zsh/manjaro-zsh-prompt ]]; then
+  source /usr/share/zsh/manjaro-zsh-prompt
+fi
+
+# =============================================================================
+# TEMPORARY
+# =============================================================================
+# Full ritual, discipline-ordered: pull --rebase → DEPLOY (repo→live, so a behind
+# machine levels up first) → sync (live→repo, now contributes only genuine novelty)
+# → status. Deploy-before-sync is a hard precondition (journal 2026-07-28) — a sync
+# from a stale machine --deletes the other side's skills/commands out of the repo.
+alias zsync='cd ~/ia-sync && git pull --rebase origin main && bash deploy.sh && bash sync.sh && git status'
+
+# =============================================================================
+# PROJECT SWITCHER SYSTEM
+# Sources config.zsh → project-switcher.zsh → git-lifecycle
+# After this block: fo, im, psd, all toolkits per machine config
+# NOTE: env-sync.zsh deliberately NOT sourced — deprecated 2026-06-30, archived.
+# The 471-line pre-harness monolith this file replaced lives at
+# archive/zshrc.home.legacy-2026-07-30.zsh (password REDACTED — see journal).
+# =============================================================================
+[[ -f ~/.config/zsh/config.zsh ]]           && source ~/.config/zsh/config.zsh
+[[ -f ~/.config/zsh/project-switcher.zsh ]] && source ~/.config/zsh/project-switcher.zsh
+[[ -f ~/.config/zsh/git-lifecycle.zsh ]]    && source ~/.config/zsh/git-lifecycle.zsh
+
+# =============================================================================
+# LOCAL ALIASES (home)
+# =============================================================================
+
+# Git stash utilities
+alias patch='git stash show "stash@{0}" -p > changes.patch'
+alias gpt='git stash show -p stash@{0} > temp.patch'
+
+# Database quick access
+alias dbup='mysql -u root -p'
+alias dbfo="fo && /usr/bin/mariadb -u majkee -p fantasyobchod"
+
+# generate hash (12 chars)
+alias hasz='openssl rand -hex 6'
+
+# save terminal history snapshot
+alias svt='mkdir -p ~/log && history -i >> ~/log/_terminal.txt'
+
+# =============================================================================
+# PATH
+# =============================================================================
+export PATH=~/.npm-global/bin:$PATH
+export PATH="$HOME/.local/bin:$PATH"

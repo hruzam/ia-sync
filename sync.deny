@@ -1,0 +1,48 @@
+# ia-sync — never-sync registry
+# ─────────────────────────────────────────────────────────────────────────────
+# Patterns listed here are NEVER copied into the repo snapshot.
+# sync.sh reads this file and applies each line as rsync --exclude AND
+# runs an explicit rm pass after rsync (defence-in-depth).
+#
+# Format: one glob pattern per line. Blank lines and # comments ignored.
+# Scope: applies to the ~/.config/zsh → ia-sync/zsh/ leg of sync.sh.
+#
+# Add any file that must never leave the local machine.
+# ─────────────────────────────────────────────────────────────────────────────
+
+# Secrets / credentials
+secrets.zsh
+.env
+*.key
+*.pem
+*.p12
+*.credentials
+.credentials.json
+
+# Machine-specific (handled separately per host)
+config.zsh
+
+# Deprecated tools — must never re-enter repo
+env-sync.zsh
+
+# Noise
+*.bak
+*.bak-*
+*.backup
+*.log
+
+# Known stale machine artifacts — must never re-enter repo
+config_backup_docker.zsh
+substrate.config_backup_docker.zsh
+substrate.config.home.*
+substrate.host-id.zsh
+
+# Removed concepts
+office-wire.zsh
+
+# Session-local agent state — machine + session scoped, never syncs
+.claude/
+
+# env-vault sealed blob — produced by env-vault seal directly into the repo;
+# must never round-trip back from the live tree (age re-encrypts differently every run)
+env.vault.age

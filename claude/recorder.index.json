@@ -1,0 +1,26 @@
+{
+  "_comment": "Global session root index for @Recorder. Add a new entry whenever a project activates Recorder.",
+  "version": "0.1",
+  "sessions": [
+    {
+      "project": "piql",
+      "session_root": "/home/hruzam/www/piql/piql.dev/session",
+      "memory_file": "session-draft-memory.md",
+      "active": true
+    },
+    {
+      "project": "fantasyobchod",
+      "session_root": "/home/hruzam/www/imago_cz/fantasyobchod/session",
+      "memory_file": "session-draft-memory.md",
+      "active": false,
+      "_note": "session structure not yet created"
+    },
+    {
+      "project": "freya",
+      "session_root": "/home/hruzam/www/imago_cz/freya.dev/session",
+      "memory_file": "session-draft-memory.md",
+      "active": false,
+      "_note": "parked — blocked on legacy cleanup"
+    }
+  ]
+}

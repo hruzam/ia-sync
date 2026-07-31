@@ -1,0 +1,43 @@
+{
+  "permissions": {
+    "allow": [
+      "Skill(deep-research)",
+      "Bash(curl -s \"https://api.github.com/search/repositories?q=superset.sh&sort=stars\")",
+      "Bash(curl -s \"https://api.github.com/search/repositories?q=superset.sh+filename:superset.sh&sort=stars\")",
+      "Bash(curl -s \"https://api.github.com/search/code?q=path:superset.sh&sort=stars&per_page=10\")",
+      "Bash(curl -s \"https://aur.archlinux.org/rpc/?v=5&type=search&arg=superset\")",
+      "Bash(mkdir -p ~/.claude/skills/learn-repomix ~/.claude/skills/buffering-cycle ~/.claude/skills/first-person-voice ~/.claude/skills/atlas-agent-creator)",
+      "Bash(mkdir -p ~/.claude/agents)",
+      "Bash(mv atlas.ui.md claude.creator.ui.md)",
+      "Bash(mv atlas.auto.md claude.creator.auto.md)",
+      "Bash(mv atlas-sniffer.md claude.creator.sniffer.md)",
+      "Bash(mv ~/.claude/skills/atlas-agent-creator ~/.claude/skills/claude-creator)",
+      "Bash(python3 -c ' *)",
+      "Bash(gh auth *)",
+      "Bash(git *)",
+      "Bash(gh repo *)",
+      "Bash(python3 -m json.tool)",
+      "Bash(chmod +x *)",
+      "Bash(grep -v '\\\\.git$')",
+      "Bash(ln -s ../../reposoma reposoma)",
+      "Bash(npm --version)",
+      "Bash(npm config *)",
+      "Read(//usr/bin/**)",
+      "Bash(pacman -Qo /usr/bin/node)",
+      "WebSearch",
+      "WebFetch(domain:zed.dev)",
+      "WebFetch(domain:archlinux.org)",
+      "WebFetch(domain:aur.archlinux.org)",
+      "WebFetch(domain:repology.org)",
+      "WebFetch(domain:www.anthropic.com)",
+      "WebFetch(domain:privacy.claude.com)",
+      "WebFetch(domain:anarlog.so)",
+      "WebFetch(domain:techcoffeehouse.com)",
+      "Bash(npm list *)",
+      "Bash(php --version)",
+      "Bash(python3 -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\(json.dumps\\({**d.get\\('require',{}\\), **d.get\\('require-dev',{}\\)}, indent=2\\)\\)\")",
+      "WebFetch(domain:github.com)",
+      "WebFetch(domain:raw.githubusercontent.com)"
+    ]
+  }
+}

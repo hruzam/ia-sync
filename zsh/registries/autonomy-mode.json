@@ -1,0 +1,8 @@
+{
+  "mode": "safe",
+  "last_changed": "unset",
+  "notes": [
+    "safe = default (no autonomous sudo)",
+    "auto = autonomous mode (highest risk)"
+  ]
+}

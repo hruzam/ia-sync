@@ -1,0 +1,16 @@
+# majkee.deny — per-leg deny registry for the ~/.majkee sync leg
+# ─────────────────────────────────────────────────────────────────────────────
+# Same contract as sync.deny: one glob per line, blank lines and # comments
+# ignored. Applied as rsync --exclude on the ~/.majkee → ia-sync/majkee/ leg.
+# Registry-shaped by design (operator, 2026-07-30): exclusions are data, not
+# code — the pattern generalizes per leg (sync.deny = zsh, majkee.deny = this,
+# codex.deny = pending WS5).
+# ─────────────────────────────────────────────────────────────────────────────
+
+# Process data — tcr + repomix outputs. Machine-local, never in the repo.
+# config/ (the tcr/repomix *configs*) DOES sync; only their outputs stay home.
+export/
+
+# Delicate small notes (SHM harness) — machine-local, never in the repo.
+# Parked 2026-07-30 (pad.4 companion note), wired 2026-07-31.
+cooking-recipies/

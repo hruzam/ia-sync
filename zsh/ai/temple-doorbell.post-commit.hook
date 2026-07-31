@@ -1,0 +1,18 @@
+#!/usr/bin/env zsh
+# post-commit hook — temple/decisions/ doorbell trigger
+# Source: ~/.config/zsh/ai/temple-doorbell.post-commit.hook
+# Install (one-time): cp ~/.config/zsh/ai/temple-doorbell.post-commit.hook ~/reposoma/.git/hooks/post-commit && chmod +x ~/reposoma/.git/hooks/post-commit
+#
+# Logic: if this commit touched a file under temple/decisions/, ring the canon-doorbell (background).
+# Hook carries NO logic — it only checks whether to invoke the notifier and then invokes it.
+# The doorbell script holds all the staleness logic (hook != brain, 0008 L7).
+# Sourcing: base.zsh is the signpost (0009 L2) — sources the full transport family.
+
+# Check if any file changed under temple/decisions/
+if git diff-tree --no-commit-id -r --name-only HEAD | grep -q '^temple/decisions/'; then
+  # Source the ai/ signpost and run the doorbell in background (fast commit)
+  (
+    source "${HOME}/.config/zsh/ai/base.zsh" 2>/dev/null
+    temple-doorbell-run >> "${HOME}/.config/zsh/temple-doorbell.log" 2>&1
+  ) &
+fi

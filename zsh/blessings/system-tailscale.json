@@ -1,0 +1,115 @@
+{
+  "scope": "system-tailscale",
+  "session": "2026-07-20",
+  "authored_by": "eagle",
+  "description": "Test card for system/tailscale.zsh engine + system/keyboard.zsh control panel. Verifies syntax, wiring, command surface, and startup integration introduced in session 2026-07-20.",
+  "checks": [
+    {
+      "id": "01",
+      "label": "syntax — tailscale engine",
+      "command": "zsh -n ~/.config/zsh/system/tailscale.zsh && echo OK",
+      "expect": "OK",
+      "status": "pending"
+    },
+    {
+      "id": "02",
+      "label": "syntax — keyboard",
+      "command": "zsh -n ~/.config/zsh/system/keyboard.zsh && echo OK",
+      "expect": "OK",
+      "status": "pending"
+    },
+    {
+      "id": "03",
+      "label": "source — engine loads without errors",
+      "command": "source ~/.config/zsh/system/tailscale.zsh 2>&1 && echo OK",
+      "expect": "OK (no output before it)",
+      "status": "pending"
+    },
+    {
+      "id": "04",
+      "label": "ts-help — panel prints",
+      "command": "ts-help",
+      "expect": "Tailscale panel with 10 rows, peer line at bottom showing $TAILSCALE_PEER",
+      "status": "pending"
+    },
+    {
+      "id": "05",
+      "label": "ts-header — startup line",
+      "command": "_ts_header",
+      "expect": "one line: ts 100.x.x.x  N/M peers online — ts-ls for details",
+      "status": "pending"
+    },
+    {
+      "id": "06",
+      "label": "ts-ls — peer list",
+      "command": "ts-ls",
+      "expect": "formatted table with self (◈) and at least one peer (● or ○)",
+      "status": "pending"
+    },
+    {
+      "id": "07",
+      "label": "tss alias — resolves",
+      "command": "which tss || alias tss",
+      "expect": "tss: aliased to tailscale status",
+      "status": "pending"
+    },
+    {
+      "id": "08",
+      "label": "tso alias — resolves to _ts_session",
+      "command": "alias tso",
+      "expect": "tso=_ts_session",
+      "status": "pending"
+    },
+    {
+      "id": "09",
+      "label": "ts-dash — server starts on port 9733",
+      "command": "ts-dash && sleep 1 && lsof -ti tcp:9733 | wc -l",
+      "expect": "1 (one process listening)",
+      "status": "pending",
+      "note": "opens browser tab — close it, then run ts-dash-stop"
+    },
+    {
+      "id": "10",
+      "label": "ts-dash-stop — kills server",
+      "command": "ts-dash-stop && sleep 0.5 && lsof -ti tcp:9733 | wc -l",
+      "expect": "0",
+      "status": "pending"
+    },
+    {
+      "id": "11",
+      "label": "startup wiring — ts-header fires on new shell",
+      "command": "zsh -i -c 'exit' 2>&1 | grep -c 'ts '",
+      "expect": "1",
+      "status": "pending",
+      "note": "or just open a new terminal and look for the ts line at top"
+    },
+    {
+      "id": "12",
+      "label": "piql scope clean — piql/tailscale.zsh restored",
+      "command": "grep -cE '^(piql-remote|piql-watch|piql-ask)\\(\\)' ~/.config/zsh/piql/tailscale.zsh",
+      "expect": "3 (three function definitions, no _ts_* bodies)",
+      "status": "pending"
+    },
+    {
+      "id": "13",
+      "label": "no ts-dash.py in piql/",
+      "command": "ls ~/.config/zsh/piql/ts-dash.py 2>&1",
+      "expect": "No such file or directory",
+      "status": "pending"
+    },
+    {
+      "id": "14",
+      "label": "ts-dash.py present in system/",
+      "command": "ls ~/.config/zsh/system/ts-dash.py && echo OK",
+      "expect": "OK",
+      "status": "pending"
+    },
+    {
+      "id": "15",
+      "label": "tailscale home→office — claude via Tailscale protocol",
+      "description": "Kelvin invoked from home machine via Tailscale connection to office (cross-machine session test)",
+      "status": "pass",
+      "note": "2026-07-20 session — home→office connection verified, task handoff protocol working"
+    }
+  ]
+}

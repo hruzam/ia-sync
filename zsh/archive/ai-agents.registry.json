@@ -1,0 +1,80 @@
+{
+  "cli": {
+    "gemini": {
+      "athena": {
+        "bin": "$HOME/.config/gemini/bin/athena",
+        "role": "Strategy, high-level guidance",
+        "model": "gemini-2.5-pro"
+      },
+      "horizon": {
+        "bin": "$HOME/.config/gemini/bin/horizon",
+        "role": "Future planning, roadmaps",
+        "model": "gemini-2.5-flash"
+      },
+      "laika": {
+        "bin": "$HOME/.config/gemini/bin/laika",
+        "role": "Testing, exploration",
+        "model": "gemini-2.5-flash"
+      },
+      "orby": {
+        "bin": "$HOME/.config/gemini/bin/orby",
+        "role": "Deep research, context absorption",
+        "model": "gemini-2.5-pro"
+      },
+      "vega-cli": {
+        "bin": "$HOME/.config/gemini/bin/vega",
+        "role": "GitHub search, shell scripts (CLI mirror)",
+        "model": "gemini-2.5-flash"
+      },
+      "zenit": {
+        "bin": "$HOME/.config/gemini/bin/zenit",
+        "role": "Code review, quality checks",
+        "model": "gemini-2.5-flash"
+      }
+    },
+    "claude": {
+      "42": {
+        "bin": "$HOME/.config/claude/bin/42",
+        "role": "Scrum partner, orchestrator",
+        "model": "claude-opus-4-5"
+      },
+      "trajectory": {
+        "bin": "$HOME/.config/claude/bin/trajectory",
+        "role": "Implementation, refactors, coding",
+        "model": "claude-opus-4-5"
+      },
+      "capcom": {
+        "bin": "$HOME/.config/claude/bin/capcom",
+        "role": "Planning, session structures",
+        "model": "claude-sonnet-4-5"
+      },
+      "mlok": {
+        "bin": "$HOME/.config/claude/bin/mlok",
+        "role": "System/Linux administration",
+        "model": "claude-opus-4-5"
+      }
+    },
+    "raw": {
+      "gemini": {
+        "bin": "gemini",
+        "role": "Raw Gemini CLI"
+      },
+      "claude": {
+        "bin": "claude",
+        "role": "Raw Claude CLI"
+      }
+    }
+  },
+  "external": {
+    "houston": {
+      "platform": "claude.ai",
+      "role": "Architecture, strategic planning",
+      "handoff": "$HOME/.drops/scrum/"
+    },
+    "vega": {
+      "platform": "gemini-chat",
+      "role": "GitHub search, architecture, community research",
+      "handoff": "$HOME/.drops/scrum/"
+    }
+  }
+}

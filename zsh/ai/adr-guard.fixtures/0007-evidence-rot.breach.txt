@@ -1,0 +1,9 @@
+# Evidence-rot breach: _mail/*/inbox/ citations in 0007-tool-lifecycle-publishing.md
+# Extracted 2026-07-07. File status at extraction: DRAFT (not yet LOCKED).
+# These paths are gitignored + drainable — not durable evidence.
+
+Line 7 (frontmatter):
+  `source: _mail/houston/inbox/subai.houston.tool-lifecycle-doctrine.2026-06-25.md (post-@Janus, subai-side)`
+
+Line 209 (closing note):
+  *Source mail: `_mail/houston/inbox/subai.houston.tool-lifecycle-doctrine.2026-06-25.md`.*

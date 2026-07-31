@@ -1,0 +1,188 @@
+#!/bin/bash
+# archx-monitor — Clean monitoring commands with human-readable output
+# Usage: archx-monitor <command> [args]
+
+set -euo pipefail
+
+SUBSTRATES_PATH="${SUBSTRATES_PATH:-$HOME/ia-sync/zsh/archx/bash.substrates.sh}"
+
+# Load substrates silently
+if [[ -f "$SUBSTRATES_PATH" ]]; then
+    source "$SUBSTRATES_PATH" 2>/dev/null
+else
+    echo "Error: Substrates not found at $SUBSTRATES_PATH" >&2
+    exit 1
+fi
+
+# ============================================================================
+# SYSTEM OVERVIEW
+# ============================================================================
+
+monitor_system() {
+    echo ""
+    echo "╔════════════════════════════════════════════════════════════════════════════╗"
+    echo "║                         SYSTEM OVERVIEW                                   ║"
+    echo "╚════════════════════════════════════════════════════════════════════════════╝"
+    echo ""
+    substrate_system_overview 2>/dev/null | grep -v "^\[SUBSTRATE\]"
+    echo ""
+}
+
+# ============================================================================
+# SERVICES
+# ============================================================================
+
+monitor_services() {
+    echo ""
+    echo "╔════════════════════════════════════════════════════════════════════════════╗"
+    echo "║                      SERVICE STATUS                                       ║"
+    echo "╚════════════════════════════════════════════════════════════════════════════╝"
+    echo ""
+    substrate_services_check 2>/dev/null | grep -v "^\[SUBSTRATE\]"
+    echo ""
+}
+
+# ============================================================================
+# CPU
+# ============================================================================
+
+monitor_cpu() {
+    echo ""
+    echo "╔════════════════════════════════════════════════════════════════════════════╗"
+    echo "║                       CPU USAGE (Top 10)                                  ║"
+    echo "╚════════════════════════════════════════════════════════════════════════════╝"
+    echo ""
+    substrate_cpu_top 10 2>/dev/null | grep -v "^\[SUBSTRATE\]"
+    echo ""
+}
+
+# ============================================================================
+# MEMORY
+# ============================================================================
+
+monitor_memory() {
+    echo ""
+    echo "╔════════════════════════════════════════════════════════════════════════════╗"
+    echo "║                    MEMORY USAGE (Top 10)                                  ║"
+    echo "╚════════════════════════════════════════════════════════════════════════════╝"
+    echo ""
+    substrate_memory_top 10 2>/dev/null | grep -v "^\[SUBSTRATE\]"
+    echo ""
+    echo "╔════════════════════════════════════════════════════════════════════════════╗"
+    echo "║                    MEMORY BREAKDOWN                                       ║"
+    echo "╚════════════════════════════════════════════════════════════════════════════╝"
+    echo ""
+    substrate_memory_breakdown 2>/dev/null | grep -v "^\[SUBSTRATE\]"
+    echo ""
+}
+
+# ============================================================================
+# DISK
+# ============================================================================
+
+monitor_disk() {
+    echo ""
+    echo "╔════════════════════════════════════════════════════════════════════════════╗"
+    echo "║                     DISK USAGE (Top 15 dirs)                              ║"
+    echo "╚════════════════════════════════════════════════════════════════════════════╝"
+    echo ""
+    substrate_disk_top_dirs /home 15 2>/dev/null | grep -v "^\[SUBSTRATE\]"
+    echo ""
+}
+
+# ============================================================================
+# TROUBLESHOOTING
+# ============================================================================
+
+monitor_troubleshoot() {
+    echo ""
+    echo "╔════════════════════════════════════════════════════════════════════════════╗"
+    echo "║                  TROUBLESHOOTING REPORT                                   ║"
+    echo "╚════════════════════════════════════════════════════════════════════════════╝"
+    echo ""
+    echo "Load Average:"
+    uptime | awk -F'load average:' '{print $2}'
+    echo ""
+    echo "Top CPU Processes:"
+    substrate_cpu_top 3 2>/dev/null | grep -v "^\[SUBSTRATE\]" | tail -3
+    echo ""
+    echo "Top Memory Processes:"
+    substrate_memory_top 3 2>/dev/null | grep -v "^\[SUBSTRATE\]" | tail -3
+    echo ""
+    echo "Disk I/O:"
+    substrate_disk_io 2>/dev/null | grep -v "^\[SUBSTRATE\]"
+    echo ""
+}
+
+# ============================================================================
+# HELP
+# ============================================================================
+
+show_help() {
+    cat <<'EOF'
+
+archx-monitor — Clean system monitoring commands
+
+USAGE:
+  archx-monitor <command> [options]
+
+COMMANDS:
+
+  system          Full system overview (CPU, memory, disk, top processes)
+  services        Service health check (nginx, PHP, MariaDB, etc.)
+  cpu [N]         Top N CPU consumers (default: 10)
+  memory [N]      Top N memory consumers + breakdown (default: 10)
+  disk [path] [N] Top N directories by size (default: /home, 15 dirs)
+  troubleshoot    Quick diagnostics (load, CPU/memory hogs, I/O)
+
+EXAMPLES:
+
+  archx-monitor system          # Full snapshot
+  archx-monitor services        # Check all services
+  archx-monitor cpu 5           # Top 5 CPU processes
+  archx-monitor memory          # Memory breakdown
+  archx-monitor disk / 10       # Top 10 dirs in /
+  archx-monitor troubleshoot    # Diagnostics
+
+ALIASES (In interactive shell):
+  source ~/.zshrc
+  sysmon          # Full system overview
+  services        # Service check
+  cputop          # CPU top 10
+  memtop          # Memory top 10
+
+EOF
+}
+
+# ============================================================================
+# MAIN
+# ============================================================================
+
+case "${1:-help}" in
+    system)
+        monitor_system
+        ;;
+    services)
+        monitor_services
+        ;;
+    cpu)
+        monitor_cpu
+        ;;
+    memory)
+        monitor_memory
+        ;;
+    disk)
+        monitor_disk
+        ;;
+    troubleshoot)
+        monitor_troubleshoot
+        ;;
+    help|-h|--help)
+        show_help
+        ;;
+    *)
+        echo "Unknown command: $1" >&2
+        show_help
+        exit 1
+        ;;
+esac

@@ -1,0 +1,22 @@
+#!/bin/bash
+# Quick service status check with clean output
+
+echo ""
+echo "╔════════════════════════════════════════════════════════════════════════════╗"
+echo "║                        SERVICE STATUS CHECK                               ║"
+echo "╚════════════════════════════════════════════════════════════════════════════╝"
+echo ""
+
+for svc in nginx php74-fpm php-fpm mariadb tailscaled docker; do
+    if systemctl is-active --quiet "$svc" 2>/dev/null; then
+        printf "  %-20s: ✅ ACTIVE\n" "$svc"
+    else
+        printf "  %-20s: ❌ INACTIVE\n" "$svc"
+    fi
+done
+
+echo ""
+echo "Summary:"
+echo "  Running: $(systemctl is-active nginx php74-fpm mariadb tailscaled docker 2>/dev/null | grep -c active)"
+echo "  Stopped: $(systemctl is-active php-fpm 2>/dev/null | grep -c inactive || echo 1)"
+echo ""

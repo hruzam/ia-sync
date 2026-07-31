@@ -1,0 +1,31 @@
+#!/usr/bin/env zsh
+# =============================================================================
+# Docker Setup Helper for @home Machine
+# =============================================================================
+
+echo "╔════════════════════════════════════════════════════════════╗"
+echo "║          Docker Setup for Composer (@home)                ║"
+echo "╚════════════════════════════════════════════════════════════╝"
+echo ""
+echo "Step 1: Install Docker"
+echo "───────────────────────────────────────────────────────────"
+echo "  sudo pacman -S docker"
+echo ""
+echo "Step 2: Enable and start Docker service"
+echo "───────────────────────────────────────────────────────────"
+echo "  sudo systemctl enable --now docker"
+echo ""
+echo "Step 3: Add user to docker group"
+echo "───────────────────────────────────────────────────────────"
+echo "  sudo usermod -aG docker \$USER"
+echo ""
+echo "Step 4: Apply group membership"
+echo "───────────────────────────────────────────────────────────"
+echo "  LOGOUT and LOGIN (or temporary: newgrp docker)"
+echo ""
+echo "Step 5: Verify"
+echo "───────────────────────────────────────────────────────────"
+echo "  docker run hello-world"
+echo "  composer74 --version"
+echo ""
+echo "After these steps, composer74/composer8 will work with Docker!"

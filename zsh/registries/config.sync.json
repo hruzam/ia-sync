@@ -1,0 +1,16 @@
+{
+  "comment": "One-way publish: project guides -> reposoma raw.guides mirror. Source of truth = project. Run `sync-guides` after editing a source guide. Do NOT hand-edit the reposoma copies.",
+  "reposoma_root": "/home/hruzam/reposoma",
+  "projects": [
+    {
+      "name": "piql.dev",
+      "guides_dir": "/home/hruzam/www/piql/piql.dev/guides",
+      "publish": [
+        { "src": "ssh-self-service.md",       "dst": "raw.guides/reach/ssh-self-service.md" },
+        { "src": "piql.md",                    "dst": "raw.guides/piql/piql.md" },
+        { "src": "piql-bus-usage.md",          "dst": "raw.guides/piql/piql-bus-usage.md" },
+        { "src": "phase08-gates-BC-manual.md", "dst": "raw.guides/piql/phase08-gates-BC-manual.md" }
+      ]
+    }
+  ]
+}

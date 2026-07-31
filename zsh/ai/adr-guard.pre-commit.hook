@@ -1,0 +1,12 @@
+#!/usr/bin/env zsh
+# pre-commit hook — canon-integrity gate for temple/decisions/ ADRs
+# Source: ~/.config/zsh/ai/adr-guard.pre-commit.hook
+# Install (one-time): cp ~/.config/zsh/ai/adr-guard.pre-commit.hook ~/reposoma/.git/hooks/pre-commit && chmod +x ~/reposoma/.git/hooks/pre-commit
+#
+# Two checks against the staged diff vs HEAD (see adr-guard.zsh for full spec):
+#   1. Locked-ADR in-place edit: status:LOCKED ADR has lines removed/changed → FAIL
+#   2. Evidence-rot cite: staged decisions/*.md adds _mail/*/inbox/ reference → FAIL
+#
+# Hook carries NO logic — delegates entirely to the gate script (hook != brain, 0008 L7).
+# Bypass: git commit --no-verify (a rail, not a trap — decision-0009 standing)
+zsh "${HOME}/.config/zsh/ai/adr-guard.zsh" || exit 1

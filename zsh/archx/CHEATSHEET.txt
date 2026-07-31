@@ -1,0 +1,234 @@
+╔════════════════════════════════════════════════════════════════════════════╗
+║                 ARCH LINUX SYSTEM MONITORING CHEATSHEET                     ║
+║                                                                             ║
+║           Location: ~/reposoma/raw.guildes/archx/                          ║
+║           Generated: 2026-06-28                                             ║
+║           System: Manjaro (8 cores, 9.6 GB RAM)                            ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📁 FILES & WHAT THEY DO
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📄 INDEX.md (START HERE)
+   Complete guide to all files, quick start, patterns, workflows
+
+📄 README.md
+   Navigation hub, system specs, command reference
+
+📄 ARCH_UPDATE_GUIDE.md
+   System updates, package management, troubleshooting
+
+📄 RESOURCE_MONITORING.md
+   CPU, memory, disk, network monitoring (detailed)
+
+📄 QUICK_COMMANDS.sh
+   Copy-paste one-liners for instant monitoring
+
+📄 bash.substrates.sh (FOR AGENTS & SCRIPTING)
+   45+ reusable functions, organized by category
+
+📄 journal.uparchx.jsonl
+   Machine-readable session logs
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+⚡ INSTANT COMMANDS (Copy & Paste)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SYSTEM OVERVIEW
+  top                                # Interactive CPU/memory
+  uptime                             # Load average
+  free -h                            # Memory usage
+  df -h | grep /dev                  # Disk usage
+
+TOP PROCESSES
+  ps aux --sort=-%cpu | head -6      # Top by CPU
+  ps aux --sort=-%mem | head -6      # Top by memory
+
+CONTINUOUS MONITORING
+  watch -n 1 free -h                 # Memory every 1 sec
+  watch -n 2 'top -bn1 | head -12'   # CPU every 2 sec
+  watch -n 5 'df -h | grep /dev'     # Disk every 5 sec
+
+FIND WHAT'S USING...
+  ss -tlnp | grep :8080              # Port 8080
+  lsof /path/to/file                 # Specific file
+  ps aux | grep firefox              # Specific process
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🔧 USING SUBSTRATE FUNCTIONS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SETUP (Do once)
+  source ~/reposoma/raw.guildes/archx/bash.substrates.sh
+
+CPU MONITORING
+  substrate_cpu_snapshot             # Quick CPU view
+  substrate_cpu_top 5                # Top 5 processes
+  substrate_cpu_load                 # CPU load vs cores
+  substrate_cpu_watch 2              # Watch CPU (every 2 sec)
+
+MEMORY MONITORING
+  substrate_memory_snapshot          # Quick memory view
+  substrate_memory_top 5             # Top 5 processes
+  substrate_memory_breakdown         # Detailed breakdown
+  substrate_memory_watch 2           # Watch memory
+
+DISK MONITORING
+  substrate_disk_snapshot            # Quick disk view
+  substrate_disk_top_dirs /home 10   # Top 10 dirs in /home
+  substrate_disk_watch 5 /home       # Watch disk usage
+  substrate_disk_large_files /home   # Files > 1 GB
+
+NETWORK & PROCESSES
+  substrate_network_snapshot         # Connections
+  substrate_network_listening        # Listening ports
+  substrate_process_find firefox     # Find by name
+  substrate_process_tree firefox     # Show process tree
+
+SYSTEM OVERVIEW & ALERTS
+  substrate_system_overview          # Full report
+  substrate_resource_alert 80 80 85  # Alert on thresholds
+
+SYSTEM UPDATES & MAINTENANCE
+  substrate_conditional_update       # Update if needed
+  substrate_safe_cleanup_flow        # Clean & remove orphans
+  substrate_system_info              # System details
+  substrate_count_packages           # Package stats
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🎯 COMMON SCENARIOS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SCENARIO: System is slow
+  1. substrate_system_overview          # See overall status
+  2. substrate_cpu_top 10               # Find CPU hogs
+  3. substrate_memory_top 10            # Find memory hogs
+  4. vmstat 1 3                         # Check I/O
+
+SCENARIO: Running out of memory
+  1. substrate_memory_breakdown         # See breakdown
+  2. substrate_memory_top 10            # Find largest
+  3. pkill -9 process-name              # Kill if needed
+
+SCENARIO: Disk is full
+  1. df -h | grep /dev                 # Check usage
+  2. substrate_disk_top_dirs /home 20  # Find large dirs
+  3. substrate_disk_large_files / 1G   # Find large files
+
+SCENARIO: Monitor during build
+  watch -n 1 'substrate_memory_snapshot && echo && substrate_cpu_snapshot'
+
+SCENARIO: Performance testing
+  1. substrate_system_overview > before.txt
+  2. (run test)
+  3. substrate_system_overview > after.txt
+  4. diff before.txt after.txt
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📊 INTERPRETING OUTPUT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+CPU
+  93%+ idle       = System not busy, fast response
+  50-93% idle     = System moderately busy
+  <50% idle       = System busy, possible slowdown
+
+LOAD AVERAGE (from uptime)
+  0.5 1.2 0.8     = (1-min, 5-min, 15-min averages)
+  Compare to core count: 8 cores = load < 8 is normal
+
+MEMORY
+  Used: 3.2 GB / 9.6 GB = 33% (healthy)
+  Available: 6.4 GB = Can allocate without pressure
+
+DISK
+  22% used = Plenty of space
+  >80% used = Getting full, cleanup needed
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+🛠️ SYSTEM UPDATES
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+CHECK UPDATES
+  pacman -Qu                         # What's available
+
+UPDATE SYSTEM
+  sudo pacman -Syu                   # Full update
+  substrate_conditional_update       # Update if needed
+
+CLEANUP
+  sudo pacman -Sc                    # Clean old packages
+  sudo pacman -Rns $(pacman -Qdtq)   # Remove orphans
+  substrate_safe_cleanup_flow        # Do both safely
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+💡 PRO TIPS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+SHELL ALIASES (Add to ~/.zshrc)
+  alias sysmon='substrate_system_overview'
+  alias memtop='substrate_memory_top 10'
+  alias cputop='substrate_cpu_top 10'
+  alias diskuse='du -sh /home/* | sort -hr'
+  source ~/.zshrc   # Reload after editing
+
+SAVE REPORTS
+  substrate_system_overview > report_$(date +%Y%m%d_%H%M%S).txt
+
+CONTINUOUS LOGGING
+  while true; do
+    echo "$(date): $(free | grep Mem | awk '{print $3}')" >> mem.log
+    sleep 10
+  done &
+
+WATCH MULTIPLE THINGS
+  watch -n 2 'echo "=== CPU ===" && top -bn1 | head -5 && echo "=== MEM ===" && free -h'
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+📚 WHERE TO GO
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+NEED DETAILED EXPLANATION?
+  → Read RESOURCE_MONITORING.md (500+ lines of details)
+
+JUST NEED ONE-LINERS?
+  → Use QUICK_COMMANDS.sh (copy-paste ready)
+
+WANT TO BUILD SCRIPTS?
+  → Use bash.substrates.sh (45+ functions)
+
+NEED SYSTEM UPDATE HELP?
+  → Read ARCH_UPDATE_GUIDE.md
+
+LOST?
+  → Start with INDEX.md
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+✨ QUICK START (Pick one)
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+FOR HUMANS:
+  top                                # Start here (interactive)
+
+FOR QUICK CHECKS:
+  source bash.substrates.sh
+  substrate_system_overview
+
+FOR CONTINUOUS MONITORING:
+  watch -n 2 'substrate_system_overview | head -30'
+
+FOR AGENTS/SCRIPTS:
+  source bash.substrates.sh
+  substrate_cpu_top 5 && substrate_memory_top 5
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+📌 System Specs: 8-core Ryzen 5 3500U | 9.6 GB RAM | 192GB root + 128GB /home
+📌 Tools: top, htop, vmstat, free, watch, ps, ss, lsof, fuser, df, du
+📌 Status: ✅ Ready to use (tested 2026-06-28)
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│ Remember: Use htop for interactive, watch for continuous, substrates for   │
+│ scripting. Check docs for detailed explanations. Have fun! 🎉              │
+└─────────────────────────────────────────────────────────────────────────────┘

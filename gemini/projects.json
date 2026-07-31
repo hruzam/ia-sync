@@ -1,0 +1,15 @@
+{
+  "projects": {
+    "/home/hruzam/www/ovum/reposoma.dev": "reposoma-dev",
+    "/home/hruzam": "hruzam",
+    "/tmp/r3-run": "r3-run",
+    "/home/hruzam/www/imago_cz/freya.devstudio": "freya-devstudio",
+    "/home/hruzam/www/ovum/subai.devenv": "subai-devenv",
+    "/home/hruzam/reposoma": "reposoma",
+    "/home/hruzam/www/ovum/reposoma.devenv": "reposoma-devenv",
+    "/home/hruzam/www/imago_cz/fantasyobchod": "fantasyobchod",
+    "/home/hruzam/nabla-lab": "nabla-lab",
+    "/tmp": "tmp",
+    "/home/hruzam/www/elements-factory/applications-in-common": "applications-in-common"
+  }
+}

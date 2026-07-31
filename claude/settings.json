@@ -1,0 +1,51 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(*)",
+      "WebSearch(*)",
+      "Bash(git diff:*)",
+      "Bash(git log:*)",
+      "Bash(git status:*)",
+      "Bash(journalctl:*)",
+      "Bash(jq:*)",
+      "Bash(ss:*)",
+      "Bash(systemctl is-active:*)",
+      "Bash(systemctl is-enabled:*)",
+      "Bash(systemctl status:*)",
+      "Read(//home/hruzam/**)"
+    ],
+    "deny": [
+      "Bash(git push --force:*)",
+      "Edit(//etc/ssh/**)"
+    ],
+    "ask": [
+      "Bash(git push:*)",
+      "Bash(sudo:*)"
+    ],
+    "additionalDirectories": [
+      "/home/hruzam/.remote"
+    ]
+  },
+  "model": "claude-fable-5[1m]",
+  "fallbackModel": [
+    "opus"
+  ],
+  "hooks": {
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "[ -f \"$HOME/.remote/OFF\" ] || { timeout 4 git -C \"$HOME/.remote\" pull --ff-only origin core -q 2>/dev/null; grep -q '^what: .' \"$HOME/.remote/task.md\" 2>/dev/null && { echo 'REMOTE TASK WAITING — take it with /remote-read:'; cat \"$HOME/.remote/task.md\"; }; }; exit 0"
+          }
+        ]
+      }
+    ]
+  },
+  "effortLevel": "high",
+  "showThinkingSummaries": true,
+  "skipWorkflowUsageWarning": true,
+  "theme": "dark",
+  "inputNeededNotifEnabled": true,
+  "agentPushNotifEnabled": true
+}

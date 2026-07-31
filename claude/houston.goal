@@ -1,0 +1,17 @@
+# Houston autonomous goal — NONE ACTIVE (retired)
+`date: 2026-06-29 · host: office · retired by @majkee (present)`
+
+## NO ACTIVE GOAL
+There is no goal set. On an autonomous `/goal` run, fall back to the project canon
+(decisions/index.md → registry/index.md → most-recent `_mail/monkey/inbox/houston.monkey-not-forget-this.*.md`)
+and **wait for instructions**. Do not infer work from the retired goal below.
+
+## Retired
+- **0008 Stage-1 transport + circuit characterization** (set 2026-06-25) — **COMPLETE**, retired 2026-06-29.
+  Read-side wiring (converged 3) + recalibration notifier (converged 2) both shipped+verified; task-1
+  round-trip closed by the 06-26 saddle-step gavel (AGENTS.md step 5); recalibration function consolidated
+  into `ai/harness-check.zsh`. Full record: the 2026-06-25 circuit memo + the 06-27 reorg memo.
+
+## To set a new goal
+Replace this file with an OBJECTIVE / SCOPE / CIRCUIT / GUARDRAILS / REPORT block (see git history for the
+0008 template), authorized by @majkee, then run `/goal`.

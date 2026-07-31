@@ -1,0 +1,16 @@
+[
+  {
+    "date": "2026-07-20",
+    "machine": "office",
+    "file": "ia-sync/deploy.sh",
+    "issue": "deploy.sh uses rsync -a WITHOUT --delete: files removed on office are NOT removed on home after deploy (left-behind ghosts). Intentional safety, but untracked renames create ghost files. No current conflict; document before any rename in ai/.",
+    "severity": "low"
+  },
+  {
+    "date": "2026-07-20",
+    "machine": "office",
+    "file": "blessings/broken-wiring.json",
+    "issue": "broken-wiring.json syncs cross-machine via ia-sync (blessings/ inside .config/zsh/ which sync.sh --delete captures). Entries now carry machine field to distinguish origin. No action needed unless machine-local logs are preferred — add to sync.deny then.",
+    "severity": "low"
+  }
+]

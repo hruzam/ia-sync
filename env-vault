@@ -1,0 +1,135 @@
+#!/usr/bin/env bash
+# env-vault — encrypt a secrets folder into a single travelling ciphertext blob,
+# so the *git copy* is scrambled while the working plaintext stays untouched on disk.
+#
+# Threat model (deliberately narrow — see install-pkgs/maintenance/pad.4):
+#   DEFENDS  : a leaked repo / a stolen clone. The blob is ciphertext.
+#   IGNORES  : a compromised live machine. If an attacker is you-on-the-box
+#              (e.g. via tailscale) they read the plaintext folder directly;
+#              no on-box key scheme changes that. We do not pretend to.
+#
+# Anti-trap invariants (the whole point — you must never lose access to your own secrets):
+#   1. The seal is ADDITIVE. The plaintext folder is never moved or deleted.
+#      Losing the key loses only the ability to decrypt the *travel* copy — the
+#      plaintext is still right there on any working machine.
+#   2. `seal` round-trips (decrypt + compare) BEFORE it finalises. An unopenable
+#      or lossy blob is never written over a good one.
+#   3. `open` refuses to clobber a non-empty target without --force.
+#   4. `init` refuses to overwrite an existing key.
+#   5. One key file. One place. One backup. That is the only thing to not-forget.
+#
+# Usage:
+#   env-vault init                       # one-time: generate the shared key
+#   env-vault seal <live-dir> <blob>     # encrypt live-dir -> blob (round-trip verified)
+#   env-vault open <blob> <live-dir>     # decrypt blob -> live-dir (no-clobber)
+#   env-vault status <blob> [<live-dir>] # what is sealed / key presence
+#
+# Key location (override with ENV_VAULT_KEY, e.g. for testing):
+#   ~/.secrets/zsh/id.age   (mode 600 — the ONE file to back up)
+
+set -euo pipefail
+
+KEYFILE="${ENV_VAULT_KEY:-$HOME/.secrets/zsh/id.age}"
+
+die()  { printf 'env-vault: %s\n' "$*" >&2; exit 1; }
+info() { printf 'env-vault: %s\n' "$*" >&2; }
+
+# RAM-backed scratch when available (never lands plaintext on the NVMe), else /tmp.
+scratch() {
+  local base; base=/tmp
+  [ -d /dev/shm ] && [ -w /dev/shm ] && base=/dev/shm
+  mktemp -d "$base/env-vault.XXXXXX"
+}
+
+need_age() { command -v age >/dev/null || die "age not installed (pacman -S age)"; }
+
+recipient() {  # derive the public recipient from the private key — one file, no .pub to manage
+  [ -f "$KEYFILE" ] || die "no key at $KEYFILE — run: env-vault init"
+  age-keygen -y "$KEYFILE" 2>/dev/null || die "cannot derive recipient from $KEYFILE"
+}
+
+cmd_init() {
+  need_age
+  if [ -f "$KEYFILE" ]; then
+    die "key already exists at $KEYFILE — refusing to overwrite (invariant 4). Remove it by hand if you truly mean to."
+  fi
+  ( umask 077; mkdir -p "$(dirname "$KEYFILE")" )   # umask 077 => every newly created path component is 700
+  chmod 700 "$(dirname "$KEYFILE")"                  # enforce on the leaf even if it pre-existed
+  ( umask 077; age-keygen -o "$KEYFILE" 2>/dev/null )
+  chmod 600 "$KEYFILE"
+  info "key created: $KEYFILE (mode 600)"
+  info "public recipient: $(recipient)"
+  info ""
+  info "  >>> BACK THIS FILE UP NOW, outside this repo and outside git. <<<"
+  info "  It is the ONLY secret. Copy it to the other machine over tailscale, and keep"
+  info "  one durable backup. The plaintext folder protects you on a working machine;"
+  info "  this key is what you need on a FRESH clone with no plaintext."
+}
+
+cmd_seal() {
+  need_age
+  local live="${1:?usage: env-vault seal <live-dir> <blob>}"
+  local blob="${2:?usage: env-vault seal <live-dir> <blob>}"
+  [ -d "$live" ] || die "not a directory: $live"
+  [ -n "$(ls -A "$live" 2>/dev/null)" ] || die "refusing to seal an EMPTY folder: $live (invariant against sealing nothing over a good blob)"
+  local rcpt; rcpt="$(recipient)"
+
+  local tmp; tmp="$(scratch)"; trap 'rm -rf "$tmp"' RETURN
+  # 1. encrypt live-dir contents -> candidate blob
+  tar -C "$live" -cf - . | age -r "$rcpt" -o "$tmp/candidate.age"
+
+  # 2. INVARIANT 2 — round-trip the candidate before it touches the real blob path
+  mkdir -p "$tmp/verify"
+  age -d -i "$KEYFILE" "$tmp/candidate.age" | tar -C "$tmp/verify" -xf -
+  if ! diff -r "$live" "$tmp/verify" >/dev/null 2>&1; then
+    die "round-trip verify FAILED — candidate blob does not decrypt back to source. Real blob left untouched."
+  fi
+
+  # 3. atomically move the verified candidate into place
+  mkdir -p "$(dirname "$blob")"
+  mv "$tmp/candidate.age" "$blob"
+  info "sealed + round-trip verified: $live -> $blob"
+  info "plaintext folder left untouched (invariant 1). Stage only the blob:"
+  info "  git add $blob"
+}
+
+cmd_open() {
+  need_age
+  local blob="${1:?usage: env-vault open <blob> <live-dir> [--force]}"
+  local live="${2:?usage: env-vault open <blob> <live-dir> [--force]}"
+  local force="${3:-}"
+  [ -f "$blob" ] || die "no blob: $blob"
+  [ -f "$KEYFILE" ] || die "no key at $KEYFILE — this machine cannot decrypt. Copy the backed-up key here first."
+
+  if [ -d "$live" ] && [ -n "$(ls -A "$live" 2>/dev/null)" ] && [ "$force" != "--force" ]; then
+    die "target $live is non-empty — refusing to clobber your working plaintext (invariant 3). Pass --force only if you mean to overwrite it."
+  fi
+  mkdir -p "$live"
+  age -d -i "$KEYFILE" "$blob" | tar -C "$live" -xf -
+  info "opened: $blob -> $live"
+}
+
+cmd_status() {
+  local blob="${1:-}"; local live="${2:-}"
+  printf 'key      : %s\n' "$([ -f "$KEYFILE" ] && echo "present ($KEYFILE)" || echo "ABSENT — cannot open on this machine")"
+  [ -n "$blob" ] && printf 'blob     : %s\n' "$([ -f "$blob" ] && echo "$blob ($(wc -c <"$blob") bytes ciphertext)" || echo "$blob (missing)")"
+  [ -n "$live" ] && printf 'plaintext: %s\n' "$([ -d "$live" ] && [ -n "$(ls -A "$live" 2>/dev/null)" ] && echo "$live (present — you are safe from lockout here)" || echo "$live (empty/absent — you would need the key to restore)")"
+}
+
+case "${1:-}" in
+  init)   shift; cmd_init "$@" ;;
+  seal)   shift; cmd_seal "$@" ;;
+  open)   shift; cmd_open "$@" ;;
+  status) shift; cmd_status "$@" ;;
+  *) cat >&2 <<'EOF'
+env-vault — additive encrypt-at-rest for a secrets folder (git-travel boundary only)
+
+  env-vault init                       one-time: generate the shared key (~/.secrets/zsh/id.age)
+  env-vault seal <live-dir> <blob>     encrypt live-dir -> blob, round-trip verified, plaintext untouched
+  env-vault open <blob> <live-dir>     decrypt blob -> live-dir (refuses to clobber; --force to override)
+  env-vault status <blob> [<live-dir>] show key / blob / plaintext state
+
+The plaintext folder is never moved. The blob is the *extra*, encrypted, travelling copy.
+EOF
+     exit 1 ;;
+esac
