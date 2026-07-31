@@ -47,4 +47,4 @@ _mail/*/archive
 
 # ~/.majkee leg — process data never committed (majkee.deny is the primary guard)
 /majkee/export/
-/majkee/cooking-recipies/
+/majkee/cooking-recipes/
