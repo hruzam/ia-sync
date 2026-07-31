@@ -200,9 +200,24 @@ the guard is advisory. And after any `git add` of a batch, verify with
 
 ## Still open
 
-- **REAL #2 liveness** — rotate or confirm-dead. Blocks the burn checklist at step 2.
-- **REAL #2 scrub** from `guides/home-setup/diagnose_opencart_404.md` — not done in this pad;
-  it is a working-tree edit and wants operator sign-off on the replacement text.
+- **REAL #2 liveness** — operator leans accept-as-local-dev (dev training data, never
+  production); formal gavel pending. Only remaining blocker for bundle deletion.
+- ~~REAL #2 scrub~~ — **DONE 2026-07-31** pre-burn: all THREE literals (this pad's summary
+  listed two; a third sat at line 93 — found by full-file sweep with the corrected pattern).
 - **`sync.sh` scan: all three gaps** — quote-blind pattern, hand-add bypass, and incomplete
   path coverage. None fixed. A pre-commit hook would close gaps 2 and 3 together.
-- **The bundle** at `~/ia-sync-history-backup/` — delete once both credentials are resolved.
+  Mitigation since: secrets travel only as ciphertext (pad.4), so the scanner is no longer
+  the last line for `.env` content.
+- **The bundle** at `~/ia-sync-history-backup/` — delete once REAL #2 is gaveled.
+
+## BURN EXECUTED — 2026-07-31 (office, majkee in the seat)
+
+Checklist ran to completion: scrub ✓ · re-clone directive to home via reposoma mail ✓ ·
+no-push window respected ✓ · survival-as-files held ✓. GitHub repo deleted (operator, web),
+recreated private same-name; fresh history = single genesis commit `8da748a`. Local purge:
+stash (verified duplicate) dropped, two `rescue/*` tags released (bundle covers them),
+reflog expired, objects pruned — 1 reachable commit, credential sweep silent.
+**Independent fresh-clone verification (Delta): PASS ×6** — history shape, credential
+sweep, vault opens to live secrets, plaintext guards. Untracked-local-state rows
+re-established on office (marker cleared, pull.rebase survived via kept .git/config,
+key untouched). This pad is now a historical record of a closed episode.
