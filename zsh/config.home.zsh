@@ -108,7 +108,9 @@ composer8() {
 
 [[ -f ~/.config/zsh/larva.zsh ]] && source ~/.config/zsh/larva.zsh
 [[ -f ~/.config/zsh/krfb.zsh ]] && source ~/.config/zsh/krfb.zsh
-[[ -f ~/.config/zsh/secrets.zsh ]] && source ~/.config/zsh/secrets.zsh
+# Secrets: .env/ vault layout (unified with office 2026-07-31 — flat secrets.zsh retired,
+# was stale May-era keys; .env/ materialized from zsh/env.vault.age via env-vault open)
+[[ -f ~/.config/zsh/.env/secrets.zsh ]] && source ~/.config/zsh/.env/secrets.zsh
 
 # AI AGENT SHELL SYSTEM (Harness freshness & Gemini Base aliases) — mirrors config.office.zsh;
 # was missing here entirely, so the whole ai/ scope (keyboard, temple family, devenv, claude
