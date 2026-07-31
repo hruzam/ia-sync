@@ -200,8 +200,11 @@ the guard is advisory. And after any `git add` of a batch, verify with
 
 ## Still open
 
-- **REAL #2 liveness** — operator leans accept-as-local-dev (dev training data, never
-  production); formal gavel pending. Only remaining blocker for bundle deletion.
+- ~~REAL #2 liveness~~ — **GAVELED 2026-07-31: ACCEPT as local-dev** (dev training data,
+  never production; operator, in the seat). No rotation. Audit fully closed.
+  Bundle deletion authorized; the delete command itself is operator-run
+  (agent classifier blocks destroying the last history copy — correctly cautious):
+  `rm ~/ia-sync-history-backup/ia-sync.full-history.2026-07-30.bundle && rmdir ~/ia-sync-history-backup`
 - ~~REAL #2 scrub~~ — **DONE 2026-07-31** pre-burn: all THREE literals (this pad's summary
   listed two; a third sat at line 93 — found by full-file sweep with the corrected pattern).
 - **`sync.sh` scan: all three gaps** — quote-blind pattern, hand-add bypass, and incomplete
