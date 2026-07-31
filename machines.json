@@ -1,0 +1,22 @@
+{
+  "_readme": [
+    "machines.json — hostname → logical-name map + tailscale second factor (per the",
+    "2026-07-30 flight handoff §5 step 3). Keyed by `hostname -s` output, which is what",
+    "deploy.sh resolves through. The tailscale node id is a verification factor, not a",
+    "lookup key: a script MAY check `tailscale status --json | .Self.ID` against it",
+    "before trusting the logical identity (kills hostname-spoof and wrong-machine cases).",
+    "Add a machine = add a row. Never key on IP; IPs are here as convenience data only."
+  ],
+  "machines": {
+    "hruzam-120922": {
+      "logical": "office",
+      "tailscale_id": "n5f4JzTU5Z11CNTRL",
+      "tailscale_ip": "100.126.182.111"
+    },
+    "hruzam": {
+      "logical": "home",
+      "tailscale_id": "noiwh7hy4211CNTRL",
+      "tailscale_ip": "100.110.27.60"
+    }
+  }
+}

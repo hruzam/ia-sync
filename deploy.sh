@@ -4,7 +4,17 @@
 set -euo pipefail
 
 REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-MACHINE="${MACHINE_NAME:-$(hostname -s)}"
+
+# Machine identity resolution chain (machines.json wired 2026-07-31 — kills the
+# silent-skip trap where hostname `hruzam-120922` matched no config.<name>.zsh):
+#   1. MACHINE_NAME env override (explicit wins)
+#   2. machines.json lookup: hostname -s → .machines[<host>].logical (needs jq)
+#   3. raw hostname -s (legacy fallback — may silently skip host-config legs)
+MACHINE="${MACHINE_NAME:-}"
+if [ -z "$MACHINE" ] && command -v jq >/dev/null && [ -f "$REPO/machines.json" ]; then
+  MACHINE="$(jq -r --arg h "$(hostname -s)" '.machines[$h].logical // empty' "$REPO/machines.json")"
+fi
+MACHINE="${MACHINE:-$(hostname -s)}"
 
 # --dry-run / -n: report every change without writing anything. Neither this
 # script nor sync.sh had a preview mode, so the only way to see a deploy's blast
