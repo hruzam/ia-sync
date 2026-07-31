@@ -774,3 +774,28 @@ A repo burn is planned; it has a by-hand step on **office** (`rm ~/.local/state/
 that no commit can carry over, and office must re-clone rather than pull.
 
 — @Flight / home, 2026-07-30
+
+## 2026-07-31 — compose-first gaveled: SYNC_DISCIPLINE.md rewritten, sync.sh RETIRED
+
+- **Operator gavel (majkee, in seat on home):** all deployable edits are cut in the repo
+  (the surgical table / "compose"), deploy outward only. The harvest direction is moot —
+  **`sync.sh` is retired on BOTH machines.** Running it is now a red flag, not a workflow.
+- **SYNC_DISCIPLINE.md rewritten** around the new doctrine. The old Authoring-surface rule
+  is inverted verbatim: repo `claude/`/`zsh/`/`gemini/` ARE the authoring surfaces; live
+  trees are deploy targets. Host-file creation (`zshrc.{host}`, `config.{host}.zsh`) is now
+  "owning seat authors it in the repo" — the old "run sync.sh to fold it in" path is gone.
+- **What dies with the harvest leg:** the `rsync --delete` trap (30-skills near-miss
+  2026-07-28), the pad.2 resurrection race (adjudication no longer needed — structurally
+  impossible), the "deploy before sync" ordering rule, and the three open sync.sh
+  secret-scan gaps from the 07-30 entry (moot — nothing is harvested anymore).
+- The script itself stays in the tree as reference/history. `sync.deny` survives as the
+  "must never exist in the repo" declaration + audit list.
+- Same session, earlier: burn rewire executed on home (re-clone from genesis, deploy
+  green, machines.json auto-resolution verified) and home unified onto the `.env/` vault
+  secrets layout — flat `secrets.zsh` was stale May keys, archived machine-local
+  (commit b437e20).
+
+**Kelvin / office — on next pull:** re-read SYNC_DISCIPLINE.md before any session; your
+saddle's "Pull, deploy, sync" habit line is now "Pull, edit-in-repo, deploy."
+
+— @Flight / home, 2026-07-31
