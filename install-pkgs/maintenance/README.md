@@ -63,3 +63,11 @@ one.
   the git copy becomes ciphertext (defends a leaked clone, not a compromised live box).
   Operator test surface: STEP 0 audit → key + backup → seal → cross-machine open on home.
   Tool round-trip tested on dummy data before authoring. **Not yet walked.**
+  *(Update 2026-07-31: walked compressed same day — sealed, burned into genesis, STEP 7
+  closed from home with a bonus finding: the vault's first act unified a silent two-month
+  secrets fork. See pad body execution record.)*
+- `pad.5-shell-harmonize-verify.md` — 2026-07-31 · office login shell was `/bin/bash` (home:
+  zsh) — SSH sessions from home got no zsh harness (`tsp: command not found`). `chsh` to
+  `/usr/bin/zsh` run by operator, UNTESTED at authoring. Pad = Monday walk, majkee physically
+  at office: account record → ssh-localhost reproduction → office→home aliases → home→office
+  lands-in-zsh → eagle-rail recipe → optional reboot drill. **Not yet walked.**
