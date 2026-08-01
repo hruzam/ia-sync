@@ -134,13 +134,15 @@ if [ -d "$REPO/gemini/agents" ]; then
   echo "  agents/ $LEG_VERB"
 fi
 
-for f in state.json; do
+for f in state.json GEMINI.md; do
   src="$REPO/gemini/$f"
   if [ -f "$src" ]; then
     copy_file "$src" "$HOME/.gemini/$f" "$f"
   fi
 done
 # projects.json excluded — machine-specific project paths, not portable
+# GEMINI.md added 2026-08-01 — the global "first, be aware" file is a shared
+# portable primitive (its own text says so); was live-only + skipped by deploy.
 
 ensure_dir "$HOME/.gemini/config"
 for f in mcp_config.json; do
