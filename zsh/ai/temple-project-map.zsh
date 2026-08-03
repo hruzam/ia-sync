@@ -7,7 +7,7 @@
 # rule: source this file; do NOT hard-code these paths elsewhere
 #
 # Sync guide — keep TEMPLE_PROJECT_MAP in step with registry/index.md (all projects):
-#   mapped:  reposoma · subai.devenv · reposoma.devenv · freya · freya.devenv · piql.dev · vacuole · fantasyobchod · psdvsSys · applications-in-common
+#   mapped:  reposoma · subai.devenv · reposoma.devenv · freya · freya.devenv · piql.dev · vacuole · fantasyobchod · psdvsSys · applications-in-common · nablarva · nablarva.devenv
 #   omitted: nabla-lab → subdir of reposoma; resolves via [reposoma], no separate entry needed
 
 typeset -gA TEMPLE_PROJECT_MAP
@@ -22,6 +22,8 @@ TEMPLE_PROJECT_MAP=(
   [fantasyobchod]="/home/hruzam/www/imago_cz/fantasyobchod"
   [psdvsSys]="/home/hruzam/www/psdvs/psdvsSys"
   [applications-in-common]="/home/hruzam/www/elements-factory/applications-in-common"
+  [nablarva]="/home/hruzam/unikuklatrix/nablarva"
+  [nablarva.devenv]="/home/hruzam/unikuklatrix/nablarva.devenv"
 )
 
 # temple-project-root <project-name>

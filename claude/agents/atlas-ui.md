@@ -6,7 +6,7 @@ description: >
   + raw.settings primitives, confirms before writing. Writes global builds onto the surgical
   table (`~/ia-sync/claude/…`) — the cross-machine composer that `deploy.sh` spreads to both
   machines — never the live `~/.claude/` directly. Can spawn @Zenith for targeted harness doc lookups.
-model: sonnet
+model: claude-opus-4-8
 effort: high
 tools: Read, Grep, Glob, Write, Edit, Agent
 color: purple

@@ -86,6 +86,14 @@ export PROJECT_SES_NAME="vibe-code sessions"
 export PROJECT_SES_ZSH="session.zsh"
 export PROJECT_SES_TOOLKIT="session.zsh"
 
+# nabLarva (larva V3 — agent<>agent ladder; scope-group ~/unikuklatrix; docs-only
+# until gavel docket item 2 lands a v1 language — no PHP/build vars by design).
+# Own scope folder nablarva/ (ai/-pattern, NOT the projects/ toolkit mechanism);
+# wired via the nablarva/base.zsh source hook below, next to ai/base.zsh.
+export PROJECT_NAB_PATH="$HOME/unikuklatrix/nablarva"
+export PROJECT_NAB_NAME="nabLarva"
+export PROJECT_NAB_DEVENV="$HOME/unikuklatrix/nablarva.devenv"
+
 # Env backups (consumed by psdvs-toolkit.zsh)
 export ENV_BACKUP_DIR="$PROJECT_PSD_PATH/env"
 
@@ -142,6 +150,7 @@ echo "[config] @${MACHINE_NAME} loaded"
 
 # AI AGENT SHELL SYSTEM (Harness freshness & Gemini Base aliases)
 [[ -f ~/.config/zsh/ai/base.zsh ]] && source ~/.config/zsh/ai/base.zsh
+[[ -f ~/.config/zsh/nablarva/base.zsh ]] && source ~/.config/zsh/nablarva/base.zsh
 
 #SESSION HELPERS
 [[ -f ~/.config/zsh/projects/session.zsh ]] && source ~/.config/zsh/projects/session.zsh
