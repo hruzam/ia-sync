@@ -71,3 +71,18 @@ one.
   `/usr/bin/zsh` run by operator, UNTESTED at authoring. Pad = Monday walk, majkee physically
   at office: account record → ssh-localhost reproduction → office→home aliases → home→office
   lands-in-zsh → eagle-rail recipe → optional reboot drill. **Not yet walked.**
+- *(no pad)* **2026-08-03 · Sublime install + keymap consolidation (home)** — no OS-level
+  repair; recorded here for continuity with the keymap thread from pad.1 STEP 4.
+  · `editor-pin-sublime` plugin deployed to home for first time (`editor_pin.py`,
+  `pin_core.py` → `Packages/User/`; `~/.wires/` created; `claim-pins.sh` +x).
+  · `Default (Linux).sublime-keymap` written as merged canonical: pin bindings +
+  markdown preview (`alt+m`) + freed `ctrl+r/b` (remapped to `ctrl+shift+r/b`) +
+  numpad nav/selection (belt-and-suspenders against Wayland NumLock regression, pad.1 STEP 2).
+  · Operator adjusted two pin chords live: `ctrl+alt+<` → `ctrl+alt+]` (drop pin),
+  `ctrl+alt+r` → `ctrl+alt+'` (tmux send).
+  · `ia-sync/install-pkgs/sublime-keymap.md` created (v1.0, manual, hosts: home office) —
+  captures history, source path, and merge discipline for future deploys.
+  · Stale Markdown packages removed from Sublime: MarkdownLivePreview, Markdown HTML
+  Preview, Markmon (kept: MarkdownEditing + MarkdownPreview).
+  · `Write(experiments/**)` permission rule fixed → `Edit(experiments/**)` in
+  `.claude/settings.local.json`.
