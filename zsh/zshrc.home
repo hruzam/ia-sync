@@ -55,8 +55,21 @@ dsk() {
   wmctrl -s "$desk" && "$@"
 }
 
+#generate hash (12numbers)
+alias hasz="openssl rand -hex 6"
+
+# ========================
+# temporary FREYA aliases
+# ========================
+
+alias gpl="git pull && npm run build && php artisan optimize:clear"
+alias mig="time php artisan migrate:fresh --seed"
+alias freya="cd /home/hruzam/www/imago_cz/freya"
+alias dbfr="freya && /usr/bin/mariadb -u majkee -p freya"
+
 # =============================================================================
 # PATH
 # =============================================================================
 export PATH=~/.npm-global/bin:$PATH
 export PATH="$HOME/.local/bin:$PATH"
+
