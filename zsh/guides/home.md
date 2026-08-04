@@ -172,6 +172,17 @@ User:     majkee
 Database: fantasyobchod (for FO project)
 ```
 
+### Privileges
+`majkee`@`localhost` does NOT have `CREATE DATABASE` by default — run as root to grant it:
+
+```sql
+-- connect as root: sudo mysql -u root
+GRANT CREATE ON *.* TO 'majkee'@'localhost';
+FLUSH PRIVILEGES;
+```
+
+After this, `majkee` can `CREATE DATABASE` without root each time.
+
 ### Project Databases
 See `~/.config/zsh/harness.machine-project-registry.json` for DB details per project.
 
