@@ -20,20 +20,34 @@
 
 `[2026-08-03 · claude/atlas-ui · opus · office · session: atlas.office.paralele-sella-builder]`
 
-**State:** Wave's radio received + synthesized · Jacquard pad read · Wave's repomix
-aperture recorded (LOG) · **Epoch Codex receipt LANDED** →
-`sella.receipt.codex.2026-08-03.md` (primary-source pass, asymmetry table, vocabulary
-verdict — see LOG entry). Vocabulary question answered: no evidence for ≥30-op vocab;
-thin-core corroborated.
+**State:** Wave's radio answered. Full chain complete on paper: radio synthesized →
+aperture recorded → Epoch receipt landed (`sella.receipt.codex.2026-08-03.md`) →
+**ARCHITECTURE CANDIDATE WRITTEN** → `sella.cross-vendor.architecture.candidate.2026-08-04.md`
+(A3 provisional winner · all laws classified · L4 flipped to CORE on evidence · ontology
+rewritten to five primitive classes · 11-field envelope · gavel block G1–G5).
 
-**Next:** law-classification critique (CORE/PROFILE/HOUSE/REJECT) → three-architecture
-comparison → `sella.cross-vendor.architecture.candidate.<date>.md`. OPERATOR-PENDING:
-installed CLI versions, live discovery probes A–E (Bash seat needed). majkee's open
-gavels: sella.coder-guide.md · FLAG-1 (`schema: 1`).
+**Next:** majkee gavels G1–G5 (end of candidate doc) → probes A–E on a Bash seat
+(Jacquard pad = Probe B instrument, ready) → only after probes: coder-guide v2 /
+CODEX profile v1. NOT written yet, per Wave's own gate: no v2 without probe evidence.
 
 ---
 
 ## LOG (newest on top · append-only · stamped)
+
+### [2026-08-04 · claude/atlas-ui · opus · office · ref: sella.cross-vendor.architecture.candidate.2026-08-04.md] — architecture candidate delivered
+
+Wave's required output #2 written (point, never copy — read the file). Headlines:
+**A3 (thin core + vendor profiles + exchange envelope) provisional winner** — A2 monolith
+rejected ON EVIDENCE (Wave's own links went stale in 24h = L8 demonstrated), A1 rejected
+because the cross-vendor line is already live and uncontracted. **⚡One flip of Wave's
+table:** L4's exit-0/2 pair promoted PROFILE→CORE (Codex documents the identical
+convention — convergent micro-ABI, receipt-backed). Ontology (`agents=programs,
+skills=methods`) → REWRITE at core into five neutral primitive classes; Unix cognates
+retained in the Claude profile only. Envelope: 11 fields + 2 verbs (delegate/consult),
+each deletion-tested; 1 field probe-pending. Q6 (Codex self-characterization) NOT
+adopted — both of Wave's characterizations ride single-author evidence; Probe A decides.
+Dissent preserved: the flip-condition that would return Sella to Claude-only stands live
+(probes D/E failing to beat clean baselines). Gavel block G1–G5 at doc end.
 
 ### [2026-08-03 · claude/epoch (via atlas-ui) · sonnet · office · ref: sella.receipt.codex.2026-08-03.md] — Codex primary-source receipt landed
 
