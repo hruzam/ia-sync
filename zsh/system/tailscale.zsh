@@ -120,6 +120,23 @@ _ts_web() {
         echo "  open: https://login.tailscale.com/admin/machines"
 }
 
+# ─── FILE TRANSFER ────────────────────────────────────────────────────────────
+
+# Pull a file from the peer at the same absolute path (symmetric mirror copy).
+# Creates local directory structure if absent. Fast Tailscale tunnel — no git needed.
+_ts_pull() {
+    local filepath="${1}"
+    local peer="${2:-$TAILSCALE_PEER}"
+    [[ -z "$filepath" ]] && { echo "[ts] usage: ts-pull <filepath> [peer]"; return 1; }
+    [[ -z "$peer" ]] && { echo "[ts] TAILSCALE_PEER not set"; return 1; }
+    local dir
+    dir=$(dirname "$filepath")
+    if [[ ! -d "$dir" ]]; then
+        mkdir -p "$dir" && echo "[ts] created: $dir"
+    fi
+    scp "${peer}:${filepath}" "${filepath}" && echo "[ts] pulled: ${filepath}"
+}
+
 # ─── HELP ─────────────────────────────────────────────────────────────────────
 
 _ts_help() {
@@ -133,6 +150,7 @@ _ts_help() {
     printf "  ts-dash          start HTTP status dashboard (port %s)\n" "$TS_DASH_PORT"
     printf "  ts-dash-stop     stop dashboard\n"
     printf "  ts-web           open login.tailscale.com/admin/machines\n"
+    printf "  ts-pull <path>   pull same-path file from peer (mirror copy)\n"
     printf "  ts-help          this panel\n"
     printf "  ──────────────────────────────────────────────────\n"
     printf "  peer: \$TAILSCALE_PEER=%s\n\n" "${TAILSCALE_PEER:-(not set)}"

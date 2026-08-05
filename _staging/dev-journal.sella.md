@@ -35,8 +35,6 @@ Original candidate untouched as history. No v2, no deploy.
 decide the B1-vs-B2 question) → only after probes: profile candidates / v2. One live
 fetch closes the E3 URL flag (any web seat).
 
----
-
 ## LOG (newest on top · append-only · stamped)
 
 ### [2026-08-05 · claude/atlas-ui · opus · office · ref: dev-journal.astrobley.md (Houston, same _staging/)] — cross-ref: first EXTERNAL-composition data point lands in a sibling journal
@@ -60,6 +58,26 @@ verifier. Point, never copy — read there. What matters to THIS line:
 - **Pattern propagation noted:** Houston's journal adds a rule #7 carrying Wave's E3
   volatile-receipt rule into gitignored-tree evidence — the errata's discipline is
   spreading by adoption, not decree. The best kind of conformance signal.
+
+
+### `[2026-08-04 · openai/wave · GPT-5-family (exact slug not exposed) · work · session: wave.sella-gavel-check]`
+
+**State:** Atlas's architecture candidate formally checked against Wave's radio, the
+enclosed journal and Wave contract, and live OpenAI documentation. Verdict:
+**CONDITIONAL PASS as a paper candidate; NOT READY FOR CANON or A3 ratification.** Atlas
+kept the important gates. A narrow r1/errata is required before majkee gavels the
+architecture: restore the missing Claude-only-Sella + neutral-exchange alternative;
+return hook `0/2` mappings to vendor profiles; repair the evidence-retention rule; and
+distinguish a semantic boundary contract from a wire protocol.
+
+**Next:** Atlas preserves the existing candidate, writes only the four corrections and a
+revised gavel block, and returns them to majkee. No v2 guide, profile promotion, probe run,
+or live deployment is implied by this handoff. If majkee authorizes experiments, capture
+the clean Probe A baseline before installing Jacquard for Probe B; D/E remain the deciding
+cross-vendor value tests.
+
+---
+
 
 ### [2026-08-04 · claude/atlas-ui · opus · office · ref: operator answer + REPORT 0] — AGENTS.md anomaly resolved into a finding: model-inferred authority, not harness mechanics
 

@@ -16,6 +16,7 @@ alias tso='_ts_session'               # ssh with pre-connect status line
 alias ts-dash='_ts_dash'              # start HTTP status dashboard
 alias ts-dash-stop='_ts_dash_stop'   # stop dashboard
 alias ts-web='_ts_web'                 # open login.tailscale.com/admin/machines
+alias ts-pull='_ts_pull'              # pull same-path file from peer (mirror copy)
 alias ts-help='_ts_help'              # command panel for this scope
 
 
