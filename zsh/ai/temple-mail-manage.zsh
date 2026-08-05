@@ -173,27 +173,26 @@ tput smcup 2>/dev/null
 tput civis 2>/dev/null
 stty -icanon -echo
 
-printf '# view\treceiver\tfilename\tfullpath\n' > "$tsvfile"
-_scan_mail "$tsvfile"
+while true; do
+  printf '# view\treceiver\tfilename\tfullpath\n' > "$tsvfile"
+  _scan_mail "$tsvfile"
 
-actions=$(python3 "${0:A:h}/mail-palette.py" --map "$tsvfile")
-palette_status=$?
+  actions=$(python3 "${0:A:h}/mail-palette.py" --map "$tsvfile")
+  palette_status=$?
+  (( palette_status != 0 )) && break
+
+  while IFS=$'\t' read -r rec_file verb; do
+    [[ -z "$rec_file" ]] && continue
+    rec="${rec_file%%/*}"
+    fname="${rec_file#*/}"
+    _move_mail_file "$rec" "$fname" "$verb" || {
+      _cleanup
+      exit 1
+    }
+  done <<< "$actions"
+done
+
 rm -f -- "$tsvfile"
 tsvfile=""
-
-if (( palette_status != 0 )); then
-  _cleanup
-  exit 0
-fi
-
-while IFS=$'\t' read -r rec_file verb; do
-  rec="${rec_file%%/*}"
-  fname="${rec_file#*/}"
-  _move_mail_file "$rec" "$fname" "$verb" || {
-    _cleanup
-    exit 1
-  }
-done <<< "$actions"
-
 _cleanup
 exit 0

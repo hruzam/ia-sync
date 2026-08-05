@@ -197,7 +197,7 @@ def palette(screen, mail_rows):
                 marks[full_path] = not marks.get(full_path, False)
         elif key in ("a", "A"):
             selected = [item for item in mail_rows if marks.get(item["fullpath"])]
-            return (selected, 0) if selected else (None, 1)
+            return (selected, 0)
         elif key == "\x1b":
             if filter_text:
                 filter_text = ""
