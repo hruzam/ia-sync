@@ -121,32 +121,30 @@ composer8() {
 [[ -f ~/.config/zsh/env-sync.zsh ]] && source ~/.config/zsh/env-sync.zsh
 
 # =============================================================================
-# TAILSCALE — system scope (engine + keyboard)
+# TAILSCALE — system scope (engine + keyboard, via system/base.zsh — WP5)
 # =============================================================================
 export TAILSCALE_PEER="hruzam-120922"  # office machine hostname on tailnet
 export TS_DASH_PORT="9733"             # HTTP dashboard port (ts-dash)
 
-[[ -f ~/.config/zsh/system/tailscale.zsh ]] && source ~/.config/zsh/system/tailscale.zsh
-[[ -f ~/.config/zsh/system/keyboard.zsh  ]] && source ~/.config/zsh/system/keyboard.zsh
+[[ -f ~/.config/zsh/system/base.zsh ]] && source ~/.config/zsh/system/base.zsh
 _ts_header 2>/dev/null  # compact peer status line on every shell open (silent if down)
 
 # =============================================================================
-# PIQL CROSS-MACHINE (piql = gemma/ollama on office; home accesses via SSH)
+# PIQL CROSS-MACHINE (piql = gemma/ollama on office; home accesses via SSH;
+# via piql/base.zsh — MACHINE_NAME-guarded office-only partition inside, WP5)
 # =============================================================================
 export PIQL_PORT="0"                   # update to match office piql.env.zsh port
 
 # piql-remote, piql-watch, piql-ask — SSH over tailscale to office piql
-[[ -f ~/.config/zsh/piql/tailscale.zsh ]] && source ~/.config/zsh/piql/tailscale.zsh
-[[ -f ~/.config/zsh/piql/keyboard.zsh ]] && source ~/.config/zsh/piql/keyboard.zsh
+[[ -f ~/.config/zsh/piql/base.zsh ]] && source ~/.config/zsh/piql/base.zsh
 
 # ~/bin on PATH for local scripts (ramwatch etc.)
 [[ -d "$HOME/bin" ]] && export PATH="$HOME/bin:$PATH"
 
 # =============================================================================
-# ARCH LINUX MONITORING COMMANDS (Generated 2026-06-28)
+# ARCH LINUX MONITORING COMMANDS (Generated 2026-06-28; via archx/base.zsh — WP5)
 # =============================================================================
-[[ -f ~/.config/zsh/archx/commands.zsh ]] && source ~/.config/zsh/archx/commands.zsh
-[[ -f ~/.config/zsh/archx/keyboard.zsh ]] && source ~/.config/zsh/archx/keyboard.zsh
+[[ -f ~/.config/zsh/archx/base.zsh ]] && source ~/.config/zsh/archx/base.zsh
 
 if [ -f '/home/hruzam/google-cloud-sdk/path.zsh.inc' ]; then . '/home/hruzam/google-cloud-sdk/path.zsh.inc'; fi
 if [ -f '/home/hruzam/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/hruzam/google-cloud-sdk/completion.zsh.inc'; fi

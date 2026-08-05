@@ -1,7 +1,9 @@
 #!/usr/bin/env zsh
-# piql/piql.zsh — piql shell integration layer
+# piql/piql.zsh — piql privacy-gate loader (engine)
 # Scope: office machine (piql runs on office only)
-# Sourced by config.office.zsh
+# Sourced by: piql/base.zsh PARTITION 3 (office-only guard) — WP5 retrofit;
+# was self-chaining to tailscale.zsh + keyboard.zsh directly (WP4), now those
+# live as their own base.zsh partitions per the canonical signpost pattern.
 #
 # piql: privacy-gated assistant — scrubs PII/secrets locally before cloud.
 # Project lives at: ~/www/piql/piql.dev/
@@ -10,10 +12,3 @@
 
 PIQL_ENV="$HOME/www/piql/piql.dev/piql.env.zsh"
 [[ -f "$PIQL_ENV" ]] && source "$PIQL_ENV"
-
-# Tailscale bridge — piql-remote, piql-watch, piql-push, piql-ask, tss, tsp
-PIQL_DIR="${0:A:h}"
-[[ -f "${PIQL_DIR}/tailscale.zsh" ]] && source "${PIQL_DIR}/tailscale.zsh"
-
-# Control panel — aliases + comments only (WP4 retrofit)
-[[ -f "${PIQL_DIR}/keyboard.zsh" ]] && source "${PIQL_DIR}/keyboard.zsh"

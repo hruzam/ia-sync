@@ -138,6 +138,7 @@ system	ts-dash-stop	stop dashboard	system/tailscale.zsh
 system	ts-header	compact startup line (called on shell open)	system/tailscale.zsh
 system	ts-help	this panel	system/tailscale.zsh
 system	ts-ls	formatted peer list (online/offline)	system/tailscale.zsh
+system	ts-pull	pull same-path file from peer (mirror copy)	system/tailscale.zsh
 system	ts-web	open login.tailscale.com/admin/machines	system/tailscale.zsh
 system	tsip	my tailscale IP (100.x.x.x)	system/keyboard.zsh
 system	tso	ssh with pre-connect status line	system/tailscale.zsh

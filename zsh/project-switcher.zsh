@@ -16,10 +16,10 @@ if [[ -z "$TOOLKIT_DIR" ]]; then
     return 1
 fi
 
-# Control panel — aliases + comments only (WP4 retrofit; projects/ toolkit
-# aliases themselves stay in their lazy-loaded toolkit files, see the file's
-# own header for why).
-[[ -f ~/.config/zsh/projects/keyboard.zsh ]] && source ~/.config/zsh/projects/keyboard.zsh
+# Scope signpost (control panel + reserved engine partitions — WP5 retrofit;
+# projects/ toolkit aliases themselves stay in their lazy-loaded toolkit
+# files, see projects/keyboard.zsh's own header for why).
+[[ -f ~/.config/zsh/projects/base.zsh ]] && source ~/.config/zsh/projects/base.zsh
 
 # =============================================================================
 # PHP HELPERS — defined in system/office.php-switch.zsh, sourced via config.zsh

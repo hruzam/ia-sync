@@ -155,30 +155,27 @@ echo "[config] @${MACHINE_NAME} loaded"
 #SESSION HELPERS
 [[ -f ~/.config/zsh/projects/session.zsh ]] && source ~/.config/zsh/projects/session.zsh
 
-# PIQL INTEGRATION (office only — privacy gate)
-[[ -f ~/.config/zsh/piql/piql.zsh ]] && source ~/.config/zsh/piql/piql.zsh
+# PIQL INTEGRATION (office only — privacy gate; cross-machine bridge partitions
+# live in piql/base.zsh, MACHINE_NAME-guarded — see that file's header)
+[[ -f ~/.config/zsh/piql/base.zsh ]] && source ~/.config/zsh/piql/base.zsh
 
 #GUIDE-PUBLISH SYNCHRONIZER
-[[ -f ~/.config/zsh/sync/guides.zsh ]] && source ~/.config/zsh/sync/guides.zsh
-[[ -f ~/.config/zsh/sync/keyboard.zsh ]] && source ~/.config/zsh/sync/keyboard.zsh
+[[ -f ~/.config/zsh/sync/base.zsh ]] && source ~/.config/zsh/sync/base.zsh
 
 # =============================================================================
 # ARCH LINUX MONITORING COMMANDS (archx suite)
 # =============================================================================
-[[ -f ~/.config/zsh/archx/commands.zsh ]] && source ~/.config/zsh/archx/commands.zsh
-[[ -f ~/.config/zsh/archx/keyboard.zsh ]] && source ~/.config/zsh/archx/keyboard.zsh
+[[ -f ~/.config/zsh/archx/base.zsh ]] && source ~/.config/zsh/archx/base.zsh
 
 # =============================================================================
 # SYSTEM UTILITIES (shell helpers, PHP switching)
 # =============================================================================
 # pacman.zsh / browser.zsh source lines removed 2026-07-07 — files never existed.
 # office.php-switch.zsh is office-dedicated (home switches PHP via Docker in
-# config.home.zsh); the file briefly lost its office. prefix, restored 2026-07-07.
-[[ -f ~/.config/zsh/system/tailscale.zsh ]] && source ~/.config/zsh/system/tailscale.zsh
-[[ -f ~/.config/zsh/system/keyboard.zsh  ]] && source ~/.config/zsh/system/keyboard.zsh
+# config.home.zsh); reach preserved via MACHINE_NAME guards inside
+# system/base.zsh (see that file's header) — WP5 retrofit.
+[[ -f ~/.config/zsh/system/base.zsh ]] && source ~/.config/zsh/system/base.zsh
 _ts_header 2>/dev/null  # compact peer status line on every shell open (silent if down)
-[[ -f ~/.config/zsh/system/shell.zsh ]]      && source ~/.config/zsh/system/shell.zsh
-[[ -f ~/.config/zsh/system/office.php-switch.zsh ]] && source ~/.config/zsh/system/office.php-switch.zsh
 
 # mesh/office-wire.zsh removed 2026-07-07 per Kelvin journal 2026-06-30 item 2
 # (Gate E closed — direct SSH covers everything wofm did)
