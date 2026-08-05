@@ -82,3 +82,12 @@ alias adr-guard="zsh ${HOME}/.config/zsh/ai/adr-guard.zsh"
 # Aliases + bindkey: keyboard.zsh PARTITION 15.
 # Requires: temple-project-map.zsh (P3) loaded first.
 [[ -f ~/.config/zsh/ai/temple-project-surface.zsh ]] && source ~/.config/zsh/ai/temple-project-surface.zsh
+
+# -----------------------------------------------------------------------------
+# PARTITION 11: Command Palette engine
+# -----------------------------------------------------------------------------
+# _command_palette / _command_palette_zle / _palette_help
+# Aliases + bindkey: keyboard.zsh PARTITION 17.
+# Wraps ai/command-palette.py against palette.map (both sibling deliverables,
+# built in parallel — may not exist on disk yet).
+[[ -f ~/.config/zsh/ai/command-palette.zsh ]] && source ~/.config/zsh/ai/command-palette.zsh

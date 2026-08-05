@@ -31,6 +31,8 @@ typeset -gA _KEYS_FAMILY_MAP=(
   ai             'Help panels'
   project        'Project map'
   zenith         'Zenith-ZSH (RAG assistant)'
+  command        'Command Palette'
+  palette        'Command Palette'
 )
 
 # ── singles map: exact bare name → section label ─────────────────────────────
@@ -116,6 +118,7 @@ typeset -a _KEYS_NOISE=(
 # --plain: zero ANSI, one entry per line as "<label>\t<key>"
 # --all: disable noise filter (include shell internals)
 # =============================================================================
+# keys — print the derived claviature panel: live functions/aliases, bucketed by family
 _keys() {
   local plain=0 all=0
   [[ "${1}" == '--plain' ]] && plain=1

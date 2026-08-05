@@ -190,3 +190,21 @@ bindkey '^[p' _project_pick_zle   # Alt-p — fzf project picker (inserts path a
 #   zenith-zsh "question"   headless one-shot: builds preamble + sends question, exits
 # =============================================================================
 alias zenith-zsh='bash ${HOME}/.config/zsh/ai/zenith-zsh.sh'
+
+# =============================================================================
+# PARTITION 17: Command Palette — curses TUI command launcher
+# Engine: ~/.config/zsh/ai/command-palette.zsh (base.zsh P11)
+# Bodies: _command_palette · _command_palette_zle · _palette_help · _palette_refresh
+# TUI + map are sibling deliverables built in parallel (ai/command-palette.py,
+# palette.map at the zsh root) — may not exist on disk yet. Map auto-regenerates
+# when any .zsh file is updated.
+#
+#   command-palette   run the palette; prints the selected command to stdout
+#   Alt-k  (^[k)       ZLE widget — inserts selection at cursor
+#   palette-help       this panel
+#   palette-refresh    manual rebuild of the command map
+# =============================================================================
+alias command-palette='_command_palette'
+alias palette-help='_palette_help'
+alias palette-refresh='_palette_refresh'
+bindkey '^[k' _command_palette_zle   # Alt-k — command palette (inserts selection at cursor)

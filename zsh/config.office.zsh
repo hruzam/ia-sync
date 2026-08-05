@@ -160,11 +160,13 @@ echo "[config] @${MACHINE_NAME} loaded"
 
 #GUIDE-PUBLISH SYNCHRONIZER
 [[ -f ~/.config/zsh/sync/guides.zsh ]] && source ~/.config/zsh/sync/guides.zsh
+[[ -f ~/.config/zsh/sync/keyboard.zsh ]] && source ~/.config/zsh/sync/keyboard.zsh
 
 # =============================================================================
 # ARCH LINUX MONITORING COMMANDS (archx suite)
 # =============================================================================
 [[ -f ~/.config/zsh/archx/commands.zsh ]] && source ~/.config/zsh/archx/commands.zsh
+[[ -f ~/.config/zsh/archx/keyboard.zsh ]] && source ~/.config/zsh/archx/keyboard.zsh
 
 # =============================================================================
 # SYSTEM UTILITIES (shell helpers, PHP switching)

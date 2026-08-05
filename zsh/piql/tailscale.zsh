@@ -1,5 +1,6 @@
 #!/usr/bin/env zsh
 # piql/tailscale.zsh — Tailscale bridge for piql cross-machine access
+# Aliases: piql/keyboard.zsh (control panel — aliases + comments only, WP4 retrofit)
 #
 # Shannon: audit any piql-expose call — it widens the attack surface to your
 # entire tailnet. SSH pull (piql-remote/piql-watch) is read-only and preferred.
@@ -25,7 +26,7 @@ piql-remote() {
     [[ -z "$peer" ]] && { echo "[piql] TAILSCALE_PEER not set"; return 1; }
     ssh "$peer" "cat '${PIQL_OUTPUT_FILE}' 2>/dev/null || echo '[piql] no output file at ${PIQL_OUTPUT_FILE}'"
 }
-alias piql-pull='piql-remote'
+# piql-pull alias moved to piql/keyboard.zsh (WP4 retrofit)
 
 # FROM HOME: live tail of piql log from office (streaming)
 piql-watch() {
@@ -74,3 +75,21 @@ piql-expose-off() {
 }
 
 piql-expose-status() { tailscale serve status; }
+
+# =============================================================================
+# HELP
+# =============================================================================
+_piql_help() {
+    cat << 'EOF'
+piql — cross-machine bridge (engine: piql/tailscale.zsh; keys: piql/keyboard.zsh)
+
+  piql-remote    read last piql output from office over SSH/Tailscale (from home)
+  piql-pull      alias for piql-remote
+  piql-watch     live-tail piql.log on office over SSH/Tailscale (from home)
+  piql-push      push last piql output to home over SCP/Tailscale (from office)
+  piql-ask       run a piql query on office over SSH (from home; recommended)
+  piql-expose    open piql's HTTP API on the tailnet via tailscale serve (Shannon: audit first)
+  piql-expose-off      remove the tailscale serve exposure
+  piql-expose-status   show tailscale serve status
+EOF
+}

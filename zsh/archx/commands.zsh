@@ -1,26 +1,29 @@
 #!/usr/bin/env zsh
-# archx/commands.zsh — shell aliases for the archx monitoring suite
-# Sourced by config.zsh at shell startup
+# archx/commands.zsh — archx monitoring suite engine
+# Sourced by config.zsh at shell startup (both machines)
+# Aliases:  archx/keyboard.zsh (control panel — aliases + comments only, WP4 retrofit)
+# Bodies:   this file (troubleshoot) + archx/bash.substrates.sh (substrate_*)
 
 SUBSTRATES="${BASH_SOURCE[0]:-${(%):-%x}}"
 SUBSTRATES_PATH="$(dirname "$SUBSTRATES")/bash.substrates.sh"
 
 [[ -f "$SUBSTRATES_PATH" ]] && source "$SUBSTRATES_PATH" 2>/dev/null
 
-# System overview
-alias sysmon='substrate_system_overview'
+# =============================================================================
+# HELP
+# =============================================================================
+_archx_help() {
+    cat << 'EOF'
+archx — Arch Linux monitoring commands (engine: archx/commands.zsh + bash.substrates.sh)
 
-# CPU
-alias cputop='substrate_cpu_top 10'
-
-# Memory
-alias memtop='substrate_memory_top 10'
-
-# Disk
-alias diskuse='substrate_disk_top_dirs /home 10'
-
-# Services
-alias services='substrate_services_check'
+  sysmon        one-shot system overview (load, mem, disk, top procs — substrate_system_overview)
+  cputop        top 10 CPU-consuming processes (substrate_cpu_top 10)
+  memtop        top 10 memory-consuming processes (substrate_memory_top 10)
+  diskuse       top 10 largest directories under /home (substrate_disk_top_dirs)
+  services      check status of the watched systemd services (substrate_services_check)
+  troubleshoot  quick diagnostics dump: load, top-5 CPU, memory, disk, services
+EOF
+}
 
 # Quick troubleshoot
 troubleshoot() {

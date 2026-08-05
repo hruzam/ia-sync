@@ -4,6 +4,7 @@
 # One-way publish: project guides -> reposoma raw.guides mirror.
 # Source of truth = project. Run `sync-guides` after editing a source guide.
 # Do NOT hand-edit the reposoma copies.
+# Aliases: sync/keyboard.zsh (control panel — aliases + comments only, WP4 retrofit)
 # =============================================================================
 
 sync-guides() {
@@ -69,4 +70,16 @@ sync-guides() {
     echo "[sync] done: synced ${synced} · skipped ${skipped}"
 
     [[ $failed -eq 0 ]]
+}
+
+# =============================================================================
+# HELP
+# =============================================================================
+_sync_help() {
+    cat << 'EOF'
+sync — guide-publish synchronizer (engine: sync/guides.zsh; keys: sync/keyboard.zsh)
+
+  sync-guides   one-way publish: project guides -> reposoma raw.guides mirror
+                (registry: registries/config.sync.json; source of truth = project)
+EOF
 }

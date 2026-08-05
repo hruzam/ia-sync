@@ -29,6 +29,7 @@
 # Office-only: home manages PHP via Docker (config.home.zsh). Inert elsewhere.
 [[ "$MACHINE_NAME" != "office" ]] && return 0
 
+# php74_on — start PHP 7.4 FPM (valet74.sock) + show status; alias: php74
 php74_on() {
     # Start PHP 7.4 FPM → creates ~/.valet/valet74.sock
     # Sites: fantasyobchod.l, imagosk.l
@@ -36,6 +37,7 @@ php74_on() {
     phpst
 }
 
+# php8_on — start PHP 8.x FPM (valet.sock) + show status; alias: php8
 php8_on() {
     # Start PHP 8.x FPM → creates ~/.valet/valet.sock
     # Sites: freya.l and all other Valet-served projects
@@ -69,13 +71,14 @@ phpst() {
 # 3. Edit server_name in the new file
 # 4. sudo systemctl reload nginx
 
-alias php74='php74_on'
-alias php8='php8_on'
+alias php74='php74_on'  # start PHP 7.4 FPM + show status
+alias php8='php8_on'    # start PHP 8.x FPM + show status
 
 #############
 # test maria db connection
 #############
 
+# test-mariaDB-mcp — probe the mariadb-mcp server over stdio (init + tools/list); alias: tmcp
 test-mariaDB-mcp() {
 
     (
@@ -87,4 +90,4 @@ test-mariaDB-mcp() {
 
 }
 
-alias tmcp="test-mariaDB-mcp"
+alias tmcp="test-mariaDB-mcp"  # alias for test-mariaDB-mcp

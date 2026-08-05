@@ -163,6 +163,20 @@ shsyntax() {
 }
 
 # =============================================================================
+# HELP
+# =============================================================================
+_shared_help() {
+    cat << 'EOF'
+shared-toolkit — mirror manager for ~/www/session hidden folders (engine: shared-toolkit.zsh)
+
+  shpub <pair>     publish .<pair>/ -> <pair>/ (one-way rsync; pair = shared | majkee)
+  shdiff <pair>    dry run — show what shpub would change, no writes
+  shstat           show source/mirror file counts + latest-modified for all pairs
+  shsyntax         print active.md syntax pointer from the shared mirror
+EOF
+}
+
+# =============================================================================
 # COMPLETION
 # =============================================================================
 _shared_completion() {

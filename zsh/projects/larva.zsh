@@ -58,36 +58,36 @@ _larva_ovum_root() {
 # =============================================================================
 
 # @Laika — one-shot scanner, fire and forget
-alias laika="$LARVA_SCRIPTS_DIR/laika.sh"
+alias laika="$LARVA_SCRIPTS_DIR/laika.sh"  # one-shot codebase scanner (fire and forget)
 
 # NUCLEUS/TRACHEA — interactive consultation with one zone
-alias consult="$LARVA_SCRIPTS_DIR/consult.sh"
+alias consult="$LARVA_SCRIPTS_DIR/consult.sh"  # interactive consultation with one zone
 
 # NUCLEUS/TRACHEA — broadcast question to all zones in parallel
-alias broadcast="$LARVA_SCRIPTS_DIR/broadcast.sh"
+alias broadcast="$LARVA_SCRIPTS_DIR/broadcast.sh"  # broadcast a question to all zones in parallel
 
 # Slice management — regenerate all repomix slices for an OVUM
-alias slices="$LARVA_SCRIPTS_DIR/slices.sh"
+alias slices="$LARVA_SCRIPTS_DIR/slices.sh"  # regenerate all repomix slices for an OVUM
 
 # =============================================================================
 # ALIASES — Claude CLI agents
 # =============================================================================
 
-alias capcom="$HOME/.config/claude/bin/capcom"
-alias trajectory="$HOME/.config/claude/bin/trajectory"
+alias capcom="$HOME/.config/claude/bin/capcom"  # Claude CLI operational planner
+alias trajectory="$HOME/.config/claude/bin/trajectory"  # Claude CLI executor
 
 # =============================================================================
 # ALIASES — Gemini CLI agents
 # =============================================================================
 
-alias athena="$HOME/.config/gemini/bin/athena"
-alias zenit="$HOME/.config/gemini/bin/zenit"
-alias horizon="$HOME/.config/gemini/bin/horizon"
+alias athena="$HOME/.config/gemini/bin/athena"    # Gemini CLI operator
+alias zenit="$HOME/.config/gemini/bin/zenit"      # Gemini CLI (deep research)
+alias horizon="$HOME/.config/gemini/bin/horizon"  # Gemini CLI (fast research)
 
 # =============================================================================
 # COMMON ALIASES
 # =============================================================================
-alias nidus="echo $MACHINE_NAME"
+alias nidus="echo $MACHINE_NAME"  # print this machine's NIDUS name (MACHINE_NAME)
 
 # =============================================================================
 # HELPER FUNCTIONS

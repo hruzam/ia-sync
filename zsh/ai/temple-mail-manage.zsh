@@ -42,7 +42,7 @@ typeset -ga tui_types
 typeset -ga tui_paths
 typeset -g tui_view="INBOX"
 
-find_next_file() {
+_find_next_file() {
   local start=$1
   local dir=$2 # 1 for down, -1 for up
   local i=$start
@@ -56,7 +56,7 @@ find_next_file() {
   echo 0
 }
 
-scan_mail() {
+_scan_mail() {
   tui_lines=()
   tui_types=()
   tui_paths=()
@@ -103,7 +103,7 @@ scan_mail() {
   fi
 }
 
-render() {
+_render() {
   # Move cursor to home and clear screen
   printf '\033[H\033[2J'
 
@@ -153,7 +153,7 @@ render() {
 
 # Parse arguments
 if [[ "$1" == "--list" ]]; then
-  scan_mail
+  _scan_mail
   for i in {1..${#tui_lines}}; do
     if [[ "${tui_types[i]}" == "header" ]]; then
       echo "${tui_lines[i]}"
@@ -216,7 +216,7 @@ fi
 # Interactive TUI mode
 term_state=$(stty -g 2>/dev/null)
 
-cleanup() {
+_cleanup() {
   trap - INT TERM EXIT
   tput rmcup 2>/dev/null
   tput cnorm 2>/dev/null
@@ -227,18 +227,18 @@ cleanup() {
   fi
 }
 
-trap cleanup INT TERM EXIT
+trap _cleanup INT TERM EXIT
 
 tput smcup 2>/dev/null
 tput civis 2>/dev/null
 stty -icanon -echo
 
-scan_mail
-cursor_idx=$(find_next_file 1 1)
+_scan_mail
+cursor_idx=$(_find_next_file 1 1)
 
 # Main loop
 while true; do
-  render
+  _render
 
   key=""
   if ! read -r -k 1 key; then
@@ -259,17 +259,17 @@ while true; do
       else
         tui_view="INBOX"
       fi
-      scan_mail
-      cursor_idx=$(find_next_file 1 1)
+      _scan_mail
+      cursor_idx=$(_find_next_file 1 1)
       ;;
     $'\e[A'|$'\eOA') # Up arrow
-      prev_idx=$(find_next_file $((cursor_idx - 1)) -1)
+      prev_idx=$(_find_next_file $((cursor_idx - 1)) -1)
       if (( prev_idx > 0 )); then
         cursor_idx=$prev_idx
       fi
       ;;
     $'\e[B'|$'\eOB') # Down arrow
-      next_idx=$(find_next_file $((cursor_idx + 1)) 1)
+      next_idx=$(_find_next_file $((cursor_idx + 1)) 1)
       if (( next_idx > 0 )); then
         cursor_idx=$next_idx
       fi
@@ -305,12 +305,12 @@ while true; do
         fi
       done
       if (( archived_any )); then
-        scan_mail
-        cursor_idx=$(find_next_file 1 1)
+        _scan_mail
+        cursor_idx=$(_find_next_file 1 1)
       fi
       ;;
     "q"|"Q") # Quit
-      cleanup
+      _cleanup
       exit 0
       ;;
   esac

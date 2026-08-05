@@ -137,6 +137,7 @@ export PIQL_PORT="0"                   # update to match office piql.env.zsh por
 
 # piql-remote, piql-watch, piql-ask — SSH over tailscale to office piql
 [[ -f ~/.config/zsh/piql/tailscale.zsh ]] && source ~/.config/zsh/piql/tailscale.zsh
+[[ -f ~/.config/zsh/piql/keyboard.zsh ]] && source ~/.config/zsh/piql/keyboard.zsh
 
 # ~/bin on PATH for local scripts (ramwatch etc.)
 [[ -d "$HOME/bin" ]] && export PATH="$HOME/bin:$PATH"
@@ -145,6 +146,7 @@ export PIQL_PORT="0"                   # update to match office piql.env.zsh por
 # ARCH LINUX MONITORING COMMANDS (Generated 2026-06-28)
 # =============================================================================
 [[ -f ~/.config/zsh/archx/commands.zsh ]] && source ~/.config/zsh/archx/commands.zsh
+[[ -f ~/.config/zsh/archx/keyboard.zsh ]] && source ~/.config/zsh/archx/keyboard.zsh
 
 if [ -f '/home/hruzam/google-cloud-sdk/path.zsh.inc' ]; then . '/home/hruzam/google-cloud-sdk/path.zsh.inc'; fi
 if [ -f '/home/hruzam/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/hruzam/google-cloud-sdk/completion.zsh.inc'; fi

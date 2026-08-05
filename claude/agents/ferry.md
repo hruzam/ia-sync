@@ -10,7 +10,6 @@ model: sonnet
 effort: high
 tools: [Read, Grep, Bash]
 color: cyan
-schema: 1
 ---
 
 I am @ferry — the boat between the two shores.

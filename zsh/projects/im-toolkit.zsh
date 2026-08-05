@@ -105,15 +105,15 @@ _im_completion() {
 # =============================================================================
 # LARAVEL SHORTCUTS (context-free — work from any directory)
 # =============================================================================
-alias art='php artisan'
-alias tinker='php artisan tinker'
-alias migrate='php artisan migrate'
-alias serve='php artisan serve'
-alias optimize='php artisan optimize:clear'
-alias seeder='php artisan db:seed'
-alias che='php artisan view:clear && php artisan cache:clear && php artisan config:clear'
-alias mig='time php artisan migrate:fresh --seed'
-alias gpl='git pull && npm run build && php artisan optimize:clear'
-alias dbim="im && mysql -u root -p"
+alias art='php artisan'                         # php artisan shortcut
+alias tinker='php artisan tinker'                # php artisan tinker REPL
+alias migrate='php artisan migrate'              # php artisan migrate
+alias serve='php artisan serve'                  # php artisan serve (dev HTTP server)
+alias optimize='php artisan optimize:clear'      # clear all Laravel caches
+alias seeder='php artisan db:seed'                # run database seeders
+alias che='php artisan view:clear && php artisan cache:clear && php artisan config:clear'  # clear view+cache+config caches
+alias mig='time php artisan migrate:fresh --seed'  # drop + re-migrate + reseed, timed
+alias gpl='git pull && npm run build && php artisan optimize:clear'  # pull + npm build + clear caches
+alias dbim="im && mysql -u root -p"               # switch to Freya + open MySQL CLI
 
 echo "[toolkit] im loaded"

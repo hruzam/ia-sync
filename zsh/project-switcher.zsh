@@ -16,6 +16,11 @@ if [[ -z "$TOOLKIT_DIR" ]]; then
     return 1
 fi
 
+# Control panel — aliases + comments only (WP4 retrofit; projects/ toolkit
+# aliases themselves stay in their lazy-loaded toolkit files, see the file's
+# own header for why).
+[[ -f ~/.config/zsh/projects/keyboard.zsh ]] && source ~/.config/zsh/projects/keyboard.zsh
+
 # =============================================================================
 # PHP HELPERS — defined in system/office.php-switch.zsh, sourced via config.zsh
 # php74 / php8 / phpst are available here because config.zsh sources office.php-switch.zsh
@@ -23,6 +28,7 @@ fi
 # =============================================================================
 # CORE SWITCHER LOGIC
 # =============================================================================
+# project_switch <name> — cd into a project + source its toolkit (fo|im|psd|ltp|lrv|sess)
 project_switch() {
     local project="$1"
     local project_path=""
@@ -135,10 +141,10 @@ imdev() {
     printf "  URL:  http://freya.l (Valet)\n"
     printf "  Tip:  run 'imoctane' for Octane dev server\n\n"
 }
-alias imst='imdev'
+alias imst='imdev'  # alias for imdev — start Freya dev session
 
 # Start Octane (RoadRunner) dev server for Freya
-alias imoctane='cd "$PROJECT_IM_PATH" && php artisan octane:start --server=roadrunner --watch &'
+alias imoctane='cd "$PROJECT_IM_PATH" && php artisan octane:start --server=roadrunner --watch &'  # Octane dev server for Freya
 
 # Start FantasyObchod dev session: PHP 7.4 FPM + cd + editor
 fodev() {
@@ -149,11 +155,12 @@ fodev() {
     printf "  Path: %s\n" "$PROJECT_FO_PATH"
     printf "  URL:  http://fantasyobchod.l\n\n"
 }
-alias fost='fodev'
+alias fost='fodev'  # alias for fodev — start FantasyObchod dev session
 
 # =============================================================================
 # GLOBAL HELP
 # =============================================================================
+# project_help — box panel: project shortcuts (fo/im/psd/lrv/ltp/sess) + PHP switch commands
 project_help() {
     cat << EOF
 +------------------------------------------------------------+
@@ -180,12 +187,37 @@ EOF
 # =============================================================================
 # COMMON LARAVEL/COMPOSER ALIASES
 # =============================================================================
-alias art='php artisan'
-alias tinker='php artisan tinker'
-alias migrate='php artisan migrate'
-alias fresh='php artisan migrate:fresh --seed'
-alias serve='php artisan serve'
-alias composer74='$PHP74_BIN $COMPOSER_BIN'
-alias composer8='$PHP8_BIN $COMPOSER_BIN'
+alias art='php artisan'                     # php artisan shortcut
+alias tinker='php artisan tinker'            # php artisan tinker REPL
+alias migrate='php artisan migrate'          # php artisan migrate
+alias fresh='php artisan migrate:fresh --seed'  # drop + re-migrate + reseed the DB
+alias serve='php artisan serve'              # php artisan serve (dev HTTP server)
+alias composer74='$PHP74_BIN $COMPOSER_BIN'  # composer via the PHP 7.4 binary
+alias composer8='$PHP8_BIN $COMPOSER_BIN'    # composer via the PHP 8.x binary
+
+# =============================================================================
+# PROJECTS SCOPE HELP (projects/ control panel entry point — projects-help)
+# =============================================================================
+_projects_help() {
+    cat << 'EOF'
+projects — per-project toolkits, lazy-loaded on switch (engine: project-switcher.zsh +
+projects/*.zsh; keys: projects/keyboard.zsh)
+
+  fo / im / ltp / psd     switch to that project (cd + source its toolkit); then `<name> -h`
+                          for its own command panel (case-dispatch: -gs/-gp/-gc/-db/-e/…)
+  larva <ovum>            cd to <ovum>/.larva/ task folder (default fo)
+  larva-status <ovum>     show active LARVAs (tasks) for an OVUM
+  larva-init <ovum> <n>   scaffold a new LARVA folder for an OVUM
+
+  im-toolkit shortcuts (context-free once `im` is active — projects/im-toolkit.zsh):
+    art / tinker / migrate / serve / optimize / seeder / che / mig / gpl / dbim
+
+  larva.zsh agent shortcuts (projects/larva.zsh — deploy-relocated to zsh root,
+  eager on both machines): laika / consult / broadcast / slices / capcom /
+  trajectory / athena / zenit / horizon / nidus
+
+  project_help    box panel: project shortcuts + PHP switch commands
+EOF
+}
 
 echo "[switcher] Loaded. Commands: fo, im, psd, ltp, lrv, sess, project_help"

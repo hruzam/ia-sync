@@ -42,6 +42,32 @@ _ai_help() {
   cat <<'EOF'
 keyboard.zsh — AI interactive surface (Gemini + Claude Code RC)
 
+  ── General CLI (Gemini + agy) ────────────────────────────────────────────────
+  g                    run gemini CLI directly
+  g-ver                gemini --version
+  g-help               gemini --help
+  g-yolo               gemini --approval-mode yolo
+  g-skip               gemini --skip-trust
+  agy-ver              agy --version
+  agy-help             agy --help
+  agy-yolo             agy --approval-mode yolo
+  agy-skip             agy --skip-trust
+  gemini-bluebottle    run bluebottle.sh (Bluebottle seat — dual-mode: interactive/headless)
+  g-bluebottle         alias for gemini-bluebottle
+  gemini-orby          run orby.sh (Orby seat — dual-mode: interactive/headless)
+  g-orby               alias for gemini-orby
+
+  ── Hygiene / freshness ──────────────────────────────────────────────────────
+  adr-guard            run adr-guard.zsh — ADR breach/evidence-rot sandbox check
+  harness-stale        run harness-check.zsh --debug — settings-card freshness report
+
+  ── Help / panels ─────────────────────────────────────────────────────────────
+  ai-help              this panel
+  temple-help          temple transport operator panel (see below)
+  keys                 print the derived claviature panel (live functions/aliases by family)
+  octo                 octopus head launcher — drop into the session head (Medusa/Flight)
+  pinkeys              live chord → command table from the installed Sublime keymap
+
   ── Claude Code — Remote Control ─────────────────────────────────────────────
   rc-status            Show all RC projects and their tmux session status
   rc-freya             Start or attach Remote Control session: Freya

@@ -12,7 +12,7 @@ if [[ ! -f "$CONFIG_FILE" ]]; then
 fi
 
 # Parsing JSON values dynamically
-parse_json_value() {
+_parse_json_value() {
   local key=$1
   local file=$2
   if command -v python3 >/dev/null 2>&1; then
@@ -36,15 +36,15 @@ parse_json_value() {
 }
 
 # Expand ~ and environment variables
-expand_path() {
+_expand_path() {
   local p=$1
   p="${p/#\~\//$HOME/}"
   echo "$p"
 }
 
 # Extract values from ai.json
-pattern_raw=$(parse_json_value "native-primitives-update-pattern" "$CONFIG_FILE")
-mail_dir_raw=$(parse_json_value "mail-inbox-dir" "$CONFIG_FILE")
+pattern_raw=$(_parse_json_value "native-primitives-update-pattern" "$CONFIG_FILE")
+mail_dir_raw=$(_parse_json_value "mail-inbox-dir" "$CONFIG_FILE")
 
 if [[ -z "$pattern_raw" ]]; then
   echo "Error: Key 'native-primitives-update-pattern' not defined in $CONFIG_FILE" >&2
@@ -52,8 +52,8 @@ if [[ -z "$pattern_raw" ]]; then
 fi
 
 # Expand paths
-PATTERN_EXPANDED=$(expand_path "$pattern_raw")
-MAIL_DIR_EXPANDED=$(expand_path "${mail_dir_raw:-~/reposoma/_mail/toAll/inbox}")
+PATTERN_EXPANDED=$(_expand_path "$pattern_raw")
+MAIL_DIR_EXPANDED=$(_expand_path "${mail_dir_raw:-~/reposoma/_mail/toAll/inbox}")
 GUIDES_DIR="${HOME}/reposoma/raw.guides"
 
 # Check for --debug or harness-stale command name

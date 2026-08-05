@@ -14,3 +14,6 @@ PIQL_ENV="$HOME/www/piql/piql.dev/piql.env.zsh"
 # Tailscale bridge — piql-remote, piql-watch, piql-push, piql-ask, tss, tsp
 PIQL_DIR="${0:A:h}"
 [[ -f "${PIQL_DIR}/tailscale.zsh" ]] && source "${PIQL_DIR}/tailscale.zsh"
+
+# Control panel — aliases + comments only (WP4 retrofit)
+[[ -f "${PIQL_DIR}/keyboard.zsh" ]] && source "${PIQL_DIR}/keyboard.zsh"
