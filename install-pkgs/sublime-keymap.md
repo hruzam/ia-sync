@@ -1,7 +1,7 @@
 # sublime-keymap — install task
 
 ```
-version:    1.0
+version:    1.1
 hosts:      home office
 automation: manual
 src-root:   ~/www/elements-factory/applications-in-common
@@ -15,7 +15,7 @@ The merged `Default (Linux).sublime-keymap` in Sublime Text's `Packages/User/`.
 This file is the single canonical keymap for both machines — it merges:
 
 - **editor-pin-sublime bindings** (`ctrl+alt+*`) — pins to `~/.wires/pins.jsonl`
-- **Markdown preview** (`alt+m`) — opens current file as HTML in browser
+- **Markdown preview** (`alt+m`, `alt+shift+m`) — opens current file as HTML in browser (both local parser)
 - **Freed navigation keys** — `ctrl+r/b/f` nooped; Sublime commands moved to `ctrl+shift+r/b`
 - **Numpad navigation** (belt-and-suspenders Arch/Wayland fix — see History below)
 
@@ -57,7 +57,7 @@ This task is `automation: manual` specifically to prevent blind overwrites.
 experiments/editor-pin-sublime/Default.sublime-keymap
 ```
 
-This file is the merged canonical source — updated 2026-08-03 to include all binding
+This file is the merged canonical source — updated 2026-08-05 to include all binding
 groups listed above. Keep it in sync when keymap changes.
 
 ---

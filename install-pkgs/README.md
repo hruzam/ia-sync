@@ -142,6 +142,16 @@ Source: `experiments/tmux-pin-bus/`
 bash run.sh update      # runs pin_bus.py install on the project
 ```
 
+### sublime-keymap · v1.1 · hosts: home office · MANUAL
+Merged canonical Sublime keymap — markdown preview (`alt+m`, `alt+shift+m`), freed
+nav keys, numpad navigation, editor-pin bindings.
+Source: `experiments/editor-pin-sublime/Default.sublime-keymap`
+```bash
+bash run.sh update              # checks prereqs, points to sublime-keymap.md steps
+# ...diff + merge the new binding groups by hand into Packages/User/...
+bash run.sh mark sublime-keymap
+```
+
 ### netOrchestrating · v1.0 · hosts: home office · MANUAL
 Symmetric SSH file-bus relay between home ↔ office panes. Too interactive to auto-run.
 Source: `experiments/netOrchestrating/`  ·  needs tmux-pin-bus first.
