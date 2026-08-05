@@ -7,7 +7,7 @@ description: >
   want both Sonnet and Opus perspective. Default Sonnet/high; switch to Opus at spawn
   (`--model opus`) or live (`/model opus`). Connects to the current project's MCP servers.
   Full authority when @majkee drives it live; holds the tactical rail when spawned unmanned.
-model: calude-sonnet-6
+model: claude-sonnet-4-6
 effort: high
 maxTurns: 30
 color: yellow
