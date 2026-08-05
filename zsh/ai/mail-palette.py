@@ -149,7 +149,9 @@ def receiver_index(rows, receiver):
 
 
 def palette(screen, mail_rows):
-    expanded = set()
+    # Default to all receivers expanded on every launch — so the reloop reopens
+    # into the open tree (← still collapses within a session).
+    expanded = {item["receiver"] for item in mail_rows}
     marks = {}
     filter_text = ""
     active_view = "inbox"
