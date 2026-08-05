@@ -19,25 +19,54 @@
 
 ## HANDOFF — last (overwrite when consumed)
 
-`[2026-08-05 · claude/houston · opus · office · ref: freya session 2026-08-04]`
+`[2026-08-05 · claude/flight · fable · office · ref: session flight.office.zsh-monitor.forked, command-palette WP2]`
 
-**State:** First real performance data point captured. **astrobley = ALIVE and CAPABLE,
-with a REPORTING DEFECT** — on a well-scoped build it delivered verified-quality code
-(@assay PASS), but returned a truncated message with **no run-confirmation and no Codex
-usage numbers**, despite "reports usage from every call" being its charter. "Capable hands,
-silent voice."
+**State:** n=2 confirms the profile: **capable hands, recoverable voice.** On a well-scoped
+build (curses TUI, single file, precise contract) astrobley again delivered high-quality
+verified code (@assay PASS) — and this time **usage numbers WERE recovered** (closes the
+prior handoff's open item) — but only **after one SendMessage nudge**. The unprompted
+first return was again mid-work narration ("Now composing… dispatching"-class), no
+completion confirmation, no numbers. The defect is in the UNPROMPTED return; a single
+nudge reliably (n=1 for the nudge) extracts a full evidence-grade report.
 
-**Working pattern (proven, use it):** astrobley BUILDS → @assay VERIFIES. Never accept the
-relay's self-report as proof of completion — verify the artifact externally every time.
+**Working pattern (extended):** astrobley BUILDS → check artifact on disk → ONE nudge for
+the formal report (smoke tests + usage) → @assay VERIFIES. Never accept silence as failure
+or as success.
 
 **Next / open:**
-- Recover the MISSING Codex usage numbers on the next call (current cost = unknown = budget blind spot).
-- Audit the codex-run wrapper / astrobley card: does it always echo Codex usage + a completion notice on return? It did not here.
-- Check whether sibling relay @vega shares the same return-message weakness (same wrapper family).
+- Wrapper/card audit still pending: why does the unprompted return truncate? (2/2 runs.)
+- @vega sibling check still pending (same wrapper family).
+- Usage baseline now exists (see LOG) — compare next run for cost drift.
 
 ---
 
 ## LOG (newest on top · append-only · stamped)
+
+### [2026-08-05 · claude/flight · fable · office · ref: session flight.office.zsh-monitor.forked, zsh command-palette mission WP2] — second data point: defect reproduced, usage recovered via nudge
+
+**Task (well-scoped, fair test #2):** single-file Python stdlib curses TUI
+(`ia-sync/zsh/ai/command-palette.py`), fixed I/O contract (TSV in, selection→stdout,
+exit codes 0/1/2), the /dev/tty-vs-stdout trap explicitly specced, smoke tests +
+usage numbers demanded in the prompt.
+
+**Observed:**
+1. **Artifact: HIGH quality, first pass.** 290 lines; correct dup2 fd-swap around
+   `curses.initscr()` (Codex correctly noted Python curses lacks `newterm` and chose
+   the right stdlib equivalent — a justified spec deviation, documented in the module
+   docstring). Contract exact: exit 2 + empty stdout on missing map; single gated
+   `print(command)` as the only stdout write. Independent @assay gate later: PASS.
+2. **Unprompted return: TRUNCATED again (2/2).** First completion notification carried
+   only mid-work narration ("I'll set CODEX_WORKDIR… have Codex write the file"), no
+   confirmation, no numbers — the freya pattern exactly.
+3. **Recovery: ONE SendMessage nudge → full evidence-grade report** — py_compile, --help,
+   exit-2 path, AST parse, cancel-contract line refs, AND the charter numbers:
+   `input 247,412 (cached 197,632) · output 5,607 · reasoning 896 · single call, no
+   retries, exit 0`. ~163s-class dispatch in freya vs ~228s+298s (two stops) here.
+
+**Delta vs n=1:** the numbers are recoverable and the seat is fully articulate when
+poked — so the defect is narrower than "silent voice": it's **silent-by-default,
+articulate-on-demand**. Cheap mitigation exists (one nudge); wrapper/card fix still the
+real cure. Supersedes nothing — extends the 2026-08-05 houston entry.
 
 ### [2026-08-05 · claude/houston · opus · office · ref: freya session 2026-08-04, cross-host state engine build · migrated verbatim from `astrobley.observation.freya-office-2026-08-05.md`, original → tombstone] — first performance data point: capable hands, silent voice
 
