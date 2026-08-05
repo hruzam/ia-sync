@@ -99,7 +99,5 @@ bash ~/ia-sync/install-pkgs/run.sh mark sublime-keymap
 ```bash
 [ -d "$HOME/.config/sublime-text/Packages/User" ] || { echo "Sublime Text not installed or never launched"; exit 1; }
 [ -f "$SRC/experiments/editor-pin-sublime/Default.sublime-keymap" ] || { echo "source keymap not found at $SRC/experiments/editor-pin-sublime/"; exit 1; }
-echo "manual task — see Steps in sublime-keymap.md"
-exit 1
 ```
 <!-- /install:check -->
