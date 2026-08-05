@@ -221,6 +221,10 @@ _ts_web() {
 
 # ─── FILE TRANSFER ────────────────────────────────────────────────────────────
 
+# Transporter pad — mirrored on both machines (home + office).
+# wiring truth: ~/.majkee/@transporter on each host.
+_TS_TRANSPORTER="${HOME}/.majkee/@transporter"
+
 # Pull a file from the peer at the same absolute path (symmetric mirror copy).
 # Creates local directory structure if absent. Fast Tailscale tunnel — no git needed.
 _ts_pull() {
@@ -234,6 +238,41 @@ _ts_pull() {
         mkdir -p "$dir" && echo "[ts] created: $dir"
     fi
     scp "${peer}:${filepath}" "${filepath}" && echo "[ts] pulled: ${filepath}"
+}
+
+# Push a local file to the peer at the same absolute path (symmetric mirror copy).
+# Creates remote directory structure if absent. Complement of _ts_pull.
+_ts_push() {
+    local filepath="${1}"
+    local peer="${2:-$TAILSCALE_PEER}"
+    [[ -z "$filepath" ]] && { echo "[ts] usage: ts-push <filepath> [peer]"; return 1; }
+    [[ -z "$peer" ]] && { echo "[ts] TAILSCALE_PEER not set"; return 1; }
+    local dir
+    dir=$(dirname "$filepath")
+    ssh "$peer" "mkdir -p '${dir}'" || { echo "[ts] failed to create remote dir: ${dir}"; return 1; }
+    scp "${filepath}" "${peer}:${filepath}" && echo "[ts] pushed: ${filepath}"
+}
+
+# Beam file(s) into the transporter pad on the peer (~/.majkee/@transporter/).
+# With arg: drops one file (from anywhere) into the remote pad by basename.
+# No arg:   rsyncs the entire local pad to the remote pad.
+# Both machines mirror the same pad path — C-type symmetric transporter.
+_ts_beam() {
+    local target="${1}"
+    local peer="${2:-$TAILSCALE_PEER}"
+    [[ -z "$peer" ]] && { echo "[ts] TAILSCALE_PEER not set"; return 1; }
+    ssh "$peer" "mkdir -p '${_TS_TRANSPORTER}'" 2>/dev/null
+    if [[ -n "$target" ]]; then
+        local dest="${_TS_TRANSPORTER}/$(basename "${target}")"
+        scp "${target}" "${peer}:${dest}" && echo "[ts] beamed: $(basename "${target}") → ${peer}:${dest}"
+    else
+        if ! command -v rsync >/dev/null 2>&1; then
+            echo "[ts] ts-beam (no-arg pad sync) requires rsync — not installed" >&2
+            return 1
+        fi
+        rsync -az --info=progress2 "${_TS_TRANSPORTER}/" "${peer}:${_TS_TRANSPORTER}/" && \
+            echo "[ts] pad synced → ${peer}:${_TS_TRANSPORTER}/"
+    fi
 }
 
 # ─── HELP ─────────────────────────────────────────────────────────────────────
@@ -250,7 +289,10 @@ _ts_help() {
     printf "  ts-dash-stop     stop dashboard\n"
     printf "  ts-web           open login.tailscale.com/admin/machines\n"
     printf "  ts-pull <path>   pull same-path file from peer (mirror copy)\n"
+    printf "  ts-push <path>   push same-path file to peer (mirror copy)\n"
+    printf "  ts-beam [file]   beam file into peer pad · no arg = sync whole pad\n"
     printf "  ts-help          this panel\n"
     printf "  ──────────────────────────────────────────────────\n"
-    printf "  peer: \$TAILSCALE_PEER=%s\n\n" "${TAILSCALE_PEER:-(not set)}"
+    printf "  peer: \$TAILSCALE_PEER=%s\n" "${TAILSCALE_PEER:-(not set)}"
+    printf "  pad:  %s\n\n" "${_TS_TRANSPORTER}"
 }
