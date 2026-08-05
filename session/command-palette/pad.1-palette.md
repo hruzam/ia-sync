@@ -62,9 +62,9 @@
 
 | # | prediction | verdict (ok / issue) |
 |---|---|---|
-| P1 | deploys with zero collateral outside zsh/ | |
-| P2 | fresh shell loads clean, all help panels render | |
-| P3 | TUI: tree+filter+insert-at-cursor work as designed | |
-| P4 | self-revealing loop closes (touch → auto-regen → visible) | |
+| P1 | deploys with zero collateral outside zsh/ | ok |
+| P2 | fresh shell loads clean, all help panels render | ok |
+| P3 | TUI: tree+filter+insert-at-cursor work as designed | ok |
+| P4 | self-revealing loop closes (touch → auto-regen → visible) | ok |
 
-Overall: PASS → commit + push + deploy other machine · FAIL → report to Flight, kraken reiterates.
+Overall: **PASS** → commit + push + deploy other machine · FAIL → report to Flight, kraken reiterates.
