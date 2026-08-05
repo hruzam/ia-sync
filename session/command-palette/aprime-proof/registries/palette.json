@@ -1,0 +1,6 @@
+{
+  "comment": "Isolated scratch registry for the A' (palette v2) mechanism proof — mirrors the shape of zsh/registries/palette.json but points ONLY at the fixture scope below. Not consumed by the real palette; --root must be pointed at this aprime-proof/ directory explicitly.",
+  "scopes": ["scratch"],
+  "root_files": [],
+  "excluded": []
+}
