@@ -18,6 +18,13 @@ flexible: a taste, not a report. Info for majkee, not for an agent to consume.
 - Law: `<reposoma>/_mail/README.md`. Volatile by design — gitignored, drainable
   (Cinderella rule). I only ADD a file; never edit another seat's (single-writer).
 
+## Read-state — drain by default, unless left for more readers
+- **Default (drain):** the reader consumes it — after reading, the right reincarnation MOVES
+  the card to `archive/` (decision 0010: inbox = unread, archive = read). Cinderella.
+- **Exception (leave):** a card meant for MORE THAN ONE reader carries an explicit
+  `leave: for more readers` line and STAYS in the inbox until every intended reader has
+  drained it — it is NOT archived on first read. If I drop a multi-reader card, I mark it so.
+
 ## The card (four fields, loose — bend freely)
     CS · <YYYY-MM-DD> · <task name>
 

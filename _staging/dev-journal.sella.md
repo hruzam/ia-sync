@@ -18,26 +18,62 @@
 
 ## HANDOFF — last (overwrite when consumed)
 
-`[2026-08-05 · claude/atlas-ui · opus · office · session: atlas.office.paralele-sella-builder]`
+`[2026-08-05 · claude/atlas-ui · opus · office · session: atlas.office.paralel]`
 
-**State:** G1–G5 RULED (see LOG 08-04) · **PROBE B CLOSED** — Jacquard trial complete:
-reject→revise→accept in one card-corrected iteration · operator live gate PASS in the
-true lsof-less shell · fix surgically promoted to `ia-sync/zsh/system/tailscale.zsh`
-(atlas port: Jacquard hunks + `&!` polish; `_ts_pull` was already table-side, no harvest
-hazard) · observation delivered → `sella.observation.jacquard.2026-08-05.md` (verdict:
-useful Codex program, NOT Wave-in-TOML — the contract changed the artifact). Sibling
-data point cross-referenced (dev-journal.astrobley.md, external lane). Emerging
-hypothesis for D/E: thin contract + verifier discipline may be the portable core.
+**State:** G1–G5 RULED · PROBE B CLOSED (unchanged from prior handoff) ·
+**PROBE A PROTOCOL STAGED** → `sella.probe-a.protocol.md` (two lanes: A-eco
+ecological + A-norm normalized). Wave consultation landed and absorbed:
+`radio.wave-to-atlas.sella-consultation.2026-08-05.md` — key corrections folded
+(Codex surface is NOT thin; one manager + two renderers; AGENTS.md = shared
+executable truths only; wrapper needs both jq extract + sync exec). Wave reviewed
+the probe A protocol and added four amendments (all folded): A-norm CLAUDE.md
+stripped to `@AGENTS.md` only, per-run identical snapshots not sequential mutable
+copy, three-layer evidence separation (model-claimed / externally-observed /
+canary-adoption), exact global config spec not "equivalent". Astrobley journal
+absorbed (n=4 decisive: capable hands, silent voice, verifier load-bearing).
 
-**Next:** probes A (cold orientation, clean envs) · D (blind consultation) · E (machine
-boundary) on operator release · parked micro-probe: harness-applied vs model-adopted
-AGENTS.md (one quote-prompt) · E3 URL-fact one-fetch · profile candidates only after
-probes. Cleanup owed: `.bak-jacquard` + `task.jacquard-trial.md` in `~/.config/zsh`
-(operator removes when done); `jacquard.toml` stays project-local (it works, non-git
-discovery proven). Deploy note: next `deploy.sh` run carries the tailscale fix + ferry
-schema-strip live.
+**Corrections applied to my lean this session:** (1) "Codex surface is thin" was
+wrong — 10 primitive classes documented in builder guide + Wave's table; (2) my
+drafted Wave consultation list was superseded — he already responded with a full
+advisory; (3) `sella-sibling.codex.coldstart.md` exists (08-03) — I didn't know.
+
+**Next:** majkee executes A-eco (two snapshot copies of the factory, fresh
+sessions, silent observation), then A-norm. Probe D follows A. Parked items
+unchanged: micro-probe (AGENTS.md quote-test) · E3 URL-fact · cleanup
+(.bak-jacquard + task card) · deploy (tailscale fix + ferry schema-strip).
+Atlas-ui Codex r0 expansion: design AFTER Probe A results + proper ingestion
+of Codex research (receipt, guides, Wave's 10-row table). Wrapper fix
+(codex-run.zsh:88 jq + sync): Flight/Delta territory, Wave's run-directory
+structure proposed.
 
 ## LOG (newest on top · append-only · stamped)
+
+### [2026-08-05 · claude/atlas-ui · opus · office · ref: sella.probe-a.protocol.md + radio.wave-to-atlas.sella-consultation.2026-08-05.md] — PROBE A PROTOCOL STAGED: two lanes, Wave-reviewed, four amendments folded
+
+Probe A protocol written to `sella.probe-a.protocol.md`. Two lanes: A-eco
+(real harness asymmetry — Claude's 15+ files vs Codex's AGENTS.md-only) and
+A-norm (stripped to equivalent minimal context — measures substrate, not
+ecosystem). Wave's consultation (`radio.wave-to-atlas.sella-consultation`)
+absorbed same session — his four amendments all folded: (1) A-norm CLAUDE.md
+= only `@AGENTS.md`, no extra semantic context; (2) per-run identical snapshots
+via worktree/copy, not sequential against one mutable repo; (3) evidence
+separated into model-claimed / externally-observed / canary-adoption layers;
+(4) exact global config specification, not the word "equivalent." Probe
+explicitly marked n=1 exploratory, not a vendor verdict.
+
+Wave's broader consultation also absorbed: Codex primitive surface corrected
+from "thin" to 10 classes (instructions chain, 6-level config, custom agents
+global+project, skills in `.agents/skills/`, hooks 11 events, rules
+experimental, MCP, permissions sandbox*approval, exec JSONL stream, live
+inspection). Atlas-ui Codex expansion shape: one manager, two provider
+renderers (Claude + Codex), r0 tranche = inventory + render/validate
+custom-agent TOML + AGENTS boundaries + wrapper fix + probes. AGENTS.md
+verdict: shared executable truths only, vendor mechanics in `.claude/` and
+`.codex/` respectively. Wrapper: both fixes needed (JSON-aware extract AND
+synchronous exec), run-directory structure proposed.
+
+Astrobley journal (n=4) cross-referenced: verifier-not-vocabulary hypothesis
+now n=4 decisive across both composition topologies.
 
 ### [2026-08-05 · claude/atlas-ui · opus · office · ref: sella.observation.jacquard.2026-08-05.md] — PROBE B CLOSED: operator gate PASS, fix promoted to source, observation delivered
 
