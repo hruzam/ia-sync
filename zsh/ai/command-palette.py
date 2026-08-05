@@ -138,8 +138,6 @@ def visible_slice(rows, cursor, height):
 def draw(screen, rows, cursor, filter_text, expanded):
     screen.erase()
     height, width = screen.getmaxyx()
-    status_row = max(0, height - 1)
-    body_height = max(0, height - 1)
     selected = rows[cursor] if rows else None
 
     # Under 60 columns the detail pane is hidden so list and status stay usable.
@@ -147,6 +145,45 @@ def draw(screen, rows, cursor, filter_text, expanded):
     left_width = max(1, int(width * 0.4)) if side_by_side else width
     detail_column = left_width + 1
     list_width = max(1, left_width - (1 if side_by_side else 0))
+
+    # Build status/help string
+    hints = "↑↓ move · →← fold · enter select · type to filter · esc quit"
+    prefix = f"{len(rows)} items"
+    if filter_text:
+        prefix += f" · /{filter_text}"
+    status = f"{prefix} · {hints}"
+
+    # Wrap help onto multiple lines by packing segments on " · " boundaries
+    segments = status.split(" · ")
+    help_lines = []
+    current_line = []
+    current_length = 0
+
+    for segment in segments:
+        if current_line:
+            # Need to add " · " before this segment
+            needed_length = current_length + len(" · ") + len(segment)
+        else:
+            needed_length = len(segment)
+
+        if current_line and needed_length > width:
+            # Current line is full, start a new one
+            help_lines.append(" · ".join(current_line))
+            current_line = [segment]
+            current_length = len(segment)
+        else:
+            current_line.append(segment)
+            current_length = needed_length
+
+    if current_line:
+        help_lines.append(" · ".join(current_line))
+
+    # Cap help height to at most half the screen
+    help_height = min(len(help_lines), max(1, height // 2))
+    help_lines = help_lines[:help_height]
+
+    # Adjust body height for the list area
+    body_height = max(0, height - help_height)
 
     start, visible = visible_slice(rows, cursor, body_height)
     for offset, row in enumerate(visible):
@@ -169,12 +206,11 @@ def draw(screen, rows, cursor, filter_text, expanded):
                 break
             safe_add(screen, row_number, detail_column, line, 0, width - detail_column)
 
-    hints = "↑↓ move · →← fold · enter select · type to filter · esc quit"
-    prefix = f"{len(rows)} items"
-    if filter_text:
-        prefix += f" · /{filter_text}"
-    status = f"{prefix} · {hints}"
-    safe_add(screen, status_row, 0, clipped(status, width), curses.A_REVERSE, width)
+    # Draw wrapped help lines at the bottom
+    for line_offset, help_line in enumerate(help_lines):
+        help_row = body_height + line_offset
+        safe_add(screen, help_row, 0, clipped(help_line, width), curses.A_REVERSE, width)
+
     screen.refresh()
 
 

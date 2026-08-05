@@ -35,8 +35,33 @@ flexible: a taste, not a report. Info for majkee, not for an agent to consume.
 
 Keep it tiny. Skip any empty field. No template rigor — this is a note.
 
+## Continuity layer (the card is a map, not a summary)
+
+The four fields get majkee back into a session. But the NEXT INCARNATION reading
+this card must also be able to fully re-enter without losing state. The card
+carries just enough — but "enough" means the four fields PLUS pointers to where
+depth lives. Add whichever apply (headings optional, prose fine):
+
+- **Pending tasks** — what's open, what's next, in what order
+- **State pointers** — where the detailed state lives (dev-journal handoffs,
+  pulse entries, staged files, observation docs). The card points; those files carry
+- **First-step instruction** — if the reader should do something BEFORE resuming
+  the line (e.g., spawn @Delta for cleanup, read a specific file, run deploy)
+- **Session advice** — one lesson from this session that the next incarnation
+  should carry (therapy-grade: what went wrong, what to do differently)
+- **Cleanup / hygiene notes** — where the house isn't clean (growing staging dirs,
+  stale inbox items, tombstone files, uncommitted batches)
+
+The rule: the card alone may be tiny, but **card + its pointers** must be
+sufficient. If the session produced state artifacts (dev-journal entries, staged
+files, pulse entries), the card MUST point to them. An incarnation that reads
+only the four fields and follows the resume command should land in the right
+place; one that also reads the continuity layer should land with full context.
+
 ## Run
-1. Pull the four from THIS session (I hold the context — no subagent).
+1. Pull the four fields from THIS session (I hold the context — no subagent).
    commit via seat Bash if present, else leave the field for majkee.
-2. Draft, show majkee, confirm — then Write the file.
-3. Confirm: "CS card dropped — `temple-mail-inbox temple:monkey` to see it."
+2. Compose the continuity layer: scan session for open items, state artifacts,
+   lessons, and cleanup debts. Point, don't copy — the card stays small.
+3. Draft, show majkee, confirm — then Write the file.
+4. Confirm: "CS card dropped — `temple-mail-inbox temple:monkey` to see it."
