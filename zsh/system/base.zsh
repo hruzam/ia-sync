@@ -47,3 +47,8 @@
 # the source attempt itself matches pre-WP5 reach on home)
 # -----------------------------------------------------------------------------
 [[ "$MACHINE_NAME" == "office" && -f ~/.config/zsh/system/office.php-switch.zsh ]] && source ~/.config/zsh/system/office.php-switch.zsh
+
+# -----------------------------------------------------------------------------
+# PARTITION 5: startup dashboard engine (cross-machine — both home + office)
+# -----------------------------------------------------------------------------
+[[ -f ~/.config/zsh/system/dashboard.zsh ]] && source ~/.config/zsh/system/dashboard.zsh

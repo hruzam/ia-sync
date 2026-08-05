@@ -36,27 +36,34 @@ if [[ -z "$mail_root" ]]; then
   exit 1
 fi
 
-typeset -gA marked_paths
 typeset -ga tui_lines
 typeset -ga tui_types
 typeset -ga tui_paths
-typeset -g tui_view="INBOX"
 
-_find_next_file() {
-  local start=$1
-  local dir=$2 # 1 for down, -1 for up
-  local i=$start
-  while (( i >= 1 && i <= ${#tui_types} )); do
-    if [[ "${tui_types[i]}" == "file" ]]; then
-      echo $i
-      return
-    fi
-    (( i += dir ))
-  done
-  echo 0
+_move_mail_file() {
+  local rec=$1
+  local fname=$2
+  local verb=$3
+  local src dest_dir dest
+
+  if [[ "$verb" == "archive" ]]; then
+    src="$mail_root/$rec/inbox/$fname"
+    dest_dir="$mail_root/$rec/archive"
+  else
+    src="$mail_root/$rec/archive/$fname"
+    dest_dir="$mail_root/$rec/inbox"
+  fi
+  dest="$dest_dir/$fname"
+  if [[ ! -f "$src" ]]; then
+    echo "Error: File $src does not exist." >&2
+    return 1
+  fi
+  mkdir -p "$dest_dir"
+  mv "$src" "$dest"
 }
 
 _scan_mail() {
+  local map_file=$1
   tui_lines=()
   tui_types=()
   tui_paths=()
@@ -65,90 +72,37 @@ _scan_mail() {
   rec_dirs=( "$mail_root"/*(N/) )
 
   local total_files=0
-  local -A current_paths
-
-  local target_subdir="inbox"
-  [[ "$tui_view" == "ARCHIVE" ]] && target_subdir="archive"
+  local target_subdir
+  local -a files
 
   for r_dir in ${(o)rec_dirs}; do
     local r=$(basename "$r_dir")
-    local -a files
-    files=( "$r_dir"/$target_subdir/*(N.) )
-    if (( ${#files} > 0 )); then
-      tui_lines+=("$r")
-      tui_types+=("header")
-      tui_paths+=("")
+    for target_subdir in inbox archive; do
+      files=( "$r_dir"/$target_subdir/*(N.) )
+      if [[ -z "$map_file" && "$target_subdir" == "inbox" && ${#files} -gt 0 ]]; then
+        tui_lines+=("$r")
+        tui_types+=("header")
+        tui_paths+=("")
+      fi
 
       for f in ${(o)files}; do
-        tui_lines+=("") # placeholder
-        tui_types+=("file")
-        tui_paths+=("$f")
-        current_paths[$f]=1
-        (( total_files++ ))
+        if [[ -n "$map_file" ]]; then
+          printf '%s\t%s\t%s\t%s\n' "$target_subdir" "$r" "$(basename "$f")" "$f" >> "$map_file"
+        elif [[ "$target_subdir" == "inbox" ]]; then
+          tui_lines+=("") # placeholder
+          tui_types+=("file")
+          tui_paths+=("$f")
+          (( total_files++ ))
+        fi
       done
-    fi
+    done
   done
 
-  # Clean up marked_paths for files that no longer exist
-  for p in ${(k)marked_paths}; do
-    if [[ -z "${current_paths[$p]}" ]]; then
-      unset "marked_paths[$p]"
-    fi
-  done
-
-  if (( total_files == 0 )); then
+  if [[ -z "$map_file" && total_files -eq 0 ]]; then
     tui_lines+=("(empty)")
     tui_types+=("empty")
     tui_paths+=("")
   fi
-}
-
-_render() {
-  # Move cursor to home and clear screen
-  printf '\033[H\033[2J'
-
-  # Print title/instructions
-  echo "Mail Manager - Active ${tui_view}s"
-  echo "=============================="
-  echo ""
-
-  local marked_count=0
-  for p in ${(k)marked_paths}; do
-    if [[ "${marked_paths[$p]}" == "1" ]]; then
-      (( marked_count++ ))
-    fi
-  done
-
-  for i in {1..${#tui_lines}}; do
-    local line=""
-    if [[ "${tui_types[i]}" == "header" ]]; then
-      line="${tui_lines[i]}"
-      echo "$line"
-    elif [[ "${tui_types[i]}" == "file" ]]; then
-      local file_path="${tui_paths[i]}"
-      local fname=$(basename "$file_path")
-      local marker="[ ]"
-      if [[ "${marked_paths[$file_path]}" == "1" ]]; then
-        marker="[x]"
-      fi
-
-      if (( i == cursor_idx )); then
-        # Highlight current row
-        printf '  \033[7m%s %s\033[0m\n' "$marker" "$fname"
-      else
-        printf '  %s %s\n' "$marker" "$fname"
-      fi
-    else
-      echo "${tui_lines[i]}"
-    fi
-  done
-
-  echo ""
-  echo "------------------------------"
-  echo "Marked files: $marked_count"
-  local action_hint="Archive marked"
-  [[ "$tui_view" == "ARCHIVE" ]] && action_hint="Restore marked"
-  echo "Keys: [Up/Down] Move | [SPACE] Toggle | [TAB] Switch View | [a] $action_hint | [q] Quit"
 }
 
 # Parse arguments
@@ -176,15 +130,7 @@ elif [[ "$1" == "--archive" ]]; then
   fi
   rec="${rec_file%%/*}"
   fname="${rec_file#*/}"
-  src="$mail_root/$rec/inbox/$fname"
-  dest_dir="$mail_root/$rec/archive"
-  dest="$dest_dir/$fname"
-  if [[ ! -f "$src" ]]; then
-    echo "Error: File $src does not exist." >&2
-    exit 1
-  fi
-  mkdir -p "$dest_dir"
-  mv "$src" "$dest"
+  _move_mail_file "$rec" "$fname" archive || exit 1
   exit 0
 elif [[ "$1" == "--restore" ]]; then
   if [[ -z "$2" ]]; then
@@ -198,15 +144,7 @@ elif [[ "$1" == "--restore" ]]; then
   fi
   rec="${rec_file%%/*}"
   fname="${rec_file#*/}"
-  src="$mail_root/$rec/archive/$fname"
-  dest_dir="$mail_root/$rec/inbox"
-  dest="$dest_dir/$fname"
-  if [[ ! -f "$src" ]]; then
-    echo "Error: File $src does not exist." >&2
-    exit 1
-  fi
-  mkdir -p "$dest_dir"
-  mv "$src" "$dest"
+  _move_mail_file "$rec" "$fname" restore || exit 1
   exit 0
 elif [[ -n "$1" ]]; then
   echo "Usage: $0 [--list | --archive <receiver>/<filename> | --restore <receiver>/<filename>]" >&2
@@ -215,9 +153,11 @@ fi
 
 # Interactive TUI mode
 term_state=$(stty -g 2>/dev/null)
+tsvfile=$(mktemp) || exit 1
 
 _cleanup() {
   trap - INT TERM EXIT
+  [[ -n "$tsvfile" && -f "$tsvfile" ]] && rm -f -- "$tsvfile"
   tput rmcup 2>/dev/null
   tput cnorm 2>/dev/null
   if [[ -n "$term_state" ]]; then
@@ -233,85 +173,27 @@ tput smcup 2>/dev/null
 tput civis 2>/dev/null
 stty -icanon -echo
 
-_scan_mail
-cursor_idx=$(_find_next_file 1 1)
+printf '# view\treceiver\tfilename\tfullpath\n' > "$tsvfile"
+_scan_mail "$tsvfile"
 
-# Main loop
-while true; do
-  _render
+actions=$(python3 "${0:A:h}/mail-palette.py" --map "$tsvfile")
+palette_status=$?
+rm -f -- "$tsvfile"
+tsvfile=""
 
-  key=""
-  if ! read -r -k 1 key; then
-    break
-  fi
+if (( palette_status != 0 )); then
+  _cleanup
+  exit 0
+fi
 
-  if [[ "$key" == $'\e' ]]; then
-    seq=""
-    if read -r -t 0.1 -k 2 seq; then
-      key+="$seq"
-    fi
-  fi
+while IFS=$'\t' read -r rec_file verb; do
+  rec="${rec_file%%/*}"
+  fname="${rec_file#*/}"
+  _move_mail_file "$rec" "$fname" "$verb" || {
+    _cleanup
+    exit 1
+  }
+done <<< "$actions"
 
-  case "$key" in
-    $'\t') # TAB key
-      if [[ "$tui_view" == "INBOX" ]]; then
-        tui_view="ARCHIVE"
-      else
-        tui_view="INBOX"
-      fi
-      _scan_mail
-      cursor_idx=$(_find_next_file 1 1)
-      ;;
-    $'\e[A'|$'\eOA') # Up arrow
-      prev_idx=$(_find_next_file $((cursor_idx - 1)) -1)
-      if (( prev_idx > 0 )); then
-        cursor_idx=$prev_idx
-      fi
-      ;;
-    $'\e[B'|$'\eOB') # Down arrow
-      next_idx=$(_find_next_file $((cursor_idx + 1)) 1)
-      if (( next_idx > 0 )); then
-        cursor_idx=$next_idx
-      fi
-      ;;
-    " ") # Space
-      if (( cursor_idx > 0 )); then
-        file_path="${tui_paths[cursor_idx]}"
-        if [[ "${marked_paths[$file_path]}" == "1" ]]; then
-          marked_paths[$file_path]=0
-        else
-          marked_paths[$file_path]=1
-        fi
-      fi
-      ;;
-    "a"|"A") # Archive or Restore marked
-      archived_any=0
-      for file_path in ${(k)marked_paths}; do
-        if [[ "${marked_paths[$file_path]}" == "1" ]]; then
-          if [[ -f "$file_path" ]]; then
-            rel="${file_path#$mail_root/}"
-            rec="${rel%%/*}"
-            fname="${rel##*/}"
-            if [[ "$tui_view" == "INBOX" ]]; then
-              dest_dir="$mail_root/$rec/archive"
-            else
-              dest_dir="$mail_root/$rec/inbox"
-            fi
-            mkdir -p "$dest_dir"
-            mv "$file_path" "$dest_dir/$fname"
-            archived_any=1
-          fi
-          unset "marked_paths[$file_path]"
-        fi
-      done
-      if (( archived_any )); then
-        _scan_mail
-        cursor_idx=$(_find_next_file 1 1)
-      fi
-      ;;
-    "q"|"Q") # Quit
-      _cleanup
-      exit 0
-      ;;
-  esac
-done
+_cleanup
+exit 0

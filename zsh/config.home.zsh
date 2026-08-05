@@ -128,6 +128,7 @@ export TS_DASH_PORT="9733"             # HTTP dashboard port (ts-dash)
 
 [[ -f ~/.config/zsh/system/base.zsh ]] && source ~/.config/zsh/system/base.zsh
 _ts_header 2>/dev/null  # compact peer status line on every shell open (silent if down)
+_dash_header 2>/dev/null  # startup dashboard — @majkee's editable notes (system/dashboard.md)
 
 # =============================================================================
 # PIQL CROSS-MACHINE (piql = gemma/ollama on office; home accesses via SSH;

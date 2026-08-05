@@ -26,6 +26,7 @@ updater/
 builtin/
 knowledge/
 implicit/
+__pycache__/
 
 # Claude project session data (not synced by sync.sh) — anchored to repo root
 /projects/

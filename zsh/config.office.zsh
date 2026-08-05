@@ -176,6 +176,7 @@ echo "[config] @${MACHINE_NAME} loaded"
 # system/base.zsh (see that file's header) — WP5 retrofit.
 [[ -f ~/.config/zsh/system/base.zsh ]] && source ~/.config/zsh/system/base.zsh
 _ts_header 2>/dev/null  # compact peer status line on every shell open (silent if down)
+_dash_header 2>/dev/null  # startup dashboard — @majkee's editable notes (system/dashboard.md)
 
 # mesh/office-wire.zsh removed 2026-07-07 per Kelvin journal 2026-06-30 item 2
 # (Gate E closed — direct SSH covers everything wofm did)

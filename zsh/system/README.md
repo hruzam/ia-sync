@@ -13,10 +13,14 @@ read before touching any file here.
 | File | Role | Bodies |
 |---|---|---|
 | `keyboard.zsh` | Control panel — aliases + comments only | — |
+| `dashboard.zsh` | Startup dashboard engine | `_dash_header` |
+| `dashboard.md` | Startup dashboard content — @majkee edits this to change what prints on shell open | — |
 | `tailscale.zsh` | Tailscale engine | `_ts_ls` `_ts_header` `_ts_ping` `_ts_ssh` `_ts_session` `_ts_dash` `_ts_dash_stop` `_ts_web` `_ts_help` |
 | `ts-dash.py` | Python HTTP dashboard server — called by `_ts_dash` | — |
 | `shell.zsh` | General shell utilities engine | `_msrc` |
 | `office.php-switch.zsh` | PHP version switcher — office only (`$MACHINE_NAME` guard) | `php74` `php8` `phpst` |
+
+@majkee edits `dashboard.md` directly to change the startup dashboard content — no code changes are needed for content edits.
 
 ---
 

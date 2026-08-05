@@ -92,26 +92,125 @@ _ts_session() {
 
 # ─── DASHBOARD ────────────────────────────────────────────────────────────────
 
+# Dashboard lifecycle rebuilt 2026-08-05 (Jacquard trial, revision r1 accepted):
+# lsof-free discovery (pgrep + /proc), identity-verified kills (never signal a PID
+# without proving it still belongs to ts-dash.py), loud degradation on missing tools,
+# server output redirected. Polish: &! disown — no job-control notices in the shell.
+
+_ts_dash_pid_matches() {
+    local pid="$1" script="${_TS_ENGINE_DIR}/ts-dash.py"
+    [[ "$pid" == <-> && -r "/proc/$pid/cmdline" && -r "/proc/$pid/environ" ]] || return 2
+    local -a args environment
+    args=("${(@0)$(</proc/$pid/cmdline)}")
+    (( ${args[(Ie)$script]} )) || return 1
+    environment=("${(@0)$(</proc/$pid/environ)}")
+    (( ${environment[(Ie)TS_DASH_PORT=$TS_DASH_PORT]} )) && return 0
+    if [[ "$TS_DASH_PORT" == 9733 ]] && (( ! ${environment[(I)TS_DASH_PORT=*]} )); then
+        return 0
+    fi
+    return 1
+}
+
+_ts_dash_find_pids() {
+    if ! command -v pgrep >/dev/null 2>&1; then
+        echo "[ts] cannot discover dashboard: pgrep is required but not installed" >&2
+        return 127
+    fi
+    local matches pgrep_status pid verify_status
+    matches=$(pgrep -f -- "${_TS_ENGINE_DIR}/ts-dash.py")
+    pgrep_status=$?
+    (( pgrep_status == 1 )) && return 0
+    if (( pgrep_status != 0 )); then
+        echo "[ts] dashboard discovery failed: pgrep exited $pgrep_status" >&2
+        return "$pgrep_status"
+    fi
+    for pid in ${(f)matches}; do
+        _ts_dash_pid_matches "$pid"
+        verify_status=$?
+        if (( verify_status == 0 )); then
+            print -r -- "$pid"
+        elif (( verify_status == 2 )) && [[ -d "/proc/$pid" ]]; then
+            echo "[ts] cannot verify dashboard PID $pid via /proc; refusing to signal it" >&2
+            return 2
+        fi
+    done
+}
+
 _ts_dash() {
     local script="${_TS_ENGINE_DIR}/ts-dash.py"
     [[ ! -f "$script" ]] && { echo "[ts] dashboard script not found: $script"; return 1; }
-    local old_pid
-    old_pid=$(lsof -ti tcp:"$TS_DASH_PORT" 2>/dev/null)
-    [[ -n "$old_pid" ]] && kill "$old_pid" 2>/dev/null && sleep 0.3
-    echo "[ts] dashboard → http://localhost:${TS_DASH_PORT}  (ts-dash-stop to kill)"
-    TS_DASH_PORT="$TS_DASH_PORT" python3 "$script" &
+    if ! command -v python3 >/dev/null 2>&1; then
+        echo "[ts] cannot start dashboard: python3 is required but not installed" >&2
+        return 1
+    fi
+    if ! command -v sleep >/dev/null 2>&1; then
+        echo "[ts] cannot start dashboard: sleep is required but not installed" >&2
+        return 1
+    fi
+    _ts_dash_stop --quiet || return 1
+    TS_DASH_PORT="$TS_DASH_PORT" python3 "$script" >/dev/null 2>&1 &!
+    typeset -g _TS_DASH_PID=$!
     sleep 0.5
-    xdg-open "http://localhost:${TS_DASH_PORT}" 2>/dev/null &
+    if ! _ts_dash_pid_matches "$_TS_DASH_PID"; then
+        echo "[ts] dashboard failed to start on port $TS_DASH_PORT" >&2
+        typeset -g _TS_DASH_PID=""
+        return 1
+    fi
+    echo "[ts] dashboard → http://localhost:${TS_DASH_PORT}  (ts-dash-stop to kill)"
+    if command -v xdg-open >/dev/null 2>&1; then
+        xdg-open "http://localhost:${TS_DASH_PORT}" >/dev/null 2>&1 &!
+    else
+        echo "[ts] xdg-open not installed; open the dashboard URL manually"
+    fi
 }
 
 _ts_dash_stop() {
-    local pid
-    pid=$(lsof -ti tcp:"$TS_DASH_PORT" 2>/dev/null)
-    if [[ -n "$pid" ]]; then
-        kill "$pid" && echo "[ts] dashboard stopped (port $TS_DASH_PORT)"
-    else
-        echo "[ts] no dashboard running on port $TS_DASH_PORT"
+    local quiet="${1:-}" retained="${_TS_DASH_PID:-}"
+    local found pid verify_status
+    local -a pids
+    if [[ -n "$retained" ]]; then
+        _ts_dash_pid_matches "$retained"
+        verify_status=$?
+        if (( verify_status == 0 )); then
+            pids+=("$retained")
+        elif [[ -d "/proc/$retained" ]]; then
+            echo "[ts] retained PID $retained is not a verified dashboard; refusing to signal it" >&2
+        fi
     fi
+    found=$(_ts_dash_find_pids) || return 1
+    for pid in ${(f)found}; do
+        (( ${pids[(Ie)$pid]} )) || pids+=("$pid")
+    done
+    if (( ! ${#pids} )); then
+        typeset -g _TS_DASH_PID=""
+        [[ "$quiet" != --quiet ]] && echo "[ts] no dashboard running on port $TS_DASH_PORT"
+        return 0
+    fi
+    if ! command -v sleep >/dev/null 2>&1; then
+        echo "[ts] cannot stop dashboard: sleep is required but not installed" >&2
+        return 1
+    fi
+    for pid in "${pids[@]}"; do
+        _ts_dash_pid_matches "$pid"
+        verify_status=$?
+        if (( verify_status != 0 )); then
+            echo "[ts] dashboard PID $pid changed or became unverifiable; refusing to signal it" >&2
+            return 1
+        fi
+        if ! kill "$pid"; then
+            echo "[ts] failed to signal dashboard PID $pid" >&2
+            return 1
+        fi
+    done
+    sleep 0.3
+    found=$(_ts_dash_find_pids) || return 1
+    if [[ -n "$found" ]]; then
+        echo "[ts] dashboard did not stop (PID(s): ${(j:, :)${(f)found}})" >&2
+        return 1
+    fi
+    typeset -g _TS_DASH_PID=""
+    [[ "$quiet" != --quiet ]] && echo "[ts] dashboard stopped (port $TS_DASH_PORT)"
+    return 0
 }
 
 # Open Tailscale admin panel in browser — no local server needed

@@ -18,24 +18,55 @@
 
 ## HANDOFF — last (overwrite when consumed)
 
-`[2026-08-04 · claude/atlas-ui · opus · office · session: atlas.office.paralele-sella-builder]`
+`[2026-08-05 · claude/atlas-ui · opus · office · session: atlas.office.paralele-sella-builder]`
 
-**State:** Wave's CONDITIONAL PASS consumed → **errata r1 DELIVERED** →
-`sella.cross-vendor.architecture.errata-r1.2026-08-04.md`. All five findings accepted
-(concurrence map in the errata stone): E1 two-axis comparison restored (B1 = Claude-only
-+ exchange contract is the real rival; A3/B2 = experiment branch, NOT adopted) · E2 L4
-flip reversed (typed-result+reason stays CORE; 0/2 mappings → profiles) · E3 receipt
-rule repaired (volatile external receipts carry claim+date+fingerprint; "stale in 24h"
-withdrawn; one URL-fact flag open at confidence M) · E4 renamed exchange CONTRACT
-candidate + resolvable source references · E5 blind critique → optional COMPOSITE
-pattern, Probe-D-gated. Revised G1–G5 (Wave's advice, Atlas concurs ×5) at errata end.
-Original candidate untouched as history. No v2, no deploy.
+**State:** G1–G5 RULED (see LOG 08-04) · **PROBE B CLOSED** — Jacquard trial complete:
+reject→revise→accept in one card-corrected iteration · operator live gate PASS in the
+true lsof-less shell · fix surgically promoted to `ia-sync/zsh/system/tailscale.zsh`
+(atlas port: Jacquard hunks + `&!` polish; `_ts_pull` was already table-side, no harvest
+hazard) · observation delivered → `sella.observation.jacquard.2026-08-05.md` (verdict:
+useful Codex program, NOT Wave-in-TOML — the contract changed the artifact). Sibling
+data point cross-referenced (dev-journal.astrobley.md, external lane). Emerging
+hypothesis for D/E: thin contract + verifier discipline may be the portable core.
 
-**Next:** majkee gavels revised G1–G5 → probes in Wave's ordering (clean A → B → D/E
-decide the B1-vs-B2 question) → only after probes: profile candidates / v2. One live
-fetch closes the E3 URL flag (any web seat).
+**Next:** probes A (cold orientation, clean envs) · D (blind consultation) · E (machine
+boundary) on operator release · parked micro-probe: harness-applied vs model-adopted
+AGENTS.md (one quote-prompt) · E3 URL-fact one-fetch · profile candidates only after
+probes. Cleanup owed: `.bak-jacquard` + `task.jacquard-trial.md` in `~/.config/zsh`
+(operator removes when done); `jacquard.toml` stays project-local (it works, non-git
+discovery proven). Deploy note: next `deploy.sh` run carries the tailscale fix + ferry
+schema-strip live.
 
 ## LOG (newest on top · append-only · stamped)
+
+### [2026-08-05 · claude/atlas-ui · opus · office · ref: sella.observation.jacquard.2026-08-05.md] — PROBE B CLOSED: operator gate PASS, fix promoted to source, observation delivered
+
+Operator live test in the true lsof-less shell: start clean · curl 200 · stop truthful ·
+repeat-stop correct negative — ALL PASS. Residual zsh job-control notices resolved in
+promotion: atlas ported Jacquard's accepted hunks to the table
+(`ia-sync/zsh/system/tailscale.zsh`) with `&!` disown polish; `wait` line dropped
+(disowned child — post-kill pgrep re-verification covers it; deviation named).
+`_ts_pull` found ALREADY table-side — the "concurrent work" was source-first all along;
+no harvest hazard, deploy clobber-safe. Trial verdict in the observation stone: Jacquard
+is a useful Codex program, not Wave-in-TOML — the remeasuring contract materially
+changed the artifact (clean baseline self-accepted a hazard; composed parent rejected
+it). Full conformance ledger + limits (environment-parity ceiling, model-adopted vs
+harness-applied, n=1) in the observation. Probe B: DONE.
+
+Parent verdict: **Accepted**, with independent verification mapping 1:1 onto the four
+revision requirements: (1) identity-verified kill — a retained PID belonging to the
+test shell was REJECTED and left alive (the PID-reuse hazard is dead); (2) lsof-free —
+full start/200/stop/refused cycle passed with BOTH lsof and xdg-open absent;
+(3) loud degradation — missing pgrep produced an explicit error, status 1; (4) server
+output redirected. Hygiene held: `.bak-jacquard` unchanged, ts-dash.py untouched, no
+parent-thread edits, `zsh -n` clean. **Ownership discipline note (receipt-grade):**
+concurrent pre-existing `_ts_pull` hunks appeared in the working tree mid-trial;
+Jacquard PRESERVED them unchanged and REPORTED them as not-its-work — live evidence of
+the "preserve unrelated work + separate observation from claim" contract holding under
+real interleaved traffic. Revision loop closed in ONE iteration on a corrected card.
+**Remaining gate:** operator live test in the true lsof-less shell → manual copy to
+surgical table (inverted-flow promotion, majkee-owned) → trial closes, observation doc
+follows.
 
 ### [2026-08-05 · claude/atlas-ui · opus · office · ref: dev-journal.astrobley.md (Houston, same _staging/)] — cross-ref: first EXTERNAL-composition data point lands in a sibling journal
 
