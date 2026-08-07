@@ -142,7 +142,26 @@ Source: `experiments/tmux-pin-bus/`
 bash run.sh update      # runs pin_bus.py install on the project
 ```
 
-### sublime-keymap · v1.1 · hosts: home office · MANUAL
+### markdown-core-patch · v2.0 · hosts: home office · auto
+Patches `Lib/python33/markdown/core.py` — rewrites three methods (`build_parser`,
+`__init__`, `registerExtensions`) to fetch ST Python 3.3 relative-import names
+(`build_preprocessors`, `util`, `Extension`, etc.) from `sys.modules` at call
+time instead of module globals. Fixes the full crash chain caused by the Pep562
+proxy making relative imports bind `None` in core.py's globals.
+```bash
+bash run.sh update      # applies Python text patch; idempotent; upgrades v1.x→v2.0
+# Then restart Sublime Text for in-memory sys.modules to clear.
+```
+
+### markdown-preview-settings · v1.0 · hosts: home office · auto
+Overrides MarkdownPreview extension list to remove `pymdownx.*` entries that crash
+in ST's bundled Python 3.3 (`ImportError: No module named 'markdown.extensions.attr_list'`).
+Source: `experiments/editor-pin-sublime/MarkdownPreview.sublime-settings`
+```bash
+bash run.sh update      # copies settings file; backs up existing if present
+```
+
+### sublime-keymap · v1.2 · hosts: home office · MANUAL
 Merged canonical Sublime keymap — markdown preview (`alt+m`, `alt+shift+m`), freed
 nav keys, numpad navigation, editor-pin bindings.
 Source: `experiments/editor-pin-sublime/Default.sublime-keymap`

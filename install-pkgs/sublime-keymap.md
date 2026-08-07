@@ -1,7 +1,7 @@
 # sublime-keymap — install task
 
 ```
-version:    1.1
+version:    1.3
 hosts:      home office
 automation: manual
 src-root:   ~/www/elements-factory/applications-in-common
@@ -16,7 +16,7 @@ This file is the single canonical keymap for both machines — it merges:
 
 - **editor-pin-sublime bindings** (`ctrl+alt+*`) — pins to `~/.wires/pins.jsonl`
 - **Markdown preview** (`alt+m`, `alt+shift+m`) — opens current file as HTML in browser (both local parser)
-- **Freed navigation keys** — `ctrl+r/b/f` nooped; Sublime commands moved to `ctrl+shift+r/b`
+- **Navigation keys** — `ctrl+r` restored to Goto Symbol (was: noop); `ctrl+b` nooped → build moved to `ctrl+shift+b`; `ctrl+shift+r` kept as alias for Goto Symbol
 - **Numpad navigation** (belt-and-suspenders Arch/Wayland fix — see History below)
 
 > **Note:** `editor-pin-sublime.md` step 2 (`cp Default.sublime-keymap`) now overlaps with
@@ -40,6 +40,21 @@ machines (takes effect on next Plasma session start).
 The Sublime numpad bindings added in v1.0 of THIS keymap are belt-and-suspenders — they
 map `keypad1`–`keypad9` directly in Sublime so selections work regardless of system NumLock
 state, protecting against future Wayland regressions.
+
+### alt+m wired to GitHub parser — 2026-08-07
+
+`alt+m` and `alt+shift+m` switched from `"parser": "markdown"` to `"parser": "github"`.
+Local python-markdown parser crashes at import time in ST's Python 3.3.6 environment
+(`ImportError: No module named 'markdown.extensions.attr_list'` via pymdownx superfences).
+GitHub parser path confirmed working via ctrl+shift+p → "MarkdownPreview: Preview in Browser (GitHub)".
+Both bindings now use github parser; alt+shift+m distinction is preserved as an alias pending
+a future local-parser fix. Source and live file updated together; version bumped to v1.3.
+
+### ctrl+r restored — 2026-08-07
+
+`ctrl+r` was previously bound to `"noop"` (silenced in favor of `ctrl+shift+r`). Restored to
+`show_overlay` (Goto Symbol) — both `ctrl+r` and `ctrl+shift+r` now trigger it. Source and
+live file updated together; install-pkgs version bumped to v1.2.
 
 ### Keymap overwrite gap — flagged in pad.1-arch-repair.md
 
