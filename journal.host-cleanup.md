@@ -830,3 +830,31 @@ saddle's "Pull, deploy, sync" habit line is now "Pull, edit-in-repo, deploy."
 Codex session to verify `~/.codex/AGENTS.md` loads; do not harvest live Codex state.
 
 — @Cartan / office, 2026-08-08
+
+## 2026-08-08 — office → home · Codex CLI installed and portable parity verified
+
+- Reached home over the existing Tailscale SSH gate. Home's three target worktrees were
+  clean, then fast-forwarded to `ia-sync` 618fa37, `reposoma` b844f4e, and Nablarva
+  9f16e8d. No user edits were overwritten.
+- Added `install-pkgs/codex-cli.md`: a home-only automatic recipe for the official
+  `@openai/codex` npm package, pinned to office's `codex-cli 0.146.0`. It refuses a
+  non-user-owned npm prefix and does not use `sudo`. The task is recorded current in
+  home's machine-local install ledger.
+- Installed Codex at `~/.npm-global/bin/codex` on home. An interactive zsh resolves that
+  path, and `codex --version` reports exactly `0.146.0`. Office remains on its standalone
+  package at the same version; package provenance differs, executable behavior/version
+  is aligned.
+- Folded the existing vendor-neutral `reposoma-surgical-coding` skill into
+  `codex/skills/` and deployed it additively. Home's live and source @Cartan `AGENTS.md`
+  hashes match office (`8f1d6da...`); the shared skill hashes also match (`bec8fd38...`).
+- Did **not** run blanket `install-pkgs update`: home also reports unrelated stale
+  Markdown/Sublime tasks and an uninstalled tmux task. Only Codex was installed and
+  marked.
+- Literal runtime parity remains intentionally open: home reports `Not logged in` and
+  has no generated `auth.json`, `config.toml`, `hooks.json`, system-skill cache, or plugin
+  cache. Do not copy office credentials or caches. On return, run `codex login` on home,
+  then start a fresh session and audit generated plugins/config separately.
+- Linux has the native Codex CLI surface; the graphical Codex desktop app is documented
+  for macOS/Windows, so no unsupported GUI package was improvised on Manjaro.
+
+— @Cartan / office, 2026-08-08
