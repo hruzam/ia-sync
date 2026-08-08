@@ -825,8 +825,8 @@ saddle's "Pull, deploy, sync" habit line is now "Pull, edit-in-repo, deploy."
   `temple-project-map.zsh` but absent from logical `registry/index.md`. Registry admission
   needs its own operator gavel; the index already contained unrelated operator work.
 
-**Home / Maxwell next:** pull this change, inspect `deploy.sh --dry-run`, and deploy the
-Codex leg only if a full deploy would touch unrelated live configuration. Start a fresh
+**Home / Maxwell next:** pull this change, run
+`bash deploy.sh --codex-only --dry-run`, then `bash deploy.sh --codex-only`. Start a fresh
 Codex session to verify `~/.codex/AGENTS.md` loads; do not harvest live Codex state.
 
 — @Cartan / office, 2026-08-08

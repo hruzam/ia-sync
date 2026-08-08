@@ -16,13 +16,21 @@ if [ -z "$MACHINE" ] && command -v jq >/dev/null && [ -f "$REPO/machines.json" ]
 fi
 MACHINE="${MACHINE:-$(hostname -s)}"
 
-# --dry-run / -n: report every change without writing anything. Neither this
-# script nor sync.sh had a preview mode, so the only way to see a deploy's blast
-# radius was to run it. rsync legs get -n -i; cp legs report via copy_file().
+# --dry-run / -n: report every change without writing anything. --codex-only
+# selects the portable Codex leg, so unrelated live runtime drift is not touched.
+# rsync legs get -n -i; cp legs report via copy_file().
 DRY=0
-if [ "${1:-}" = "--dry-run" ] || [ "${1:-}" = "-n" ]; then
-  DRY=1
-fi
+CODEX_ONLY=0
+for arg in "$@"; do
+  case "$arg" in
+    --dry-run|-n) DRY=1 ;;
+    --codex-only) CODEX_ONLY=1 ;;
+    *)
+      echo "Usage: $0 [--dry-run|-n] [--codex-only]" >&2
+      exit 2
+      ;;
+  esac
+done
 RSYNC_FLAGS=(-a)
 LEG_VERB="deployed"
 if [ "$DRY" = 1 ]; then
@@ -34,6 +42,9 @@ echo "=== ia-sync deploy started at $(date) ==="
 echo "Machine: $MACHINE"
 if [ "$DRY" = 1 ]; then
   echo "*** DRY RUN — nothing will be written ***"
+fi
+if [ "$CODEX_ONLY" = 1 ]; then
+  echo "Scope: Codex portable surface only"
 fi
 
 # Backup a live file before deploy overwrites it. Host-specific files (~/.zshrc,
@@ -85,6 +96,38 @@ ensure_dir() {
   fi
 }
 
+deploy_codex() {
+  # Portable instructions are narrow by design. Codex auth, config, hooks,
+  # rules, histories, sessions, SQLite state, caches, logs, and trust hashes
+  # stay local.
+  echo ""
+  echo "→ ~/.codex + ~/.agents/skills"
+  ensure_dir "$HOME/.codex"
+
+  if [ -f "$REPO/codex/AGENTS.md" ]; then
+    copy_file "$REPO/codex/AGENTS.md" "$HOME/.codex/AGENTS.md" "Codex AGENTS.md"
+  fi
+
+  if [ -d "$REPO/codex/agents" ]; then
+    ensure_dir "$HOME/.codex/agents"
+    rsync "${RSYNC_FLAGS[@]}" "$REPO/codex/agents/" "$HOME/.codex/agents/"
+    echo "  Codex agents/ $LEG_VERB"
+  fi
+
+  if [ -d "$REPO/codex/skills" ]; then
+    ensure_dir "$HOME/.agents/skills"
+    rsync "${RSYNC_FLAGS[@]}" "$REPO/codex/skills/" "$HOME/.agents/skills/"
+    echo "  Codex skills/ $LEG_VERB"
+  fi
+}
+
+if [ "$CODEX_ONLY" = 1 ]; then
+  deploy_codex
+  echo ""
+  echo "=== Codex deploy complete ==="
+  exit 0
+fi
+
 # ── ~/.claude ────────────────────────────────────────────────────────────────
 echo ""
 echo "→ ~/.claude"
@@ -124,27 +167,7 @@ for f in settings.json CLAUDE.md; do
 done
 
 # ── Codex portable surface ──────────────────────────────────────────────────
-# Portable instructions are narrow by design. Codex auth, config, hooks, rules,
-# histories, sessions, SQLite state, caches, logs, and trust hashes stay local.
-echo ""
-echo "→ ~/.codex + ~/.agents/skills"
-ensure_dir "$HOME/.codex"
-
-if [ -f "$REPO/codex/AGENTS.md" ]; then
-  copy_file "$REPO/codex/AGENTS.md" "$HOME/.codex/AGENTS.md" "Codex AGENTS.md"
-fi
-
-if [ -d "$REPO/codex/agents" ]; then
-  ensure_dir "$HOME/.codex/agents"
-  rsync "${RSYNC_FLAGS[@]}" "$REPO/codex/agents/" "$HOME/.codex/agents/"
-  echo "  Codex agents/ $LEG_VERB"
-fi
-
-if [ -d "$REPO/codex/skills" ]; then
-  ensure_dir "$HOME/.agents/skills"
-  rsync "${RSYNC_FLAGS[@]}" "$REPO/codex/skills/" "$HOME/.agents/skills/"
-  echo "  Codex skills/ $LEG_VERB"
-fi
+deploy_codex
 
 # ── ~/.gemini ─────────────────────────────────────────────────────────────────
 echo ""

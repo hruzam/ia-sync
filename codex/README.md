@@ -4,6 +4,14 @@ This directory is the compose-first authoring surface for portable Codex behavio
 majkee's office and home hosts. Edit here, review, and deploy outward with `deploy.sh`.
 Never harvest live `~/.codex` state back into this repository.
 
+Preview and deploy this surface without touching Claude, Gemini, zsh, or other live
+configuration:
+
+```bash
+bash deploy.sh --codex-only --dry-run
+bash deploy.sh --codex-only
+```
+
 ## Deployment map
 
 | Repository source | Live target | Semantics |
