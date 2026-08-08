@@ -799,3 +799,34 @@ that no commit can carry over, and office must re-clone rather than pull.
 saddle's "Pull, deploy, sync" habit line is now "Pull, edit-in-repo, deploy."
 
 — @Flight / home, 2026-07-31
+
+## 2026-08-08 — office · Cartan Codex resident wiring
+
+- Added the first portable Codex authoring surface at `codex/`: global @Cartan identity
+  plus explicit additive deploy paths for future personal agents and skills. Live Codex
+  auth/config/hooks/rules/history/session/SQLite/cache/log/trust state remains host-local.
+- Added the deploy-inert `_staging/codex/` observation bed and recorded Cartan's first
+  temple-map transfer pass. Identity: Élie Cartan / moving frames — resolve host, repo,
+  runtime, sandbox, and local instructions; preserve invariants without false vendor parity;
+  surface map curvature as drift.
+- Wired Cartan as a first-class participant in ia-sync, reposoma, and Nablarva `AGENTS.md`.
+  Cartan may inspect, challenge, implement, verify, and delegate bounded work under the
+  same project gates; it is not a read-only relay or a poor-relative compatibility seat.
+- `bash -n deploy.sh`, `git diff --check`, and `bash deploy.sh --dry-run` passed. The dry
+  run caught unrelated Claude drift: a full office deploy would replace live `opus[1m]`
+  with repository `claude-fable-5[1m]`. That change was NOT applied. Only
+  `codex/AGENTS.md` was targeted-deployed to `~/.codex/AGENTS.md`, then byte-verified.
+- Fresh ephemeral Codex probe from reposoma recognized `@Cartan` and cited both global and
+  repository instructions. Broader map-output proof was blocked by stale wrapper parsing:
+  `codex-run.zsh` returned a nested `item.completed` JSON object rather than clean final
+  text. Reported input was 258,594 tokens (210,176 cached), so do not repeat before the
+  wrapper/economics contract is refreshed.
+- Map finding left flagged, not edited: Nablarva is present in the physical
+  `temple-project-map.zsh` but absent from logical `registry/index.md`. Registry admission
+  needs its own operator gavel; the index already contained unrelated operator work.
+
+**Home / Maxwell next:** pull this change, inspect `deploy.sh --dry-run`, and deploy the
+Codex leg only if a full deploy would touch unrelated live configuration. Start a fresh
+Codex session to verify `~/.codex/AGENTS.md` loads; do not harvest live Codex state.
+
+— @Cartan / office, 2026-08-08

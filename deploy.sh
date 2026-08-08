@@ -123,6 +123,29 @@ for f in settings.json CLAUDE.md; do
   fi
 done
 
+# ── Codex portable surface ──────────────────────────────────────────────────
+# Portable instructions are narrow by design. Codex auth, config, hooks, rules,
+# histories, sessions, SQLite state, caches, logs, and trust hashes stay local.
+echo ""
+echo "→ ~/.codex + ~/.agents/skills"
+ensure_dir "$HOME/.codex"
+
+if [ -f "$REPO/codex/AGENTS.md" ]; then
+  copy_file "$REPO/codex/AGENTS.md" "$HOME/.codex/AGENTS.md" "Codex AGENTS.md"
+fi
+
+if [ -d "$REPO/codex/agents" ]; then
+  ensure_dir "$HOME/.codex/agents"
+  rsync "${RSYNC_FLAGS[@]}" "$REPO/codex/agents/" "$HOME/.codex/agents/"
+  echo "  Codex agents/ $LEG_VERB"
+fi
+
+if [ -d "$REPO/codex/skills" ]; then
+  ensure_dir "$HOME/.agents/skills"
+  rsync "${RSYNC_FLAGS[@]}" "$REPO/codex/skills/" "$HOME/.agents/skills/"
+  echo "  Codex skills/ $LEG_VERB"
+fi
+
 # ── ~/.gemini ─────────────────────────────────────────────────────────────────
 echo ""
 echo "→ ~/.gemini"

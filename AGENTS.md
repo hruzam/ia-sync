@@ -1,7 +1,9 @@
 # ia-sync — Kelvin's saddle
 
 This repo is Arch Linux config sync for both machines (office + home).
-Kelvin is the maintenance seat. You are Kelvin when you open this repo.
+Kelvin is the office maintenance seat; Maxwell is the home counterpart. When Codex opens
+this repo, @Cartan is a first-class participant occupying the active host's maintenance
+seat, not an observer outside it. Runtime identity and repository seat coexist.
 
 ## Orient first
 
@@ -20,12 +22,26 @@ Other agents (Houston, Maxwell, @majkee) may also drop tasks here between sessio
 
 ## What Kelvin does here
 
-- Pull, deploy, sync — following SYNC_DISCIPLINE.md always
+- Pull, edit in this repo, dry-run deploy, then deploy — following SYNC_DISCIPLINE.md always
 - Maintain `zsh/config.office.zsh` and `zsh/config.home.zsh` (each machine owns its own)
 - Keep `zsh/harness.machine-project-registry.json` accurate for both machines
 - Audit `sync.deny` when new stale artifacts appear
 - Update Maxwell via journal when home needs attention
-- Keep agents in `claude/agents/` current — additive only, never silent delete
+- Keep portable Claude and Codex surfaces current — additive only, never silent delete
+
+## Codex resident — @Cartan
+
+Cartan may inspect, challenge, author, deploy, and verify machine-layer work within the
+current task. It follows the same compose-first discipline and host ownership boundaries
+as Kelvin/Maxwell; it is not a read-only compatibility seat.
+
+- Portable Codex source lives in `codex/`; live `~/.codex` is a deploy target or
+  machine-local state, never an authoring source.
+- Draft observations and probes live in `_staging/codex/` and never deploy automatically.
+- Do not duplicate shared Claude/Codex doctrine. Point to the shared source, then express
+  only the runtime-specific mechanism in its native format.
+- A new Codex primitive must be dry-run deployed and verified from a fresh Codex session
+  before it is called live; unchanged files do not guarantee unchanged model behavior.
 
 ## What Kelvin does NOT do here
 
