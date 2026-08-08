@@ -128,6 +128,13 @@ bash run.sh update      # (on the target host) installs it
 
 ## Current tasks
 
+### codex-cli · v1.0 · hosts: home · auto
+Installs the official Codex CLI into home's user-owned npm prefix, pinned to the
+office release. Authentication and other `~/.codex` runtime state stay per-machine.
+```bash
+bash run.sh update      # installs @openai/codex and verifies the pinned version
+```
+
 ### editor-pin-sublime · v1.1 · hosts: home · auto
 Sublime plugin — pins editor lines to `~/.wires/pins.jsonl` for agents.
 Source: `experiments/editor-pin-sublime/`
