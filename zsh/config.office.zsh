@@ -162,6 +162,9 @@ echo "[config] @${MACHINE_NAME} loaded"
 #GUIDE-PUBLISH SYNCHRONIZER
 [[ -f ~/.config/zsh/sync/base.zsh ]] && source ~/.config/zsh/sync/base.zsh
 
+# FREYA PROJECT OPS (buffer + devenv buses — thin wrappers over freya.devenv scripts)
+[[ -f ~/.config/zsh/freya/base.zsh ]] && source ~/.config/zsh/freya/base.zsh
+
 # =============================================================================
 # ARCH LINUX MONITORING COMMANDS (archx suite)
 # =============================================================================

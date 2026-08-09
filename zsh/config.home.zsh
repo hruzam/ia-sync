@@ -147,5 +147,8 @@ export PIQL_PORT="0"                   # update to match office piql.env.zsh por
 # =============================================================================
 [[ -f ~/.config/zsh/archx/base.zsh ]] && source ~/.config/zsh/archx/base.zsh
 
+# FREYA PROJECT OPS (buffer + devenv buses — thin wrappers over freya.devenv scripts)
+[[ -f ~/.config/zsh/freya/base.zsh ]] && source ~/.config/zsh/freya/base.zsh
+
 if [ -f '/home/hruzam/google-cloud-sdk/path.zsh.inc' ]; then . '/home/hruzam/google-cloud-sdk/path.zsh.inc'; fi
 if [ -f '/home/hruzam/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/hruzam/google-cloud-sdk/completion.zsh.inc'; fi
