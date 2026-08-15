@@ -226,6 +226,18 @@ echo ""
 echo "→ ~/.config/zsh"
 ensure_dir "$HOME/.config/zsh"
 
+# Regenerate generated zsh artifacts from their JSON registries BEFORE the rsync, so
+# the fresh copy deploys. temple-project-map.zsh's array is generated from
+# registries/projects.json (decision 0008/0004 amended 2026-08-15 — paths live in JSON).
+if [ -x "$REPO/zsh/registries/gen-temple-map.sh" ]; then
+  if [ "$DRY" = 1 ]; then
+    bash "$REPO/zsh/registries/gen-temple-map.sh" --check \
+      || echo "  temple-project-map.zsh would be regenerated from projects.json"
+  else
+    bash "$REPO/zsh/registries/gen-temple-map.sh" | sed 's/^/  /'
+  fi
+fi
+
 # Sync everything except machine-specific host files (deployed separately below)
 rsync "${RSYNC_FLAGS[@]}" \
   --exclude='config.*.zsh' \

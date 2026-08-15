@@ -2,7 +2,7 @@
 card: guide.remote-control
 brand: Anthropic — Claude Code · Remote Control
 kind: knowledge-card · RELATIVE (volatile, RAG-refreshable)
-verified: 2026-07-07
+verified: 2026-08-15
 half_life: ~4-6 weeks
 half_life_days: 42
 recheck:
@@ -149,6 +149,44 @@ Script location: `~/.config/zsh/ai/rc.sh`
 
 ---
 
+## Approach B+ — agent-aware engine + `/rc-launch` skill (2026-08-15)
+
+The tmux engine (`ai/rc.sh`) was generalized and a phone-friendly launcher skill added.
+Absorbs the proven `spawn-rc-term.sh` (real pty + render polish), which is now retired.
+
+### What changed in `rc.sh`
+- **Any project** launches, not just the registered trio — paths resolve from
+  `registries/projects.json` (authoritative; `ai.json` path is a fallback for `nabla-lab`,
+  which is intentionally absent from the map).
+- **agent / model / effort** are first-class:
+  `rc.sh <project> [--agent a] [--model m] [--effort e] [--name N] [--detach]`.
+  Defaults come from `ai.json` → `remote-control.launch-defaults` (model=opus, effort=high,
+  per-project agent). Empty agent → claude's default agent (preserves `rc-freya`/`rc-nabla`).
+- **Real pty + render polish** folded in: attach with `tmux -u -2` (UTF-8 glyphs — spinner,
+  pointers, logo — plus 256-color), `allow-passthrough on`, per-session `status off`.
+- **`--detach`** starts a catchable session and prints the three reach lines instead of
+  attaching (the headless / agent / cross-host path). Auto-detaches when there is no TTY.
+
+### `/rc-launch` skill (the phone front)
+Invoke `/rc-launch` and say e.g. "launch flight on nablarva at office". The skill gathers
+`{host, project, agent, model, effort}` — host + project + agent required (asks if missing),
+model + effort default — checks the host is reachable, then dispatches the engine:
+- **local** (host == this box): `bash ai/rc.sh <project> --agent … --detach`
+- **remote** (cross-host): `ssh <user>@<tailscale_dns> -t 'bash ai/rc.sh <project> … --detach'`
+
+### Registries (data lives in JSON; zsh stays a clean executive)
+| file | holds |
+|---|---|
+| `registries/projects.json` | authoritative project → path (GENERATES `temple-project-map.zsh` at deploy via `gen-temple-map.sh`) |
+| `registries/ai.json` → `remote-control.launch-defaults` | model, effort, per-project agent |
+| `registries/hosts.json` | host-label → tailscale identity + locality (cross-host dispatch) |
+
+Cross-host needs the tailnet ssh link working (tailscale ssh or an authorized key). If ssh
+fails, the skill reports the exact command tried — it does not fix auth. Origin of the
+real-pty/glyph findings: `reposoma/raw.guides/remote-control/` (majkee, 2026-08-14/15).
+
+---
+
 ## Approach C — SSH fallback via Tailscale
 
 When no RC session was pre-started and you need access:
@@ -210,5 +248,5 @@ service file in `~/.config/systemd/user/` following the existing pattern. Run
 
 ---
 
-**Last Updated:** 2026-07-07  
+**Last Updated:** 2026-08-15  
 **Machine:** home (Manjaro)

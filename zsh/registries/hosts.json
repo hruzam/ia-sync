@@ -1,0 +1,22 @@
+{
+  "_meta": {
+    "role": "Host registry for RC cross-host dispatch. host-label -> tailscale identity + locality.",
+    "consumer": "ai/rc.sh + the /rc-launch skill. A host is LOCAL iff its machine_name == $MACHINE_NAME (set per-box in config.<machine>.zsh). Otherwise dispatch via: ssh <ssh_user>@<tailscale_dns>.",
+    "provenance": "applications-in-common RC-launcher build, majkee gavel 2026-08-15.",
+    "check": "reachability = `tailscale status --json | jq -e '.Peer[]|select(.DNSName|startswith(<hostname>))|.Online'` or ping the tailscale_dns before dispatch."
+  },
+  "hosts": {
+    "office": {
+      "machine_name": "office",
+      "hostname": "hruzam-120922",
+      "tailscale_dns": "hruzam-120922.tail36b8ab.ts.net",
+      "ssh_user": "hruzam"
+    },
+    "home": {
+      "machine_name": "home",
+      "hostname": "hruzam",
+      "tailscale_dns": "hruzam.tail36b8ab.ts.net",
+      "ssh_user": "hruzam"
+    }
+  }
+}

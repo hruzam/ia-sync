@@ -4,25 +4,33 @@
   "remote-control": {
     "projects": {
       "freya": {
-        "path": "/home/hruzam/www/imago_cz/freya",
         "tmux_session": "rc-freya",
         "rc_name": "Freya",
         "service": "claude-rc-freya.service",
         "available": true
       },
       "reposoma": {
-        "path": "/home/hruzam/reposoma",
         "tmux_session": "rc-reposoma",
         "rc_name": "Reposoma",
         "service": "claude-rc-reposoma.service",
         "available": true
       },
       "nabla-lab": {
+        "_path_note": "nabla-lab is intentionally absent from projects.json (subdir of reposoma per temple-map). This path is the ONLY source for it — rc.sh _project_path falls back here.",
         "path": "/home/hruzam/nabla-lab",
         "tmux_session": "rc-nabla-lab",
         "rc_name": "Nabla Lab",
         "service": "claude-rc-nabla-lab.service",
         "available": true
+      }
+    },
+    "launch-defaults": {
+      "_note": "Defaults for the rc-launch skill/engine. PATH is NOT here — it resolves via temple-project-root (registries/projects.json). agent has NO global default on purpose: it is required, and the launcher asks if a project has no per-project agent below.",
+      "model": "opus",
+      "effort": "high",
+      "per-project": {
+        "nablarva": { "agent": "flight" },
+        "reposoma": { "agent": "atlas-ui" }
       }
     }
   }

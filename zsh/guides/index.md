@@ -24,7 +24,7 @@
 | fix/reinstall the Gemini CLI itself (npm EACCES, allow-scripts warning) | `guide-for-user.md` §ai-install :: gemini | `gemini --version` |
 | add a new Gemini agent seat / new engine or scope | `guide-for-builder.md` (**LAW** — pattern-read before writing) | — |
 | check / refresh stale AI settings cards | `guide-harness-check.md` | `harness-stale` |
-| run Claude Code from the phone | `remote.md` | `rc-status` · `rc-*` |
+| run Claude Code from the phone | `remote.md` | `rc-status` · `rc-*` · `/rc-launch` |
 | snapshot a project tree as JSON | `toolbox.tree-converter.md` | `tree-snapshot <project>` |
 | see the curated keyboard map + grammar | `keyboard.md` | `ai-help` |
 | machine facts (hardware, PHP, paths) | `office.md` / `home.md` | — |
@@ -46,7 +46,7 @@ Panel = help functions wired by `ai/keyboard.zsh`. Lost? `ai-help` is the curate
 | `guide-harness-check.md` | operator | office | card-freshness checker: `harness-stale`, systemd units, actioning alerts | 2026-07-11 | — |
 | `keyboard.md` | operator+agent | office | the claviature: grammar (**LOCKED**), key map P1–12, shim class | 2026-07-11 | — |
 | `claviature.global.spec.md` | builder+operator | office | global claviature: design locked + **BUILT** (`keys` panel; operator-finger gate pending) | 2026-07-11 | — |
-| `remote.md` | operator | office | Claude Code Remote Control: A (systemd) + B (rc.sh/tmux) — knowledge card, volatile | 2026-07-07 | — |
+| `remote.md` | operator | office | Claude Code Remote Control: A (systemd) · B (rc.sh/tmux) · B+ (agent-aware engine + `/rc-launch` skill, cross-host) — knowledge card, volatile | 2026-08-15 | — |
 | `toolbox.tree-converter.md` | operator+agent | both | tree-snapshot usage + tcr configs | 2026-07-11 | — |
 | `office.md` | operator+agent | office | machine profile: hardware, dual-FPM PHP, valet routing | 2026-07-02 | `sudoers.valet-php.conf` (deployable — install path in its own header) |
 | `home.md` | operator+agent | home | machine profile: hardware, services, tools | 2026-06-28 | — |

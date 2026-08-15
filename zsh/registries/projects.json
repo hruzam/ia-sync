@@ -1,0 +1,23 @@
+{
+  "_meta": {
+    "role": "AUTHORITATIVE physical repo-root paths. Single source of truth (decision 0008/0004, amended 2026-08-15: paths were inline in ai/temple-project-map.zsh, now live HERE).",
+    "generates": "ai/temple-project-map.zsh — its TEMPLE_PROJECT_MAP array is GENERATED from this file at deploy time (deploy.sh runs registries/gen-temple-map.sh). NEVER hand-edit that array; edit THIS file.",
+    "companion": "reposoma/registry/index.md — logical project map. THIS file holds the physical disk paths.",
+    "layout": "folder layout is 1:1 on office and home; paths are identical on both hosts.",
+    "omitted": "nabla-lab -> subdir of reposoma; resolves via [reposoma], no separate entry."
+  },
+  "projects": {
+    "reposoma": "/home/hruzam/reposoma",
+    "subai.devenv": "/home/hruzam/www/ovum/subai.devenv",
+    "reposoma.devenv": "/home/hruzam/www/ovum/reposoma.devenv",
+    "freya": "/home/hruzam/www/imago_cz/freya",
+    "freya.devenv": "/home/hruzam/www/imago_cz/freya.devenv",
+    "piql.dev": "/home/hruzam/www/piql/piql.dev",
+    "vacuole": "/home/hruzam/vacuole",
+    "fantasyobchod": "/home/hruzam/www/imago_cz/fantasyobchod",
+    "psdvsSys": "/home/hruzam/www/psdvs/psdvsSys",
+    "applications-in-common": "/home/hruzam/www/elements-factory/applications-in-common",
+    "nablarva": "/home/hruzam/unikuklatrix/nablarva",
+    "nablarva.devenv": "/home/hruzam/unikuklatrix/nablarva.devenv"
+  }
+}
