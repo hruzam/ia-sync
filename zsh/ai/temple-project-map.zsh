@@ -26,7 +26,6 @@ TEMPLE_PROJECT_MAP=(
   [applications-in-common]="/home/hruzam/www/elements-factory/applications-in-common"
   [nablarva]="/home/hruzam/unikuklatrix/nablarva"
   [nablarva.devenv]="/home/hruzam/unikuklatrix/nablarva.devenv"
-  [termbrana]="/home/hruzam/unikuklatrix/termbrana"
 )
 
 # temple-project-root <project-name>
