@@ -126,12 +126,15 @@ _start() {
 
 _stop() {
   local project="$1" rcname; rcname=$(_rc_name "$project")
-  local pid; pid=$(_server_pid "$rcname")
-  if [ -n "$pid" ]; then
-    # kill both the script wrapper (mode B) and the claude child
-    pkill -f -- "remote-control.*$(printf '%s' "$rcname" | sed 's/[][\\.*^$/]/\\&/g')" 2>/dev/null
-    pkill -f -- "$rcname" 2>/dev/null
-    echo "rc.sh: stopped RC session '$rcname' (was pid $pid)"
+  # collect the EXACT pids (script wrapper + claude child) and kill only those —
+  # never a broad `pkill -f <name>`, which would match any process (ssh wrappers,
+  # editors, this very command) that merely mentions the rc_name.
+  local pids
+  pids=$(pgrep -af -- 'remote-control' 2>/dev/null | grep -F -- "$rcname" | awk '{print $1}')
+  if [ -n "$pids" ]; then
+    # shellcheck disable=SC2086
+    kill $pids 2>/dev/null
+    echo "rc.sh: stopped RC session '$rcname' (pids: $(echo $pids | tr '\n' ' '))"
   else
     echo "rc.sh: not running: '$rcname'"
   fi
