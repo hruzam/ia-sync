@@ -919,6 +919,11 @@ Codex session to verify `~/.codex/AGENTS.md` loads; do not harvest live Codex st
   freya.devenv source and live `.codex/agents/`. Future agents/harness should grow from
   that native surface one observed role at a time: W1 stays Boost-local, W3 Codex state
   uses the scoped devenv lane, and app-code alone rides `freya-buffer`.
+- A fresh Freya Codex probe initially recognized Cartan + Laravel but guessed the W1 owner
+  and agent filename. Added a local W3 `developer_instructions` bridge in
+  `freya/.codex/config.toml`; the second ephemeral read-only probe correctly returned
+  `W1 Laravel Boost output` + `phonon.toml`. The bridge remains intentionally unsynced
+  until the already-dirty freya.devenv repo can enter its scoped Codex lane safely.
 - Safety gate left for Medusa/@majkee: Freya declares `.dev/` W3/gitignored, but this clone
   shows it untracked and neither ignore surface covers it. The buffer clean-tree guard also
   ignores untracked files. `freya.devenv` had unrelated in-progress changes, so no pull,
