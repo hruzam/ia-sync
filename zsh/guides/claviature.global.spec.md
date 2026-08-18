@@ -38,7 +38,8 @@ family surfaces in UNSORTED — **the naming grammar becomes a live drift-detect
   drift detector nobody can read detects nothing; internals are not keyboard keys. `--all`
   is the escape hatch — nothing is invisible, only folded.
 - **Baseline at build:** 120 genuine UNSORTED keys (session_* · substrate_* ~47 fns · piql-* ·
-  php* · composer* · +vi-* · misc). **This is the lazy-retrofit backlog made visible** —
+  ~~php* · composer*~~ (registered under PHP / Composer 2026-08-18) · +vi-* · misc).
+  **This is the lazy-retrofit backlog made visible** —
   register families (one line each) as subfolders get touched; the two project audits are
   expected to consume part of this list.
 - **Agent form:** `zsh -c 'source ~/.config/zsh/ai/base.zsh && keys --plain'`.

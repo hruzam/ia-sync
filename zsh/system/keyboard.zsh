@@ -1,7 +1,7 @@
 #!/usr/bin/env zsh
 # system/keyboard.zsh — system scope control panel
 # Rule: aliases and comments ONLY — no function bodies.
-# Bodies live in scope engines (tailscale.zsh, shell.zsh).
+# Bodies live in scope engines (tailscale.zsh, shell.zsh, host PHP engines).
 # Law: ~/.config/zsh/guides/guide-for-builder.md §Architecture rules
 
 # ── Tailscale ──────────────────────────────────────────────────────────────────
@@ -30,3 +30,12 @@ alias hasz='openssl rand -hex 12 | cut -c 1-21'  # random 21-char hex token
 alias cod="php -r 'echo uniqid(). PHP_EOL;'"     # PHP uniqid
 alias mygrep='grep -Hrn'               # recursive grep with line numbers
 alias msrc='_msrc'                     # search www tree · arg = pattern
+
+# ── PHP + Composer (same keys; host-specific engines) ─────────────────────────
+# Bodies in: system/home.php-composer.zsh or system/office.php-switch.zsh
+alias php74='_php74'                   # PHP 7.4 · home Docker / office FPM
+alias php8='_php8'                     # PHP 8+ · home native / office FPM
+alias phpst='_phpst'                   # host runtime status
+alias composer74='_composer74'         # Composer on PHP 7.4
+alias composer8='_composer8'           # Composer on PHP 8+
+alias tmcp='_test_mariadb_mcp'          # office MariaDB MCP stdio probe

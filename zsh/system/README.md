@@ -18,13 +18,28 @@ read before touching any file here.
 | `tailscale.zsh` | Tailscale engine | `_ts_ls` `_ts_header` `_ts_ping` `_ts_ssh` `_ts_session` `_ts_dash` `_ts_dash_stop` `_ts_web` `_ts_help` |
 | `ts-dash.py` | Python HTTP dashboard server — called by `_ts_dash` | — |
 | `shell.zsh` | General shell utilities engine | `_msrc` |
-| `office.php-switch.zsh` | PHP version switcher — office only (`$MACHINE_NAME` guard) | `php74` `php8` `phpst` |
+| `home.php-composer.zsh` | Home PHP/Composer engine — Docker PHP 7.4 + Composer, native PHP 8+ | `_php74` `_php8` `_phpst` `_composer74` `_composer8` |
+| `office.php-switch.zsh` | Office PHP/Composer engine — native CLI + concurrent FPM services | `_php74` `_php8` `_phpst` `_composer74` `_composer8` |
 
 @majkee edits `dashboard.md` directly to change the startup dashboard content — no code changes are needed for content edits.
 
 ---
 
-## Command surface (tailscale scope)
+## Command surface
+
+### PHP + Composer
+
+The keys are identical on both hosts; the engine follows each machine's runtime:
+
+| Alias | Home | Office |
+|---|---|---|
+| `php74 [args]` | PHP 7.4 CLI in `php74-composer` Docker image | start `php74-fpm` + status |
+| `php8 [args]` | native `/usr/bin/php` (PHP 8+) | start `php-fpm` + status |
+| `phpst` | Docker/image/native CLI status | both FPMs, sockets, and CLI versions |
+| `composer74 [args]` | `php74-composer` Docker image | `/usr/bin/php74 /usr/bin/composer` |
+| `composer8 [args]` | `composer:latest` Docker image | native `/usr/bin/composer` |
+
+### Tailscale
 
 Run `ts-help` in the shell for the live panel. Reference:
 
@@ -49,7 +64,7 @@ Run `ts-help` in the shell for the live panel. Reference:
 Three steps, in order:
 
 **1. Write the body in the correct engine** (`tailscale.zsh` for tailscale commands,
-`shell.zsh` for general shell utilities):
+`shell.zsh` for general shell utilities, or the host PHP engine):
 
 ```zsh
 _ts_mycommand() {
@@ -85,8 +100,3 @@ Both files are sourced from `config.zsh` (and `config.home.zsh` for home):
 `_ts_header` is called once after sourcing to print the peer status line on shell open.
 
 ---
-
-## Pending work
-
-- **office.php-switch.zsh** — not yet split into keyboard/engine. Low priority:
-  office-only, rarely touched.

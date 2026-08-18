@@ -132,7 +132,7 @@ lrv() {
 # Freya runs Octane+RoadRunner; site served by Valet at http://freya.l
 # For hot-reload dev: use 'imoctane' after imst
 imdev() {
-    php8_on
+    _php8
     cd "$PROJECT_IM_PATH" || return 1
     ${PREFERRED_EDITOR:-subl} . &
     printf "\n  [imdev] Freya session started\n"
@@ -148,7 +148,7 @@ alias imoctane='cd "$PROJECT_IM_PATH" && php artisan octane:start --server=roadr
 
 # Start FantasyObchod dev session: PHP 7.4 FPM + cd + editor
 fodev() {
-    php74_on
+    _php74
     cd "$PROJECT_FO_PATH" || return 1
     ${PREFERRED_EDITOR:-subl} . &
     printf "\n  [fodev] FantasyObchod session started\n"
@@ -185,15 +185,13 @@ EOF
 }
 
 # =============================================================================
-# COMMON LARAVEL/COMPOSER ALIASES
+# COMMON LARAVEL ALIASES
 # =============================================================================
 alias art='php artisan'                     # php artisan shortcut
 alias tinker='php artisan tinker'            # php artisan tinker REPL
 alias migrate='php artisan migrate'          # php artisan migrate
 alias fresh='php artisan migrate:fresh --seed'  # drop + re-migrate + reseed the DB
 alias serve='php artisan serve'              # php artisan serve (dev HTTP server)
-alias composer74='$PHP74_BIN $COMPOSER_BIN'  # composer via the PHP 7.4 binary
-alias composer8='$PHP8_BIN $COMPOSER_BIN'    # composer via the PHP 8.x binary
 
 # =============================================================================
 # PROJECTS SCOPE HELP (projects/ control panel entry point — projects-help)

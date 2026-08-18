@@ -44,65 +44,6 @@ if [[ "$MACHINE_NAME" == "home" ]]; then
 fi
 
 # =============================================================================
-# COMPOSER CONFIGURATION (@home uses Docker)
-# =============================================================================
-
-unalias composer74 2>/dev/null
-unalias composer8 2>/dev/null
-
-_check_docker() {
-    if ! command -v docker &> /dev/null; then
-        echo "[ERROR] Docker not installed"
-        echo "[FIX]   sudo pacman -S docker"
-        return 1
-    fi
-    if ! systemctl is-active --quiet docker 2>/dev/null; then
-        echo "[ERROR] Docker service not running"
-        echo "[FIX]   sudo systemctl start docker"
-        return 1
-    fi
-    if ! groups | grep -q docker; then
-        echo "[ERROR] User not in docker group"
-        echo "[FIX]   sudo usermod -aG docker $USER && logout/login"
-        return 1
-    fi
-    return 0
-}
-
-composer74() {
-    _check_docker || return 1
-    
-    if ! docker image inspect php74-composer &> /dev/null; then
-        echo "[SETUP] Building php74-composer image (one-time)..."
-        docker build -t php74-composer ~/.docker/php74-composer/
-    fi
-    
-    mkdir -p "$HOME/.composer/cache"
-    
-    docker run --rm -it \
-      -v "$(pwd)":/app \
-      -v "$HOME/.composer":/composer \
-      -e COMPOSER_HOME=/composer \
-      -e COMPOSER_CACHE_DIR=/composer/cache \
-      php74-composer \
-      --ignore-platform-req=ext-posix \
-      --ignore-platform-req=ext-pcntl \
-      "$@"
-}
-
-composer8() {
-    _check_docker || return 1
-    docker run --rm -it \
-      -v "$(pwd)":/app \
-      -v "$HOME/.composer:/tmp/composer" \
-      -u $(id -u):$(id -g) \
-      composer:latest \
-      --ignore-platform-req=ext-posix \
-      --ignore-platform-req=ext-pcntl \
-      "$@"
-}
-
-# =============================================================================
 # Larva FROM 2026-02-28
 # =============================================================================
 

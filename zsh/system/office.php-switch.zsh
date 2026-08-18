@@ -19,33 +19,33 @@
 #   - Broken on Arch (expects php7.4-fpm, package is php74-fpm)
 #   - Calls systemctl disable on the other FPM → breaks boot state
 #   - Requires sudo password
-#   Use `php74` / `php8` aliases below instead.
+#   Use the `php74` / `php8` keys from system/keyboard.zsh instead.
 #
 # REQUIRES:
 #   - /etc/sudoers.d/valet-php (passwordless systemctl for FPM + nginx)
 #   - Both services enabled on boot: sudo systemctl enable php74-fpm php-fpm
 # =============================================================================
 
-# Office-only: home manages PHP via Docker (config.home.zsh). Inert elsewhere.
+# Office-only: home uses system/home.php-composer.zsh. Inert elsewhere.
 [[ "$MACHINE_NAME" != "office" ]] && return 0
 
-# php74_on — start PHP 7.4 FPM (valet74.sock) + show status; alias: php74
-php74_on() {
+# _php74 — start PHP 7.4 FPM (valet74.sock) + show status; key: php74
+_php74() {
     # Start PHP 7.4 FPM → creates ~/.valet/valet74.sock
     # Sites: fantasyobchod.l, imagosk.l
     sudo systemctl start "$PHP74_FPM_SERVICE" 2>/dev/null
-    phpst
+    _phpst
 }
 
-# php8_on — start PHP 8.x FPM (valet.sock) + show status; alias: php8
-php8_on() {
+# _php8 — start PHP 8.x FPM (valet.sock) + show status; key: php8
+_php8() {
     # Start PHP 8.x FPM → creates ~/.valet/valet.sock
     # Sites: freya.l and all other Valet-served projects
     sudo systemctl start "$PHP8_FPM_SERVICE" 2>/dev/null
-    phpst
+    _phpst
 }
 
-phpst() {
+_phpst() {
     local s74=$(systemctl is-active "$PHP74_FPM_SERVICE" 2>/dev/null)
     local s8=$(systemctl is-active  "$PHP8_FPM_SERVICE" 2>/dev/null)
     local sock74=$([[ -S ~/.valet/valet74.sock ]] && echo "socket ok" || echo "no socket ⚠")
@@ -60,6 +60,14 @@ phpst() {
     printf "  CLI php74 : $(${PHP74_BIN:-/usr/bin/php74} -r 'echo PHP_VERSION;' 2>/dev/null)\n\n"
 }
 
+_composer74() {
+    "${PHP74_BIN:-/usr/bin/php74}" "${COMPOSER_BIN:-/usr/bin/composer}" "$@"
+}
+
+_composer8() {
+    "${COMPOSER_BIN:-/usr/bin/composer}" "$@"
+}
+
 # --- Adding a new PHP 8.x project ---
 # 1. cd ~/www/imago_cz/<project>   (or wherever the project lives)
 # 2. valet link <sitename>
@@ -71,15 +79,12 @@ phpst() {
 # 3. Edit server_name in the new file
 # 4. sudo systemctl reload nginx
 
-alias php74='php74_on'  # start PHP 7.4 FPM + show status
-alias php8='php8_on'    # start PHP 8.x FPM + show status
-
 #############
 # test maria db connection
 #############
 
-# test-mariaDB-mcp — probe the mariadb-mcp server over stdio (init + tools/list); alias: tmcp
-test-mariaDB-mcp() {
+# _test_mariadb_mcp — probe the mariadb-mcp server over stdio; key: tmcp
+_test_mariadb_mcp() {
 
     (
         echo '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2024-11-05","capabilities":{},"clientInfo":{"name":"test","version":"0.0.1"}}}'
@@ -89,5 +94,3 @@ test-mariaDB-mcp() {
     ) | php -d extension=iconv /home/hruzam/www/mariadb-mcp/server.php | head -20
 
 }
-
-alias tmcp="test-mariaDB-mcp"  # alias for test-mariaDB-mcp

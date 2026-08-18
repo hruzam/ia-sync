@@ -96,8 +96,6 @@ projects	tinker	php artisan tinker REPL	projects/im-toolkit.zsh
 projects	trajectory	Claude CLI executor	projects/larva.zsh
 projects	zenit	Gemini CLI (deep research)	projects/larva.zsh
 root	art	php artisan shortcut	project-switcher.zsh
-root	composer74	composer via the PHP 7.4 binary	project-switcher.zsh
-root	composer8	composer via the PHP 8.x binary	project-switcher.zsh
 root	fodev	Start FantasyObchod dev session: PHP 7.4 FPM + cd + editor	project-switcher.zsh
 root	fost	alias for fodev — start FantasyObchod dev session	project-switcher.zsh
 root	fresh	drop + re-migrate + reseed the DB	project-switcher.zsh
@@ -121,18 +119,17 @@ root	tinker	php artisan tinker REPL	project-switcher.zsh
 sync	sync-guides	one-way publish: project guides -> reposoma raw.guides mirror	sync/guides.zsh
 sync	sync-help	this panel	sync/guides.zsh
 system	cod	PHP uniqid	system/keyboard.zsh
+system	composer74	Composer on PHP 7.4	system/home.php-composer.zsh
+system	composer8	Composer on PHP 8+	system/home.php-composer.zsh
 system	hasz	random 21-char hex token	system/keyboard.zsh
 system	msrc	search www tree · arg = pattern	system/shell.zsh
 system	mygrep	recursive grep with line numbers	system/keyboard.zsh
 system	ord	list newest last	system/keyboard.zsh
-system	php74	-> Switch to PHP 7.4	system/office.php-switch.zsh
-system	php74_on	php74_on — start PHP 7.4 FPM (valet74.sock) + show status; alias: php74	system/office.php-switch.zsh
-system	php8	-> Switch to PHP 8.x	system/office.php-switch.zsh
-system	php8_on	php8_on — start PHP 8.x FPM (valet.sock) + show status; alias: php8	system/office.php-switch.zsh
-system	phpst	-> Show PHP status	system/office.php-switch.zsh
+system	php74	-> Switch to PHP 7.4	system/home.php-composer.zsh
+system	php8	-> Switch to PHP 8.x	system/home.php-composer.zsh
+system	phpst	-> Show PHP status	system/home.php-composer.zsh
 system	src	reload shell config	system/keyboard.zsh
-system	test-mariaDB-mcp	test-mariaDB-mcp — probe the mariadb-mcp server over stdio (init + tools/list); alias: tmcp	system/office.php-switch.zsh
-system	tmcp	alias for test-mariaDB-mcp	system/office.php-switch.zsh
+system	tmcp	office MariaDB MCP stdio probe	system/home.php-composer.zsh
 system	ts-dash	start HTTP status dashboard (port %s)	system/tailscale.zsh
 system	ts-dash-stop	stop dashboard	system/tailscale.zsh
 system	ts-header	compact startup line (called on shell open)	system/tailscale.zsh

@@ -62,7 +62,8 @@ Pattern, generalized from `ai/` (the reference implementation):
 | `sync/guides.zsh` | `config.zsh` | Guide-publish synchronizer |
 | `archx/commands.zsh` | `config.zsh` | Arch monitoring suite |
 | `system/shell.zsh` | `config.zsh` | Shell helpers |
-| `system/office.php-switch.zsh` | `config.zsh` | `php74 / php8 / phpst` — office-dedicated (home switches PHP via Docker in `config.home.zsh`); `$MACHINE_NAME` guard keeps it inert elsewhere. The `office.` prefix was briefly lost (which silently killed php8/phpst); restored 2026-07-07 |
+| `system/home.php-composer.zsh` | `system/base.zsh` on home | `_php74 / _php8 / _phpst / _composer74 / _composer8` — Docker PHP 7.4 + both Composer lanes; native PHP 8+ |
+| `system/office.php-switch.zsh` | `system/base.zsh` on office | Same keyboard targets with native CLI + concurrent FPM/socket routing; `$MACHINE_NAME` guard keeps it inert elsewhere |
 | `.env/secrets.zsh` | `config.zsh` | API keys (GEMINI, OPENAI, etc.) |
 | `.env/fo-db.cnf` | `mariadb --defaults-extra-file` via `fo -db` | Local MariaDB client credentials (mode 600; `.env` is sync.deny'd) |
 | `registries/ai.json` | `ai/rc.sh`, `ai/keyboard.zsh`, `ai/harness-check.zsh` | AI runtime registry (remote-control projects etc.) |

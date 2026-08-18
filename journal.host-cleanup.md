@@ -890,3 +890,44 @@ Codex session to verify `~/.codex/AGENTS.md` loads; do not harvest live Codex st
 - None. Task complete. Substrate mail to Houston is being handled by Flight.
 
 — Maxwell / home, 2026-08-18
+
+---
+
+## HOME — 2026-08-18 · PHP/Composer keyboard + Cartan/Freya handoff
+
+- Verified the active frame first-person: hostname `hruzam` → `home`; Tailscale self ID
+  `noiwh7hy4211CNTRL`. Office peer `hruzam-120922` was online with registered ID
+  `n5f4JzTU5Z11CNTRL`. `ia-sync` pull was already current.
+- Repaired the home Composer shadowing bug: `config.home.zsh` defined Docker functions,
+  then `project-switcher.zsh` overwrote them with aliases to undefined home variables.
+  PHP/Composer keys now live in `system/keyboard.zsh`; host implementations live in
+  `system/home.php-composer.zsh` and `system/office.php-switch.zsh`.
+- Home runtime verified live: PHP 7.4.33 (`php74-composer` Docker), PHP 8.5.8 native,
+  Composer 2.2.24 on PHP 7.4, Composer 2.9.5 in `composer:latest`. Repo↔live hashes match.
+- Removed the retired ia-sync harvest leg from home `zsync`; it is now
+  pull --rebase → deploy → status. `sync.sh` remains retired.
+- `bash deploy.sh --dry-run` showed only intended zsh changes; full home deploy completed.
+  Codex global AGENTS + shared skill remained byte-equal to portable source; CLI 0.147.0
+  is logged in.
+- Freya uses its own split transport: `fb-*` for app-code journal, freya.devenv for
+  Boost/W2/W3 agentive state. Office and home Composer manifests + Boost 2.4.10 matched;
+  mirrored only the missing gitignored W1 Freya `AGENTS.md` to home. No auth/cache copied.
+- Started the requested Claude channel at
+  `~/www/imago_cz/freya/.dev/session/codex-claude/README.md`; sibling pointer:
+  `~/www/imago_cz/medusa.md`.
+- Freya's Codex-native bed already contains the W3 `phonon.toml` implementer in both
+  freya.devenv source and live `.codex/agents/`. Future agents/harness should grow from
+  that native surface one observed role at a time: W1 stays Boost-local, W3 Codex state
+  uses the scoped devenv lane, and app-code alone rides `freya-buffer`.
+- Safety gate left for Medusa/@majkee: Freya declares `.dev/` W3/gitignored, but this clone
+  shows it untracked and neither ignore surface covers it. The buffer clean-tree guard also
+  ignores untracked files. `freya.devenv` had unrelated in-progress changes, so no pull,
+  sync, deploy, stage, or force was run there.
+- Preserved unrelated untracked ia-sync file
+  `install-pkgs/maintenance/tailscale-remote-mobile -control.png`.
+
+**Office next:** after this commit lands, pull ia-sync, run `bash deploy.sh --dry-run`, then
+deploy and smoke `type php74 php8 phpst composer74 composer8`. Office mechanisms remain
+native PHP/Composer + concurrent FPM/socket routing; only the shared keyboard boundary moved.
+
+— @Cartan / home, 2026-08-18

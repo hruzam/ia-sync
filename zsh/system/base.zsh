@@ -11,12 +11,11 @@
 #           source line — that is genuine "work" (prints), not a definition,
 #           so it does not belong in a signpost. Unchanged from pre-WP5.
 #
-# Scope: system — shell utilities + Tailscale + PHP version switching.
+# Scope: system — shell utilities + Tailscale + host-specific PHP/Composer.
 # Reach differs by machine (pre-existing, not introduced by this retrofit):
 #   office: keyboard + tailscale + shell.zsh + office.php-switch.zsh
-#   home:   keyboard + tailscale only (shell.zsh / office.php-switch.zsh were
-#           never sourced on home — preserved exactly, not a WP5 decision)
-# PARTITIONS 3-4 below are MACHINE_NAME-guarded to reproduce that split
+#   home:   keyboard + tailscale + home.php-composer.zsh
+# PARTITIONS 3-5 below are MACHINE_NAME-guarded to reproduce that split
 # exactly, mirroring the guard idiom office.php-switch.zsh already uses
 # internally (not a new mechanism).
 #
@@ -49,6 +48,11 @@
 [[ "$MACHINE_NAME" == "office" && -f ~/.config/zsh/system/office.php-switch.zsh ]] && source ~/.config/zsh/system/office.php-switch.zsh
 
 # -----------------------------------------------------------------------------
-# PARTITION 5: startup dashboard engine (cross-machine — both home + office)
+# PARTITION 5: home PHP/Composer engine (Docker PHP 7.4 + Composer; native PHP 8+)
+# -----------------------------------------------------------------------------
+[[ "$MACHINE_NAME" == "home" && -f ~/.config/zsh/system/home.php-composer.zsh ]] && source ~/.config/zsh/system/home.php-composer.zsh
+
+# -----------------------------------------------------------------------------
+# PARTITION 6: startup dashboard engine (cross-machine — both home + office)
 # -----------------------------------------------------------------------------
 [[ -f ~/.config/zsh/system/dashboard.zsh ]] && source ~/.config/zsh/system/dashboard.zsh

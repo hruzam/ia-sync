@@ -120,9 +120,9 @@ sudo usermod -aG docker $USER
 ### Project-Specific Images
 Your projects may require custom Docker images:
 - `php74-composer` — For FantasyObchod (PHP 7.4)
-- `php8-composer` — For modern projects
+- `composer:latest` — Composer for modern PHP projects
 
-Check `~/.docker/php74-composer/` and `~/.docker/php8-composer/` for Dockerfiles.
+The local PHP 7.4 Dockerfile lives at `~/.docker/php74-composer/Dockerfile`.
 
 ---
 
@@ -132,9 +132,16 @@ Check `~/.docker/php74-composer/` and `~/.docker/php8-composer/` for Dockerfiles
 
 #### Home Setup (uses Docker)
 ```bash
-composer74 <args>    # FantasyObchod via Docker
-composer8 <args>     # Modern projects via Docker
+php74 [args]         # PHP 7.4 CLI via php74-composer Docker image
+php8 [args]          # Native system PHP 8+
+phpst                # Show Docker/image/native runtime status
+composer74 <args>    # Composer 2.2 + PHP 7.4 via Docker
+composer8 <args>     # Current Composer image via Docker
 ```
+
+These keys live in `system/keyboard.zsh`; bodies are in
+`system/home.php-composer.zsh`. The keyboard is shared with office, but each host loads
+its own engine.
 
 #### Configuration
 - **Composer Home:** `~/.composer/`
@@ -410,7 +417,8 @@ and being retired on home. Office declares these as inline exports in `config.zs
 - **Project Paths:** `~/www/` (home) vs ~~`/media/data/projects/`~~ → **`~/projects/`** (office).
   `/media/data/projects` was declared an empty unmounted husk 2026-07-07 and repointed;
   the old value here was stale. Authoritative map: `ai/temple-project-map.zsh`.
-- **PHP Binaries:** Docker-based (home) vs native, both versions concurrent (office).
+- **PHP Binaries:** PHP 7.4 is Docker-based on home; PHP 8+ is native. Both are native and
+  both FPM services run concurrently on office.
   See the split table in `~/.config/zsh/AGENTS.md` — office runs `php74-fpm` and `php-fpm`
   simultaneously with nginx socket routing; home invokes a container per composer call.
 

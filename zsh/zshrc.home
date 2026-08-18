@@ -12,11 +12,9 @@ fi
 # =============================================================================
 # TEMPORARY
 # =============================================================================
-# Full ritual, discipline-ordered: pull --rebase → DEPLOY (repo→live, so a behind
-# machine levels up first) → sync (live→repo, now contributes only genuine novelty)
-# → status. Deploy-before-sync is a hard precondition (journal 2026-07-28) — a sync
-# from a stale machine --deletes the other side's skills/commands out of the repo.
-alias zsync='cd ~/ia-sync && git pull --rebase origin main && bash deploy.sh && bash sync.sh && git status'
+# Current compose-first receive path: pull → deploy → status. The retired sync.sh
+# harvest leg must never run from this key (SYNC_DISCIPLINE.md, 2026-07-31).
+alias zsync='cd ~/ia-sync && git pull --rebase origin main && bash deploy.sh && git status'
 
 # =============================================================================
 # PROJECT SWITCHER SYSTEM
@@ -72,4 +70,3 @@ alias dbfr="freya && /usr/bin/mariadb -u majkee -p freya"
 # =============================================================================
 export PATH=~/.npm-global/bin:$PATH
 export PATH="$HOME/.local/bin:$PATH"
-
