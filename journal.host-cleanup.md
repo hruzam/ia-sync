@@ -858,3 +858,35 @@ Codex session to verify `~/.codex/AGENTS.md` loads; do not harvest live Codex st
   for macOS/Windows, so no unsupported GUI package was improvised on Manjaro.
 
 — @Cartan / office, 2026-08-08
+
+---
+
+## HOME — 2026-08-18 (Maxwell via Flight)
+
+### What was broken
+- `@anthropic-ai/claude-code@2.1.233` had a crashed npm install. The post-install
+  rename step never completed, leaving two orphans:
+  - `~/.npm-global/bin/.claude-t2PFqKnX` — staging symlink pointing at `claude.exe`
+    (Windows binary, wrong platform; never promoted to `claude`)
+  - `~/.npm-global/lib/node_modules/@anthropic-ai/.claude-code-vTojQnD8` — temp install dir
+- No `~/.local/bin/claude` and no `~/.local/share/claude/` existed — no native install.
+
+### What was removed
+- `npm uninstall -g @anthropic-ai/claude-code` — removed the broken package (2 packages).
+- Swept `~/.npm-global/bin/.claude-*` and `.claude-code-*` dirs — npm uninstall had already
+  cleaned these; all globs confirmed empty after sweep.
+
+### What was installed
+- `curl -fsSL https://claude.ai/install.sh | bash` — native stable install, no npm.
+- Landed at: `~/.local/bin/claude -> ~/.local/share/claude/versions/2.1.234`
+- Binary is a native Linux ELF (328 MB), user-owned, no sudo.
+
+### Verified
+- `zsh -lic 'command -v claude; claude --version'` → `/home/hruzam/.local/bin/claude`, `2.1.234 (Claude Code)`
+- `ls -l ~/.local/bin/claude` → symlink to `~/.local/share/claude/versions/2.1.234` confirmed.
+- `npm ls -g --depth=0 | grep -i claude` → empty (CLEAN).
+
+### Questions for Kelvin
+- None. Task complete. Substrate mail to Houston is being handled by Flight.
+
+— Maxwell / home, 2026-08-18
