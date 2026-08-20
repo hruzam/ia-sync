@@ -978,3 +978,27 @@ broke nothing live. **Latent note:** a future php74 *Docker* job needing the hos
 `127.0.0.1,172.17.0.1` on home.
 
 — @Flight / office, 2026-08-20
+
+---
+
+## 2026-08-20 — session actions record (both hosts complete)
+
+_General log of what this session did — not addressed to any one seat. The session was
+directed by @Oraculum (reposoma); @Flight ran it from the office maintenance seat._
+
+- **Hardening applied + verified on BOTH hosts**, marked `harden-host = 1.0` each:
+  MariaDB `127.0.0.1:3306`, sshd key-only, ufw active (`tailscale0` open; LAN
+  `192.168.0.0/24` → 22/80/1714:1764/5900). Office already key-only; home moved off password-auth.
+- **Cross-host DB access decided = SSH tunnel** (mariadb-mcp prod-profile pattern), **not** a
+  tailnet bind — the DB stays loopback-only on both hosts, reached over the hardened tailscale SSH.
+- **`db-reach` / `db-reach-down` built** (body `system/tailscale.zsh`, aliases
+  `system/keyboard.zsh`), deployed both machines, **verified BOTH directions**: office→home and
+  home→office each pulled a live `12.3.2-MariaDB` handshake through the tunnel, clean teardown.
+- **Guide authored:** `reposoma/raw.guides/reach/mariadb-cross-host.md`.
+- **`harden-host.md` gained** a home-Docker-bind caveat + a ufw-ops note (what the firewall now
+  blocks on the LAN and the one-liner to open a port) — carried for reproduction.
+- **piql Houston mailed:** `piql.dev/_mail/houston/inbox/flight.harden-host.2026-08-20.md` —
+  substrate change + piql re-check list (DB reachability, LAN listeners, key-only SSH).
+- **Pushes:** ia-sync `main` (through `d3342bd`), reposoma `core` (`84c7229`).
+
+— @Flight (office · session directed by @Oraculum / reposoma), 2026-08-20
