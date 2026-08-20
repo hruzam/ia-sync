@@ -1,0 +1,73 @@
+// Example/default ACLs for unrestricted connections.
+{
+	// Declare static groups of users. Use autogroups for all users or users with a specific role.
+	// "groups": {
+	//  	"group:example": ["alice@example.com", "bob@example.com"],
+	// },
+
+	// Define the tags which can be applied to devices and by which users.
+	// "tagOwners": {
+	//  	"tag:example": ["autogroup:admin"],
+	// },
+	"hosts": {
+        "office": "100.126.182.111",
+        "home":   "100.110.27.60",
+        "tab":    "100.127.230.71",
+        "redmi":  "100.105.201.3"
+    },
+
+	// Define grants that govern access for users, groups, autogroups, tags,
+	// Tailscale IP addresses, and subnet ranges.
+	"grants": [
+        // computers: full mesh, unchanged working reality
+        {"src": ["office", "home"], "dst": ["*"], "ip": ["*"]},
+
+        // androids: exactly one narrow door — sshd on the computers.
+        // Inert until forced-command keys exist. No 3306, no 80, nothing else.
+        {"src": ["tab", "redmi"], "dst": ["office", "home"], "ip": ["tcp:22"]}
+    ],
+
+	// Define postures that will be applied to all rules without any specific
+	// srcPosture definition.
+	// "defaultSrcPosture": [
+	//      "posture:anyMac",
+	// ],
+
+	// Define device posture rules requiring devices to meet
+	// certain criteria to access parts of your system.
+	// "postures": {
+	//      // Require devices running macOS, a stable Tailscale
+	//      // version and auto update enabled for Tailscale.
+	// 	"posture:autoUpdateMac": [
+	// 	    "node:os == 'macos'",
+	// 	    "node:tsReleaseTrack == 'stable'",
+	// 	    "node:tsAutoUpdate",
+	// 	],
+	//      // Require devices running macOS and a stable
+	//      // Tailscale version.
+	// 	"posture:anyMac": [
+	// 	    "node:os == 'macos'",
+	// 	    "node:tsReleaseTrack == 'stable'",
+	// 	],
+	// },
+
+	// Define users and devices that can use Tailscale SSH.
+	 "ssh": [
+        // back to real check mode: browser re-auth required per session, never root
+        {
+            "action": "check",
+            "src":    ["autogroup:member"],
+            "dst":    ["autogroup:self"],
+            "users":  ["autogroup:nonroot"]
+        }
+    ]
+
+	// Test access rules every time they're saved.
+	// "tests": [
+	//  	{
+	//  		"src": "alice@example.com",
+	//  		"accept": ["tag:example"],
+	//  		"deny": ["100.101.102.103:443"],
+	//  	},
+	// ],
+}
