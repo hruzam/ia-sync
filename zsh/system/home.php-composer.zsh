@@ -58,28 +58,41 @@ _php74() {
 }
 
 _php8() {
-    (( $# == 0 )) && set -- -v
-    /usr/bin/php "$@"
+    if (( $# > 0 )); then
+        /usr/bin/php "$@"
+        return $?
+    fi
+
+    if ! systemctl is-active --quiet php-fpm 2>/dev/null; then
+        sudo systemctl start php-fpm || return 1
+    fi
+
+    _phpst
 }
 
 _phpst() {
     local docker_status="inactive"
     local php74_image="missing"
     local php8_version="missing"
+    local php8_fpm="inactive"
+    local php8_socket="missing"
 
     systemctl is-active --quiet docker 2>/dev/null && docker_status="active"
     if [[ "$docker_status" == "active" ]] && docker image inspect php74-composer >/dev/null 2>&1; then
         php74_image="ready"
     fi
     [[ -x /usr/bin/php ]] && php8_version="$(/usr/bin/php -r 'echo PHP_VERSION;' 2>/dev/null)"
+    systemctl is-active --quiet php-fpm 2>/dev/null && php8_fpm="active"
+    [[ -S /run/php-fpm/php-fpm.sock ]] && php8_socket="ready"
 
     printf "\n  %-20s  %s\n" "HOME RUNTIME" "STATUS"
     printf "  %-20s  %s\n" "--------------------" "----------------"
     printf "  %-20s  %s\n" "Docker" "$docker_status"
     printf "  %-20s  %s\n" "PHP 7.4 image" "$php74_image"
     printf "  %-20s  %s\n" "PHP 8+ native" "$php8_version"
+    printf "  %-20s  %s\n" "PHP 8 FPM" "$php8_fpm · socket $php8_socket"
     printf "\n  php74/composer74 : php74-composer image\n"
-    printf "  php8              : /usr/bin/php\n"
+    printf "  php8              : /usr/bin/php · no args starts php-fpm\n"
     printf "  composer8         : composer:latest image\n\n"
 }
 

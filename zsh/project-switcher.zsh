@@ -129,16 +129,16 @@ lrv() {
 # =============================================================================
 
 # Start Imago/Freya dev session: PHP 8 FPM + cd + editor
-# Freya runs Octane+RoadRunner; site served by Valet at http://freya.l
+# Freya runs Octane+RoadRunner; site is served at http://freya.l (office Valet, home nginx)
 # For hot-reload dev: use 'imoctane' after imst
 imdev() {
-    _php8
+    _php8 || return 1
     cd "$PROJECT_IM_PATH" || return 1
     ${PREFERRED_EDITOR:-subl} . &
     printf "\n  [imdev] Freya session started\n"
     printf "  Path: %s\n" "$PROJECT_IM_PATH"
     printf "  PHP:  %s\n" "$(php -r 'echo PHP_VERSION;' 2>/dev/null)"
-    printf "  URL:  http://freya.l (Valet)\n"
+    printf "  URL:  http://freya.l\n"
     printf "  Tip:  run 'imoctane' for Octane dev server\n\n"
 }
 alias imst='imdev'  # alias for imdev — start Freya dev session
