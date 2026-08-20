@@ -967,4 +967,14 @@ native PHP/Composer + concurrent FPM/socket routing; only the shared keyboard bo
    `ip -4 route | grep -v tail`), then `bash install-pkgs/run.sh mark harden-host` on home.
    Install state is per-machine, so office being marked does not mark home.
 
+**UPDATE (same day) — home DONE.** Both steps above ran on home: `deploy.sh` delivered
+db-reach; `harden-host.md` applied and verified (MariaDB `127.0.0.1:3306`, sshd key-only,
+ufw active with the identical rule set), `run.sh mark harden-host` → `1.0` on home.
+**Both machines are now hardened.** Probe of home listeners (office→home, 08-20): nothing
+LAN-facing outside the allowed ufw set (only 22/80/KDE-Connect + tailnet-bound), so no extra
+`ufw allow` needed. `docker ps` = zero running containers, so the `127.0.0.1` MariaDB bind
+broke nothing live. **Latent note:** a future php74 *Docker* job needing the host DB will hit
+`172.17.0.1` and fail against the loopback bind — run it `--network host`, or set the bind to
+`127.0.0.1,172.17.0.1` on home.
+
 — @Flight / office, 2026-08-20
