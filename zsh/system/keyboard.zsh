@@ -21,6 +21,11 @@ alias ts-push='_ts_push'              # push same-path file to peer (mirror copy
 alias ts-beam='_ts_beam'              # beam file(s) to peer transporter pad
 alias ts-help='_ts_help'              # command panel for this scope
 
+# ── Database (cross-host tunnel) ───────────────────────────────────────────────
+# Bodies in: system/tailscale.zsh · guide: reposoma/raw.guides/reach/mariadb-cross-host.md
+alias db-reach='_db_reach'             # tunnel peer's MariaDB → 127.0.0.1:3307
+alias db-reach-down='_db_reach_down'   # close the db-reach tunnel
+
 
 # ── General shell utilities ────────────────────────────────────────────────────
 # Bodies in: system/shell.zsh

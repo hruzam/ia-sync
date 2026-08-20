@@ -936,3 +936,35 @@ deploy and smoke `type php74 php8 phpst composer74 composer8`. Office mechanisms
 native PHP/Composer + concurrent FPM/socket routing; only the shared keyboard boundary moved.
 
 — @Cartan / home, 2026-08-18
+
+---
+
+## 2026-08-20 — tailnet hardening (office) + db-reach helper
+
+- Ran `install-pkgs/harden-host.md` on **office** (manual task). Result verified:
+  MariaDB now `127.0.0.1:3306` (was `0.0.0.0`), sshd key-only
+  (`PasswordAuthentication no` / `KbdInteractiveAuthentication no` / `PermitRootLogin no`),
+  ufw active — `tailscale0` open, LAN (`192.168.0.0/24`) scoped to 22/80/1714-1764/5900.
+  Marked: `run.sh mark harden-host` → `harden-host = 1.0` on office.
+- Cross-host DB access decided as **SSH tunnel, not a tailnet bind** — the DB stays
+  loopback-only on both hosts; you reach the peer's DB over the tailscale SSH we hardened.
+  This is the `mariadb-mcp` prod-profile pattern (`config.prod.php`), and it's tighter than
+  opening 3306 to the whole tailnet. Rationale in the new guide.
+- New zsh helper `db-reach` / `db-reach-down` — body in `system/tailscale.zsh`, aliases in
+  `system/keyboard.zsh` (control-panel LAW respected). Machine-agnostic via `$TAILSCALE_PEER`.
+  Deployed to office and smoke-tested end-to-end: pulled a live `12.3.2-MariaDB` handshake
+  from **home's** DB through the tunnel, then `db-reach-down` closed it clean.
+- Guide authored (temple-wide, direct): `reposoma/raw.guides/reach/mariadb-cross-host.md`.
+- **No `config.*.zsh` touched** — the helper lives in the shared `system/` engine, so there
+  is no per-machine parity line to mirror. Home gets it purely via `deploy.sh`.
+
+**Home next (Maxwell):**
+1. `git pull --rebase` ia-sync, then `bash deploy.sh` — this delivers `db-reach` (on home,
+   `$TAILSCALE_PEER=hruzam-120922`, so `db-reach` tunnels to office). Verify in a fresh shell:
+   `type _db_reach` and `db-reach` alias present.
+2. **Home is NOT hardened yet** — home MariaDB is still on `0.0.0.0` (confirmed 08-20 from
+   office). Run the `harden-host.md` sudo block on home (verify LAN first with
+   `ip -4 route | grep -v tail`), then `bash install-pkgs/run.sh mark harden-host` on home.
+   Install state is per-machine, so office being marked does not mark home.
+
+— @Flight / office, 2026-08-20

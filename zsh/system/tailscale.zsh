@@ -275,6 +275,39 @@ _ts_beam() {
     fi
 }
 
+# ─── DATABASE TUNNEL (cross-host, over tailscale) ─────────────────────────────
+
+# Reach the peer's loopback-bound MariaDB by forwarding a local port through the
+# tailscale SSH tunnel. The DB stays bound to 127.0.0.1 on both hosts (hardened by
+# ia-sync/install-pkgs/harden-host.md) — nothing is re-opened to the network.
+# Guide: reposoma/raw.guides/reach/mariadb-cross-host.md
+#   db-reach [peer] [local_port]   default port 3307, peer = $TAILSCALE_PEER
+_db_reach() {
+    local peer="${1:-$TAILSCALE_PEER}" lport="${2:-3307}"
+    [[ -z "$peer" ]] && { echo "[db-reach] TAILSCALE_PEER not set — pass a peer"; return 1; }
+    if ss -tln 2>/dev/null | grep -q "127.0.0.1:${lport} "; then
+        echo "[db-reach] 127.0.0.1:${lport} already listening — tunnel likely up"
+        return 0
+    fi
+    if ssh -fN -L "${lport}:127.0.0.1:3306" "$peer"; then
+        echo "[db-reach] ${peer}:3306 → 127.0.0.1:${lport}   (mysql -h 127.0.0.1 -P ${lport} -u <admin> -p)"
+    else
+        echo "[db-reach] failed to open tunnel to ${peer}" >&2
+        return 1
+    fi
+}
+
+# Tear down the tunnel opened by _db_reach (matches the exact forward spec).
+#   db-reach-down [local_port]   default 3307
+_db_reach_down() {
+    local lport="${1:-3307}"
+    if pkill -f "ssh -fN -L ${lport}:127.0.0.1:3306"; then
+        echo "[db-reach] tunnel on 127.0.0.1:${lport} closed"
+    else
+        echo "[db-reach] no tunnel found on 127.0.0.1:${lport}"
+    fi
+}
+
 # ─── HELP ─────────────────────────────────────────────────────────────────────
 
 _ts_help() {
@@ -292,6 +325,9 @@ _ts_help() {
     printf "  ts-push <path>   push same-path file to peer (mirror copy)\n"
     printf "  ts-beam [file]   beam file into peer pad · no arg = sync whole pad\n"
     printf "  ts-help          this panel\n"
+    printf "  ── cross-host DB (loopback DB over the tunnel) ────\n"
+    printf "  db-reach [port]  tunnel peer MariaDB → 127.0.0.1:3307 (default)\n"
+    printf "  db-reach-down    close the db-reach tunnel\n"
     printf "  ──────────────────────────────────────────────────\n"
     printf "  peer: \$TAILSCALE_PEER=%s\n" "${TAILSCALE_PEER:-(not set)}"
     printf "  pad:  %s\n\n" "${_TS_TRANSPORTER}"
