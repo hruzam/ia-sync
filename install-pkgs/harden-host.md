@@ -52,6 +52,27 @@ ufw status numbered
 
 Then record it: `bash run.sh mark harden-host`
 
+## Host notes
+
+**Home + Docker DB access.** Step 1 binds MariaDB to `127.0.0.1` only. On **home**, PHP 7.4 runs
+in Docker (`php74-composer`). A container reaching the *host* MariaDB over the bridge
+(`172.17.0.1` / `host.docker.internal`) fails against a loopback-only bind. If a home container
+needs the host DB, either run it `--network host`, or set `bind-address = 127.0.0.1,172.17.0.1`
+on home. (Verified 2026-08-20: zero persistent containers on home, so the plain `127.0.0.1`
+bind broke nothing live — this is a caveat for future php74 Docker jobs that touch the DB.)
+Office PHP is native, so `127.0.0.1` is always fine there.
+
+## Firewall ops — what ufw now blocks (and how to open a port)
+
+After this runs, ufw **denies all inbound except**: everything on `tailscale0`, and from the LAN
+only `22, 80, 1714:1764, 5900`. A service reached **from another LAN device** on any other port —
+HTTPS `443`, dev servers (`8080/3000/5173/8000`), phpMyAdmin, Syncthing `8384`, etc. — is now
+blocked. Loopback (a host's own `127.0.0.1`) and anything over tailscale are unaffected.
+
+- See what's LAN-facing: `ss -tln` — any listener not on `127.0.0.1`/`::1`, on a port outside the
+  set above, is now blocked from the LAN.
+- Open one port to the LAN (persists across reboots): `sudo ufw allow from 192.168.0.0/24 to any port <PORT> proto tcp`.
+
 Flow: save the file → bash run.sh update (gates prereqs on this host) → run the sudo block → mark harden-host → repeat on home (git pull there first, or via your ssh session). The runner's state file then honestly tracks which machine is hardened — no SYNC_DISCIPLINE trap.
 
 Two more things I learned in there worth noting: netOrchestrating (your symmetric home↔office SSH file-bus between tmux panes) and tmux-pin-bus already exist — so the "reach a live Claude/Codex session from the phone" design from yesterday won't start from zero; it extends an existing tmux culture. Good news for the forced-command layer.
