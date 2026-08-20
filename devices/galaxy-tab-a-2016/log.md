@@ -18,5 +18,14 @@
   - `mysql -h 100.110.27.60` → ERROR 2002 errno 115 timeout — 3306 blocked by grant ✅
   - `db-reach` office→home → 12.3.2-MariaDB through tunnel, clean teardown ✅
   Weak-spot thread (opened 2026-08-19): **found → demonstrated → contained. CLOSED.**
-- Open: office pubkey seating (operator line, non-urgent); sshd hardening to key-only
-  in Termux after that; forced-command tmux layer parked for a next session.
+- 2026-08-20 — Step 0: battery exemption set by operator (Termux + Tailscale).
+  Step 1: office RSA key relayed via home→office→tablet pipe (operator ran from home;
+  home ed25519 already seated 2026-08-19). office→tab verified OK.
+  Termux sshd hardened to key-only (PasswordAuthentication no + KbdInteractiveAuthentication no).
+  Key-only reconnect from office verified.
+- 2026-08-20 — Step 2 complete: JIT keygen done on device (ed25519, passphrase in operator's head).
+  Restricted authorized_keys entry added to office + home (operator pasted).
+  Entry: command="tmux attach -rt agentive", from="100.127.230.71", read-only, no-port/agent/X11-forwarding.
+  VERIFIED: `ssh hruzam@100.126.182.111` from tablet Termux → read-only attach to agentive tmux on office.
+  Simultaneous view with Redmi confirmed (shared session, scroll history sync). ✅
+  Note: must specify `hruzam@` explicitly (Termux local user is u0_a153).

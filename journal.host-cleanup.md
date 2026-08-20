@@ -1002,3 +1002,45 @@ directed by @Oraculum (reposoma); @Flight ran it from the office maintenance sea
 - **Pushes:** ia-sync `main` (through `d3342bd`), reposoma `core` (`84c7229`).
 
 — @Flight (office · session directed by @Oraculum / reposoma), 2026-08-20
+
+---
+
+## 2026-08-20 — device access layer complete (both devices)
+
+_Session REP.office.oraculum-fable cont. · @Flight / office · directed by @majkee live._
+
+### What was done
+
+**Redmi 15c-5G (100.105.201.3) — Step 0 + 1 + 2:**
+- Step 0: battery exemption set (Termux + Tailscale, no restrictions); Termux pinned in Recents.
+- Step 1 (PC→device): push-flow via `ssh-copy-id`. Office RSA key seated from office;
+  home ed25519 key seated from home (operator typed password once each).
+  Termux sshd hardened to key-only (`PasswordAuthentication no`, `KbdInteractiveAuthentication no`).
+  Verified: office→redmi ✅ home→redmi ✅.
+- Step 2 (device→PC JIT): operator ran `ssh-keygen -t ed25519` on device (passphrase in head only).
+  Restricted `authorized_keys` entry added to both PCs by operator:
+  `command="tmux new-session -A -s agentive", from="100.105.201.3"` — r/w attach.
+  VERIFIED LIVE: `ssh hruzam@100.126.182.111` from Redmi Termux → agentive tmux on office. ✅
+
+**Galaxy Tab A 2016 (100.127.230.71) — Step 0 + 1 + 2:**
+- Step 0: battery exemption set; Termux pinned.
+- Step 1 (PC→device): home ed25519 already seated (2026-08-19). Office RSA key relayed
+  via home (operator ran relay from home terminal; no password needed — home had key access).
+  Termux sshd hardened to key-only. Verified: office→tab ✅ home→tab ✅.
+- Step 2 (device→PC JIT): operator ran `ssh-keygen -t ed25519` on device (passphrase in head).
+  Restricted `authorized_keys` entry added to both PCs by operator:
+  `command="tmux attach -rt agentive", from="100.127.230.71"` — **read-only** attach.
+  VERIFIED LIVE: `ssh hruzam@100.126.182.111` from tablet Termux → read-only agentive view. ✅
+  Tablet shows same session as Redmi simultaneously (scroll history synced).
+
+### Convention documented
+`devices/_shared/agentive-tmux.md` — role table, usage, per-PC addressing, notes.
+
+### Still open (non-blocking)
+- Banner test (screen-off 10+ min) on both devices — wakefulness acceptance gate not yet run.
+- `tmux set window-size largest` on both PCs — makes tablet use its full width instead of
+  Redmi-constrained dimensions. tmux 3.7b supports it; needs `.tmux.conf` edit + deploy.
+- home `authorized_keys` — operator pasted both device entries; not independently verified.
+- ia-sync commit pending (this entry + devices/ changes).
+
+— @Flight (office · @majkee live), 2026-08-20

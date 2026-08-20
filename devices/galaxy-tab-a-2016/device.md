@@ -5,19 +5,19 @@
 | Tailscale IP | 100.127.230.71 |
 | Android | ~8.1 (verify with `getprop ro.build.version.release` once office key seated) |
 | Patch state | EOL since ~2019 — **trust class: contain** |
-| Termux | installed; sshd on 8022 (manual start — dies on reboot/Termux kill) |
+| Termux | installed; sshd on 8022, key-only (hardened 2026-08-20) |
 | Tailnet connectivity | via DERP relay (no direct path observed) |
-| home → device key auth | ✅ works (home `id_ed25519` seated 2026-08-19 by operator) |
-| office → device key auth | ❌ pending — operator to run office pull line (bootstrap step 2) |
-| Device→PC access | ⚠️ **LIVE via Tailscale SSH** — tablet reached home shell passwordless 2026-08-19. Closes when ACL draft is applied. |
+| home → device key auth | ✅ home ed25519 seated 2026-08-19 |
+| office → device key auth | ✅ office RSA relayed via home 2026-08-20 |
+| Device→PC access | ✅ **CLOSED** — ACL applied 2026-08-21; androids→PCs tcp:22 only; Tailscale SSH back to check/nonroot. Verified denied from tablet. |
 | Wireless debugging | not possible (pre-Android-11); adb needs USB-first `adb tcpip 5555` |
+
+| Device→PC JIT access | ✅ ed25519 key, read-only restricted entry (agentive tmux -r, from= guard). Use `ssh hruzam@<pc-ip>` |
 
 ## Open
 
-- Seat OFFICE pubkey (operator hands; relay append was classifier-blocked by design)
-- Apply tailnet ACL (androids initiate nothing) — kills the live Tailscale-SSH path
-- Verify Android version, package inventory
-- Harden Termux sshd to key-only after both keys verified
+- Banner test (screen-off 10+ min acceptance gate) — wakefulness not yet proven under sleep
+- Verify Android version (`getprop ro.build.version.release`)
 
 ## Notes
 
