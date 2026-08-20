@@ -28,6 +28,18 @@ Each PC has its own `agentive` session. Devices connect to a specific PC by IP:
 - office: `ssh hruzam@100.126.182.111`
 - home:   `ssh hruzam@100.110.27.60`
 
+## Termux tips
+
+**Kill a stuck session (broken pipe / SSH hung):**
+Long-press anywhere on the terminal area → popup: COPY | PASTE | MORE → tap MORE → **Kill session**.
+Opens a new clean session. The `agentive` tmux on the PC is unaffected — SSH broken pipe
+auto-detaches the client; reconnect with `office` or `home` from the new session.
+
+**Reconnect after screen lock drops Tailscale:**
+Open Tailscale app → wait for green on all nodes → then `office` / `home` in a new session.
+MIUI fix: Settings → Apps → Manage apps → Tailscale → Battery saver → No restrictions + Autostart on.
+Samsung fix: Battery → Background usage limits → Never sleeping apps → add Tailscale + Termux.
+
 ## Notes
 
 - The `from=` guard in `authorized_keys` means each device key only works from its
