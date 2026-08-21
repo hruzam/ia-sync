@@ -77,8 +77,17 @@ net).
 - [ ] **P4b — residual guards:** one discipline line in ia-sync README ("surgical
       knowledge → raw.guides, not here") · deploy.sh zsh/guides leg reviewed (stub +
       configs + CLASS 2 only) · verify stub live on both boxes after deploy.
-- [ ] **HOME MIRROR PASS (run ON home — @Maxwell or a home-spawned @Delta; NOT via
-      cross-host ssh, 2026-08-01 discipline).** Strict order:
+- [x] **HOME MIRROR PASS — DONE 2026-08-20** (executed cross-host by office @Delta under
+      the operator voice directive, superseding the local-seat plan below). ia-sync
+      commit `329ece4` pushed · reposoma `93e542f` pushed · office deploy OK (SKILL-LIVE
+      + stub verified) · home ff-pulls + deploy (MACHINE_NAME=home) OK · 10 lingerers
+      removed · stub + HOME-SKILL verified. **🔫 SMOKING GUN FOUND: `ai.md` on home live
+      guides/** — the guide RETIRED 2026-07-11 (index: "§1 → guide-harness-check, hygiene
+      → guide-for-user"), squatting on home ever since because deploy never deletes =
+      majkee's rogue-file theory CONFIRMED with a 40-day specimen. LEFT IN PLACE as
+      evidence (report-only rule). Disposition = majkee's word (lean: rm — it's the
+      retired corpse, content lives on in its successors). Feeds P5 as evidence #1.
+      Home final state: 7 protected + ai.md. Original local-seat plan (superseded):
       1. `git -C ~/reposoma pull` && `git -C ~/ia-sync pull` && `bash ~/ia-sync/deploy.sh`
          (slugs + stub + /guide skill arrive; deploy copies, never deletes)
       2. Remove the 10 deployed lingerers from live `~/.config/zsh/guides/`:
@@ -94,10 +103,10 @@ net).
 - [ ] **P5 — PARKED: guide-drift audit** (eagle/Kraken pass — doc↔code drift detection,
       the P2b bug class; overlaps `harness-stale`). Separate session. This line exists so
       it cannot orphan.
-- [ ] **OPERATOR (Bash-seat) closing steps:** `deploy.sh` (skill → live both boxes) ·
-      commit+push ia-sync (skill, journal, later stub) · commit+push reposoma
-      (guide-writing.md, later the moved guides). Until then: skill staged, manual
-      uncommitted.
+- [x] **CLOSING STEPS — DONE 2026-08-20** (agent-executed under operator voice directive):
+      ia-sync `329ece4` + reposoma `93e542f` committed+pushed · deployed office + home ·
+      `/guide` skill LIVE on both boxes (active next sessions) · stub live both boxes.
+      Both machines converged on the guides layer.
 
 ---
 
