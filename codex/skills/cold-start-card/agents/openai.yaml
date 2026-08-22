@@ -1,0 +1,4 @@
+interface:
+  display_name: "Cold Start Card"
+  short_description: "Capture a precise Codex re-entry card"
+  default_prompt: "Use $cold-start-card to capture this session’s verified re-entry state and repair queue."
