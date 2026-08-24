@@ -208,3 +208,12 @@ alias command-palette='_command_palette'
 alias palette-help='_palette_help'
 alias palette-refresh='_palette_refresh'
 bindkey '^[k' _command_palette_zle   # Alt-k — command palette (inserts selection at cursor)
+
+# =============================================================================
+# PARTITION 18: Experimental runners
+# Engine: ~/.config/zsh/ai/experimental.zsh (base.zsh P9); runners are lazy.
+# =============================================================================
+alias exp-list='_exp_list'
+alias exp-run='_exp_run'
+alias ox-alpha='_exp_run ox-alpha'
+alias ox-alpha-help='_exp_run ox-alpha --help'

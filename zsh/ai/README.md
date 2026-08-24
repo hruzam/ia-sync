@@ -15,6 +15,8 @@ Usage: `~/.config/zsh/guides/guide-for-user.md` · keyboard map: `guides/keyboar
 | `keyboard.zsh` | Control panel: **aliases only — no bodies** | Human shell | `base.zsh` P1 |
 | `gemini-processor.sh` | Gemini scope engine (dual-sourced): subprocess core (`_gai_*`) + interactive surface (agy wrappers, hygiene, `gemini-agents-help`) | per-agent launchers + `keyboard.zsh` aliases | launchers (bash) + `base.zsh` P8 (zsh) |
 | `claude.zsh` | Claude Code RC engine + help + `octo` launcher: `_rc_stop`, `_temple_help`, `_ai_help`, `_octo` | `keyboard.zsh` aliases | `base.zsh` P7 |
+| `experimental.zsh` | Experimental-runner dispatcher: `_exp_list` / `_exp_run`; resolves runners lazily | `exp-list`, `exp-run` aliases | `base.zsh` P9 |
+| `experimental/` | Portable experimental runners; [its contract](experimental/README.md) defines each `<id>/runner.zsh` | `exp-run <id>` | executed on demand |
 | `devenv.zsh` | Project devenv transport engine: `_devenv_*`, `_fr_*`, `_bo_*`, `_devenv_help` (pull --rebase discipline built in) | `keyboard.zsh` P11 aliases | `base.zsh` P6 |
 | `devenv-sync-core.sh` | Shared function library for devenv sync wrappers (`_devenv_resolve_app_dir`, `_devenv_sync_deny_init/cleanup`, `_devenv_secret_scan`, `_devenv_print_footer`). Sourced by each project's `sync.sh`; not executed directly. | `*.devenv/sync.sh` | sourced |
 | `keys.zsh` | Global claviature engine: `_keys` → derived keys panel (UNSORTED = drift detector) | `keys` alias (keyboard P12) | `base.zsh` P9 |
@@ -48,7 +50,7 @@ Usage: `~/.config/zsh/guides/guide-for-user.md` · keyboard map: `guides/keyboar
 1. **Temple family is untouched.** Never modify `temple-*.zsh` or `temple-*.hook` without a temple gate (decision 0009).
 2. **Separation of concerns.** `keyboard.zsh` = aliases only (no bodies). Engines (`gemini-processor.sh`, `claude.zsh`, `devenv.zsh`) hold bodies. No aliases in engines or per-agent scripts.
 3. **New Gemini agent seat.** Create `~/.gemini/agents/<name>.md` + `<name>.sh` + add shims to `keyboard.zsh` (PARTITION 3) + update `AGENTS.md`. Launcher scripts source `gemini-processor.sh`. Full checklist: `~/.config/zsh/guides/guide-for-builder.md`.
-3b. **New non-Gemini tool.** Aliases into the right `keyboard.zsh` partition; **new scope → new `<scope>.zsh` engine wired in `base.zsh`** (Architecture rules). Add a file-map row here + update `AGENTS.md`.
+3b. **New experimental runner.** Follow [`experimental/README.md`](experimental/README.md): add `experimental/<id>/runner.zsh`; it is deployed recursively and invoked lazily through `exp-run <id>`. Do not add a deploy-script mapping. Add a file-map row here + update `AGENTS.md`.
 4. **The builder guide is LAW.** Pattern-read `~/.config/zsh/guides/guide-for-builder.md` §Architecture rules BEFORE writing anything here (lesson of 2026-07-11).
 
 ---

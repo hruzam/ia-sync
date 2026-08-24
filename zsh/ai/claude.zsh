@@ -56,6 +56,12 @@ keyboard.zsh — AI interactive surface (Gemini + Claude Code RC)
   g-bluebottle         alias for gemini-bluebottle
   gemini-orby          run orby.sh (Orby seat — dual-mode: interactive/headless)
   g-orby               alias for gemini-orby
+  ox-alpha "prompt"   stream one reasoning-enabled stealth/ox-alpha response via OpenRouter
+  ox-alpha --no-stream "prompt"
+                       print the non-streaming OpenRouter response as JSON
+  ox-alpha chat        multi-turn terminal chat; /exit or Ctrl-D leaves and clears history
+  exp-list             list installed experimental runners
+  exp-run <id> [...]   execute an experimental runner on demand
 
   ── Hygiene / freshness ──────────────────────────────────────────────────────
   adr-guard            run adr-guard.zsh — ADR breach/evidence-rot sandbox check

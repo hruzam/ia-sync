@@ -70,13 +70,18 @@ alias adr-guard="zsh ${HOME}/.config/zsh/ai/adr-guard.zsh"
 [[ -f ~/.config/zsh/ai/gemini-processor.sh ]] && source ~/.config/zsh/ai/gemini-processor.sh
 
 # -----------------------------------------------------------------------------
-# PARTITION 9: Global claviature — derived keys panel
+# PARTITION 9: Experimental-runner dispatcher
+# -----------------------------------------------------------------------------
+[[ -f ~/.config/zsh/ai/experimental.zsh ]] && source ~/.config/zsh/ai/experimental.zsh
+
+# -----------------------------------------------------------------------------
+# PARTITION 10: Global claviature — derived keys panel
 # Spec: guides/claviature.global.spec.md
 # -----------------------------------------------------------------------------
 [[ -f ~/.config/zsh/ai/keys.zsh ]] && source ~/.config/zsh/ai/keys.zsh
 
 # -----------------------------------------------------------------------------
-# PARTITION 10: Project-map interactive surface
+# PARTITION 11: Project-map interactive surface
 # -----------------------------------------------------------------------------
 # _project_paths / _project_git_status / _project_commit_all / _project_pick_zle
 # Aliases + bindkey: keyboard.zsh PARTITION 15.
@@ -84,7 +89,7 @@ alias adr-guard="zsh ${HOME}/.config/zsh/ai/adr-guard.zsh"
 [[ -f ~/.config/zsh/ai/temple-project-surface.zsh ]] && source ~/.config/zsh/ai/temple-project-surface.zsh
 
 # -----------------------------------------------------------------------------
-# PARTITION 11: Command Palette engine
+# PARTITION 12: Command Palette engine
 # -----------------------------------------------------------------------------
 # _command_palette / _command_palette_zle / _palette_help
 # Aliases + bindkey: keyboard.zsh PARTITION 17.

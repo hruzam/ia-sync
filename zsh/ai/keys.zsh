@@ -3,7 +3,7 @@
 # KEYS.ZSH — Global claviature engine (derived keys panel)
 # =============================================================================
 # Location: ~/.config/zsh/ai/keys.zsh
-# Sourced by: base.zsh PARTITION 9
+# Sourced by: base.zsh PARTITION 10
 # Contract: sourced-only; defines ONE public body _keys; no aliases; no side
 #           effects on source. Pure interactive engine (.zsh per rule).
 # Spec: guides/claviature.global.spec.md (LOCKED 2026-07-11)
@@ -33,6 +33,8 @@ typeset -gA _KEYS_FAMILY_MAP=(
   zenith         'Zenith-ZSH (RAG assistant)'
   command        'Command Palette'
   palette        'Command Palette'
+  ox             'OpenRouter'
+  exp            'Experimental runners'
 )
 
 # ── singles map: exact bare name → section label ─────────────────────────────
