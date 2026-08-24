@@ -1129,10 +1129,13 @@ _@Cartan with @majkee · source authored compose-first in `ia-sync/zsh/system/`.
   peer egress. Syntax, alias/function wiring, `git diff --check`, dry-run deploy, actual
   office deploy, and source/live parity passed. Temporary test proxies were closed.
 
-### Maxwell / home next action
+### Home receive / live state
 
-- After this commit reaches `main`, pull and deploy on home, open a new shell, run
-  `web-reach`, and give only a dedicated Firefox profile the SOCKS settings above.
-- Confirm the target Freya production page works before considering desktop projection.
+- Commit `be115b4` reached `main`; the clean home clone fast-forwarded, its dry-run showed
+  only the expected zsh delta, and the receive-side deploy completed.
+- `web-reach` is now running on home at loopback-only `127.0.0.1:1080`. A live request
+  through it matched office egress. Use `web-reach-down` on home when finished.
+- Remaining operator step: give only a dedicated Firefox profile the SOCKS settings above,
+  then confirm the target Freya production page before considering desktop projection.
 
 — @Cartan (Codex resident · office), 2026-08-24
