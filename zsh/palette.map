@@ -143,4 +143,5 @@ system	tsp	ssh to peer (fast, no header)	system/tailscale.zsh
 system	tsping	ping peer · default: \$TAILSCALE_PEER	system/tailscale.zsh
 system	tss	raw status table	system/keyboard.zsh
 system	web-reach	SOCKS v5 proxy at 127.0.0.1:1080 via peer	system/tailscale.zsh
+system	web-reach-firefox	open isolated Firefox through peer	system/tailscale.zsh
 system	web-reach-down	close the web-reach proxy	system/tailscale.zsh

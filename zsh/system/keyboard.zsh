@@ -29,6 +29,7 @@ alias db-reach-down='_db_reach_down'   # close the db-reach tunnel
 # ── Browser egress (cross-host SOCKS tunnel) ──────────────────────────────────
 # Bodies in: system/tailscale.zsh
 alias web-reach='_web_reach'           # browser traffic exits through peer at SOCKS 127.0.0.1:1080
+alias web-reach-firefox='_web_reach_firefox' # open isolated Firefox through peer egress
 alias web-reach-down='_web_reach_down' # close the web-reach SOCKS tunnel
 
 

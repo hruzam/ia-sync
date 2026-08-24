@@ -1135,7 +1135,18 @@ _@Cartan with @majkee · source authored compose-first in `ia-sync/zsh/system/`.
   only the expected zsh delta, and the receive-side deploy completed.
 - `web-reach` is now running on home at loopback-only `127.0.0.1:1080`. A live request
   through it matched office egress. Use `web-reach-down` on home when finished.
-- Remaining operator step: give only a dedicated Firefox profile the SOCKS settings above,
-  then confirm the target Freya production page before considering desktop projection.
+- A machine-local isolated profile was launched into the home Wayland session. Live sockets
+  proved Firefox → home SOCKS → office SSH, and the operator confirmed the protected page
+  opened directly. Desktop projection is not needed for this source-IP gate.
+
+### Normalized repeat path
+
+- Added `web-reach-firefox [url]`: it starts/reuses `web-reach`, owns only
+  `~/.mozilla/firefox/office-egress/user.js`, and launches that isolated profile. If the
+  profile is already running it points to the existing window instead of colliding with it.
+- Canonical procedure: `~/reposoma/raw.guides/browser-egress/GUIDE.md` (`/guide
+  browser-egress`). The guide contains only a neutral example URL; no customer path,
+  database identity, credential, or dump data entered either repository.
+- Normal close: finish the download, close the isolated window, then run `web-reach-down`.
 
 — @Cartan (Codex resident · office), 2026-08-24

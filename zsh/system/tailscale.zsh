@@ -311,6 +311,7 @@ _db_reach_down() {
 # Route one browser profile through the peer's public egress without exposing a
 # proxy port to the LAN or tailnet. In Firefox, use SOCKS v5 at 127.0.0.1:1080
 # and enable proxy DNS. Downloads remain on the machine running Firefox.
+# Guide: reposoma/raw.guides/browser-egress/GUIDE.md
 #   web-reach [peer] [local_port]   default port 1080, peer = $TAILSCALE_PEER
 _web_reach() {
     local peer="${1:-$TAILSCALE_PEER}" lport="${2:-1080}"
@@ -325,6 +326,41 @@ _web_reach() {
         echo "[web-reach] failed to open SOCKS proxy to ${peer}" >&2
         return 1
     fi
+}
+
+# Start/reuse the default web-reach proxy and open an isolated Firefox profile.
+# The profile's user.js is owned by this helper; the operator's normal profile is untouched.
+#   web-reach-firefox [url]   default URL = about:blank
+_web_reach_firefox() {
+    local url="${1:-about:blank}"
+    local profile="${HOME}/.mozilla/firefox/office-egress"
+
+    command -v firefox >/dev/null 2>&1 || {
+        echo "[web-reach] firefox not found" >&2
+        return 1
+    }
+    _web_reach || return 1
+
+    if pgrep -af firefox 2>/dev/null | grep -Fq -- "--profile ${profile}"; then
+        echo "[web-reach] office-egress Firefox already running — use its existing window"
+        return 0
+    fi
+
+    mkdir -p -m 700 -- "$profile" || return 1
+    chmod 700 -- "$profile"
+    (
+        umask 077
+        {
+            print -r -- 'user_pref("network.proxy.type", 1);'
+            print -r -- 'user_pref("network.proxy.socks", "127.0.0.1");'
+            print -r -- 'user_pref("network.proxy.socks_port", 1080);'
+            print -r -- 'user_pref("network.proxy.socks_version", 5);'
+            print -r -- 'user_pref("network.proxy.socks_remote_dns", true);'
+        } >| "${profile}/user.js"
+    ) || return 1
+
+    firefox --new-instance --profile "$profile" "$url" >/dev/null 2>&1 &!
+    echo "[web-reach] isolated Firefox opened; downloads stay on $(hostname -s)"
 }
 
 # Tear down the proxy opened by _web_reach (matches the exact forward spec).
@@ -360,6 +396,7 @@ _ts_help() {
     printf "  db-reach-down    close the db-reach tunnel\n"
     printf "  ── browser egress (Firefox at home, network via peer) ─\n"
     printf "  web-reach        SOCKS v5 proxy at 127.0.0.1:1080 via peer\n"
+    printf "  web-reach-firefox [url]  open isolated Firefox through peer\n"
     printf "  web-reach-down   close the web-reach proxy\n"
     printf "  ──────────────────────────────────────────────────\n"
     printf "  peer: \$TAILSCALE_PEER=%s\n" "${TAILSCALE_PEER:-(not set)}"

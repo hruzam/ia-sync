@@ -57,7 +57,10 @@ Run `ts-help` in the shell for the live panel. Reference:
 | `ts-web` | `_ts_web` | open Tailscale admin panel in browser |
 | `ts-help` | `_ts_help` | command panel |
 | `web-reach [peer] [port]` | `_web_reach` | loopback SOCKS v5 proxy through peer (default `127.0.0.1:1080`) |
+| `web-reach-firefox [url]` | `_web_reach_firefox` | start the proxy and open an isolated Firefox profile through peer egress |
 | `web-reach-down [port]` | `_web_reach_down` | close the browser-egress proxy |
+
+Full procedure: `~/reposoma/raw.guides/browser-egress/GUIDE.md` (`/guide browser-egress`).
 
 ---
 
