@@ -1148,5 +1148,11 @@ _@Cartan with @majkee · source authored compose-first in `ia-sync/zsh/system/`.
   browser-egress`). The guide contains only a neutral example URL; no customer path,
   database identity, credential, or dump data entered either repository.
 - Normal close: finish the download, close the isolated window, then run `web-reach-down`.
+- Ia-sync commit `563c70e` and Reposoma guide commit `1e5ea8e` reached both hosts. Office
+  full deploy and source/live parity passed.
+- Home's full dry-run exposed an unrelated live Claude `settings.json` delta. It was not
+  flattened: only the four reviewed zsh artifacts were copied source→live, then byte parity
+  passed. A real home interactive shell resolved the office peer and the new command safely
+  reused the already-running proxy/profile.
 
 — @Cartan (Codex resident · office), 2026-08-24
