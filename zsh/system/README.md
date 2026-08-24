@@ -56,6 +56,8 @@ Run `ts-help` in the shell for the live panel. Reference:
 | `ts-dash-stop` | `_ts_dash_stop` | stop dashboard |
 | `ts-web` | `_ts_web` | open Tailscale admin panel in browser |
 | `ts-help` | `_ts_help` | command panel |
+| `web-reach [peer] [port]` | `_web_reach` | loopback SOCKS v5 proxy through peer (default `127.0.0.1:1080`) |
+| `web-reach-down [port]` | `_web_reach_down` | close the browser-egress proxy |
 
 ---
 

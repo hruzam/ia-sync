@@ -1099,3 +1099,40 @@ _@Cartan with @majkee · Codex 0.149.1 · source authored compose-first in `ia-s
 - No commit, push, full ia-sync deploy, host service change, or Termbrana M0 freeze occurred.
 
 — @Cartan (Codex resident · office), 2026-08-24
+
+---
+
+## 2026-08-24 — Firefox office-egress tunnel for Freya production access (office)
+
+_@Cartan with @majkee · source authored compose-first in `ia-sync/zsh/system/`._
+
+### What changed
+
+- Added `web-reach [peer] [port]` and `web-reach-down [port]` to the shared Tailscale
+  shell surface. The helper opens an SSH dynamic SOCKS v5 proxy bound only to
+  `127.0.0.1:1080`; no proxy or remote-desktop port is exposed to the LAN, tailnet, or
+  public internet.
+- Intended home use: run `web-reach`, then configure a dedicated Firefox profile for
+  SOCKS v5 `127.0.0.1:1080` with proxy DNS enabled. Firefox and downloads remain on home;
+  browser requests leave through the office network.
+- No Freya application/database code, firewall, SSH daemon, Tailscale policy, package, or
+  desktop service changed. Full Plasma projection remains a second-stage option only if
+  the office Firefox profile or a client certificate proves necessary.
+
+### Verification
+
+- Live tailnet: home online via a direct Tailscale path; office SSH and Tailscale services
+  active. Office Plasma Wayland session is active; no VNC/RustDesk/Sunshine server installed.
+- Direction proof from home: home SOCKS-through-office egress matched office direct egress
+  and differed from home direct egress. PASS.
+- Authored helper runtime proof through the reverse peer direction also matched the chosen
+  peer egress. Syntax, alias/function wiring, `git diff --check`, dry-run deploy, actual
+  office deploy, and source/live parity passed. Temporary test proxies were closed.
+
+### Maxwell / home next action
+
+- After this commit reaches `main`, pull and deploy on home, open a new shell, run
+  `web-reach`, and give only a dedicated Firefox profile the SOCKS settings above.
+- Confirm the target Freya production page works before considering desktop projection.
+
+— @Cartan (Codex resident · office), 2026-08-24

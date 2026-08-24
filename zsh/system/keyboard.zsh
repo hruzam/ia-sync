@@ -26,6 +26,11 @@ alias ts-help='_ts_help'              # command panel for this scope
 alias db-reach='_db_reach'             # tunnel peer's MariaDB → 127.0.0.1:3307
 alias db-reach-down='_db_reach_down'   # close the db-reach tunnel
 
+# ── Browser egress (cross-host SOCKS tunnel) ──────────────────────────────────
+# Bodies in: system/tailscale.zsh
+alias web-reach='_web_reach'           # browser traffic exits through peer at SOCKS 127.0.0.1:1080
+alias web-reach-down='_web_reach_down' # close the web-reach SOCKS tunnel
+
 
 # ── General shell utilities ────────────────────────────────────────────────────
 # Bodies in: system/shell.zsh

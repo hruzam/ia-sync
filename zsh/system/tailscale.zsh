@@ -308,6 +308,36 @@ _db_reach_down() {
     fi
 }
 
+# Route one browser profile through the peer's public egress without exposing a
+# proxy port to the LAN or tailnet. In Firefox, use SOCKS v5 at 127.0.0.1:1080
+# and enable proxy DNS. Downloads remain on the machine running Firefox.
+#   web-reach [peer] [local_port]   default port 1080, peer = $TAILSCALE_PEER
+_web_reach() {
+    local peer="${1:-$TAILSCALE_PEER}" lport="${2:-1080}"
+    [[ -z "$peer" ]] && { echo "[web-reach] TAILSCALE_PEER not set — pass a peer"; return 1; }
+    if ss -tln 2>/dev/null | grep -q "127.0.0.1:${lport} "; then
+        echo "[web-reach] 127.0.0.1:${lport} already listening — proxy likely up"
+        return 0
+    fi
+    if ssh -fN -D "127.0.0.1:${lport}" -o ExitOnForwardFailure=yes "$peer"; then
+        echo "[web-reach] browser egress via ${peer} at SOCKS v5 127.0.0.1:${lport} (enable proxy DNS)"
+    else
+        echo "[web-reach] failed to open SOCKS proxy to ${peer}" >&2
+        return 1
+    fi
+}
+
+# Tear down the proxy opened by _web_reach (matches the exact forward spec).
+#   web-reach-down [local_port]   default 1080
+_web_reach_down() {
+    local lport="${1:-1080}"
+    if pkill -f "ssh -fN -D 127.0.0.1:${lport}"; then
+        echo "[web-reach] SOCKS proxy on 127.0.0.1:${lport} closed"
+    else
+        echo "[web-reach] no SOCKS proxy found on 127.0.0.1:${lport}"
+    fi
+}
+
 # ─── HELP ─────────────────────────────────────────────────────────────────────
 
 _ts_help() {
@@ -328,6 +358,9 @@ _ts_help() {
     printf "  ── cross-host DB (loopback DB over the tunnel) ────\n"
     printf "  db-reach [port]  tunnel peer MariaDB → 127.0.0.1:3307 (default)\n"
     printf "  db-reach-down    close the db-reach tunnel\n"
+    printf "  ── browser egress (Firefox at home, network via peer) ─\n"
+    printf "  web-reach        SOCKS v5 proxy at 127.0.0.1:1080 via peer\n"
+    printf "  web-reach-down   close the web-reach proxy\n"
     printf "  ──────────────────────────────────────────────────\n"
     printf "  peer: \$TAILSCALE_PEER=%s\n" "${TAILSCALE_PEER:-(not set)}"
     printf "  pad:  %s\n\n" "${_TS_TRANSPORTER}"
