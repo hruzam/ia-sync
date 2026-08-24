@@ -1,0 +1,4 @@
+interface:
+  display_name: "Buffering"
+  short_description: "Hold input or explore design before release"
+  default_prompt: "Use $buffering to hold this input until I signal feed-end, then smooth the synthesis before releasing an artifact."

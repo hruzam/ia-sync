@@ -1,0 +1,4 @@
+interface:
+  display_name: "Codex Harness"
+  short_description: "Design and maintain portable Codex primitives"
+  default_prompt: "Use $codex-harness to design the smallest Codex-native harness change for this need."

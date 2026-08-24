@@ -20,6 +20,40 @@ bash deploy.sh --codex-only
 | `codex/agents/` | `~/.codex/agents/` | Personal Codex custom agents, additive when present |
 | `codex/skills/` | `~/.agents/skills/` | Personal Codex skills, additive when present |
 
+## Global subagent team
+
+`codex/agents/` holds one project-neutral definition for each common delegated role:
+
+| Agent | Role | Default posture |
+|---|---|---|
+| `architect` | boundaries, options, ADR-ready recommendations | Sol/xhigh, read-only |
+| `challenger` | adversarial pre-lock verdict | Sol/xhigh, read-only |
+| `researcher` | current primary-source and local evidence | Terra/high, read-only |
+| `implementer` | scoped changes and tests | Terra/high, workspace-write |
+| `verifier` | independent acceptance gate | Sol/high, workspace-write for test artifacts only |
+| `harness_builder` | interactive Codex primitive design and authoring | Sol/xhigh, confirm-before-write |
+
+Projects specialize these agents through their own `AGENTS.md`, `.codex/config.toml`, MCP
+servers, and skills. Do not copy these TOMLs into projects or create same-name variants;
+add a project-only agent only when its job is genuinely not expressible as a global role
+plus local guidance.
+
+`harness_builder` is paired with the `codex-harness` skill. The agent owns judgment and
+interaction; the skill owns volatile source routing, primitive selection, and the explicit
+Claude↔Codex semantic cross-section.
+
+## Shared procedures
+
+| Skill | Purpose | Cross-runtime invariant |
+|---|---|---|
+| `codex-harness` | Design and maintain Codex-native primitives | Preserve role meaning and gates, not file parity |
+| `buffering` | Hold incremental input or run a creative design arc before release | Claude's cycle and creative-triad semantics in one Codex procedure |
+| `cold-start-card` | Leave a verified, temporary re-entry pointer | Point to canonical state; never become another pulse |
+
+Project continuity remains vendor-neutral: settled locks live in the declared `flag.md`, live
+doing-state in the single declared `pulse.md`, and the machine contract in `PROJECT.yaml`.
+Codex does not add a global or per-runtime pulse beside them.
+
 `deploy.sh` copies only these reviewed keep-set paths. It does not copy `config.toml`,
 `hooks.json`, rules, credentials, memories, histories, sessions, databases, caches, logs,
 installation identity, or trust hashes. Those surfaces are host-local until each earns an

@@ -1044,3 +1044,58 @@ _Session REP.office.oraculum-fable cont. · @Flight / office · directed by @maj
 - ia-sync commit pending (this entry + devices/ changes).
 
 — @Flight (office · @majkee live), 2026-08-20
+
+---
+
+## 2026-08-24 — Codex global palette + cross-runtime continuity (office)
+
+_@Cartan with @majkee · Codex 0.149.1 · source authored compose-first in `ia-sync/codex/`._
+
+### What changed
+
+- Added one project-neutral Codex subagent palette: `architect`, `challenger`,
+  `researcher`, `implementer`, `verifier`, and `harness_builder`. Cartan remains the
+  controller/integration owner. Project knowledge enters through local instructions,
+  config/MCP, skills, and bounded briefs; same-name project variants are forbidden.
+- Added `codex-harness`, the Atlas-UI-class Codex-native builder procedure, with an explicit
+  Claude↔Codex semantic cross-section and source router. It proposes exact activation,
+  authority, source, deploy target, and proof before writing; live `~/.codex` is never its
+  authoring surface.
+- Added one `buffering` skill with two modes: incremental-input cycle and creative triad.
+  This preserves Claude's two buffering contracts without adding resident phase personas.
+- Made continuity invariant explicit: the repository-declared `flag.md`, single `pulse.md`,
+  and `PROJECT.yaml` remain shared across vendors. No global `cartan.pulse.md` or
+  vendor-specific project pulse. `cold-start-card` is a temporary evidence pointer, not a
+  second state authority.
+- Updated Nablarva's live central pulse and added the volatile Termbrana re-entry card under
+  `.dev/session/toolbox-termbrana-02-m0-truthspike/`; Termbrana received no local harness or
+  agent files. Its expanded README remains the sole dirty Termbrana file for next-session
+  review.
+
+### Deploy and verification
+
+- `bash deploy.sh --codex-only --dry-run` showed only the reviewed Codex delta; actual
+  Codex-only deploy completed. Source/live parity verified for global AGENTS, all six agent
+  TOMLs, and the relevant skills. Existing `AGENTS.md.bak-2026-08-24` remained the day's
+  preserved backup.
+- Both new/updated skills passed `quick_validate.py`; all custom agent TOMLs parsed with
+  Python `tomllib`; `git diff --check` is clean.
+- Independent cold forward-test passed the buffering contract after tightening mode
+  transition, durable-artifact meaning, activation, and parking authority.
+- Fresh ephemeral Codex session `01a031c2-6e44-7860-8468-4e38cd994442` discovered
+  `$buffering` and returned `BUFFER_HELD` with the unresolved thread; read-only, no artifact.
+- Earlier fresh PTY proof discovered and spawned global `harness_builder`, but its full
+  proposal did not return within several minutes and was interrupted. Discovery is proven;
+  fresh-runtime completion latency remains an observation, not a pass. Headless ephemeral
+  custom-subagent spawning also returned `no thread with id`; use a PTY-backed session for
+  that acceptance path until reverified.
+
+### Curvature / deferred
+
+- Nablarva declares `.dev/session/pulse.md` canonical, but `.dev/session/` is gitignored and
+  the devenv transport previously observed targets `session/`. The pulse/card are correctly
+  central and volatile on office, but cross-host transport alignment remains a separate
+  Nablarva repair; no silent flattening was attempted.
+- No commit, push, full ia-sync deploy, host service change, or Termbrana M0 freeze occurred.
+
+— @Cartan (Codex resident · office), 2026-08-24
