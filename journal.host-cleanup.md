@@ -1156,3 +1156,84 @@ _@Cartan with @majkee · source authored compose-first in `ia-sync/zsh/system/`.
   reused the already-running proxy/profile.
 
 — @Cartan (Codex resident · office), 2026-08-24
+
+---
+
+## HOME — 2026-08-25
+
+**Agent:** @Oraculum (home / hruzam)
+**Session:** zsh source-vs-deployed drift audit + cleanup
+
+### The mechanism finding — read this part even if you skip the rest
+
+`deploy.sh` rsyncs `zsh/` **without `--delete`**, and its `copy_file()` backs up before
+overwrite with **no retention policy**. Consequence: the deployed tree is not a projection
+of source, it is an **accretion** — the union of every state `zsh/` has ever been in.
+
+Measured on home: **120 source files, 155 deployed, 37 orphans.** 15 of those were pure
+`.bak` exhaust — one per `config.zsh` deploy since 2026-07-30, none ever pruned.
+
+**Office almost certainly has its own orphan set. Nobody has looked.**
+
+### Done on home
+
+- **29 files quarantined** to `/tmp/zsh-prune-2026-08-25` (moved, never `rm` — two-phase
+  by design, reversible until you purge): 15 `.bak`/backup files · 12 confirmed-dead
+  (`ai/office-wire.zsh`, `ai/gemini-base.zsh`, `ai/gemini-agents.zsh`, `larva.zsh`,
+  `larva/{broadcast,consult,laika,slices}.sh`, `session-helpers.zsh`,
+  `session-syntax.zsh`, `registries/tasks.js`, `ai-agents.registry.json`) ·
+  `system/browser.zsh` + `system/pacman.zsh` (traced: only self-references) ·
+  2 ia-sync drafts.
+- Verified after: `config.zsh`, `ai/base.zsh`, `system/base.zsh` all syntax-OK and
+  sourcing clean. Home's zsh tree went **37 orphans to 5**.
+- **New tool:** `zsh/blessings/zsh-orphans.zsh` — report-only drift reporter. Three
+  buckets (KEEP / KILL / UNKNOWN) against an editable glob policy at the top of the file.
+  It has no delete path at any flag, deliberately. Run it on office:
+  `zsh ~/ia-sync/zsh/blessings/zsh-orphans.zsh`
+
+### NOT deleted — load-bearing on home
+
+`normalizer.py` and `harness.machine-project-registry.json` are live: home's
+`config.zsh:27` evals the normalizer at every login. Home must migrate to inline
+`PROJECT_*` exports BEFORE either dies, or the project switcher loses every path.
+Both are pinned in the reporter's KEEP list.
+
+### Corrections to the record
+
+- **The machines are Manjaro, not Arch.** `/etc/os-release` -> `ID=manjaro`,
+  `ID_LIKE=arch`. `ia-sync/AGENTS.md:3`, `zsh/archx/` ("Arch monitoring suite") and this
+  journal all say Arch. Correction scope undecided — majkee's call. Ripple worth noting:
+  termbrana's Epoch calibration justified the M0 host pins on "Arch extra in sync with
+  upstream"; Manjaro holds packages behind Arch on staged branches. Pins were empirically
+  confirmed by PAD-01, but the reasoning under them cites the wrong repo.
+- **`zsh/AGENTS.md` was wrong in both directions.** It recorded `system/browser.zsh` and
+  `system/pacman.zsh` as "files never existed on either machine or in repo" — both were on
+  home's disk. It parked five files on "Maxwell must verify home" — all five were live.
+  Those five questions can now close.
+- **`ia-sync/AGENTS.md` claude row corrected:** home does NOT run claude "via `office`
+  alias"; `~/.local/bin/claude` exists here.
+- **zellij and tmux are ABSENT on home.** Both present on office. So termbrana M0 cannot
+  run on home at all, and the phone rail (`devices/_shared/agentive-tmux.md`, forced
+  `tmux new-session -A -s agentive`) reaches office ONLY.
+- **New section in `ia-sync/AGENTS.md`: "Which host am I on?"** — `zsh/AGENTS.md`,
+  `zsh/CLAUDE.md` and the `ai/temple-*.zsh` headers all declare `host: office` regardless
+  of where you are, and misled this session. The section gives mechanism fingerprints
+  (native php74 / valet / nginx / ~/projects / tailscale node ID) that a config edit
+  cannot fake.
+
+### Open — needs a temple gate, not a patch
+
+`ai/base.zsh` **prints on source** (`gemini-line PARKED 2026-07-24 ...`), violating its own
+header contract: "idempotent + side-effect-free on source — defines functions/aliases only,
+never runs work or prints". It is sourced non-interactively by the temple-doorbell
+post-commit hook, so the print contaminates hook output. Gated by decision 0009 — draft and
+mail the temple. Related: Gemini line parked 2026-07-24, but `zsh/AGENTS.md` still
+documents the whole Gemini scope as live.
+
+### Left for whoever picks up
+
+- 3 `substrate.*` files in the reporter's KILL bucket, not yet quarantined
+- 2 UNKNOWN needing a trace: `config_backup_docker.zsh`, `guides/ai.md`
+- `archive/secrets.zsh.stale-2026-07-31` — a stale secrets file sitting in archive
+- `deploy.sh` backup retention (keep last N) — deliberately deferred: wrong host, wrong
+  moment, and it is the one script that breaks config delivery to BOTH machines if wrong

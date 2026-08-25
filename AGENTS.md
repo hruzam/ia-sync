@@ -43,6 +43,12 @@ as Kelvin/Maxwell; it is not a read-only compatibility seat.
 - A new Codex primitive must be dry-run deployed and verified from a fresh Codex session
   before it is called live; unchanged files do not guarantee unchanged model behavior.
 
+## Claude ↔ Codex handshake
+
+`HANDSHAKE.md` — how a Claude seat and @Cartan hand work to each other: mail by path,
+presence = the ring, three meeting shapes (POINT / RETURN / CHALLENGE), no hooks, no new
+mechanism. Read it before opening a cross-runtime exchange.
+
 ## What Kelvin does NOT do here
 
 - Cross-machine daemon architecture — that is piql/Houston's domain
@@ -87,11 +93,47 @@ Mail when:
 | | office (hruzam-120922) | home (hruzam) |
 |-|------------------------|---------------|
 | IP (Tailscale) | 100.126.182.111 | 100.110.27.60 |
-| PHP 7.4 | `/usr/bin/php74` | Docker (`php74-composer`) |
+| PHP 7.4 | `/usr/bin/php74` | Docker (`php74-composer`), no native CLI |
 | PHP 8 | `/usr/bin/php` | system |
 | Web | Valet-linux | nginx + systemctl |
-| claude | `~/.local/bin/claude` | via `office` alias |
+| claude | `~/.local/bin/claude` | `~/.local/bin/claude` (corrected 2026-08-24 — the "via `office` alias" row was wrong; home has its own binary) |
 | piql | lives here | remote via `oc`/`op`/SSH |
+| zellij | present (0.44.3) | **ABSENT** |
+| tmux | present | **ABSENT** |
+
+## Which host am I on? (resolve before planning — verified 2026-08-24)
+
+**Do not infer the host from documentation in this repo.** `zsh/AGENTS.md`,
+`zsh/CLAUDE.md`, and the `zsh/ai/temple-*.zsh` headers all declare `host: office` /
+`MACHINE_NAME="office"`. Those are office-authored source files describing office; they
+read as office no matter which machine you are actually on. They have already misled at
+least one session.
+
+Cheap declaration (fine when nothing depends on it):
+
+```bash
+echo $MACHINE_NAME          # home | office
+hostname -s                 # hruzam | hruzam-120922
+```
+
+Authoritative check (use when a deploy, a gate, or evidence depends on it). These are
+mechanism fingerprints, not config strings — a config edit cannot fake them:
+
+```bash
+ls /usr/bin/php74           # exists = office · absent = home
+command -v valet            # found  = office · absent = home
+systemctl is-active nginx   # active = home   · office serves via Valet
+ls -d ~/projects            # exists = office · absent = home
+tailscale status --json | jq -r .Self.ID   # match against machines.json
+```
+
+The tailscale node ID is the anti-spoof factor named in `machines.json` — prefer it when
+two signals disagree.
+
+**Why it matters:** termbrana's M0 host contract is office-pinned
+(`research/evidence/host-versions.md`) and zellij is absent on home, so that work cannot
+run here at all. The phone rail (`devices/_shared/agentive-tmux.md`) forces a `tmux`
+session, and tmux is absent on home — that rail reaches office only.
 
 ## Maxwell (home counterpart)
 
