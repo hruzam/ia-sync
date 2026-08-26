@@ -178,6 +178,26 @@ bash run.sh update              # checks prereqs, points to sublime-keymap.md st
 bash run.sh mark sublime-keymap
 ```
 
+### claude-desktop · v1.0 · hosts: home office · MANUAL
+Official Anthropic desktop app, AUR package. Installed on home 2026-08-27; office not
+yet done — do it in a live office session, then `run.sh mark claude-desktop`.
+Source: https://aur.archlinux.org/packages/claude-desktop
+```bash
+pamac build claude-desktop
+bash run.sh mark claude-desktop
+```
+
+### chatgpt-desktop · v1.0 · hosts: home office · MANUAL
+OpenAI's official ChatGPT desktop app, AUR package (the app referred to loosely as
+"codex" — Codex lives inside it; the separate Codex CLI is unrelated and already
+tracked in `codex-cli.md`). Installed on home 2026-08-26 via `pamac build
+chatgpt-desktop`; office not yet done.
+Source: https://aur.archlinux.org/packages/chatgpt-desktop
+```bash
+pamac build chatgpt-desktop
+bash run.sh mark chatgpt-desktop
+```
+
 ### netOrchestrating · v1.0 · hosts: home office · MANUAL
 Symmetric SSH file-bus relay between home ↔ office panes. Too interactive to auto-run.
 Source: `experiments/netOrchestrating/`  ·  needs tmux-pin-bus first.
