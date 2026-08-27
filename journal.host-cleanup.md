@@ -1237,3 +1237,84 @@ documents the whole Gemini scope as live.
 - `archive/secrets.zsh.stale-2026-07-31` — a stale secrets file sitting in archive
 - `deploy.sh` backup retention (keep last N) — deliberately deferred: wrong host, wrong
   moment, and it is the one script that breaks config delivery to BOTH machines if wrong
+
+---
+
+## HOME — 2026-08-27
+
+**Agent:** @Oraculum (home / hruzam)
+**Session:** Codex Desktop migration incident — audit + partial cleanup
+
+### What happened
+
+Codex Desktop (the ChatGPT app, `/usr/lib/chatgpt/resources/codex` — NOT the npm CLI) ran an
+"external agent migration" on **2026-08-26 23:01:54**, triggered by its onboarding checklist.
+In one 8-millisecond burst it converted Claude Code config into Codex format. Persisted
+selection in `~/.codex/.codex-global-state.json` shows three items ran: SUBAGENTS, HOOKS,
+CONFIG. Switch: `~/.codex/config.toml` → `[desktop] external-agent-import-sync-enabled = true`.
+
+No journal entry, no deploy stamp, no diff, no visible sign. Found two days later only because
+the Codex handshake was being sanity-checked before an unrelated trial.
+
+### What it did
+
+- **32 Claude persona agents** mirrored into `~/.codex/agents/` as `.toml`. Source
+  `ia-sync/codex/agents/` has only ever held six. Directly contradicts `codex/AGENTS.md`:
+  *"Do not mirror the Claude persona roster."*
+- **The converter is buggy** — blind `claude`→`Codex` string rewrite on file BODIES.
+  `~/.claude/houston.goal` became `~/.Codex/houston.goal`; "no binding to Claude-only shapes"
+  became "Codex-only shapes", inverting the meaning. `model: opus` dropped entirely.
+  These files were corrupt on arrival.
+- **~56 skills** mirrored into `~/.agents/skills/` (36 in `~/.claude/skills/`, 60 landed).
+  **8 carried converter damage.** `new-project/SKILL.md` was the dangerous one — a scaffold
+  that would CREATE `.Codex/rules|agents|skills` dirs in future repos.
+- **53 Claude Code session transcripts INGESTED.** Re-encoded from
+  `~/.claude/projects/<slug>/<uuid>.jsonl` into Codex's native rollout format at
+  `~/.codex/sessions/2026/08/26/` — 8,339,434 B, of which 3,811,068 B is message text and
+  421,035 B is operator-typed text. Projects touched include `-home-hruzam`,
+  `--config-zsh`, `-ia-sync`, `-nabla-lab`, `-projects-silesion`. Tool-output bodies were
+  largely NOT carried (a 60 MB tool-heavy session became a 204 KB rollout). LOCAL ingest —
+  no evidence was gathered either way about network transmission.
+- **config.toml gained Claude imports**: an `[mcp_servers.ramguard]` block pointing at
+  `~/.claude/mcp/ramguard/server.py` (Codex now launches Claude's MCP server every session),
+  `ANTHROPIC_DEFAULT_OPUS_MODEL` exported into every Codex shell, and a `[hooks.state]`
+  `trusted_hash` — **the migration pre-trusted its own generated hook**, skipping the prompt
+  that exists so a human sees a new hook before it runs.
+- **hooks.json** is a faithful translation of the Claude SessionStart hook. Every Codex
+  session now pulls `~/.remote` and injects the remote-task prompt.
+- `~/.codex/AGENTS.md` was NOT touched. `~/.claude/` was NOT modified.
+
+### Done
+
+- 32 mirrored agents → `/tmp/codex-agent-mirrors-2026-08-27/`. `~/.codex/agents/` now holds
+  exactly the six canonical files, verified byte-identical to source.
+- 8 damaged skills → `/tmp/codex-repair-2026-08-27/skills/`. `~/.agents/skills/` 60 → 52,
+  `.Codex` matches now zero, the four ia-sync-owned skills untouched.
+- Both quarantines are MOVES, not deletes. Reversible until `/tmp` clears.
+
+### PARKED — awaiting majkee
+
+- **`external-agent-import-sync-enabled` is STILL `true`.** Flip to `false` pending closure of
+  a live Codex CLI session. Until flipped, recurrence is possible on upgrade or re-onboard.
+- `memories_1.sqlite` has a `stage1_outputs` table (`raw_memory`, `rollout_summary`) and a
+  `jobs` table. **Both empty.** A second-stage distillation of those transcripts is designed
+  and wired but has not run. Flip the flag before it does.
+- 53 imported transcripts still at `~/.codex/sessions/2026/08/26/` — separate decision.
+- ~48 further squatter skills in `~/.agents/skills/` — undamaged, but unmanaged.
+- `codex/AGENTS.md` doctrine is aimed at the wrong party: it tells Cartan not to mirror the
+  roster, when the CLI does it regardless of what Cartan does. Needs a line naming the flag.
+
+### OPEN QUESTION FOR OFFICE — answer before opening Codex there
+
+**Does Codex Desktop run on office?** If yes, office has its own migration: its own mirrored
+agents, its own 8 damaged skills, and its own transcript ingest — of sessions that include
+piql. **None of today's cleanup propagates.** The mirrors were never in git, so there is
+nothing for a pull to carry. Office needs its own pass, driven from office.
+
+### Mechanism note for deploy.sh
+
+`~/.codex/AGENTS.md.bak-2026-08-27` is BYTE-IDENTICAL to the current file. `copy_file()`
+creates a dated backup even when content has not changed. So the retention fix should be
+**"back up only when content differs"**, not "keep last N" — that removes most of the litter
+at source. Also: `deploy.sh:117-119` rsyncs `codex/skills/` → `~/.agents/skills/` without
+`--delete`, and ia-sync owns 4 of 60 there. Third tree with the same accretion disease.
