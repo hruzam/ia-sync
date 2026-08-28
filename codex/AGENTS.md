@@ -68,6 +68,7 @@ flatten it.
 
 - Map bounded work to the global team above; do not mirror the Claude persona roster or
   create sibling-specific variants of those agents.
+- Codex Desktop itself can mirror the Claude roster regardless of this rule: its onboarding "external agent migration" is controlled by `[desktop] external-agent-import-sync-enabled` in `~/.codex/config.toml`. Keep it `false` (incident 2026-08-26, journal HOME 2026-08-27).
 - Keep one writer for shared conclusions and domain types. Parallel delegates should be
   read-heavy or own disjoint file scopes, and their claims must be checked before merge.
 - Preserve each sibling's topology lock. In particular, Termbrana is governed by

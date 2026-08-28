@@ -16,6 +16,31 @@ fi
 # harvest leg must never run from this key (SYNC_DISCIPLINE.md, 2026-07-31).
 alias zsync='cd ~/ia-sync && git pull --rebase origin main && bash deploy.sh && git status'
 
+# -----------------------------------------------------------------------------
+# Dual-boot NTFS dirty-flag workaround (2026-08-28). Windows Fast Startup leaves
+# sda4 (Pikczurouni) / sda5 (Data_M2) marked dirty; ntfs3 then refuses to mount.
+# Read-only + force by default — writing while dirty risks Windows clobbering
+# changes on hibernation resume. Remove this block once Fast Startup is off
+# and a clean Windows shutdown has cleared the dirty flag for good.
+ntfs-dirty-mount() {
+  sudo mkdir -p /run/media/hruzam/Pikczurouni /run/media/hruzam/Data_M2
+  sudo mount -t ntfs3 -o force,ro /dev/sda4 /run/media/hruzam/Pikczurouni && echo "mounted Pikczurouni (ro)"
+  sudo mount -t ntfs3 -o force,ro /dev/sda5 /run/media/hruzam/Data_M2 && echo "mounted Data_M2 (ro)"
+}
+
+# Explicit write access — only use once you accept the hibernation-clobber risk
+# (see journal / mail 2026-08-28 for the full explanation).
+ntfs-dirty-mount-rw() {
+  sudo mkdir -p /run/media/hruzam/Pikczurouni /run/media/hruzam/Data_M2
+  sudo mount -t ntfs3 -o force /dev/sda4 /run/media/hruzam/Pikczurouni && echo "mounted Pikczurouni (rw, force)"
+  sudo mount -t ntfs3 -o force /dev/sda5 /run/media/hruzam/Data_M2 && echo "mounted Data_M2 (rw, force)"
+}
+
+ntfs-dirty-umount() {
+  sudo umount /run/media/hruzam/Pikczurouni 2>/dev/null && echo "unmounted Pikczurouni"
+  sudo umount /run/media/hruzam/Data_M2 2>/dev/null && echo "unmounted Data_M2"
+}
+
 # =============================================================================
 # PROJECT SWITCHER SYSTEM
 # Sources config.zsh → project-switcher.zsh → git-lifecycle

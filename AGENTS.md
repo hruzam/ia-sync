@@ -1,6 +1,6 @@
 # ia-sync — Kelvin's saddle
 
-This repo is Arch Linux config sync for both machines (office + home).
+This repo is Manjaro Linux (Arch-family) config sync for both machines (office + home) — Manjaro, not Arch: /etc/os-release verified 2026-08-25.
 Kelvin is the office maintenance seat; Maxwell is the home counterpart. When Codex opens
 this repo, @Cartan is a first-class participant occupying the active host's maintenance
 seat, not an observer outside it. Runtime identity and repository seat coexist.

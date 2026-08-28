@@ -1318,3 +1318,97 @@ creates a dated backup even when content has not changed. So the retention fix s
 **"back up only when content differs"**, not "keep last N" — that removes most of the litter
 at source. Also: `deploy.sh:117-119` rsyncs `codex/skills/` → `~/.agents/skills/` without
 `--delete`, and ia-sync owns 4 of 60 there. Third tree with the same accretion disease.
+
+---
+
+## HOME — 2026-08-28
+
+**Agent:** Claude (home / hruzam) — Trajectory
+**Session:** normalizer.py retirement — migrate-then-retire, STOPPED before retire step
+
+### What happened
+
+Migrated `zsh/config.home.zsh` off `normalizer.py` + `harness.machine-project-registry.json`
+onto inline `PROJECT_*` exports, office-style (registry JSON was never in the repo — only
+deployed live at `~/.config/zsh/harness.machine-project-registry.json`; used that as source
+of truth). Dry-run + real `deploy.sh` both clean; `config.zsh` deployed with backup
+(`config.zsh.bak-2026-08-28`). Fresh-shell verify (`zsh -ic`): no `normalizer` error lines.
+
+**STOPPED before the retirement step (5–7).** Fresh-shell directory check on all six
+`PROJECT_*_PATH` vars:
+
+| Var | Path | Status |
+|---|---|---|
+| FO | `~/www/imago_cz/fantasyobchod` | exists |
+| IM | `~/www/imago_cz/freya` | exists |
+| PSD | `~/www/PSDVS` | **MISSING** |
+| LTP | `~/www/Laravel-training-project` | exists |
+| LRV | `~/www/larva` | **MISSING** |
+| SES | `~/www/larva_dev/dev` | exists |
+
+Confirmed this is **pre-existing breakage in the registry, not introduced by the migration**:
+checked `PROJECT_PSD_PATH`/`PROJECT_LRV_PATH` under the *old* normalizer-eval path before
+touching anything — same two paths were already broken today. Real dirs: `~/www/psdvs`
+(lowercase, registry says `PSDVS`) and no `~/www/larva` at all (closest candidates —
+`~/www/larva_dev/dev`, already claimed by SES, or `~/www/LARVA_PEPAGI`, an unrelated
+different project — ambiguous, did not guess).
+
+Per the task LAW (any verification failure → stop, do not retire), `normalizer.py` and
+`harness.machine-project-registry.json` are **still live** at
+`~/.config/zsh/normalizer.py` / `~/.config/zsh/harness.machine-project-registry.json`.
+Nothing was moved, `zsh-orphans.zsh` pins untouched.
+
+### Open — needs a call before retirement can complete
+
+PSD and LRV paths need a real fix (not a guess by an agent): confirm the correct live
+directory for each, update `zsh/config.home.zsh` inline exports to match, redeploy, re-verify
+all six directories exist, *then* retirement (steps 5–7 of the migrate-then-retire task) can
+proceed in a follow-up session.
+
+### Follow-up — same day, PSD fixed + retirement executed
+
+Orchestrator confirmed the PSD case defect via disc (composer.json lives at
+`~/www/psdvs`, lowercase) and dispatched the completion. `PROJECT_PSD_PATH` in
+`zsh/config.home.zsh` corrected `PSDVS` → `psdvs` (single-line change, nothing else in
+that block touched — `ENV_BACKUP_DIR="$HOME/www/PSDVS/env"` in the PHP/DB/TOOLING block
+below is a separate, still-uppercase PSD-derived path carried "verbatim" from the old
+registry; flagged here, not touched — out of the stated edit scope, worth a look before
+`psdvs-toolkit.zsh`'s env-backup path is next relied on).
+
+`deploy.sh --dry-run` → `--dry-run` confirmed `config.home.zsh → config.zsh` as the one
+real change; real deploy ran clean (`config.zsh.bak-2026-08-28` backup kept). Fresh `zsh
+-ic` verify: FO/IM/PSD/LTP/SES all resolve to existing directories, PSD now
+`~/www/psdvs`. LRV still `~/www/larva` (MISSING) — **left verbatim, pre-existing defect,
+parked with @majkee**, not touched by this session.
+
+Retirement executed: deployed `~/.config/zsh/normalizer.py` and
+`~/.config/zsh/harness.machine-project-registry.json` moved (not deleted) to
+`/tmp/normalizer-retired-2026-08-28/`. Source copies in `~/ia-sync/zsh/` untouched per
+instruction — turned out there was nothing to touch there: the only in-repo copy of
+`normalizer.py` lives at `zsh/archive/normalizer.py` (already `archive/*`-pinned in
+`zsh-orphans.zsh`), and `harness.machine-project-registry.json` was never checked into
+the repo at all (deploy-side artifact only, as the previous entry above already noted).
+
+Second fresh `zsh -ic` post-retirement: no normalizer-related lines, `fo/im/psd/ltp/lrv/
+sess` switcher functions all still resolve from `project-switcher.zsh`, same five paths
+exist (LRV still MISSING as expected).
+
+Unpinned `normalizer.py` and `harness.machine-project-registry.json` from
+`zsh/blessings/zsh-orphans.zsh`'s `KEEP_GLOBS` (zsh preset). `zsh -n` clean; ran the
+script no-args — neither file appears anywhere in the report now (not KEEP, not KILL,
+not UNKNOWN, not even NOT DEPLOYED, since the source tree never had a top-level copy of
+either — `normalizer.py`'s only source copy is under `archive/`). Functionally correct:
+the mechanism is gone from both source and deployed sides.
+
+Nothing committed — per instruction, working tree left dirty for the operator's own
+commit-sweep decision.
+
+### Correction to HOME 2026-08-27 entry (recorded 2026-08-28)
+
+The "53 Claude transcripts, 8.3MB" figure was wrong on disc. mtime forensics
+(2026-08-28): ~/.codex/sessions/2026/08/26/ held 58 files / 29MB; the true
+migration burst (23:01:54–55, `EXTERNAL SESSION IMPORTED` marker verified) is
+**46 files / ~7.3MB** — quarantined to /tmp/codex-transcripts-quarantine-2026-08-28.
+The other 12 files are native Codex rollouts from the same day and were left in
+place; one anomaly (filename 17-14-28, mtime 2026-08-27T03:03:57) awaits an eyeball.
+
