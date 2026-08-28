@@ -1,67 +1,90 @@
 ---
 name: cold-start-card
 description: >
-  Invoke as /cold-start-card. Drops a tiny volatile cold-start note for majkee into
-  the temple monkey inbox (temple:monkey) — commit mark, task name, a sip of context,
-  and the resume command+flags. Info for majkee (not agent-consumed), drainable and
-  flexible: a taste, not a report. The glue to re-enter a session. Filename
-  CS.<slug>.<date>.md. Sibling of /drop-brief (terse agent take) — kept deliberately volatile.
+  Invoke as /cold-start-card. Drops a session-glue card into the central vault
+  ~/reposoma/_cold-start/ — frontmatter is the source of truth (project, whole ~paths,
+  commit, resume command, routing assessment), free-prose continuity layer, optional
+  prompt-0 master prompt in runbook grammar. CS.<slug>.<date>.md for process glue,
+  RT.<slug>.md for routines. The glue to re-enter a session. Law:
+  raw.guides/cold-start-card/GUIDE.md. Sibling of /drop-brief (terse agent take).
 ---
 
-I drop a small cold-start note for majkee — just enough to re-enter. Volatile and
-flexible: a taste, not a report. Info for majkee, not for an agent to consume.
+I drop a session-glue card into the central vault — enough for the next incarnation
+(any brand, any host) to fully re-enter. Frontmatter carries the parseable truth; the
+body carries the taste.
 
-## Where / how it lands
-- Address: `temple:monkey`. Root via cascade (never absolute): `temple-project-map.zsh`
-  → `registry/index.md` → beacon → ask once (`temple-project-root reposoma`).
-- Target: `<reposoma>/_mail/monkey/inbox/CS.<slug>.<YYYY-MM-DD>.md`
-- Law: `<reposoma>/_mail/README.md`. Volatile by design — gitignored, drainable
-  (Cinderella rule). I only ADD a file; never edit another seat's (single-writer).
+**Schema of record:** `~/reposoma/raw.guides/cold-start-card/GUIDE.md` — on conflict
+between this skill and the guide, the guide wins. (Pointer note: the schema below is a
+working copy; cross-check the guide only if this looks stale.)
 
-## Read-state — drain by default, unless left for more readers
-- **Default (drain):** the reader consumes it — after reading, the right reincarnation MOVES
-  the card to `archive/` (decision 0010: inbox = unread, archive = read). Cinderella.
-- **Exception (leave):** a card meant for MORE THAN ONE reader carries an explicit
-  `leave: for more readers` line and STAYS in the inbox until every intended reader has
-  drained it — it is NOT archived on first read. If I drop a multi-reader card, I mark it so.
+## Where it lands
 
-## The card (four fields, loose — bend freely)
-    CS · <YYYY-MM-DD> · <task name>
+- Vault root via cascade: `temple-project-map.zsh` → reposoma root → `_cold-start/`.
+- Process card → `<reposoma>/_cold-start/card/CS.<slug>.<YYYY-MM-DD>.md`
+- Routine card → `<reposoma>/_cold-start/routines/RT.<slug>.md` (dateless — it recurs)
+- Vault is git-tracked: the card exists cross-machine only after commit+push — say so
+  at handoff if I can't commit from my seat.
+- I only ADD files; never edit another seat's card (single-writer).
 
-    commit : <short-hash> (<branch>)      # git rev-parse --short HEAD
-    task   : <task name>
-    context: <one sip — the least that rebuilds intent>
-    resume : <command + flags>            # e.g. claude --agent atlas-ui → /cold-start-card
+## The card
 
-Keep it tiny. Skip any empty field. No template rigor — this is a note.
+Frontmatter first — flat shared cross-brand contract, every path WHOLE and
+`~`-anchored (`~/path/to/target`; never bare-relative, never literal /home/…):
 
-## Continuity layer (the card is a map, not a summary)
+    ---
+    kind: cold-start-card            # cold-start-card | routine
+    date: <YYYY-MM-DD>
+    brand: claude
+    seat: <my seat name>
+    project: <origin registry key>
+    projects: [<a>, <b>]             # optional — cross-project span
+    root: ~/<whole path to project root>
+    commit: <short-hash> (<branch>)  # via seat Bash if present, else leave for majkee
+    task: <one line>
+    resume: <command + flags>
+    model: <fable|opus|sonnet|haiku> # thinking level the continuation deserves
+    dedicated: <recommended seat/agent>
+    recommend: <one-line steer for the next incarnation>
+    runbook: ~/reposoma/_runbook/<project>/<slug>/RUNBOOK.md   # optional
+    pointers:
+      - ~/<where depth lives>
+    ---
 
-The four fields get majkee back into a session. But the NEXT INCARNATION reading
-this card must also be able to fully re-enter without losing state. The card
-carries just enough — but "enough" means the four fields PLUS pointers to where
-depth lives. Add whichever apply (headings optional, prose fine):
+Skip empty keys; never invent values. `model`+`dedicated`+`recommend` = my routing
+assessment — the human reads it in the palette before launching anything.
 
-- **Pending tasks** — what's open, what's next, in what order
-- **State pointers** — where the detailed state lives (dev-journal handoffs,
-  pulse entries, staged files, observation docs). The card points; those files carry
-- **First-step instruction** — if the reader should do something BEFORE resuming
-  the line (e.g., spawn @Delta for cleanup, read a specific file, run deploy)
-- **Session advice** — one lesson from this session that the next incarnation
-  should carry (therapy-grade: what went wrong, what to do differently)
-- **Cleanup / hygiene notes** — where the house isn't clean (growing staging dirs,
-  stale inbox items, tombstone files, uncommitted batches)
+**Optional master prompt** — runbook grammar EXACTLY (blocks lift verbatim into
+RUNBOOK.md; the palette reveals them without opening the card):
 
-The rule: the card alone may be tiny, but **card + its pointers** must be
-sufficient. If the session produced state artifacts (dev-journal entries, staged
-files, pulse entries), the card MUST point to them. An incarnation that reads
-only the four fields and follows the resume command should land in the right
-place; one that also reads the continuity layer should land with full context.
+    ## prompt-0
+
+    ###### prompt
+
+    ```text
+    <master prompt for the next session>
+    ```
+
+**One-authority law:** the card is a transfer POINTER, never a second doing-state. If a
+live session bed exists (a `STATUS.md` for an open gate), I point to it and carry NO
+competing next-action — STATUS owns the position. Own queue only when no live bed exists.
+
+**Body — continuity layer** (free prose, point never copy): pending tasks in order ·
+state pointers (dev-journals, pulse entries, staged files) · first-step instruction ·
+session advice (one lesson) · cleanup/hygiene debts. The card alone may be tiny, but
+card + its pointers must be sufficient.
+
+## Read-state — drain by default
+
+Folder = state. The reader who consumed a CS card moves it `card/` → `archive/`
+(Cinderella; `temple-cs-manage` once built, plain `mv` until then). A multi-reader card
+carries `leave: for more readers` and stays until all have drained it. RT cards never
+move.
 
 ## Run
-1. Pull the four fields from THIS session (I hold the context — no subagent).
-   commit via seat Bash if present, else leave the field for majkee.
-2. Compose the continuity layer: scan session for open items, state artifacts,
-   lessons, and cleanup debts. Point, don't copy — the card stays small.
+
+1. Pull the frontmatter facts from THIS session (I hold the context — no subagent).
+2. Compose the continuity layer: open items, state artifacts, lessons, debts.
+   Point, don't copy — the card stays small.
 3. Draft, show majkee, confirm — then Write the file.
-4. Confirm: "CS card dropped — `temple-mail-inbox temple:monkey` to see it."
+4. Confirm: "card dropped at `~/reposoma/_cold-start/<subdir>/<name>` — commit reposoma
+   to make it cross-machine."
