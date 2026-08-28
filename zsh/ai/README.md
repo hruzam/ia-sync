@@ -34,6 +34,9 @@ Usage: `~/.config/zsh/guides/guide-for-user.md` · keyboard map: `guides/keyboar
 | `temple-mail-inbox.zsh` | C: read-side inbox helper (`temple-mail-inbox`) | temple family | `base.zsh` P3 |
 | `temple-mail-switch.zsh` | D: interactive mail-destination picker (`temple-mail-switch`) | temple family | `base.zsh` P3 |
 | `temple-mail-manage.zsh` | E: mailbox read-state manager (TUI + `--list/--archive/--restore`) | operator + agents | executed (keyboard alias) |
+| `cs-palette.zsh` / `cs-palette.py` | F: cold-start vault explorer (D1/D2/D3 curses TUI) — resolves vault via `temple-project-root reposoma`; explorer only, never mutates | operator + agents | executed (keyboard alias) |
+| `temple-cs-manage.zsh` / `cs-manage-palette.py` | G: cold-start vault mover — `card/`↔`archive/`↔`routines/`, both directions (TUI + `--list/--to-card/--to-archive/--to-routines`) | operator + agents | executed (keyboard alias) |
+| `cs_vault.py` | Shared read-only helpers (file discovery, frontmatter parsing) for cs-palette.py + cs-manage-palette.py — never writes | cs-palette.py, cs-manage-palette.py | imported |
 | `temple-project-surface.zsh` | Project-map interactive surface: `_project_paths`, `_project_git_status`, `_project_commit_all`, `_project_pick_zle` (ZLE), `_project_help` | `keyboard.zsh` P15 aliases + bindkey | `base.zsh` P10 |
 | `zenith-zsh.sh` | Zenith-ZSH launcher — ensures `blessings/` exists, routes interactive vs headless; calls `claude --agent zenith-zsh` | `zenith-zsh` alias (keyboard P16) | **executed** (not sourced) |
 | `temple-tree.zsh` | tree-snapshot engine (`tree-snapshot <project>`) | temple utilities | `base.zsh` P5 |

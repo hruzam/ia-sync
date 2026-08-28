@@ -111,6 +111,8 @@ alias doorbell-log="tail -n 30 ~/.config/zsh/temple-doorbell.log"
 alias transport-selftest="zsh ~/.config/zsh/ai/temple-transport-selftest.zsh"
 alias mail-pick="temple-mail-switch"
 alias temple-mail-manage="zsh ~/.config/zsh/ai/temple-mail-manage.zsh"
+alias cs-palette="zsh ~/.config/zsh/ai/cs-palette.zsh"
+alias temple-cs-manage="zsh ~/.config/zsh/ai/temple-cs-manage.zsh"
 
 # =============================================================================
 # PARTITION 10: Temple utilities — tree-snapshot + temple-help

@@ -16,6 +16,7 @@ typeset -gA _KEYS_FAMILY_MAP=(
   gemini         'Gemini'
   agy            'Antigravity'
   rc             'Claude RC'
+  cs             'Cold-start vault'
   temple         'Temple transport'
   doorbell       'Temple transport (shims)'
   mail           'Temple transport (shims)'
