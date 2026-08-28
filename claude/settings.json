@@ -19,7 +19,8 @@
     ],
     "deny": [
       "Bash(git push --force:*)",
-      "Edit(//etc/ssh/**)"
+      "Edit(//etc/ssh/**)",
+      "Agent(metaterminal)"
     ],
     "ask": [
       "Bash(git push:*)",
