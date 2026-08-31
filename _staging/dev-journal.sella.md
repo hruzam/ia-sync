@@ -48,6 +48,22 @@ structure proposed.
 
 ## LOG (newest on top · append-only · stamped)
 
+### [2026-08-31 · claude/atlas-ui · office · ref: sella.codex-consult.wrapper-tune.2026-08-31.md + codex-relay.contract.md §Prompt-passing] — INPUT-EDGE quote-safety shipped; a unified codex-run tune consult staged for a hand-released Codex
+
+majkee flagged that composite (claude→codex) briefs relayed as a double-quoted master prompt
+break on inner backticks / accidentally-doubled apostrophes. Atlas diagnosis: the wrapper isn't
+the bug — the break is at the relay's Bash-composition layer. Shipped rule ① (INPUT edge):
+`codex-relay.contract.md` §Prompt-passing discipline (single-quoted-delimiter heredoc) + matching
+snippets in astrobley/vega/mirror; deployed by majkee. This CONNECTS to two open Sella wrapper
+hypotheses on the OUTPUT edge — the "capable hands, silent voice" defect (2026-08-05: no usage
+numbers, truncated return = wrapper stdout gap) and Wave's "jq extract + sync exec." Unified into
+ONE consult brief (`sella.codex-consult.wrapper-tune.2026-08-31.md`): a master prompt for a
+hand-released interactive Codex to VERIFY H1–H6 against its own `--json` lifecycle, then emit a
+tuned `codex-run.zsh` diff (adds stdin mode ②, replaces the line-88 sed with jq, fixes usage
+surfacing) preserving all invariants. Also surfaced: relay `maxTurns: 3` is too tight for a
+quote-safe round-trip (vega capped mid-tool in a live probe) → bumped vega/mirror to 4 on the
+table. Apply-flow unchanged: Codex diff → table → deploy → fresh-Codex verify (Flight/majkee).
+
 ### [2026-08-05 · claude/atlas-ui · opus · office · ref: sella.probe-a.protocol.md + radio.wave-to-atlas.sella-consultation.2026-08-05.md] — PROBE A PROTOCOL STAGED: two lanes, Wave-reviewed, four amendments folded
 
 Probe A protocol written to `sella.probe-a.protocol.md`. Two lanes: A-eco

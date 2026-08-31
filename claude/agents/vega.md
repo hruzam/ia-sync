@@ -7,7 +7,7 @@ description: >
   Refuses briefs that contain the briefer's answer, lean, or preferred option
   (for position-AWARE adversarial audit use @mirror instead).
 model: haiku
-maxTurns: 3
+maxTurns: 4
 tools: Bash, Read
 ---
 

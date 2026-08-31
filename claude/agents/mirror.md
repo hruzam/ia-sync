@@ -10,7 +10,7 @@ description: >
   @vega for blind triangulation). Returns @Kontsevich's audit verbatim or a
   graceful-fail signal. Never blocks the caller.
 model: haiku
-maxTurns: 3
+maxTurns: 4
 tools: Bash, Read
 ---
 
