@@ -1412,3 +1412,69 @@ migration burst (23:01:54–55, `EXTERNAL SESSION IMPORTED` marker verified) is
 The other 12 files are native Codex rollouts from the same day and were left in
 place; one anomaly (filename 17-14-28, mtime 2026-08-27T03:03:57) awaits an eyeball.
 
+---
+
+## HOME — 2026-08-31
+
+**Agent:** Trajectory (home / hruzam)
+**Session:** `ts-mount`/`ts-umount` — sshfs cross-host file access (Sublime find/open/edit/save over the tailnet)
+
+### Ask
+Operator asked whether Sublime Text can get find/open/edit/save access to files on
+the other host over the existing tailnet SSH, and — if yes — wanted it usable on
+both machines, with the setup logged here.
+
+### Investigated before building
+`zsh/system/tailscale.zsh` already IS the cross-host reach engine (`$TAILSCALE_PEER`,
+`_ts_pull`/`_ts_push`/`_ts_beam`, `_db_reach` tunnel pattern), and `system/README.md`
+already carries a "how to add a command to this scope" recipe with `_ts_mycommand` as
+the literal template. Building a separate mechanism (new file, or the paid Sublime
+SFTP package) would have duplicated live infrastructure — added to the existing
+engine instead. `@epoch` confirmed live: `sshfs` is Arch/Manjaro's official `extra`
+package (not AUR), Sublime's own SFTP plugin is $30/one-time and not a better fit for
+"browse a whole tree," and Tailscale SSH is an orthogonal, not-needed upgrade (plain
+sshd/keys already work host-to-host, confirmed by direct test).
+
+### Completed this session
+- Added `_ts_mount` / `_ts_umount` to `zsh/system/tailscale.zsh`:
+  `ts-mount [peer] [remote-path] [local-mountpoint]` sshfs-mounts the peer's
+  filesystem locally (default: whole home dir at `~/mnt/<peer>`); `ts-umount [mnt]`
+  unmounts. Idempotent both ways. No server-side install — rides sshd's built-in
+  SFTP subsystem.
+- Wired aliases in `zsh/system/keyboard.zsh`; documented in `zsh/system/README.md`
+  (file map + command table) and `_ts_help`.
+- **`sshfs` was already installed on both machines** (confirmed live, pacman/extra) —
+  no install-pkgs task needed, nothing to install on either host.
+- Verified real, not simulated: `zsh -n` clean on both edited files → `deploy.sh
+  --dry-run` showed only the 3 intended files touched → real deploy on home →
+  deployed copies confirmed byte-identical to repo → zero-arg `ts-mount` mounted
+  office at `~/mnt/hruzam-120922` → real `ls`/`head` through the mount showed live
+  office content → write round-trip (wrote a file through the mount, confirmed via
+  direct SSH it landed on office's actual disk with correct content, cleaned up) →
+  idempotent re-mount/re-unmount both correctly no-op'd → clean final unmount
+  confirmed.
+- Committed + pushed to `origin/main`: `167edb9`.
+
+### Office leg — NOT run, deliberate stop (SYNC_DISCIPLINE red flag)
+Pre-flight `git status` on office (checked live over the already-working
+passwordless tailnet SSH — no new access was set up, it was already there) showed
+**uncommitted, unrelated in-flight work**: `claude/agents/mirror.md`,
+`claude/agents/vega.md`, `_staging/dev-journal.sella.md` modified, plus
+`_staging/sella.codex-consult.wrapper-tune.2026-08-31.md` untracked. That is
+SYNC_DISCIPLINE's own listed red flag ("git status shows files you did not
+touch") — did not run `git pull --rebase` or `deploy.sh` on office. Commit
+`167edb9` is on `origin/main` waiting.
+
+**For whoever owns that office work:** once it's committed (or stashed), a plain
+`cd ~/ia-sync && git pull --rebase origin main && bash deploy.sh` on office picks up
+`ts-mount`/`ts-umount` — paths are disjoint from your in-flight files so the rebase
+should be clean. No `install-pkgs/run.sh update` needed for this addition (sshfs
+already present on office too). Deliberately did NOT run `install-pkgs/run.sh
+update` on either machine — office currently shows `markdown-core-patch` and
+`sublime-keymap` STALE from earlier work; not this session's to touch.
+
+### Usage note for the operator
+Default `ts-mount` (no args) mounts the peer's *entire* home directory. Fine for
+occasional use; for a snappier Sublime sidebar on a large tree, scope it —
+e.g. `ts-mount office ia-sync` mounts just that folder.
+
