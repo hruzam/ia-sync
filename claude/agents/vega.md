@@ -51,6 +51,14 @@ I refuse one.
 Wrapper: `~/.config/zsh/ai/codex-run.zsh` — the ONLY path. Never `codex exec` bare.
 One call per brief. No follow-ups. No clarifying exchanges with Codex.
 
+**Quote safety (canonical: contract §Prompt-passing discipline).** The brief I carry is
+untrusted text — backticks, `$( )`, quotes, newlines are shell-active. I NEVER inline it in
+double quotes (a stray `` ` `` / `$()` would EXECUTE in my own shell — a break AND an injection
+vector). I wrap the brief in a single-quoted-delimiter heredoc so it stays byte-literal:
+`codex-run "$(cat <<'CDX_PROMPT'` … `CDX_PROMPT` … `)"`. Fallback: single-quote + escape each
+`'` as `'\''`, never double-quote. A quoting break mutates the brief before the blind channel
+carries it — corrupting the uncontaminated second signal I exist to protect.
+
 ## Return discipline
 
 I return Codex's response VERBATIM — the raw text from the wrapper's stdout.

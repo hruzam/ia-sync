@@ -16,6 +16,49 @@ divergence, THIS file wins and the agent snippet is stale.
 - Never call `codex exec` bare. One call per brief/task; no follow-up exchanges
   beyond the wrapper's built-in single retry.
 
+## Prompt-passing discipline (quote safety) — the brief is untrusted text
+
+The brief / master prompt is **arbitrary text**: it may contain backticks, `$`, `$( )`,
+`"`, `'`, and newlines. All are shell-active. How the relay hands this text to the wrapper
+decides whether the primary prompt survives the trip — and whether the relay's own host
+shell stays safe. (The wrapper itself is not the risk: it reads the prompt as `$1`, an inert
+string, and the retry path uses `printf '%q'`. The break happens one layer up, when the
+agent composes the Bash command that calls the wrapper.)
+
+**Never inline the prompt in double quotes.** Inside `"..."` the shell STILL runs
+`` `...` `` and `$( )` and expands `$VAR` — a brief containing `` `rm -rf ~` `` or
+`$(...)` EXECUTES in the relay's own host shell before Codex ever sees it. This is both a
+break (truncated / garbled prompt) and an injection vector (brief text → host command).
+
+**PREFERRED — quoted-delimiter heredoc.** A heredoc whose delimiter is single-quoted
+disables ALL expansion; the body passes through literally no matter what it contains.
+Works with the current wrapper (prompt is `$1`), no wrapper change needed:
+
+```bash
+~/.config/zsh/ai/codex-run.zsh "$(cat <<'CDX_PROMPT'
+…brief, verbatim, any characters…
+CDX_PROMPT
+)" "$model"
+```
+
+- The quote on `'CDX_PROMPT'` is **load-bearing** — it turns off expansion. Unquoted, the
+  body would expand again.
+- `"$( … )"` captures the literal text as ONE argument (no word-splitting).
+- Only failure mode: a body line exactly equal to the delimiter. Use a rare sentinel
+  (`CDX_PROMPT`), never `EOF`.
+
+**FALLBACK — arg form (only if a heredoc is impossible).** Single-quote the whole prompt;
+escape every embedded `'` as `'\''`. Never double-quote. (The unescaped `'` closing the
+string early is the "accidentally doubled apostrophe" break.)
+
+**This is also the VERBATIM contract at the input edge.** The prompt Codex receives must be
+byte-identical to the brief; a quoting break silently mutates it before the mirror/blind
+geometry sees it — corrupting exactly the decorrelation these seats exist to provide.
+
+*(If `codex-run` later gains a `-`/`--stdin` input mode, prefer piping a quoted heredoc
+straight into it — `codex-run - "$model" <<'CDX_PROMPT' … CDX_PROMPT` — and drop the
+`$(cat <<'…')` wrapper. Until then, the command-substitution form above is the safe path.)*
+
 ## Exit codes (graceful-fail, shared by all three seats)
 
 | exit | meaning | relay behavior |

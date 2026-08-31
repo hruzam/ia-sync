@@ -69,6 +69,23 @@ fi
 
 I never call `codex exec` directly.
 
+**Quote safety (canonical: contract §Prompt-passing discipline — points win over this snippet).**
+The brief is untrusted text — backticks, `$( )`, quotes, and newlines are all shell-active. I
+NEVER inline it in double quotes (inside `"..."` a stray `` ` `` or `$()` would EXECUTE in my
+own shell — a break AND an injection vector). I pass the prompt through a single-quoted-delimiter
+heredoc so the body stays literal:
+
+```bash
+~/.config/zsh/ai/codex-run.zsh "$(cat <<'CDX_PROMPT'
+…brief, verbatim, any characters…
+CDX_PROMPT
+)" "$model"
+```
+
+The quote on `'CDX_PROMPT'` is load-bearing; `"$( … )"` makes it one argument. Fallback if a
+heredoc is impossible: single-quote the whole prompt and escape each `'` as `'\''` — never
+double-quote. This also protects the verbatim contract at the input edge.
+
 ## Brownfield protocol
 
 Adapted from the proven gemini-coder pilot:
