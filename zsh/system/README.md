@@ -15,7 +15,7 @@ read before touching any file here.
 | `keyboard.zsh` | Control panel — aliases + comments only | — |
 | `dashboard.zsh` | Startup dashboard engine | `_dash_header` |
 | `dashboard.md` | Startup dashboard content — @majkee edits this to change what prints on shell open | — |
-| `tailscale.zsh` | Tailscale engine | `_ts_ls` `_ts_header` `_ts_ping` `_ts_ssh` `_ts_session` `_ts_dash` `_ts_dash_stop` `_ts_web` `_ts_help` |
+| `tailscale.zsh` | Tailscale engine | `_ts_ls` `_ts_header` `_ts_ping` `_ts_ssh` `_ts_session` `_ts_dash` `_ts_dash_stop` `_ts_web` `_ts_help` `_ts_mount` `_ts_umount` |
 | `ts-dash.py` | Python HTTP dashboard server — called by `_ts_dash` | — |
 | `shell.zsh` | General shell utilities engine | `_msrc` |
 | `home.php-composer.zsh` | Home PHP/Composer engine — Docker PHP 7.4 + Composer, native PHP 8+ | `_php74` `_php8` `_phpst` `_composer74` `_composer8` |
@@ -56,6 +56,8 @@ Run `ts-help` in the shell for the live panel. Reference:
 | `ts-dash-stop` | `_ts_dash_stop` | stop dashboard |
 | `ts-web` | `_ts_web` | open Tailscale admin panel in browser |
 | `ts-help` | `_ts_help` | command panel |
+| `ts-mount [peer] [path] [mnt]` | `_ts_mount` | sshfs-mount peer path locally · default mnt `~/mnt/<peer>` — find/open/edit/save in Sublime or any app |
+| `ts-umount [mnt]` | `_ts_umount` | unmount a `ts-mount` point (idempotent) |
 | `web-reach [peer] [port]` | `_web_reach` | loopback SOCKS v5 proxy through peer (default `127.0.0.1:1080`) |
 | `web-reach-firefox [url]` | `_web_reach_firefox` | start the proxy and open an isolated Firefox profile through peer egress |
 | `web-reach-down [port]` | `_web_reach_down` | close the browser-egress proxy |

@@ -275,6 +275,50 @@ _ts_beam() {
     fi
 }
 
+# ─── REMOTE MOUNT (sshfs) ──────────────────────────────────────────────────────
+
+# Mount the peer's filesystem locally via sshfs — then any app (Sublime Text, a
+# file manager, grep) finds/opens/edits/saves it as a normal local folder. No
+# editor plugin, no server-side install — rides the SFTP subsystem built into any
+# normal sshd. sshfs is already present on both machines (pacman, extra repo).
+#   ts-mount [peer] [remote-path] [local-mountpoint]
+#   remote-path default: peer's home dir (sshfs default when omitted)
+#   local-mountpoint default: ~/mnt/<peer>
+_ts_mount() {
+    local peer="${1:-$TAILSCALE_PEER}"
+    local remote="${2:-}"
+    local mnt="${3:-${HOME}/mnt/${peer}}"
+    [[ -z "$peer" ]] && { echo "[ts] TAILSCALE_PEER not set — pass a peer"; return 1; }
+    command -v sshfs >/dev/null 2>&1 || { echo "[ts] sshfs not installed (pacman -S sshfs)"; return 1; }
+    if mountpoint -q "$mnt" 2>/dev/null; then
+        echo "[ts] already mounted: $mnt"
+        return 0
+    fi
+    mkdir -p "$mnt" || { echo "[ts] failed to create mountpoint: $mnt"; return 1; }
+    if sshfs "${peer}:${remote}" "$mnt" -o reconnect,ServerAliveInterval=15,ServerAliveCountMax=3; then
+        echo "[ts] mounted ${peer}:${remote:-\~} → $mnt"
+    else
+        echo "[ts] mount failed: ${peer}:${remote} → $mnt" >&2
+        return 1
+    fi
+}
+
+# Unmount a ts-mount point (idempotent — safe to call when nothing is mounted).
+#   ts-umount [local-mountpoint]   default: ~/mnt/$TAILSCALE_PEER
+_ts_umount() {
+    local mnt="${1:-${HOME}/mnt/${TAILSCALE_PEER}}"
+    if ! mountpoint -q "$mnt" 2>/dev/null; then
+        echo "[ts] not mounted: $mnt"
+        return 0
+    fi
+    if fusermount -u "$mnt" 2>/dev/null || umount "$mnt" 2>/dev/null; then
+        echo "[ts] unmounted: $mnt"
+    else
+        echo "[ts] unmount failed: $mnt (is a shell/app still using it?)" >&2
+        return 1
+    fi
+}
+
 # ─── DATABASE TUNNEL (cross-host, over tailscale) ─────────────────────────────
 
 # Reach the peer's loopback-bound MariaDB by forwarding a local port through the
@@ -398,6 +442,9 @@ _ts_help() {
     printf "  web-reach        SOCKS v5 proxy at 127.0.0.1:1080 via peer\n"
     printf "  web-reach-firefox [url]  open isolated Firefox through peer\n"
     printf "  web-reach-down   close the web-reach proxy\n"
+    printf "  ── remote mount (sshfs — browse/edit peer files locally) ─\n"
+    printf "  ts-mount [peer] [path] [mnt]  sshfs-mount peer path · default mnt: ~/mnt/<peer>\n"
+    printf "  ts-umount [mnt]  unmount a ts-mount point · default: ~/mnt/\$TAILSCALE_PEER\n"
     printf "  ──────────────────────────────────────────────────\n"
     printf "  peer: \$TAILSCALE_PEER=%s\n" "${TAILSCALE_PEER:-(not set)}"
     printf "  pad:  %s\n\n" "${_TS_TRANSPORTER}"
