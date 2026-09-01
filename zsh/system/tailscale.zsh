@@ -290,12 +290,14 @@ _ts_mount() {
     local mnt="${3:-${HOME}/mnt/${peer}}"
     [[ -z "$peer" ]] && { echo "[ts] TAILSCALE_PEER not set — pass a peer"; return 1; }
     command -v sshfs >/dev/null 2>&1 || { echo "[ts] sshfs not installed (pacman -S sshfs)"; return 1; }
-    if mountpoint -q "$mnt" 2>/dev/null; then
+    # /proc/mounts instead of mountpoint -q — mountpoint hangs on a stale FUSE mount
+    if awk -v m="$mnt" '$2==m{found=1} END{exit !found}' /proc/mounts 2>/dev/null; then
         echo "[ts] already mounted: $mnt"
         return 0
     fi
     mkdir -p "$mnt" || { echo "[ts] failed to create mountpoint: $mnt"; return 1; }
-    if sshfs "${peer}:${remote}" "$mnt" -o reconnect,ServerAliveInterval=15,ServerAliveCountMax=3; then
+    # ConnectTimeout prevents terminal hang when peer is unreachable
+    if sshfs "${peer}:${remote}" "$mnt" -o reconnect,ServerAliveInterval=15,ServerAliveCountMax=3,ConnectTimeout=10; then
         echo "[ts] mounted ${peer}:${remote:-\~} → $mnt"
     else
         echo "[ts] mount failed: ${peer}:${remote} → $mnt" >&2
@@ -307,11 +309,13 @@ _ts_mount() {
 #   ts-umount [local-mountpoint]   default: ~/mnt/$TAILSCALE_PEER
 _ts_umount() {
     local mnt="${1:-${HOME}/mnt/${TAILSCALE_PEER}}"
-    if ! mountpoint -q "$mnt" 2>/dev/null; then
+    # /proc/mounts instead of mountpoint -q — mountpoint hangs on a stale FUSE mount
+    if ! awk -v m="$mnt" '$2==m{found=1} END{exit !found}' /proc/mounts 2>/dev/null; then
         echo "[ts] not mounted: $mnt"
         return 0
     fi
-    if fusermount -u "$mnt" 2>/dev/null || umount "$mnt" 2>/dev/null; then
+    # -z (lazy) detaches stale/dead mounts even when the SSH connection is gone
+    if fusermount -uz "$mnt" 2>/dev/null || umount "$mnt" 2>/dev/null; then
         echo "[ts] unmounted: $mnt"
     else
         echo "[ts] unmount failed: $mnt (is a shell/app still using it?)" >&2
