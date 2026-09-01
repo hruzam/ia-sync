@@ -3,7 +3,7 @@
 #
 # ── Rules ────────────────────────────────────────────────────────
 # 1. NEWEST ENTRY FIRST — prepend new entries directly below this header block.
-# 2. Machine tag every entry: ## HOME — YYYY-MM-DD or ## OFFICE — YYYY-MM-DD
+# 2. New entries: ## HOME — YYYY-MM-DD or ## OFFICE — YYYY-MM-DD (legacy headings vary)
 # 3. One entry per session; merge same-day same-host work into one section.
 # 4. Orient command: `head -80 journal.host-cleanup.md`
 # ─────────────────────────────────────────────────────────────────
