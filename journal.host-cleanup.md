@@ -1,8 +1,40 @@
 # journal.host-cleanup.md
 # Git bus — both machines read/write, commit to push observations
-# Format: append entries chronologically, machine tagged
+# Format: NEWEST FIRST — prepend new entries directly below this header block
+# Entries before 2026-09-01 are in legacy chronological order, below the Legacy marker
 
 ---
+
+## HOME — 2026-09-01
+
+**Agent:** Trajectory (home / hruzam)  
+**Session:** ts-mount stale FUSE hang — diagnosis and hardening
+
+### Trigger
+`ts-mount` blocked terminal on startup; stale sshfs mount from the previous session
+(`~/mnt/hruzam-120922`) was left registered in the kernel after the SSH connection
+dropped. Any process that stats that path (including `mountpoint -q`, `mount`,
+`findmnt`, `ls ~/mnt/`) blocks indefinitely waiting for a FUSE reply that never comes.
+Locked the previous Claude incarnation too.
+
+### Completed this session
+- Unstuck terminal: `fusermount -uz ~/mnt/hruzam-120922` — `-z` (lazy) detaches
+  without a live SSH connection; read `/proc/mounts` raw to diagnose without hanging.
+- Hardened `zsh/system/tailscale.zsh` (`95af488`):
+  - `_ts_mount`/`_ts_umount`: replaced `mountpoint -q` with `/proc/mounts` awk —
+    kernel buffer read, cannot hang on a stale mount
+  - `_ts_mount`: added `ConnectTimeout=10` to sshfs opts — fails in ≤10 s when peer
+    is unreachable instead of blocking forever
+  - `_ts_umount`: upgraded `fusermount -u` → `-uz` — can detach a dead mount without
+    a live connection
+- `zsh -n` clean; deployed byte-identical to `~/.config/zsh/system/tailscale.zsh`.
+
+### Manual escape if stale mount recurs
+`fusermount -uz ~/mnt/<peer>` — never touch the mountpoint path directly; use
+`grep sshfs /proc/mounts` to check state safely.
+
+---
+<!-- ── Legacy entries below — chronological order (pre-2026-09-01) ── -->
 
 ## OFFICE — 2026-06-29
 
