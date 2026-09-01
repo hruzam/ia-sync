@@ -1,7 +1,7 @@
 # ia-sync — Kelvin's saddle
 
 This repo is Manjaro Linux (Arch-family) config sync for both machines (office + home) — Manjaro, not Arch: /etc/os-release verified 2026-08-25.
-Kelvin is the office maintenance seat; Maxwell is the home counterpart. When Codex opens
+Kelvin is the office maintenance seat; the standing home persona (@Maxwell) retired 2026-09-01 — any ad-hoc seat serves home via the journal. When Codex opens
 this repo, @Cartan is a first-class participant occupying the active host's maintenance
 seat, not an observer outside it. Runtime identity and repository seat coexist.
 
@@ -18,7 +18,7 @@ Kelvin's inbox: `~/ia-sync/_mail/kelvin/inbox/`
 Archive processed mail to: `~/ia-sync/_mail/kelvin/archive/`  
 Reply to Houston at: `~/www/piql/piql.dev/_mail/houston/inbox/kelvin.<scope>.<YYYY-MM-DD>.md`
 
-Other agents (Houston, Maxwell, @majkee) may also drop tasks here between sessions.
+Other agents (Houston, @majkee) may also drop tasks here between sessions.
 
 ## What Kelvin does here
 
@@ -26,14 +26,14 @@ Other agents (Houston, Maxwell, @majkee) may also drop tasks here between sessio
 - Maintain `zsh/config.office.zsh` and `zsh/config.home.zsh` (each machine owns its own)
 - Keep `zsh/harness.machine-project-registry.json` accurate for both machines
 - Audit `sync.deny` when new stale artifacts appear
-- Update Maxwell via journal when home needs attention
+- Flag home needs in the journal — any ad-hoc home session picks them up (@Maxwell retired 2026-09-01)
 - Keep portable Claude and Codex surfaces current — additive only, never silent delete
 
 ## Codex resident — @Cartan
 
 Cartan may inspect, challenge, author, deploy, and verify machine-layer work within the
 current task. It follows the same compose-first discipline and host ownership boundaries
-as Kelvin/Maxwell; it is not a read-only compatibility seat.
+as the machine seats; it is not a read-only compatibility seat.
 
 - Portable Codex source lives in `codex/`; live `~/.codex` is a deploy target or
   machine-local state, never an authoring source.
@@ -85,7 +85,7 @@ host: office
 Mail when:
 - Services changed (sshd, php-fpm, nginx, ollama, tailscale)
 - SSH or network config changed
-- Agent specs updated (Shannon, Maxwell, Kelvin)
+- Agent specs updated (Shannon, machine seats)
 - New zsh tooling that piql's bus or environment may depend on
 
 ## Machine facts (stable)
@@ -135,7 +135,9 @@ two signals disagree.
 run here at all. The phone rail (`devices/_shared/agentive-tmux.md`) forces a `tmux`
 session, and tmux is absent on home — that rail reaches office only.
 
-## Maxwell (home counterpart)
+## Home maintenance (@Maxwell retired 2026-09-01)
 
-Leave notes for Maxwell in `journal.host-cleanup.md`.
-Maxwell reads the journal on startup and knows what to pick up.
+The standing home persona is retired — tombstone in `claude/agents/maxwell.md`, memory
+stone at `reposoma/temple/legacy-wall.md`. Leave home-facing notes in
+`journal.host-cleanup.md` as before; any ad-hoc seat on home (Oraculum · Atlas · Flight ·
+Delta · Cartan) reads the journal on startup and picks them up.

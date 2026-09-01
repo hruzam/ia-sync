@@ -1,6 +1,6 @@
 # ia-sync — Sync Discipline
 
-Applies to: **all operators** — human (@majkee) and autonomous agents (Maxwell, Kelvin, Haiku, any future seat).
+Applies to: **all operators** — human (@majkee) and autonomous agents (any seat, standing or ad-hoc).
 
 ---
 
@@ -121,7 +121,7 @@ package manager (AUR `-Syu`, home-made).
 ## Conflict avoidance rules
 
 **Machine config files are owned by their machine's seat.**
-- `config.home.zsh` — only home edits this file (Maxwell / home seats)
+- `config.home.zsh` — only home edits this file (home seats)
 - `config.office.zsh` — only office edits this file (Kelvin / office seats)
 - `zshrc.home` / `zshrc.office` — same ownership rule
 - Never cross-edit the other machine's config file. Ownership is about **who edits**,
