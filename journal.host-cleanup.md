@@ -10,6 +10,12 @@
 
 ---
 
+## ORACULUM — 2026-09-01 · inbox drained + desktop kill-switch
+
+**Agent:** oraculum (batch task kelvin-inbox)
+
+Processed the 2026-08-28 oraculum→kelvin mail (sat 4 days): Houston forward written to piql inbox with dated addendum; office ~/.codex/config.toml desktop kill-switch verified ABSENT and ADDED (machine-local edit — repo carries no config.toml, deploy is additive, edit is durable); mail archived. Still open from that mail: UNKNOWN-14 orphan trace, deploy.sh accretion fix (cycle 2), LRV path decision.
+
 ## ORACULUM — 2026-09-01 · handshake + relay check
 
 **Agent:** oraculum (session fc-sync.oraculum.sella)
