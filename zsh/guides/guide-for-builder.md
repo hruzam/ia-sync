@@ -183,7 +183,9 @@ Location: `~/.config/zsh/ai/personas/<seat>-<mode>.md`
 Active personas:
 | File | Used by | Purpose |
 |---|---|---|
-| `personas/astrobley-patch.md` | `astrobley.sh --patch` | PHP implementer — diff-only output contract |
+| `personas/astrobley-patch.md` | `astrobley.sh --patch` | PHP implementer — diff-only output contract — RETIRED 2026-07-31 |
+
+> NOTE (2026-09-01): astrobley.sh retired 2026-07-31 (Codex vendor-shift); the persona mechanics below are historical.
 
 **How to tune:**
 - Edit `personas/astrobley-patch.md` directly — plain text, no frontmatter, no special format.

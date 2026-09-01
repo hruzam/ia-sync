@@ -10,6 +10,12 @@
 
 ---
 
+## ORACULUM — 2026-09-01 · astrobley persona kill
+
+majkee gavel KILL: ai/personas/astrobley-patch.md quarantined to /tmp/zsh-prune-2026-09-01/ (its only consumer astrobley.sh was retired 2026-07-31 per keyboard.zsh, 0005 A1 vendor-shift — the FOLD question resolved: it was Gemini-era, not the Codex relay). Stale doc rows annotated retired in zsh/AGENTS.md + ai/README.md + guide-for-builder.md — those docs still described the launcher as live with a pinned model; wiring (keyboard.zsh) wins. OBSERVATION, not acted: retired scripts astrobley.sh/vega.sh still sit in repo zsh/ai/ as history — a future cleanup decision if wanted. UNKNOWN-14 from the 2026-08-28 mail: fully CLOSED.
+
+---
+
 ## ORACULUM — 2026-09-01 · handshake r1 + relay lessons + key release
 
 HANDSHAKE r1: cross-vendor CHALLENGE run on the draft via @Mirror (GPT line) — verdict REVISE, weakest assumption "presence=ring proves availability, not receipt." Accepted; Delivery rule added (silence ≠ progress; consumption stamped via existing archive/consumed-by semantic; POINT stays ack-free); audit preserved verbatim in the file's annex with usage (19,752 in / 410 out). TWO RELAY-CARD LESSONS (dated observations for the next Atlas/Cartan card pass — gavel before edits): (1) maxTurns 4 on mirror/vega fails if the brief says "read a file first" — relay briefs must be fully inlined (Sella: the fork's body carries the complete task); (2) the optional model slot in card snippets invites the seat to hallucinate stale model strings (mirror tried gpt-3.5-turbo/gpt-4/gpt-4o — all rejected); cards should say "omit the model argument unless the orchestrator supplies one." ALSO: majkee released the GEMINI_API_KEY item from the live stack (checked/accepted from mobile) — the OCTOBER Gemini recheck (2.5 sunset) now ALSO confirms the key survived the September Standard-key cutoff; failure mode is loud (Orby/BlueBottle fail on next use).

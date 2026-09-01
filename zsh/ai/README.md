@@ -24,8 +24,8 @@ Usage: `~/.config/zsh/guides/guide-for-user.md` · keyboard map: `guides/keyboar
 | `bluebottle.sh` | Bluebottle synthesizer — REST+CLI dual-path, headless | `gemini-cross-check` agent, `g-bluebottle` | executed |
 | `vega.sh` | Vega architect/advisor — interactive + headless | `g-vega` | executed |
 | `orby.sh` | Orby researcher — interactive + headless | `g-orby` | executed |
-| `astrobley.sh` | Astrobley implementer — interactive + headless + `--patch` multi-turn coder | `g-astro` | executed |
-| `personas/astrobley-patch.md` | PHP patch-protocol persona (plain text, operator-tunable) | `astrobley.sh --patch` | read by script |
+| `astrobley.sh` | Astrobley implementer — interactive + headless + `--patch` multi-turn coder **(RETIRED 2026-07-31 — vendor-shifted to Codex; persona quarantined 2026-09-01)** | `g-astro` | executed |
+| `personas/astrobley-patch.md` | RETIRED with astrobley.sh — quarantined 2026-09-01 | `astrobley.sh --patch` | read by script |
 | `harness-check.zsh` | Card freshness checker; weekly systemd + `harness-stale` | systemd `harness.service` | executed |
 | `~/.wires/iterations.jsonl` | Machine-local living wires (1D flow files: append → cron-prune) — see `~/.wires/README.md` | `claude.zsh` (_ai_launch), medusa (crash check) | appended/read |
 | `temple-project-map.zsh` | P0: host-scoped project map (name → repo-root) | temple family | `base.zsh` P3 |

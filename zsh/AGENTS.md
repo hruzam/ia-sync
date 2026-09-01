@@ -141,8 +141,7 @@ Partition maps + engine inventory (authoritative): `guides/guide-for-builder.md`
 - `ai/bluebottle.sh` — Bluebottle synthesizer. REST+CLI dual-path; headless-only. Called by `gemini-cross-check` agent and `g-bluebottle` alias. Replaces `bluebottle.zsh` (killed 2026-07-03).
 - `ai/vega.sh` — Vega architect/advisor launcher. Dual-mode (no-arg=interactive, arg=headless). Model: `gemini-2.5-pro`.
 - `ai/orby.sh` — Orby researcher launcher. Dual-mode. Model: `gemini-2.5-flash`.
-- `ai/astrobley.sh` — Astrobley implementer launcher. Three modes: no-arg=interactive, arg=headless one-shot, `--patch <ledger> [msg]`=multi-turn coder. Model: `gemini-3.5-flash` (GA since 2026-05-19; migrated from 2.5-pro per handoff 2026-07-03). Patch mode: pinned gemini-3.5-flash, REST only, 4-iter/~50K ceiling documented.
-- `ai/personas/astrobley-patch.md` — PHP patch-protocol system instruction (plain text, operator-tunable). OUTPUT CONTRACT: unified diff only or `QUESTION:` — no prose.
+- `ai/astrobley.sh` + `ai/personas/astrobley-patch.md` — RETIRED 2026-07-31 (0005 A1, chair vendor-shifted to Codex — see keyboard.zsh header). Persona quarantined from live tree 2026-09-01; script retained in repo as history.
 - `ai/temple-tree.zsh` — tree-snapshot engine (temple utilities). `tree-snapshot <project>` — resolves root via temple-project-map, runs tree-converter.sh with project config (fallback: `tcr.default.json`); stdout = JSON tree. Sourced by base.zsh PARTITION 5. Guide: `guides/toolbox.tree-converter.md`.
 - `ai/tree-converter.sh` — Node.js tree formatter (zero npm deps). Crawls CWD, outputs JSON/YAML. Flag: `-c <config.json>`. Called by temple-tree.zsh; also callable directly.
 - `registries/tcr/` — per-project tree-snapshot configs. Naming: `tcr.<project>.json` (key = TEMPLE_PROJECT_MAP key). Fallback: `tcr.default.json` (depth 4 · JSON · gitignore-aware · `vendor/` excluded).
