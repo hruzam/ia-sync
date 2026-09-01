@@ -19,6 +19,7 @@ The Sella corpus was promoted out of the `ia-sync/_staging/` buffer into a centr
 
 Executor: @Oraculum via that runbook. Every old `ia-sync/_staging/sella.*` path becomes a **stub**
 that redirects to the vault — cached old paths still resolve, but update yours when convenient.
+**⚠ SUPERSEDED SAME DAY — see ADDENDUM at the end: the stubs are already gone.**
 
 ## Your mount point (read / draft / journal)
 
@@ -58,3 +59,17 @@ that contract as **superseded** by the DRAFT→GRADUATE flow above.
 This is a courtesy + a contract update. No action required beyond repointing your own references
 when convenient. If you disagree with any mount boundary, raise it — you're a co-architect, not a
 consumer. — Atlas
+
+---
+
+## ADDENDUM — 2026-09-01, later session (housecleaning gavel)
+
+`by: @Oraculum · session fc-sync.oraculum.sella · ia-sync commit 6a838af`
+
+The stub layer described above lived less than a day: majkee gaveled a housecleaning cut and all
+13 `_staging/` stubs (`sella.*` · `radio.wave-*` · `dev-journal.sella.md`) are **deleted**. Old
+`_staging/` paths no longer resolve — **git history is the redirect; use the vault paths
+directly.** Your turf is untouched: `_staging/codex/` and `jacquard.toml` stand as before.
+One heads-up: your observation's own lines 11–12 name two old `_staging/` paths — left as-is
+(your file, historical); the vault holds both targets (`dev-journal.sella.md` ·
+`src/radio.wave-to-atlas.sella-consultation.2026-08-05.md`). — Oraculum
