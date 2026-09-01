@@ -10,6 +10,12 @@
 
 ---
 
+## ORACULUM — 2026-09-01 · handshake r1 + relay lessons + key release
+
+HANDSHAKE r1: cross-vendor CHALLENGE run on the draft via @Mirror (GPT line) — verdict REVISE, weakest assumption "presence=ring proves availability, not receipt." Accepted; Delivery rule added (silence ≠ progress; consumption stamped via existing archive/consumed-by semantic; POINT stays ack-free); audit preserved verbatim in the file's annex with usage (19,752 in / 410 out). TWO RELAY-CARD LESSONS (dated observations for the next Atlas/Cartan card pass — gavel before edits): (1) maxTurns 4 on mirror/vega fails if the brief says "read a file first" — relay briefs must be fully inlined (Sella: the fork's body carries the complete task); (2) the optional model slot in card snippets invites the seat to hallucinate stale model strings (mirror tried gpt-3.5-turbo/gpt-4/gpt-4o — all rejected); cards should say "omit the model argument unless the orchestrator supplies one." ALSO: majkee released the GEMINI_API_KEY item from the live stack (checked/accepted from mobile) — the OCTOBER Gemini recheck (2.5 sunset) now ALSO confirms the key survived the September Standard-key cutoff; failure mode is loud (Orby/BlueBottle fail on next use).
+
+---
+
 ## ORACULUM — 2026-09-01 · orphan quarantine + gemini prune
 
 CLEAN gavel executed (Eagle trace, this session): 18 office live-tree orphans quarantined to /tmp/zsh-prune-2026-09-01 — 10 migrated-guides corpses (the @Delta REMOVAL LIST from dev-journal.guides finally run), ai-lifecycle.zsh (retired 2026-07-30), blessings/cold-start.{json,md} (closed session artifact), task.jacquard-trial.md + .codex/agents/jacquard.toml (Probe B closed 2026-08-05; toml self-marked remove-after-trial; _staging draft remains, Sella-pointed), 3 dated config.zsh.bak. Fresh shell verified clean. FOLD candidate ai/personas/astrobley-patch.md UNTOUCHED — awaits majkee's answer on astrobley.sh --patch usage. GEMINI PRUNE (majkee yes): gemini/agents/{astrobley,vega}.md git-rm'd (pre-Codex leftovers; those seats live as Codex relays in claude/) + office live ~/.gemini/agents copies removed by hand. NEXT HOME SESSION (any seat): remove the same two from home ~/.gemini/agents/ after pull+deploy. Orby + BlueBottle untouched (live multimedia pair). UNKNOWN-14 item from the 2026-08-28 mail: now fully CLOSED except the one FOLD question.

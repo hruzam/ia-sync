@@ -1,6 +1,6 @@
 ---
 what: HANDSHAKE — how a Claude seat and @Cartan (Codex resident) hand work to each other
-state: DRAFT — Claude-side authored; @Cartan counter-sign pending; @majkee gavels
+state: DRAFT r1 — Claude-side authored, revised once by cross-vendor CHALLENGE; @Cartan counter-sign pending; @majkee gavels
 verified: 2026-09-01 (every shape below has already run live at least once — receipts cited)
 by: oraculum (session fc-sync.oraculum.sella), from majkee's brief + the lived exchanges
 next:
@@ -22,6 +22,20 @@ discovers by the orient-first walk (AGENTS.md → journal head → inbox → thi
 cross-runtime work opens). A message left by path WILL be found — that is the whole
 transport contract. Corollary: **never assume the other party saw anything mid-session**;
 what matters is what is on disk when their next session opens.
+
+## Delivery rule (r1 — added after cross-vendor CHALLENGE, 2026-09-01)
+
+Disk persistence proves availability, **not receipt**. Therefore:
+
+- **Silence is never progress.** The sender of a RETURN or CHALLENGE brief must not
+  build on the assumption it was seen. Until receipt is stamped, the ground it covers
+  is frozen for the sender or forked at the sender's own risk.
+- **Consumption is stamped, not inferred** — by the existing house mechanism, no new
+  one: the consumer moves the brief to an archive/consumed location, or prepends a
+  dated `consumed-by:` line to it, in the same session that consumes it. The reply
+  itself (a RETURN's handoff, a CHALLENGE's verdict) is the strongest stamp and
+  supersedes the marker.
+- **POINT stays acknowledgement-free** by design — nothing is owed back.
 
 ## Mail by path — the mounting points (shared maximally)
 
@@ -55,7 +69,8 @@ concentrated handoff, evidence separated from claim, an ownership/gate map, and 
 decorrelation. The challenge owes: the single weakest assumption, one ranked verdict,
 one alternative. Positions survive by evidence, not by authorship. *Live receipts:*
 Atlas's CONCUR-with-nuance review of Cartan's P0 gate; Cartan's curvature findings
-against the tabled wrapper. Both drew blood; both improved the artifact.
+against the tabled wrapper; and this file's own r1 (annex below) — all drew blood, all
+improved the artifact.
 *Open:* the two-voice trial — whether cross-vendor CHALLENGE beats a same-vendor second
 opinion is **measured by Probe D** (after Probe A, Sella G4 order), not assumed here.
 
@@ -73,6 +88,27 @@ Not a wire protocol, not a queue, not a record ledger (records are opt-in archit
 see Cartan's observation §2). If a real consumer ever needs async completion or cross-run
 receipts, that is a separate supervised primitive designed in an experimental bed with
 its own gate — never silently grown inside this handshake.
+
+---
+
+## Annex — r1 revision evidence (CHALLENGE shape, practiced on this file itself)
+
+Position-aware adversarial audit, carried to the Codex/GPT line via @Mirror,
+2026-09-01, returned verbatim:
+
+> 1. Single weakest assumption: "Opening the repo is the doorbell" assumes every
+>    relevant session reliably performs the orient-first walk; disk persistence proves
+>    availability, not receipt.
+> 2. Ranked verdict: **revise**.
+> 3. Primary risk: silent non-receipt creates divergent architectural work while both
+>    runtimes incorrectly believe the handshake contract is functioning.
+> 4. Alternative: retain mail-by-path, but require a minimal per-recipient
+>    acknowledgement file before any RETURN or CHALLENGE is treated as delivered;
+>    POINT remains acknowledgement-free.
+
+Disposition: accepted in substance; implemented as the **Delivery rule** above using the
+existing inbox→archive consumption semantic rather than a new ack-file mechanism (the
+alternative's intent, the house's native form). `[usage: 19,752 in / 410 out]`
 
 ---
 
