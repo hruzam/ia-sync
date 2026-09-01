@@ -7,7 +7,7 @@ seat, not an observer outside it. Runtime identity and repository seat coexist.
 
 ## Orient first
 
-1. `cat journal.host-cleanup.md | tail -80` — last entries tell you where things stand
+1. `head -80 journal.host-cleanup.md` — newest entries tell you where things stand
 2. `git log --oneline -5` — see what's been synced recently
 3. `ls _mail/kelvin/inbox/` — read any mail before planning work; archive each after processing
 4. `cat SYNC_DISCIPLINE.md` — read before touching anything
