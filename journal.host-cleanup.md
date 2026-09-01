@@ -10,6 +10,12 @@
 
 ---
 
+## ORACULUM — 2026-09-01 · astrobley crosses vendors + handshake r2 + tunnel stage opened
+
+majkee gavels (at desk): (1) @Astrobley FREED from Claude relay duty → the Codex line's senior implementer ("codex trajectory") — Claude card tombstoned (claude/agents/astrobley.md), Codex-native seat to be authored by @Cartan at codex/agents/astrobley.toml; one-shot relays remaining: vega (blind) + mirror (adversarial) only; precedent Zenit→Zenith, the name survives the ship. (2) HANDSHAKE → r2: §Seat transfers added + TABLE named as candidate fourth shape (live tunnel). (3) Termbrana stage 03-tunnel RUNBOOK authored at ~/unikuklatrix/nablarva/.dev/session/toolbox-termbrana-03-tunnel/RUNBOOK.md per raw.guides/runbook/GUIDE.md — ⚠ flag L11 named inside: no tunnel code until M0 freezes or majkee excepts; two Epoch research passes (Claude-side + Codex-side live-session control) running → ~/unikuklatrix/termbrana/research/. (4) Cartan agenda POINT left in the meeting room (counter-sign r2 · author codex-trajectory seat · tunnel verdict) — majkee runs Cartan by hand today. unikuklatrix writes left UNCOMMITTED for majkee (L11 + repo ownership).
+
+---
+
 ## ORACULUM — 2026-09-01 · astrobley persona kill
 
 majkee gavel KILL: ai/personas/astrobley-patch.md quarantined to /tmp/zsh-prune-2026-09-01/ (its only consumer astrobley.sh was retired 2026-07-31 per keyboard.zsh, 0005 A1 vendor-shift — the FOLD question resolved: it was Gemini-era, not the Codex relay). Stale doc rows annotated retired in zsh/AGENTS.md + ai/README.md + guide-for-builder.md — those docs still described the launcher as live with a pinned model; wiring (keyboard.zsh) wins. OBSERVATION, not acted: retired scripts astrobley.sh/vega.sh still sit in repo zsh/ai/ as history — a future cleanup decision if wanted. UNKNOWN-14 from the 2026-08-28 mail: fully CLOSED.

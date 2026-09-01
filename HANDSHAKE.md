@@ -1,11 +1,13 @@
 ---
 what: HANDSHAKE — how a Claude seat and @Cartan (Codex resident) hand work to each other
-state: DRAFT r1 — Claude-side authored, revised once by cross-vendor CHALLENGE; @Cartan counter-sign pending; @majkee gavels
+state: DRAFT r2 — Claude-side authored, revised by cross-vendor CHALLENGE (r1) + seat-transfer gavel (r2); @Cartan counter-sign pending; @majkee gavels
 verified: 2026-09-01 (every shape below has already run live at least once — receipts cited)
 by: oraculum (session fc-sync.oraculum.sella), from majkee's brief + the lived exchanges
 next:
-  - "@Cartan: counter-sign, amend, or CHALLENGE this from the Codex side on next wake"
+  - "@Cartan: counter-sign, amend, or CHALLENGE this from the Codex side (majkee runs the session by hand)"
+  - "@Cartan: author the codex-trajectory seat — codex/agents/astrobley.toml (see Seat transfers)"
   - "two-voice trial = Probe D (Sella G4 order, after Probe A) — CHALLENGE value is measured, not assumed"
+  - "TABLE shape (live tunnel) = termbrana 03-tunnel candidate — co-design at counter-sign, do not adopt here"
 ---
 
 # HANDSHAKE — Claude ↔ Codex, one repo, no new mechanism
@@ -44,15 +46,30 @@ Disk persistence proves availability, **not receipt**. Therefore:
 | `session/rellays-calude-codex/` | both | both | the meeting room — briefs, handoffs, notifications |
 | `_staging/codex/` | @Cartan only | both | Codex-native observations, probes, drafts (deploy-inert) |
 | `_staging/` (rest) + `claude/` | Claude seats | both | Claude builds on the surgical table |
+| `codex/` | @Cartan authors, compose-first | both | portable Codex surfaces (agents, skills); live `~/.codex` is a deploy target, never a source |
 | `journal.host-cleanup.md` | any seat | any seat | machine-layer state, cross-session notes |
 | `reposoma/raw.guides/sella/` | promotion-gated | both | shared discipline vault — Cartan mount: READ doctrine · DRAFT in `_staging/codex/` · GRADUATE with `cartan.` prefix · JOURNAL to `dev-journal.sella.md` (stamped `codex/cartan`) |
 | `zsh/guides/codex-relay.contract.md` | Claude-gated, Cartan-reviewed | both | the one plumbing truth for relay seats |
-| `codex/` | @Cartan authors, compose-first | both | portable Codex surfaces; live `~/.codex` is a deploy target, never a source |
 
 Ownership is by surface, not by runtime rank: **Cartan is a first-class co-architect,
 not a compatibility seat.** On his turf (`_staging/codex/`, `codex/`, Codex evidence)
 Claude seats point, never edit. On Claude turf, Cartan challenges and reviews, and edits
 within an agreed task. @majkee gavels everything that promotes, deploys, or becomes canon.
+
+## Seat transfers across the boundary (r2 — majkee gavel 2026-09-01)
+
+A seat NAME may cross vendors when its work belongs on the other side; the name survives
+the ship (precedent: @Zenit → @Zenith, larva wall).
+
+- **@Astrobley — freed from Claude relay duty → the Codex line's senior implementer
+  ("codex trajectory").** The Claude relay card is a tombstone
+  (`claude/agents/astrobley.md` — points here). The Codex-native seat is authored by
+  @Cartan on his turf: **`~/ia-sync/codex/agents/astrobley.toml`** (portable source;
+  deploys to `~/.codex/agents/astrobley.toml`). Rationale: the astrobley line's own n=4
+  finding — the verifier is load-bearing, not the second vendor's keyboard; one-shot
+  relay implementation earned less than a resident implementer under a Codex architect
+  will. One-shot relay instruments remaining on the Claude side: **@Vega (blind) and
+  @Mirror (adversarial) only.**
 
 ## The three meeting shapes
 
@@ -73,6 +90,9 @@ against the tabled wrapper; and this file's own r1 (annex below) — all drew bl
 improved the artifact.
 *Open:* the two-voice trial — whether cross-vendor CHALLENGE beats a same-vendor second
 opinion is **measured by Probe D** (after Probe A, Sella G4 order), not assumed here.
+*Candidate fourth shape:* **TABLE** — a live synchronous tunnel between two resident
+sessions (termbrana stage 03-tunnel, research running). Not adopted here; co-designed
+with @Cartan at counter-sign, adopted only after the tunnel proves live.
 
 ## Shared invariant (from the co-architecture contract, 2026-09-01)
 
