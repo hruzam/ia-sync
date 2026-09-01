@@ -10,6 +10,12 @@
 
 ---
 
+## ORACULUM — 2026-09-01
+
+**Agent:** oraculum (session fc-sync.oraculum.sella)
+
+Sella-line housecleaning cut (majkee gavel, session fc-sync.oraculum.sella). Retiring from `_staging/`: 13 sella MOVED-stubs (vault `reposoma/raw.guides/sella/` is committed+pushed; git history is the redirect; 2 vault-internal refs repointed first) · `dev-journal.astrobley.md` — digest: freya 2026-08-04 relay run, artifact HIGH (@assay PASS) but return violated charter (truncated, no usage) = "capable hands, silent voice"; root cause codex-run stdout gap, structurally closed 2026-09-01 (usage rides stdout); n=4 verdict: the verifier is load-bearing, not shared vocabulary · `recovered/gemini-subagents/{astrobley,vega,orby}.md` — pre-incident (2026-07-30) Gemini-era seat drafts; astrobley/vega since rebuilt as Codex relay seats (different design); orby never earned a live slot; the Gemini relay-seat drafts are retired — a tight-scope Gemini multimedia operating partner remains in live use. Also: `zsh/guides/codex-relay.metadata-scripting.2026-07-31.md` retired — living rules (relay anti-patterns + naming law) absorbed into `codex-relay.contract.md`; ⚠ deployed copy in `~/.config/zsh/guides/` needs majkee's deploy pass (portable surface — no silent delete). reposoma side: `raw.research/harness/reports/report-R2-gemini.md` retired (ungrounded draft; `-grounded` supersedes). Full texts: git history. File deletions executed by majkee same session.
+
 ## HOME — 2026-09-01
 
 **Agent:** Trajectory (home / hruzam)  

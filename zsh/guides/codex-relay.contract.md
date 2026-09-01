@@ -107,3 +107,12 @@ Intent lives in **which seat you spawn** — visible in the trace, never inferre
 ---
 *Established 2026-07-31 (transition session, majkee gaveled). Companion:
 `codex-relay.metadata-scripting.2026-07-31.md` (Epoch practitioner guide, same folder).*
+
+## Relay anti-patterns + naming law
+*(absorbed 2026-09-01 from codex-relay.metadata-scripting.2026-07-31.md — that file is retired; full text in git history)*
+
+- No `memory:` on relay seats — a relay is blind/verbatim by contract; cross-session memory contradicts it.
+- No `isolation: worktree` on relays — complexity on the wrong boundary; the relay's boundary is the vendor CLI, not the git tree.
+- No `background: true` on synchronous relays — the caller's triangulation flow needs the return in-line.
+- Naming law: a skill and an agent must NEVER share a name — cross-primitive routing collision.
+- Agent vs skill frontmatter vocabularies are disjoint (`tools`/`disallowedTools`/`maxTurns` = agents · `allowed-tools`/`disallowed-tools`/`context`/`agent`/`arguments` = skills); corrected tables live in the Sella GUIDE §2 (`~/reposoma/raw.guides/sella/GUIDE.md`).
