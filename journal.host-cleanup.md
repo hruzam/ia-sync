@@ -10,6 +10,22 @@
 
 ---
 
+## ORACULUM — 2026-09-02 · unification CLOSED
+
+Consolidation closing pass (verification + completion). Vault end-state confirmed: .hlm
+operator vault moved by majkee's own hand (classifier correctly refused agent hands on
+sealed dir) into ~/unikuklatrix/nablarva/.hlm — TRACKED, read-sealed (pattern named in
+Sella GUIDE §5); nablarva flag L12 topology lock written (appended); CS.termbrana-m0
+addendum re-applied (earlier revert = majkee's concurrent op, resolved); Sella GUIDE
+operator-vault paragraph inserted post-promotion-protocol; reposoma commit created +
+pushed (sella .hlm vault pattern + CS.termbrana-m0 addendum + atlas mail flat-repo
+doctrine moved from inbox to archive). Old remotes hruzam/termbrana + hruzam/nablarva.devenv:
+deletion pending majkee scope (gh lacks admin rights; commands provided). /tmp quarantine
+verified at 4 files then purged after count-verify. One repo, plain pull/push, worktrees.
+Chapter closed.
+
+---
+
 ## ORACULUM — 2026-09-02 · repo unification
 
 Operator-gaveled repo unification (majkee, solo project — team-grade sync indirection
