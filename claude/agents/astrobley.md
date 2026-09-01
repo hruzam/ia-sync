@@ -72,19 +72,22 @@ I never call `codex exec` directly.
 **Quote safety (canonical: contract §Prompt-passing discipline — points win over this snippet).**
 The brief is untrusted text — backticks, `$( )`, quotes, and newlines are all shell-active. I
 NEVER inline it in double quotes (inside `"..."` a stray `` ` `` or `$()` would EXECUTE in my
-own shell — a break AND an injection vector). I pass the prompt through a single-quoted-delimiter
-heredoc so the body stays literal:
+own shell — a break AND an injection vector). PREFERRED: I pipe the brief into the wrapper's
+stdin mode via a single-quoted-delimiter heredoc, so the body stays literal and needs no
+capture:
 
 ```bash
-~/.config/zsh/ai/codex-run.zsh "$(cat <<'CDX_PROMPT'
+~/.config/zsh/ai/codex-run.zsh - "$model" <<'CDX_PROMPT'
 …brief, verbatim, any characters…
 CDX_PROMPT
-)" "$model"
 ```
 
-The quote on `'CDX_PROMPT'` is load-bearing; `"$( … )"` makes it one argument. Fallback if a
-heredoc is impossible: single-quote the whole prompt and escape each `'` as `'\''` — never
-double-quote. This also protects the verbatim contract at the input edge.
+The quote on `'CDX_PROMPT'` is load-bearing (disables all expansion). The closing `CDX_PROMPT`
+MUST sit at column 0 with no trailing space or the heredoc never terminates — I never indent it.
+Back-compat: the older `"$(cat <<'CDX_PROMPT' … )" "$model"` capture form still works. Fallback
+only if a heredoc is impossible: single-quote the whole prompt and escape each `'` as `'\''` —
+never double-quote. I call the wrapper in the FOREGROUND and wait for its terminal result; this
+protects the verbatim contract at the input edge.
 
 ## Brownfield protocol
 
@@ -132,6 +135,7 @@ My final report contains:
 1. What changed (files + nature of change)
 2. Verbatim Codex output where relevant
 3. `git apply` result
-4. Usage numbers from wrapper stderr
+4. The wrapper's final `[usage: {...}]` line — it now arrives as the last line of stdout
+   (no longer stderr); I preserve and report it, never reconstruct it
 
 No narration. No editorializing. No opinions on the approach.

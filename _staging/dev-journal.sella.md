@@ -48,6 +48,38 @@ structure proposed.
 
 ## LOG (newest on top · append-only · stamped)
 
+### [2026-09-01 · claude/atlas-ui · office · ref: raw.guides/sella/GUIDE.md + res/RUNBOOK.migration.2026-09-01.md + Eagle sweep] — SELLA PROMOTED to a central vault; this journal is migrating out of _staging
+
+Origin: majkee wants atlas-ui wired to its own manual/workshop (Sella-first + journaling + the
+Cartan meeting-point) rather than hand-navigated each session. Decided the fix is a `raw.guides/
+sella/` vault + a terse anchor in the atlas-ui body — not a skill, not 380 lines in the body
+(Sella's own L2/L9). @Eagle swept both repos (19 Sella files); majkee gaveled the dispositions:
+stubs-not-symlinks (zero machine consumers), move the coder-guide body + THIS journal + the src set
++ the two receipts, COPY the unikuklatrix Asymmetry research (dual-hold), POINT the raw.research
+reports + Cartan's `_staging/codex/` observation + jacquard.toml (owner turf / proper homes), DROP
+the self-`rm` reconciliation-pad, keep codex-builder-user as a companion with **Sella-wins-on-
+doctrine** (volatile CLI facts excepted, per L8). Atlas authored `GUIDE.md` (header+manifest) + the
+11-step Oraculum runbook (carrying the verbatim atlas-ui anchor) + the Oraculum inbox pointer.
+**THIS FILE moves to `raw.guides/sella/dev-journal.sella.md` in runbook STEP 6** — rule 6 gets
+amended there (new home; still git-tracked + deploy-inert since reposoma bypasses deploy.sh). OPEN:
+Oraculum executes; majkee gates commits (reposoma first) + deploy for the atlas-ui anchor.
+
+### [2026-09-01 · claude/atlas-ui · office · ref: P1 live probe + claude/agents/{astrobley,vega,mirror}.md] — P1 PASSED live; Atlas task B done; wrapper arc CLOSED (deploy/push pending)
+
+majkee ran P1 in a real Codex frame: deploy clean, table↔live byte-identical, and the live
+`codex-run - <<'CDX_PROMPT'` probe echoed all four hazards (`` `date` `` · `$(hostname)` ·
+`"quoted"` · `it's`) BYTE-LITERAL with a single clean `[usage:{...}]` stdout line; `~/.codex/
+sessions` 39→39 (ephemeral held). Input+output+retry all proven live. NEW FIELD LESSON: the
+heredoc is column-0-fragile — closing delimiter must be at col 0, no trailing space, or it
+hangs (majkee hit it on an indented paste). Baked into the contract PREFERRED section + all
+three card snippets. Atlas task B executed (P1-gated): astrobley/vega/mirror transport snippets
+now show the stdin `-` form as PREFERRED, note column-0, state usage-is-final-stdout (dropped
+the old append-from-stderr instruction), make foreground explicit — refusal contracts / persona
+/ model / task geometry UNTOUCHED per Cartan's boundary. "Capable hands, silent voice" defect
+(2026-08-05) is now structurally closed: usage rides stdout, cards no longer hunt stderr.
+REMAINING: majkee 2nd small deploy (card + contract-note delta authored after the P1 deploy) +
+commit/push ia-sync for the whole session. Guide 0.145→0.150.1 refresh = separate dated task.
+
 ### [2026-09-01 · claude/trajectory (via atlas-ui) · office · ref: zsh/ai/codex-run.zsh:44-76 + codex-run.selftest.zsh] — P0 retry-injection CLOSED in-session, disk-verified
 
 majkee ruled the P1 lead-up stays in THIS session (atlas has Bash + can spawn) rather than

@@ -54,10 +54,13 @@ One call per brief. No follow-ups. No clarifying exchanges with Codex.
 **Quote safety (canonical: contract §Prompt-passing discipline).** The brief I carry is
 untrusted text — backticks, `$( )`, quotes, newlines are shell-active. I NEVER inline it in
 double quotes (a stray `` ` `` / `$()` would EXECUTE in my own shell — a break AND an injection
-vector). I wrap the brief in a single-quoted-delimiter heredoc so it stays byte-literal:
-`codex-run "$(cat <<'CDX_PROMPT'` … `CDX_PROMPT` … `)"`. Fallback: single-quote + escape each
-`'` as `'\''`, never double-quote. A quoting break mutates the brief before the blind channel
-carries it — corrupting the uncontaminated second signal I exist to protect.
+vector). PREFERRED: I pipe the brief into the wrapper's stdin mode via a single-quoted-delimiter
+heredoc so it stays byte-literal — `codex-run - "$model" <<'CDX_PROMPT'` … body … then the
+closing `CDX_PROMPT` at COLUMN 0 (never indented, no trailing space, or the heredoc won't
+terminate). Back-compat: the older `"$(cat <<'CDX_PROMPT' … )"` capture form still works.
+Fallback: single-quote + escape each `'` as `'\''`, never double-quote. I call the wrapper in
+the FOREGROUND. A quoting break mutates the brief before the blind channel carries it —
+corrupting the uncontaminated second signal I exist to protect.
 
 ## Return discipline
 
@@ -69,8 +72,8 @@ I do not:
 - Reconcile with any other position
 - Add my own assessment
 
-I append usage numbers from the wrapper's stderr after the verbatim response,
-labeled `[usage: ...]`.
+The wrapper emits the final `[usage: ...]` line as the LAST line of stdout, right after the
+verbatim response — I preserve it in place, never reconstruct it or hunt stderr for it.
 
 The orchestrator triangulates. I relay.
 

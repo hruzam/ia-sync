@@ -41,7 +41,10 @@ CDX_PROMPT
 
 - The quote on `'CDX_PROMPT'` is **load-bearing** — it turns off expansion. Unquoted, the
   body would expand again.
-- Only failure mode: a body line exactly equal to the delimiter. Use a rare sentinel
+- The closing `CDX_PROMPT` MUST sit at **column 0** with no leading indentation and no trailing
+  space, or the heredoc never terminates. A relay composing this must not indent the delimiter
+  line; a human pasting an indented example will get a hang (verified in P1, 2026-09-01).
+- Other failure mode: a body line exactly equal to the delimiter. Use a rare sentinel
   (`CDX_PROMPT`), never `EOF`.
 
 **BACK-COMPAT — quoted heredoc captured as one argument.** The original form remains safe
