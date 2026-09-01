@@ -10,6 +10,10 @@
 
 ---
 
+## ORACULUM — 2026-09-01 · orphan quarantine + gemini prune
+
+CLEAN gavel executed (Eagle trace, this session): 18 office live-tree orphans quarantined to /tmp/zsh-prune-2026-09-01 — 10 migrated-guides corpses (the @Delta REMOVAL LIST from dev-journal.guides finally run), ai-lifecycle.zsh (retired 2026-07-30), blessings/cold-start.{json,md} (closed session artifact), task.jacquard-trial.md + .codex/agents/jacquard.toml (Probe B closed 2026-08-05; toml self-marked remove-after-trial; _staging draft remains, Sella-pointed), 3 dated config.zsh.bak. Fresh shell verified clean. FOLD candidate ai/personas/astrobley-patch.md UNTOUCHED — awaits majkee's answer on astrobley.sh --patch usage. GEMINI PRUNE (majkee yes): gemini/agents/{astrobley,vega}.md git-rm'd (pre-Codex leftovers; those seats live as Codex relays in claude/) + office live ~/.gemini/agents copies removed by hand. NEXT HOME SESSION (any seat): remove the same two from home ~/.gemini/agents/ after pull+deploy. Orby + BlueBottle untouched (live multimedia pair). UNKNOWN-14 item from the 2026-08-28 mail: now fully CLOSED except the one FOLD question.
+
 ## ORACULUM — 2026-09-01 · inbox drained + desktop kill-switch
 
 **Agent:** oraculum (batch task kelvin-inbox)
