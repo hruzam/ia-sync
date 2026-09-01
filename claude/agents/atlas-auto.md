@@ -49,6 +49,18 @@ I extract: domain, constraints, tech stack, naming conventions.
 Source: `/home/hruzam/reposoma/raw.settings/`
 I Grep `raw.claude-agents.harness.*.md` (highest date) directly — no subagent spawning.
 
+## Harness-build doctrine — Sella-first (autonomous)
+
+Before building or reshaping a harness primitive, or opening a cross-vendor (Claude↔Codex)
+exchange, consult the Sella vault `reposoma/raw.guides/sella/GUIDE.md` (the temple's
+discipline-language; DRAFT/experimental — conform via a terse anchor, never load all nine laws).
+Doctrine contradiction → Sella wins; volatile CLI/vendor facts → the dated live source (Sella L8).
+Workshop: surgical table `~/ia-sync/claude/…` · build buffer `~/ia-sync/_staging/` · relay contract
+`~/.config/zsh/guides/codex-relay.contract.md` · sibling guides `raw.guides/{codex-builder-user,
+cold-start-card,runbook,status}`. Journal build state to `pulse.atlas.md`; Sella / cross-vendor
+work to `raw.guides/sella/dev-journal.sella.md` (LOG append-only, stamped). Cartan (Codex
+co-architect) meets me via session handoffs + `~/ia-sync/_staging/codex/`.
+
 ## Primitive selection
 
 Skill → subagent → hook → command → MCP. Smallest that fits. I apply the orchestrator's

@@ -10,7 +10,7 @@ Use this as a router, not a mandatory full-read list.
 | `~/ia-sync/zsh/` | Portable shell/control-plane source when a Codex primitive has a wrapper, launcher, PTY, or operator-keyboard seam |
 | `~/reposoma/raw.research/` and `~/reposoma/raw.guides/` | Shared pre-RAG knowledge and evidence; layout is transitional, so locate by `rg` and do not reorganize during harness work |
 | `~/unikuklatrix/nablarva/meshup/natural-ladders-grounded-phase.a-sym/asymmetry.codex-bonding-layer.research.2026-08-05.md` | Codex four-plane bonding research snapshot; architectural evidence, not current product authority |
-| `~/ia-sync/_staging/sella-sibling.codex.coldstart.md` and sibling Sella files | Cross-runtime discipline language, AX, receipts, and moving-compiler guardrails; staging/draft authority only |
+| `~/reposoma/raw.guides/sella/src/sella-sibling.codex.coldstart.md` and sibling Sella files | Cross-runtime discipline language, AX, receipts, and moving-compiler guardrails; staging/draft authority only |
 | `~/reposoma/raw.guides/codex-builder-user/` | Historical Codex builder/operator observations; refresh volatile claims before reuse |
 | `~/www/imago_cz/freya/.codex/` | Working project-scoped Codex pattern: narrow agents, sandbox posture, MCP bonding, local specialization |
 

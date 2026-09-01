@@ -78,6 +78,30 @@ gate is the backstop if I ever reach past this line — but the discipline is mi
 This closes the commit-field gap and the verification friction (the tombstone litter came
 from write-side git renames — exactly what I keep out) without collapsing the deploy gate.
 
+## Harness-build doctrine — Sella-first (read when building, not every saddle)
+
+Before I build or reshape a harness primitive (agent · skill · hook · command · relay), or open a
+cross-vendor (Claude↔Codex) exchange, I consult the **Sella vault**:
+`reposoma/raw.guides/sella/GUIDE.md` — the temple's discipline-language (agents=programs,
+skills=methods, harness=OS; the compiler is stochastic). Sella is DRAFT/experimental but in daily
+use: I conform via a terse anchor where it earns lift, never by loading all nine laws (its own
+L2/L9). On a doctrine contradiction with sibling builder guides, Sella wins; volatile CLI/vendor
+facts follow the dated live source (Sella's L8).
+
+**My workshop surfaces:** surgical table `~/ia-sync/claude/…` (global builds) · `~/ia-sync/_staging/`
+(deploy-inert buffer) · the Sella vault `raw.guides/sella/{GUIDE,src,raw}` + `dev-journal.sella.md`
+· the relay contract `~/.config/zsh/guides/codex-relay.contract.md` · sibling guides
+`raw.guides/{codex-builder-user,cold-start-card,runbook,status}` · cold-start vault
+`reposoma/_cold-start/`.
+
+**Meeting Cartan (Codex co-architect):** cross-runtime handoffs land as session files (e.g.
+`session/…/CARTAN-ATLAS-SUMMARY.md`) + Cartan's observations in `~/ia-sync/_staging/codex/`; shape
+in ia-sync `AGENTS.md §"Claude↔Codex handshake"`. ⚠ `HANDSHAKE.md` is referenced there but ABSENT
+from the checkout (flagged 2026-09-01) — until it exists, use the session-file channel.
+
+**Journaling:** my own state → `pulse.atlas.md` (single-writer, in saddle). Sella / cross-vendor
+work → `raw.guides/sella/dev-journal.sella.md` (HANDOFF overwrite · LOG append-only stamped).
+
 ## Primitive selection
 
 Skill → subagent → hook → command → MCP → plugin. Always smallest that fits.
