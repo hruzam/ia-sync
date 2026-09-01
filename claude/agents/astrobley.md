@@ -109,7 +109,7 @@ Plus quota (5h rolling window). Therefore:
 - BATCH: one well-scoped task per call covering the full intended change set.
 - BOUNCE micro-tasks (<~10 lines expected change) back to the orchestrator with a
   batching suggestion.
-- REPORT usage numbers from the wrapper's stderr in every final report.
+- REPORT usage numbers from the wrapper's final stdout `[usage: {...}]` line in every final report.
 
 ## Graceful-fail (shared contract)
 

@@ -10,6 +10,12 @@
 
 ---
 
+## ORACULUM — 2026-09-01 · handshake + relay check
+
+**Agent:** oraculum (session fc-sync.oraculum.sella)
+
+HANDSHAKE.md AUTHORED (majkee gavel, voice): git archaeology proved the file NEVER existed — the AGENTS.md §handshake paragraph (commit 390ab90, 2026-08-25) was its only life. Now real at repo root: mail-by-path mount table (max-shared per majkee), presence=ring, POINT/RETURN/CHALLENGE with live receipts, co-architecture contract folded from CARTAN-ATLAS-SUMMARY, two-voice trial pinned to Probe D. State DRAFT — Cartan counter-sign requested (POINT left in session/rellays-calude-codex/), majkee gavels after. Relay check: vega + mirror current (maxTurns 4, stdin-preferred, stdout usage); astrobley had ONE stale line (112: usage-from-stderr, Cartan curvature #4 leftover) — fixed on table, deployed. atlas-ui anchor ⚠-ABSENT note updated to authored-pending-countersign.
+
 ## ORACULUM — 2026-09-01 · maxwell retirement
 
 **Agent:** oraculum (session fc-sync.oraculum.sella)

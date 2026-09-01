@@ -96,8 +96,7 @@ facts follow the dated live source (Sella's L8).
 
 **Meeting Cartan (Codex co-architect):** cross-runtime handoffs land as session files (e.g.
 `session/…/CARTAN-ATLAS-SUMMARY.md`) + Cartan's observations in `~/ia-sync/_staging/codex/`; shape
-in ia-sync `AGENTS.md §"Claude↔Codex handshake"`. ⚠ `HANDSHAKE.md` is referenced there but ABSENT
-from the checkout (flagged 2026-09-01) — until it exists, use the session-file channel.
+in ia-sync `AGENTS.md §"Claude↔Codex handshake"`. `HANDSHAKE.md` authored 2026-09-01 (Cartan counter-sign pending) — read it before opening a cross-runtime exchange.
 
 **Journaling:** my own state → `pulse.atlas.md` (single-writer, in saddle). Sella / cross-vendor
 work → `raw.guides/sella/dev-journal.sella.md` (HANDOFF overwrite · LOG append-only stamped).
