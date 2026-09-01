@@ -48,6 +48,53 @@ structure proposed.
 
 ## LOG (newest on top · append-only · stamped)
 
+### [2026-09-01 · claude/trajectory (via atlas-ui) · office · ref: zsh/ai/codex-run.zsh:44-76 + codex-run.selftest.zsh] — P0 retry-injection CLOSED in-session, disk-verified
+
+majkee ruled the P1 lead-up stays in THIS session (atlas has Bash + can spawn) rather than
+re-saddling to Flight. @Trajectory hardened the `script -qfc` retry per Cartan's 7 invariants:
+the `-c` program is now a FIXED single-quoted zsh literal (`_codex_retry_prog`), prompt/model/
+timeout cross ONLY as `CODEX_RUN_RETRY_*` env vars read inside an explicit `zsh -c`, embedded via
+`${(qq)}`; `model_flag_retry` rebuilt as array; `< /dev/null` preserved; a SECURITY INVARIANT
+comment forbids reintroducing `%q` interpolation. Empirically proven against real /usr/bin/script
+(util-linux 2.42.2) with hazard payloads in BOTH prompt and model (PWNED-marker check); selftest
+7/7 green ×2; `zsh -n` clean; table-only, no deploy/commit/quota. Atlas read the retry block on
+disk (trust-disk-not-report) — matches, verdict PASS. REMAINING: P1 live proof (majkee gavel +
+quota + writable ~/.codex frame — earlier managed probe died on read-only mount) → then Atlas
+task B (3 relay-card transport snippets). Deploy bundles: Cartan JSON/stdin/usage + retry harden
++ contract refine + maxTurns 3→4.
+
+### [2026-09-01 · claude/atlas-ui · office · ref: session/rellays-calude-codex/CARTAN-ATLAS-SUMMARY.md + _staging/codex/cartan.observation.codex-relay-wrapper-boundary.2026-09-01.md] — Codex consult ANSWERED by @Cartan; wrapper tabled; Atlas review = CONCUR, P0 gate holds
+
+Cartan ran the consult and delivered a concentrated handoff (point, never copy — read it +
+the observation). Wrapper on the table now has: stdin mode (`codex-run - [model]`), jq
+extraction with python3 fallback keyed on the CORRECT current schema (`item.completed` →
+`.item.type=="agent_message"` → `.item.text`; usage on `turn.completed`), usage on stdout as
+`[usage:{...}]`; selftest `codex-run.selftest.zsh` 2/2 green (fake codex, parsing only).
+Contract already refined on disk (stdin PREFERRED · captured-heredoc back-compat · NUL out of
+contract · stdout usage authoritative). H-verdicts: H1 VERIFIED-scoped (danger = command-STRING
+construction, not passing `"$prompt"`) · H2 PARTIAL (not arbitrary bytes — no NUL, trailing-\n
+stripped) · H3/H4/H5 VERIFIED · H6 PARTIAL (wrapper already synchronous; Wave's "sync" = a RELAY
+backgrounding the call, a card-discipline matter not a wrapper race).
+
+**Atlas review verdict = CONCUR, do not deploy yet.** Cartan's P0 is real and correctly a
+pre-deploy GATE: the `script -qfc` retry still interpolates model + timeout raw into shell
+source (only prompt is `%q`-escaped). Severity nuance: realistic exploit path is narrow (model/
+timeout are usually orchestrator/operator-set) but the fix is cheap, correct, and coherent with
+the whole input-edge task — AND it also closes a latent shell-assumption bug (retry relies on
+script(1)'s default shell understanding zsh `%q`). Recommended mechanism: pass prompt/model/
+timeout via ENV to a FIXED `-c` program run under explicit zsh, rebuild model_flag as an array
+inside (satisfies Cartan invariants 2/4/5, keeps ALL data out of program text). Selftest must
+gain the forced-silent-first-call adversarial lane before deploy — current 2/2 does NOT cover
+the retry surface being fixed. Version note: schema is 0.150.1-observed → refresh-sensitive.
+
+**Atlas task B (relay-card transport update) HELD until P1 live proof passes** (Cartan gate). My
+earlier ① snippets in astrobley/vega/mirror are now the "stale transport projection" to align
+then (stdin `-` form · usage-already-final-stdout, drop the append-from-stderr line · foreground
+explicit · refusal contracts/persona/model UNTOUCHED). Ownership boundary accepted: Cartan owns
+Codex evidence + retry design + verification; Atlas owns the minimal Claude projection after
+proof; majkee gavels + deploys. No new primitive. Guide refresh (0.145→0.150.1 drift) = separate
+dated task, parked.
+
 ### [2026-08-31 · claude/atlas-ui · office · ref: sella.codex-consult.wrapper-tune.2026-08-31.md + codex-relay.contract.md §Prompt-passing] — INPUT-EDGE quote-safety shipped; a unified codex-run tune consult staged for a hand-released Codex
 
 majkee flagged that composite (claude→codex) briefs relayed as a double-quoted master prompt

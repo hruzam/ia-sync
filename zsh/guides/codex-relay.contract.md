@@ -30,9 +30,22 @@ agent composes the Bash command that calls the wrapper.)
 `$(...)` EXECUTES in the relay's own host shell before Codex ever sees it. This is both a
 break (truncated / garbled prompt) and an injection vector (brief text → host command).
 
-**PREFERRED — quoted-delimiter heredoc.** A heredoc whose delimiter is single-quoted
-disables ALL expansion; the body passes through literally no matter what it contains.
-Works with the current wrapper (prompt is `$1`), no wrapper change needed:
+**PREFERRED — wrapper stdin mode.** A heredoc whose delimiter is single-quoted disables
+ALL expansion; pass it directly to the wrapper so no command substitution is needed:
+
+```bash
+~/.config/zsh/ai/codex-run.zsh - "$model" <<'CDX_PROMPT'
+…brief, verbatim, any characters…
+CDX_PROMPT
+```
+
+- The quote on `'CDX_PROMPT'` is **load-bearing** — it turns off expansion. Unquoted, the
+  body would expand again.
+- Only failure mode: a body line exactly equal to the delimiter. Use a rare sentinel
+  (`CDX_PROMPT`), never `EOF`.
+
+**BACK-COMPAT — quoted heredoc captured as one argument.** The original form remains safe
+for shell-active characters and existing callers:
 
 ```bash
 ~/.config/zsh/ai/codex-run.zsh "$(cat <<'CDX_PROMPT'
@@ -41,23 +54,16 @@ CDX_PROMPT
 )" "$model"
 ```
 
-- The quote on `'CDX_PROMPT'` is **load-bearing** — it turns off expansion. Unquoted, the
-  body would expand again.
-- `"$( … )"` captures the literal text as ONE argument (no word-splitting).
-- Only failure mode: a body line exactly equal to the delimiter. Use a rare sentinel
-  (`CDX_PROMPT`), never `EOF`.
+`"$( … )"` keeps the captured text in one argument. It is not an arbitrary-byte transport:
+shell variables cannot contain NUL, and command substitution removes trailing newlines.
 
 **FALLBACK — arg form (only if a heredoc is impossible).** Single-quote the whole prompt;
 escape every embedded `'` as `'\''`. Never double-quote. (The unescaped `'` closing the
 string early is the "accidentally doubled apostrophe" break.)
 
-**This is also the VERBATIM contract at the input edge.** The prompt Codex receives must be
-byte-identical to the brief; a quoting break silently mutates it before the mirror/blind
-geometry sees it — corrupting exactly the decorrelation these seats exist to provide.
-
-*(If `codex-run` later gains a `-`/`--stdin` input mode, prefer piping a quoted heredoc
-straight into it — `codex-run - "$model" <<'CDX_PROMPT' … CDX_PROMPT` — and drop the
-`$(cat <<'…')` wrapper. Until then, the command-substitution form above is the safe path.)*
+**This is the VERBATIM contract at the input edge for shell text.** A quoting break silently
+mutates the brief before the mirror/blind geometry sees it — corrupting exactly the
+decorrelation these seats exist to provide. NUL bytes are outside the wrapper contract.
 
 ## Exit codes (graceful-fail, shared by all three seats)
 
@@ -77,7 +83,8 @@ the one outcome worse than no answer.
 - Codex output comes back **VERBATIM** — no summary, no editorializing, no reconciling,
   no self-assessment. Re-interpretation by the relay re-correlates the answer toward
   Claude priors and destroys the decorrelation the seat exists to provide.
-- Append wrapper-stderr usage numbers labeled `[usage: ...]` to every report.
+- The wrapper appends usage numbers to stdout as a final `[usage: ...]` line; preserve that
+  line in every report.
 
 ## Economics (E1)
 
