@@ -10,6 +10,46 @@
 
 ---
 
+## ORACULUM — 2026-09-02 · repo unification
+
+Operator-gaveled repo unification (majkee, solo project — team-grade sync indirection
+retired). `nablarva` + `nablarva.devenv` + `termbrana` merged into ONE repo (`nablarva`),
+history preserved. Phase 0: termbrana's 3 untracked research files committed+pushed first
+(clean baseline). Phase 1: nablarva now tracks its own harness + session state directly —
+`.gitignore` replaced with a minimal hygiene-only ignore (`target/`,
+`toolbox/termbrana/target/`, `*.bak*`); `.dev/session/` (19 files) and the opened
+`.gitignore` committed. Phase 2: devenv harvested — `registry.json` copied in;
+`AGENTS.md`/`GEMINI.md`/`PROJECT.yaml` were byte-identical devenv-vs-live so nothing else
+carried over as content; `.hlm/` inspected and DELIBERATELY NOT harvested — it is majkee's
+sealed human-only vault (`cooking-recipes.yaml`: "NOTHING in this file leaves `.hlm/`";
+`MAJKEE.md`: TOP SECRET, not wired to any LLM) — stays behind in the quarantined clone.
+New discipline recorded: `nablarva/docs/repo-unification.2026-09-02.md` (plain
+`git pull --rebase`/`push` on `core`; parallel work = `git worktree`; sync.sh/deploy.sh/
+SYNC_DISCIPLINE.md retired). Phase 3: termbrana merged in via `git subtree add
+--prefix=toolbox/termbrana` — full history preserved and visible under the prefix, `target/`
+confirmed untracked; context-cleaned with a dated addendum in
+`toolbox/termbrana/research/termbrana.project-definition.md` (toolbox member now, Law 2.3
+"standalone first" survives as a library boundary, not a repo boundary) — README.md needed
+no addendum, its "independent"/"standalone" language was already product/library-boundary,
+not a repo-independence claim. Phase 4: 8 consumer files repointed across 3 repos —
+nablarva (2 session RUNBOOKs), ia-sync (3: `zsh/registries/projects.json` is the real
+source-of-truth edit, `zsh/ai/temple-project-map.zsh` regenerated via
+`gen-temple-map.sh` rather than hand-edited, `zsh/config.office.zsh` annotated retired,
+`session/rellays-calude-codex/ORACULUM-CARTAN-agenda.2026-09-01.md` repointed), reposoma (3:
+`_mail/monkey/HANDS.md` and `_runbook/ia-sync/codex-tree-bus/RUNBOOK.md` got dated addenda
+rather than rewritten rows/body, `raw.guides/sella/GUIDE.md` [S5] `session/flag.md` →
+`.dev/session/flag.md` pre-existing drift fixed in both occurrences). One attempted edit —
+`reposoma/_cold-start/card/CS.termbrana-m0.2026-08-15.md` — did not persist (reverted by a
+concurrent process between write and verify); not retried, flagged for majkee. Also flagged,
+not fixed: `ia-sync/zsh/nablarva/nablarva.zsh` (`nab -sync`/`-dep` call the now-retired
+devenv transport; `nab -f/-p/-d` already point at `session/flag.md` instead of
+`.dev/session/flag.md`, a second instance of the same drift GUIDE.md had) — out of this
+sweep's named file list, needs its own pass. Phase 5: old repos get root `RETIRED.md` +
+`gh repo archive` (or the two commands handed to majkee if `gh` lacks scope); local clones
+quarantined (not deleted) to `/tmp/repo-merge-2026-09-02/`.
+
+---
+
 ## ORACULUM — 2026-09-01 · astrobley crosses vendors + handshake r2 + tunnel stage opened
 
 majkee gavels (at desk): (1) @Astrobley FREED from Claude relay duty → the Codex line's senior implementer ("codex trajectory") — Claude card tombstoned (claude/agents/astrobley.md), Codex-native seat to be authored by @Cartan at codex/agents/astrobley.toml; one-shot relays remaining: vega (blind) + mirror (adversarial) only; precedent Zenit→Zenith, the name survives the ship. (2) HANDSHAKE → r2: §Seat transfers added + TABLE named as candidate fourth shape (live tunnel). (3) Termbrana stage 03-tunnel RUNBOOK authored at ~/unikuklatrix/nablarva/.dev/session/toolbox-termbrana-03-tunnel/RUNBOOK.md per raw.guides/runbook/GUIDE.md — ⚠ flag L11 named inside: no tunnel code until M0 freezes or majkee excepts; two Epoch research passes (Claude-side + Codex-side live-session control) running → ~/unikuklatrix/termbrana/research/. (4) Cartan agenda POINT left in the meeting room (counter-sign r2 · author codex-trajectory seat · tunnel verdict) — majkee runs Cartan by hand today. unikuklatrix writes left UNCOMMITTED for majkee (L11 + repo ownership).

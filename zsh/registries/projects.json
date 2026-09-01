@@ -4,7 +4,8 @@
     "generates": "ai/temple-project-map.zsh — its TEMPLE_PROJECT_MAP array is GENERATED from this file at deploy time (deploy.sh runs registries/gen-temple-map.sh). NEVER hand-edit that array; edit THIS file.",
     "companion": "reposoma/registry/index.md — logical project map. THIS file holds the physical disk paths.",
     "layout": "folder layout is 1:1 on office and home; paths are identical on both hosts.",
-    "omitted": "nabla-lab -> subdir of reposoma; resolves via [reposoma], no separate entry."
+    "omitted": "nabla-lab -> subdir of reposoma; resolves via [reposoma], no separate entry.",
+    "retired_2026-09-02": "nablarva.devenv entry removed — merged into nablarva (repo unification, majkee gavel). termbrana also merged in, as toolbox/termbrana/ under [nablarva]; it was never a registered temple project here (no local AGENTS.md/devenv twin) so no entry existed to repoint. Details: nablarva/docs/repo-unification.2026-09-02.md. Local clone quarantined to /tmp/repo-merge-2026-09-02/."
   },
   "projects": {
     "reposoma": "/home/hruzam/reposoma",
@@ -17,7 +18,6 @@
     "fantasyobchod": "/home/hruzam/www/imago_cz/fantasyobchod",
     "psdvsSys": "/home/hruzam/www/psdvs/psdvsSys",
     "applications-in-common": "/home/hruzam/www/elements-factory/applications-in-common",
-    "nablarva": "/home/hruzam/unikuklatrix/nablarva",
-    "nablarva.devenv": "/home/hruzam/unikuklatrix/nablarva.devenv"
+    "nablarva": "/home/hruzam/unikuklatrix/nablarva"
   }
 }

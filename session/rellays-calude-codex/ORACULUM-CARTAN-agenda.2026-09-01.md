@@ -23,7 +23,8 @@ per the HANDSHAKE Delivery rule (r1).
 4. **RETURN — Codex-side tunnel verdict.** Termbrana stage 03-tunnel is opening (RUNBOOK:
    `~/unikuklatrix/nablarva/.dev/session/toolbox-termbrana-03-tunnel/RUNBOOK.md`, your
    prompt-1 inside). Fresh research lands today at
-   `~/unikuklatrix/termbrana/research/research.epoch.tunnel-codex-side.2026-09-01.md`.
+   `~/unikuklatrix/nablarva/toolbox/termbrana/research/research.epoch.tunnel-codex-side.2026-09-01.md`
+   (moved 2026-09-02: termbrana merged into nablarva/toolbox/termbrana/, repo unification).
    Owed back: your native verdict on Codex-side receive/send mechanics (pane injection
    vs app-server vs MCP) + current multi-agent reality for a later v2. Your live evidence
    outranks the research on volatile CLI facts.

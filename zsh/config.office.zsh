@@ -92,6 +92,12 @@ export PROJECT_SES_TOOLKIT="session.zsh"
 # wired via the nablarva/base.zsh source hook below, next to ai/base.zsh.
 export PROJECT_NAB_PATH="$HOME/unikuklatrix/nablarva"
 export PROJECT_NAB_NAME="nabLarva"
+# RETIRED 2026-09-02 (repo unification, majkee gavel): nablarva.devenv merged into
+# nablarva (see nablarva/docs/repo-unification.2026-09-02.md); local clone quarantined
+# to /tmp/repo-merge-2026-09-02/. This path no longer resolves to a live repo — the
+# `nab -sync` / `nab -dep` verbs in nablarva/nablarva.zsh that consume it are dead until
+# that engine is updated for the new one-repo discipline (out of scope for this sweep;
+# flagged, not fixed).
 export PROJECT_NAB_DEVENV="$HOME/unikuklatrix/nablarva.devenv"
 
 # Env backups (consumed by psdvs-toolkit.zsh)
