@@ -60,7 +60,7 @@ guides/claviature.global.spec.md.`
 | 10 | temple utilities | `tree-snapshot <project>` · `temple-help` | `temple-tree.zsh` · `claude.zsh` |
 | 11 | devenv transport | `fr-sync/deploy/status` · `bo-sync/deploy/status` · `devenv-help` | `devenv.zsh` (pull --rebase built in) |
 | 12 | global claviature | `keys` · `keys --plain` (agents) · `keys --all` (include shell internals) | `keys.zsh` (`_keys`) |
-| 13 | octopus launcher | `octo` | `claude.zsh` (`_octo`) |
+| 13 | seat launcher | `ai-metaterminal` | `claude.zsh` (`_metaterminal`) |
 | 14 | editor-pin keymap | `pinkeys` | `claude.zsh` (`_pinkeys`) |
 | 15 | project-map surface | `project-paths [--plain\|--paths]` · `project-git-status` · `project-commit-all [--dry\|--push]` · `project-help` · **Alt-p** (ZLE picker) | `temple-project-surface.zsh` |
 | 16 | Zenith-ZSH RAG | `zenith-zsh` (interactive) · `zenith-zsh "query"` (one-shot) | `zenith-zsh.sh` (executed) → agent `zenith-zsh.md` |

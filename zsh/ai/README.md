@@ -14,7 +14,7 @@ Usage: `~/.config/zsh/guides/guide-for-user.md` · keyboard map: `guides/keyboar
 | `base.zsh` | Signpost (0009 L2) — wires the whole scope in partition order | `config.zsh`, git post-commit hook | sourced |
 | `keyboard.zsh` | Control panel: **aliases only — no bodies** | Human shell | `base.zsh` P1 |
 | `gemini-processor.sh` | Gemini scope engine (dual-sourced): subprocess core (`_gai_*`) + interactive surface (agy wrappers, hygiene, `gemini-agents-help`) | per-agent launchers + `keyboard.zsh` aliases | launchers (bash) + `base.zsh` P8 (zsh) |
-| `claude.zsh` | Claude Code RC engine + help + `octo` launcher: `_rc_stop`, `_temple_help`, `_ai_help`, `_octo` | `keyboard.zsh` aliases | `base.zsh` P7 |
+| `claude.zsh` | Claude Code RC engine + help: `_rc_stop`, `_temple_help`, `_ai_help` | `keyboard.zsh` aliases | `base.zsh` P7 |
 | `experimental.zsh` | Experimental-runner dispatcher: `_exp_list` / `_exp_run`; resolves runners lazily | `exp-list`, `exp-run` aliases | `base.zsh` P9 |
 | `experimental/` | Portable experimental runners; [its contract](experimental/README.md) defines each `<id>/runner.zsh` | `exp-run <id>` | executed on demand |
 | `devenv.zsh` | Project devenv transport engine: `_devenv_*`, `_fr_*`, `_bo_*`, `_devenv_help` (pull --rebase discipline built in) | `keyboard.zsh` P11 aliases | `base.zsh` P6 |

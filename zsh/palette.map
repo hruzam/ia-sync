@@ -28,7 +28,6 @@ ai	gemini-orby	run orby.sh (Orby seat — dual-mode: interactive/headless)	ai/ke
 ai	harness-stale	run harness-check.zsh --debug — settings-card freshness report	ai/base.zsh
 ai	keys	print the derived claviature panel (live functions/aliases by family)	ai/keys.zsh
 ai	mail-pick	(alias: mail-pick) destination picker + preview	ai/temple-mail-switch.zsh
-ai	octo	octopus head launcher — drop into the session head (Medusa/Flight)	ai/claude.zsh
 ai	palette-help	this panel	ai/command-palette.zsh
 ai	palette-refresh	manual rebuild of the command map	ai/command-palette.zsh
 ai	pinkeys	live chord → command table from the installed Sublime keymap	ai/claude.zsh

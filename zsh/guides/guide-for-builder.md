@@ -281,9 +281,9 @@ or dual-sourcing → `.sh`.
 | P10 | Temple utilities (`temple-help` alias); body in `claude.zsh` | `claude.zsh` |
 | P11 | devenv transport aliases (`fr-*`, `bo-*`, `devenv-help`) | `devenv.zsh` |
 | P12 | `alias keys='_keys'` — global derived panel | `keys.zsh` |
-| P13 | `alias octo='_octo'` — Octopus head launcher (drops into the session head — Medusa in project seats) | `claude.zsh` |
+| P13 | `alias ai-metaterminal='_metaterminal'` — seat launcher (human-invoked terminal-layer seat) | `claude.zsh` |
 
-*Claude-agent launcher recipe (P13 / `octo` is the first): `_<name>` body in `claude.zsh` →
+*Claude-agent launcher recipe (P13 / `ai-metaterminal` is the exemplar): `_<name>` body in `claude.zsh` →
 `alias <name>='_<name>'` in a new keyboard.zsh partition → register the bare name in
 `keys.zsh` `_KEYS_SINGLES_MAP`. Docs-only edits (no zsh syntax) may skip the `zsh -n` gate.*
 
@@ -292,7 +292,7 @@ or dual-sourcing → `.sh`.
 | Engine | Sourced by | Bodies |
 |---|---|---|
 | `ai/gemini-processor.sh` | `base.zsh` P8 (interactive surface) + per-agent launchers (subprocess core) | `_gai_api_key`, `_gai_payload`, `_gai_rest_call`, `_gai_extract`, `_gai_strip_noise`, `agy-vega`, `agy-orby`, `agy-astro`, `agy-astro-yolo`, `gemini-fresh`, `agy-fresh`, `gemini-agents-help` |
-| `ai/claude.zsh` | `base.zsh` P7 | `_rc_stop`, `_temple_help`, `_ai_help`, `_octo` |
+| `ai/claude.zsh` | `base.zsh` P7 | `_rc_stop`, `_temple_help`, `_ai_help`, `_metaterminal` |
 | `ai/devenv.zsh` | `base.zsh` P6 | `_devenv_sync`, `_devenv_deploy`, `_devenv_status`, `_bo_*`, `_fr_*`, `_devenv_help` |
 | `ai/devenv-sync-core.sh` | `*.devenv/sync.sh` + `*.devenv/deploy.sh` (external, not base.zsh) | `_devenv_resolve_app_dir`, `_devenv_sync_deny_init`, `_devenv_sync_deny_cleanup`, `_devenv_secret_scan`, `_devenv_print_footer`, `_devenv_deploy_guard`, `_devenv_git_exclude_guard`, `_devenv_print_deploy_footer` |
 | `ai/temple-tree.zsh` | `base.zsh` P5 | `tree-snapshot` |

@@ -67,7 +67,6 @@ typeset -gA _KEYS_SINGLES_MAP=(
   shstat         'Shared toolkit'
   shsyntax       'Shared toolkit'
   keys           'Help panels'
-  octo           'Octopus'
   ai-metaterminal 'Seat launcher'
 )
 

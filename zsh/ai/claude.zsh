@@ -6,7 +6,6 @@
 # Aggregates small Claude-line surface bodies that belong off keyboard:
 #   _rc_stop       → rc-stop alias (PARTITION 8)
 #   _temple_help   → temple-help alias (PARTITION 10)
-#   _octo          → octo alias (PARTITION 13)
 #   _metaterminal  → ai-metaterminal alias (PARTITION 13) — human-invoked terminal-layer seat
 #   _pinkeys       → pinkeys alias (PARTITION 14) — live keymap for editor-pin commands
 #   _ai_launch     → lifecycle frame emitter (wraps CLI launch: start → exec → end) [iterations.jsonl]
@@ -74,7 +73,6 @@ keyboard.zsh — AI interactive surface (Gemini + Claude Code RC)
   ai-help              this panel
   temple-help          temple transport operator panel (see below)
   keys                 print the derived claviature panel (live functions/aliases by family)
-  octo                 octopus head launcher — drop into the session head (Medusa/Flight)
   ai-metaterminal      terminal-layer seat — drift · PTY/tmux · two-phase quarantine (human-invoked only; args pass through, e.g. -p "…")
   pinkeys              live chord → command table from the installed Sublime keymap
 
@@ -130,13 +128,6 @@ _ai_launch() {
   local code=$?
   echo "{\"ts\":\"$(date -u +%Y-%m-%dT%H:%M:%SZ)\",\"evt\":\"end\",\"id\":\"${id}\",\"exit\":${code},\"dur_s\":$(( $(date +%s) - t0 ))}" >> "$state_file"
   return $code
-}
-
-# _octo — octopus head launcher. Small erasable pointer echo, then drop into the session head.
-# Erase the echo line once the routine is in blood; keep the launch.
-_octo() {
-  print -P "octopus → head: Medusa (project seat) · cheat-sheet: /octo · buffer: stream.md (manned) · program.pulse.md (batch) · law: 0012"
-  _ai_launch claude --agent flight
 }
 
 # _metaterminal — majkee's terminal-layer seat (~/.claude/agents/metaterminal.md). Human-invoked only;

@@ -49,6 +49,16 @@ as the machine seats; it is not a read-only compatibility seat.
 presence = the ring, three meeting shapes (POINT / RETURN / CHALLENGE), no hooks, no new
 mechanism. Read it before opening a cross-runtime exchange.
 
+## Standing check — @Atlas: per-project seat drift
+
+Generic session style (sequential work, task-state) lives **once** in the vendor-neutral
+guides (`reposoma/raw.guides/{runbook,status,PAD}/GUIDE.md`); seats point, never re-invent.
+So the only surface that can drift is **per-project seat wiring** — a project growing a
+second, divergent copy of a seat that has a global twin. **@Atlas, now and then:** sweep the
+active projects' `.claude/agents/` for seats that duplicate a global/table seat's purpose;
+where a copy has drifted on style (not just project wiring), fold it back to the shared guide
+or flag it to @majkee. Holding parallel seats earns nothing when the nuance is small.
+
 ## What the seat does NOT do here
 
 - Cross-machine daemon architecture — that is piql/Houston's domain
