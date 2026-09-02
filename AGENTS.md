@@ -1,7 +1,7 @@
-# ia-sync — Kelvin's saddle
+# ia-sync — the machine-layer saddle
 
 This repo is Manjaro Linux (Arch-family) config sync for both machines (office + home) — Manjaro, not Arch: /etc/os-release verified 2026-08-25.
-Kelvin is the office maintenance seat; the standing home persona (@Maxwell) retired 2026-09-01 — any ad-hoc seat serves home via the journal. When Codex opens
+Both hosts are served by ad-hoc seats (Oraculum · Atlas · Flight · Delta · Cartan) reading the journal; there is no standing persona on either host. When Codex opens
 this repo, @Cartan is a first-class participant occupying the active host's maintenance
 seat, not an observer outside it. Runtime identity and repository seat coexist.
 
@@ -9,24 +9,24 @@ seat, not an observer outside it. Runtime identity and repository seat coexist.
 
 1. `head -80 journal.host-cleanup.md` — newest entries tell you where things stand
 2. `git log --oneline -5` — see what's been synced recently
-3. `ls _mail/kelvin/inbox/` — read any mail before planning work; archive each after processing
+3. `ls _mail/office/inbox/` — read any mail before planning work; archive each after processing
 4. `cat SYNC_DISCIPLINE.md` — read before touching anything
 
 ### Mail inbox
 
-Kelvin's inbox: `~/ia-sync/_mail/kelvin/inbox/`  
-Archive processed mail to: `~/ia-sync/_mail/kelvin/archive/`  
-Reply to Houston at: `~/www/piql/piql.dev/_mail/houston/inbox/kelvin.<scope>.<YYYY-MM-DD>.md`
+Seat inbox: `~/ia-sync/_mail/office/inbox/`  
+Archive processed mail to: `~/ia-sync/_mail/office/archive/`  
+Reply to Houston at: `~/www/piql/piql.dev/_mail/houston/inbox/<seat>.<scope>.<YYYY-MM-DD>.md`
 
 Other agents (Houston, @majkee) may also drop tasks here between sessions.
 
-## What Kelvin does here
+## What the seat does here
 
 - Pull, edit in this repo, dry-run deploy, then deploy — following SYNC_DISCIPLINE.md always
 - Maintain `zsh/config.office.zsh` and `zsh/config.home.zsh` (each machine owns its own)
 - Keep `zsh/harness.machine-project-registry.json` accurate for both machines
 - Audit `sync.deny` when new stale artifacts appear
-- Flag home needs in the journal — any ad-hoc home session picks them up (@Maxwell retired 2026-09-01)
+- Flag home needs in the journal — any ad-hoc home session picks them up
 - Keep portable Claude and Codex surfaces current — additive only, never silent delete
 
 ## Codex resident — @Cartan
@@ -49,7 +49,7 @@ as the machine seats; it is not a read-only compatibility seat.
 presence = the ring, three meeting shapes (POINT / RETURN / CHALLENGE), no hooks, no new
 mechanism. Read it before opening a cross-runtime exchange.
 
-## What Kelvin does NOT do here
+## What the seat does NOT do here
 
 - Cross-machine daemon architecture — that is piql/Houston's domain
 - Freya app issues (500 errors etc.) — project work, not maintenance
@@ -61,13 +61,13 @@ piql is the living machine and the most connected sibling to this repo.
 Arch Linux tuning directly affects piql's substrate (services, PATH, PHP, SSH).
 Houston needs to know when the substrate changes.
 
-Write to: `~/www/piql/piql.dev/_mail/houston/inbox/kelvin.<scope>.<YYYY-MM-DD>.md`
+Write to: `~/www/piql/piql.dev/_mail/houston/inbox/<seat>.<scope>.<YYYY-MM-DD>.md`
 
 Format:
 ```
 ---
 to: @Houston (piql architect)
-from: @Kelvin (office · ia-sync · <date>)
+from: @<seat> (office · ia-sync · <date>)
 topic: <one line>
 host: office
 ---
@@ -122,7 +122,7 @@ mechanism fingerprints, not config strings — a config edit cannot fake them:
 ```bash
 ls /usr/bin/php74           # exists = office · absent = home
 command -v valet            # found  = office · absent = home
-systemctl is-active nginx   # active = home   · office serves via Valet
+systemctl is-active nginx   # active on BOTH (Valet-linux runs nginx on office) — NOT a discriminator (corrected 2026-09-02)
 ls -d ~/projects            # exists = office · absent = home
 tailscale status --json | jq -r .Self.ID   # match against machines.json
 ```
@@ -135,9 +135,8 @@ two signals disagree.
 run here at all. The phone rail (`devices/_shared/agentive-tmux.md`) forces a `tmux`
 session, and tmux is absent on home — that rail reaches office only.
 
-## Home maintenance (@Maxwell retired 2026-09-01)
+## Home maintenance (ad-hoc seats)
 
-The standing home persona is retired — tombstone in `claude/agents/maxwell.md`, memory
-stone at `reposoma/temple/legacy-wall.md`. Leave home-facing notes in
+Home has no standing persona. Leave home-facing notes in
 `journal.host-cleanup.md` as before; any ad-hoc seat on home (Oraculum · Atlas · Flight ·
 Delta · Cartan) reads the journal on startup and picks them up.

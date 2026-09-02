@@ -122,7 +122,7 @@ package manager (AUR `-Syu`, home-made).
 
 **Machine config files are owned by their machine's seat.**
 - `config.home.zsh` — only home edits this file (home seats)
-- `config.office.zsh` — only office edits this file (Kelvin / office seats)
+- `config.office.zsh` — only office edits this file (office seats)
 - `zshrc.home` / `zshrc.office` — same ownership rule
 - Never cross-edit the other machine's config file. Ownership is about **who edits**,
   not where the file lives — both files sit in this repo, authored here (compose-first).

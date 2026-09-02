@@ -10,6 +10,27 @@
 
 ---
 
+## OFFICE (Oraculum, operator majkee over SSH from home) — 2026-09-02 · termbrana M0 pad sat
+
+Not maintenance — termbrana M0 operator sitting (nablarva session
+toolbox-termbrana-02-m0-truthspike); logged here only for the machine-layer carries:
+
+- HOST FINGERPRINT ROW WRONG in `AGENTS.md` §"Which host am I on?": `systemctl is-active nginx`
+  is `active` on OFFICE too (Valet-linux runs nginx). The row "active = home · office serves
+  via Valet" misleads; php74 / valet / `~/projects` / tailscale node ID are the fingerprints
+  that held. Row corrected in AGENTS.md 2026-09-02 (Oraculum, ad-hoc seat — Kelvin/Maxwell deferred per majkee).
+- Pins re-verified on office 2026-09-02: zellij 0.44.3-1 (pacman, packager alerque@archlinux.org,
+  build 2026-05-14 — Arch build delivered via Manjaro `stable` branch) · rustc/cargo 1.95.0 via
+  rustup toolchain (distro-independent) · ID=manjaro ID_LIKE=arch. Recorded in
+  `~/unikuklatrix/nablarva/toolbox/termbrana/research/evidence/host-versions.md`.
+- Host fact: zellij default scrollback cap = 10 000 lines.
+- Zellij plugin storm (render-report subscription self-feeding) degraded a zellij session past
+  pane-close; only `Ctrl+q` recovered. No system impact; zellij server back to ~0.6 % CPU.
+- Escape hatch that works from outside a session: `zellij --session <name> action pipe …`.
+- No services / SSH / agent specs changed → no Houston mail from this session.
+
+---
+
 ## ORACULUM — 2026-09-02 · unification CLOSED
 
 Consolidation closing pass (verification + completion). Vault end-state confirmed: .hlm

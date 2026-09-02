@@ -147,10 +147,11 @@ alias devenv-help='_devenv_help'
 alias keys='_keys'
 
 # =============================================================================
-# PARTITION 13: Octopus — head launcher
-# Engine: ~/.config/zsh/ai/claude.zsh (_octo body, via base.zsh P7)
+# PARTITION 13: Seat launchers — octo (head) · ai-metaterminal (terminal-layer seat)
+# Engine: ~/.config/zsh/ai/claude.zsh (_octo + _metaterminal bodies, via base.zsh P7)
 # =============================================================================
 alias octo='_octo'
+alias ai-metaterminal='_metaterminal'   # human-invoked only; --agent metaterminal + lifecycle frame
 
 # =============================================================================
 # PARTITION 14: editor-pin live keymap

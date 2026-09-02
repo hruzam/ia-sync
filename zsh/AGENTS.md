@@ -170,11 +170,11 @@ Archived by majkee 2026-07-07 (plus earlier `substrate.*` parks):
 | `substrate.host-id.zsh` | Over-built helper; use `echo $MACHINE_NAME` (sync.deny'd) |
 | `larva.zsh` | Former startup copy; identical to live `projects/larva.zsh` |
 | `session-helpers.zsh`, `session-syntax.zsh` | Superseded by `projects/session.zsh` + `session-meassure.zsh` |
-| `ai-agents.registry.json` | ⚠ home's `ai-lifecycle.zsh` reads `~/.config/zsh/ai-agents.registry.json` — Maxwell must verify home before the repo copy is dropped |
+| `ai-agents.registry.json` | ⚠ home's `ai-lifecycle.zsh` reads `~/.config/zsh/ai-agents.registry.json` — the home seat must verify home before the repo copy is dropped |
 | `env-sync.zsh` | Deprecated tool (sync.deny'd; `.zshrc` source line removed 2026-06-30) |
 | `project-switcher.home.zsh`, `project-switcher.office.zsh` | Old split variants; unified `project-switcher.zsh` is live |
-| `tasks.js` | larva-era task registry (from `registries/`); sole consumer `ai-lifecycle.zsh:347` (UNCERTAIN/home-only) — ⚠ Maxwell must verify home before any repo-copy drop. Archived 2026-07-11 |
-| `larva/` (broadcast.sh · consult.sh · slices.sh · laika.sh) | larva project buried (temple legacy wall); unreferenced on office — ⚠ Maxwell verify home. Archived 2026-07-11 |
+| `tasks.js` | larva-era task registry (from `registries/`); sole consumer `ai-lifecycle.zsh:347` (UNCERTAIN/home-only) — ⚠ the home seat must verify home before any repo-copy drop. Archived 2026-07-11 |
+| `larva/` (broadcast.sh · consult.sh · slices.sh · laika.sh) | larva project buried (temple legacy wall); unreferenced on office — ⚠ home seat to verify. Archived 2026-07-11 |
 
 Archived by @Flight 2026-07-29 (operator call; wiring traced by @Eagle + @zenith-zsh, both independently CONFIRMED dead on office):
 
@@ -187,7 +187,7 @@ Archived by @Flight 2026-07-29 (operator call; wiring traced by @Eagle + @zenith
 
 | File | Notes |
 |---|---|
-| `mesh/office-wire.zsh` (+ empty `mesh/`) | Kelvin journal 2026-06-30 item 2 — Gate E closed, direct SSH covers it; already in sync.deny. Home's `config.home.zsh` still has its source line — Maxwell's side. |
+| `mesh/office-wire.zsh` (+ empty `mesh/`) | office journal 2026-06-30 item 2 — Gate E closed, direct SSH covers it; already in sync.deny. Home's `config.home.zsh` still has its source line — home's side. |
 | `system/pacman.zsh`, `system/browser.zsh` source lines in `config.zsh` | Files never existed on either machine or in repo |
 | `harness.machine-project-registry.json` | ⚠ **CORRECTED 2026-07-29** — the original entry claimed "exists nowhere". That was FALSE and office-blind: the file is LIVE on home, read at every interactive login by home's `config.zsh:20-27` (`eval "$(python3 normalizer.py $MACHINE_NAME $REGISTRY_FILE)"`). It is absent on office only. Operator call landed 2026-07-29: the mechanism is retired — home migrates to inline `PROJECT_*` exports (office-style), THEN drops it. Home must not delete before porting or its project switcher loses all paths. |
 

@@ -1,6 +1,6 @@
 # pad.6-home-php-composer-keyboard — home verification protocol
 
-> host: `hruzam` (`MACHINE_NAME=home`) · owner: home/Maxwell seat
+> host: `hruzam` (`MACHINE_NAME=home`) · owner: home seat (ad-hoc)
 > scope: `system/keyboard.zsh` keys backed by `system/home.php-composer.zsh`
 
 This pad verifies the shared key names without confusing the host mechanisms. On home,

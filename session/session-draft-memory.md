@@ -26,7 +26,7 @@
 
 | Decision | Details | Date |
 |----------|---------|------|
-| Home shell bootstrap: no delete-before-port on normalizer.py / registry | Do NOT delete `~/.config/zsh/normalizer.py` or `~/.config/zsh/harness.machine-project-registry.json` until BOTH are done, in order: (1) Home's `PROJECT_*` exports ported inline into `zsh/config.home.zsh`; (2) FRESH login shell verifies all `PROJECT_*` paths resolve (`fo im psd ltp lrv sess` all green). Only after both pass may files be removed. Rationale: `~/.config/zsh/config.zsh:26-30` defines every `PROJECT_*` by `eval`-ing normalizer.py output against registry JSON; if either file missing, guard fails → `[ERROR] Could not find normalizer or registry file` → all six project switchers break (same class as 2026-07-07 office audit repair). Source: office seat (@Kelvin), relayed via @majkee. Scope: home machine only. Status: binding on @Houston and any implementer. | 2026-07-29 |
+| Home shell bootstrap: no delete-before-port on normalizer.py / registry | Do NOT delete `~/.config/zsh/normalizer.py` or `~/.config/zsh/harness.machine-project-registry.json` until BOTH are done, in order: (1) Home's `PROJECT_*` exports ported inline into `zsh/config.home.zsh`; (2) FRESH login shell verifies all `PROJECT_*` paths resolve (`fo im psd ltp lrv sess` all green). Only after both pass may files be removed. Rationale: `~/.config/zsh/config.zsh:26-30` defines every `PROJECT_*` by `eval`-ing normalizer.py output against registry JSON; if either file missing, guard fails → `[ERROR] Could not find normalizer or registry file` → all six project switchers break (same class as 2026-07-07 office audit repair). Source: office maintenance seat, relayed via @majkee. Scope: home machine only. Status: binding on @Houston and any implementer. | 2026-07-29 |
 
 ---
 
@@ -49,7 +49,7 @@
 
 | Gap | Detail |
 |-----|--------|
-| Stale registry reference | `~/ia-sync/zsh/harness.machine-project-registry.json` is stale: PSD path case mismatch (psdvsSys); LTP path now actually holds psdvsSys, not Laravel-training-project · flagged for Kelvin/Maxwell (registry owner), not edited by this task | 2026-07-20 |
+| Stale registry reference | `~/ia-sync/zsh/harness.machine-project-registry.json` is stale: PSD path case mismatch (psdvsSys); LTP path now actually holds psdvsSys, not Laravel-training-project · flagged for the machine seats (registry owner), not edited by this task | 2026-07-20 |
 | 404 dangling reference | `~/www/legacy.session` remote points to `hruzam/Session.git`, which 404s on GitHub (deleted/renamed repo) · separate issue, not investigated | 2026-07-20 |
 
 ---

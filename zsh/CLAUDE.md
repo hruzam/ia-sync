@@ -5,8 +5,8 @@
 ## What this place is
 Operator's personal zsh config on host `office` (`$MACHINE_NAME`). NOT a temple project — no
 project-flow, no phases; quick surgical sessions. NOT a git repo on office: every edit is live
-at the next shell, and nothing travels by itself (cross-machine = ia-sync deploy; Maxwell holds
-the home side, Kelvin the office side).
+at the next shell, and nothing travels by itself (cross-machine = ia-sync deploy; the home seat holds
+the home side, the office seat holds the office side).
 
 ## Direct-work rules (this folder)
 1. The imported AGENTS.md above is the live map — trust disk + map over memory; if you move or

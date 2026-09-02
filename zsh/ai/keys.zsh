@@ -68,6 +68,7 @@ typeset -gA _KEYS_SINGLES_MAP=(
   shsyntax       'Shared toolkit'
   keys           'Help panels'
   octo           'Octopus'
+  ai-metaterminal 'Seat launcher'
 )
 
 # ── noise exclusion: zsh machinery + shell internals ────────────────────────

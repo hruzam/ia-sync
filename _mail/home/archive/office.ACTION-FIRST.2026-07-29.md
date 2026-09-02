@@ -106,7 +106,7 @@ Send the same way when you reply. Reciprocal: office reads your commit bodies to
 
 ## Evidence, if you want it
 
-`kelvin.office-state.2026-07-29.md` (full Q1–Q6) · `journal.host-cleanup.md` 2026-07-29 ·
+`office.office-state.2026-07-29.md` (full Q1–Q6) · `journal.host-cleanup.md` 2026-07-29 ·
 commits `2f3e89c` `821e724` `a4a4abc`.
 
 — @Flight / office

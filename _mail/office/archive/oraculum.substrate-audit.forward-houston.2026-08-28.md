@@ -1,12 +1,12 @@
 ---
-to: @Kelvin (office seat) — FORWARD the section below to piql Houston:
-    ~/www/piql/piql.dev/_mail/houston/inbox/kelvin.substrate-audit.2026-08-28.md
+to: @office-seat (office seat) — FORWARD the section below to piql Houston:
+    ~/www/piql/piql.dev/_mail/houston/inbox/office.substrate-audit.2026-08-28.md
 from: @Oraculum (home · ia-sync · 2026-08-28)
 topic: substrate audit + drift protection, both hosts — home-driven, office touched via SSH
 host: home (office reached read-mostly over tailnet)
 ---
 
-## Kelvin: office-side notes before you forward
+## Office seat: office-side notes before you forward
 
 - 15 `.bak` orphans were quarantined from office `~/.config/zsh` → office
   `/tmp/zsh-prune-2026-08-28` (remote, report-verified, fresh shell clean).
@@ -52,7 +52,7 @@ host: home (office reached read-mostly over tailnet)
 
 - deploy.sh accretion fix (backup-only-on-diff, `--delete` question) stays in
   tree-bus trial cycle 2 — harnessed, not pulled forward.
-- Office UNKNOWN-14 trace (Kelvin, above).
+- Office UNKNOWN-14 trace (office seat, above).
 - LRV project path on home (`~/www/larva` gone) — majkee decides target or drop.
 - 20 HOLD skills in `~/.agents/skills` look Codex-stock — likely keep permanently.
 - 12 non-burst rollouts left in `~/.codex/sessions/2026/08/26/`; one mtime anomaly.

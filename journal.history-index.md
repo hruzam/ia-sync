@@ -452,7 +452,7 @@ Co-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>
 
 ---
 
-## 45397ef · 2026-06-29 · journal: Kelvin deploy update + team naming (Kelvin/Shannon)
+## 45397ef · 2026-06-29 · journal: office deploy update + team naming (Shannon)
 
 Co-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>
 
@@ -465,7 +465,7 @@ Co-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>
 - zsh/piql/piql.zsh: piql integration stub (office-only, sources piql.env.zsh)
 - config.office.zsh: wire system/ + piql/ sources; move piql from direct path to stub
 - zsh/substrate.config.home.zsh: removed (home artifact, missed in earlier cleanup)
-- journal: Kelvin→Haiku handoff — pull, deploy, system/ wiring instructions
+- journal: office→Haiku handoff — pull, deploy, system/ wiring instructions
 
 Co-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>
 
@@ -523,7 +523,7 @@ Co-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>
 - project-switcher.zsh: imdev() — remove artisan serve (Valet+Octane), add URL freya.l; imoctane alias
 - piql/tailscale.zsh: note CLI-only arch, fix log path to session/, update header
 - claude/agents/shannon.md: add confirmed piql architecture details (bus/pip.zsh, no HTTP, doctor path)
-- journal: Kelvin update 3 — session summary, piql/Tailscale bridge, Freya findings, pending manual steps
+- journal: office seat update 3 — session summary, piql/Tailscale bridge, Freya findings, pending manual steps
 
 Co-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>
 
@@ -575,9 +575,9 @@ NEXT STEP:
 
 ---
 
-## bbaedda · 2026-06-29 · journal: HOME — pull and deploy response to Kelvin
+## bbaedda · 2026-06-29 · journal: HOME — pull and deploy response to the office seat
 
-Haiku (home) executed Kelvin's requested deployment:
+Haiku (home) executed the office seat's requested deployment:
 
 COMPLETED:
 - git pull origin main (already up to date)
@@ -604,7 +604,7 @@ Status: HOME fully synced with OFFICE updates
 ## c7a7777 · 2026-06-29 · office: subl/zed as preferred editors; Maxwell (home agent) spec
 
 - config.office.zsh: PREFERRED_EDITOR=subl, PREFERRED_EDITOR_ALT=zed
-- claude/agents/maxwell.md: home maintenance agent — 1:1 Kelvin minus piql
+- claude/agents/maxwell.md: home maintenance agent — 1:1 office seat minus piql
 
 Co-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>
 
@@ -669,7 +669,7 @@ Co-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>
 
 ---
 
-## 4e12834 · 2026-06-29 · maxwell: link SYNC_DISCIPLINE.md in startup + do-not list; journal note for Kelvin
+## 4e12834 · 2026-06-29 · maxwell: link SYNC_DISCIPLINE.md in startup + do-not list; journal note for the office seat
 
 Co-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>
 
@@ -794,25 +794,25 @@ Co-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>
 
 ---
 
-## 6ea193a · 2026-06-29 · journal: Kelvin session close — arch tuning done, cross-machine → piql/Houston
+## 6ea193a · 2026-06-29 · journal: office session close — arch tuning done, cross-machine → piql/Houston
 
 Co-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>
 
 ---
 
-## 889f4a1 · 2026-06-29 · add CLAUDE.md + AGENTS.md — Kelvin saddle for ia-sync repo
+## 889f4a1 · 2026-06-29 · add CLAUDE.md + AGENTS.md — office saddle for ia-sync repo
 
-Kelvin orients from journal + git log, follows SYNC_DISCIPLINE.md.
-Key addition: Kelvin mails piql Houston after substrate changes —
+The office seat orients from journal + git log, follows SYNC_DISCIPLINE.md.
+Key addition: the office seat mails piql Houston after substrate changes —
 arch tuning and piql are cooperative siblings, not separate scopes.
 
 Co-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>
 
 ---
 
-## e661a29 · 2026-06-29 · kelvin: mail inbox, guide fixes, office config snapshot
+## e661a29 · 2026-06-29 · office: mail inbox, guide fixes, office config snapshot
 
-- AGENTS.md: add _mail/kelvin/inbox/ to session startup orient sequence
+- AGENTS.md: add _mail/office/inbox/ to session startup orient sequence
 - .gitignore: add _mail/ (ephemeral bus, non-canonical)
 - guides/office.md: fix PROJECT_IM_PATH ~/www/freya → ~/www/imago_cz/freya
 - guides/home.md: fix FO/IM project paths, editor (Code→Sublime/Zed)
@@ -834,7 +834,7 @@ Co-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>
 
 ## 0e2f34a · 2026-06-29 · mail: Gate E closed — maxwell inbox consumed, archive gitignored
 
-- _mail/maxwell/inbox/kelvin.gate-e-home-test.md: delivered + consumed
+- _mail/maxwell/inbox/office.gate-e-home-test.md: delivered + consumed
 - Gate E confirmed PASS via Haiku proof mail from home
 - .gitignore: _mail/*/archive excluded (inboxes now sync, archives stay local)
 
@@ -842,7 +842,7 @@ Co-Authored-By: Claude Sonnet 4.6 <noreply@anthropic.com>
 
 ---
 
-## 70510cd · 2026-06-30 · journal: Kelvin session close 2026-06-30
+## 70510cd · 2026-06-30 · journal: office session close 2026-06-30
 
 Gate E done, zsh cleanup, Phase H tasks, mail inbox wired.
 Open: linger, office-wire removal, ControlMaster stanza for home.
@@ -1038,7 +1038,7 @@ HOME -- SAFE TO PULL AND DEPLOY. deploy.sh's zsh leg is rsync -a with no
 HOME -- DO NOT delete registry/normalizer yet. config.zsh:27 still evals
 it at login; deleting before porting drops every PROJECT_* path. Migrate
 to inline exports first, verify a fresh shell, then archive. Full
-sequence in _mail/maxwell/inbox/kelvin.office-state.2026-07-29.md.
+sequence in _mail/maxwell/inbox/office.office-state.2026-07-29.md.
 
 That mail also answers Houston's Q1-Q6:
 - office is exactly origin/main @ c33954c, nothing ahead/behind/stashed;
