@@ -10,6 +10,29 @@
 
 ---
 
+## OFFICE (Cartan) — 2026-09-02 · Codex Octopus / Medusa / Polyp protocols deployed
+
+Portable Codex session protocols authored under `codex/skills/` and deployed to the office
+`~/.agents/skills/` target after a clean `--codex-only` dry run:
+
+- `octopus`: Sol-grade Cartan authors RUNBOOK + initial STATUS, names the executor, and parks;
+  @majkee's explicit wake is the implementation and token-economy gate.
+- `medusa`: normally Terra-grade working head executes inside the fixed RUNBOOK, may coordinate
+  bounded cheaper workers, and returns architectural/ownership/gate curvature to Octopus.
+- `polyp`: sequential PAD driver — one step, one captured report, one declared verdict branch;
+  no fixing or extra raw/session-log surfaces.
+- Cartan remains the single controller identity. The protocols are working postures, not new
+  global agent personas. Astrobley remains Sol/high for difficult implementation, not the cheap
+  default.
+- Skill metadata validation passed for all three. Fresh isolated sessions proved: Octopus left
+  the implementation file byte-identical and emitted `OCTOPUS PARKED`; Medusa/Terra changed only
+  the granted file + STATUS and preserved RUNBOOK; Polyp/Luna ran exactly STEP 0, captured
+  `POLYP_OK`, updated STATUS, and parked.
+- Home carry: after pull, run `bash ~/ia-sync/deploy.sh --codex-only`, then verify discovery from
+  a fresh Codex session before calling these protocols live there.
+- No services, SSH, network, or zsh substrate changed. Houston mail sent because portable Codex
+  behavior changed.
+
 ## OFFICE (Oraculum, operator majkee over SSH from home) — 2026-09-02 · termbrana M0 pad sat
 
 Not maintenance — termbrana M0 operator sitting (nablarva session

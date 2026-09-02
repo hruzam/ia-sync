@@ -27,6 +27,7 @@ bash deploy.sh --codex-only
 | Agent | Role | Default posture |
 |---|---|---|
 | `architect` | boundaries, options, ADR-ready recommendations | Sol/xhigh, read-only |
+| `astrobley` | difficult scoped implementation with senior judgment and explicit return | Sol/high, workspace-write |
 | `challenger` | adversarial pre-lock verdict | Sol/xhigh, read-only |
 | `researcher` | current primary-source and local evidence | Terra/high, read-only |
 | `implementer` | scoped changes and tests | Terra/high, workspace-write |
@@ -49,10 +50,20 @@ Claude↔Codex semantic cross-section.
 | `codex-harness` | Design and maintain Codex-native primitives | Preserve role meaning and gates, not file parity |
 | `buffering` | Hold incremental input or run a creative design arc before release | Claude's cycle and creative-triad semantics in one Codex procedure |
 | `cold-start-card` | Leave a verified, temporary re-entry pointer | Point to canonical state; never become another pulse |
+| `octopus` | Sol-grade planning head creates RUNBOOK + STATUS, names the executor, and parks | Expensive judgment is separated from implementation by an operator wake gate |
+| `medusa` | Normally Terra-grade working head executes a RUNBOOK and returns curvature upward | Full engineering tools below a fixed gate; architecture remains with Octopus/Cartan |
+| `polyp` | Drive a human/model PAD one step and one evidence branch at a time | Raw evidence stays in the PAD; the driver never authors or fixes the work under test |
 
-Project continuity remains vendor-neutral: settled locks live in the declared `flag.md`, live
-doing-state in the single declared `pulse.md`, and the machine contract in `PROJECT.yaml`.
-Codex does not add a global or per-runtime pulse beside them.
+Cartan remains the identity and integration owner in every protocol. Octopus, Medusa, and
+Polyp are operator-selected working postures, not additional global personas. Their model
+assignments are default carriages rather than identity locks: the operator selects the model
+when opening the session, and each skill states the authority boundary that must survive a
+future model change.
+
+Project continuity remains vendor-neutral: settled locks live in the declared `flag.md`, the
+project heartbeat/router in `pulse.md`, and the machine contract in `PROJECT.yaml`. When pulse
+routes to a live RUNBOOK session, that gate's sole present position is its `STATUS.md`. Codex
+does not add a global or per-runtime pulse beside them.
 
 `deploy.sh` copies only these reviewed keep-set paths. It does not copy `config.toml`,
 `hooks.json`, rules, credentials, memories, histories, sessions, databases, caches, logs,

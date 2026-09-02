@@ -23,6 +23,22 @@ Natural differences are expected: model names, reasoning controls, tool schemas,
 approval semantics, agent spawning, hook events, and config precedence. Surface these instead
 of disguising them as parity.
 
+## Session operating protocols
+
+Cartan remains the single Codex controller identity. The operator may select one of three
+protocol skills without creating another global persona:
+
+| Protocol | Codex rendering | Authority edge |
+|---|---|---|
+| Octopus | Sol-grade Cartan authors the fixed RUNBOOK and initial STATUS, recommends an executor, then parks | @majkee deliberately wakes the next seat; Octopus does not implement or spawn it |
+| Medusa | Normally Terra-grade Cartan works inside an existing RUNBOOK, directly or through bounded cheaper workers | Architectural, ownership, dependency, destructive-scope, and gate curvature returns to Octopus |
+| Polyp | Cartan drives one PAD step, evidence capture, and declared verdict branch at a time | The driver records but does not author, fix, conduct, or self-confirm a human gate |
+
+The model ladder is weather; the authority and return seams are the invariant. Astrobley is a
+Sol-grade senior implementer for difficult execution, not the cheap default. Routine bounded
+work belongs with Terra/Luna agents. RUNBOOK is fixed, STATUS is the sole present position,
+and the operator's explicit wake is the cross-session transport and token-economy gate.
+
 ## Continuity and interaction cross-section
 
 | Invariant | Codex rendering | Claude reference pattern | Boundary |
