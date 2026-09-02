@@ -42,6 +42,11 @@ def send(obj):
 
 MISMATCH = os.environ.get("FIXTURE_RECONCILE_MISMATCH") == "1"
 TURN_STATUS = os.environ.get("FIXTURE_TURN_STATUS", "completed")
+# Regression fixture: reproduce the OLD t3 FAIL shape — a stored threadId whose
+# thread/start took zero turns has no rollout on codex-cli 0.152.1, so every
+# thread/resume against it dies with -32600 "no rollout found". Toggled on to prove
+# the shim still surfaces this cleanly (exit 30) if it were ever hit again.
+NO_ROLLOUT = os.environ.get("FIXTURE_NO_ROLLOUT") == "1"
 
 argv = sys.argv[1:]
 if not (len(argv) >= 2 and argv[0] == "app-server" and "--stdio" in argv):
@@ -84,9 +89,15 @@ for raw in sys.stdin:
         }})
     elif method == "thread/resume":
         thread_id = params.get("threadId")
-        send({"jsonrpc": "2.0", "id": rid, "result": {
-            "thread": {"id": thread_id, "status": "idle"},
-        }})
+        if NO_ROLLOUT:
+            send({"jsonrpc": "2.0", "id": rid, "error": {
+                "code": -32600,
+                "message": f"no rollout found for thread id {thread_id}",
+            }})
+        else:
+            send({"jsonrpc": "2.0", "id": rid, "result": {
+                "thread": {"id": thread_id, "status": "idle"},
+            }})
     elif method in ("turn/start", "turn/steer"):
         thread_id = params.get("threadId")
         turn_id = params.get("expectedTurnId") or "turn-fixture-1"
@@ -217,29 +228,49 @@ run zsh "$wrapper" open --enable --sandbox workspaceWrite
 check_exit "sandbox enum: rejects camelCase/legacy value" 11
 assert_true "invalid --sandbox created no state file" "$([[ -f "$state_file" ]] && echo false || echo true)"
 
-# --- 4. initialize handshake + preflight parse + thread/start (open) -----------
+# --- 4. initialize handshake + preflight parse ONLY — NO thread/start (open) ----
+# Fix (2026-09-03, t3 FAIL): open no longer calls thread/start. It preflights and
+# persists threadId: null; the thread is born on the first send.
 rm -f -- "$state_file"
 
 run zsh "$wrapper" open --enable --sandbox read-only
-check_exit "open --enable: initialize + preflight + thread/start" 0
-assert_contains "open output names the stored thread" "$LAST_OUTPUT" "thread-fixture-1"
+check_exit "open --enable: initialize + preflight, NO thread/start" 0
+assert_contains "open output says no thread yet" "$LAST_OUTPUT" "no thread yet"
 
 assert_true "open --enable created tunnel.state.json" "$([[ -f "$state_file" ]] && echo true || echo false)"
 if [[ -f "$state_file" ]]; then
-  assert_true "state file records threadId from thread/start" \
-    "$(grep -q '"threadId": "thread-fixture-1"' "$state_file" && echo true || echo false)"
-  assert_true "state file records sandbox from thread/start" \
+  assert_true "state file records threadId as null (not born yet)" \
+    "$(grep -q '"threadId": null' "$state_file" && echo true || echo false)"
+  assert_true "state file records sandbox from open args" \
     "$(grep -q '"sandbox": "read-only"' "$state_file" && echo true || echo false)"
 fi
 
-# idempotent reopen (thread/resume path, no re-enable needed)
+# idempotent reopen — threadId still null, no re-enable needed, no spawn required
 run zsh "$wrapper" open
-check_exit "open (reopen, resume path, no --enable needed)" 0
+check_exit "open (reopen, threadId still null, no --enable needed)" 0
+assert_contains "reopen output still says no thread yet" "$LAST_OUTPUT" "no thread yet"
 
-# --- 5. start/steer/completed/read-back extraction ------------------------------
+# --- 4b. read/resume/steer on a null threadId refuse cleanly (exit 12) ----------
+run zsh "$wrapper" read
+check_exit "read before any send: no-thread (exit 12)" 12
+
+run zsh "$wrapper" resume
+check_exit "resume before any send: no-thread (exit 12)" 12
+
+run zsh "$wrapper" steer "nothing to steer yet"
+check_exit "steer before any send: no-thread (exit 12)" 12
+
+# --- 5. first send = thread birth (thread/start + turn/start, same connection) --
 run zsh "$wrapper" send "hello codex"
-check_exit "send: turn/start -> turn/completed -> reconcile" 0
+check_exit "send (birth): thread/start -> turn/start -> turn/completed -> reconcile" 0
 assert_contains "send extracted the agent message text" "$LAST_OUTPUT" "OPENED"
+assert_true "state file now records the born threadId" \
+  "$(grep -q '"threadId": "thread-fixture-1"' "$state_file" && echo true || echo false)"
+
+# --- 5b. second send = resume path (threadId already stored) --------------------
+run zsh "$wrapper" send "hello again"
+check_exit "send (resume): thread/resume -> turn/start -> turn/completed -> reconcile" 0
+assert_contains "second send extracted the agent message text" "$LAST_OUTPUT" "OPENED"
 
 run zsh "$wrapper" steer "more please"
 check_exit "steer: turn/steer(expectedTurnId) -> turn/completed -> reconcile" 0
@@ -259,6 +290,29 @@ export FIXTURE_RECONCILE_MISMATCH=1
 run zsh "$wrapper" send "trigger mismatch"
 unset FIXTURE_RECONCILE_MISMATCH
 check_exit "reconcile-mismatch: thread/read omits the driven turn" 50
+
+# --- 6b. regression: OLD zero-turn-thread failure shape still surfaces cleanly --
+# Reproduces the exact t3 FAIL: a threadId that was allocated without a rollout
+# (as the old open's zero-turn thread/start used to produce) must still fail
+# thread/resume with a clean, documented exit 30 — never hang, never silently
+# succeed. This is the regression guard for the bug this fix removes at the source.
+regression_state="$work_dir/tunnel.state.regression.json"
+cat > "$regression_state" <<JSON
+{
+  "enabled": true,
+  "threadId": "dead-thread-no-rollout",
+  "lastTurnId": null,
+  "model": "gpt-5.6-fixture",
+  "sandbox": "read-only",
+  "created": "2026-09-02T22:45:16Z"
+}
+JSON
+
+export FIXTURE_NO_ROLLOUT=1
+run zsh "$wrapper" resume --state "$regression_state"
+unset FIXTURE_NO_ROLLOUT
+check_exit "regression: resume on dead-rollout threadId (exit 30, old FAIL shape)" 30
+assert_contains "regression: server message surfaced verbatim" "$LAST_OUTPUT" "no rollout found"
 
 # --- 7. status / close ------------------------------------------------------------
 run zsh "$wrapper" status

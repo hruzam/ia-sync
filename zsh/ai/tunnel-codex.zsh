@@ -25,26 +25,51 @@
 #   python as a literal argv element (never interpolated into a shell/eval string), so
 #   there is no quoting-injection hazard to harden against here.
 #
+# THREAD BIRTH (fix, 2026-09-03 — t3 FAIL evidence, session toolbox-termbrana-03-tunnel):
+#   on codex-cli 0.152.1 a zero-turn `thread/start` allocates a thread id + writer-lock
+#   but writes NO rollout file — the rollout is written on the first *turn*. Since each
+#   shim verb is its own `codex app-server --stdio` subprocess, a threadId stored from a
+#   zero-turn thread/start fails EVERY later thread/resume with -32600 "no rollout
+#   found". Fix: `open --enable` no longer calls thread/start at all — it only
+#   preflights and persists `threadId: null`. The thread is born inside `send`'s own
+#   connection (thread/start immediately followed by turn/start, same process — Cartan's
+#   proven continuous sequence), so a rollout always exists before any other verb can
+#   try to resume it. `read` / `resume` / `steer` refuse cleanly (exit 12) if no thread
+#   has been born yet.
+#
 # VERBS
 #   open   [--enable] [--sandbox read-only|workspace-write|danger-full-access] [--model M]
 #          First call MUST pass --enable (Law 2.4) — creates tunnel.state.json via a
-#          zero-turn preflight (initialize -> account/read -> model/list -> thread/start).
-#          A later call with an existing state file resumes (thread/resume) instead —
-#          still zero-turn, a liveness probe only.
-#   send <text>     turn/start a NEW turn on the stored thread; blocks for turn/completed;
-#                   reconciles via thread/read(includeTurns=true); prints the final
-#                   agent-message text; records the turn id as the new steer target.
+#          zero-turn preflight (initialize -> account/read -> model/list). Does NOT call
+#          thread/start (see THREAD BIRTH above) — state is persisted with
+#          `threadId: null`; the thread is born on the first `send`. A later call with
+#          an existing state file and a threadId already born resumes it
+#          (thread/resume) as a liveness probe; if no thread has been born yet it just
+#          reports that fact and exits 0.
+#   send <text>     if state has no threadId yet: thread/start then turn/start in the
+#                   SAME connection (thread birth), persisting the new threadId. If a
+#                   threadId is already stored: thread/resume then turn/start. Either
+#                   way: blocks for turn/completed; reconciles via
+#                   thread/read(includeTurns=true); prints the final agent-message text;
+#                   records the turn id as the new steer target.
 #   steer <text>    turn/steer(expectedTurnId = last recorded turn id) — steers the turn
-#                   THIS shim itself most recently drove. KNOWN v0 LIMIT: each verb is
-#                   its own process (no daemon), so `steer` can only target a turn id
-#                   recorded in this shim's own state file, via a freshly resumed
-#                   connection — it cannot inject into a turn that is concurrently
-#                   streaming inside a still-running separate `send` invocation in
-#                   another terminal. True mid-stream steering from a second process
-#                   needs a resident process (v1/daemon), not promised by v0.
+#                   THIS shim itself most recently drove. Requires a threadId already
+#                   born (exit 12 "no thread yet" otherwise — run send first). KNOWN v0
+#                   LIMIT: each verb is its own process (no daemon), so `steer` can only
+#                   target a turn id recorded in this shim's own state file, via a
+#                   freshly resumed connection — it cannot inject into a turn that is
+#                   concurrently streaming inside a still-running separate `send`
+#                   invocation in another terminal. True mid-stream steering from a
+#                   second process needs a resident process (v1/daemon), not promised
+#                   by v0.
 #   read            thread/read(includeTurns=true); prints the raw JSON result.
+#                   Requires a threadId already born (exit 12 otherwise).
 #   resume          thread/resume only (liveness probe); prints thread id + status.
+#                   Requires a threadId already born (exit 12 otherwise).
 #   close           LOCAL ONLY — removes tunnel.state.json; re-arms the Law 2.4 gate.
+#                   Since `open` no longer creates any codex-side artifact (no
+#                   thread/start), there is no more stale-writer-lock residue class to
+#                   clean up here — close was always local-only and remains so.
 #   status          LOCAL ONLY — prints tunnel.state.json (refused per the gate below
 #                   if the shim was never enabled — Law 2.4 applies to every verb).
 #
@@ -72,6 +97,9 @@
 #   40  turn-error         — a turn ended non-"completed", or steer had no turn to target
 #   50  reconcile-mismatch — thread/read(includeTurns=true) disagrees with what
 #                            turn/completed just reported
+#   12  no-thread          — read/resume/steer called before any thread has been born
+#                            (state threadId is null); run 'send' first — thread birth
+#                            happens on first send, not on open (see THREAD BIRTH above)
 #
 # DIAGNOSTICS go to stderr; RESULT TEXT goes to stdout (man-page convention, Sella L4).
 # deploy target (post-t3 only): ~/.config/zsh/ai/ — see STATUS above.

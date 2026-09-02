@@ -35,6 +35,20 @@ EXIT CODES (must match tunnel-codex.zsh's contract exactly — see that file's h
      or steer had no recorded turn id to target)
   50 reconcile-mismatch (thread/read(includeTurns=true) does not contain the turn we
      just drove, or disagrees with what turn/completed reported)
+  12 no-thread (verb needs a live threadId — state["threadId"] is null because no
+     'send' has run yet; thread birth happens on first send, not on open — see
+     THREAD BIRTH note below)
+
+THREAD BIRTH (fix, 2026-09-03, t3 FAIL evidence): on codex-cli 0.152.1, a zero-turn
+`thread/start` allocates a thread id + writer-lock but writes NO rollout file — the
+rollout is written on the first *turn*. Since every shim verb is its own
+`codex app-server --stdio` subprocess, a stored threadId with no rollout fails every
+later `thread/resume` with -32600 "no rollout found". `open --enable` therefore no
+longer calls `thread/start` at all; it only preflights (initialize/account/model) and
+persists `threadId: null`. The thread is born inside `send`'s own connection, in the
+same process as the `turn/start` that immediately follows it (Cartan's proven
+continuous sequence) — so a rollout always exists before any other verb can try to
+resume it.
 """
 
 import argparse
@@ -53,6 +67,7 @@ EXIT_SPAWN_FAIL = 20
 EXIT_PROTOCOL_ERROR = 30
 EXIT_TURN_ERROR = 40
 EXIT_RECONCILE_MISMATCH = 50
+EXIT_NO_THREAD = 12
 
 # CLI-form values only (curvature 1, verdict file) — camelCase docs-prose values are
 # deliberately NOT accepted here; 0.152.1 rejects them at the app-server boundary.
@@ -93,6 +108,11 @@ class TurnError(TunnelError):
 class ReconcileMismatch(TunnelError):
     def __init__(self, message):
         super().__init__(EXIT_RECONCILE_MISMATCH, message)
+
+
+class NoThreadError(TunnelError):
+    def __init__(self, message):
+        super().__init__(EXIT_NO_THREAD, message)
 
 
 class AppServerTransport:
@@ -376,32 +396,48 @@ def cmd_open(args):
         raise UsageError(f"--sandbox must be one of {SANDBOX_VALUES}, got {args.sandbox!r}")
 
     state = load_state(args.state)
+
+    if state is None:
+        # Zero-turn preflight only — deliberately NO thread/start (see THREAD BIRTH
+        # note above the exit-code table). This spawns app-server, confirms the
+        # handshake + account/model surface work, then persists threadId: null.
+        transport = AppServerTransport()
+        transport.start()
+        try:
+            session = Session(transport)
+            session.initialize()
+            session.account_read()
+            session.model_list()
+        finally:
+            transport.close()
+        state = {
+            "enabled": True,
+            "threadId": None,
+            "lastTurnId": None,
+            "model": args.model,
+            "sandbox": args.sandbox,
+            "created": now_iso(),
+        }
+        save_state(args.state, state)
+        print(
+            f"open: enabled (model={state['model']}, sandbox={state['sandbox']}); "
+            "no thread yet — thread will be born on first send"
+        )
+        return
+
+    if state.get("threadId") is None:
+        print("open: already enabled; no thread yet — thread will be born on first send")
+        return
+
+    # An existing, already-born thread: liveness-probe it (unchanged behavior).
     transport = AppServerTransport()
     transport.start()
     try:
         session = Session(transport)
         session.initialize()
-        if state is None:
-            session.account_read()
-            session.model_list()
-            start = session.thread_start(model=args.model, sandbox=args.sandbox)
-            thread = start.get("thread", {})
-            thread_id = thread.get("id")
-            if not thread_id:
-                raise ProtocolError(f"thread/start did not return a thread id: {start}")
-            state = {
-                "threadId": thread_id,
-                "model": start.get("model") or args.model,
-                "sandbox": start.get("sandbox") or args.sandbox,
-                "created": now_iso(),
-                "lastTurnId": None,
-            }
-            save_state(args.state, state)
-            print(f"open: enabled new stored thread {thread_id} (model={state['model']}, sandbox={state['sandbox']})")
-        else:
-            resumed = session.thread_resume(state["threadId"])
-            thread = resumed.get("thread", {})
-            print(f"open: resumed existing thread {state['threadId']} (status={thread.get('status')})")
+        resumed = session.thread_resume(state["threadId"])
+        thread = resumed.get("thread", {})
+        print(f"open: resumed existing thread {state['threadId']} (status={thread.get('status')})")
     finally:
         transport.close()
 
@@ -413,6 +449,12 @@ def _require_state(args):
     return state
 
 
+def _require_thread(state):
+    if not state.get("threadId"):
+        raise NoThreadError("no thread yet — run 'send' first (thread is born on first send)")
+    return state["threadId"]
+
+
 def cmd_send(args):
     state = _require_state(args)
     transport = AppServerTransport()
@@ -420,9 +462,24 @@ def cmd_send(args):
     try:
         session = Session(transport)
         session.initialize()
-        session.thread_resume(state["threadId"])
-        turn_id, turn, text = session.drive_turn(state["threadId"], args.text)
-        session.reconcile(state["threadId"], turn_id)
+        if state.get("threadId") is None:
+            # Thread birth: thread/start then turn/start in THIS SAME connection —
+            # Cartan's proven continuous sequence — so the rollout exists before any
+            # other verb (running in its own fresh subprocess) could try to resume it.
+            start = session.thread_start(model=state.get("model"), sandbox=state.get("sandbox", "read-only"))
+            thread = start.get("thread", {})
+            thread_id = thread.get("id")
+            if not thread_id:
+                raise ProtocolError(f"thread/start did not return a thread id: {start}")
+            state["threadId"] = thread_id
+            state["model"] = start.get("model") or state.get("model")
+            state["sandbox"] = start.get("sandbox") or state.get("sandbox")
+        else:
+            thread_id = state["threadId"]
+            session.thread_resume(thread_id)
+        thread_id = state["threadId"]
+        turn_id, turn, text = session.drive_turn(thread_id, args.text)
+        session.reconcile(thread_id, turn_id)
     finally:
         transport.close()
     state["lastTurnId"] = turn_id
@@ -432,6 +489,7 @@ def cmd_send(args):
 
 def cmd_steer(args):
     state = _require_state(args)
+    thread_id = _require_thread(state)
     if not state.get("lastTurnId"):
         raise TurnError("no lastTurnId recorded in state — nothing to steer (run 'send' first)")
     transport = AppServerTransport()
@@ -439,9 +497,9 @@ def cmd_steer(args):
     try:
         session = Session(transport)
         session.initialize()
-        session.thread_resume(state["threadId"])
-        turn_id, turn, text = session.drive_turn(state["threadId"], args.text, expected_turn_id=state["lastTurnId"])
-        session.reconcile(state["threadId"], turn_id)
+        session.thread_resume(thread_id)
+        turn_id, turn, text = session.drive_turn(thread_id, args.text, expected_turn_id=state["lastTurnId"])
+        session.reconcile(thread_id, turn_id)
     finally:
         transport.close()
     state["lastTurnId"] = turn_id
@@ -451,12 +509,13 @@ def cmd_steer(args):
 
 def cmd_read(args):
     state = _require_state(args)
+    thread_id = _require_thread(state)
     transport = AppServerTransport()
     transport.start()
     try:
         session = Session(transport)
         session.initialize()
-        result = session.thread_read(state["threadId"], include_turns=True)
+        result = session.thread_read(thread_id, include_turns=True)
     finally:
         transport.close()
     print(json.dumps(result, indent=2))
@@ -464,16 +523,17 @@ def cmd_read(args):
 
 def cmd_resume(args):
     state = _require_state(args)
+    thread_id = _require_thread(state)
     transport = AppServerTransport()
     transport.start()
     try:
         session = Session(transport)
         session.initialize()
-        result = session.thread_resume(state["threadId"])
+        result = session.thread_resume(thread_id)
     finally:
         transport.close()
     thread = result.get("thread", {})
-    print(f"resume: thread {state['threadId']} status={thread.get('status')}")
+    print(f"resume: thread {thread_id} status={thread.get('status')}")
 
 
 def build_parser():
