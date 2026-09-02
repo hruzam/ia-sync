@@ -67,9 +67,10 @@
 #   resume          thread/resume only (liveness probe); prints thread id + status.
 #                   Requires a threadId already born (exit 12 otherwise).
 #   close           LOCAL ONLY — removes tunnel.state.json; re-arms the Law 2.4 gate.
-#                   Since `open` no longer creates any codex-side artifact (no
-#                   thread/start), there is no more stale-writer-lock residue class to
-#                   clean up here — close was always local-only and remains so.
+#                   RESIDUE (v0, honest): send's thread birth leaves ~/.codex/thread-writer-locks/<threadId>.lock;
+#                   local-only close does not clean codex-side state — manual cleanup or Cartan-advised v1
+#                   mechanism. Also: resumed-steer only (no mid-stream steer across processes) — v1 resident-process
+#                   candidate.
 #   status          LOCAL ONLY — prints tunnel.state.json (refused per the gate below
 #                   if the shim was never enabled — Law 2.4 applies to every verb).
 #

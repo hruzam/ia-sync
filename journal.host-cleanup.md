@@ -10,6 +10,10 @@
 
 ---
 
+## OFFICE (Oraculum) — 2026-09-03 · tunnel v0 PROVEN — TABLE adopted r3, shim deployed
+
+termbrana t3 round-trip PASSED live (attempt 1 FAIL → zero-turn rollout defect → f32eb9a → re-run PASS, independently verified). Shim promoted: deployed to ~/.config/zsh (behavior proof before promotion — honored). HANDSHAKE r3: TABLE adopted as fourth meeting shape, Cartan co-sign pending. Honest v0 limits in shim header: resumed-steer only, writer-lock residue manual.
+
 ## OFFICE (Cartan) — 2026-09-02 · Codex Octopus / Medusa / Polyp protocols deployed
 
 Portable Codex session protocols authored under `codex/skills/` and deployed to the office

@@ -1,13 +1,13 @@
 ---
 what: HANDSHAKE — how a Claude seat and @Cartan (Codex resident) hand work to each other
-state: DRAFT r2 — Claude-side authored, revised by cross-vendor CHALLENGE (r1) + seat-transfer gavel (r2); @Cartan counter-sign pending; @majkee gavels
+state: DRAFT r3 + TABLE adopted after live proof (r3) — Claude-side authored, revised by cross-vendor CHALLENGE (r1) + seat-transfer gavel (r2) + TABLE adoption post-termbrana-t3-proof (r3); @Cartan counter-sign pending; @majkee gavels
 verified: 2026-09-01 (every shape below has already run live at least once — receipts cited)
 by: oraculum (session fc-sync.oraculum.sella), from majkee's brief + the lived exchanges
 next:
   - "@Cartan: counter-sign, amend, or CHALLENGE this from the Codex side (majkee runs the session by hand)"
   - "@Cartan: author the codex-trajectory seat — codex/agents/astrobley.toml (see Seat transfers)"
   - "two-voice trial = Probe D (Sella G4 order, after Probe A) — CHALLENGE value is measured, not assumed"
-  - "TABLE shape (live tunnel) = termbrana 03-tunnel candidate — co-design at counter-sign, do not adopt here"
+  - "@Cartan: co-sign §TABLE (r3) on next wake"
 ---
 
 # HANDSHAKE — Claude ↔ Codex, one repo, no new mechanism
@@ -90,9 +90,19 @@ against the tabled wrapper; and this file's own r1 (annex below) — all drew bl
 improved the artifact.
 *Open:* the two-voice trial — whether cross-vendor CHALLENGE beats a same-vendor second
 opinion is **measured by Probe D** (after Probe A, Sella G4 order), not assumed here.
-*Candidate fourth shape:* **TABLE** — a live synchronous tunnel between two resident
-sessions (termbrana stage 03-tunnel, research running). Not adopted here; co-designed
-with @Cartan at counter-sign, adopted only after the tunnel proves live.
+*Fourth shape adopted — see §TABLE below (r3).*
+
+**TABLE (r3 — adopted 2026-09-03 after live proof)** — a live synchronous tunnel between
+a Claude seat and a stored Codex thread. Mechanics: `zsh/ai/tunnel-codex.zsh` — app-server
+stored-thread supervisor, Law-2.4 explicit `--enable` (the operator opens the table),
+thread born on first send, streamed result reconciled via `thread/read`. *Live receipt:*
+termbrana t3 round-trip 2026-09-03 (first attempt FAILED on a zero-turn thread defect —
+the failure receipts are part of the proof; fix f32eb9a; re-run PASS, independently
+verified). Named limits: resumed-steer only (no mid-stream steer across processes —
+v1 resident-process candidate); codex-side writer-lock residue is manual cleanup.
+TABLE complements mail-by-path, never replaces it: a TABLE exchange still lands its
+durable outcome as files, and the Delivery rule applies to those.
+@Cartan co-sign of this section: pending (counter-sign block).
 
 ## Shared invariant (from the co-architecture contract, 2026-09-01)
 
