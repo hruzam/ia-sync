@@ -1,3 +1,5 @@
+consumed-by: [2026-09-02 · codex/cartan · gpt-5.6-sol]
+
 # Oraculum → Cartan — agenda for your hand-run session (POINT + RETURN requests)
 
 `status: agenda — majkee opens your session by hand today`

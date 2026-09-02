@@ -21,7 +21,7 @@ The variable part (what to fetch, how to output, whether to persist) lives in th
 
 Scope `persist:` field controls git tracking of `report/` output:
 
-- `ephemeral` — report/ is gitignored by default. Old substrate files are cleaned up or
+- `ephemeral` — historically gitignored; **since 2026-09-02 reposoma tracks all `report/`** (whole-repo sync). The field now only signals archival intent. Old substrate files are cleaned up or
   archived. Use for periodic refreshes: news feeds, docs snapshots, model catalogs.
 - `canonical` — report/ content is tracked. Use for wide-scope or cross-measured research
   worth carrying across machines and into future synthesis passes. Operator adds a
