@@ -1,18 +1,17 @@
-"""Shared read-only helpers for the cold-start vault tools.
+"""Shared read/write helpers for the cold-start vault tools.
 
-Used by cs-palette.py (explorer) and cs-manage-palette.py (mover backend).
-Read-only by design: this module never writes or moves a file — folder = state
-(raw.guides/cold-start-card/GUIDE.md), and the actual mv lives in the zsh
-wrappers (cs-palette.zsh / temple-cs-manage.zsh) so the vault path resolution
-(temple-project-map cascade) and the filesystem mutation both stay out of the
-curses layer. Parses ONLY the shared frontmatter contract (flat keys) — the
-GUIDE is schema-of-record; Codex evidence keys below the shared block are
-never surfaced here.
+Used by cs-palette.py (explorer + mover) and temple-cs-manage.zsh (CLI flags).
+Read helpers are the original contract; move_card() was added when cs-palette.py
+gained move capability (merged from cs-manage-palette.py, 2026-09-03).
+
+Folder = state discipline (raw.guides/cold-start-card/GUIDE.md): the physical
+folder a card lives in IS its state. move_card() does a plain os.rename() —
+no frontmatter rewriting, ever.
 """
 
 import os
 
-STATE_DIRS = {"card": "card", "routine": "routines", "archive": "archive"}
+STATE_DIRS = {"card": "card", "routines": "routines", "archive": "archive"}
 
 
 def list_state(vault_root, state):
@@ -37,6 +36,31 @@ def list_state(vault_root, state):
             mtime = 0
         rows.append((name, full, mtime))
     return rows
+
+
+def move_card(vault_root, fullpath, dest_state):
+    """Move a card from its current location to the dest_state directory.
+
+    dest_state is a STATE_DIRS key: 'card', 'routines', or 'archive'.
+    Returns (new_fullpath, None) on success; (None, error_str) on failure.
+    Never rewrites frontmatter — folder = state discipline.
+    """
+    dest_dirname = STATE_DIRS.get(dest_state)
+    if not dest_dirname:
+        return None, f"unknown state: {dest_state!r}"
+    dest_dir = os.path.join(vault_root, dest_dirname)
+    os.makedirs(dest_dir, exist_ok=True)
+    filename = os.path.basename(fullpath)
+    dest_path = os.path.join(dest_dir, filename)
+    if os.path.normpath(fullpath) == os.path.normpath(dest_path):
+        return fullpath, None  # already there — not an error
+    if os.path.exists(dest_path):
+        return None, f"destination already exists: {dest_path}"
+    try:
+        os.rename(fullpath, dest_path)
+        return dest_path, None
+    except OSError as error:
+        return None, str(error)
 
 
 def read_frontmatter_block(fullpath):

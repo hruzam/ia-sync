@@ -22,8 +22,8 @@ def parse_args():
     parser.add_argument(
         "--sort",
         choices=["name", "date"],
-        default=os.environ.get("TEMPLE_SORT", "name"),
-        help="sort order: name (default) or date (newest first); env TEMPLE_SORT overrides default",
+        default=os.environ.get("TEMPLE_SORT", "date"),
+        help="sort order: date newest-first (default) or name alpha; env TEMPLE_SORT overrides",
     )
     return parser.parse_args()
 

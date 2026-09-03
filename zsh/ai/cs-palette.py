@@ -1,26 +1,36 @@
 #!/usr/bin/env python3
-"""Stable curses explorer for the cold-start vault (~/reposoma/_cold-start/).
+"""Cold-start vault explorer + mover (merged tool, 2026-09-03).
 
-Explorer, NEVER an editor — the palette compresses READING speed; keybinds
-hand off to $EDITOR / print-and-exit, they never mutate the vault themselves
-(raw.guides/cold-start-card/GUIDE.md "explorer, not editor" doctrine, journal
-2026-08-27). Moving cards between card/archive/routines is temple-cs-manage's
-job, not this script's.
+The palette compresses reading speed AND move operations in one TUI:
+D1 (left) shows cards with state prefix; D2 (right-top) shows frontmatter;
+D3 (right-bottom) shows the first prompt block + runbook line.
 
-Invoke as ``python3 cs-palette.py --vault VAULT_ROOT``. VAULT_ROOT is the
-already-resolved absolute path to the vault (cs-palette.zsh resolves it via
-temple-project-map so this file never hardcodes a /home path).
+Invoke as ``python3 cs-palette.py --vault VAULT_ROOT [--sort date|mtime|name]``.
+VAULT_ROOT is the already-resolved absolute path to the vault (resolved by the
+zsh wrappers via temple-project-map so this file never hardcodes a /home path).
 
 Layout:
-  D1 (left)        — card/ + routines/ (or archive/ when toggled), newest
-                      (by mtime) first.
+  D1 (left)         — card/ + routines/ (or archive/ when toggled), sorted
+                       by filename-embedded date newest-first (default).
+                       [c] prefix = card/, [r] prefix = routines/.
   D2 (right-top)    — the selected card's raw YAML frontmatter, verbatim.
   D3 (right-bottom) — the selected card's first ``###### prompt`` fenced
-                      block + its ``runbook:`` line, if present.
+                       block + its ``runbook:`` line, if present.
 
-Keybinds: Enter prints resume: to stdout and exits · e opens the card in
-$EDITOR · r opens the runbook: target in $EDITOR · a toggles archive view ·
-q/Esc quits without printing anything.
+Keybinds:
+  ↑ ↓           navigate list
+  Enter         print resume: to stdout and exit (session start)
+  e             open card in $EDITOR
+  r             open runbook: target in $EDITOR
+  a             toggle archive view
+  s             cycle sort: date → mtime → name → date
+  c             move selected card → card/
+  x             move selected card → archive/
+  t             move selected card → routines/
+  q / Esc       quit without printing
+
+Sort default: date (filename YYYY-MM-DD newest-first; no-date cards sink last).
+Override: TEMPLE_SORT=date|mtime|name env var, or --sort flag, or 's' in TUI.
 """
 
 import argparse
@@ -34,14 +44,21 @@ import textwrap
 import cs_vault
 
 
+_MOVE_KEYS = {"c": "card", "x": "archive", "t": "routines"}
+_SORT_CYCLE = ["date", "mtime", "name"]
+
+# State prefix shown in D1 when in mixed card/routines view.
+_STATE_PREFIX = {"card": "[c] ", "routines": "[r] "}
+
+
 def parse_args():
-    parser = argparse.ArgumentParser(description="explore the cold-start vault")
+    parser = argparse.ArgumentParser(description="explore and manage the cold-start vault")
     parser.add_argument("--vault", required=True, dest="vault_root", help="resolved _cold-start root")
     parser.add_argument(
         "--sort",
         choices=["date", "mtime", "name"],
         default=os.environ.get("TEMPLE_SORT", "date"),
-        help="sort: date = filename date newest-first (default), mtime = modification time, name = alpha; env TEMPLE_SORT overrides",
+        help="sort: date = filename date newest-first (default), mtime = modification time, name = alpha",
     )
     return parser.parse_args()
 
@@ -54,16 +71,19 @@ def extract_date(filename):
 
 def load_rows(vault_root, archive_view, sort_mode):
     if archive_view:
-        rows = cs_vault.list_state(vault_root, "archive")
+        raw = [(n, f, m, "archive") for n, f, m in cs_vault.list_state(vault_root, "archive")]
     else:
-        rows = cs_vault.list_state(vault_root, "card") + cs_vault.list_state(vault_root, "routine")
+        raw = (
+            [(n, f, m, "card") for n, f, m in cs_vault.list_state(vault_root, "card")]
+            + [(n, f, m, "routines") for n, f, m in cs_vault.list_state(vault_root, "routines")]
+        )
     if sort_mode == "mtime":
-        rows.sort(key=lambda row: (row[2], row[0]), reverse=True)
+        raw.sort(key=lambda r: (r[2], r[0]), reverse=True)
     elif sort_mode == "name":
-        rows.sort(key=lambda row: row[0].casefold())
+        raw.sort(key=lambda r: r[0].casefold())
     else:  # date (default)
-        rows.sort(key=lambda row: (extract_date(row[0]), row[0].casefold()), reverse=True)
-    return [{"filename": name, "fullpath": full, "mtime": mtime} for name, full, mtime in rows]
+        raw.sort(key=lambda r: (extract_date(r[0]), r[0].casefold()), reverse=True)
+    return [{"filename": n, "fullpath": f, "mtime": m, "state": s} for n, f, m, s in raw]
 
 
 def clipped(value, width):
@@ -149,8 +169,8 @@ def draw(screen, rows, cursor, archive_view, message, sort_mode):
     screen.erase()
     height, width = screen.getmaxyx()
 
-    hints = "↑↓ move · enter resume · e edit · r runbook · a archive-view · s sort · q quit"
-    view_label = "archive" if archive_view else "card/ + routines/"
+    hints = "↑↓ move · enter resume · e edit · r runbook · a archive · s sort · c→card x→archive t→routines · q quit"
+    view_label = "archive" if archive_view else "card/+routines"
     prefix = f"{len(rows)} cards · {view_label} · sort:{sort_mode}"
     status = message if message else f"{prefix} · {hints}"
 
@@ -180,7 +200,7 @@ def draw(screen, rows, cursor, archive_view, message, sort_mode):
 
     selected = rows[cursor] if rows else None
 
-    # D1 — left column
+    # D1 — left column: state prefix [c]/[r] shown in mixed card/routines view
     if not rows and body_height > 0:
         safe_add(screen, 0, 0, clipped("(vault empty in this view)", left_width), 0, left_width)
     elif rows:
@@ -188,7 +208,12 @@ def draw(screen, rows, cursor, archive_view, message, sort_mode):
         for offset, row in enumerate(visible):
             absolute = start + offset
             attr = curses.A_REVERSE if absolute == cursor else 0
-            safe_add(screen, offset, 0, clipped(row["filename"], left_width), attr, left_width)
+            if not archive_view:
+                prefix_str = _STATE_PREFIX.get(row["state"], "    ")
+                label = f"{prefix_str}{row['filename']}"
+            else:
+                label = row["filename"]
+            safe_add(screen, offset, 0, clipped(label, left_width), attr, left_width)
 
     if side_by_side:
         for row_number in range(body_height):
@@ -238,10 +263,7 @@ def _open_in_editor(screen, path):
         return f"cs-palette: could not launch '{editor}': {error}"
 
 
-_SORT_CYCLE = ["date", "mtime", "name"]
-
-
-def palette(screen, sort_mode):
+def palette(screen, sort_mode, vault_root):
     try:
         curses.curs_set(0)
     except curses.error:
@@ -253,7 +275,7 @@ def palette(screen, sort_mode):
     message = ""
 
     while True:
-        rows = load_rows(VAULT_ROOT, archive_view, sort_mode)
+        rows = load_rows(vault_root, archive_view, sort_mode)
         cursor = max(0, min(cursor, len(rows) - 1)) if rows else 0
         draw(screen, rows, cursor, archive_view, message, sort_mode)
         message = ""
@@ -275,6 +297,17 @@ def palette(screen, sort_mode):
         elif key in ("a", "A"):
             archive_view = not archive_view
             cursor = 0
+        elif isinstance(key, str) and key.lower() in _MOVE_KEYS and rows:
+            dest = _MOVE_KEYS[key.lower()]
+            row = rows[cursor]
+            if row["state"] == dest:
+                message = f"'{row['filename']}' is already in {dest}/"
+            else:
+                _, err = cs_vault.move_card(vault_root, row["fullpath"], dest)
+                if err:
+                    message = f"move failed: {err}"
+                else:
+                    message = f"→ {dest}/ · '{row['filename']}'"
         elif key in ("\n", "\r", curses.KEY_ENTER):
             if not rows:
                 continue
@@ -310,7 +343,7 @@ def palette(screen, sort_mode):
             return None, 1
 
 
-def run_on_tty(sort_mode):
+def run_on_tty(sort_mode, vault_root):
     try:
         tty_fd = os.open("/dev/tty", os.O_RDWR)
     except OSError as error:
@@ -327,7 +360,7 @@ def run_on_tty(sort_mode):
         screen = curses.initscr()
         curses.noecho()
         curses.cbreak()
-        result = palette(screen, sort_mode)
+        result = palette(screen, sort_mode, vault_root)
     finally:
         if screen is not None:
             try:
@@ -345,14 +378,10 @@ def run_on_tty(sort_mode):
     return result
 
 
-VAULT_ROOT = None
-
-
 def main():
-    global VAULT_ROOT
     arguments = parse_args()
-    VAULT_ROOT = os.path.expanduser(arguments.vault_root)
-    resume, status = run_on_tty(arguments.sort)
+    vault_root = os.path.expanduser(arguments.vault_root)
+    resume, status = run_on_tty(arguments.sort, vault_root)
     if status == 0 and resume:
         print(resume)
     return status

@@ -29,8 +29,8 @@ temple transport — operator panel (engines: ai/temple-*, gated by decision 000
   temple-mail-inbox <origin>:<agent>                           unread listing (presence = unread)
   temple-mail-switch [--project <origin>]   (alias: mail-pick) destination picker + preview
   temple-mail-manage    mailbox TUI — archive/restore read-state (E; --list/--archive/--restore for agents)
-  cs-palette            cold-start vault explorer TUI — D1/D2/D3 (F; explorer only, never mutates)
-  temple-cs-manage      cold-start vault mover — card/routines/archive TUI (G; --list/--to-card/--to-archive/--to-routines)
+  cs-palette            cold-start vault TUI — D1/D2/D3 explorer + c/x/t move keys (F+G merged; same as temple-cs-manage in TUI mode)
+  temple-cs-manage      cold-start vault manager — TUI (same as cs-palette) + CLI: --list/--to-card/--to-archive/--to-routines
   doorbell-run          ring stale projects now (engine: temple-doorbell.zsh)
   doorbell-smoke        real-trigger wiring gate — green + deliberate-red (0009 L5)
   doorbell-log          tail ~/.config/zsh/temple-doorbell.log

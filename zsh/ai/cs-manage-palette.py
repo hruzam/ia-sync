@@ -1,22 +1,12 @@
 #!/usr/bin/env python3
-"""Stable curses selector for cold-start vault state moves (card/routines/archive).
+"""RETIRED 2026-09-03 — superseded by cs-palette.py (merged explorer + mover).
 
-Curses backend for temple-cs-manage.zsh — mirrors mail-palette.py's selector
-grammar (tree list, mark, act), adapted from a 2-state view toggle (mail's
-inbox/archive) to 3 simultaneous state groups, since the cold-start vault has
-no per-receiver split and a move can target any of the three folders.
+This file is kept for git history. It is no longer called by temple-cs-manage.zsh.
+The TUI it provided (mark-then-move flat list) has been replaced by cs-palette.py
+which provides the same move operations (c/x/t keys) inside the D1/D2/D3 explorer view.
 
-This script never touches the filesystem — it only decides. It reads the TSV
-map built by temple-cs-manage.zsh (columns: state<TAB>filename<TAB>fullpath)
-and, once the operator marks files and presses a destination key, prints
-"<filename>\tdest" lines to stdout and exits 0. The actual mv is
-temple-cs-manage.zsh's job (folder = state; no frontmatter rewriting, ever).
-
-Sort order:
-  --sort name  (default) — alphabetical by filename
-  --sort date  — newest first, extracted from YYYY-MM-DD in filename
-  In TUI: press 's' to toggle sort between name and date.
-  Env var TEMPLE_SORT=date overrides the default (overridden by --sort flag).
+Original purpose: curses backend for temple-cs-manage.zsh — TSV-map-based mover
+with mark-then-act flow for cold-start vault state moves (card/routines/archive).
 """
 
 import argparse
@@ -37,8 +27,8 @@ def parse_args():
     parser.add_argument(
         "--sort",
         choices=["name", "date"],
-        default=os.environ.get("TEMPLE_SORT", "name"),
-        help="sort order: name (default) or date (newest first); env TEMPLE_SORT overrides default",
+        default=os.environ.get("TEMPLE_SORT", "date"),
+        help="sort order: date newest-first (default) or name alpha; env TEMPLE_SORT overrides",
     )
     return parser.parse_args()
 

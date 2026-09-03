@@ -1,34 +1,26 @@
 #!/usr/bin/env zsh
 # =============================================================================
-# temple-cs-manage.zsh — G: cold-start vault state mover (temple family)
+# temple-cs-manage.zsh — G: cold-start vault manager (temple family)
 #
 # Interface:
-#   TUI (no args)
-#   --list
+#   TUI (no args)       — cs-palette.py: D1/D2/D3 explorer + move keys
+#   --list              — print all cards grouped by state, sorted
 #   --to-card      <filename>
 #   --to-archive   <filename>
 #   --to-routines  <filename>
 #
-# Sort flags (apply to --list and TUI):
-#   --sort-date    sort newest first (by YYYY-MM-DD in filename)
-#   --sort-name    sort alphabetically by filename (default)
-#   Env var TEMPLE_SORT=date sets date sort as the default for this terminal.
-#   In TUI: press 's' to toggle sort between name and date.
+# Sort flags (--list and TUI both honour these):
+#   --sort-date    filename-embedded YYYY-MM-DD newest-first (default)
+#   --sort-name    alphabetical by filename
+#   Env var TEMPLE_SORT=date|name sets the session default.
+#   In TUI: press 's' to cycle sort modes.
 #
-# Canon: folder = state (raw.guides/cold-start-card/GUIDE.md) — card/ (live
-#   process glue) · routines/ (recurring, never archived by policy, but this
-#   tool does not forbid it — the operator's call) · archive/ (drained).
+# Canon: folder = state (raw.guides/cold-start-card/GUIDE.md).
 #   Moves NEVER rewrite frontmatter; a card's content is untouched by a move.
 #
-# Note: EXECUTED script — never sourced (uses exit/stty); resolves the vault
-#   root via temple-project-map's `temple-project-root reposoma`, same
-#   discipline as cs-palette.zsh — only the folder name `_cold-start` is
-#   baked, the map absorbs a reposoma relocation.
-#
-# Sibling to temple-mail-manage.zsh (mirrors its --list/TUI grammar); the
-# cold-start vault has no per-receiver split and three states instead of
-# mail's two (inbox/archive), so the verb pair (--archive/--restore) becomes
-# three explicit destination flags instead.
+# Note: TUI is cs-palette.py (merged from cs-manage-palette.py 2026-09-03 —
+#   explorer + move in one view). CLI flags (--list/--to-*) remain for
+#   scripting. EXECUTED script — never sourced.
 # =============================================================================
 
 [[ -f "${0:A:h}/temple-project-map.zsh" ]] && source "${0:A:h}/temple-project-map.zsh"
@@ -52,7 +44,7 @@ _cs_state_dir=(card "$vault_root/card" routines "$vault_root/routines" archive "
 # ---------------------------------------------------------------------------
 # Pre-parse sort flags — may appear anywhere in $@; TEMPLE_SORT env sets default.
 # ---------------------------------------------------------------------------
-sort_mode="${TEMPLE_SORT:-name}"
+sort_mode="${TEMPLE_SORT:-date}"
 typeset -a _remaining_args
 for _arg in "$@"; do
   case "$_arg" in
@@ -100,12 +92,8 @@ _move_cs_file() {
   mv "$src_path" "$dest_dir/$fname"
 }
 
-typeset -ga tui_lines
-typeset -ga tui_states
-typeset -ga tui_paths
-
-# _sort_files_by_date <file...> — print fullpaths sorted by YYYY-MM-DD, newest first.
-# Files without a date sort last. Uses python3 (already a dependency of the palette).
+# _sort_files_by_date — read fullpaths from stdin, print sorted newest first.
+# Files without YYYY-MM-DD in name sort last.
 _sort_files_by_date() {
   python3 -c "
 import re, sys
@@ -121,8 +109,9 @@ print('\n'.join(p for _, p in pairs))
 "
 }
 
-_scan_cs() {
-  local map_file=$1
+# _scan_cs_list — build tui_lines/tui_states/tui_paths for --list output.
+# Uses sort_mode to order files within each state group.
+_scan_cs_list() {
   tui_lines=()
   tui_states=()
   tui_paths=()
@@ -130,54 +119,43 @@ _scan_cs() {
   local state
   local -a files sorted_files
   local total=0
-  # NOTE: the loop variable `f` is deliberately NOT `local`-declared inside the
-  # per-state loop below — zsh's `local name` (no `=value`, no options) acts as
-  # an INSPECTOR and prints the variable's current value to stdout when a
-  # local of that name already exists in the same function scope (only a
-  # brand-new local stays silent). Re-declaring `local f` once per `state`
-  # iteration polluted --list / TUI output with stray "f=<path>" lines.
-  # temple-mail-manage.zsh's _scan_mail avoids this the same way: `f` is used
-  # as a bare loop variable, never explicitly localized.
 
   for state in card routines archive; do
     files=( "${_cs_state_dir[$state]}"/*.md(N.) )
 
-    # Apply sort for --list output (map_file empty); TUI order is re-sorted by Python.
-    if [[ -z "$map_file" && "$sort_mode" == "date" && ${#files} -gt 0 ]]; then
+    if [[ "$sort_mode" == "date" && ${#files} -gt 0 ]]; then
       sorted_files=( ${(f)"$(printf '%s\n' "${files[@]}" | _sort_files_by_date)"} )
     else
       sorted_files=( ${(o)files} )
     fi
 
-    if [[ -n "$map_file" ]]; then
-      for f in ${(o)files}; do
-        printf '%s\t%s\t%s\n' "$state" "$(basename "$f")" "$f" >> "$map_file"
-      done
-    else
-      if [[ ${#files} -gt 0 ]]; then
-        tui_lines+=("$state")
-        tui_states+=("header")
-        tui_paths+=("")
-      fi
-      for f in $sorted_files; do
-        tui_lines+=("  $(basename "$f")")
-        tui_states+=("file")
-        tui_paths+=("$f")
-        (( total++ ))
-      done
+    if [[ ${#files} -gt 0 ]]; then
+      tui_lines+=("$state")
+      tui_states+=("header")
+      tui_paths+=("")
     fi
+    for f in $sorted_files; do
+      tui_lines+=("  $(basename "$f")")
+      tui_states+=("file")
+      tui_paths+=("$f")
+      (( total++ ))
+    done
   done
 
-  if [[ -z "$map_file" && total -eq 0 ]]; then
+  if [[ total -eq 0 ]]; then
     tui_lines+=("(empty)")
     tui_states+=("empty")
     tui_paths+=("")
   fi
 }
 
-# Parse arguments
+typeset -ga tui_lines tui_states tui_paths
+
+# ---------------------------------------------------------------------------
+# Dispatch
+# ---------------------------------------------------------------------------
 if [[ "$1" == "--list" ]]; then
-  _scan_cs
+  _scan_cs_list
   for i in {1..${#tui_lines}}; do
     echo "${tui_lines[i]}"
   done
@@ -195,46 +173,5 @@ elif [[ -n "$1" ]]; then
   exit 1
 fi
 
-# Interactive TUI mode
-term_state=$(stty -g 2>/dev/null)
-tsvfile=$(mktemp) || exit 1
-
-_cleanup() {
-  trap - INT TERM EXIT
-  [[ -n "$tsvfile" && -f "$tsvfile" ]] && rm -f -- "$tsvfile"
-  tput rmcup 2>/dev/null
-  tput cnorm 2>/dev/null
-  if [[ -n "$term_state" ]]; then
-    stty "$term_state" 2>/dev/null
-  else
-    stty sane 2>/dev/null
-  fi
-}
-
-trap _cleanup INT TERM EXIT
-
-tput smcup 2>/dev/null
-tput civis 2>/dev/null
-stty -icanon -echo
-
-while true; do
-  printf '# state\tfilename\tfullpath\n' > "$tsvfile"
-  _scan_cs "$tsvfile"
-
-  actions=$(python3 "${0:A:h}/cs-manage-palette.py" --map "$tsvfile" --sort "$sort_mode")
-  palette_status=$?
-  (( palette_status != 0 )) && break
-
-  while IFS=$'\t' read -r fname dest; do
-    [[ -z "$fname" ]] && continue
-    _move_cs_file "$fname" "$dest" || {
-      _cleanup
-      exit 1
-    }
-  done <<< "$actions"
-done
-
-rm -f -- "$tsvfile"
-tsvfile=""
-_cleanup
-exit 0
+# TUI mode — cs-palette.py (merged explorer + mover: D1/D2/D3 + c/x/t keys)
+exec python3 "${0:A:h}/cs-palette.py" --vault "$vault_root" --sort "$sort_mode"

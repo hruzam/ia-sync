@@ -28,7 +28,7 @@
 # ---------------------------------------------------------------------------
 # Pre-parse sort flags — may appear anywhere in $@; TEMPLE_SORT env sets default.
 # ---------------------------------------------------------------------------
-sort_mode="${TEMPLE_SORT:-name}"
+sort_mode="${TEMPLE_SORT:-date}"
 typeset -a _remaining_args
 for _arg in "$@"; do
   case "$_arg" in
