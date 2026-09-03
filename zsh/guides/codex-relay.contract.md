@@ -6,7 +6,9 @@ Point here, never copy (Janus verdict 2026-07-31: "the plumbing wants to be one;
 the contract must stay two" — seats keep their opposite refusal contracts, this file
 holds the shared delivery layer). Each agent carries a minimal self-contained snippet
 (wrapper path + exit codes) so it functions if this file is unreachable; on any
-divergence, THIS file wins and the agent snippet is stale.
+divergence, THIS file wins and the agent snippet is stale. *Terminal within the relay-plumbing
+domain. Across domains, and under a live operator gavel, `~/reposoma/temple/precedence.md` orders
+the collision (decision 0013, 2026-09-03).*
 
 ## Wrapper
 

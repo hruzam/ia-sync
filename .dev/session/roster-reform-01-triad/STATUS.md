@@ -1,7 +1,7 @@
 # STATUS — roster-reform-01-triad
 
 ```yaml
-updated:         2026-09-03 15:20 CEST
+updated:         2026-09-03 16:20 CEST
 writer:          @atlas-ui · head · claude
 host:            office (hruzam-120922)
 worktree:        ~/ia-sync · main · 028b448 · clean at RETURN-verify; this VERDICT + STATUS rewrite now dirty
@@ -44,6 +44,14 @@ holds:           - pulse.atlas.md pen = head only; fold seat delivers ledger tex
                  - closing sweep += `temple/roster.md:63,72` + `temple/system-map.md:28,113,160` still call
                    Vara "flat-bus router / routes tasks" (fold finding, VERIFIED on disk) — temple canon,
                    draft for majkee gavel
+                 - SWEEP RESOLVED (fold, verified on disk): `track-run/SKILL.md:81` hardened — "it is the
+                   authority" removed, now "head-authored … I never overrule it" (points up). Oraculum's 2
+                   guards audited clean against flight/vara/track-run (no persona/machine-maint claims; all
+                   authority points up). Fold cold-start card dropped: `_cold-start/card/CS.vara-flight-
+                   followups.2026-09-03.md` (correctly subordinate to this STATUS; deferrals gated).
+                 - DEFERRED (own future cycle, not now): one tunnel-driver pointer line in flight.md/vara.md
+                   ("Bash-capable → can drive an operator-opened tunnel; tuple + cycle-RETURN duty live in
+                   /runbook's cross-vendor chapter") — waits on res/cross-vendor-seat.md RETURN-field spec.
                  - LENGTH FINDING (majkee research 2026-09-03): read-artifacts should stay <150–160 lines.
                    This RUNBOOK = 224, runbook-upgrade RUNBOOK = 180 → BOTH exceed. Not retro-edited
                    (read-once, already read by the fold seat); logged for runbook-upgrade's findings;
@@ -52,11 +60,31 @@ holds:           - pulse.atlas.md pen = head only; fold seat delivers ledger tex
                    both open; 04 says fold 02 into its RETURN if still unanswered
                  - Oraculum governance line accepted: session-shape = head's; tunnel mechanics/TABLE
                    semantics = cross-vendor line (Oraculum + Cartan + majkee) — chapter POINTS, never restates
-next:            @majkee (1) carries `_bus/04.head.point.md` to Cartan (tunnel or hand) and (2) tells the fold
-                 session: "your RETURN 03 and raw/field rules are not on disk — write both files now".
-expected:        `_bus/04.cartan.return.md` (+02 folded in) · `_bus/03.fold.return.md` ·
-                 `raw/field.runbook-check-rules.2026-09-03.md` appear. Then head: VERDICT 03 + 04, record
-                 majkee's gavel on the skill + chapters in checkpoint → gate CLOSES → closing sweep.
+                 - CYCLE 03 CLOSED — VERDICT `_bus/03.head.verdict.md` ACCEPT (fold RETURN + field rules
+                   verified on disk). Chapter countersign IN: Cartan's 3 amendments FOLDED into
+                   cross-vendor-seat.md (two-births · instrument-change=sibling-session · close-before-prune-
+                   not-yield). SKILL untouched by the amendments (chapter-level rules).
+                 - GAVELS RECORDED 16:20 (majkee, live): `/runbook` skill ACCEPTED (earlier "accepting
+                   skill", no contradiction found) · the 2 res/ chapters accepted under the same speed-over-
+                   perfectness ruling · PRECEDENCE STONE gaveled + CODIFIED (0013, Force-4 override recorded
+                   in the decision) — stone/lock/index/subordination-lines/boundary all on disk, staged.
+                 - STILL OPEN toward CLOSE: ONLY Cartan cycle 04 = `/runbook` vs octopus role-parity
+                   countersign. (Cycle 02 Q1/Q2 = nice-to-have; 0012 seam is Houston/majkee territory.)
+                 - Both sibling seats ENDED cleanly: fold parked (card CS.vara-flight-followups) · Oraculum
+                   closed (card CS.precedence-tail carries the WINS-verify tail).
+                 - BASE STONE (OUT OF GATE, own arc): findings 1+2 drafted →
+                   `_mail/oraculum/inbox/atlas.base-stone-precedence-and-sella-boundary.2026-09-03.md`.
+                   F1: `temple/precedence.md` (argued over raw.canon=circular, doctrine.md=wrong-genus) +
+                   decision 0013; stone draft + subordination line; WINS count = 2 confirmed
+                   (sella:20, relay:3/9) + 2 TO VERIFY (nablarva flag, the fourth). F2: Sella=primitive-
+                   building · this canon=session-shape; boundary paragraph drafted. DRAFT, majkee gavels;
+                   earns `precedence-01`, NOT this gate's bus (survives the prune).
+next:            @majkee: (1) carry `_bus/04.head.point.md` to Cartan for the `/runbook`-vs-octopus skill
+                 countersign (last gate item) · (2) gavel the `/runbook` skill + `res/{token-economy,
+                 cross-vendor-seat}.md` · (3) collect the base-stone mail into the sweep's gavel queue.
+expected:        `_bus/04.cartan.return.md` lands (skill parity verdict). majkee gavel recorded → I write
+                 VERDICT 04, stamp checkpoint → gate CLOSES → closing sweep (roster/system-map Vara
+                 language · 0012↔STATUS to Houston · RUNBOOK length · `_runbook` zsh opener).
 ```
 
 Remaining uncertainty: whether @majkee rules the GUIDE pointer line a breach of the

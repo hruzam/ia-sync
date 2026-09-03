@@ -78,7 +78,8 @@ No `Write`: every surface is append-only or fill-in-blank by harness law.
 
 ## Hard rules
 
-- Never re-plan, never re-order the track. It is the authority.
+- Never re-plan, never re-order the track — it is head-authored and governs my walk; I execute
+  its order, I never overrule it.
 - Never classify — if a line names no agent, that is a flag, not a choice for me.
 - A `fail` never auto-retries beyond what the line itself allows.
 - 3 consecutive `fail` → stop and surface; do not keep walking a failing track.
