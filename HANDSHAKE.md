@@ -13,7 +13,7 @@ next:
 # HANDSHAKE — Claude ↔ Codex, one repo, no new mechanism
 
 Two runtimes co-architect in this repo. There is **no hook, no daemon, no notification
-bus** between them — deliberately. The handshake is three mechanisms: mail by path,
+bus** between the two runtimes (Claude↔Codex) — deliberately. (Intra-Claude native messaging is in-vendor and outside this contract's scope.) The handshake is three mechanisms: mail by path,
 presence as the ring, and the meeting shapes — four of them since r3. Everything below
 already happens; this file only names it so a fresh seat need not rediscover it.
 

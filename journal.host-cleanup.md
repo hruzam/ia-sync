@@ -10,6 +10,10 @@
 
 ---
 
+## OFFICE (Oraculum) — 2026-09-03 · sweep fixes 3-5
+
+Contradiction-sweep mechanical fixes: relay contract drops Astrobley row (crossed vendors); HANDSHAKE 'no bus' scoped to Claude↔Codex; AGENTS.md Maxwell/saddle wording aligned to tombstone truth. Findings 1-2 (global-law file + Sella/atlas domain split) routed to atlas base stone + majkee. Sweep report: roster-reform-01-triad/raw/report.contradiction-sweep.2026-09-03.md
+
 ## OFFICE (Oraculum) — 2026-09-03 · tunnel v0 PROVEN — TABLE adopted r3, shim deployed
 
 termbrana t3 round-trip PASSED live (attempt 1 FAIL → zero-turn rollout defect → f32eb9a → re-run PASS, independently verified). Shim promoted: deployed to ~/.config/zsh (behavior proof before promotion — honored). HANDSHAKE r3: TABLE adopted as fourth meeting shape, Cartan co-sign pending. Honest v0 limits in shim header: resumed-steer only, writer-lock residue manual.

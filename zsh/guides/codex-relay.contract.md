@@ -98,9 +98,10 @@ window). Batch; bounce micro-tasks (<~10 expected lines) back with a batching su
 
 | seat | brief precondition | function |
 |---|---|---|
-| @Astrobley | refuses VAGUE scope | relay coder — well-scoped implementation |
 | @Vega | refuses a POSITION (blind) | position-free second opinion / triangulation |
 | @Mirror | REQUIRES a position | adversarial audit — attack the weakest assumption |
+
+*(@Astrobley crossed vendors 2026-09-01 — now the Codex line's senior implementer (codex/agents/astrobley.toml); see ~/ia-sync/HANDSHAKE.md §"Seat transfers". Claude-side one-shot relays: @Vega + @Mirror only.)*
 
 Intent lives in **which seat you spawn** — visible in the trace, never inferred by the relay.
 
