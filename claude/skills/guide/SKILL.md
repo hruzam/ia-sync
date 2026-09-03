@@ -20,7 +20,7 @@ never read it as a source.
    `raw.guides/**/*.md`. One hit → read it. Many → list candidates, ask. None → show the
    slug listing.
 
-**`/guide <slug> <chapter>`** → `raw.guides/<slug>/<chapter>*.md` (substring on chapter
+**`/guide <slug> <chapter>`** → `raw.guides/<slug>/res/<chapter>*.md` (substring on chapter
 filename). This is the fine-slice read: one chapter, not the whole guide.
 
 **Bare `/guide`** → derived overview, no hand-index (derived-index principle):
