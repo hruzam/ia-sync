@@ -2,8 +2,8 @@
 """Cold-start vault explorer + mover (merged tool, 2026-09-03).
 
 The palette compresses reading speed AND move operations in one TUI:
-D1 (left) shows cards with state prefix; D2 (right-top) shows frontmatter;
-D3 (right-bottom) shows the first prompt block + runbook line.
+D1 (left) shows cards with mark + state prefix; D2 (right-top) shows
+frontmatter; D3 (right-bottom) shows the first prompt block + runbook line.
 
 Invoke as ``python3 cs-palette.py --vault VAULT_ROOT [--sort date|mtime|name]``.
 VAULT_ROOT is the already-resolved absolute path to the vault (resolved by the
@@ -12,23 +12,25 @@ zsh wrappers via temple-project-map so this file never hardcodes a /home path).
 Layout:
   D1 (left)         — card/ + routines/ (or archive/ when toggled), sorted
                        by filename-embedded date newest-first (default).
-                       [c] prefix = card/, [r] prefix = routines/.
+                       Label: [x/·][c/r] filename — mark indicator + state prefix.
   D2 (right-top)    — the selected card's raw YAML frontmatter, verbatim.
   D3 (right-bottom) — the selected card's first ``###### prompt`` fenced
                        block + its ``runbook:`` line, if present.
 
 Keybinds:
   ↑ ↓           navigate list
+  space         mark / unmark current card
+  p             print path(s) of marked cards to terminal (TUI stays open);
+                  if nothing is marked: prints path of current card
   Enter         print resume: to stdout and exit (session start)
   e             open card in $EDITOR
   r             open runbook: target in $EDITOR
   a             toggle archive view
   s             cycle sort: date → mtime → name → date
-  c             move selected card → card/
-  x             move selected card → archive/
-  t             move selected card → routines/
-  q / Esc       quit — print absolute path of selected card to stdout (exit 0);
-                exit 1 silently only when the vault is empty
+  c             move marked cards (or current) → card/
+  x             move marked cards (or current) → archive/
+  t             move marked cards (or current) → routines/
+  q / Esc       quit
 
 Sort default: date (filename YYYY-MM-DD newest-first; no-date cards sink last).
 Override: TEMPLE_SORT=date|mtime|name env var, or --sort flag, or 's' in TUI.
@@ -48,8 +50,8 @@ import cs_vault
 _MOVE_KEYS = {"c": "card", "x": "archive", "t": "routines"}
 _SORT_CYCLE = ["date", "mtime", "name"]
 
-# State prefix shown in D1 when in mixed card/routines view.
-_STATE_PREFIX = {"card": "[c] ", "routines": "[r] "}
+# State prefix shown in D1 — 2 chars + space, aligned.
+_STATE_LABEL = {"card": "c", "routines": "r", "archive": "a"}
 
 
 def parse_args():
@@ -166,13 +168,15 @@ def d3_lines(row, width):
     return lines
 
 
-def draw(screen, rows, cursor, archive_view, message, sort_mode):
+def draw(screen, rows, cursor, archive_view, message, sort_mode, marks):
     screen.erase()
     height, width = screen.getmaxyx()
 
-    hints = "↑↓ move · enter resume · e edit · r runbook · a archive · s sort · c→card x→archive t→routines · q/esc→path+quit"
+    n_marked = sum(1 for v in marks.values() if v)
+    marked_note = f" · {n_marked} marked" if n_marked else ""
+    hints = "space mark · p print-path · enter resume · e edit · r runbook · a archive · s sort · c→card x→archive t→routines · q quit"
     view_label = "archive" if archive_view else "card/+routines"
-    prefix = f"{len(rows)} cards · {view_label} · sort:{sort_mode}"
+    prefix = f"{len(rows)} cards · {view_label} · sort:{sort_mode}{marked_note}"
     status = message if message else f"{prefix} · {hints}"
 
     segments = status.split(" · ")
@@ -201,7 +205,10 @@ def draw(screen, rows, cursor, archive_view, message, sort_mode):
 
     selected = rows[cursor] if rows else None
 
-    # D1 — left column: state prefix [c]/[r] shown in mixed card/routines view
+    # D1 — left column
+    # Label format: [x/·][c/r/a] filename
+    #   [x] = marked   [·] = unmarked
+    #   [c] = card/    [r] = routines/    [a] = archive (archive view only)
     if not rows and body_height > 0:
         safe_add(screen, 0, 0, clipped("(vault empty in this view)", left_width), 0, left_width)
     elif rows:
@@ -209,11 +216,9 @@ def draw(screen, rows, cursor, archive_view, message, sort_mode):
         for offset, row in enumerate(visible):
             absolute = start + offset
             attr = curses.A_REVERSE if absolute == cursor else 0
-            if not archive_view:
-                prefix_str = _STATE_PREFIX.get(row["state"], "    ")
-                label = f"{prefix_str}{row['filename']}"
-            else:
-                label = row["filename"]
+            mark_char = "x" if marks.get(row["fullpath"]) else "·"
+            state_char = _STATE_LABEL.get(row["state"], "?")
+            label = f"[{mark_char}][{state_char}] {row['filename']}"
             safe_add(screen, offset, 0, clipped(label, left_width), attr, left_width)
 
     if side_by_side:
@@ -264,6 +269,29 @@ def _open_in_editor(screen, path):
         return f"cs-palette: could not launch '{editor}': {error}"
 
 
+def _print_paths_to_terminal(screen, paths):
+    """Print paths to the terminal scroll-back while keeping TUI alive.
+
+    Uses the same curses escape pattern as _open_in_editor: temporarily exits
+    curses mode, prints, then restores. The lines survive in the terminal
+    scroll-back buffer after the TUI redraws over them.
+    """
+    curses.def_prog_mode()
+    curses.endwin()
+    try:
+        for p in paths:
+            print(p)
+    finally:
+        curses.reset_prog_mode()
+        screen.refresh()
+
+
+def _targets(rows, cursor, marks):
+    """Return the list of rows to act on: marked items if any, else cursor row."""
+    marked = [r for r in rows if marks.get(r["fullpath"])]
+    return marked if marked else ([rows[cursor]] if rows else [])
+
+
 def palette(screen, sort_mode, vault_root):
     try:
         curses.curs_set(0)
@@ -274,11 +302,12 @@ def palette(screen, sort_mode, vault_root):
     archive_view = False
     cursor = 0
     message = ""
+    marks = {}  # fullpath → bool
 
     while True:
         rows = load_rows(vault_root, archive_view, sort_mode)
         cursor = max(0, min(cursor, len(rows) - 1)) if rows else 0
-        draw(screen, rows, cursor, archive_view, message, sort_mode)
+        draw(screen, rows, cursor, archive_view, message, sort_mode, marks)
         message = ""
         try:
             key = screen.get_wch()
@@ -291,6 +320,16 @@ def palette(screen, sort_mode, vault_root):
             cursor = max(0, cursor - 1)
         elif key == curses.KEY_DOWN:
             cursor = min(max(0, len(rows) - 1), cursor + 1)
+        elif key == " " and rows:
+            # Mark / unmark current card.
+            fp = rows[cursor]["fullpath"]
+            marks[fp] = not marks.get(fp, False)
+        elif key in ("p", "P") and rows:
+            # Print path(s) to terminal immediately — TUI stays open.
+            targets = _targets(rows, cursor, marks)
+            _print_paths_to_terminal(screen, [r["fullpath"] for r in targets])
+            n = len(targets)
+            message = f"↓ printed {n} path{'s' if n > 1 else ''}"
         elif key in ("s", "S"):
             idx = _SORT_CYCLE.index(sort_mode)
             sort_mode = _SORT_CYCLE[(idx + 1) % len(_SORT_CYCLE)]
@@ -298,17 +337,28 @@ def palette(screen, sort_mode, vault_root):
         elif key in ("a", "A"):
             archive_view = not archive_view
             cursor = 0
+            marks = {}
         elif isinstance(key, str) and key.lower() in _MOVE_KEYS and rows:
             dest = _MOVE_KEYS[key.lower()]
-            row = rows[cursor]
-            if row["state"] == dest:
-                message = f"'{row['filename']}' is already in {dest}/"
-            else:
+            targets = _targets(rows, cursor, marks)
+            moved = []
+            errors = []
+            for row in targets:
+                if row["state"] == dest:
+                    continue
                 _, err = cs_vault.move_card(vault_root, row["fullpath"], dest)
                 if err:
-                    message = f"move failed: {err}"
+                    errors.append(err)
                 else:
-                    message = f"→ {dest}/ · '{row['filename']}'"
+                    moved.append(row["filename"])
+                    marks.pop(row["fullpath"], None)
+            if errors:
+                message = f"errors: {'; '.join(errors)}"
+            elif moved:
+                n = len(moved)
+                message = f"→ {dest}/ · {n} card{'s' if n > 1 else ''}"
+            else:
+                message = f"already in {dest}/ — nothing moved"
         elif key in ("\n", "\r", curses.KEY_ENTER):
             if not rows:
                 continue
@@ -341,10 +391,6 @@ def palette(screen, sort_mode, vault_root):
             if error:
                 message = error
         elif key in ("q", "Q", "\x1b"):
-            # Flush the selected card's absolute path to stdout on quit.
-            # Exit 1 only when the vault is empty (nothing to report).
-            if rows:
-                return rows[cursor]["fullpath"], 0
             return None, 1
 
 
@@ -386,10 +432,9 @@ def run_on_tty(sort_mode, vault_root):
 def main():
     arguments = parse_args()
     vault_root = os.path.expanduser(arguments.vault_root)
-    output, status = run_on_tty(arguments.sort, vault_root)
-    # output is either the resume: text (Enter) or the card's fullpath (q/Esc).
-    if status == 0 and output:
-        print(output)
+    resume, status = run_on_tty(arguments.sort, vault_root)
+    if status == 0 and resume:
+        print(resume)
     return status
 
 

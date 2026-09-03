@@ -21,10 +21,9 @@
 # temple-project-map.zsh by path so it works standalone, same discipline as
 # temple-mail-manage.zsh not depending on base.zsh already being loaded).
 #
-# Prints to stdout on two paths:
-#   Enter  — the selected card's resume: value (session start prompt)
-#   q/Esc  — the selected card's absolute path (for piping / $() capture)
-# c/x/t move the selected card between card/routines/archive/ in-TUI.
+# Prints to stdout: Enter → resume: value (session start prompt).
+# p (in TUI) → path(s) of marked/current card printed to terminal scroll-back;
+#   TUI stays open. space = mark/unmark; c/x/t = move marked (or current).
 # =============================================================================
 
 [[ -f "${0:A:h}/temple-project-map.zsh" ]] && source "${0:A:h}/temple-project-map.zsh"
