@@ -110,7 +110,7 @@ Mail when:
 | Web | Valet-linux | nginx + systemctl |
 | claude | `~/.local/bin/claude` | `~/.local/bin/claude` (corrected 2026-08-24 — the "via `office` alias" row was wrong; home has its own binary) |
 | piql | lives here | remote via `oc`/`op`/SSH |
-| zellij | present (0.44.3) | **ABSENT** |
+| zellij | present (0.44.3) | present (0.44.3) — confirmed 2026-09-03 |
 | tmux | present | **ABSENT** |
 
 ## Which host am I on? (resolve before planning — verified 2026-08-24)
