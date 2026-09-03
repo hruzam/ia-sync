@@ -21,10 +21,10 @@
 # temple-project-map.zsh by path so it works standalone, same discipline as
 # temple-mail-manage.zsh not depending on base.zsh already being loaded).
 #
-# Explorer only — never mutates the vault. cs-palette.py prints the selected
-# card's resume: to real stdout on Enter; everything else (e/r/a/q) stays
-# inside the TUI. Moving cards between card/archive/routines/ is
-# temple-cs-manage's job, not this one's.
+# Prints to stdout on two paths:
+#   Enter  — the selected card's resume: value (session start prompt)
+#   q/Esc  — the selected card's absolute path (for piping / $() capture)
+# c/x/t move the selected card between card/routines/archive/ in-TUI.
 # =============================================================================
 
 [[ -f "${0:A:h}/temple-project-map.zsh" ]] && source "${0:A:h}/temple-project-map.zsh"

@@ -27,7 +27,8 @@ Keybinds:
   c             move selected card → card/
   x             move selected card → archive/
   t             move selected card → routines/
-  q / Esc       quit without printing
+  q / Esc       quit — print absolute path of selected card to stdout (exit 0);
+                exit 1 silently only when the vault is empty
 
 Sort default: date (filename YYYY-MM-DD newest-first; no-date cards sink last).
 Override: TEMPLE_SORT=date|mtime|name env var, or --sort flag, or 's' in TUI.
@@ -169,7 +170,7 @@ def draw(screen, rows, cursor, archive_view, message, sort_mode):
     screen.erase()
     height, width = screen.getmaxyx()
 
-    hints = "↑↓ move · enter resume · e edit · r runbook · a archive · s sort · c→card x→archive t→routines · q quit"
+    hints = "↑↓ move · enter resume · e edit · r runbook · a archive · s sort · c→card x→archive t→routines · q/esc→path+quit"
     view_label = "archive" if archive_view else "card/+routines"
     prefix = f"{len(rows)} cards · {view_label} · sort:{sort_mode}"
     status = message if message else f"{prefix} · {hints}"
@@ -340,6 +341,10 @@ def palette(screen, sort_mode, vault_root):
             if error:
                 message = error
         elif key in ("q", "Q", "\x1b"):
+            # Flush the selected card's absolute path to stdout on quit.
+            # Exit 1 only when the vault is empty (nothing to report).
+            if rows:
+                return rows[cursor]["fullpath"], 0
             return None, 1
 
 
@@ -381,9 +386,10 @@ def run_on_tty(sort_mode, vault_root):
 def main():
     arguments = parse_args()
     vault_root = os.path.expanduser(arguments.vault_root)
-    resume, status = run_on_tty(arguments.sort, vault_root)
-    if status == 0 and resume:
-        print(resume)
+    output, status = run_on_tty(arguments.sort, vault_root)
+    # output is either the resume: text (Enter) or the card's fullpath (q/Esc).
+    if status == 0 and output:
+        print(output)
     return status
 
 
