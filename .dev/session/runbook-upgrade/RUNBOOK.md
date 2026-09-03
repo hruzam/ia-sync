@@ -1,4 +1,4 @@
-# RUNBOOK — upgrade-01-probe
+# RUNBOOK — runbook-upgrade
 
 ```yaml
 goal:            The bed's laws are amended from measured cold-resume failures, not from audit prose.
