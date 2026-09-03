@@ -9,6 +9,12 @@
 #   --to-archive   <filename>
 #   --to-routines  <filename>
 #
+# Sort flags (apply to --list and TUI):
+#   --sort-date    sort newest first (by YYYY-MM-DD in filename)
+#   --sort-name    sort alphabetically by filename (default)
+#   Env var TEMPLE_SORT=date sets date sort as the default for this terminal.
+#   In TUI: press 's' to toggle sort between name and date.
+#
 # Canon: folder = state (raw.guides/cold-start-card/GUIDE.md) — card/ (live
 #   process glue) · routines/ (recurring, never archived by policy, but this
 #   tool does not forbid it — the operator's call) · archive/ (drained).
@@ -42,6 +48,21 @@ fi
 
 typeset -A _cs_state_dir
 _cs_state_dir=(card "$vault_root/card" routines "$vault_root/routines" archive "$vault_root/archive")
+
+# ---------------------------------------------------------------------------
+# Pre-parse sort flags — may appear anywhere in $@; TEMPLE_SORT env sets default.
+# ---------------------------------------------------------------------------
+sort_mode="${TEMPLE_SORT:-name}"
+typeset -a _remaining_args
+for _arg in "$@"; do
+  case "$_arg" in
+    --sort-date) sort_mode=date ;;
+    --sort-name) sort_mode=name ;;
+    *) _remaining_args+=("$_arg") ;;
+  esac
+done
+set -- "${_remaining_args[@]}"
+unset _arg _remaining_args
 
 # _find_cs_file <filename> — search card/, routines/, archive/ for filename;
 # prints "<state>\t<fullpath>" on the first hit, returns 1 if not found.
@@ -83,6 +104,23 @@ typeset -ga tui_lines
 typeset -ga tui_states
 typeset -ga tui_paths
 
+# _sort_files_by_date <file...> — print fullpaths sorted by YYYY-MM-DD, newest first.
+# Files without a date sort last. Uses python3 (already a dependency of the palette).
+_sort_files_by_date() {
+  python3 -c "
+import re, sys
+pairs = []
+for path in sys.stdin.read().splitlines():
+    if not path:
+        continue
+    fname = path.rsplit('/', 1)[-1]
+    m = re.findall(r'\d{4}-\d{2}-\d{2}', fname)
+    pairs.append((m[-1] if m else '', path))
+pairs.sort(key=lambda x: x[0], reverse=True)
+print('\n'.join(p for _, p in pairs))
+"
+}
+
 _scan_cs() {
   local map_file=$1
   tui_lines=()
@@ -90,7 +128,7 @@ _scan_cs() {
   tui_paths=()
 
   local state
-  local -a files
+  local -a files sorted_files
   local total=0
   # NOTE: the loop variable `f` is deliberately NOT `local`-declared inside the
   # per-state loop below — zsh's `local name` (no `=value`, no options) acts as
@@ -103,6 +141,14 @@ _scan_cs() {
 
   for state in card routines archive; do
     files=( "${_cs_state_dir[$state]}"/*.md(N.) )
+
+    # Apply sort for --list output (map_file empty); TUI order is re-sorted by Python.
+    if [[ -z "$map_file" && "$sort_mode" == "date" && ${#files} -gt 0 ]]; then
+      sorted_files=( ${(f)"$(printf '%s\n' "${files[@]}" | _sort_files_by_date)"} )
+    else
+      sorted_files=( ${(o)files} )
+    fi
+
     if [[ -n "$map_file" ]]; then
       for f in ${(o)files}; do
         printf '%s\t%s\t%s\n' "$state" "$(basename "$f")" "$f" >> "$map_file"
@@ -113,7 +159,7 @@ _scan_cs() {
         tui_states+=("header")
         tui_paths+=("")
       fi
-      for f in ${(o)files}; do
+      for f in $sorted_files; do
         tui_lines+=("  $(basename "$f")")
         tui_states+=("file")
         tui_paths+=("$f")
@@ -145,7 +191,7 @@ elif [[ "$1" == "--to-card" || "$1" == "--to-archive" || "$1" == "--to-routines"
   _move_cs_file "$2" "$dest" || exit 1
   exit 0
 elif [[ -n "$1" ]]; then
-  echo "Usage: $0 [--list | --to-card <filename> | --to-archive <filename> | --to-routines <filename>]" >&2
+  echo "Usage: $0 [--sort-date|--sort-name] [--list | --to-card <filename> | --to-archive <filename> | --to-routines <filename>]" >&2
   exit 1
 fi
 
@@ -175,7 +221,7 @@ while true; do
   printf '# state\tfilename\tfullpath\n' > "$tsvfile"
   _scan_cs "$tsvfile"
 
-  actions=$(python3 "${0:A:h}/cs-manage-palette.py" --map "$tsvfile")
+  actions=$(python3 "${0:A:h}/cs-manage-palette.py" --map "$tsvfile" --sort "$sort_mode")
   palette_status=$?
   (( palette_status != 0 )) && break
 

@@ -1,9 +1,17 @@
 #!/usr/bin/env python3
-"""Stable curses selector for mailbox archive and restore actions."""
+"""Stable curses selector for mailbox archive and restore actions.
+
+Sort order:
+  --sort name  (default) — alphabetical by filename
+  --sort date  — newest first, extracted from YYYY-MM-DD in filename
+  In TUI: press 's' to toggle sort between name and date.
+  Env var TEMPLE_SORT=date overrides the default (overridden by --sort flag).
+"""
 
 import argparse
 import curses
 import os
+import re
 import sys
 import textwrap
 
@@ -11,7 +19,19 @@ import textwrap
 def parse_args():
     parser = argparse.ArgumentParser(description="select mail to archive or restore")
     parser.add_argument("--map", required=True, dest="map_file", help="mail TSV file")
+    parser.add_argument(
+        "--sort",
+        choices=["name", "date"],
+        default=os.environ.get("TEMPLE_SORT", "name"),
+        help="sort order: name (default) or date (newest first); env TEMPLE_SORT overrides default",
+    )
     return parser.parse_args()
+
+
+def extract_date(filename):
+    """Return the last YYYY-MM-DD found in filename, or '' if absent (sorts last)."""
+    matches = re.findall(r"\d{4}-\d{2}-\d{2}", filename)
+    return matches[-1] if matches else ""
 
 
 def load_map(map_file):
@@ -43,13 +63,16 @@ def load_map(map_file):
     return mail_rows, malformed
 
 
-def grouped_mail(mail_rows, active_view):
+def grouped_mail(mail_rows, active_view, sort_mode="name"):
     groups = {}
     for item in mail_rows:
         if item["view"] == active_view:
             groups.setdefault(item["receiver"], []).append(item)
     for items in groups.values():
-        items.sort(key=lambda item: item["filename"].casefold())
+        if sort_mode == "date":
+            items.sort(key=lambda item: extract_date(item["filename"]), reverse=True)
+        else:
+            items.sort(key=lambda item: item["filename"].casefold())
     return groups
 
 
@@ -65,14 +88,19 @@ def tree_rows(groups, expanded):
     return rows
 
 
-def filtered_rows(mail_rows, active_view, filter_text):
+def filtered_rows(mail_rows, active_view, filter_text, sort_mode="name"):
     needle = filter_text.casefold()
-    return [
+    items = [
         {"kind": "file", "item": item, "receiver": item["receiver"]}
         for item in mail_rows
         if item["view"] == active_view
         and needle in item["filename"].casefold()
     ]
+    if sort_mode == "date":
+        items.sort(key=lambda r: extract_date(r["item"]["filename"]), reverse=True)
+    else:
+        items.sort(key=lambda r: r["item"]["filename"].casefold())
+    return items
 
 
 def clipped(value, width):
@@ -109,13 +137,13 @@ def visible_slice(rows, cursor, height):
     return start, rows[start : start + height]
 
 
-def draw(screen, rows, cursor, filter_text, expanded, active_view, marks):
+def draw(screen, rows, cursor, filter_text, expanded, active_view, marks, sort_mode):
     screen.erase()
     height, width = screen.getmaxyx()
 
     # Build status/help string
-    hints = "↑↓ move · →← fold · space mark · tab view · a act · type filter · esc/q quit"
-    prefix = f"{len(rows)} rows · {active_view}"
+    hints = "↑↓ move · →← fold · space mark · tab view · s sort · a act · type filter · esc/q quit"
+    prefix = f"{len(rows)} rows · {active_view} · sort:{sort_mode}"
     if filter_text:
         prefix += f" · /{filter_text}"
     status = f"{prefix} · {hints}"
@@ -185,7 +213,7 @@ def receiver_index(rows, receiver):
     return 0
 
 
-def palette(screen, mail_rows):
+def palette(screen, mail_rows, sort_mode):
     # Default to all receivers expanded on every launch — so the reloop reopens
     # into the open tree (← still collapses within a session).
     expanded = {item["receiver"] for item in mail_rows}
@@ -200,14 +228,14 @@ def palette(screen, mail_rows):
     screen.keypad(True)
 
     while True:
-        groups = grouped_mail(mail_rows, active_view)
+        groups = grouped_mail(mail_rows, active_view, sort_mode)
         rows = (
-            filtered_rows(mail_rows, active_view, filter_text)
+            filtered_rows(mail_rows, active_view, filter_text, sort_mode)
             if filter_text
             else tree_rows(groups, expanded)
         )
         cursor = max(0, min(cursor, len(rows) - 1)) if rows else 0
-        draw(screen, rows, cursor, filter_text, expanded, active_view, marks)
+        draw(screen, rows, cursor, filter_text, expanded, active_view, marks, sort_mode)
         key = screen.get_wch()
 
         if key == curses.KEY_RESIZE:
@@ -234,6 +262,9 @@ def palette(screen, mail_rows):
             if row["kind"] == "file":
                 full_path = row["item"]["fullpath"]
                 marks[full_path] = not marks.get(full_path, False)
+        elif key in ("s", "S") and not filter_text:
+            sort_mode = "date" if sort_mode == "name" else "name"
+            cursor = 0
         elif key in ("a", "A"):
             selected = [item for item in mail_rows if marks.get(item["fullpath"])]
             return (selected, 0)
@@ -254,7 +285,7 @@ def palette(screen, mail_rows):
             cursor = 0
 
 
-def run_on_tty(mail_rows):
+def run_on_tty(mail_rows, sort_mode):
     try:
         tty_fd = os.open("/dev/tty", os.O_RDWR)
     except OSError as error:
@@ -271,7 +302,7 @@ def run_on_tty(mail_rows):
         screen = curses.initscr()
         curses.noecho()
         curses.cbreak()
-        result = palette(screen, mail_rows)
+        result = palette(screen, mail_rows, sort_mode)
     finally:
         if screen is not None:
             try:
@@ -292,7 +323,7 @@ def run_on_tty(mail_rows):
 def main():
     arguments = parse_args()
     mail_rows, _malformed = load_map(arguments.map_file)
-    selected, status = run_on_tty(mail_rows)
+    selected, status = run_on_tty(mail_rows, arguments.sort)
     if status == 0:
         # Preserve source TSV order so multi-file actions are deterministic.
         for item in selected:

@@ -11,11 +11,18 @@ map built by temple-cs-manage.zsh (columns: state<TAB>filename<TAB>fullpath)
 and, once the operator marks files and presses a destination key, prints
 "<filename>\tdest" lines to stdout and exits 0. The actual mv is
 temple-cs-manage.zsh's job (folder = state; no frontmatter rewriting, ever).
+
+Sort order:
+  --sort name  (default) — alphabetical by filename
+  --sort date  — newest first, extracted from YYYY-MM-DD in filename
+  In TUI: press 's' to toggle sort between name and date.
+  Env var TEMPLE_SORT=date overrides the default (overridden by --sort flag).
 """
 
 import argparse
 import curses
 import os
+import re
 import sys
 import textwrap
 
@@ -27,7 +34,19 @@ STATE_LABELS = {"card": "card", "routines": "routines", "archive": "archive"}
 def parse_args():
     parser = argparse.ArgumentParser(description="select cold-start cards to move")
     parser.add_argument("--map", required=True, dest="map_file", help="cold-start TSV map")
+    parser.add_argument(
+        "--sort",
+        choices=["name", "date"],
+        default=os.environ.get("TEMPLE_SORT", "name"),
+        help="sort order: name (default) or date (newest first); env TEMPLE_SORT overrides default",
+    )
     return parser.parse_args()
+
+
+def extract_date(filename):
+    """Return the last YYYY-MM-DD found in filename, or '' if absent (sorts last)."""
+    matches = re.findall(r"\d{4}-\d{2}-\d{2}", filename)
+    return matches[-1] if matches else ""
 
 
 def load_map(map_file):
@@ -50,12 +69,15 @@ def load_map(map_file):
     return rows
 
 
-def grouped(rows):
+def grouped(rows, sort_mode="name"):
     groups = {}
     for item in rows:
         groups.setdefault(item["state"], []).append(item)
     for items in groups.values():
-        items.sort(key=lambda item: item["filename"].casefold())
+        if sort_mode == "date":
+            items.sort(key=lambda item: extract_date(item["filename"]), reverse=True)
+        else:
+            items.sort(key=lambda item: item["filename"].casefold())
     return groups
 
 
@@ -70,13 +92,18 @@ def tree_rows(groups, expanded):
     return rows
 
 
-def filtered_rows(all_rows, filter_text):
+def filtered_rows(all_rows, filter_text, sort_mode="name"):
     needle = filter_text.casefold()
-    return [
+    items = [
         {"kind": "file", "item": item, "state": item["state"]}
         for item in all_rows
         if needle in item["filename"].casefold()
     ]
+    if sort_mode == "date":
+        items.sort(key=lambda r: extract_date(r["item"]["filename"]), reverse=True)
+    else:
+        items.sort(key=lambda r: r["item"]["filename"].casefold())
+    return items
 
 
 def clipped(value, width):
@@ -113,12 +140,12 @@ def visible_slice(rows, cursor, height):
     return start, rows[start : start + height]
 
 
-def draw(screen, rows, cursor, filter_text, expanded, marks, message):
+def draw(screen, rows, cursor, filter_text, expanded, marks, message, sort_mode):
     screen.erase()
     height, width = screen.getmaxyx()
 
-    hints = "↑↓ move · →← fold · space mark · c/x/t move to card|archive|routines · type filter · esc/q quit"
-    prefix = f"{len(rows)} rows"
+    hints = "↑↓ move · →← fold · space mark · c/x/t move to card|archive|routines · s sort · type filter · esc/q quit"
+    prefix = f"{len(rows)} rows · sort:{sort_mode}"
     if filter_text:
         prefix += f" · /{filter_text}"
     status = message if message else f"{prefix} · {hints}"
@@ -173,7 +200,7 @@ def group_index(rows, state):
     return 0
 
 
-def palette(screen, all_rows):
+def palette(screen, all_rows, sort_mode):
     expanded = {"card", "routines", "archive"}
     marks = {}
     filter_text = ""
@@ -186,10 +213,10 @@ def palette(screen, all_rows):
     screen.keypad(True)
 
     while True:
-        groups = grouped(all_rows)
-        rows = filtered_rows(all_rows, filter_text) if filter_text else tree_rows(groups, expanded)
+        groups = grouped(all_rows, sort_mode)
+        rows = filtered_rows(all_rows, filter_text, sort_mode) if filter_text else tree_rows(groups, expanded)
         cursor = max(0, min(cursor, len(rows) - 1)) if rows else 0
-        draw(screen, rows, cursor, filter_text, expanded, marks, message)
+        draw(screen, rows, cursor, filter_text, expanded, marks, message, sort_mode)
         message = ""
         key = screen.get_wch()
 
@@ -224,6 +251,9 @@ def palette(screen, all_rows):
                 message = "nothing to move (mark a file, or it is already there)"
                 continue
             return moves, dest, 0
+        elif key in ("s", "S") and not filter_text:
+            sort_mode = "date" if sort_mode == "name" else "name"
+            cursor = 0
         elif key == "\x1b":
             if filter_text:
                 filter_text = ""
@@ -241,7 +271,7 @@ def palette(screen, all_rows):
             cursor = 0
 
 
-def run_on_tty(all_rows):
+def run_on_tty(all_rows, sort_mode):
     try:
         tty_fd = os.open("/dev/tty", os.O_RDWR)
     except OSError as error:
@@ -258,7 +288,7 @@ def run_on_tty(all_rows):
         screen = curses.initscr()
         curses.noecho()
         curses.cbreak()
-        result = palette(screen, all_rows)
+        result = palette(screen, all_rows, sort_mode)
     finally:
         if screen is not None:
             try:
@@ -279,7 +309,7 @@ def run_on_tty(all_rows):
 def main():
     arguments = parse_args()
     all_rows = load_map(arguments.map_file)
-    moves, dest, status = run_on_tty(all_rows)
+    moves, dest, status = run_on_tty(all_rows, arguments.sort)
     if status == 0:
         for item in moves:
             print(f"{item['filename']}\t{dest}")

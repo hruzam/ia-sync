@@ -8,6 +8,12 @@
 #   --archive <receiver>/<filename>
 #   --restore <receiver>/<filename>
 #
+# Sort flags (apply to --list and TUI):
+#   --sort-date    sort newest first (by YYYY-MM-DD in filename)
+#   --sort-name    sort alphabetically by filename (default)
+#   Env var TEMPLE_SORT=date sets date sort as the default for this terminal.
+#   In TUI: press 's' to toggle sort between name and date.
+#
 # Canon: implements decision 0010 read-state transition
 #   presence in inbox/ = unread; move to archive/ = read; receiver-owns
 #
@@ -18,6 +24,21 @@
 #   2026-07-11, gavel majkee; key name per @Janus claviature verdict
 #   (gate visible in the name).
 # =============================================================================
+
+# ---------------------------------------------------------------------------
+# Pre-parse sort flags — may appear anywhere in $@; TEMPLE_SORT env sets default.
+# ---------------------------------------------------------------------------
+sort_mode="${TEMPLE_SORT:-name}"
+typeset -a _remaining_args
+for _arg in "$@"; do
+  case "$_arg" in
+    --sort-date) sort_mode=date ;;
+    --sort-name) sort_mode=name ;;
+    *) _remaining_args+=("$_arg") ;;
+  esac
+done
+set -- "${_remaining_args[@]}"
+unset _arg _remaining_args
 
 # Find _mail directory
 dir="$PWD"
@@ -62,6 +83,23 @@ _move_mail_file() {
   mv "$src" "$dest"
 }
 
+# _sort_files_by_date — read fullpaths from stdin, print sorted newest first.
+# Files without a YYYY-MM-DD in their name sort last.
+_sort_files_by_date() {
+  python3 -c "
+import re, sys
+pairs = []
+for path in sys.stdin.read().splitlines():
+    if not path:
+        continue
+    fname = path.rsplit('/', 1)[-1]
+    m = re.findall(r'\d{4}-\d{2}-\d{2}', fname)
+    pairs.append((m[-1] if m else '', path))
+pairs.sort(key=lambda x: x[0], reverse=True)
+print('\n'.join(p for _, p in pairs))
+"
+}
+
 _scan_mail() {
   local map_file=$1
   tui_lines=()
@@ -73,19 +111,30 @@ _scan_mail() {
 
   local total_files=0
   local target_subdir
-  local -a files
+  local -a files sorted_files
 
   for r_dir in ${(o)rec_dirs}; do
     local r=$(basename "$r_dir")
     for target_subdir in inbox archive; do
       files=( "$r_dir"/$target_subdir/*(N.) )
+
+      # Apply date sort for --list output when sort_mode=date.
+      # In map_file (TUI) mode the Python palette handles display sort.
+      if [[ -z "$map_file" && "$sort_mode" == "date" && ${#files} -gt 0 ]]; then
+        sorted_files=( ${(f)"$(printf '%s\n' "${files[@]}" | _sort_files_by_date)"} )
+      else
+        sorted_files=( ${(o)files} )
+      fi
+
       if [[ -z "$map_file" && "$target_subdir" == "inbox" && ${#files} -gt 0 ]]; then
         tui_lines+=("$r")
         tui_types+=("header")
         tui_paths+=("")
       fi
 
-      for f in ${(o)files}; do
+      # sorted_files = date-sorted (--list, sort_mode=date) or alphabetical otherwise.
+      # For map_file (TUI) branch, order does not matter — Python re-sorts via --sort.
+      for f in $sorted_files; do
         if [[ -n "$map_file" ]]; then
           printf '%s\t%s\t%s\t%s\n' "$target_subdir" "$r" "$(basename "$f")" "$f" >> "$map_file"
         elif [[ "$target_subdir" == "inbox" ]]; then
@@ -147,7 +196,7 @@ elif [[ "$1" == "--restore" ]]; then
   _move_mail_file "$rec" "$fname" restore || exit 1
   exit 0
 elif [[ -n "$1" ]]; then
-  echo "Usage: $0 [--list | --archive <receiver>/<filename> | --restore <receiver>/<filename>]" >&2
+  echo "Usage: $0 [--sort-date|--sort-name] [--list | --archive <receiver>/<filename> | --restore <receiver>/<filename>]" >&2
   exit 1
 fi
 
@@ -177,7 +226,7 @@ while true; do
   printf '# view\treceiver\tfilename\tfullpath\n' > "$tsvfile"
   _scan_mail "$tsvfile"
 
-  actions=$(python3 "${0:A:h}/mail-palette.py" --map "$tsvfile")
+  actions=$(python3 "${0:A:h}/mail-palette.py" --map "$tsvfile" --sort "$sort_mode")
   palette_status=$?
   (( palette_status != 0 )) && break
 
