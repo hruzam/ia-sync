@@ -297,8 +297,10 @@ _ts_mount() {
     fi
     mkdir -p "$mnt" || { echo "[ts] failed to create mountpoint: $mnt"; return 1; }
     # ConnectTimeout prevents terminal hang when peer is unreachable
-    # No reconnect — lets the daemon die cleanly when SSH drops instead of looping as a stale daemon
-    if sshfs "${peer}:${remote}" "$mnt" -o ServerAliveInterval=15,ServerAliveCountMax=3,ConnectTimeout=10; then
+    # No reconnect — daemon dies cleanly on SSH drop
+    # auto_unmount — kernel removes the mountpoint when daemon exits (no stale FUSE hang)
+    # 20s×5 keepalive window (100s) — tolerates brief Tailscale hiccups before giving up
+    if sshfs "${peer}:${remote}" "$mnt" -o ServerAliveInterval=20,ServerAliveCountMax=5,ConnectTimeout=10,auto_unmount; then
         echo "[ts] mounted ${peer}:${remote:-\~} → $mnt"
     else
         echo "[ts] mount failed: ${peer}:${remote} → $mnt" >&2
