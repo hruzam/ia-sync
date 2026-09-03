@@ -218,7 +218,10 @@ def palette(screen, all_rows, sort_mode):
         cursor = max(0, min(cursor, len(rows) - 1)) if rows else 0
         draw(screen, rows, cursor, filter_text, expanded, marks, message, sort_mode)
         message = ""
-        key = screen.get_wch()
+        try:
+            key = screen.get_wch()
+        except KeyboardInterrupt:
+            return [], None, 1
 
         if key == curses.KEY_RESIZE:
             continue

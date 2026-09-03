@@ -2,7 +2,15 @@
 # =============================================================================
 # cs-palette.zsh — F: cold-start vault explorer (curses TUI, D1/D2/D3)
 #
-# Interface: cs-palette (no args)
+# Interface:
+#   cs-palette [--sort-date|--sort-name|--sort-mtime]
+#
+# Sort flags (also honoured via TEMPLE_SORT env var):
+#   --sort-date   filename-embedded YYYY-MM-DD, newest first (default)
+#   --sort-mtime  filesystem modification time, newest first
+#   --sort-name   alphabetical by filename
+#   Env var TEMPLE_SORT=date|mtime|name sets the default for this terminal.
+#   In TUI: press 's' to cycle through sort modes.
 #
 # Resolves the vault root via temple-project-map's `temple-project-root
 # reposoma` — the only baked literal in this whole tool is the folder name
@@ -34,4 +42,15 @@ if [[ ! -d "$vault" ]]; then
   exit 1
 fi
 
-exec python3 "${0:A:h}/cs-palette.py" --vault "$vault"
+# Pre-parse sort flag; TEMPLE_SORT env is read by cs-palette.py directly.
+sort_arg=""
+for _arg in "$@"; do
+  case "$_arg" in
+    --sort-date)  sort_arg="--sort date"  ;;
+    --sort-mtime) sort_arg="--sort mtime" ;;
+    --sort-name)  sort_arg="--sort name"  ;;
+  esac
+done
+unset _arg
+
+exec python3 "${0:A:h}/cs-palette.py" --vault "$vault" ${=sort_arg}

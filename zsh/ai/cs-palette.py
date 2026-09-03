@@ -26,6 +26,7 @@ q/Esc quits without printing anything.
 import argparse
 import curses
 import os
+import re
 import subprocess
 import sys
 import textwrap
@@ -36,15 +37,32 @@ import cs_vault
 def parse_args():
     parser = argparse.ArgumentParser(description="explore the cold-start vault")
     parser.add_argument("--vault", required=True, dest="vault_root", help="resolved _cold-start root")
+    parser.add_argument(
+        "--sort",
+        choices=["date", "mtime", "name"],
+        default=os.environ.get("TEMPLE_SORT", "date"),
+        help="sort: date = filename date newest-first (default), mtime = modification time, name = alpha; env TEMPLE_SORT overrides",
+    )
     return parser.parse_args()
 
 
-def load_rows(vault_root, archive_view):
+def extract_date(filename):
+    """Return the last YYYY-MM-DD found in filename, or '' if absent (sorts last)."""
+    matches = re.findall(r"\d{4}-\d{2}-\d{2}", filename)
+    return matches[-1] if matches else ""
+
+
+def load_rows(vault_root, archive_view, sort_mode):
     if archive_view:
         rows = cs_vault.list_state(vault_root, "archive")
     else:
         rows = cs_vault.list_state(vault_root, "card") + cs_vault.list_state(vault_root, "routine")
-    rows.sort(key=lambda row: row[2], reverse=True)
+    if sort_mode == "mtime":
+        rows.sort(key=lambda row: (row[2], row[0]), reverse=True)
+    elif sort_mode == "name":
+        rows.sort(key=lambda row: row[0].casefold())
+    else:  # date (default)
+        rows.sort(key=lambda row: (extract_date(row[0]), row[0].casefold()), reverse=True)
     return [{"filename": name, "fullpath": full, "mtime": mtime} for name, full, mtime in rows]
 
 
@@ -127,13 +145,13 @@ def d3_lines(row, width):
     return lines
 
 
-def draw(screen, rows, cursor, archive_view, message):
+def draw(screen, rows, cursor, archive_view, message, sort_mode):
     screen.erase()
     height, width = screen.getmaxyx()
 
-    hints = "↑↓ move · enter resume · e edit · r runbook · a archive-view · q quit"
+    hints = "↑↓ move · enter resume · e edit · r runbook · a archive-view · s sort · q quit"
     view_label = "archive" if archive_view else "card/ + routines/"
-    prefix = f"{len(rows)} cards · {view_label}"
+    prefix = f"{len(rows)} cards · {view_label} · sort:{sort_mode}"
     status = message if message else f"{prefix} · {hints}"
 
     segments = status.split(" · ")
@@ -220,7 +238,10 @@ def _open_in_editor(screen, path):
         return f"cs-palette: could not launch '{editor}': {error}"
 
 
-def palette(screen):
+_SORT_CYCLE = ["date", "mtime", "name"]
+
+
+def palette(screen, sort_mode):
     try:
         curses.curs_set(0)
     except curses.error:
@@ -232,11 +253,14 @@ def palette(screen):
     message = ""
 
     while True:
-        rows = load_rows(VAULT_ROOT, archive_view)
+        rows = load_rows(VAULT_ROOT, archive_view, sort_mode)
         cursor = max(0, min(cursor, len(rows) - 1)) if rows else 0
-        draw(screen, rows, cursor, archive_view, message)
+        draw(screen, rows, cursor, archive_view, message, sort_mode)
         message = ""
-        key = screen.get_wch()
+        try:
+            key = screen.get_wch()
+        except KeyboardInterrupt:
+            return None, 1
 
         if key == curses.KEY_RESIZE:
             continue
@@ -244,6 +268,10 @@ def palette(screen):
             cursor = max(0, cursor - 1)
         elif key == curses.KEY_DOWN:
             cursor = min(max(0, len(rows) - 1), cursor + 1)
+        elif key in ("s", "S"):
+            idx = _SORT_CYCLE.index(sort_mode)
+            sort_mode = _SORT_CYCLE[(idx + 1) % len(_SORT_CYCLE)]
+            cursor = 0
         elif key in ("a", "A"):
             archive_view = not archive_view
             cursor = 0
@@ -282,7 +310,7 @@ def palette(screen):
             return None, 1
 
 
-def run_on_tty():
+def run_on_tty(sort_mode):
     try:
         tty_fd = os.open("/dev/tty", os.O_RDWR)
     except OSError as error:
@@ -299,7 +327,7 @@ def run_on_tty():
         screen = curses.initscr()
         curses.noecho()
         curses.cbreak()
-        result = palette(screen)
+        result = palette(screen, sort_mode)
     finally:
         if screen is not None:
             try:
@@ -324,7 +352,7 @@ def main():
     global VAULT_ROOT
     arguments = parse_args()
     VAULT_ROOT = os.path.expanduser(arguments.vault_root)
-    resume, status = run_on_tty()
+    resume, status = run_on_tty(arguments.sort)
     if status == 0 and resume:
         print(resume)
     return status

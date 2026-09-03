@@ -236,7 +236,10 @@ def palette(screen, mail_rows, sort_mode):
         )
         cursor = max(0, min(cursor, len(rows) - 1)) if rows else 0
         draw(screen, rows, cursor, filter_text, expanded, active_view, marks, sort_mode)
-        key = screen.get_wch()
+        try:
+            key = screen.get_wch()
+        except KeyboardInterrupt:
+            return None, 1
 
         if key == curses.KEY_RESIZE:
             continue
