@@ -13,9 +13,9 @@ next:
 # HANDSHAKE — Claude ↔ Codex, one repo, no new mechanism
 
 Two runtimes co-architect in this repo. There is **no hook, no daemon, no notification
-bus** between them — deliberately. The handshake is three things: **mail by path,
-presence as the ring, and three meeting shapes.** Everything below already happens;
-this file only names it so a fresh seat need not rediscover it.
+bus** between them — deliberately. The handshake is three mechanisms: mail by path,
+presence as the ring, and the meeting shapes — four of them since r3. Everything below
+already happens; this file only names it so a fresh seat need not rediscover it.
 
 ## Presence = the ring
 
@@ -71,7 +71,7 @@ the ship (precedent: @Zenit → @Zenith, larva wall).
   will. One-shot relay instruments remaining on the Claude side: **@Vega (blind) and
   @Mirror (adversarial) only.**
 
-## The three meeting shapes
+## The meeting shapes (four since r3)
 
 **POINT** — one party leaves a pointer; nothing is owed back. For contract updates,
 courtesy notifications, mount changes. The receiver acts on their own clock.

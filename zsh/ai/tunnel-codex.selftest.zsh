@@ -221,6 +221,44 @@ check_exit "refuse-without-enable: status with no state file" 10
 run zsh "$wrapper" open
 check_exit "refuse-without-enable: open without --enable" 10
 
+# --- 2b. state-not-specified (Cartan safe-order fix, 2026-09-03): no --state and no
+# $TUNNEL_CODEX_STATE -> exit 13, creating NOTHING — no directory, no file, anywhere.
+# Run from a sentinel empty cwd so a stray relative-path write would be caught.
+sentinel_dir="$work_dir/sentinel-cwd"
+mkdir -p "$sentinel_dir"
+
+(
+  cd "$sentinel_dir"
+  unset TUNNEL_CODEX_STATE
+  set +e
+  LAST_OUTPUT="$(zsh "$wrapper" open --enable 2>&1)"
+  LAST_EXIT=$?
+  set -e
+  print -- "$LAST_EXIT"
+  print -- "$LAST_OUTPUT"
+) > "$work_dir/sentinel.result" 2>&1 || true
+
+{
+  read -r sentinel_exit
+  sentinel_output="$(cat)"
+} < "$work_dir/sentinel.result"
+
+if (( sentinel_exit != 13 )); then
+  print -u2 -- "not ok - state-not-specified: no --state, no env -> exit 13 (got $sentinel_exit)"
+  print -u2 -- "  output: $sentinel_output"
+  (( fail_count += 1 ))
+else
+  print -- "ok - state-not-specified: no --state, no env -> exit 13"
+  (( ok_count += 1 ))
+fi
+
+assert_contains "state-not-specified: message names --state flag" "$sentinel_output" "--state"
+assert_contains "state-not-specified: message names TUNNEL_CODEX_STATE env var" "$sentinel_output" "TUNNEL_CODEX_STATE"
+
+sentinel_entries="$(find "$sentinel_dir" -mindepth 1 2>/dev/null | wc -l | tr -d ' ')"
+assert_true "state-not-specified: created nothing in sentinel cwd" \
+  "$([[ "$sentinel_entries" == "0" ]] && echo true || echo false)"
+
 # --- 3. --sandbox enum validation -----------------------------------------------
 rm -f -- "$state_file"
 
@@ -231,6 +269,10 @@ assert_true "invalid --sandbox created no state file" "$([[ -f "$state_file" ]] 
 # --- 4. initialize handshake + preflight parse ONLY — NO thread/start (open) ----
 # Fix (2026-09-03, t3 FAIL): open no longer calls thread/start. It preflights and
 # persists threadId: null; the thread is born on the first send.
+# Lane (b), state-path hardening: every call from here through section 7's close uses
+# NO --state flag at all — state selection flows entirely through the exported
+# $TUNNEL_CODEX_STATE env var (set at top of this file), proving the full
+# open->send->steer->read->resume->close chain works on the env-var mechanism alone.
 rm -f -- "$state_file"
 
 run zsh "$wrapper" open --enable --sandbox read-only
@@ -308,6 +350,9 @@ cat > "$regression_state" <<JSON
 }
 JSON
 
+# Lane (c), state-path hardening: this call uses the explicit --state flag (its path
+# differs from $TUNNEL_CODEX_STATE, which stays exported at the outer state_file the
+# whole time) — proving --state still wins over the env var and still works standalone.
 export FIXTURE_NO_ROLLOUT=1
 run zsh "$wrapper" resume --state "$regression_state"
 unset FIXTURE_NO_ROLLOUT

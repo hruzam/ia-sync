@@ -68,21 +68,38 @@
 #                   Requires a threadId already born (exit 12 otherwise).
 #   close           LOCAL ONLY — removes tunnel.state.json; re-arms the Law 2.4 gate.
 #                   RESIDUE (v0, honest): send's thread birth leaves ~/.codex/thread-writer-locks/<threadId>.lock;
-#                   local-only close does not clean codex-side state — manual cleanup or Cartan-advised v1
-#                   mechanism. Also: resumed-steer only (no mid-stream steer across processes) — v1 resident-process
-#                   candidate.
+#                   local-only close does not clean codex-side state.
+#                   Lock cleanup verdict (@Cartan 2026-09-03): NEVER unlink
+#                   ~/.codex/thread-writer-locks/* — Codex-owned state, unlink can race
+#                   another client; Codex has coordinated stale-lock cleanup. To retire a
+#                   stored thread deliberately: supported 'codex archive' / 'codex delete'
+#                   as an explicit operator lifecycle action — never hidden cleanup, never
+#                   manual rm.
+#                   Also: resumed-steer only (no mid-stream steer across processes) — v1
+#                   resident-process candidate.
 #   status          LOCAL ONLY — prints tunnel.state.json (refused per the gate below
 #                   if the shim was never enabled — Law 2.4 applies to every verb).
 #
 # FLAGS
 #   --enable              required on the very first `open` (Law 2.4)
-#   --state <path>        override the state file (default: TUNNEL_CODEX_STATE below)
+#   --state <path>        state file path — see STATE PATH SELECTION below
 #   --sandbox <value>     open only; one of the three CLI-form values above (curvature 1)
 #   --model <id>          open only; omit to let codex pick its entitled default
 #
+# STATE PATH SELECTION (hardened 2026-09-03 — Cartan safe-order fix, resurrection trap
+#   removed): there is NO hardcoded default state path anymore. Precedence, explicit
+#   only:
+#     1. --state <path>          (flag wins)
+#     2. $TUNNEL_CODEX_STATE     (env var, if flag absent)
+#     3. neither given -> exit 13 (state-not-specified) — CREATES NOTHING: no directory,
+#        no file, not even the parent tree. The error names both mechanisms above.
+#   Rationale: the old baked-in default path
+#   (~/unikuklatrix/nablarva/.dev/session/toolbox-termbrana-03-tunnel/tunnel.state.json)
+#   let any stray invocation silently resurrect/recreate session-bed state nobody asked
+#   for. State selection is now always an explicit operator/agent decision.
+#
 # ENV
-#   TUNNEL_CODEX_STATE     default: ~/unikuklatrix/nablarva/.dev/session/
-#                          toolbox-termbrana-03-tunnel/tunnel.state.json
+#   TUNNEL_CODEX_STATE     state file path (see STATE PATH SELECTION above) — no default
 #   TUNNEL_CODEX_BIN       codex binary name/path (default: "codex", resolved via PATH —
 #                          this is how the fixture selftest substitutes a fake binary)
 #   TUNNEL_CODEX_TIMEOUT   seconds to wait per JSON-RPC response / turn/completed
@@ -93,6 +110,8 @@
 #   10  no-enable          — Law 2.4 refusal: verb needs the state file, it is absent,
 #                            and (for `open`) --enable was not given
 #   11  usage              — bad/missing args, unknown verb, invalid --sandbox value
+#   13  state-not-specified — neither --state nor $TUNNEL_CODEX_STATE was given; see
+#                            STATE PATH SELECTION above. Nothing is created.
 #   20  spawn-fail         — the codex binary would not start, or python3 is missing
 #   30  protocol-error     — JSON-RPC transport broke: bad JSON, EOF, timeout, error reply
 #   40  turn-error         — a turn ended non-"completed", or steer had no turn to target
@@ -129,19 +148,18 @@ case "$verb" in
   *) _usage "unknown verb '$verb' — see this file's header for the verb list (exit 11)" ;;
 esac
 
-# --- state path resolution (flag wins over env wins over default) ---
-state_file="${TUNNEL_CODEX_STATE:-$HOME/unikuklatrix/nablarva/.dev/session/toolbox-termbrana-03-tunnel/tunnel.state.json}"
-
 # --- arg parsing: pull known flags, collect the rest as positional ---
 enable_flag=0
 sandbox_val="read-only"
 model_val=""
+state_flag=""
+state_flag_given=0
 positional=()
 
 while (( $# )); do
   case "$1" in
     --enable) enable_flag=1; shift ;;
-    --state) (( $# >= 2 )) || _usage "--state requires a path (exit 11)"; state_file="$2"; shift 2 ;;
+    --state) (( $# >= 2 )) || _usage "--state requires a path (exit 11)"; state_flag="$2"; state_flag_given=1; shift 2 ;;
     --sandbox) (( $# >= 2 )) || _usage "--sandbox requires a value (exit 11)"; sandbox_val="$2"; shift 2 ;;
     --model) (( $# >= 2 )) || _usage "--model requires a value (exit 11)"; model_val="$2"; shift 2 ;;
     --) shift; positional+=("$@"); break ;;
@@ -149,6 +167,18 @@ while (( $# )); do
     *) positional+=("$1"); shift ;;
   esac
 done
+
+# --- state path resolution (hardened 2026-09-03 — no default, see STATE PATH
+# SELECTION in the header): --state flag wins over $TUNNEL_CODEX_STATE; if neither is
+# given, refuse cleanly (exit 13) and create nothing — no directory, no file. ---
+if (( state_flag_given )); then
+  state_file="$state_flag"
+elif [[ -n "${TUNNEL_CODEX_STATE:-}" ]]; then
+  state_file="$TUNNEL_CODEX_STATE"
+else
+  print -u2 -- "tunnel-codex: refused — no state path given; pass --state <path> or set \$TUNNEL_CODEX_STATE (exit 13, state-not-specified)"
+  exit 13
+fi
 
 case "$verb" in
   send|steer)

@@ -38,6 +38,11 @@ EXIT CODES (must match tunnel-codex.zsh's contract exactly — see that file's h
   12 no-thread (verb needs a live threadId — state["threadId"] is null because no
      'send' has run yet; thread birth happens on first send, not on open — see
      THREAD BIRTH note below)
+  13 state-not-specified (no --state and no $TUNNEL_CODEX_STATE — enforced by the
+     tunnel-codex.zsh gate before this script is even invoked; see that file's header,
+     STATE PATH SELECTION. --state is `required=True` here as the second line of
+     defense, but the zsh wrapper is the one that names both mechanisms and refuses
+     cleanly with nothing created.)
 
 THREAD BIRTH (fix, 2026-09-03, t3 FAIL evidence): on codex-cli 0.152.1, a zero-turn
 `thread/start` allocates a thread id + writer-lock but writes NO rollout file — the
@@ -68,6 +73,11 @@ EXIT_PROTOCOL_ERROR = 30
 EXIT_TURN_ERROR = 40
 EXIT_RECONCILE_MISMATCH = 50
 EXIT_NO_THREAD = 12
+# Reserved, not raised from here: the zsh wrapper (tunnel-codex.zsh) refuses with this
+# code BEFORE ever invoking this script if neither --state nor $TUNNEL_CODEX_STATE was
+# given — see that file's STATE PATH SELECTION section. Kept here so the two exit-code
+# tables never drift out of sync.
+EXIT_STATE_NOT_SPECIFIED = 13
 
 # CLI-form values only (curvature 1, verdict file) — camelCase docs-prose values are
 # deliberately NOT accepted here; 0.152.1 rejects them at the app-server boundary.
@@ -379,6 +389,12 @@ def load_state(path):
 
 
 def save_state(path, state):
+    # Audited 2026-09-03 (Cartan safe-order fix): `path` here is always the caller's
+    # explicitly provided --state/TUNNEL_CODEX_STATE value — argparse requires --state
+    # on every verb and the zsh wrapper refuses (exit 13) before ever invoking this
+    # script if neither --state nor $TUNNEL_CODEX_STATE was given. This makedirs may
+    # therefore only ever create the parent of a path the caller named on purpose; it
+    # must never run against a hardcoded/default path.
     os.makedirs(os.path.dirname(path) or ".", exist_ok=True)
     tmp = path + ".tmp"
     with open(tmp, "w", encoding="utf-8") as f:

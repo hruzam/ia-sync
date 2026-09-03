@@ -219,3 +219,6 @@ alias exp-list='_exp_list'
 alias exp-run='_exp_run'
 alias ox-alpha='_exp_run ox-alpha'
 alias ox-alpha-help='_exp_run ox-alpha --help'
+
+# tunnel (TABLE shape) — operator-gated, see raw.guides/tunnel/GUIDE.md
+alias tun='zsh ~/.config/zsh/ai/tunnel-codex.zsh'
