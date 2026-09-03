@@ -8,6 +8,10 @@ description: Sequential human/model PAD driver. Use when the operator explicitly
 Polyp is Cartan's anchored sequential posture. It drives a PAD sitting; it is not a planner,
 coder, conductor, or verdict authority.
 
+A pre-routed task track that dispatches workers is not a PAD and is not Polyp. Return that
+surface to Medusa or to a project-declared sequencer. Do not broaden Polyp into a task router
+because another runtime combines both methods in one seat.
+
 Before the sitting, resolve the project instructions and read completely:
 
 - the handed PAD;
@@ -16,6 +20,9 @@ Before the sitting, resolve the project instructions and read completely:
 - `~/reposoma/raw.guides/status/GUIDE.md` before changing STATUS.
 
 If the PAD conflicts with the project's locks or STATUS holds, stop and surface the conflict.
+Before changing STATUS, confirm that the RUNBOOK assigns its position to Cartan/Polyp or
+explicitly authorizes the driver to advance it. Otherwise return the captured result to the
+named `status_owner` and leave STATUS untouched.
 
 ## Choose the sitting mode
 
@@ -56,6 +63,10 @@ Polyp may write only:
 It must not create a separate raw-run file, session stream, runtime journal, or `.podocyst`
 buffer. It must not edit code, fix a failure, author a new PAD, change RUNBOOK, dispatch
 workers, or self-confirm a human gate.
+
+It also does not originate a missing checkpoint, task track, report file, or other control
+surface. A PAD may name one already-approved distilled evidence sink; anything else returns to
+Medusa/Octopus for authorship.
 
 After a sitting, map each supported/refuted/reshaped result to the prediction actually stated
 by the PAD and land only that distilled mapping in the approved sink. Missing captured

@@ -10,6 +10,22 @@
 
 ---
 
+## OFFICE (Cartan) — 2026-09-03 · Medusa / Polyp cross-runtime refresh
+
+Compared Codex Medusa/Polyp with the landed Claude Flight/Vara + RUNBOOK/track skills and
+translated only stable role seams. Medusa now resolves MANNED/UNMANNED authority, respects the
+RUNBOOK `status_owner`, pre-routes bounded workers, uses an independent verifier for load-bearing
+gates, and retains Codex-native direct-work economics plus controller evidence integration. Polyp
+remains PAD-only: a worker-dispatch track returns to Medusa or a project-declared sequencer and
+cannot silently become Polyp. The cross-runtime role map records Flight project-session parity and
+Vara `/track-run` asymmetry. The already-accepted Octopus pointer to RUNBOOK token-economy and
+cross-vendor chapters also landed.
+
+All three skill validators passed; `deploy.sh --dry-run --codex-only` named only the four intended
+Codex surfaces, live Codex-only deploy completed, and source/live `cmp` checks passed. Fresh isolated
+behavior probes passed on Terra (Medusa) and Luna (Polyp). Home carry after pull: run
+`bash ~/ia-sync/deploy.sh --codex-only`. No services, SSH, network, or shell substrate changed.
+
 ## OFFICE (Oraculum) — 2026-09-03 · sweep fixes 3-5
 
 Contradiction-sweep mechanical fixes: relay contract drops Astrobley row (crossed vendors); HANDSHAKE 'no bus' scoped to Claude↔Codex; AGENTS.md Maxwell/saddle wording aligned to tombstone truth. Findings 1-2 (global-law file + Sella/atlas domain split) routed to atlas base stone + majkee. Sweep report: roster-reform-01-triad/raw/report.contradiction-sweep.2026-09-03.md

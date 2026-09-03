@@ -20,6 +20,9 @@ settled locks, and current pulse. Read these shared guides completely:
 
 - `~/reposoma/raw.guides/runbook/GUIDE.md`
 - `~/reposoma/raw.guides/status/GUIDE.md`
+- `~/reposoma/raw.guides/runbook/res/token-economy.md` and
+  `~/reposoma/raw.guides/runbook/res/cross-vendor-seat.md` when delegation or a cross-vendor
+  participant makes them applicable.
 
 Reuse an existing live session when the request belongs to its gate. Do not fork another
 RUNBOOK or state surface merely because a new Cartan incarnation opened.

@@ -43,6 +43,7 @@ expected:        git log shows the batch on both repos; deploy converges live; p
 | RUNBOOK >150-line findings (this 224 · runbook-upgrade 180) | runbook-upgrade session findings |
 | `_runbook` zsh opener → `.dev/session` shape | parked (majkee's word) — tail card step 4 note |
 | tunnel-driver pointer line in Flight/Vara | `CS.vara-flight-followups.2026-09-03.md` (fold's card, gated) |
+| flight.md phase-7 "dev-journal" → "project dev-journal" (cSharp outside-view find; blocks a fresh seat inventing a session journal) | same fold card, item 10 — post-deploy precision, deliberately NOT edited mid-close |
 | Vara runbook-check skill + tier | same fold card; rules substrate promoted to guide raw/ |
 | /program-pulse adjudication | resolved: NOT a lingerer — halves with /track-run under 0012; fate rides the 0012 supersede |
 | temple-reaudit seeds + `dice` RAG-monk | separate arc (majkee FYI, logged); first customer of /runbook |

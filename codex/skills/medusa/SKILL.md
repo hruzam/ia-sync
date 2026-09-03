@@ -13,6 +13,16 @@ Medusa receives a live session from Octopus, works inside its gate, and keeps th
 position current. It may implement directly or coordinate bounded workers. It does not lock
 architecture and does not silently widen the RUNBOOK.
 
+## Resolve presence before authority
+
+- **MANNED:** @majkee is driving the session turn by turn. Medusa may execute and record an
+  explicit live gavel inside the fixed gate; it never infers one. A ruling that changes the gate
+  still closes this session and returns to Octopus for a numbered sibling.
+- **UNMANNED:** no human gavel is present. Medusa may draft alternatives but must not lock canon,
+  project flags, architecture, or destructive scope; it returns that curvature upward.
+
+When presence is unclear, treat the session as UNMANNED.
+
 ## Mount the live edge
 
 Resolve the repository instructions, host, worktree, and project contract. Then read:
@@ -25,6 +35,9 @@ Resolve the repository instructions, host, worktree, and project contract. Then 
 If RUNBOOK or STATUS is missing, their gates disagree, or STATUS does not identify a safe
 next action, stop and return the session to Octopus. Do not invent the missing plan.
 
+Confirm the RUNBOOK's `status_owner`. If another seat owns STATUS, work only as the bounded
+executor it named and return evidence to that owner; do not create a competing position.
+
 RUNBOOK is fixed. Medusa never edits it. STATUS is the sole present position for the gate.
 
 ## Work
@@ -36,9 +49,19 @@ RUNBOOK or materially saves the working head's context:
 - prefer implementer/Terra for coherent scoped changes and worker/Luna for clear repetitive
   execution;
 - use researcher for read-heavy current evidence;
+- use verifier as fresh eyes for a load-bearing acceptance gate; the verifier never fixes;
 - keep one writer for shared conclusions and require disjoint ownership before parallel
   writes;
-- integrate returned evidence itself rather than treating an agent report as proof.
+- give every worker an exact outcome, file ownership, constraints, expected return, and
+  verification boundary;
+- integrate returned evidence and inspect the relevant artifacts rather than treating a report
+  as proof.
+
+Choose direct work versus delegation by task shape and measured cost. Do not spawn a worker for
+a tiny exact action merely to imitate another runtime; do delegate when isolation, parallelism,
+independent verification, or preservation of the working head materially earns the boot cost.
+Any task line handed to a worker is pre-routed by Medusa or the RUNBOOK. A missing route returns
+to Medusa; a worker or sequential driver never classifies it on the fly.
 
 Before a non-idempotent or externally visible action, set STATUS `in_flight` and its recovery
 probe. After verification, move the checkpoint, clear `in_flight`, and publish exactly one
@@ -54,8 +77,10 @@ Stop and return to Octopus when progress requires any of these:
 - a contradiction between RUNBOOK, project locks, and observed behavior;
 - three failed attempts at the same bounded line, or no safe recovery probe.
 
-Do not spawn a Sol adviser to bypass this seam. Update STATUS with the evidence-backed hold,
-set `next` to the exact action by which @majkee wakes Cartan in Octopus posture, then stop.
+When UNMANNED, do not spawn a Sol adviser to bypass this seam. When MANNED, an adviser may supply
+a second view, but only @majkee's explicit ruling resolves the curvature. Update STATUS with the
+evidence-backed hold, set `next` to the exact action by which @majkee wakes Cartan in Octopus
+posture, then stop.
 
 ## Completion
 

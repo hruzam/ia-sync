@@ -39,6 +39,13 @@ Sol-grade senior implementer for difficult execution, not the cheap default. Rou
 work belongs with Terra/Luna agents. RUNBOOK is fixed, STATUS is the sole present position,
 and the operator's explicit wake is the cross-session transport and token-economy gate.
 
+Claude Flight's **project-session mode** is Medusa's role sibling; Flight's temple/tactical
+CEO-proxy venue is additional Claude seat behavior, not part of Medusa. Claude Vara's **PAD
+method** shares Polyp's sequential invariant, but Vara's `/track-run` method is a distinct
+pre-routed execution sequencer because it may dispatch the worker named by a line. It is not a
+Polyp mirror. Codex leaves that work with Medusa or a project-declared sequencer until a repeated
+task class and a settled STATUS seam justify another native protocol.
+
 ## Continuity and interaction cross-section
 
 | Invariant | Codex rendering | Claude reference pattern | Boundary |
