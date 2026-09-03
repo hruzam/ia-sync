@@ -34,7 +34,8 @@ EXIT CODES (must match tunnel-codex.zsh's contract exactly — see that file's h
   40 turn-error (turn/start|steer returned an error, the turn ended non-"completed",
      or steer had no recorded turn id to target)
   50 reconcile-mismatch (thread/read(includeTurns=true) does not contain the turn we
-     just drove, or disagrees with what turn/completed reported)
+     just drove, or disagrees with what turn/completed reported; `ask` also raises this
+     when its streamed agent text and its thread/read read-back text disagree)
   12 no-thread (verb needs a live threadId — state["threadId"] is null because no
      'send' has run yet; thread birth happens on first send, not on open — see
      THREAD BIRTH note below)
@@ -54,6 +55,33 @@ persists `threadId: null`. The thread is born inside `send`'s own connection, in
 same process as the `turn/start` that immediately follows it (Cartan's proven
 continuous sequence) — so a rollout always exists before any other verb can try to
 resume it.
+
+STDOUT PURITY (Sella L4 / one-return-channel law, added 2026-09-03): every narrative
+print in this file (open's "enabled"/"resumed" lines, resume's liveness line) goes to
+stderr. Only `send`/`ask`/`steer`'s driven agent-message text, `read`'s raw JSON, and
+the trailing `[usage: {...}]` tail reach stdout. `close`/`status` are zsh-local (see
+tunnel-codex.zsh) and follow the same rule there.
+
+USAGE TAIL (added 2026-09-03): `turn/completed` itself carries no usage/token fields on
+this pinned schema (cross-checked against a local, zero-quota
+`codex app-server generate-json-schema --experimental` run, v2/TurnCompletedNotification
+— `{threadId, turn}` only, and `Turn` has no usage field). The real token-usage carrier
+is the sibling notification `thread/tokenUsage/updated`
+(`{threadId, turnId, tokenUsage: {last, total, modelContextWindow}}`,
+v2/ThreadTokenUsageUpdatedNotification) — previously dropped by drive_turn's "every
+other notification ... is dropped" catch-all. `drive_turn` now records the latest one
+seen for this thread before `turn/completed` fires and returns it; `send`/`ask`/`steer`
+append it as the final stdout line via `_format_usage_tail`. If the app-server never
+emits one for a turn, the tail is `[usage: unavailable]` and a stderr note names why —
+never silently omitted (codex-run.zsh convention, same file family).
+
+MODEL STAMP (fix, 2026-09-03): `open --enable`'s zero-turn preflight already called
+`model/list` but discarded the result, so a caller who omitted `--model` got a state
+file (and banner) stamped `model=None`. `model/list` returns `{data: [Model, ...]}`
+where each `Model` carries `isDefault` (v2/ModelListResponse, v2/Model in the same
+generated schema) — `open` now resolves the account default from that response
+(falling back to `data[0]` if no entry is flagged default) whenever `--model` is not
+given, and persists/prints the resolved id instead of `None`.
 """
 
 import argparse
@@ -313,7 +341,11 @@ class Session:
         """turn/start (expected_turn_id is None) or turn/steer (expected_turn_id given
         — the ID of the turn this same shim already recorded), then consume streamed
         notifications until turn/completed for this thread. Returns
-        (turn_id, completed_turn_dict, final_agent_text)."""
+        (turn_id, completed_turn_dict, final_agent_text, token_usage_or_None).
+        token_usage is the most recent `thread/tokenUsage/updated` notification body
+        seen for this thread before turn/completed fired (turn/completed itself carries
+        no usage fields on the pinned schema — see USAGE TAIL note in this file's
+        header); None if the app-server never emitted one for this turn."""
         user_input = [{"type": "text", "text": text}]
         if expected_turn_id is None:
             rid = self.t.request("turn/start", {"threadId": thread_id, "input": user_input})
@@ -330,6 +362,7 @@ class Session:
 
         agent_texts = []
         completed_turn = None
+        token_usage = None
         deadline = time.time() + self.timeout
 
         while completed_turn is None:
@@ -348,10 +381,12 @@ class Session:
                 item = params.get("item", {}) or {}
                 if item.get("type") == "agentMessage" and "text" in item:
                     agent_texts.append(item["text"])
+            elif method == "thread/tokenUsage/updated" and params.get("threadId") == thread_id:
+                token_usage = params.get("tokenUsage")
             elif method == "turn/completed" and params.get("threadId") == thread_id:
                 completed_turn = params.get("turn", {})
-            # every other notification (turn/started, item/started, token-usage, ...)
-            # is dropped — v0 only needs the final read-back, not the live stream.
+            # every other notification (turn/started, item/started, ...) is dropped —
+            # v0 only needs the final read-back, not the live stream.
 
         if completed_turn.get("id") != turn_id:
             raise TurnError(f"turn/completed reported id={completed_turn.get('id')!r}, expected {turn_id!r}")
@@ -362,7 +397,7 @@ class Session:
             )
 
         final_text = agent_texts[-1] if agent_texts else ""
-        return turn_id, completed_turn, final_text
+        return turn_id, completed_turn, final_text, token_usage
 
     def reconcile(self, thread_id, turn_id):
         """thread/read(includeTurns=true) durable-reconciliation channel (verdict file)."""
@@ -379,6 +414,47 @@ class Session:
                 f"thread/read shows turn {turn_id} status={match.get('status')!r}, expected 'completed'"
             )
         return result
+
+
+def _default_model_id(models_result):
+    """Resolve the account default model id from a model/list result
+    (`{data: [Model, ...]}`, each Model optionally carrying `isDefault`), falling back
+    to the first listed model if none is flagged default. Returns None if data is
+    empty/absent — callers still stamp state honestly rather than fabricate an id."""
+    data = (models_result or {}).get("data") or []
+    for model in data:
+        if model.get("isDefault"):
+            return model.get("id")
+    return data[0].get("id") if data else None
+
+
+def _extract_agent_text(read_result, turn_id):
+    """Pull the last agentMessage item's text for turn_id out of a
+    thread/read(includeTurns=true) result — the 'ask' verb's read-back side of its
+    streamed-vs-read-back verification. Returns None if the turn isn't present (should
+    not happen here: reconcile() already validated presence before this is called)."""
+    thread = read_result.get("thread", {})
+    turns = thread.get("turns", [])
+    match = next((t for t in turns if t.get("id") == turn_id), None)
+    if match is None:
+        return None
+    items = match.get("items", []) or []
+    texts = [item.get("text", "") for item in items if item.get("type") == "agentMessage"]
+    return texts[-1] if texts else ""
+
+
+def _format_usage_tail(usage):
+    """Render the final `[usage: {...}]` stdout line (codex-run.zsh convention). Never
+    silent on absence: emits a stderr note explaining why before falling back to
+    '[usage: unavailable]'."""
+    if usage:
+        return "[usage: " + json.dumps(usage, separators=(",", ":"), ensure_ascii=False) + "]"
+    print(
+        "tunnel-codex.py: no thread/tokenUsage/updated notification observed for this "
+        "turn before turn/completed — usage unavailable",
+        file=sys.stderr,
+    )
+    return "[usage: unavailable]"
 
 
 def load_state(path):
@@ -423,26 +499,33 @@ def cmd_open(args):
             session = Session(transport)
             session.initialize()
             session.account_read()
-            session.model_list()
+            models = session.model_list()
         finally:
             transport.close()
+        # Model stamp fix (2026-09-03): resolve the account default from model/list
+        # instead of discarding it — args.model still wins when the caller passed one.
+        resolved_model = args.model or _default_model_id(models)
         state = {
             "enabled": True,
             "threadId": None,
             "lastTurnId": None,
-            "model": args.model,
+            "model": resolved_model,
             "sandbox": args.sandbox,
             "created": now_iso(),
         }
         save_state(args.state, state)
         print(
             f"open: enabled (model={state['model']}, sandbox={state['sandbox']}); "
-            "no thread yet — thread will be born on first send"
+            "no thread yet — thread will be born on first send",
+            file=sys.stderr,
         )
         return
 
     if state.get("threadId") is None:
-        print("open: already enabled; no thread yet — thread will be born on first send")
+        print(
+            "open: already enabled; no thread yet — thread will be born on first send",
+            file=sys.stderr,
+        )
         return
 
     # An existing, already-born thread: liveness-probe it (unchanged behavior).
@@ -453,7 +536,10 @@ def cmd_open(args):
         session.initialize()
         resumed = session.thread_resume(state["threadId"])
         thread = resumed.get("thread", {})
-        print(f"open: resumed existing thread {state['threadId']} (status={thread.get('status')})")
+        print(
+            f"open: resumed existing thread {state['threadId']} (status={thread.get('status')})",
+            file=sys.stderr,
+        )
     finally:
         transport.close()
 
@@ -494,13 +580,14 @@ def cmd_send(args):
             thread_id = state["threadId"]
             session.thread_resume(thread_id)
         thread_id = state["threadId"]
-        turn_id, turn, text = session.drive_turn(thread_id, args.text)
+        turn_id, turn, text, usage = session.drive_turn(thread_id, args.text)
         session.reconcile(thread_id, turn_id)
     finally:
         transport.close()
     state["lastTurnId"] = turn_id
     save_state(args.state, state)
     print(text)
+    print(_format_usage_tail(usage))
 
 
 def cmd_steer(args):
@@ -514,13 +601,68 @@ def cmd_steer(args):
         session = Session(transport)
         session.initialize()
         session.thread_resume(thread_id)
-        turn_id, turn, text = session.drive_turn(thread_id, args.text, expected_turn_id=state["lastTurnId"])
+        turn_id, turn, text, usage = session.drive_turn(
+            thread_id, args.text, expected_turn_id=state["lastTurnId"]
+        )
         session.reconcile(thread_id, turn_id)
     finally:
         transport.close()
     state["lastTurnId"] = turn_id
     save_state(args.state, state)
     print(text)
+    # Kept consistent with send/ask under the one-return-channel law: steer drives a
+    # turn the same way send does, so it gets the same usage tail even though it isn't
+    # separately enumerated in the send/ask/read stdout list.
+    print(_format_usage_tail(usage))
+
+
+def cmd_ask(args):
+    """send + reconcile in one call: performs the full send (thread birth or resume),
+    drives the turn, then thread/read(includeTurns=true) reconciliation, and VERIFIES
+    the streamed agent text matches the read-back text for that turn. On match: prints
+    the verified text + usage tail to stdout, exit 0. On mismatch: raises
+    ReconcileMismatch (exit 50) with both texts named on stderr — never silently picks
+    one. Same Law 2.4 gates as every other verb (enforced by the caller before this
+    function runs): no auto-enable, no state-path default."""
+    state = _require_state(args)
+    transport = AppServerTransport()
+    transport.start()
+    try:
+        session = Session(transport)
+        session.initialize()
+        if state.get("threadId") is None:
+            # Thread birth — same continuous thread/start -> turn/start sequence as
+            # cmd_send (see THREAD BIRTH note in this file's header).
+            start = session.thread_start(model=state.get("model"), sandbox=state.get("sandbox", "read-only"))
+            thread = start.get("thread", {})
+            thread_id = thread.get("id")
+            if not thread_id:
+                raise ProtocolError(f"thread/start did not return a thread id: {start}")
+            state["threadId"] = thread_id
+            state["model"] = start.get("model") or state.get("model")
+            state["sandbox"] = start.get("sandbox") or state.get("sandbox")
+        else:
+            thread_id = state["threadId"]
+            session.thread_resume(thread_id)
+        thread_id = state["threadId"]
+        turn_id, turn, streamed_text, usage = session.drive_turn(thread_id, args.text)
+        read_result = session.reconcile(thread_id, turn_id)
+    finally:
+        transport.close()
+
+    readback_text = _extract_agent_text(read_result, turn_id)
+
+    state["lastTurnId"] = turn_id
+    save_state(args.state, state)
+
+    if streamed_text != readback_text:
+        raise ReconcileMismatch(
+            f"ask verify failed for turn {turn_id} — streamed and read-back text "
+            f"disagree: streamed={streamed_text!r} read-back={readback_text!r}"
+        )
+
+    print(streamed_text)
+    print(_format_usage_tail(usage))
 
 
 def cmd_read(args):
@@ -549,7 +691,7 @@ def cmd_resume(args):
     finally:
         transport.close()
     thread = result.get("thread", {})
-    print(f"resume: thread {thread_id} status={thread.get('status')}")
+    print(f"resume: thread {thread_id} status={thread.get('status')}", file=sys.stderr)
 
 
 def build_parser():
@@ -571,6 +713,11 @@ def build_parser():
     p_steer.add_argument("text")
     p_steer.add_argument("--state", required=True)
     p_steer.set_defaults(func=cmd_steer)
+
+    p_ask = sub.add_parser("ask")
+    p_ask.add_argument("text")
+    p_ask.add_argument("--state", required=True)
+    p_ask.set_defaults(func=cmd_ask)
 
     p_read = sub.add_parser("read")
     p_read.add_argument("--state", required=True)

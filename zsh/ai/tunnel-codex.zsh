@@ -50,8 +50,18 @@
 #                   SAME connection (thread birth), persisting the new threadId. If a
 #                   threadId is already stored: thread/resume then turn/start. Either
 #                   way: blocks for turn/completed; reconciles via
-#                   thread/read(includeTurns=true); prints the final agent-message text;
-#                   records the turn id as the new steer target.
+#                   thread/read(includeTurns=true); prints the final agent-message text
+#                   + a trailing `[usage: {...}]` line; records the turn id as the new
+#                   steer target.
+#   ask <text>      send + reconcile in one call, VERIFIED: performs the full send
+#                   (thread birth or resume, same as 'send'), then
+#                   thread/read(includeTurns=true) reconciliation, then compares the
+#                   streamed agent text against the read-back text for that turn. On
+#                   match: prints the verified text + `[usage: {...}]` tail to stdout,
+#                   exit 0. On mismatch: exit 50, both texts named on stderr — never
+#                   silently picks one. Same Law 2.4 gates as every other verb: does
+#                   NOT auto-enable (exit 10 without a state file; exit 13 without a
+#                   state path).
 #   steer <text>    turn/steer(expectedTurnId = last recorded turn id) — steers the turn
 #                   THIS shim itself most recently drove. Requires a threadId already
 #                   born (exit 12 "no thread yet" otherwise — run send first). KNOWN v0
@@ -80,11 +90,21 @@
 #   status          LOCAL ONLY — prints tunnel.state.json (refused per the gate below
 #                   if the shim was never enabled — Law 2.4 applies to every verb).
 #
+# STDOUT PURITY (Sella L4 / one-return-channel law, added 2026-09-03): all
+#   narrative/banner/progress output (open:/close:/status:/resume: messages) goes to
+#   STDERR. STDOUT carries ONLY the driven agent-message text (send/ask/steer), read's
+#   raw JSON, and the trailing `[usage: {...}]` line send/ask/steer append after it.
+#   close and status print nothing to stdout at all (their content is diagnostic, not a
+#   result) — human UX is unaffected since a terminal shows stderr inline anyway. Exit
+#   codes are unchanged by this; only the fd each message lands on moved.
+#
 # FLAGS
 #   --enable              required on the very first `open` (Law 2.4)
 #   --state <path>        state file path — see STATE PATH SELECTION below
 #   --sandbox <value>     open only; one of the three CLI-form values above (curvature 1)
-#   --model <id>          open only; omit to let codex pick its entitled default
+#   --model <id>          open only; omit to have `open` resolve+stamp the account's
+#                         `isDefault` model from model/list (fix, 2026-09-03 — this used
+#                         to stamp state/banner with a literal `model=None`)
 #
 # STATE PATH SELECTION (hardened 2026-09-03 — Cartan safe-order fix, resurrection trap
 #   removed): there is NO hardcoded default state path anymore. Precedence, explicit
@@ -116,7 +136,10 @@
 #   30  protocol-error     — JSON-RPC transport broke: bad JSON, EOF, timeout, error reply
 #   40  turn-error         — a turn ended non-"completed", or steer had no turn to target
 #   50  reconcile-mismatch — thread/read(includeTurns=true) disagrees with what
-#                            turn/completed just reported
+#                            turn/completed just reported; also `ask`'s own verify step
+#                            (streamed agent text != thread/read read-back text for the
+#                            same turn) — both texts named on stderr, never silently
+#                            picks one
 #   12  no-thread          — read/resume/steer called before any thread has been born
 #                            (state threadId is null); run 'send' first — thread birth
 #                            happens on first send, not on open (see THREAD BIRTH above)
@@ -137,14 +160,14 @@ _usage() {
 }
 
 if (( $# == 0 )); then
-  _usage "usage: tunnel-codex.zsh <open|send|steer|read|resume|close|status> [...] (exit 11)"
+  _usage "usage: tunnel-codex.zsh <open|send|ask|steer|read|resume|close|status> [...] (exit 11)"
 fi
 
 verb="$1"
 shift
 
 case "$verb" in
-  open|send|steer|read|resume|close|status) ;;
+  open|send|ask|steer|read|resume|close|status) ;;
   *) _usage "unknown verb '$verb' — see this file's header for the verb list (exit 11)" ;;
 esac
 
@@ -181,7 +204,7 @@ else
 fi
 
 case "$verb" in
-  send|steer)
+  send|ask|steer)
     (( ${#positional[@]} >= 1 )) || _usage "verb '$verb' requires <text> (exit 11)"
     text_arg="${positional[1]}"
     ;;
@@ -204,18 +227,19 @@ if [[ ! -f "$state_file" ]]; then
   fi
 fi
 
-# --- close / status are local-only: no app-server spawn, no python needed. ---
+# --- close / status are local-only: no app-server spawn, no python needed. Both are
+# narrative/diagnostic, not a result — stdout purity (see header): nothing on stdout. ---
 if [[ "$verb" == close ]]; then
   rm -f -- "$state_file"
-  print -- "close: tunnel.state.json removed — Law 2.4 re-arms; next 'open' requires --enable again"
+  print -u2 -- "close: tunnel.state.json removed — Law 2.4 re-arms; next 'open' requires --enable again"
   exit 0
 fi
 
 if [[ "$verb" == status ]]; then
   if (( $+commands[jq] )); then
-    jq . "$state_file"
+    jq . "$state_file" >&2
   else
-    cat "$state_file"
+    cat -- "$state_file" >&2
   fi
   exit 0
 fi
@@ -232,7 +256,7 @@ case "$verb" in
     py_args+=(--sandbox "$sandbox_val")
     [[ -n "$model_val" ]] && py_args+=(--model "$model_val")
     ;;
-  send|steer)
+  send|ask|steer)
     py_args+=("$text_arg")
     ;;
 esac
