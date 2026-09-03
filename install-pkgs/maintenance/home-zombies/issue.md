@@ -8,10 +8,12 @@ root: ~/ia-sync
 host: home (hruzam)
 commit: 76f0390 (main)
 task: 30 zombie processes on home, oldest 16d20h — root cause not yet found
-severity: low (no functional impact observed; process-table slots only)
-status: open
+severity: low (no functional impact; process-table slots only — benign)
+status: root-cause-found (fix not yet applied)
 dedicated: Maxwell (home maintenance seat)
-recommend: trace what forks a zsh subshell per interactive shell/tab without reaping it — do not restart systemd --user to force-clear, that's disproportionate for a cosmetic table-slot leak
+root_cause: powerlevel10k (1:1.20.17-1) → bundled gitstatus v1.5.5 forks a transient [zsh] helper per interactive shell startup that is never reaped, because job-control (setopt monitor) glitches during init. One zombie + one gitstatusd daemon per interactive shell.
+recommend: benign — safe to leave; operator can proceed with any other work anytime. Track/repair helpers only if it ever becomes harmful (e.g. daemon/zsh count climbs unbounded or RAM pressure). Zombies clear when their shell/tab closes; a reboot zeroes the count. Real fix (if ever wanted) is to stop the reap failure, not to mass-kill. Do NOT restart systemd --user.
+disposition: no action required — parked benign; revisit only on a harm signal
 pointers:
   - ~/ia-sync/journal.host-cleanup.md (session that surfaced this, 2026-09-03, Trajectory/office ↔ home via SSH)
   - ~/.config/zsh/system/tailscale.zsh
@@ -107,13 +109,98 @@ uptime:   16 days, 20:47 (matches oldest zombie's age closely — likely dates t
   (dbus, other services). Disproportionate for 30 table slots with zero measured CPU/RAM
   cost. Left alone.
 
-## Next
+## ROOT CAUSE — FOUND (2026-09-03, second pass)
 
-1. Identify what forks a bare zsh subshell without waiting — likely candidates to check
-   first: any zsh `precmd`/`preexec`/`chpwd` hook, async prompt segment, or
-   `zsh/system`|`zsh/ai` background helper that uses `(...)`/`{ ... } &` without `&!`
-   discipline or without the parent shell ever issuing a `wait`.
-2. Confirm whether this also occurs on office (not checked this session — office wasn't
-   audited for zombies at all).
-3. If a specific hook is found: fix at the source (proper `disown`/`&!` on a raw exec, or
-   add an explicit reap), not by touching systemd or killing user shells.
+The bare-zsh-subshell forker is the **prompt**, not anything in the tracked `zsh/` config.
+
+### The stack
+- `~/.zshrc` sources `/usr/share/zsh/manjaro-zsh-prompt`
+- → `source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme`
+- powerlevel10k `1:1.20.17-1` bundles **gitstatus v1.5.5**
+  (`/usr/share/zsh-theme-powerlevel10k/gitstatus/usrbin/gitstatusd`)
+
+### The mechanism (why a `[zsh]` zombie per shell)
+At every interactive shell startup, p10k calls `gitstatus_start`, which:
+1. spawns a **persistent `gitstatusd` daemon** (this is the live `Sl` process — expected,
+   one per shell, does its job and stays), and
+2. forks a **transient background `[zsh]` helper subshell** (gitstatus's setup/watchdog
+   around the daemon's FIFO).
+
+The helper finishes almost immediately — but the interactive parent shell never `wait()`s
+on it, so it becomes `[zsh] <defunct>` and sits there for the shell's entire lifetime. It
+is only reaped when the parent shell exits (then init adopts and collects it).
+
+### Why the reap fails — the observed trigger
+A fresh `zsh -ic` probe emitted:
+
+```
+(anon):setopt:7: can't change option: monitor
+```
+
+Something in the init chain runs `setopt monitor` (enable job control) in a scope where it
+can't take effect. Job control / `monitor` is exactly what makes zsh track and reap
+background jobs ("[1] done"). With it glitching at the moment gitstatus backgrounds its
+helper, the finished child is never collected → persistent zombie.
+
+### The correlation that proves it (counts, same session)
+
+```
+zombies (zsh defunct):  26
+gitstatusd daemons:     29
+```
+
+Near 1:1 — one zombie + one gitstatusd per interactive p10k shell. Ages line up per-shell,
+e.g. gitstatusd 2059 (age 16-21:22) ↔ zombie 2078 (age 16-21:20), same parent shell 2056.
+The small 26-vs-29 gap is normal churn (a few shells' zombies already reaped, or shells
+still mid-prompt-init).
+
+### Accumulation
+Home uptime at capture: **16 days, 21h** (single boot). Every Konsole tab / login session
+opened across those 16 days that is still alive contributes one zombie + one daemon. 26 is
+simply "≈26 long-lived interactive shells since boot." Not a runaway leak — bounded by the
+number of open shells.
+
+## Impact — benign
+
+- A zombie is already-exited: **zero CPU, zero real RAM, one PID-table slot.** Default PID
+  max is ~4 million; 26 is nothing.
+- The live `gitstatusd` daemons are the only real (small) RAM cost, and they are *expected*
+  p10k behavior, not a leak.
+- **Unrelated** to the Sublime freeze / stuck sshfs mount investigated the same session —
+  entirely different mechanism (that one is a dead FUSE mount, D-state, see journal).
+
+## Secondary observation (not the ticket, but noted)
+
+`pgrep -c -x zsh` = **143 live zsh** at capture. Far more than the ~26–29 interactive
+shells. Most are presumably non-interactive `zsh -c` helpers (agent tooling,
+`tree-snapshot`, subshells) that don't load p10k and so don't contribute zombies. High but
+not alarming; worth an eyeball if it keeps climbing.
+
+## Disposition (2026-09-03, operator steer)
+
+Operator's call: **not harmful — proceed with other work anytime.** No repair scheduled.
+Only stand up tracking/repair helpers if a genuine harm signal appears (unbounded growth in
+`gitstatusd`/live-`zsh` counts, or measurable RAM pressure). Until then this ticket is a
+parked reference, not a queued task.
+
+## Fix options (Maxwell's call — default: do nothing)
+
+- **A. Leave it.** Harmless. Each zombie clears when its tab/shell closes. Recommended
+  unless it's bothering something. (Not fixed by a reboot's sake — but a reboot naturally
+  resets the count to zero.)
+- **B. Update powerlevel10k.** *Low confidence this helps* — `1.20.17` is already current
+  and gitstatus v1.5.5 is the current bundle, so this is not a stale-version bug. The
+  reap failure is environmental (the `monitor` setopt), not a fixed-upstream defect.
+- **C. Fix the real trigger.** Track down what runs `setopt monitor` in a bad scope during
+  init (the `can't change option: monitor` line) and correct it, or make gitstatus's helper
+  explicitly `&! disown`. This is the proper fix but needs care in a minified theme +
+  manjaro config chain.
+- **D. Blunt but effective:** set `POWERLEVEL9K_DISABLE_GITSTATUS=true` in p10k config —
+  removes both the daemon and the zombie, at the cost of a slower git prompt segment.
+
+## Still open
+
+- Whether office shows the same pattern (office was never audited for zombies — it runs the
+  same manjaro/p10k stack, so it very likely does).
+- Do NOT touch `systemd --user` (pid 1154) to force-clear — disproportionate; it's the
+  session reaper and restarting it tears down the user session.
