@@ -25,6 +25,9 @@ All three skill validators passed; `deploy.sh --dry-run --codex-only` named only
 Codex surfaces, live Codex-only deploy completed, and source/live `cmp` checks passed. Fresh isolated
 behavior probes passed on Terra (Medusa) and Luna (Polyp). Home carry after pull: run
 `bash ~/ia-sync/deploy.sh --codex-only`. No services, SSH, network, or shell substrate changed.
+Mail-path curvature found during closeout: this repo still pointed at piql's project-local Houston
+inbox. `AGENTS.md` now points at the central `~/reposoma/_mail/houston/inbox/` protocol, and the
+memo was relocated there with no duplicate left behind.
 
 ## OFFICE (Oraculum) — 2026-09-03 · sweep fixes 3-5
 

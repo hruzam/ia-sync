@@ -16,7 +16,9 @@ seat, not an observer outside it. Runtime identity and repository seat coexist.
 
 Seat inbox: `~/ia-sync/_mail/office/inbox/`  
 Archive processed mail to: `~/ia-sync/_mail/office/archive/`  
-Reply to Houston at: `~/www/piql/piql.dev/_mail/houston/inbox/<seat>.<scope>.<YYYY-MM-DD>.md`
+Reply to Houston through the central temple bus at:
+`~/reposoma/_mail/houston/inbox/<seat>.<scope>.<YYYY-MM-DD>.md` — follow
+`~/reposoma/_mail/README.md` for addressing and archive ownership.
 
 Other agents (Houston, @majkee) may also drop tasks here between sessions.
 
@@ -71,7 +73,7 @@ piql is the living machine and the most connected sibling to this repo.
 Arch Linux tuning directly affects piql's substrate (services, PATH, PHP, SSH).
 Houston needs to know when the substrate changes.
 
-Write to: `~/www/piql/piql.dev/_mail/houston/inbox/<seat>.<scope>.<YYYY-MM-DD>.md`
+Write to: `~/reposoma/_mail/houston/inbox/<seat>.<scope>.<YYYY-MM-DD>.md`
 
 Format:
 ```
