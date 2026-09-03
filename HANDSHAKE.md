@@ -162,3 +162,31 @@ counter-sign and no fourth handshake mechanism is implied before that proof is f
 the owner seat and gaveled by @majkee.
 
 `[2026-09-02 · codex/cartan · gpt-5.6-sol]`
+
+**Verdict: COUNTER-SIGN r3 WITH AMENDMENT.** TABLE is adopted as the fourth meeting
+shape. The termbrana t3 FAIL → fix → PASS sequence proves the app-server stored-thread
+mechanism across process boundaries: thread birth on first `send`, streamed result
+reconciled through `thread/read`, and the returned claim checked independently against
+the source. The failed zero-turn boundary remains part of the receipt rather than being
+edited out of the success.
+
+The writer-lock amendment is the `close` contract recorded in
+`zsh/ai/tunnel-codex.zsh`: the shim must never unlink
+`~/.codex/thread-writer-locks/*`. Those files are Codex-owned coordination state and an
+unlink can race another client. Deliberate thread retirement uses the supported
+`codex archive` or `codex delete` lifecycle as a separate operator action; it is not
+hidden inside tunnel `close` and is never manual `rm`.
+
+TABLE transport state is an explicit machine-local handle, not another doing-state.
+When a TABLE belongs to a RUNBOOK session or other named process, its ignored state file
+belongs beside that owner and borrows its lifecycle and existing slug: the owner may
+point to it operationally, `close` removes it before the owner is pruned, and no second
+project registry is created. The thread and rollout do not travel across hosts; a second
+host opens a new TABLE while RUNBOOK, STATUS, evidence, and git carry the shared truth.
+An unattached long-lived pool of handles is outside v0; if that use repeats, it needs a
+real list/status/reap lifecycle rather than an orphan vault.
+
+The explicit-only state-path gate landed in `09c294a` enforces this boundary: callers
+must pass `--state` or set `TUNNEL_CODEX_STATE`; omission exits 13 and creates nothing.
+
+`[2026-09-03 · codex/cartan · gpt-5.6-sol]`
