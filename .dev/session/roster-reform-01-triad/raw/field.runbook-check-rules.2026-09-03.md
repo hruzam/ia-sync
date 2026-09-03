@@ -3,7 +3,7 @@ kind: substrate — runbook-check detection rules
 date: 2026-09-03
 source-session: fc.repos-atlas-opus.polyp-medusa (fold seat) — @field second pass
 specimen: ~/www/ovum/larva.dev/session/@larva.vector-language/{CLAUDE.md, config.json}
-status: substrate
+status: substrate — PROMOTED 2026-09-03 to ~/reposoma/raw.guides/runbook/raw/field.runbook-check-rules.2026-09-03.md (gate closure; that copy is authoritative, this one prunes with the session — safe to delete)
 purpose: >
   The 8 patterns a Vara "runbook-check" pass must detect (caveats / missing gavels /
   config-drift). Preserved VERBATIM here because they lived only in the fold seat's context
