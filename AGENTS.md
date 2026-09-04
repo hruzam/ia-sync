@@ -111,7 +111,7 @@ Mail when:
 | claude | `~/.local/bin/claude` | `~/.local/bin/claude` (corrected 2026-08-24 — the "via `office` alias" row was wrong; home has its own binary) |
 | piql | lives here | remote via `oc`/`op`/SSH |
 | zellij | present (0.44.3) | present (0.44.3) — confirmed 2026-09-03 |
-| tmux | present | **ABSENT** |
+| tmux | present | present (3.7b) — confirmed 2026-09-04 |
 
 ## Which host am I on? (resolve before planning — verified 2026-08-24)
 
