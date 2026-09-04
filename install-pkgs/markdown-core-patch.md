@@ -1,7 +1,7 @@
 # markdown-core-patch — install task
 
 ```
-version:     2.0
+version:     2.1
 hosts:       home office
 automation:  auto
 src-root:    ~/www/elements-factory/applications-in-common
@@ -69,7 +69,7 @@ python3 << 'PATCHEOF'
 import sys, os
 
 core_path = os.path.expanduser(
-    "$HOME/.config/sublime-text/Lib/python33/markdown/core.py"
+    "~/.config/sublime-text/Lib/python33/markdown/core.py"
 )
 
 with open(core_path, 'r') as f:
