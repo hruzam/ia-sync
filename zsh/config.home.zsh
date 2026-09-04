@@ -68,6 +68,9 @@ export PROJECT_LRV_NAME="vibe-code orchestr"
 export PROJECT_LRV_ZSH="larva.zsh"
 export PROJECT_LRV_TOOLKIT="larva.zsh"
 
+# nabLarva (project harness / session browser)
+export PROJECT_NAB_PATH="$HOME/unikuklatrix/nablarva"
+
 # Session (vibe-code sessions)
 export PROJECT_SES_PATH="$HOME/www/larva_dev/dev"
 export PROJECT_SES_NAME="vibe-code sessions"
@@ -123,6 +126,9 @@ fi
 # was missing here entirely, so the whole ai/ scope (keyboard, temple family, devenv, claude
 # engine, gemini-processor, keys) never auto-loaded on a real home shell start. Reconstructed 2026-07-20.
 [[ -f ~/.config/zsh/ai/base.zsh ]] && source ~/.config/zsh/ai/base.zsh
+
+# nablarva scope (session browser: rb-open, rb-pick, rb-help — wired 2026-09-04)
+[[ -f ~/.config/zsh/nablarva/base.zsh ]] && source ~/.config/zsh/nablarva/base.zsh
 
 [[ -f ~/.config/zsh/session-helpers.zsh ]] && source ~/.config/zsh/session-helpers.zsh
 [[ -f ~/.config/zsh/env-sync.zsh ]] && source ~/.config/zsh/env-sync.zsh
