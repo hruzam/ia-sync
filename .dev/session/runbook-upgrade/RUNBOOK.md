@@ -1,180 +1,145 @@
 # RUNBOOK — runbook-upgrade
 
 ```yaml
-goal:            The bed's laws are amended from measured cold-resume failures, not from audit prose.
-gate:            One cold-resume probe is run on a live session on BOTH hosts, timed, scored against the
-                 six-point standard, and its scored record promoted to the project's evidence home.
-participant_0:   [@Houston, {claude, opus, high}, office]
-participant_1:   [@Janus, {claude, opus, high}, office]
-participant_2:   [@majkee, human, office + home]
-status_owner:    @Houston        # single writer for STATUS.md — see holds
-schema_note:     conforms to raw.guides/runbook/GUIDE.md rev 2026-08-27
+goal:            The shared RUNBOOK file-plane gains the smallest evidence-earned fan-out amendment:
+                 one stable roster, one open coordination turn, one present state, and crossed receipts.
+gate:            @majkee has gaveled a guide diff grounded in one live two-cycle fan-out and its
+                 interrupted-head cold-resume receipt, and Oraculum's crossed audit confirms that the
+                 promoted text preserves one STATUS authority and the three-kind BUS grammar.
+head_note:       cSharp — Cartan authored this RUNBOOK and stays live through the whole arc as navigator
+                 and status_owner; it delegates every body of work, receives navigation + test parts,
+                 and closes the session if it can.
+participant_0:   [cartan-csharp, {codex, gpt-5.6-sol, high}, office]
+participant_1:   [astrobley, {codex, gpt-5.6-sol, high}, office]
+participant_2:   [oraculum-audit, {claude, fable, high}, office, resident]
+participant_3:   [@majkee, human, office + home]
+status_owner:    cartan-csharp
+schema_note:     raw.guides/runbook/GUIDE.md rev 2026-08-27 + gaveled res/csharp-head.md;
+                 T2 turn/delegated/deferred fields are experimental until this gate closes.
 ```
 
-> **Read this once.** Nothing here changes during the session. Position lives in `STATUS.md`.
-> This RUNBOOK was drafted on the bench and is live only once promoted into the session folder.
-
----
+> **Read once.** Position belongs only in `STATUS.md`. The earlier cold-resume launcher is
+> superseded by @majkee's 2026-09-04 instruction before execution; its conflicting “bench” claim
+> while already stored in the session folder remains recoverable in git history.
 
 ## Why this session exists
 
-Two blind external audits produced twelve anchored remedies for this bed. Adopting them as a
-set would reproduce the bureaucracy that killed three previous shapes. Every one of them is
-justified by *prose reasoning about* the bed, and none by *observed behaviour of* the bed.
+The guides model a serial POINT → RETURN → VERDICT cycle, but a persistent cSharp now coordinates
+independent full CLI sessions whose returns can arrive in either order. T2 found that BUS already
+has enough past-tense grammar; the missing truth is the outstanding fan-out in STATUS and the
+verifier/status-owner seam. This session tests that diagnosis before amending shared law.
 
-The bed's own strongest claim — a fresh agent resolves frame, risk, probe and one next action
-in thirty seconds — has **never been measured**. Until it is, every amendment is speculative.
+The canonical source resolved on office is `/home/hruzam/reposoma/raw.guides/`, not the shorthand
+`~/nablarva/raw.guides/`. The latter does not resolve here and must not be created as a second home.
 
-**This session measures. It does not amend.** Amendments are the *next* session, and they are
-authored only against probe findings. That ordering is the point of the gate.
+## Candidate invariant under test — not canon
 
----
+- BUS keeps exactly `point`, `return`, and `verdict`; optional `turn:` groups cycles.
+- STATUS may carry `delegated:` and `join_when:` only while one turn is open. `next:` stays singular.
+- `REVISE` opens a corrective cycle in the same turn; only ACCEPT, STOP, or BLOCKED is terminal.
+- `deferred: turn NN` may name only the open turn. A late verdict records why it cannot defer there.
+- During fan-out, recovery reconciles every delegated line against the matching VERDICT contents.
+- Seat names are unique and fixed. Only `cartan-csharp` writes POINTs and STATUS.
 
-## prompt-0 — @Houston (master seat)
+## prompt-0 — cartan-csharp (navigator and sole STATUS writer)
 
-You own this session. You are the sole writer of `STATUS.md`.
+Read, in order:
 
-**Read, in order, then stop and write STATUS before acting:**
+1. `/home/hruzam/reposoma/raw.guides/runbook/GUIDE.md` and
+   `/home/hruzam/reposoma/raw.guides/runbook/res/csharp-head.md`.
+2. `/home/hruzam/reposoma/raw.guides/status/GUIDE.md` and
+   `/home/hruzam/reposoma/raw.guides/bus/GUIDE.md`.
+3. `/home/hruzam/ia-sync/.dev/session/runbook-upgrade/raw/T2.assymetry-primary-draft.2026-09-04.md`.
+4. `/home/hruzam/ia-sync/.dev/session/runbook-upgrade/raw/T2.assessment.bus-turn-fanout.2026-09-04.md`.
+5. `/home/hruzam/ia-sync/.dev/session/runbook-upgrade/raw/T2.countersign.fanout-turns.2026-09-04.md`.
 
-1. `/home/hruzam/reposoma/raw.guides/runbook/GUIDE.md`
-2. `/home/hruzam/reposoma/raw.guides/status/GUIDE.md`
-3. `/home/hruzam/reposoma/raw.guides/PAD/GUIDE.md`
-4. `/home/hruzam/reposoma/raw.guides/bus/GUIDE.md`
-5. The synthesis: `raw.session-routines-and-file-plane.2026-09-03.md` — **Part 5 and OPEN only.**
-   Do not read Parts 1–4 unless a probe finding sends you there. They are field weather and
-   will bias the probe design toward the audit's conclusions.
+Create the initial STATUS and pulse router only when @majkee wakes this session. Then:
 
-**Your work, in order:**
+1. Open turn 01 by writing STATUS `delegated:`/`join_when:` and two POINTs in one transition:
+   Astrobley produces an exact amendment blueprint; Oraculum independently produces the failure
+   oracle and audit rubric. Neither edits a guide. @majkee carries only each POINT's absolute path.
+2. Route Astrobley's RETURN to Oraculum for a crossed VERDICT. After that VERDICT lands but before
+   STATUS is rewritten, @majkee interrupts this head and wakes a fresh Cartan against this folder.
+   The fresh head must reconcile VERDICT contents against `delegated:` and record the partial edge.
+3. Join turn 01 only when both cycles are terminal. A REVISE creates a corrective cycle in turn 01.
+4. After a successful receipt, POINT Astrobley at the four-file guide cut below. Route the resulting
+   RETURN and actual diff to Oraculum. Inspect cited artifacts; claims alone advance nothing.
+5. Present the tested diff and audit verdict to @majkee. Only his explicit gavel permits promotion.
+   Record a promotion manifest for every surviving `raw/` artifact before closure.
 
-**(a) Select the subject session.** A *live* session in this project with a populated
-`RUNBOOK.md` and `STATUS.md`. Not this one. Not a session you have worked in. Record the
-absolute path in `STATUS.md` as `checkpoint:`.
+Do not author guide prose, implementation, or audit findings yourself. Write only RUNBOOK/STATUS,
+POINTs, head-owned VERDICTs, and the final promotion manifest.
 
-**(b) Author the probe as a PAD.** `pad.1-cold-resume.md`, per the PAD GUIDE. It is run by a
-human against a genuinely fresh agent with **no session context** — a new invocation given
-only the portable entry point and the subject session's folder. Each step is one instruction
-with branch verdicts; the operator pastes raw output into the fence beneath.
+## prompt-1 — astrobley (senior implementer)
 
-The probe scores six things, and **time-to-answer is recorded for each**:
+Your work arrives as an absolute path to a POINT. Read it and write the one RETURN named by its
+`return_to:`. First-turn scope is analysis only; do not edit canon.
 
-| # | scored | SUPPORTED when |
-|---|---|---|
-| 1 | frame | resolves correct repo, host, branch, HEAD, dirty paths without being told |
-| 2 | probe | selects and runs the stated recovery probe, read-only, and interprets both outcomes |
-| 3 | classification | distinguishes *never started* from *partially ran* on the in-flight action |
-| 4 | holds | states **every** live hold. One omitted hold = REFUTED, regardless of the rest |
-| 5 | next | takes exactly one action, matching `next:`, and names its `expected:` |
-| 6 | total | all of the above inside thirty seconds |
+After the experiment passes and a new POINT grants the cut, you are the sole writer of:
 
-**Do not help the fresh agent.** A probe the operator rescues measures nothing. Where it
-stalls, record *where* — the stall location is the finding.
+- `/home/hruzam/reposoma/raw.guides/runbook/GUIDE.md`
+- `/home/hruzam/reposoma/raw.guides/runbook/res/csharp-head.md`
+- `/home/hruzam/reposoma/raw.guides/status/GUIDE.md`
+- `/home/hruzam/reposoma/raw.guides/bus/GUIDE.md`
 
-**(c) Hand to @Janus** via `_bus/01.houston.point.md` before scoring. See prompt-1.
+Make the smallest coherent amendment supported by T2 and the live receipt. Preserve the
+RUNBOOK/STATUS/BUS authority split; do not add a TURN file or kind. Run narrow content checks and
+`git diff --check` in `/home/hruzam/reposoma`; do not stage, commit, push, or edit adjacent chapters.
+Return the exact diff, checks, curvature, untouched scope, and remaining gavel/audit gate.
 
-**(d) Score and promote.** After Janus's verdict, write the scored record to the project's
-evidence home and point `checkpoint:` at it. That promotion closes the gate.
+## prompt-2 — oraculum-audit (crossed witness; Claude Code CLI resident)
 
-**You may not** amend any guide in this session. Findings are recorded as findings. If a
-finding is severe enough to demand immediate amendment, write it into `STATUS.md` under
-`holds:` and raise it to @majkee — do not fix it.
+Your work arrives as an absolute path to a POINT. Read it and write only the requested RETURN or
+VERDICT path. In turn 01, derive an independent failure oracle from the three T2 files and current
+guides; test the proposed recovery edge, one-open-turn law, REVISE behavior, late returns, human
+relay mismatch, and verifier/status-owner ownership. Do not edit guides or STATUS.
 
----
+For implementation audit, inspect Astrobley's actual four-file diff and rerun safe checks. Reject
+prose that turns BUS into doing-state, duplicates authority, treats file presence as receipt, lets a
+verifier rewrite STATUS, or promotes assessment beyond the live evidence. Audit the cSharp's cited
+STATUS/receipt paths as well; the head does not self-confirm the gate.
 
-## prompt-1 — @Janus (challenger seat)
+## prompt-3 — @majkee (carrier and gavel)
 
-You do not run the probe. You attack its design **before** it runs, and its scoring after.
-
-**Read:** `/home/hruzam/reposoma/raw.guides/PAD/GUIDE.md`, the POINT you receive, and the
-drafted `pad.1-cold-resume.md`. Nothing else.
-
-**Before the run** — answer in `_bus/01.janus.return.md`, six fields per the BUS GUIDE:
-
-- Which steps would pass on a **bad** bed? A probe that cannot fail is theatre.
-- Where does the PAD **leak the answer** to the agent it tests?
-- Is any step's success condition a *presence check* rather than a *mechanism check*? The bed's
-  own law: a marker file can exist while the thing behind it is dead.
-- Does the thirty-second bound measure the bed, or the operator's typing speed?
-
-**After the run** — write the VERDICT. The RETURN is claims, not evidence: resolve every cited
-path, read the raw fences yourself, and mark anything you cannot check `UNVERIFIED`. Record
-curvature: where the guides' description and the observed behaviour disagree, **name the
-disagreement rather than the tidier side.**
-
-One adversarial pass. Push once per fork, clearly. If @Houston holds the line, defer and
-record the disagreement in the verdict rather than re-litigating.
-
----
-
-## prompt-2 — @majkee (human seat — hands required)
-
-The probe cannot run without you. You are the one who opens a genuinely fresh agent, pastes
-each step, and pastes raw output back into the PAD fence. Do not summarise the output; the
-PAD is its own raw receipt.
-
-**Run it twice: once on office, once on home.** The second run is not a repeat — it is the
-only test of the mirroring law (see holds). Both runs go in the same PAD, with the host named
-in the header of each sitting.
-
-You hold the gavel on: whether a finding becomes an amendment, and whether the session closes.
-
----
+Wake each seat only after its POINT exists. Relay one absolute POINT path per paste, without
+summarising it. For the interruption probe, stop cartan-csharp after Oraculum's VERDICT is on disk
+and before STATUS changes, then open a genuinely fresh Cartan with only this session path.
+You alone decide whether the tested guide diff is promoted and whether the gate closes.
 
 ## Known constraints and destructive holds
 
-Fixed at authoring time. Constraints discovered mid-session go to `STATUS.md` under `holds:`.
+- Current Cartan can write `/home/hruzam/ia-sync` but only read `/home/hruzam/reposoma`; the guide
+  cut waits for a carriage with explicit write authority. No workaround or duplicate guide home.
+- Concurrent runbook-browser work spans `/home/hruzam/ia-sync/zsh/nablarva/base.zsh`,
+  `/home/hruzam/ia-sync/zsh/nablarva/keyboard.zsh`, `/home/hruzam/ia-sync/zsh/nablarva/runbook.py`,
+  and `/home/hruzam/ia-sync/zsh/nablarva/runbook.zsh`. This session may report its impact but must
+  not edit, stage, or absorb that lane without an explicit ownership transfer after its cut lands.
+- No participant changes instrument, callsign, gate, or guide ownership inside this session.
+- One open turn, one `join_when:`, one `next:`. Workers never dispatch BUS cycles or write STATUS.
+- No shared guide edit before the live receipt. No commit, push, deploy, prune, or cross-host carry
+  without @majkee's explicit hand and the repository's own discipline.
 
-- **`status_owner: @Houston` — single writer.** Other seats write returns, verdicts, evidence.
-  They do **not** replace `STATUS.md`. Ownership transfer is itself a verified transition.
-  *Cause: no revision, lock, or compare-and-swap exists under the state file. Two honest
-  writers can both read revision A and lose one truth while obeying every written law. The
-  serialized-operator assumption is what currently holds; this hold makes it explicit rather
-  than accidental.*
-- **1:1 folder placement across both hosts is a LAW of this bed, and this session is its first
-  real test.** Every absolute path in every prompt depends on it silently. If any path
-  resolves on one host and not the other, **stop and record it** — that is a finding about the
-  bed, not an obstacle to work around. Do not patch it with a relative path mid-run.
-- **No guide is amended in this session.** Not one line. The gate is measurement.
-- **No tooling is built.** No validator, no revision command, no installer. Brakes stand.
-- **Do not run the probe against a session you need.** Assume the fresh agent may take a wrong
-  action. Choose a subject whose worst case is a discarded branch.
-- **Host provenance is recorded per sitting, not in STATUS.** STATUS is a replacement snapshot
-  and erases its own host on every rewrite; it cannot carry provenance by construction.
+## references — point, never copy
 
----
-
-## references
-
-Point, do not copy.
-
-- `/home/hruzam/reposoma/raw.guides/{runbook,status,PAD,bus}/GUIDE.md` — the laws under test
-- `raw.session-routines-and-file-plane.2026-09-03.md` — Part 5 (what is ahead) and OPEN
-- `brief-r2.guides-audit.2026-09-03.md` + its reply — the twelve remedies. **Reference only.**
-  Nothing here adopts them; this session decides which ones the evidence justifies.
-
----
+- `/home/hruzam/reposoma/raw.guides/runbook/GUIDE.md`
+- `/home/hruzam/reposoma/raw.guides/runbook/res/csharp-head.md`
+- `/home/hruzam/reposoma/raw.guides/runbook/res/token-economy.md`
+- `/home/hruzam/reposoma/raw.guides/runbook/res/cross-vendor-seat.md`
+- `/home/hruzam/reposoma/raw.guides/status/GUIDE.md`
+- `/home/hruzam/reposoma/raw.guides/bus/GUIDE.md`
+- `/home/hruzam/reposoma/raw.guides/PAD/GUIDE.md`
+- `/home/hruzam/ia-sync/.dev/session/runbook-upgrade/raw/T2.*.2026-09-04.md`
+- `/home/hruzam/ia-sync/zsh/nablarva/runbook.py` and
+  `/home/hruzam/ia-sync/zsh/nablarva/runbook.zsh` — impact surfaces, not guide authority
 
 ## What closes this gate
 
-The scored probe record exists in the evidence home, covering both hosts, with a time and a
-verdict per criterion, and `checkpoint:` points at it.
+The live fan-out and interrupted-head receipts are on disk; the four canonical guide files contain
+only the evidence-supported amendment; Oraculum's VERDICT checks the actual diff and recovery
+artifacts; @majkee's gavel and the promotion manifest are recorded. A failed experiment closes
+nothing: it becomes evidence and leaves canon unchanged.
 
-**Not** a passing score. A *recorded* score. A failed probe closes this gate exactly as well
-as a passing one — and is worth more, because the next session's amendments will be anchored
-to something observed.
+## Deliberately out of scope
 
-On closure: promote the scored record and the PAD (it *is* the evidence artifact here, so it
-survives), remove the session from `pulse.md`'s router line, prune the directory.
-
----
-
-## What this session deliberately does not do
-
-Named so the next seat does not read the omissions as oversights:
-
-- No revision field, lock, or atomic-write tool. Not until two seats actually collide.
-- No portable bootstrap for a second human. No second human is imminent.
-- No adoption of the audited remedies. Their premise is prose; this gate produces evidence.
-- No program-level file above the numbered siblings. Parked until one program closes and its
-  post-mortem says what was re-derived.
-- No amendment of the gate-copy drift finding, the host-provenance gap, or the unstated
-  mirroring law. All three are recorded in the synthesis; the probe may sharpen or kill them.
+No fourth BUS kind, scheduler, inbox, auto-dispatch, transport rewrite, runbook-browser edit,
+wholesale adoption of the older R2 audit, or unrelated RUNBOOK chapter cleanup.
