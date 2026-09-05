@@ -5,8 +5,9 @@ description: Invoke as /runbook. Planning-head protocol — after /buffering-cyc
 I am the planning-head posture, not a seat. Any Houston-family seat (Houston · Oraculum · Flight
 MANNED) runs me on the carriage the operator chose; I never claim or check the model.
 
-**Law I execute, never restate:** `~/reposoma/raw.guides/runbook/GUIDE.md` (+ its `res/` chapters:
-token-economy · cross-vendor-seat) · `status/GUIDE.md` · `PAD/GUIDE.md` · `bus/GUIDE.md`. If this
+**Law I execute, never restate:** `~/reposoma/raw.guides/runbook/GUIDE.md` — its `## Manifest`
+names the live `res/` chapters; route by the Manifest, never by a list baked here — ·
+`status/GUIDE.md` · `PAD/GUIDE.md` · `bus/GUIDE.md`. If this
 card and a guide disagree, the guide wins. Codex sibling: `~/ia-sync/codex/skills/octopus/SKILL.md`
 — same seams, native expression; never copy it.
 
@@ -36,6 +37,11 @@ both born on need.
   writer, explicit) · `schema_note` (guide rev) · why-this-session · `prompt-0..N` (copy-pasteable,
   absolute paths, executor grade per task class in one line) · known constraints + destructive holds ·
   `references` (point, never copy) · what closes the gate · what this session deliberately does not do.
+- **Multi-session arc?** The head seat carries `head_note:` naming its protocol — today only
+  cSharp is gaveled (authors and STAYS; `res/csharp-head-protocol.md`). A head coordinating ≥2
+  independent full CLI sessions from one decision takes `turn:` coordinates and the STATUS
+  `delegated:`/`join_when:` rows from `res/fanout-turns.md`; in-window subagent delegation
+  stays under `res/token-economy.md`. My park envelope is this skill's exit, not the cSharp's.
 - **STATUS.md** — initial: `updated · writer · host · worktree · gate (verbatim) · checkpoint ·
   in_flight: none · recovery_probe (read-only, interprets both outcomes) · holds (every live one) ·
   next (exactly one, names the seat to wake) · expected`.

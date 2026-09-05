@@ -18,11 +18,11 @@ transport: after the handoff is visible on disk, @majkee deliberately wakes the 
 Before writing, resolve the repository instructions, host, worktree, project contract,
 settled locks, and current pulse. Read these shared guides completely:
 
-- `~/reposoma/raw.guides/runbook/GUIDE.md`
+- `~/reposoma/raw.guides/runbook/GUIDE.md`, then the `res/` chapters its `## Manifest` names,
+  as the session's shape makes them applicable: delegation → `token-economy`; a cross-vendor
+  participant → `cross-vendor-seat`; a multi-session head arc → `csharp-head-protocol`;
+  coordinating independent full CLI sessions from one decision → `fanout-turns`.
 - `~/reposoma/raw.guides/status/GUIDE.md`
-- `~/reposoma/raw.guides/runbook/res/token-economy.md` and
-  `~/reposoma/raw.guides/runbook/res/cross-vendor-seat.md` when delegation or a cross-vendor
-  participant makes them applicable.
 
 Reuse an existing live session when the request belongs to its gate. Do not fork another
 RUNBOOK or state surface merely because a new Cartan incarnation opened.
@@ -86,3 +86,6 @@ NEXT: <exact operator action>
 ```
 
 After this envelope, stop. A useful plan is not permission to execute it.
+
+Parking is this skill's exit, not the cSharp head posture's: an arc head declared by RUNBOOK
+`head_note:` stays live under `~/reposoma/raw.guides/runbook/res/csharp-head-protocol.md`.
