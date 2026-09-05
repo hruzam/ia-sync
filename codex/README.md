@@ -50,6 +50,7 @@ Claude↔Codex semantic cross-section.
 | `codex-harness` | Design and maintain Codex-native primitives | Preserve role meaning and gates, not file parity |
 | `buffering` | Hold incremental input or run a creative design arc before release | Claude's cycle and creative-triad semantics in one Codex procedure |
 | `cold-start-card` | Leave a verified, temporary re-entry pointer | Point to canonical state; never become another pulse |
+| `therapy` | Open a held-mirror session with @majkee via `$therapy` | Request-only reflection; one global seat record, shared bed law, and @majkee-only new seeds |
 | `octopus` | Sol-grade planning head creates RUNBOOK + STATUS, names the executor, and parks | Expensive judgment is separated from implementation by an operator wake gate |
 | `medusa` | Normally Terra-grade working head executes a RUNBOOK and returns curvature upward | Full engineering tools below a fixed gate; architecture remains with Octopus/Cartan |
 | `polyp` | Drive a human/model PAD one step and one evidence branch at a time | Raw evidence stays in the PAD; the driver never authors or fixes the work under test |
