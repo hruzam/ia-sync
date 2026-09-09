@@ -127,8 +127,14 @@ fi
 # engine, gemini-processor, keys) never auto-loaded on a real home shell start. Reconstructed 2026-07-20.
 [[ -f ~/.config/zsh/ai/base.zsh ]] && source ~/.config/zsh/ai/base.zsh
 
-# nablarva scope (session browser: rb-open, rb-pick, rb-help — wired 2026-09-04)
+# nablarva scope (nab-* project verbs — wired 2026-09-04)
 [[ -f ~/.config/zsh/nablarva/base.zsh ]] && source ~/.config/zsh/nablarva/base.zsh
+
+# session scope — session-layer instruments umbrella (runbook browser; reserved:
+# cold-start cards, presence dashboard). RB_ROOT = default .dev/session/ bench;
+# repoint here when the primary bench moves. rb-open <path> targets any other tree.
+export RB_ROOT="$HOME/ia-sync/.dev/session"  # bench repointed 2026-09-09 (bed move, majkee)
+[[ -f ~/.config/zsh/session/base.zsh ]] && source ~/.config/zsh/session/base.zsh
 
 [[ -f ~/.config/zsh/session-helpers.zsh ]] && source ~/.config/zsh/session-helpers.zsh
 [[ -f ~/.config/zsh/env-sync.zsh ]] && source ~/.config/zsh/env-sync.zsh
