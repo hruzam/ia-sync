@@ -184,6 +184,41 @@ ssh hruzam@100.126.182.111 'rm ~/.ssh/authorized_keys.pre-rotation-2026-09-10'
 | 6 | phone-door choice | recorded either way | — (decision, not test) |
 | 7 | rotation closure | 3 removals | — (gated, not refutable) |
 
+## Muscle-memory drills (repeat freely — NO verdict, build the reflex)
+
+Not tests — reps. Run each a few times until the keys are in your hands. Duplication
+with the steps above is intentional. Model behind it: /guide remote-cli §"one session,
+many seats, many views" — more agents = more WINDOWS, never more sessions.
+
+### Drill A — computer host ⇄ host (the tso -t reflex)
+```
+tso -t office          # home terminal → office bed, shell seat
+#   Ctrl+b c           #   new seat (window)
+#   claude   …or codex #   run an agent there — it will OUTLIVE this connection
+#   Ctrl+b 1 / 2 / …   #   hop between seats (each its own live agent)
+#   Ctrl+b w           #   pick a seat from a list
+#   Ctrl+b d           #   detach — everything keeps running
+tso -t home            # same, other host; a future PC = tso -t <its-name>
+```
+Reflex to build: **Ctrl+b c to make a seat · Ctrl+b <n> to hop · Ctrl+b d to leave.**
+
+### Drill B — mobile: make the session on the computer, reach it two ways
+Two doors to ONE bed. Start the agent from a computer (or the phone), then reach it:
+```
+# --- Claude, via the APP door (no Termux needed) ---
+#   on any computer, inside the office bed:  ~/.local/bin/claude
+#   inside it once:  /remote-control          # binds the ONE cloud seat
+#   phone: open the Claude mobile app → the session is there. (last claimer wins)
+
+# --- Codex (or Claude), via the TERMUX door ---
+#   phone Termux:  bed office                  # into the bed
+#   Ctrl+b <n> to the seat, or Ctrl+b c for a new one
+#   codex        …or ~/.local/bin/claude       # runs on office, you drive from the phone
+#   S1–S4 buttons hop seats · PASTE = clipboard/voice · DETACH leaves
+```
+Reflex to build: **Claude has an app door (`/remote-control`); Codex does not — reach it
+through the Termux bed.** Same bed either way; the agent lives on the computer.
+
 ## parked
 
 - (driver appends off-pad questions here; head sweeps at close)
