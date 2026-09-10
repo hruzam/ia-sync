@@ -99,9 +99,10 @@ _ts_session() {
         printf "no response (proceeding anyway)\n\n"
     fi
     if (( bed )); then
-        # LANG injected so the bed's powerline glyphs/colors render (bricks bug
-        # 2026-09-10: a bed born under a bare non-interactive locale shows bricks).
-        ssh -t "$peer" "LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8 /usr/bin/tmux new-session -A -s agentive"
+        # Enter through the bed DOOR: lands on a plain-shell seat instead of whatever
+        # TUI was last active; locale hardening lives in the door script itself.
+        # One reviewed file, both hosts carry it via the repo (absolute path law).
+        ssh -t "$peer" 'exec sh /home/hruzam/ia-sync/devices/_shared/termux/bin/agentive-door'
     else
         ssh "$peer"
     fi

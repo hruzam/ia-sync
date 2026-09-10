@@ -1,0 +1,21 @@
+#!/bin/sh
+# HOST-side — the bed DOOR: attach to agentive, landing on a plain-shell seat.
+# Arriving inside whatever TUI was last active ambushes the operator (2026-09-10);
+# running TUIs stay one hop away (C-b <n> · C-b l = last window · phone S-buttons).
+# Picks the lowest-index window whose active pane runs a bare shell; if every seat
+# is busy with a TUI, opens a fresh window. Locale hardened (bricks bug 2026-09-10).
+export LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8
+T=/usr/bin/tmux
+
+# no bed yet → plain attach-or-create (seed normally ran; window 0 is a shell)
+if ! $T has-session -t agentive 2>/dev/null; then
+  exec $T new-session -A -s agentive
+fi
+
+w=$($T list-panes -s -t agentive -F '#{window_index} #{pane_current_command}' \
+    | awk '$2=="zsh"||$2=="bash"||$2=="sh"{print $1; exit}')
+
+if [ -n "$w" ]; then
+  exec $T new-session -A -s agentive \; select-window -t "agentive:$w"
+fi
+exec $T new-session -A -s agentive \; new-window
