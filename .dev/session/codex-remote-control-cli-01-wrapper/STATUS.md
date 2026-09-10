@@ -120,7 +120,12 @@ closing_sweep (owed before prune):
         after read; no inbox path cited per scar 3)
   - [ ] C3 both-doors: head launches claude in seat 1; majkee verifies same session in
         mobile app (1 min of his hands)
-  - [ ] optional (unblessed): agentive-seed lands attach on empty seat, S0 button
+  - [x] shell-seat landing: SHIPPED for PC path as bin/agentive-door (561e324) —
+        tso -t enters through it. Phone path DEFERRED by majkee ("I'll manage on
+        phone later"): needs his one-line forced-command paste per PC
+        (command="sh /home/hruzam/ia-sync/devices/_shared/termux/bin/agentive-door",
+        options + from= pin unchanged); trade-off noted: reattach lands on shell,
+        C-b l returns to the TUI. S0 button not needed meanwhile.
   - [ ] journal entry + commit + prune: DEFERRED — journal.host-cleanup.md and AGENTS.md
         are dirty under other owners (hold); majkee sequences the commit
   - promotion manifest (scar 4) — raw/ keepers, EVERY one:
