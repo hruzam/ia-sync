@@ -77,17 +77,34 @@ _ts_ssh() {
     ssh "$peer"
 }
 
-# SSH with pre-connect reachability check
+# SSH with pre-connect reachability check.
+# Flag  -t | --bed : land in the peer's `agentive` tmux bed instead of a plain login
+# shell — the PC→PC twin of the phone `bed` command
+# (devices/_shared/termux/bin/bed). One mechanism, two origins: the bed survives this
+# ssh dying (new-session -A = attach-or-create) and is reachable again by re-running.
+# Peer is any tailnet name that ssh resolves (Host alias or MagicDNS) — a NEW PC needs
+# zero code here, only a resolvable name. Registry of record: ia-sync/machines.json.
 _ts_session() {
+    local bed=0
+    case "$1" in
+        -t|--bed) bed=1; shift ;;
+    esac
     local peer="${1:-$TAILSCALE_PEER}"
     [[ -z "$peer" ]] && { echo "[ts] TAILSCALE_PEER not set in config.zsh"; return 1; }
-    printf "\n  connecting → %s\n  ping: " "$peer"
+    (( bed )) && printf "\n  connecting → %s (bed)\n  ping: " "$peer" \
+             || printf "\n  connecting → %s\n  ping: " "$peer"
     if timeout 3 tailscale ping --c 1 "$peer" &>/dev/null; then
         printf "reachable ✓\n\n"
     else
         printf "no response (proceeding anyway)\n\n"
     fi
-    ssh "$peer"
+    if (( bed )); then
+        # LANG injected so the bed's powerline glyphs/colors render (bricks bug
+        # 2026-09-10: a bed born under a bare non-interactive locale shows bricks).
+        ssh -t "$peer" "LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8 /usr/bin/tmux new-session -A -s agentive"
+    else
+        ssh "$peer"
+    fi
 }
 
 # ─── DASHBOARD ────────────────────────────────────────────────────────────────
