@@ -45,6 +45,13 @@ both born on need.
 - **STATUS.md** — initial: `updated · writer · host · worktree · gate (verbatim) · checkpoint ·
   in_flight: none · recovery_probe (read-only, interprets both outcomes) · holds (every live one) ·
   next (exactly one, names the seat to wake) · expected`.
+  `writer:` is the RUNBOOK's declared `status_owner` (plus the shared guide's optional `· <vendor>`
+  annotation), never this skill's or a posture's name. Before parking, parse-check every YAML block
+  you authored — RUNBOOK, STATUS, and any output-only or mid-flight STATUS rehearsal. Quote or
+  block-scalar an individual free-text scalar only where it carries YAML-significant punctuation (a
+  `: ` pair, or a leading `>`/`|`/`&`/`*`/`#`); use a literal `|` where newlines are meaningful, and
+  never fold a typed list or map into a scalar. Shape authority stays in
+  `~/reposoma/raw.guides/status/GUIDE.md`. If no parser is at hand, say so — never claim a parse PASS.
 - **Router** — one line in the project's `pulse.md` (slug · gate · STATUS path). No `pulse.md` → the
   owning seat's pulse, one line. Never a second authority.
 - Born on need only: `_bus/` at ≥2 seats · `pad.*` for human sittings · `dock.md` · tunnel state

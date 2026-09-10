@@ -33,6 +33,13 @@ For a new session, define one gate before creating its directory. Author:
   references, ownership, and acceptance evidence;
 - `STATUS.md`: the initial present-tense position, no in-flight action, a read-only recovery
   probe, every live hold, and exactly one next action naming the seat @majkee should wake;
+  Its `writer:` is the RUNBOOK's declared `status_owner` with the shared guide's optional
+  `· <vendor>` annotation, never the Octopus posture or skill name. Before parking, confirm every
+  authored YAML block parses — RUNBOOK, STATUS, and any output-only or mid-flight STATUS rehearsal.
+  Quote or block-scalar a free-text scalar only where it carries YAML-significant punctuation; keep
+  typed lists/maps as collections and preserve meaningful command newlines with a literal `|`. The
+  STATUS shape lives at `~/reposoma/raw.guides/status/GUIDE.md`. If no parser is available, report
+  that limit rather than assert a parse PASS.
 - only the minimal project pulse/router entry required by the project's declared convention.
 
 Use absolute paths in prompts. Point to canon instead of reproducing it. Name @majkee as a
