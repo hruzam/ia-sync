@@ -49,3 +49,4 @@ _mail/*/archive
 # ~/.majkee leg — process data never committed (majkee.deny is the primary guard)
 /majkee/export/
 /majkee/cooking-recipes/
+!devices/_shared/termux/bin/

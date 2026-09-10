@@ -1,0 +1,22 @@
+#!/bin/sh
+# HOST-side only — idempotent tmux agentive bed initializer
+# Ensures the agentive bed has 4 windows (seats) for concurrent agent sessions
+
+# Locale hardening: seeded/attached over NON-interactive ssh, the login LANG is unset
+# (POSIX/C) and the tmux SERVER inherits it — powerline glyphs become bricks, colors
+# flatten to one hue. Force UTF-8 so the server is BORN correct (home symptom 2026-09-10).
+export LANG=en_US.UTF-8 LC_ALL=en_US.UTF-8
+
+if ! /usr/bin/tmux has-session -t agentive 2>/dev/null; then
+  /usr/bin/tmux new-session -d -s agentive
+fi
+
+# Ensure windows 1–4 exist; never kill or respawn existing windows
+for i in 1 2 3 4; do
+  if ! /usr/bin/tmux list-windows -t agentive | grep -q "^$i:"; then
+    /usr/bin/tmux new-window -d -t agentive:"$i"
+  fi
+done
+
+# Stale phone clients pin the tmux geometry small — force largest to accommodate remote display
+/usr/bin/tmux set -g window-size largest

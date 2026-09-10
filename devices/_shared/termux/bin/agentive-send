@@ -1,0 +1,22 @@
+#!/bin/sh
+# HOST-side only — dispatch control verbs to agentive tmux bed
+# Verbs: send <keys…>, paste, windows
+
+VERB="${1:-}"
+
+case "$VERB" in
+  send)
+    shift
+    /usr/bin/tmux send-keys -t agentive "$@"
+    ;;
+  paste)
+    /usr/bin/tmux paste-buffer -t agentive
+    ;;
+  windows)
+    /usr/bin/tmux list-windows -t agentive
+    ;;
+  *)
+    echo "usage: agentive-send (send <keys> | paste | windows)" >&2
+    exit 11
+    ;;
+esac

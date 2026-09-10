@@ -59,21 +59,95 @@ holds:
   - absolute binaries in every wrapper command (home PATH scar)
   - single RC cloud seat — last claimer wins; no --continue for remote
 
-c1_progress (2026-09-10, in flight): auth chain PASS — majkee entered the living agentive
-  bed from the Redmi (attached atlas-ui claude session `…-722`). Friction so far:
-  (a) glyph boxes → FIXED live: head pushed JetBrainsMono Nerd Font over the lane to
-  `~/.termux/font.ttf` + termux-reload-settings; (b) wants buttons/aliases/wrapper cover
-  → confirms C2 scope (extra-keys macros, widgets, bed aliases, ssh-agent);
-  (c) passphrase-per-connect → ssh-agent queued. OWED for gate: codex approval from
-  phone + lock ≥2 min + reattach.
+c1_verdict (2026-09-10): PASSED, crossed receipts.
+  - auth chain: Redmi → forced agentive → living sessions witnessed BOTH sides
+    (claude atlas-ui `…-722`; codex TUI `01a08ad5-…-fee9f`, head pane captures)
+  - approval: codex first honestly refused the receipt (automatic review) → majkee
+    switched /approvals to asking mode → dialog confirmed FROM THE PHONE; pane witness
+    "✔ You approved codex…mktemp /tmp/codex-phone-approval.XXXXXX" + artifact
+    /tmp/codex-phone-approval.MRktSw (13:08)
+  - survival: kicked by app-switch + connection abort + lock-screen wake — the 21-day-old
+    agentive bed never died; after battery exemptions even the Termux client survived lock
+  - gate clause note (gaveled at rotation): "zero authorized_keys changes" read as no
+    access-ARCHITECTURE changes; like-for-like key rotation recorded above.
+  Friction list (feeds C2): (a) glyph boxes → FIXED live (JetBrainsMono Nerd Font pushed
+  to ~/.termux/font.ttf); (b) wants buttons/aliases/cover → extra-keys macros + widgets +
+  bed aliases; (c) passphrase-per-connect → ssh-agent once per boot; (d) transient aborts
+  → auto-retry attach loop; (e) stale client pins geometry → `window-size largest`;
+  (f) codex ships in automatic review → help card documents /approvals asking mode;
+  (g) HyperOS exemptions (No restrictions Termux+Tailscale, pin in Recents) → README
+  provisioning step.
 
-next: majkee finishes prompt-2 (C1 driving test) with his hands, same sitting —
-  Redmi Termux → ssh hruzam@100.126.182.111 → forced `agentive` → codex → confirm one
-  bash-approval FROM THE PHONE → lock ≥2 min → reattach; friction notes back to the head.
-  (Phone-side C0 — Termux sshd :8022 up + optional adb auth on home — folds into the same
-  sitting.)
+c2_progress (2026-09-10): AUTHORED + HEAD-REVIEWED. @Delta built 7 files under
+  /home/hruzam/ia-sync/devices/_shared/termux/ (termux.properties extra-keys w/ S1–S4 +
+  PASTE + DETACH · bin/bed host-picker w/ ssh-agent-once + retry-on-255 · bin/agentive-seed
+  4 windows + window-size largest · bin/agentive-send · 2 widgets · README). Head review
+  found 4 defects (agent re-prompt leak, retry-on-any-exit, INVERTED battery advice,
+  claude-on-phone fiction) — Delta correction round applied, verified line-by-line by
+  head, sh -n PASS on all scripts. NOT pushed to device yet.
+  Cartan counter-sign (tunnel thread on majkee's shared channel .dev/session/
+  tunnel.state.json): round 1 NOK (agent-bootstrap race; bare tmux vs absolute-binary
+  law) → fixed. Round 2 NOK (no re-check inside lock; lock released before ssh-add) →
+  finding 1 ACCEPTED (double-checked locking applied), finding 2 DECLINED by head
+  ruling: lock across an interactive passphrase prompt = stale-lock hazard on abandoned
+  prompt, worse than a rare duplicate prompt; residual risk accepted, rationale in
+  bin/bed comment. Transport note for transfer letter: tunnel shim wait-window dies on
+  research-grade turns (two interrupted turns; 'no web search, local reads only'
+  workaround holds) — tunnel v1 candidate.
 
-expected: C1 PASS + friction list recorded here → head spawns @Delta for prompt-3 (wrapper
-  build incl. bin/bed host-slots, 4-seat windows, prompt buffer) → majkee opens the tunnel
-  table once for Cartan's counter-sign → C3 checklist → C4 frame → gate close with
-  transfer letter + promotion manifest.
+c2_verdict (2026-09-10): COUNTERSIGN-OK (Cartan, round 3, tunnel thread on majkee's
+  shared channel — operator's standing pattern: .dev/session/tunnel.state.json, root
+  path + per-bed pattern both commit-proofed in .git/info/exclude). PUSHED + INSTALLED
+  on the Redmi over :8022: ~/bin/bed (+ $PREFIX/bin symlink, on PATH), ~/.shortcuts/*,
+  extra-keys appended to ~/.termux/termux.properties + reloaded. Both beds SEEDED
+  (agentive-seed): office = living codex on window 0 + seats 1–4; home = fresh bed 0–4;
+  window-size largest set. NOTE: Termux:Widget APP not installed on device (only
+  com.termux present) — home-screen taps need it (F-Droid, must match Termux install
+  source); typed `bed office` is the equivalent path meanwhile. NOTE: S1–S4 buttons
+  reach windows 1–4; the living codex sits on window 0 (Ctrl+b 0 by hand, or future S0).
+
+GATE: PASSED 2026-09-10 (verbatim gate above). Evidence set: C1 crossed receipts
+  (approval from phone + artifact /tmp/codex-phone-approval.MRktSw + lock/kick survival,
+  pane captures both sides) · C2 pushed+installed, Cartan COUNTERSIGN-OK r3 · acceptance:
+  button rows live (screenshot 13:47), DETACH clean, re-entry with NO passphrase (agent
+  persistence), PASTE from mobile notes app landed in office shell (PTYRA lane proven).
+
+closing_sweep (owed before prune):
+  - [x] transfer letter → raw/trajectory.experience-transfer.2026-09-10.md
+  - [x] C4 frame → res/reaudit.cold-start-frame.md
+  - [x] piql-Houston mail (ssh surface: device key rotation both PCs) — sent to the
+        houston bus as trajectory.device-key-rotation.2026-09-10.md (inbox → archive
+        after read; no inbox path cited per scar 3)
+  - [ ] C3 both-doors: head launches claude in seat 1; majkee verifies same session in
+        mobile app (1 min of his hands)
+  - [ ] optional (unblessed): agentive-seed lands attach on empty seat, S0 button
+  - [ ] journal entry + commit + prune: DEFERRED — journal.host-cleanup.md and AGENTS.md
+        are dirty under other owners (hold); majkee sequences the commit
+  - promotion manifest (scar 4) — raw/ keepers, EVERY one:
+    * codex-remote-control-cli/raw/brief.implementation.byAsymmetry.2026-09-04.md → keep
+      with program (02/03 siblings still feed on it)
+    * codex-remote-control-cli/raw/brief.implementation.session-bed.v2.bySymmetry.2026-09-04.md
+      → same
+    * 01-wrapper/raw/trajectory.experience-transfer.2026-09-10.md → promotes to next
+      cSharp via operator at next arc opening; folds into project therapy artifact
+    * tunnel.state.json (root, git-invisible) → operator's standing channel, NOT pruned
+    * phone ~/.ssh/id_ed25519*.old + both PCs' authorized_keys.pre-rotation-2026-09-10
+      → delete after majkee confirms new key stable (his call at prune)
+
+adjacent_strand (post-gate, majkee-requested 2026-09-10 — NOT wrapper-gate work, sequence
+  its own commit/deploy separately):
+  - home bed locale FIXED: agentive-seed exports LANG=en_US.UTF-8 (bricks/flat-color came
+    from a bed born under bare non-interactive locale); home server re-seeded + glyph-
+    verified (═╰ ✓). office bed was already UTF-8 (born from a login shell Aug 20).
+  - PC→PC bed access: `tso -t|--bed <peer>` added to _ts_session in
+    zsh/system/tailscale.zsh (engine body; keyboard.zsh comment updated — aliases-only law
+    respected). Twin of phone `bed`; peer is any resolvable tailnet name (3rd PC = zero
+    code); LANG injected in the remote command. zsh -n PASS, 5-case dispatch matrix PASS.
+  - NOT DEPLOYED: source edited in ia-sync/zsh only; live ~/.config/zsh unchanged. Config
+    deploy to BOTH machines is majkee's gate (full deploy.sh under palette.map hold — use
+    targeted flow). tso -t goes live after deploy.
+
+next: majkee — (1) reattach `bed home` → confirm real glyphs/colors; (2) one minute for
+  C3: I start claude in seat 1 on his word, he checks the session in the Claude mobile app;
+  (3) deploy the zsh config (his gate) to both machines to activate `tso -t`; (4) sequence
+  journal+commit+prune for the wrapper, separately from the tso strand.

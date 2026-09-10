@@ -1,0 +1,3 @@
+#!/data/data/com.termux/files/usr/bin/sh
+# Termux:Widget home-screen one-tap script — installed to ~/.shortcuts/ on device via push flow
+exec $HOME/bin/bed office

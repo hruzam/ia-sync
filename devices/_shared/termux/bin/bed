@@ -1,0 +1,76 @@
+#!/data/data/com.termux/files/usr/bin/sh
+# Termux shebang; on PCs invoke via: sh bin/bed <slot>
+#
+# Phone + PC host picker for agentive bed attachment
+# Usage: bed <slot> — opens tmux agentive session on remote host
+# Host slots mirror /home/hruzam/ia-sync/machines.json — add a machine = add a row there + a case here; never key on IP elsewhere
+
+SLOT="${1:-office}"
+
+case "$SLOT" in
+  office)
+    IP="100.126.182.111"
+    ;;
+  home)
+    IP="100.110.27.60"
+    ;;
+  arch-mac)
+    echo "error: slot reserved — add row in machines.json and here" >&2
+    exit 2
+    ;;
+  *)
+    echo "unknown slot: $SLOT" >&2
+    exit 2
+    ;;
+esac
+
+# SSH agent bootstrap — passphrase prompted once per boot, reused across shells
+[ -f "$HOME/.ssh/agent.env" ] && . "$HOME/.ssh/agent.env" >/dev/null 2>&1
+ssh-add -l >/dev/null 2>&1
+if [ $? -eq 2 ]; then
+  # exit 2 = no agent reachable — start one, guarded against concurrent launches
+  if mkdir "$HOME/.ssh/agent.lock" 2>/dev/null; then
+    # double-check inside the lock: a parallel launcher may have won already
+    [ -f "$HOME/.ssh/agent.env" ] && . "$HOME/.ssh/agent.env" >/dev/null 2>&1
+    ssh-add -l >/dev/null 2>&1
+    if [ $? -eq 2 ]; then
+      ssh-agent -s > "$HOME/.ssh/agent.env"
+      chmod 600 "$HOME/.ssh/agent.env"
+    fi
+    rmdir "$HOME/.ssh/agent.lock"
+  else
+    # another launch is bootstrapping — wait and reuse its agent
+    sleep 2
+  fi
+  . "$HOME/.ssh/agent.env" >/dev/null 2>&1
+fi
+if ! ssh-add -l >/dev/null 2>&1; then
+  # agent up but no identities — prompts the passphrase; deliberately OUTSIDE the lock:
+  # holding a lock across an interactive prompt risks a stale lock if the prompt is
+  # abandoned — a rare duplicate prompt is the accepted lesser failure (head ruling 2026-09-10)
+  ssh-add "$HOME/.ssh/id_ed25519"
+fi
+
+# Auto-retry loop: on SSH connection failure (255) only, up to 5 attempts, sleep 2 between
+# On the phone the forced command overrides the remote command harmlessly
+# On PCs the explicit command does the same thing — one script, both roles
+RETRIES=5
+ATTEMPT=0
+
+while [ $ATTEMPT -lt $RETRIES ]; do
+  ssh -t hruzam@"$IP" "/usr/bin/tmux new-session -A -s agentive"
+  EXIT_CODE=$?
+
+  if [ $EXIT_CODE -ne 255 ]; then
+    # 0 = clean detach/exit; other non-255 = session ended deliberately — do not reconnect
+    exit $EXIT_CODE
+  fi
+
+  ATTEMPT=$((ATTEMPT + 1))
+  if [ $ATTEMPT -lt $RETRIES ]; then
+    sleep 2
+  fi
+done
+
+echo "error: failed to connect after $RETRIES attempts; toggle Tailscale on phone if transient freeze occurred" >&2
+exit 1
