@@ -148,11 +148,15 @@ adjacent_strand (post-gate, majkee-requested 2026-09-10 — NOT wrapper-gate wor
     zsh/system/tailscale.zsh (engine body; keyboard.zsh comment updated — aliases-only law
     respected). Twin of phone `bed`; peer is any resolvable tailnet name (3rd PC = zero
     code); LANG injected in the remote command. zsh -n PASS, 5-case dispatch matrix PASS.
-  - NOT DEPLOYED: source edited in ia-sync/zsh only; live ~/.config/zsh unchanged. Config
-    deploy to BOTH machines is majkee's gate (full deploy.sh under palette.map hold — use
-    targeted flow). tso -t goes live after deploy.
+  - DEPLOYED (majkee blessing 2026-09-10): office live via targeted flow (backups
+    .bak-2026-09-10); commits 68b6661 (flag) + 561e324 (agentive-door: tso -t lands on a
+    plain-shell seat) pushed; home = pull + targeted cp (finishing block handed over).
+    Guide concentrated: /guide remote-cli (reposoma c1b35a3). Tunnel shim wait-window
+    issue journaled: raw.guides/tunnel/dev-journal + src/observation (reposoma 7cf85c4).
 
-next: majkee — (1) reattach `bed home` → confirm real glyphs/colors; (2) one minute for
-  C3: I start claude in seat 1 on his word, he checks the session in the Claude mobile app;
-  (3) deploy the zsh config (his gate) to both machines to activate `tso -t`; (4) sequence
-  journal+commit+prune for the wrapper, separately from the tso strand.
+next: PARKED TO THE PAD — all deferred testing (C3 both-doors · tso -t maiden voyages ·
+  phone loop · widget one-tap · phone-door decision · rotation cleanup gate) lives in
+  pad.1-deferred-testing.md in this folder. Driver: @Vara live session (doubles as the
+  new walker's field test), majkee's hands, sat whenever he picks it up. After the pad:
+  journal entry + prune sequencing (majkee's gate; journal.host-cleanup.md dirty under
+  another owner).
