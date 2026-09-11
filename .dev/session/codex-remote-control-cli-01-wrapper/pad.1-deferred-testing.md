@@ -190,6 +190,24 @@ Not tests — reps. Run each a few times until the keys are in your hands. Dupli
 with the steps above is intentional. Model behind it: /guide remote-cli §"one session,
 many seats, many views" — more agents = more WINDOWS, never more sessions.
 
+### Drill 0 — SEE what's alive (do this first, tmux is new)
+```
+tso office             # plain shell on office (no bed take-over)
+tmux ls                # which beds exist + seat count   → proof line
+tmux list-windows -t agentive   # each seat + what runs in it (claude? codex? shell?)
+exit                   # leave the plain shell
+```
+Then attach and look from inside:
+```
+tso -t office
+#   Ctrl+b w           # VISUAL list of every seat + what's running — arrow, Enter
+#   read the green bar bottom: [agentive] 1:claude*  = bed·seat·current(*)
+#   Ctrl+b d           # leave
+```
+Reflex to build: **`Ctrl+b w` = "show me everything running, let me pick."** That one
+key answers "what do I have and where is it." (This is the exact command that proved
+two claudes were alive — /guide remote-cli §"what's alive?".)
+
 ### Drill A — computer host ⇄ host (the tso -t reflex)
 ```
 tso -t office          # home terminal → office bed, shell seat
