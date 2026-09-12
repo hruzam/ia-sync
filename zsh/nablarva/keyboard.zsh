@@ -25,9 +25,5 @@ alias nab-help='nab -h'        # engine help panel
 # --- P4: keys panel ----------------------------------------------------------
 alias nab-keys='grep -E "^alias nab-" ~/.config/zsh/nablarva/keyboard.zsh | sed "s/alias //"'
 
-# --- P5: runbook session browser ---------------------------------------------
-alias rb-open='_rb_open'     # launch TUI (rb-open [root])
-alias rb-pick='_rb_pick'     # fzf bed picker → prints path
-alias rb-help='_rb_help'     # help panel
-
-# --- P6+ (reserved): stridularium / broker bindings — post-gavel -------------
+# --- P5+ (reserved): stridularium / broker bindings — post-gavel -------------
+# (rb-* aliases lived here 2026-09-04→06; rescoped to session/keyboard.zsh)

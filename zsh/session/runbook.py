@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""runbook.py — session-scope runbook browser. v0.2 (rescoped from nablarva/ 2026-09-06)
+"""runbook.py — session-scope runbook browser. v0.3 (tree + content pane, 2026-09-10)
 
 Browse .dev/session/ beds: D1 list with gate-state, D2 sectioned view
 (STATUS / _bus/ / RUNBOOK / bed-root files / raw/) with foldable groups,
@@ -8,23 +8,25 @@ internal reader, print-buffer pane, and base colors.
 Invoke via:  python3 runbook.py [--root <.dev/session path>]
 Root resolution: --root > $RB_ROOT (config default bench) > walk-up.
 
-Keybinds:
-  ↑ ↓           navigate D1 / free-scroll D2
-  Tab           switch focus D1 ↔ D2
-  j / k         move node cursor in D2 (headers + files)
-  J / K         jump node cursor between section headers (groups)
-  Enter / Space header → fold/unfold group · file → open internal reader
-  1–5           jump to section (R2 STATUS / R5 _bus / R1 RUNBOOK / R3 files / R4 raw)
-  F             fold/unfold R1 RUNBOOK
-  e             open cursor file in $EDITOR (curses escape)
-  B             presence board modal (advisory display; ● in D1 = bed attached locally)
-  m / u         attach / detach own board record for the selected bed (D1 focus)
-  p             collect selected path into print buffer (printed at quit)
-  b             toggle buffer pane
-  r             manual reload
-  q / Esc       quit (buffer prints to scroll-back)
+v0.3 layout: LEFT = one tree (beds → STATUS/_bus/RUNBOOK/files/raw branches),
+RIGHT = pure content pane (bed node → cold-start overview; file → document;
+group → listing). Fixed strip on top of content: next: (+ raw in_flight when
+flagged). Narrow terminals (<60 cols): the focused pane takes the whole screen.
+Place memory (selected node, expanded branches) is host-local UI state.
 
-Reader keybinds: ↑↓ PgUp/PgDn g/G scroll · e editor · q/Esc/← back
+Keybinds:
+  ↑ ↓ PgUp/PgDn move tree cursor / scroll content (by focus; g/G in content)
+  → ←           expand / collapse (← also: to parent, or content → tree)
+  Enter / Space toggle branch · on a file: focus the content pane
+  Tab           switch pane tree ↔ content
+  J / K         jump between beds
+  1–5           jump to bed part (STATUS / _bus / RUNBOOK / files / raw)
+  F             fold/unfold the selected bed
+  e             open in $EDITOR (GUI editors detach; TUI stays)
+  y             copy selection path to clipboard (fallback: print buffer)
+  B             presence board modal · m / u attach / detach selected bed
+  p             collect path into print buffer · b toggle buffer pane
+  r             reload all beds · q / Esc quit (buffer prints to scroll-back)
 
 Board CLI (same grammar core as the TUI):
   runbook.py board list
@@ -365,94 +367,393 @@ def bed_root_items(bed):
         return []
 
 
-# ── D2 builder — lines + cursor nodes ────────────────────────────────────────
+# ── Cold-start cards — the entrance into live sessions ──────────────────────
+# One-authority law (cold-start GUIDE): the card is a TRANSFER POINTER, never a
+# second doing-state. This client only reads: opening a card never archives it,
+# never launches anything. Folder = state: card/ = live · routines/ = recurring
+# · archive/ = drained. A card whose target is not under this root is "missing
+# here" — elsewhere, not finished.
+
+def cs_vault_dir():
+    return Path(os.environ.get("RB_CS_VAULT", "~/reposoma/_cold-start")).expanduser()
+
+
+CS_STATES = (("card", "live"), ("routines", "routine"), ("archive", "archived"))
+CS_BADGE = {"live": "CS", "routine": "RT", "archived": "AR"}
+
+
+def load_cs_cards():
+    """All vault cards. {"path", "state", "targets": [expanded Paths]} — targets
+    from runbook:/root: keys and ~-anchored pointers: list items (tolerant
+    matcher: cards written by different seats point differently)."""
+    out = []
+    for sub, state in CS_STATES:
+        d = cs_vault_dir() / sub
+        if not d.is_dir():
+            continue
+        for p in sorted(d.glob("*.md")):
+            block = read_fenced_block(p) or ""
+            targets = set()
+            fk = flat_keys(block)
+            for key in ("runbook", "root"):
+                v = fk.get(key, "")
+                if v.startswith("~"):
+                    targets.add(v)
+            for m in re.finditer(r"^\s*-\s+(~/[^\s]+)", block, re.M):
+                targets.add(m.group(1))
+            # umbrella + order keys: frontmatter preferred, filename-law fallback
+            stem = re.sub(r"^(CS|RT)\.", "", p.name[:-3])
+            dm = re.search(r"\.(\d{4}-\d{2}-\d{2})$", stem)
+            fdate = dm.group(1) if dm else ""
+            slug = stem[: -11] if dm else stem
+            out.append({"path": p, "state": state,
+                        "targets": [Path(os.path.expanduser(t)) for t in targets],
+                        "project": fk.get("project") or re.split(r"[-.]", slug)[0],
+                        "date": fk.get("date") or fdate,
+                        "resume": fk.get("resume", "")})
+    return out
+
+
+def card_matches_bed(card, bed_path):
+    """Attached iff any card pointer equals the bed dir or lies inside it."""
+    b = str(bed_path)
+    for t in card["targets"]:
+        s = str(t)
+        if s == b or s.startswith(b + "/"):
+            return True
+    return False
+
+
+def card_attr(state):
+    return {"live": c("accent"), "routine": c("meta"),
+            "archived": curses.A_DIM}.get(state, 0)
+
+
+def archive_card(card):
+    """The drain move (Cinderella lifecycle): consumed card → archive/.
+    Explicit operator act only — never automatic. Reversible by mv back."""
+    if card["state"] == "routine":
+        raise SystemExit("routines never archive (vault law)")
+    if card["state"] == "archived":
+        raise SystemExit("already archived")
+    dst_dir = cs_vault_dir() / "archive"
+    dst_dir.mkdir(parents=True, exist_ok=True)
+    dst = dst_dir / card["path"].name
+    if dst.exists():
+        raise SystemExit(f"archive/ already holds {dst.name} — resolve by hand")
+    card["path"].rename(dst)
+    return dst
+
+
+# ── Tree model (v0.3) — left pane = one tree, right pane = pure content ──────
 #
-# Line dict:  {"text", "attr", "kind": "header"|"item"|"text", "path", "section"}
-# Node dict:  {"line": int, "kind": "header"|"file", "section": int, "path": Path|None}
-# Sections (fixed order, keyed 1–5): 0=R2 STATUS · 1=R5 _bus/ · 2=R1 RUNBOOK ·
-#                                    3=R3 bed files · 4=R4 raw/
+# Node: {"kind": "bed"|"group"|"file"|"info", "key", "label", "attr",
+#        "path", "bed", "depth", "expandable"}
+# Keys are stable strings ("<slug>", "<slug>/bus", "<slug>/bus/<file>") — they
+# drive the expanded-set and host-local place memory.
 
-SECTION_LABELS = ["R2 · STATUS", "R5 · _bus/", "R1 · RUNBOOK", "R3 · bed files", "R4 · raw/"]
+BED_PARTS = ["status", "bus", "runbook", "files", "raw"]  # 1–5 jump order
 
 
-def build_d2(bed_info, width, collapsed):
-    bed = bed_info["path"]
-    lines = []
+def group_files(bed, part):
+    if part == "bus":
+        return list_dir(bed["path"] / "_bus")
+    if part == "raw":
+        return list_dir(bed["path"] / "raw")
+    if part == "files":
+        return bed_root_items(bed["path"])
+    return []
+
+
+def bed_children(bed):
+    """(kind, part, label, path) for an expanded bed — STATUS · _bus/ · RUNBOOK
+    · bed files · raw/. Absence renders dim info, never hidden (gap = signal)."""
+    st, rb = bed["status_path"], bed["runbook_path"]
+    return [
+        ("file", "status", st.name, st) if st else ("info", "status", "no STATUS", None),
+        ("group", "bus", "_bus/", bed["path"] / "_bus"),
+        ("file", "runbook", rb.name, rb) if rb else ("info", "runbook", "no RUNBOOK", None),
+        ("group", "files", "bed files", bed["path"]),
+        ("group", "raw", "raw/", bed["path"] / "raw"),
+    ]
+
+
+def build_tree(beds, expanded, cards=None):
+    """Visible tree nodes in draw order. Twig markers baked into labels."""
     nodes = []
+    for bed in beds:
+        bkey = bed["slug"]
+        twig = "▾" if bkey in expanded else "▸"
+        # badge slot BEFORE the name — always visible even when the slug clips
+        mark = "●" if bed.get("marked") else " "
+        cname, extra = STATE_STYLE.get(bed["state"], (None, 0))
+        nodes.append({"kind": "bed", "key": bkey,
+                      "label": f"{twig} [{bed['state']}]{mark} {bed['slug']}",
+                      "attr": (c(cname, extra) if cname else extra),
+                      "path": bed["path"], "bed": bed, "depth": 0, "expandable": True})
+        if bkey not in expanded:
+            continue
+        for kind, part, label, path in bed_children(bed):
+            gkey = f"{bkey}/{part}"
+            if kind == "group":
+                files = group_files(bed, part)
+                gtwig = "▾" if gkey in expanded else "▸"
+                nodes.append({"kind": "group", "key": gkey,
+                              "label": f"{gtwig} {label} ({len(files)})",
+                              "attr": c("header"), "path": path, "bed": bed,
+                              "depth": 1, "expandable": True})
+                if gkey in expanded:
+                    for f in files:
+                        nodes.append({"kind": "file", "key": f"{gkey}/{f.name}",
+                                      "label": f.name, "attr": attr_for_file(f),
+                                      "path": f, "bed": bed, "depth": 2,
+                                      "expandable": False})
+            elif kind == "file":
+                nodes.append({"kind": "file", "key": gkey, "label": label,
+                              "attr": attr_for_file(path), "path": path,
+                              "bed": bed, "depth": 1, "expandable": False})
+            else:
+                nodes.append({"kind": "info", "key": gkey, "label": label,
+                              "attr": curses.A_DIM, "path": None, "bed": bed,
+                              "depth": 1, "expandable": False})
+        # cs cards matched to this bed (live + routines; archive stays in vault)
+        if cards:
+            matched = [cd for cd in cards if cd["state"] != "archived"
+                       and card_matches_bed(cd, bed["path"])]
+            if matched:
+                ckey = f"{bkey}/cs"
+                ctwig = "▾" if ckey in expanded else "▸"
+                nodes.append({"kind": "csgroup", "key": ckey,
+                              "label": f"{ctwig} cs cards ({len(matched)})",
+                              "attr": c("accent"), "path": None, "bed": bed,
+                              "depth": 1, "expandable": True, "cards": matched})
+                if ckey in expanded:
+                    for cd in matched:
+                        nodes.append({"kind": "card", "key": f"{ckey}/{cd['path'].name}",
+                                      "label": f"{CS_BADGE[cd['state']]} {cd['path'].name}",
+                                      "attr": card_attr(cd["state"]), "path": cd["path"],
+                                      "bed": bed, "depth": 2, "expandable": False,
+                                      "card": cd})
 
-    def header(section):
-        mark = "▸" if section in collapsed else "▾"
-        label = f"{mark} {SECTION_LABELS[section]} "
-        bar = "─" * max(0, width - len(label) - 1)
-        nodes.append({"line": len(lines), "kind": "header", "section": section, "path": None})
-        lines.append({"text": label + bar, "attr": c("header", curses.A_BOLD),
-                      "kind": "header", "path": None, "section": section})
+    # vault node — the entrance: every card, with its landing when one exists here
+    if cards:
+        counts = {s: sum(1 for cd in cards if cd["state"] == s)
+                  for s in ("live", "routine", "archived")}
+        vtwig = "▾" if "_cold-start" in expanded else "▸"
+        nodes.append({"kind": "vault", "key": "_cold-start",
+                      "label": (f"{vtwig} ≋ cold-start ({counts['live']} live · "
+                                f"{counts['routine']} rt · {counts['archived']} arch)"),
+                      "attr": c("header", curses.A_BOLD), "path": cs_vault_dir(),
+                      "bed": None, "depth": 0, "expandable": True})
+        if "_cold-start" in expanded:
+            # umbrellas: project: key (or filename-slug derivation), newest-first
+            groups = {}
+            for cd in cards:
+                groups.setdefault(cd["project"], []).append(cd)
 
-    def item(section, path, label=None):
-        nodes.append({"line": len(lines), "kind": "file", "section": section, "path": path})
-        lines.append({"text": f"  {label or path.name}", "attr": attr_for_file(path),
-                      "kind": "item", "path": path, "section": section})
+            def newest(proj):
+                return max((x["date"] or "") for x in groups[proj])
 
-    def body(pairs):
-        for text, attr in pairs:
-            lines.append({"text": text, "attr": attr, "kind": "text",
-                          "path": None, "section": None})
+            for proj in sorted(groups, key=newest, reverse=True):
+                grp = sorted(groups[proj], key=lambda x: x["date"] or "",
+                             reverse=True)
+                gkey = f"_cold-start/{proj}"
+                gtwig = "▾" if gkey in expanded else "▸"
+                nodes.append({"kind": "csgroup", "key": gkey,
+                              "label": f"{gtwig} {proj} ({len(grp)})",
+                              "attr": c("header"), "path": None, "bed": None,
+                              "depth": 1, "expandable": True, "cards": grp})
+                if gkey not in expanded:
+                    continue
+                for cd in grp:
+                    landing = None
+                    for bed in beds:
+                        if card_matches_bed(cd, bed["path"]):
+                            landing = bed
+                            break
+                    suffix = f" → {landing['slug']}" if landing else ""
+                    nodes.append({"kind": "card",
+                                  "key": f"{gkey}/{cd['path'].name}",
+                                  "label": f"{CS_BADGE[cd['state']]} {cd['path'].name}{suffix}",
+                                  "attr": card_attr(cd["state"]), "path": cd["path"],
+                                  "bed": landing, "depth": 2, "expandable": False,
+                                  "card": cd})
+    return nodes
 
-    def empty():
-        lines.append({"text": "  —", "attr": curses.A_DIM, "kind": "text",
-                      "path": None, "section": None})
 
-    # 0 — R2 STATUS (doc inline)
-    header(0)
-    if 0 not in collapsed:
-        st = bed_info["status_path"]
-        if st:
-            item(0, st)
-            body(render_file_lines(st, width))
+def render_overview(bed, width, board_recs=None):
+    """Right-pane composed view for a bed node — the 30-second cold-start read."""
+    lines = []
+
+    def add(text, attr=0):
+        for piece in wrap_line(text, width):
+            lines.append((piece, attr))
+
+    add(f"{bed['slug']}  [{bed['state']}]", curses.A_BOLD)
+    add(str(bed["path"]), curses.A_DIM)
+    lines.append(("", 0))
+    add(f"next: {bed['next_line']}", c("accent", curses.A_BOLD))
+    raw = bed.get("in_flight_raw")
+    if not _inflight_idle(raw):
+        add(f"in_flight: {raw}", c("warn", curses.A_BOLD))
+    lines.append(("", 0))
+    recs = board_recs if board_recs is not None else load_board()
+    mine = [r for r in recs
+            if r["state"] == "valid" and r["fields"]["host"] == local_host()
+            and os.path.expanduser(r["fields"]["bed"]) == str(bed["path"])]
+    if mine:
+        add("board attachments:", c("header", curses.A_BOLD))
+        for r in mine:
+            f = r["fields"]
+            own = "*" if r["own"] else " "
+            note = f" · {f['note']}" if f.get("note") else ""
+            add(f"  [{age_label(record_age_seconds(f))}]{own}{f['seat']}@{f['host']}{note}",
+                c("accent") if r["own"] else 0)
+        lines.append(("", 0))
+    add(f"_bus/ {len(list_dir(bed['path'] / '_bus'))} · "
+        f"files {len(bed_root_items(bed['path']))} · "
+        f"raw/ {len(list_dir(bed['path'] / 'raw'))}", curses.A_DIM)
+    return lines
+
+
+BUS_NAME = re.compile(r"^(\d+)\.([A-Za-z0-9_-]+)\.(.+)\.md$")
+
+
+def render_bus_group(bed, width):
+    """Cycle-grouped receipt view (D — display-only). Presence facts only:
+    kinds listed per cycle; a verdict FILE existing or not is stated, never
+    interpreted (cycle-23 lesson: a filename is not a verdict)."""
+    files = list_dir(bed["path"] / "_bus")
+    lines = [(f"_bus/ — {len(files)} files", c("header", curses.A_BOLD)), ("", 0)]
+    cycles = {}
+    other = []
+    for f in files:
+        m = BUS_NAME.match(f.name)
+        if m:
+            cycles.setdefault(int(m.group(1)), []).append((m.group(2), m.group(3), f))
         else:
-            empty()
+            other.append(f)
+    # head-review aid, observational: cycles where a return file exists and no
+    # verdict file does. States file-absence only — no pass/fail/await claim.
+    open_ret = [n for n, items in sorted(cycles.items())
+                if any("return" in k for _, k, _ in items)
+                and not any("verdict" in k for _, k, _ in items)]
+    if open_ret:
+        for piece in wrap_line("return file present · no verdict file: cycle "
+                               + ", ".join(str(n) for n in open_ret), width):
+            lines.append((piece, c("accent")))
+        lines.append(("", 0))
+    for n in sorted(cycles, reverse=True):  # newest cycle first — orient order
+        lines.append((f"#{n}", c("header", curses.A_BOLD)))
+        for seat, kind, f in sorted(cycles[n], key=lambda x: x[2].name):
+            for piece in wrap_line(f"  {kind:<9} {seat} · {f.name}", width):
+                lines.append((piece, attr_for_file(f)))
+    if other:
+        lines.append(("unnumbered", curses.A_DIM))
+        for f in other:
+            lines.append((f"  {f.name}", curses.A_DIM))
+    if not files:
+        lines.append(("  —", curses.A_DIM))
+    return lines
 
-    # 1 — R5 _bus/ (most critical — sits high)
-    header(1)
-    if 1 not in collapsed:
-        bus_files = list_dir(bed / "_bus")
-        if bus_files:
-            for p in bus_files:
-                item(1, p)
-        else:
-            empty()
 
-    # 2 — R1 RUNBOOK (doc inline; F folds)
-    header(2)
-    if 2 not in collapsed:
-        rb = bed_info["runbook_path"]
-        if rb:
-            item(2, rb)
-            body(render_file_lines(rb, width))
-        else:
-            empty()
+def render_selection(node, width):
+    """Right-pane content for the selected tree node. Recomputed per draw —
+    small files, and it makes every view live on the 1 s tick."""
+    if node is None:
+        return [("—", curses.A_DIM)]
+    if node["kind"] == "bed":
+        return render_overview(node["bed"], width)
+    if node["kind"] == "file":
+        return render_file_lines(node["path"], width)
+    if node["kind"] == "group":
+        part = node["key"].rsplit("/", 1)[-1]
+        if part == "bus":
+            return render_bus_group(node["bed"], width)
+        files = group_files(node["bed"], part)
+        out = [(node["label"].lstrip("▸▾ "), c("header", curses.A_BOLD)), ("", 0)]
+        for f in files:
+            out.append((f"  {f.name}", attr_for_file(f)))
+        if not files:
+            out.append(("  —", curses.A_DIM))
+        return out
+    if node["kind"] == "card":
+        cd = node["card"]
+        out = [(f"{cd['state'].upper()} card · {cd['path'].name}",
+                c("header", curses.A_BOLD))]
+        tb = node.get("bed")
+        out.append((f"lands here: {tb['slug']} (Enter jumps to it)" if tb else
+                    "target missing here — elsewhere, not finished",
+                    c("good") if tb else c("warn")))
+        if cd.get("resume"):
+            for piece in wrap_line(f"resume: {cd['resume']}", width):
+                out.append((piece, c("accent", curses.A_BOLD)))
+            out.append(("  (R copies it — paste into your target window)",
+                        curses.A_DIM))
+        out.append(("", 0))
+        return out + render_file_lines(cd["path"], width)
+    if node["kind"] == "csgroup":
+        out = [(node["label"].lstrip("▸▾ "), c("header", curses.A_BOLD)), ("", 0)]
+        for cd in node.get("cards", []):
+            d = f" · {cd['date']}" if cd.get("date") else ""
+            out.append((f"  {CS_BADGE[cd['state']]} {cd['path'].name}{d}",
+                        card_attr(cd["state"])))
+        return out
+    if node["kind"] == "vault":
+        return ([("cold-start vault — the session entrance", c("header", curses.A_BOLD)),
+                 (str(node["path"]), curses.A_DIM), ("", 0),
+                 ("card/ = live glue · routines/ = recurring · archive/ = drained.", 0),
+                 ("Enter on a card jumps to its bed here; a card whose target is", 0),
+                 ("not under this root is missing HERE — elsewhere, not finished.", 0),
+                 ("Opening a card never archives it and never launches anything.", curses.A_DIM)])
+    return [(node["label"], curses.A_DIM)]
 
-    # 3 — R3 bed-root files
-    header(3)
-    if 3 not in collapsed:
-        root_items = bed_root_items(bed)
-        if root_items:
-            for p in root_items:
-                item(3, p)
-        else:
-            empty()
 
-    # 4 — R4 raw/
-    header(4)
-    if 4 not in collapsed:
-        raw_files = list_dir(bed / "raw")
-        if raw_files:
-            for p in raw_files:
-                item(4, p)
-        else:
-            empty()
+# ── Place memory (host-local UI prefs — never project state) ─────────────────
 
-    return lines, nodes
+def ui_state_path():
+    base = os.environ.get("RB_STATE", "~/.local/state/session-board")
+    return Path(base).expanduser() / "ui.json"
+
+
+def load_ui_state(root):
+    import json
+    try:
+        d = json.loads(ui_state_path().read_text(encoding="utf-8"))
+        if d.get("root") == str(root):
+            return d
+    except (OSError, ValueError):
+        pass
+    return {}
+
+
+def save_ui_state(root, selected_key, expanded, tree_right=False, split=40):
+    import json
+    try:
+        p = ui_state_path()
+        p.parent.mkdir(parents=True, exist_ok=True)
+        p.write_text(json.dumps({"root": str(root), "selected": selected_key,
+                                 "expanded": sorted(expanded),
+                                 "tree_right": tree_right,
+                                 "split": split}), encoding="utf-8")
+    except OSError:
+        pass
+
+
+# ── Clipboard (relay prep — copying claims nothing: no sent/read/accepted) ───
+
+def copy_to_clipboard(text):
+    """Try wayland/X clipboard tools; return tool name, or None → caller falls
+    back to the print buffer (terminal-print fallback is always available)."""
+    for cmd in (["wl-copy"], ["xclip", "-selection", "clipboard"]):
+        try:
+            p = subprocess.run(cmd, input=text.encode("utf-8"), timeout=3,
+                               stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+            if p.returncode == 0:
+                return cmd[0]
+        except (OSError, subprocess.TimeoutExpired):
+            continue
+    return None
 
 
 # ── Mtime tracking ────────────────────────────────────────────────────────────
@@ -769,96 +1070,80 @@ def open_editor(screen, path):
         return f"editor error ({name}): {e}"
 
 
-# ── Internal reader (feature: read any document without $EDITOR) ─────────────
-
-def reader(screen, path):
-    """Modal WRITELN reader. Recomputes each draw → live reload for free (1s tick)."""
-    offset = 0
-    while True:
-        h, w = screen.getmaxyx()
-        body_w = max(1, w - 2)
-        doc = render_file_lines(path, body_w)
-        body_h = max(1, h - 2)
-        max_off = max(0, len(doc) - body_h)
-        offset = max(0, min(offset, max_off))
-
-        screen.erase()
-        title = clipped(f" {path} ", w)
-        safe_add(screen, 0, 0, title + " " * max(0, w - len(title)),
-                 curses.A_REVERSE | curses.A_BOLD, w)
-        for i, (text, attr) in enumerate(doc[offset: offset + body_h]):
-            safe_add(screen, 1 + i, 1, text, attr, body_w)
-        pos = f" {offset + 1}-{min(offset + body_h, len(doc))}/{len(doc)} · ↑↓ PgUp/PgDn g/G · e edit · q back "
-        safe_add(screen, h - 1, 0, clipped(pos, w), curses.A_REVERSE, w)
-        screen.refresh()
-
-        try:
-            key = screen.get_wch()
-        except curses.error:
-            continue  # tick — redraw picks up file changes
-        except KeyboardInterrupt:
-            return
-
-        if key == curses.KEY_UP:
-            offset -= 1
-        elif key == curses.KEY_DOWN:
-            offset += 1
-        elif key == curses.KEY_PPAGE:
-            offset -= body_h
-        elif key == curses.KEY_NPAGE:
-            offset += body_h
-        elif key == "g":
-            offset = 0
-        elif key == "G":
-            offset = max_off
-        elif key in ("e", "E"):
-            open_editor(screen, path)
-        elif key in ("q", "Q", "\x1b", curses.KEY_LEFT):
-            return
-        elif key == curses.KEY_RESIZE:
-            pass  # sizes recomputed at loop top
-
-
 # ── Board modal (advisory display only — no action derives from what it shows) ─
 
+def board_lines(recs, sel_idx, width):
+    """Wrapped display lines grouped by workspace (the natural convergence key —
+    sessions sharing a workspace ARE the working group). Grouping is display-only
+    and derived — no schema field. Returns (lines, head_line_of_selection)."""
+    lines = []
+    sel_head = 0
+    groups = {}
+    invalid = []
+    for i, r in enumerate(recs):
+        if r["state"] == "valid":
+            groups.setdefault(r["fields"]["workspace"], []).append(i)
+        else:
+            invalid.append(i)
+
+    def emit(text, attr):
+        for piece in wrap_line(text, width):
+            lines.append((piece, attr))
+
+    for ws in sorted(groups):
+        idxs = groups[ws]
+        n = len(idxs)
+        emit(f"{ws} — {n} session{'s' if n != 1 else ''}",
+             c("header", curses.A_BOLD))
+        for i in idxs:
+            r = recs[i]
+            f = r["fields"]
+            secs = record_age_seconds(f)
+            attr = c("accent") if r["own"] else 0
+            if secs is not None and secs > 86400:
+                attr |= curses.A_DIM  # display-only staleness, client policy
+            if i == sel_idx:
+                sel_head = len(lines)
+                attr |= curses.A_REVERSE
+            own_mark = "*" if r["own"] else " "
+            bed_tail = f["bed"].rsplit("/", 1)[-1]
+            note = f" · {f['note']}" if f.get("note") else ""
+            emit(f"  [{age_label(secs):>3}]{own_mark}{f['seat']}@{f['host']}"
+                 f" · {bed_tail}{note}", attr | curses.A_BOLD)
+            emit(f"        bed: {f['bed']}", attr)
+        lines.append(("", 0))
+    if invalid:
+        emit("invalid records", c("warn", curses.A_BOLD))
+        for i in invalid:
+            r = recs[i]
+            attr = c("warn") | (curses.A_REVERSE if i == sel_idx else 0)
+            if i == sel_idx:
+                sel_head = len(lines)
+            emit(f"  [ ! ] {r['path'].name} — {r['reason']}", attr)
+        lines.append(("", 0))
+    if not lines:
+        lines = [("— board empty —", curses.A_DIM)]
+    return lines, sel_head
+
+
 def board_view(screen):
+    """Row-cursor board. Returns a bed Path to land on (Enter on a valid
+    local-host record), else None. Landing is navigation, never an action."""
+    sel = 0
     offset = 0
     while True:
         h, w = screen.getmaxyx()
         recs = load_board()  # recomputed per draw → live on the 1s tick
+        sel = max(0, min(sel, len(recs) - 1)) if recs else 0
         body_w = max(1, w - 2)
-
-        # WRITELN: every record renders fully — wrapped lines, never clipped
-        lines = []  # (text, attr)
-        for r in recs:
-            if r["state"] == "valid":
-                f = r["fields"]
-                secs = record_age_seconds(f)
-                attr = c("accent", curses.A_BOLD) if r["own"] else 0
-                if secs is not None and secs > 86400:
-                    attr |= curses.A_DIM  # display-only staleness, client policy
-                own_mark = "*" if r["own"] else " "
-                head = f"[{age_label(secs):>3}]{own_mark}{f['seat']}@{f['host']}"
-                for piece in wrap_line(head, body_w):
-                    lines.append((piece, attr | curses.A_BOLD))
-                for piece in wrap_line(f"      bed: {f['bed']}", body_w):
-                    lines.append((piece, attr))
-                for piece in wrap_line(f"      ws:  {f['workspace']}", body_w):
-                    lines.append((piece, attr | curses.A_DIM))
-                if f.get("note"):
-                    for piece in wrap_line(f"      {f['note']}", body_w):
-                        lines.append((piece, attr))
-            else:
-                for piece in wrap_line(
-                        f"[ ! ] malformed: {r['path'].name} — {r['reason']}", body_w):
-                    lines.append((piece, c("warn")))
-            lines.append(("", 0))  # record separator
-        if not lines:
-            lines = [("— board empty —", curses.A_DIM)]
+        lines, sel_head = board_lines(recs, sel if recs else -1, body_w)
 
         body_h = max(1, h - 2)
-        max_off = max(0, len(lines) - body_h)
-        offset = max(0, min(offset, max_off))
+        if sel_head < offset:  # keep the selected record's head visible
+            offset = sel_head
+        elif sel_head >= offset + body_h:
+            offset = sel_head - body_h + 1
+        offset = max(0, min(offset, max(0, len(lines) - body_h)))
 
         screen.erase()
         title = clipped(f" presence board · {board_dir()} · {len(recs)} records ", w)
@@ -866,7 +1151,71 @@ def board_view(screen):
                  curses.A_REVERSE | curses.A_BOLD, w)
         for i, (text, attr) in enumerate(lines[offset: offset + body_h]):
             safe_add(screen, 1 + i, 1, text, attr, body_w)
-        hint = " ↑↓ scroll · * = own attachment · advisory only — informs, never authorizes · q back "
+        hint = (" ↑↓ record · Enter land on its bed · * own · grouped by workspace · "
+                "advisory only · q back ")
+        safe_add(screen, h - 1, 0, clipped(hint, w), curses.A_REVERSE, w)
+        screen.refresh()
+
+        try:
+            key = screen.get_wch()
+        except curses.error:
+            continue
+        except KeyboardInterrupt:
+            return None
+        if key == curses.KEY_UP:
+            sel = max(0, sel - 1)
+        elif key == curses.KEY_DOWN:
+            sel = min(max(0, len(recs) - 1), sel + 1)
+        elif key == curses.KEY_PPAGE:
+            sel = max(0, sel - 5)
+        elif key == curses.KEY_NPAGE:
+            sel = min(max(0, len(recs) - 1), sel + 5)
+        elif key in ("\n", "\r", curses.KEY_ENTER):
+            if recs and recs[sel]["state"] == "valid":
+                f = recs[sel]["fields"]
+                if f["host"] == local_host():
+                    return Path(os.path.expanduser(f["bed"]))
+        elif key in ("q", "Q", "\x1b", curses.KEY_LEFT, "B", "b"):
+            return None
+        elif key == curses.KEY_RESIZE:
+            pass
+
+
+def buffer_view(screen, buffer_lines):
+    """Print-buffer maintainer — inspect, remove single lines, clear. Mutates
+    the list in place; whatever survives prints to scroll-back at quit."""
+    sel = 0
+    offset = 0
+    while True:
+        h, w = screen.getmaxyx()
+        sel = max(0, min(sel, len(buffer_lines) - 1)) if buffer_lines else 0
+        body_w = max(1, w - 2)
+
+        lines = []
+        heads = []
+        for i, entry in enumerate(buffer_lines):
+            heads.append(len(lines))
+            attr = c("accent") | (curses.A_REVERSE if i == sel else 0)
+            for piece in wrap_line(f"{i + 1:2d}. {entry}", body_w):
+                lines.append((piece, attr))
+        if not lines:
+            lines = [("— buffer empty —", curses.A_DIM)]
+
+        body_h = max(1, h - 2)
+        sel_head = heads[sel] if heads else 0
+        if sel_head < offset:
+            offset = sel_head
+        elif sel_head >= offset + body_h:
+            offset = sel_head - body_h + 1
+        offset = max(0, min(offset, max(0, len(lines) - body_h)))
+
+        screen.erase()
+        title = clipped(f" print buffer · {len(buffer_lines)} lines — survivors print at quit ", w)
+        safe_add(screen, 0, 0, title + " " * max(0, w - len(title)),
+                 curses.A_REVERSE | curses.A_BOLD, w)
+        for i, (text, attr) in enumerate(lines[offset: offset + body_h]):
+            safe_add(screen, 1 + i, 1, text, attr, body_w)
+        hint = " ↑↓ select · x remove line · X clear all · y copy line · q back "
         safe_add(screen, h - 1, 0, clipped(hint, w), curses.A_REVERSE, w)
         screen.refresh()
 
@@ -877,14 +1226,16 @@ def board_view(screen):
         except KeyboardInterrupt:
             return
         if key == curses.KEY_UP:
-            offset -= 1
+            sel = max(0, sel - 1)
         elif key == curses.KEY_DOWN:
-            offset += 1
-        elif key == curses.KEY_PPAGE:
-            offset -= body_h
-        elif key == curses.KEY_NPAGE:
-            offset += body_h
-        elif key in ("q", "Q", "\x1b", curses.KEY_LEFT, "B", "b"):
+            sel = min(max(0, len(buffer_lines) - 1), sel + 1)
+        elif key in ("x", curses.KEY_DC) and buffer_lines:
+            del buffer_lines[sel]
+        elif key == "X":
+            buffer_lines.clear()
+        elif key == "y" and buffer_lines:
+            copy_to_clipboard(buffer_lines[sel])
+        elif key in ("q", "Q", "\x1b", curses.KEY_LEFT, "P", "b"):
             return
         elif key == curses.KEY_RESIZE:
             pass
@@ -906,18 +1257,18 @@ def refresh_bed_marks(beds):
             b["marked"] = False
 
 
-# ── Draw ──────────────────────────────────────────────────────────────────────
+# ── Draw (v0.3) ───────────────────────────────────────────────────────────────
 
-def draw(screen, beds, d1_cursor, d1_offset, focus,
-         d2_lines, d2_offset, nodes, cursor, active_bed,
-         buffer_lines, show_buffer, message):
+def draw(screen, nodes, cursor, tree_off, focus, content, content_off,
+         sel_bed, buffer_lines, show_buffer, message, tree_right=False, split=40):
     screen.erase()
     h, w = screen.getmaxyx()
 
-    hints = ("↑↓ scroll · Tab focus · j/k item · J/K group · Enter read/fold · "
-             "e edit · 1-5 sect · F fold-R1 · B board · m/u mark/unmark · "
-             "b buffer · p collect · r reload · q quit")
-    full_status = message if message else f"{len(beds)} beds · focus:{focus} · {hints}"
+    hints = ("↑↓ move/scroll · →← expand/collapse · Enter open · Tab pane · "
+             "J/K bed · 1-5 part · v side · <> split · e edit · y/Y copy · "
+             "A drain · B board · "
+             "m/u mark · b buffer · p collect · P manage · r reload · q quit")
+    full_status = message if message else f"focus:{focus} · {hints}"
     hint_lines = []
     for seg in full_status.split(" · "):
         if not hint_lines or len(hint_lines[-1]) + 3 + len(seg) > w:
@@ -926,61 +1277,65 @@ def draw(screen, beds, d1_cursor, d1_offset, focus,
             hint_lines[-1] += " · " + seg
     hint_h = min(len(hint_lines), 2)
 
-    buf_h = 0
-    if show_buffer and buffer_lines:
-        buf_h = 1 + min(len(buffer_lines), 4)
-
+    buf_h = (1 + min(len(buffer_lines), 4)) if (show_buffer and buffer_lines) else 0
     body_h = max(0, h - hint_h - buf_h)
 
-    side = w >= 60
-    left_w = max(1, int(w * 0.35)) if side else w
-    right_col = left_w + 1
-    right_w = max(1, w - right_col) if side else 0
+    # narrow (<60 cols): the focused pane takes the whole screen — the detail
+    # view never disappears with the layout (small-screen law)
+    wide = w >= 60
+    if wide:
+        tree_w = max(1, int(w * split / 100))
+        if tree_right:  # mirrored view (v key): content left, tree column right
+            tree_col = w - tree_w
+            sep_col = tree_col - 1
+            content_col = 0
+            content_w = max(1, sep_col)
+        else:
+            tree_col = 0
+            sep_col = tree_w
+            content_col = tree_w + 1
+            content_w = max(1, w - content_col)
+        show_tree, show_content = True, True
+    else:
+        tree_col, content_col, tree_w, content_w = 0, 0, w, w
+        sep_col = None
+        show_tree = (focus == "tree")
+        show_content = not show_tree
 
-    # ── D1 ──
-    for offset, bed in enumerate(beds[d1_offset: d1_offset + body_h]):
-        abs_i = d1_offset + offset
-        is_cur = (abs_i == d1_cursor)
-        sel = curses.A_REVERSE if is_cur else 0
-        if focus == "d1" and is_cur:
-            sel |= curses.A_BOLD
-        cname, extra = STATE_STYLE.get(bed["state"], (None, 0))
-        state_attr = (c(cname, extra) if cname else extra) | sel
-        safe_add(screen, offset, 0, f"[{bed['state']}]", state_attr, min(3, left_w))
-        label = bed["slug"] + (" ●" if bed.get("marked") else "")
-        safe_add(screen, offset, 4, clipped(label, left_w - 4), sel, left_w - 4)
+    # ── tree (labels left-aligned in the column, depth stairs) ──
+    if show_tree:
+        for i, n in enumerate(nodes[tree_off: tree_off + body_h]):
+            abs_i = tree_off + i
+            sel = curses.A_REVERSE if abs_i == cursor else 0
+            if focus == "tree" and abs_i == cursor:
+                sel |= curses.A_BOLD
+            safe_add(screen, i, tree_col,
+                     clipped("  " * n["depth"] + n["label"], tree_w),
+                     n["attr"] | sel, tree_w)
+        if wide and sep_col is not None:
+            for row in range(body_h):
+                safe_add(screen, row, sep_col, "│", curses.A_DIM)
 
-    if side:
-        for row in range(body_h):
-            safe_add(screen, row, left_w, "│", curses.A_DIM)
-
-        # fixed strip: next: (+ raw in_flight when flagged — truth, not guess)
-        d2_body_row = 1
-        if active_bed:
-            safe_add(screen, 0, right_col,
-                     clipped(f"next: {active_bed['next_line']}", right_w),
+    # ── content (strip + body) ──
+    if show_content:
+        col = content_col
+        right_w = content_w
+        strip_h = 0
+        if sel_bed:
+            safe_add(screen, 0, col,
+                     clipped(f"next: {sel_bed['next_line']}", right_w),
                      c("accent", curses.A_BOLD), right_w)
-            raw = active_bed.get("in_flight_raw")
-            if raw is not None and raw.lower() not in ("none", "", "false", "no"):
-                safe_add(screen, 1, right_col,
+            strip_h = 1
+            raw = sel_bed.get("in_flight_raw")
+            if not _inflight_idle(raw):
+                safe_add(screen, 1, col,
                          clipped(f"in_flight: {raw}", right_w),
                          c("warn", curses.A_BOLD), right_w)
-                d2_body_row = 2
-        d2_body_h = max(0, body_h - d2_body_row)
-        max_offset = max(0, len(d2_lines) - d2_body_h)
-        d2_off = max(0, min(d2_offset, max_offset))
-
-        sel_line = nodes[cursor]["line"] if (focus == "d2" and nodes and cursor < len(nodes)) else -1
-
-        for offset, li in enumerate(d2_lines[d2_off: d2_off + d2_body_h]):
-            row = d2_body_row + offset
-            if row >= body_h:
-                break
-            abs_line = d2_off + offset
-            attr = li["attr"]
-            if abs_line == sel_line:
-                attr |= curses.A_REVERSE
-            safe_add(screen, row, right_col, clipped(li["text"], right_w), attr, right_w)
+                strip_h = 2
+        c_body = max(0, body_h - strip_h)
+        c_off = max(0, min(content_off, max(0, len(content) - c_body)))
+        for i, (text, attr) in enumerate(content[c_off: c_off + c_body]):
+            safe_add(screen, strip_h + i, col, text, attr, right_w)
 
     # ── buffer pane ──
     if buf_h:
@@ -988,8 +1343,7 @@ def draw(screen, beds, d1_cursor, d1_offset, focus,
         label = f"─ buffer ({len(buffer_lines)}) — printed at quit "
         safe_add(screen, brow, 0, clipped(label + "─" * max(0, w - len(label)), w),
                  c("accent", curses.A_BOLD), w)
-        tail = buffer_lines[-(buf_h - 1):]
-        for i, bl in enumerate(tail):
+        for i, bl in enumerate(buffer_lines[-(buf_h - 1):]):
             safe_add(screen, brow + 1 + i, 0, clipped("  " + bl, w), c("accent"), w)
 
     # ── hints ──
@@ -1001,9 +1355,9 @@ def draw(screen, beds, d1_cursor, d1_offset, focus,
     screen.refresh()
 
 
-# ── TUI loop ──────────────────────────────────────────────────────────────────
+# ── TUI loop (v0.3 — tree + content) ─────────────────────────────────────────
 
-def palette(screen, beds):
+def palette(screen, beds, root, tree_right=None):
     """Returns the print buffer (list of str) for scroll-back print at quit."""
     try:
         curses.curs_set(0)
@@ -1013,115 +1367,119 @@ def palette(screen, beds):
     screen.keypad(True)
     screen.timeout(1000)  # 1s tick; mtime-gated reload
 
-    d1_cursor = 0
-    d1_offset = 0
-    d2_offset = 0
-    cursor = 0                 # index into nodes
-    collapsed = set()          # folded section indices (persists across beds)
-    focus = "d1"
+    ui = load_ui_state(root)
+    if tree_right is None:  # CLI flag wins; else remembered preference
+        tree_right = bool(ui.get("tree_right", False))
+    split = min(80, max(20, int(ui.get("split", 40))))
+    arm_archive = None  # two-press confirm for the drain move
+    expanded = set(ui.get("expanded", []))
+    cursor = 0
+    tree_off = 0
+    content_off = 0
+    focus = "tree"
     message = ""
     buffer_lines = []
     show_buffer = False
-
-    d2_lines = []
-    nodes = []
+    last_sel_key = None
     last_st_mtime = 0
     last_bus_key = ()
     last_board_key = None
 
-    def cur_bed():
-        return beds[d1_cursor] if beds else None
+    refresh_bed_marks(beds)
+    cards = load_cs_cards()
+    nodes = build_tree(beds, expanded, cards)
+    if ui.get("selected"):
+        for i, n in enumerate(nodes):
+            if n["key"] == ui["selected"]:
+                cursor = i
+                break
 
-    def right_width():
+    def sel_node():
+        return nodes[cursor] if (nodes and cursor < len(nodes)) else None
+
+    def content_width():
         _, w = screen.getmaxyx()
-        return max(1, w - int(w * 0.35) - 1)
+        return max(1, w - int(w * split / 100) - 1) if w >= 60 else w
 
-    def layout_heights():
+    def body_height():
         h, _ = screen.getmaxyx()
         buf_h = (1 + min(len(buffer_lines), 4)) if (show_buffer and buffer_lines) else 0
-        body_h = max(0, h - 2 - buf_h)
-        return body_h, max(0, body_h - 1)  # (body_h, d2_body_h)
+        return max(1, h - 2 - buf_h)
 
-    def rebuild():
-        nonlocal d2_lines, nodes, last_st_mtime, last_bus_key
-        bed = cur_bed()
-        if bed is None:
-            d2_lines, nodes = [], []
-            return
-        d2_lines, nodes = build_d2(bed, right_width(), collapsed)
-        last_st_mtime = mtime_ns(bed["status_path"])
-        last_bus_key = bus_key(bed["path"])
-
-    def clamp():
-        nonlocal d2_offset, cursor, d1_offset
-        body_h, d2_body_h = layout_heights()
-        d2_offset = max(0, min(d2_offset, max(0, len(d2_lines) - d2_body_h)))
+    def rebuild(keep_key=None):
+        nonlocal nodes, cursor
+        want = keep_key or (nodes[cursor]["key"] if nodes and cursor < len(nodes) else None)
+        nodes = build_tree(beds, expanded, cards)
+        if want:
+            for i, n in enumerate(nodes):
+                if n["key"] == want:
+                    cursor = i
+                    break
         cursor = max(0, min(cursor, len(nodes) - 1)) if nodes else 0
-        if d1_cursor < d1_offset:
-            d1_offset = d1_cursor
-        elif d1_cursor >= d1_offset + max(1, body_h):
-            d1_offset = d1_cursor - max(1, body_h) + 1
 
-    def scroll_to_cursor():
-        nonlocal d2_offset
-        if not nodes:
-            return
-        line_i = nodes[cursor]["line"]
-        _, d2_body_h = layout_heights()
-        if line_i < d2_offset:
-            d2_offset = line_i
-        elif line_i >= d2_offset + max(1, d2_body_h):
-            d2_offset = line_i - max(1, d2_body_h) + 1
+    def ensure_visible():
+        nonlocal tree_off
+        bh = body_height()
+        if cursor < tree_off:
+            tree_off = cursor
+        elif cursor >= tree_off + bh:
+            tree_off = cursor - bh + 1
 
-    def cursor_to_section(section):
+    def refresh_bed_truth(bed):
+        bed["next_line"] = extract_next(bed["status_path"])
+        bed["in_flight_raw"] = extract_in_flight_raw(bed["status_path"])
+        bed["state"] = bed_state(bed["runbook_path"], bed["status_path"])
+
+    def jump_bed(direction):
         nonlocal cursor
-        for i, n in enumerate(nodes):
-            if n["kind"] == "header" and n["section"] == section:
-                cursor = i
-                return
-
-    def jump_header(direction):
-        nonlocal cursor
-        if not nodes:
-            return
         i = cursor + direction
         while 0 <= i < len(nodes):
-            if nodes[i]["kind"] == "header":
+            if nodes[i]["kind"] == "bed":
                 cursor = i
                 return
             i += direction
 
-    def toggle_fold(section):
-        if section in collapsed:
-            collapsed.discard(section)
-        else:
-            collapsed.add(section)
-        rebuild()
-        cursor_to_section(section)
-        clamp()
-        scroll_to_cursor()
-
-    rebuild()
+    def parent_index():
+        n = sel_node()
+        if not n or n["depth"] == 0:
+            return None
+        i = cursor - 1
+        while i >= 0:
+            if nodes[i]["depth"] < n["depth"]:
+                return i
+            i -= 1
+        return None
 
     while True:
-        bed = cur_bed()
+        node = sel_node()
+        bed = node["bed"] if node else None
 
-        # mtime-gated reload (1s tick)
+        # selection change → content restarts at top; bed-tick trackers reset
+        key_now = node["key"] if node else None
+        if key_now != last_sel_key:
+            content_off = 0
+            last_sel_key = key_now
+            if bed:
+                last_st_mtime = mtime_ns(bed["status_path"])
+                last_bus_key = bus_key(bed["path"])
+
+        # 1s tick — mtime-gated truth refresh for the selected bed + board
         if bed:
-            if mtime_ns(bed["status_path"]) != last_st_mtime or bus_key(bed["path"]) != last_bus_key:
-                bed["next_line"] = extract_next(bed["status_path"])
-                bed["in_flight_raw"] = extract_in_flight_raw(bed["status_path"])
-                bed["state"] = bed_state(bed["runbook_path"], bed["status_path"])
+            if mtime_ns(bed["status_path"]) != last_st_mtime \
+                    or bus_key(bed["path"]) != last_bus_key:
+                refresh_bed_truth(bed)
+                last_st_mtime = mtime_ns(bed["status_path"])
+                last_bus_key = bus_key(bed["path"])
                 rebuild()
-                clamp()
         bkey = board_key()
         if bkey != last_board_key:
             refresh_bed_marks(beds)
             last_board_key = bkey
+            rebuild()
 
-        draw(screen, beds, d1_cursor, d1_offset, focus,
-             d2_lines, d2_offset, nodes, cursor, bed,
-             buffer_lines, show_buffer, message)
+        content = render_selection(node, content_width())
+        draw(screen, nodes, cursor, tree_off, focus, content, content_off,
+             bed, buffer_lines, show_buffer, message, tree_right, split)
         message = ""
 
         try:
@@ -1129,136 +1487,268 @@ def palette(screen, beds):
         except curses.error:
             continue  # timeout tick
         except KeyboardInterrupt:
-            return buffer_lines
+            break
 
-        cur_node = nodes[cursor] if (nodes and cursor < len(nodes)) else None
-        cur_path = cur_node["path"] if cur_node else None
+        if key != "A":
+            arm_archive = None  # any other key disarms the drain confirm
+        node = sel_node()
+        cur_path = node["path"] if node else None
 
         if key == curses.KEY_RESIZE:
-            rebuild()
-            clamp()
+            ensure_visible()
 
         elif key == "\t":
-            focus = "d2" if focus == "d1" else "d1"
+            focus = "content" if focus == "tree" else "tree"
 
-        elif key in ("F", "f"):
-            toggle_fold(2)  # R1 RUNBOOK
+        elif key in ("q", "Q", "\x1b"):
+            break
 
-        elif key in ("r", "R"):
-            if bed:
-                bed["next_line"] = extract_next(bed["status_path"])
-                bed["in_flight_raw"] = extract_in_flight_raw(bed["status_path"])
-                bed["state"] = bed_state(bed["runbook_path"], bed["status_path"])
-                rebuild()
-                clamp()
-                message = "reloaded"
+        elif key == "r":
+            for b in beds:
+                refresh_bed_truth(b)
+            refresh_bed_marks(beds)
+            cards = load_cs_cards()
+            rebuild()
+            message = "reloaded (beds + board + vault)"
+
+        elif key == "R":  # card's resume: → clipboard; paste into target window
+            if node and node["kind"] == "card" and node["card"].get("resume"):
+                cmd = node["card"]["resume"]
+                tool = copy_to_clipboard(cmd)
+                if tool:
+                    message = f"resume copied via {tool} — paste into your window"
+                else:
+                    buffer_lines.append(cmd)
+                    show_buffer = True
+                    message = "no clipboard — resume buffered"
+            elif node and node["kind"] == "card":
+                message = "this card has no resume: key"
+            else:
+                message = "R copies a card's resume: — select a card first"
 
         elif key == "b":
             show_buffer = not show_buffer
-            clamp()
+
+        elif key == "P":
+            buffer_view(screen, buffer_lines)
+            if not buffer_lines:
+                show_buffer = False
+
+        elif key == "v":
+            tree_right = not tree_right
+            message = "tree column: " + ("right" if tree_right else "left")
+
+        elif key == "<":
+            split = max(20, split - 5)
+            message = f"tree column {split}%"
+
+        elif key == ">":
+            split = min(80, split + 5)
+            message = f"tree column {split}%"
+
+        elif key == "A":  # drain move (Cinderella): consumed card → archive/
+            if node and node["kind"] == "card":
+                if arm_archive == node["key"]:
+                    arm_archive = None
+                    try:
+                        dst = archive_card(node["card"])
+                        cards = load_cs_cards()
+                        rebuild()
+                        message = f"drained → archive/{dst.name} (mv back to restore)"
+                    except SystemExit as e:
+                        message = str(e)
+                else:
+                    arm_archive = node["key"]
+                    message = "archive this card (drain move)? press A again to confirm"
+            else:
+                message = "A archives a consumed card — select a card first"
 
         elif key == "B":
-            board_view(screen)
+            land = board_view(screen)
             refresh_bed_marks(beds)
+            rebuild()
+            if land is not None:
+                landed = False
+                for i2, n2 in enumerate(nodes):
+                    if n2["kind"] == "bed" and n2["path"] == land:
+                        cursor = i2
+                        ensure_visible()
+                        message = f"→ landed: {n2['bed']['slug']}"
+                        landed = True
+                        break
+                if not landed:
+                    message = "record's bed is not in this tree (other root)"
 
-        elif key in ("q", "Q", "\x1b"):
-            return buffer_lines
+        elif key == "J":
+            jump_bed(+1)
+            ensure_visible()
 
-        # --- D1 focus ---
-        elif focus == "d1":
-            if key == curses.KEY_UP:
-                d1_cursor = max(0, d1_cursor - 1)
-                d2_offset, cursor = 0, 0
+        elif key == "K":
+            jump_bed(-1)
+            ensure_visible()
+
+        elif isinstance(key, str) and key in "12345" and bed:
+            bkey_slug = bed["slug"]
+            if bkey_slug not in expanded:
+                expanded.add(bkey_slug)
+                rebuild(keep_key=f"{bkey_slug}/{BED_PARTS[int(key) - 1]}")
+            else:
+                rebuild(keep_key=f"{bkey_slug}/{BED_PARTS[int(key) - 1]}")
+            ensure_visible()
+
+        elif key == "m" and bed:
+            try:
+                aid, _ = board_mark(str(bed["path"]))
+                refresh_bed_marks(beds)
                 rebuild()
-                clamp()
-            elif key == curses.KEY_DOWN:
-                d1_cursor = min(max(0, len(beds) - 1), d1_cursor + 1)
-                d2_offset, cursor = 0, 0
+                message = f"attached {aid[:8]}… to board"
+            except SystemExit as e:
+                message = str(e)
+
+        elif key == "u" and bed:
+            try:
+                removed = board_unmark(bed=str(bed["path"]))
+                refresh_bed_marks(beds)
                 rebuild()
-                clamp()
-            elif key in ("\n", "\r", curses.KEY_ENTER):
-                focus = "d2"
-            elif key == "m" and bed:
-                try:
-                    aid, _ = board_mark(str(bed["path"]))
-                    refresh_bed_marks(beds)
-                    message = f"attached {aid[:8]}… to board"
-                except SystemExit as e:
-                    message = str(e)
-            elif key == "u" and bed:
-                try:
-                    removed = board_unmark(bed=str(bed["path"]))
-                    refresh_bed_marks(beds)
-                    message = f"detached {len(removed)} own record(s)"
-                except SystemExit as e:
-                    message = str(e)
-            elif key == "p" and bed:
-                buffer_lines.append(str(bed["path"]))
+                message = f"detached {len(removed)} own record(s)"
+            except SystemExit as e:
+                message = str(e)
+
+        elif key == "p":
+            target = str(cur_path) if cur_path else (str(bed["path"]) if bed else "")
+            if target:
+                buffer_lines.append(target)
                 show_buffer = True
                 message = f"buffered ({len(buffer_lines)})"
-            elif key in ("e", "E") and bed:
-                target = bed["runbook_path"] or bed["status_path"]
-                if target:
-                    err = open_editor(screen, target)
-                    if err:
-                        message = err
-                else:
-                    message = "no RUNBOOK or STATUS in this bed"
 
-        # --- D2 focus ---
-        elif focus == "d2":
-            if key == curses.KEY_UP:
-                d2_offset = max(0, d2_offset - 1)
-            elif key == curses.KEY_DOWN:
-                d2_offset += 1
-                clamp()
-            elif key == "j" and nodes:
-                cursor = min(len(nodes) - 1, cursor + 1)
-                scroll_to_cursor()
-                clamp()
-            elif key == "k" and nodes:
-                cursor = max(0, cursor - 1)
-                scroll_to_cursor()
-            elif key == "J":
-                jump_header(+1)
-                scroll_to_cursor()
-                clamp()
-            elif key == "K":
-                jump_header(-1)
-                scroll_to_cursor()
-            elif isinstance(key, str) and key in "12345":
-                cursor_to_section(int(key) - 1)
-                scroll_to_cursor()
-                clamp()
-            elif key in ("\n", "\r", " ", curses.KEY_ENTER):
-                if cur_node and cur_node["kind"] == "header":
-                    toggle_fold(cur_node["section"])
-                elif cur_path and cur_path.is_file():
-                    reader(screen, cur_path)
-                    rebuild()  # reader may have edited via e
-                    clamp()
+        elif key == "y":
+            target = str(cur_path) if cur_path else (str(bed["path"]) if bed else "")
+            if target:
+                tool = copy_to_clipboard(target)
+                if tool:
+                    message = f"copied via {tool}"
                 else:
-                    message = "nothing under cursor (j/k, J/K to move)"
-            elif key in ("e", "E"):
-                if cur_path and cur_path.is_file():
-                    err = open_editor(screen, cur_path)
-                    if err:
-                        message = err
-                    rebuild()
-                    clamp()
-                else:
-                    message = "cursor is not on a file"
-            elif key == "p":
-                target = str(cur_path) if cur_path else (str(bed["path"]) if bed else "")
-                if target:
                     buffer_lines.append(target)
                     show_buffer = True
-                    message = f"buffered ({len(buffer_lines)})"
+                    message = "no clipboard tool — buffered instead"
+
+        elif key == "Y":  # relay prep: exact content, formatting preserved —
+            # copying creates no sent/read/accepted claim
+            if node and node["kind"] in ("file", "card") \
+                    and cur_path and cur_path.is_file():
+                try:
+                    text = cur_path.read_text(encoding="utf-8", errors="replace")
+                except OSError as e:
+                    message = f"read error: {e}"
+                else:
+                    tool = copy_to_clipboard(text)
+                    message = (f"content copied via {tool} ({len(text)} chars)"
+                               if tool else
+                               "no clipboard tool — open with e and copy there")
+            else:
+                message = "Y copies file content — select a file or card"
+
+        elif key in ("e", "E"):
+            target = None
+            if node and node["kind"] in ("file", "card"):
+                target = cur_path
+            elif bed:
+                target = bed["runbook_path"] or bed["status_path"]
+            if target:
+                err = open_editor(screen, target)
+                if err:
+                    message = err
+            else:
+                message = "nothing editable here"
+
+        # --- tree focus ---
+        elif focus == "tree":
+            if key == curses.KEY_UP:
+                cursor = max(0, cursor - 1)
+                ensure_visible()
+            elif key == curses.KEY_DOWN:
+                cursor = min(max(0, len(nodes) - 1), cursor + 1)
+                ensure_visible()
+            elif key == curses.KEY_PPAGE:
+                cursor = max(0, cursor - body_height())
+                ensure_visible()
+            elif key == curses.KEY_NPAGE:
+                cursor = min(max(0, len(nodes) - 1), cursor + body_height())
+                ensure_visible()
+            elif key == curses.KEY_RIGHT:
+                if node and node["expandable"]:
+                    if node["key"] not in expanded:
+                        expanded.add(node["key"])
+                        rebuild()
+                    elif cursor + 1 < len(nodes) \
+                            and nodes[cursor + 1]["depth"] > node["depth"]:
+                        cursor += 1  # already open → step into first child
+                    ensure_visible()
+                elif node and node["kind"] in ("file", "card"):
+                    focus = "content"
+            elif key == curses.KEY_LEFT:
+                if node and node["expandable"] and node["key"] in expanded:
+                    expanded.discard(node["key"])
+                    rebuild()
+                else:
+                    pi = parent_index()
+                    if pi is not None:
+                        cursor = pi
+                ensure_visible()
+            elif key in ("\n", "\r", " ", curses.KEY_ENTER):
+                if node and node["kind"] == "card":
+                    tb = node.get("bed")
+                    if tb:  # the entrance: land on the card's bed in this tree
+                        for i2, n2 in enumerate(nodes):
+                            if n2["kind"] == "bed" and n2["bed"] is tb:
+                                cursor = i2
+                                ensure_visible()
+                                message = f"→ landed: {tb['slug']}"
+                                break
+                    else:
+                        focus = "content"
+                        message = "card target missing here — elsewhere, not finished"
+                elif node and node["expandable"]:
+                    if node["key"] in expanded:
+                        expanded.discard(node["key"])
+                    else:
+                        expanded.add(node["key"])
+                    rebuild()
+                    ensure_visible()
+                elif node and node["kind"] == "file":
+                    focus = "content"
+            elif key in ("F", "f") and bed:
+                if bed["slug"] in expanded:
+                    expanded.discard(bed["slug"])
+                else:
+                    expanded.add(bed["slug"])
+                rebuild(keep_key=bed["slug"])
+                ensure_visible()
+
+        # --- content focus ---
+        elif focus == "content":
+            if key == curses.KEY_UP:
+                content_off = max(0, content_off - 1)
+            elif key == curses.KEY_DOWN:
+                content_off += 1
+            elif key == curses.KEY_PPAGE:
+                content_off = max(0, content_off - body_height())
+            elif key == curses.KEY_NPAGE:
+                content_off += body_height()
+            elif key == "g":
+                content_off = 0
+            elif key == "G":
+                content_off = 10 ** 9  # draw clamps to end
+            elif key == curses.KEY_LEFT:
+                focus = "tree"
+
+    save_ui_state(root, last_sel_key, expanded, tree_right, split)
+    return buffer_lines
 
 
 # ── Entry ─────────────────────────────────────────────────────────────────────
 
-def run_on_tty(root):
+def run_on_tty(root, tree_right=None):
     beds = load_beds(root)
     try:
         tty_fd = os.open("/dev/tty", os.O_RDWR)
@@ -1275,7 +1765,7 @@ def run_on_tty(root):
         screen = curses.initscr()
         curses.noecho()
         curses.cbreak()
-        buffer_lines = palette(screen, beds) or []
+        buffer_lines = palette(screen, beds, root, tree_right) or []
     finally:
         if screen:
             try:
@@ -1345,6 +1835,11 @@ def selftest():
         (a / "STATUS.md").write_text(
             '# S\n```yaml\nnext: "do the thing"\nin_flight: none\n```\n')
         (a / "_bus" / "01.seat.point.md").write_text("x\n")
+        (a / "_bus" / "01.other.return.md").write_text("y\n")
+        (a / "_bus" / "02.seat.point.md").write_text("z\n")
+        (a / "_bus" / "02.seat.verdict.md").write_text("w\n")
+        (a / "_bus" / "02.other.return.md").write_text("v\n")
+        (a / "_bus" / "freeform-note.md").write_text("n\n")
         # bed-b: RUNBOOK only → ·
         b = root / "bed-b"; b.mkdir()
         (b / "RUNBOOK.md").write_text("# R\n")
@@ -1369,12 +1864,27 @@ def selftest():
         check("canonical none idle", _inflight_idle(beds["bed-a"]["in_flight_raw"]))
         check("non-canon flags active", not _inflight_idle(beds["bed-d"]["in_flight_raw"]))
 
-        lines, nodes = build_d2(beds["bed-a"], 60, set())
-        check("D2 five headers", sum(1 for n in nodes if n["kind"] == "header") == 5)
-        check("D2 bus item present",
-              any(n["path"] and n["path"].name == "01.seat.point.md" for n in nodes))
-        folded, _ = build_d2(beds["bed-a"], 60, {0, 1, 2, 3, 4})
-        check("full fold collapses", len(folded) < len(lines))
+        blist = list(beds.values())
+        check("tree collapsed = one node per bed",
+              len(build_tree(blist, set())) == 4)
+        keys = [n["key"] for n in build_tree(blist, {"bed-a"})]
+        check("bed expand shows five parts",
+              all(f"bed-a/{s}" in keys for s in BED_PARTS))
+        keys2 = [n["key"] for n in build_tree(blist, {"bed-a", "bed-a/bus"})]
+        check("group expand lists bus file", "bed-a/bus/01.seat.point.md" in keys2)
+        ov = render_overview(beds["bed-a"], 60, board_recs=[])
+        check("overview carries next", any("do the thing" in t for t, _ in ov))
+
+        # D — receipt navigation (display-only)
+        busv = [t for t, _ in render_bus_group(beds["bed-a"], 70)]
+        check("bus cycles grouped newest-first",
+              busv.index("#2") < busv.index("#1"))
+        check("open-return presence fact surfaced",
+              any(t.endswith("no verdict file: cycle 1") for t in busv))
+        check("cycle with verdict not flagged",
+              not any("cycle 1, 2" in t or "cycle 2" in t for t in busv))
+        check("unnumbered bus file surfaced not hidden",
+              any("freeform-note.md" in t for t in busv))
 
         # board contract cycle in sandbox (HOME retargeted so ~-anchoring works)
         os.environ["RB_BOARD"] = str(Path(td) / "_active")
@@ -1406,6 +1916,67 @@ def selftest():
                   [r["state"] for r in load_board()] == ["malformed"])
             check("calendar 02-30 rejected", parse_record(rec_text.replace(
                 fields["attached_at"][:10], "2026-02-30"), rec_name)[0] == "malformed")
+
+            # cold-start entrance (HOME still sandboxed → ~ resolves into td)
+            vault = Path(td) / "vault"
+            (vault / "card").mkdir(parents=True)
+            (vault / "archive").mkdir()
+            os.environ["RB_CS_VAULT"] = str(vault)
+            (vault / "card" / "CS.hit.2026-09-10.md").write_text(
+                "---\nkind: cold-start-card\nproject: testproj\ndate: 2026-09-10\n"
+                'resume: "claude --resume abc123"\n'
+                "runbook: ~/.dev/session/bed-a/RUNBOOK.md\n---\nbody\n")
+            (vault / "card" / "CS.miss.md").write_text(
+                "---\nkind: cold-start-card\nroot: ~/elsewhere\n---\nbody\n")
+            (vault / "archive" / "CS.old.md").write_text(
+                "---\nkind: cold-start-card\n---\nx\n")
+            cards = load_cs_cards()
+            check("vault loads three cards", len(cards) == 3)
+            hit = next(cd for cd in cards if "hit" in cd["path"].name)
+            check("card matches bed via runbook pointer",
+                  card_matches_bed(hit, beds["bed-a"]["path"]))
+            check("umbrella from project: key", hit["project"] == "testproj")
+            check("resume extracted", hit["resume"] == "claude --resume abc123")
+            miss0 = next(cd for cd in cards if "miss" in cd["path"].name)
+            check("umbrella derived from slug", miss0["project"] == "miss")
+            vt = build_tree(blist, {"_cold-start"}, cards)
+            check("vault groups under umbrellas",
+                  any(n["kind"] == "csgroup" and n["key"] == "_cold-start/testproj"
+                      for n in vt))
+            miss = next(cd for cd in cards if cd["path"].name == "CS.miss.md")
+            check("unmatched card stays unmatched",
+                  not card_matches_bed(miss, beds["bed-a"]["path"]))
+            check("archived state carried",
+                  next(cd for cd in cards
+                       if cd["path"].name == "CS.old.md")["state"] == "archived")
+            t2 = build_tree(blist, {"bed-a"}, cards)
+            check("bed grows cs group", any(n["key"] == "bed-a/cs" for n in t2))
+            vkids = [n for n in build_tree(
+                blist, {"_cold-start", "_cold-start/testproj",
+                        "_cold-start/miss", "_cold-start/old"}, cards)
+                if n["kind"] == "card"]
+            check("vault card carries landing arrow",
+                  any("→ bed-a" in n["label"] for n in vkids))
+            check("missing-here card carries no landing",
+                  any(n["label"].endswith("CS.miss.md") and n["bed"] is None
+                      for n in vkids))
+            # drain move + guards
+            (vault / "routines").mkdir()
+            (vault / "routines" / "RT.daily.md").write_text("---\nkind: routine\n---\nx\n")
+            cards3 = load_cs_cards()
+            rt = next(cd for cd in cards3 if cd["state"] == "routine")
+            try:
+                archive_card(rt)
+                check("routine archive refused", False)
+            except SystemExit:
+                check("routine archive refused", True)
+            hit3 = next(cd for cd in cards3 if "hit" in cd["path"].name)
+            dst = archive_card(hit3)
+            check("drain moves card to archive/", dst.exists()
+                  and not hit3["path"].exists())
+            check("drained card reloads as archived",
+                  next(cd for cd in load_cs_cards()
+                       if "hit" in cd["path"].name)["state"] == "archived")
         finally:
             os.environ["HOME"] = saved_home
 
@@ -1421,13 +1992,15 @@ def main():
         return selftest()
     parser = argparse.ArgumentParser(description="session browser (rb-open)")
     parser.add_argument("--root", default=None, help="explicit .dev/session/ path")
+    parser.add_argument("--right", action="store_true", default=None,
+                        help="tree column on the right (mirror view; v toggles live)")
     args = parser.parse_args()
     root = find_root(args.root)
     if root is None:
         print("rb-open: could not locate .dev/session/ — pass --root or set $RB_ROOT",
               file=sys.stderr)
         return 1
-    return run_on_tty(root)
+    return run_on_tty(root, True if args.right else None)
 
 
 if __name__ == "__main__":

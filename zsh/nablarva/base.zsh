@@ -25,11 +25,7 @@
 [[ -f ~/.config/zsh/nablarva/nablarva.zsh ]] && source ~/.config/zsh/nablarva/nablarva.zsh
 
 # -----------------------------------------------------------------------------
-# PARTITION 3: runbook session browser engine
-# -----------------------------------------------------------------------------
-[[ -f ~/.config/zsh/nablarva/runbook.zsh ]] && source ~/.config/zsh/nablarva/runbook.zsh
-
-# -----------------------------------------------------------------------------
-# PARTITION 4+ (reserved): stridularium / broker / adapter engines — land here
+# PARTITION 3+ (reserved): stridularium / broker / adapter engines — land here
 # post-gavel, one file per organ, wired as new partitions.
+# (runbook browser lived here 2026-09-04→06; rescoped to session/ — different animal.)
 # -----------------------------------------------------------------------------

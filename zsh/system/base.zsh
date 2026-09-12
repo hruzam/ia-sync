@@ -56,3 +56,8 @@
 # PARTITION 6: startup dashboard engine (cross-machine — both home + office)
 # -----------------------------------------------------------------------------
 [[ -f ~/.config/zsh/system/dashboard.zsh ]] && source ~/.config/zsh/system/dashboard.zsh
+
+# -----------------------------------------------------------------------------
+# PARTITION 7: remote-cli control panel (both hosts; defines only)
+# -----------------------------------------------------------------------------
+[[ -f ~/.config/zsh/remote-cli/base.zsh ]] && source ~/.config/zsh/remote-cli/base.zsh

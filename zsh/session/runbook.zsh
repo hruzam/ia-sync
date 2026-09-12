@@ -41,10 +41,18 @@ _rb_resolve_root() {
 }
 
 # ---------------------------------------------------------------------------
-# _rb_open: launch the runbook TUI
+# _rb_open: launch the runbook TUI.  rb-open [-R|--right] [root]
+#   -R/--right: mirror view — tree column on the right (v toggles live too)
 # ---------------------------------------------------------------------------
 _rb_open() {
-    local explicit="${1:-}"
+    local explicit="" side_flag=""
+    local arg
+    for arg in "$@"; do
+        case "$arg" in
+            -R|--right) side_flag="--right" ;;
+            *) explicit="$arg" ;;
+        esac
+    done
     local root
     root="$(_rb_resolve_root "$explicit")"
 
@@ -59,7 +67,7 @@ _rb_open() {
         return 1
     fi
 
-    python3 "$py" --root "$root"
+    python3 "$py" --root "$root" ${side_flag:+$side_flag}
 }
 
 # ---------------------------------------------------------------------------
@@ -99,7 +107,7 @@ _rb_help() {
 +------------------------------------------------------------------+
 |               RB ENGINE - runbook session browser                |
 +------------------------------------------------------------------+
-|  rb-open [root]    Launch TUI browser (all beds in .dev/session) |
+|  rb-open [-R] [root]  Launch TUI (-R: tree column on the right)  |
 |  rb-pick [root]    fzf picker — prints selected bed path         |
 |  rb-board          Render presence board (* = own attachments)   |
 |  rb-mark [bed] [note...]   Attach this session to the board      |
@@ -114,23 +122,30 @@ _rb_help() {
 |  2. $RB_ROOT — default bench, set in config.<machine>.zsh        |
 |  3. walk-up from $PWD                                            |
 |                                                                  |
-|  TUI KEYBINDS (v0.2):                                            |
-|  ↑ ↓        free-scroll D2 / navigate D1                        |
-|  Tab        switch focus D1 ↔ D2                                 |
-|  j / k      move node cursor (headers + files)                   |
-|  J / K      jump between section groups                          |
-|  Enter/Spc  header → fold/unfold group · file → internal reader  |
-|  1–5        jump to section  (R2 STATUS / R5 _bus / R1 RUNBOOK  |
-|             / R3 bed-root / R4 raw)                              |
-|  F          fold/unfold R1 RUNBOOK                               |
-|  B          presence-board modal · m/u attach/detach (D1)        |
-|  e          open cursor file in $EDITOR                          |
-|  p          collect path into buffer (printed at quit)           |
-|  b          toggle buffer pane                                   |
-|  r          manual reload                                        |
-|  q / Esc    quit — buffer prints to scroll-back                  |
+|  TUI (v0.3): LEFT = tree (beds → STATUS/_bus/RUNBOOK/files/raw)  |
+|  RIGHT = content (bed → overview · file → document · grp → list) |
 |                                                                  |
-|  READER:    ↑↓ PgUp/PgDn g/G scroll · e edit · q/Esc/← back      |
+|  ↑↓ PgUp/Dn  move tree / scroll content (by focus; g/G content)  |
+|  → ←         expand / collapse (← also parent · content→tree)    |
+|  Enter/Spc   toggle branch · file → focus content                |
+|  Tab         switch pane · J/K jump between beds                 |
+|  1–5         jump to part (STATUS/_bus/RUNBOOK/files/raw)        |
+|  F           fold selected bed · e edit in $EDITOR               |
+|  y / Y       copy path / file content to clipboard               |
+|  ≋ vault     cs cards under project umbrellas, newest first;     |
+|              Enter = land on card's bed · R = copy its resume:   |
+|  B           board modal · m/u attach/detach selected bed        |
+|  p           collect path · b buffer pane · r reload             |
+|  P           buffer maintainer: x remove line · X clear · y copy |
+|  q / Esc     quit — buffer prints to scroll-back                 |
+|                                                                  |
+|  v            flip tree column left ↔ right (remembered)         |
+|  < / >        move the pane divider (5% steps, remembered)       |
+|  A A          drain a consumed card → archive/ (two presses;     |
+|               explicit Cinderella move — routines never archive) |
+|  ● before bed name = attached on board (always visible prefix)   |
+|  Narrow (<60 cols): focused pane fills screen, Tab flips.        |
+|  Place memory: selection + expanded + side survive restarts.     |
 +------------------------------------------------------------------+
 EOF
 }

@@ -158,6 +158,12 @@ echo "[config] @${MACHINE_NAME} loaded"
 [[ -f ~/.config/zsh/ai/base.zsh ]] && source ~/.config/zsh/ai/base.zsh
 [[ -f ~/.config/zsh/nablarva/base.zsh ]] && source ~/.config/zsh/nablarva/base.zsh
 
+# session scope — session-layer instruments umbrella (runbook browser; reserved:
+# cold-start cards, presence dashboard). RB_ROOT = default .dev/session/ bench;
+# repoint here when the primary bench moves. rb-open <path> targets any other tree.
+export RB_ROOT="$HOME/ia-sync/.dev/session"  # bench repointed 2026-09-09 (bed move, majkee)
+[[ -f ~/.config/zsh/session/base.zsh ]] && source ~/.config/zsh/session/base.zsh
+
 #SESSION HELPERS
 [[ -f ~/.config/zsh/projects/session.zsh ]] && source ~/.config/zsh/projects/session.zsh
 

@@ -58,6 +58,8 @@ Pattern, generalized from `ai/` (the reference implementation):
 | `projects/ltp-toolkit.zsh` | `project-switcher.zsh` on demand | Laravel Training Project commands |
 | `krfb.zsh` | `config.zsh` | Tablet extension |
 | `ai/base.zsh` | `config.zsh` | AI scope signpost (see the ai/ scope block below) |
+| `nablarva/base.zsh` | `config.zsh` | nabLarva scope signpost (nab-* project verbs; keyboard + nablarva.zsh engine) |
+| `session/base.zsh` | `config.zsh` | **session scope signpost** — session-layer instruments umbrella (founded 2026-09-06, majkee gavel; rescoped out of nablarva/). P1 keyboard (`rb-*`), P2 runbook browser engine (`session/runbook.zsh` + `session/runbook.py` TUI, browses any `.dev/session/` tree; default bench = `$RB_ROOT` exported by config). Reserved partitions: cold-start cards (needs temple gate on ai/base.zsh), presence dashboard (pending research) |
 | `piql/piql.zsh` | `config.zsh` | PIQL integration (office only) |
 | `sync/guides.zsh` | `config.zsh` | Guide-publish synchronizer |
 | `archx/commands.zsh` | `config.zsh` | Arch monitoring suite |

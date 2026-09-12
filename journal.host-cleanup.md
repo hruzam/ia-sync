@@ -10,6 +10,74 @@
 
 ---
 
+## OFFICE — 2026-09-12 · Cartan · remote-cli keyboard panel
+
+Majkee requested reusable script/aliases for the PC/phone tmux sizing choice and
+named the scope `remote-cli`. Authored `zsh/remote-cli/` with one keyboard, a
+bash/zsh engine, signpost and README. `remote-fit` selects `window-size latest`,
+`remote-wide` selects `largest`, and `remote-status` / `remote-help` expose the
+target and usage. Changes apply to a chosen window; any existing tmux session
+can use them. The existing remote-cli guide remains the operator documentation
+home; histories and live state stay host-local. The README records the guide's
+older smallest-screen wording versus office's observed global `largest` policy.
+
+Wired through shared `system/base.zsh` (already loaded by both host configs) and
+registered `remote-*` in `keys`. Deployed only six files on office using an
+unchanged `deploy.sh` in a temporary scope bundle after an itemized dry-run.
+The full-deploy palette hold remains. Syntax checks and an isolated tmux 3.7b
+check passed: bash execution, zsh aliases/re-source, fit/wide/status, rejection
+of missing/invalid targets, other-window and global-policy preservation. Fresh
+zsh loading was silent; all four aliases appeared under Remote CLI. Source/live
+bytes matched and captured protected-file hashes stayed unchanged. Read-only
+live check: `pocket-codex:0` was `latest`, 51×43 character cells. New helper use
+from the phone and home was not separately tested.
+
+Existing shells: `source ~/.config/zsh/remote-cli/base.zsh`; then `remote-help`.
+Home carry: receive these source files via the normal commit/pull/deploy path;
+no host-config edit is needed. Git reconciliation remains with the operator;
+no staging, commit, push, service or SSH configuration changes in this step.
+
+Session: `01a0918e-9ab0-7053-88d8-d829f1fad954`.
+
+## OFFICE (Trajectory) — 2026-09-06 · session/ scope rescope + both-host orphan cleanup
+
+Runbook browser rescoped out of `zsh/nablarva/` into new umbrella scope `zsh/session/`
+(majkee gavel — nablarva is a different animal; session/ = session-layer instruments:
+runbook browser live, cold-start cards + presence dashboard reserved partitions).
+Tool is project-agnostic now: root chain `--root > $RB_ROOT > walk-up`; both
+`config.*.zsh` export `RB_ROOT` (default bench) + source `session/base.zsh`.
+nablarva/ de-wired (base P3, keyboard P5 removed; verified isolated). zsh/AGENTS.md
+live map updated same session.
+
+Live-tree orphan cleanup (deploy.sh is additive — moved files linger): removed stale
+`nablarva/runbook.{py,zsh}` + `__pycache__` from BOTH hosts — office directly, home
+via tailscale SSH (office→home works, BatchMode). Home residue until majkee's
+pull+deploy there: live `nablarva/base.zsh`+`keyboard.zsh` still carry old rb wiring
+(guarded source line = silent no-op; rb-* aliases dangle harmlessly) — both files are
+overwritten by the next normal deploy, nothing manual left. Home has no `session/`
+yet; arrives with the same pull+deploy. Changes uncommitted — majkee runs git himself.
+
+Folded the matching live/table Claude therapy skill into `codex/skills/therapy/`, with
+Codex `$therapy` activation and explicit-only invocation metadata. The shared therapy
+README remains law; Cartan keeps its global seat record through working-posture changes.
+No seed or gavel was created. Skill/metadata validation and a fresh read-only Codex session
+passed after correcting an observed README-first ordering miss. The probe discovered the
+installed skill by name and respected absent-seed and shadow-gavel authority.
+
+Deployed through an unchanged `deploy.sh` in a temporary therapy-only bundle, after its
+dry-run named only the two therapy files. This preserved the existing full-deploy
+palette.map hold and unfinished Guide/Octopus changes. Source/live bytes matched; protected
+source, live config, and therapy-bed content hashes stayed unchanged. No services, SSH,
+network, zsh, or agent specifications changed. Evidence and proof limits:
+`_staging/codex/therapy-port.2026-09-05.md`.
+
+Checkout arrived dirty with runbook-upgrade work and a remote-control brief. Fetch found
+two incoming cleanup commits through `7c4a997` (net an unrelated file move). No pull,
+rebase, stash, staging, commit, or push through the other session's protected work; its
+owner retains reconciliation. Therapy changes remain uncommitted. Home carry after those
+changes are committed/pulled: normal `bash deploy.sh` includes therapy; verify `$therapy`
+from a fresh Codex session before calling it live there.
+
 ## OFFICE (Cartan) — 2026-09-03 · Medusa / Polyp cross-runtime refresh
 
 Compared Codex Medusa/Polyp with the landed Claude Flight/Vara + RUNBOOK/track skills and

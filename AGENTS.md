@@ -10,7 +10,10 @@ seat, not an observer outside it. Runtime identity and repository seat coexist.
 1. `head -80 journal.host-cleanup.md` — newest entries tell you where things stand
 2. `git log --oneline -5` — see what's been synced recently
 3. `ls _mail/office/inbox/` — read any mail before planning work; archive each after processing
-4. `cat SYNC_DISCIPLINE.md` — read before touching anything
+4. `ls ~/reposoma/_active/` (or `rb-board`) — presence board: who else is attached to a
+   workspace you are about to touch. Advisory — it informs, never authorizes; overlap means
+   coordinate through the operator, not stop. Law: `reposoma/raw.guides/runbook/res/presence-board.md`
+5. `cat SYNC_DISCIPLINE.md` — read before touching anything
 
 ### Mail inbox
 

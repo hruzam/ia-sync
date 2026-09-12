@@ -133,8 +133,9 @@ closing_sweep (owed before prune):
       with program (02/03 siblings still feed on it)
     * codex-remote-control-cli/raw/brief.implementation.session-bed.v2.bySymmetry.2026-09-04.md
       → same
-    * 01-wrapper/raw/trajectory.experience-transfer.2026-09-10.md → promotes to next
-      cSharp via operator at next arc opening; folds into project therapy artifact
+    * 01-wrapper/raw/trajectory.experience-transfer.2026-09-10.md → PROMOTED 2026-09-11 to
+      incarnations-00-mechanism/raw/ (the next cSharp arc opened there; majkee-directed move,
+      stub left at the old path); therapy fold still owed
     * tunnel.state.json (root, git-invisible) → operator's standing channel, NOT pruned
     * phone ~/.ssh/id_ed25519*.old + both PCs' authorized_keys.pre-rotation-2026-09-10
       → delete after majkee confirms new key stable (his call at prune)
