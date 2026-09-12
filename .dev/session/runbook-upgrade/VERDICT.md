@@ -142,10 +142,32 @@ therapy record, wake mechanism or protocol. This head did not alter canon/source
 concurrent owners continued their separate work during the checks.
 The full-audit amendment changes only this record, STATUS, the manifest and that transfer;
 RUNBOOK, both supplied full audits and all BUS receipts retain their prior bytes.
-No commit, push, deploy, board detach, pulse removal, promotion move or prune occurred.
+At that initial closeout, no commit, push, deploy, board detach, pulse removal, promotion move
+or prune occurred. The later authorized preservation is recorded below.
 
 Historical attribution, audit-tunnel enablement, complete race/zero-context recovery,
 home parity and current platform claims outside the audited artifacts remain unverified.
 The inoperative cycle-23 receipts remain preserved. The missing fuller T2 §§10–12 source
 is not reconstructed. Legacy resolver modernization and any future reliability study remain
 separate optional work, requiring their own scope rather than resuming old POINTs.
+
+## Local preservation receipt — 2026-09-12
+
+Majkee explicitly authorized the bed-scoped commit and one advisory Cartan mail for Nablarva.
+Fresh fetch found ia-sync HEAD and origin/main equal at `7c6c3fb`. Local preservation commit
+`e12be1f3a33798a26323b47d7a4bc17917c3474f` has that parent, changes exactly 115 bed paths,
+and contains all 124 bed files, including twelve raw keepers and 108 BUS receipts.
+Staged blobs matched the worktree; the committed bed was clean afterward; the peer staged
+R100 transfer rename retained blob `4719d3c6a23830d18f5b24c1a5e696dce6122ede` unchanged.
+
+The newly staged historical BUS exposes 17 whitespace findings in 16 receipts: fifteen
+extra terminal blank lines and two trailing-space lines in RETURN 16. These existing bytes
+were deliberately preserved. The full archival diff therefore does not pass `diff --check`;
+the launcher, new closeout records and raw additions do. This is preservation, not cleanup.
+
+The requested single advisory mail was placed for the receiving Cartan with this commit's
+evidence pointers and a small operator-triggered relay recommendation. Availability is not
+consumption. Nablarva's project agents own any subsequent proposal/build and must reconcile
+its current flag; no project code, canon, session or router was changed by this handoff.
+The corrected full-audit résumé and original STOP/unmet disposition stand. Local locators
+are recorded in promotion-manifest.md; push, deploy, board detach and retirement remain undone.

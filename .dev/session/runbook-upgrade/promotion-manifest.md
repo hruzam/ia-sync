@@ -1,9 +1,10 @@
 ---
 session: runbook-upgrade
 author: cartan-csharp
-date: 2026-09-11
-scope: keeper inventory and preservation destinations; no move, commit or prune executed
-authority: majkee's blessed limited-delivery closeout and four-file full-audit amendment
+date: 2026-09-12
+scope: verified local preservation and keeper locators; no move or prune executed
+authority: majkee's closeout blessing and explicit local-commit authorization on 2026-09-12
+preserving_commit: e12be1f3a33798a26323b47d7a4bc17917c3474f
 ---
 
 # Preservation and promotion manifest
@@ -15,8 +16,11 @@ their dated platform claims are not refreshed or promoted as current fact.
 
 The source base below is `/home/hruzam/ia-sync/.dev/session/runbook-upgrade/raw/`.
 “History” means ia-sync Git history at the original `.dev/session/runbook-upgrade/raw/<basename>`
-path, not a new permanent BUS archive or another live copy. Preservation of the new transfer
-and both full audits is pending; record the real commit ID before any authorized removal.
+path, not a new permanent BUS archive or another live copy. The full twelve-keeper set now
+resolves in local preservation commit `e12be1f3a33798a26323b47d7a4bc17917c3474f`.
+For every table row, its immutable locator is that commit followed by
+`:.dev/session/runbook-upgrade/raw/` and the exact basename. The earlier pin below is also
+retained for the nine inherited files; neither locator depends on a live inbox or transcript.
 
 | Raw keeper basename | Durable destination / disposition |
 |---|---|
@@ -29,9 +33,9 @@ and both full audits is pending; record the real commit ID before any authorized
 | `T2.assymetry-primary-draft.2026-09-04.md` | KEEP in history at the pinned commit; accepted delta lives in the fan-out chapter |
 | `T2.assessment.bus-turn-fanout.2026-09-04.md` | KEEP in history at the pinned commit; commit-as-join and other rejected proposals stay historical |
 | `T2.countersign.fanout-turns.2026-09-04.md` | KEEP in history at the pinned commit; accepted amendments live in the chapter |
-| `cartan-csharp.experience-transfer.2026-09-11.md` | KEEP at this original path in the pending preservation commit; operator carries it, no global therapy fold claimed |
-| `cartan-full-audit.2026-09-11.md` | KEEP unchanged at this original path in the pending preservation commit; head-checked integration and measurement limits live in VERDICT.md |
-| `oraculum-full-audit.2026-09-11.md` | KEEP unchanged at this original path in the pending preservation commit; corrections live in VERDICT.md, not in the auditor's receipt |
+| `cartan-csharp.experience-transfer.2026-09-11.md` | KEEP at this original path in e12be1f; operator carries it, no global therapy fold claimed |
+| `cartan-full-audit.2026-09-11.md` | KEEP unchanged at this original path in e12be1f; head-checked integration and measurement limits live in VERDICT.md |
+| `oraculum-full-audit.2026-09-11.md` | KEEP unchanged at this original path in e12be1f; corrections live in VERDICT.md, not in the auditor's receipt |
 
 The accepted factual output is already in these authoring homes:
 
@@ -45,14 +49,20 @@ The accepted factual output is already in these authoring homes:
   `/home/hruzam/ia-sync/codex/skills/{octopus,guide}/SKILL.md`; scope and actual behavior
   are separated in this bed's `VERDICT.md`. No additional primitive is promoted.
 
-## Closeout records and remaining preservation edge
+## Verified preservation and remaining retirement edge
 
-Preserve this bed's `RUNBOOK.md`, `STATUS.md`, `VERDICT.md`, this manifest, all twelve raw
-keepers and the existing `_bus/` receipts in scoped ia-sync history before any prune. No receipt is
-rewritten, even the inoperative cycle-23 artifacts or the nonstandard peer review filename.
-The bed contains 108 existing BUS files; this closeout adds no cycle or BUS file.
-This is a finite preservation set, not authority for `git add .` or a whole-repository commit.
-Inspect the then-current index: a peer's staged transfer rename is outside this set.
+Commit `e12be1f3a33798a26323b47d7a4bc17917c3474f`, parent `7c6c3fb`, contains all 124 bed
+paths: twelve raw keepers, 108 BUS receipts and four root records. Its diff changes 115 paths,
+all inside this bed; nine inherited raw files already existed unchanged. Stage/worktree blob
+comparison passed before commit; the bed was clean immediately afterward. No receipt was rewritten,
+including inoperative cycle 23 and the nonstandard peer review filename. The peer's staged
+R100 transfer rename remained unchanged, outside the path-limited commit.
+
+The four initial root-record locators use the same full commit followed by
+`:.dev/session/runbook-upgrade/RUNBOOK.md`, `:.../STATUS.md`, `:.../VERDICT.md` and
+`:.../promotion-manifest.md`, where `...` is `.dev/session/runbook-upgrade`.
+The STATUS in that initial snapshot records the pre-commit recovery edge; this later locator
+update records the checked outcome. It is not a second acceptance of the original gate.
 
 Durable conclusions and the proof map are distilled in `VERDICT.md`; audit rationale and
 primary evidence locators remain in RETURNs 37/38, their checked VERDICTs and both full audits.
@@ -61,9 +71,7 @@ the independent reports. Host-local
 JSONL histories, authentication and runtime state never enter the preservation set.
 Do not copy the exchange into mail or another archive merely to keep it on a live path.
 
-Before any later prune, the authorized owner must verify the preserving commit's contents,
-record an immutable commit:path locator for each newly preserved keeper/closeout record,
-and leave the result/transfer locator in the owning durable router or evidence home.
-The existing pulse router remains during this retained preservation edge; removing it,
-moving files, pruning the bed and cross-host carry are not performed by this package.
-No unresolved destination silently counts as promotion complete.
+Preservation is local to office; no push or other-host availability is claimed. Before any
+later prune, the owner must obtain retirement authority and place the result/transfer locator
+in the agreed durable router or evidence home. The existing pulse router and bed remain;
+removing them, moving files and cross-host carry are not performed by this package.
