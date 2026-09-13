@@ -39,6 +39,37 @@ no staging, commit, push, service or SSH configuration changes in this step.
 
 Session: `01a0918e-9ab0-7053-88d8-d829f1fad954`.
 
+Same-day scroll follow-up (Cartan session `01a092ed-f422-7051-ba69-f6c1d47c57d8`):
+Termux touch scrolling was blocked on `nablarva-cartan` by tmux mouse being off;
+the existing wheel binding was intact and Codex was already outside the alternate
+screen. Enabled mouse and raised history from 2,000 to 50,000 on that session only
+(`$36`, window `@50`, pane `%50`). Majkee confirmed touch scrolling worked. Kept
+its `window-size latest`, global defaults, `.tmux.conf` and Codex config unchanged.
+
+Majkee then chose a reusable opt-in repair, not global defaults: added
+`remote-scroll [target]` to the existing engine/keyboard and documented it in the
+source README/help. It enables session mouse handling, raises a smaller effective
+history limit to 50,000 without lowering a larger session limit, and pins the
+selected session as well as window/pane so linked windows do not redirect the
+change. `remote-status` now reports mouse, retained history/pane limit, session
+limit and alternate-screen state. Repeat the repair after session recreation;
+no automatic launcher hook, sizing change, key remap or application config edit.
+
+Deployed only the three changed remote-cli files through unchanged `deploy.sh`
+in `/tmp/remote-scroll-repair.7Skh8K/deploy/`, after an itemized dry-run. Earlier
+live helper files are backed up in that temporary directory's `before-live/`.
+Isolated tmux 3.7b tests passed on source and deployed copies: bash/zsh entry,
+silent re-source, inherited limits, repeated repair, a larger 100,000-line limit,
+linked-window session choice, invalid/missing targets, existing sizing controls,
+other-session/new-session defaults and unchanged key bindings. A separate PTY
+test used the helper, observed SGR wheel events enter/scroll copy mode, and `q`
+return to the inert application. Test scripts: `/tmp/remote-cli-smoke.py` and
+`/tmp/cartan-tmux-scroll.MiCSez/probe.py`; no live agent input was injected.
+All five aliases appeared in `keys`; source/live bytes matched. Protected-file
+hashes (.tmux.conf, Codex config, shell config/entry/signposts/keys) were unchanged.
+Home/new phone invocation is not separately verified; normal home carry and the
+full-deploy hold above still apply. These changes remain uncommitted.
+
 ## OFFICE (Trajectory) — 2026-09-06 · session/ scope rescope + both-host orphan cleanup
 
 Runbook browser rescoped out of `zsh/nablarva/` into new umbrella scope `zsh/session/`

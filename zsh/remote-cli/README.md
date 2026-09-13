@@ -16,11 +16,12 @@ source ~/.config/zsh/remote-cli/base.zsh
 remote-help
 ```
 
-| Command | Effect on the chosen window |
+| Command | Effect on the chosen target |
 |---|---|
 | `remote-fit [target]` | `window-size latest`: follow the most recently active client |
 | `remote-wide [target]` | `window-size largest`: follow the largest attached client |
-| `remote-status [target]` | Print target, effective policy and dimensions in character cells |
+| `remote-scroll [target]` | Session: mouse on; raise history limit to at least 50,000 lines, preserving larger limits |
+| `remote-status [target]` | Print target, sizing, mouse, retained history / pane limit, session limit and alternate-screen state |
 
 Omit the target inside a tmux shell to use its window. From another host terminal,
 give a session/window or pane ID, for example `remote-fit 'agentive:0'`.
@@ -31,7 +32,9 @@ and enter this tmux command (no shell alias needed):
 run-shell 'bash /home/hruzam/.config/zsh/remote-cli/remote-cli.sh fit "#{pane_id}"'
 ```
 
-Change `fit` to `wide` or `status` as needed. This targets the window you are viewing.
+Change `fit` to `wide`, `scroll` or `status` as needed. Sizing targets the window;
+scroll repair targets its session. For linked windows, specify `session:window.pane`
+to choose the session explicitly (a bare pane ID lets tmux choose its context).
 No special launch step is needed; any existing tmux session can use these controls.
 Connect through the existing doors: `bed office` on the phone, `tso -t office` from
 another PC, then **Ctrl+B**, **s** to select a session.
@@ -48,6 +51,24 @@ policy: office was configured with `largest` when this helper was authored. The
 commands make this choice explicit per window. See the
 [tmux manual, window-size](https://man.openbsd.org/tmux.1#window-size) and
 [tmux FAQ](https://github.com/tmux/tmux/wiki/FAQ#why-do-i-see-dots-around-a-session-when-i-attach-to-it).
+
+### Opt-in scroll repair
+
+From a host shell, use `remote-scroll 'nablarva-cartan'` (or another session name).
+Inside that session's shell, `remote-scroll` alone works. Run it once after creating
+or recreating a session; detaching and reattaching the same session keeps the repair.
+It enables session mouse handling and raises a smaller history limit to 50,000 lines.
+It does not change server defaults, window sizing, key bindings or application config.
+Other sessions' options stay unchanged; a pane linked into several sessions still
+has one shared history. No automatic launch hook or new session is installed.
+
+If a terminal/TUI still consumes touch or wheel events, enter tmux copy mode:
+**Ctrl+B**, release, **[**, then **PgUp/PgDn**; **q** returns to the application
+(default tmux bindings). `remote-status` reports mouse as `1` when enabled and
+the selected pane's retained history and limit; `alternate=1` means the application
+is using the alternate screen. This helper does not force an application's screen
+or mouse mode. Raising the limit cannot recover lines already discarded or output
+the application never placed in terminal history.
 
 Compose here and deploy outward. Home receives the same source through its normal
 pull/deploy; office testing does not establish home or phone verification.
