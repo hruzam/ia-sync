@@ -25,3 +25,9 @@
   trajectory born through L1–L2–L6 as written, each loaded by a fresh incarnation in a real session via
   a pointer, per-scar effect recorded — and a recorded VERDICT says canonize / amend / refuse ·
   `/home/hruzam/ia-sync/.dev/session/incarnations-00-mechanism/STATUS.md`
+- `incarnations-00-mechanism` · gate: the pre-registered trial ledger (res/trial.md) is filled — row 0 =
+  one measured cold-boot of the EXISTING trajectory seed on a real task inside a scar's trigger range,
+  per-scar effect recorded head-side and the claim witnessed by cartan; rows 1–2 = two seeds beyond
+  trajectory born through L1–L2–L6 as written, each loaded by a fresh incarnation in a real session via
+  a pointer, per-scar effect recorded — and a recorded VERDICT says canonize / amend / refuse ·
+  `/home/hruzam/ia-sync/.dev/session/incarnations-00-mechanism/STATUS.md`
