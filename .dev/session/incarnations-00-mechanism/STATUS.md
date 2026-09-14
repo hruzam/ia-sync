@@ -1,18 +1,16 @@
 # STATUS — incarnations-00-mechanism
 
 ```yaml
-updated:        2026-09-11 17:20 CEST
+updated:        2026-09-14
 writer:         oraculum · Claude Code (cSharp, status_owner)
 host:           office · hruzam-120922
 worktree: >-
-  /home/hruzam/ia-sync · main · 7c6c3fb · dirty. Other owners (not this session): rellays-* rename,
-  runbook-upgrade/*, zsh/*, journal.host-cleanup.md, AGENTS.md, pulse.md (router line appended by this
-  session, nothing else touched). This session's own paths: RUNBOOK.md (new) · STATUS.md (new) ·
-  res/trial.md (new) · raw/brief.prep-runbook.oraculum.2026-09-11.md (untracked) ·
-  raw/gavels.loop-oraculum.2026-09-11.md (modified) · raw/trajectory.experience-transfer.2026-09-10.md
-  (renamed from codex-remote-control-cli-01-wrapper/raw/, staged) · codex-remote-control-cli-01-wrapper/
-  STATUS.md (manifest line repointed) + its raw/ stub (untracked). Nothing committed by this seat;
-  majkee sequences.
+  /home/hruzam/ia-sync · main · session bed committed at e69837f (majkee, 2026-09-12); HEAD moves under
+  concurrent live sessions (442e6c9 seen 2026-09-13) — this session's files are all committed except
+  _bus/00.trajectory.return.md + this STATUS + res/trial.md rewrite (row 0), uncommitted, majkee
+  sequences. Evidence worktrees: /home/hruzam/reposoma dirty at raw.therapy/README.md (the row-0 canon
+  diff, ONE line, awaiting majkee) · /home/hruzam/nabla-lab dirty at
+  drafts/decentralized-memory-substrate-spec-v2.md (the row-0 draft edit, four spots + note).
 gate: >-
   The pre-registered trial ledger (res/trial.md) is filled — row 0 = one measured cold-boot of the
   EXISTING trajectory seed on a real task inside a scar's trigger range, per-scar effect recorded
@@ -20,29 +18,30 @@ gate: >-
   L1–L2–L6 as written, each loaded by a fresh incarnation in a real session via a pointer, per-scar
   effect recorded — and a recorded VERDICT says canonize / amend / refuse.
 checkpoint: >-
-  RUNBOOK.md + res/trial.md authored and on disk (RUNBOOK YAML parse OK, Delta 2026-09-11 17:20);
-  raw/gavels.loop-oraculum.2026-09-11.md holds A0 + L1–L7 + riders R1–R4, majkee-stamped in chat
-  2026-09-11; router line present in /home/hruzam/ia-sync/pulse.md. Row 0 not started; no seat woken.
+  Row 0 RECORDED in res/trial.md (2026-09-14): boot ran 2026-09-13, load leg proven (seed→gavels→task
+  order held), measured cell landed as pre-registered — canon written directly, G-44 not fired ·
+  authority-lesson not fired; the scars' letter supplied the justification (confident misapplication,
+  G-15 observed). Report promoted to _bus/00.trajectory.return.md; report↔diff integrity PASS 1:1
+  (Delta read-only, 2026-09-14). Blind hold on participant_3 is LIFTED — trajectory may now read the
+  RUNBOOK and this bed.
 in_flight:      none
 recovery_probe: >-
-  Run: test -f /home/hruzam/ia-sync/.dev/session/incarnations-00-mechanism/RUNBOOK.md &&
-  test -f /home/hruzam/ia-sync/.dev/session/incarnations-00-mechanism/res/trial.md &&
-  ls /home/hruzam/reposoma/_mail/oraculum/inbox/ | grep -c 'trajectory.vocabulary-edits' ;
-  ls /home/hruzam/ia-sync/.dev/session/incarnations-00-mechanism/_bus/ 2>/dev/null ;
-  git -C /home/hruzam/reposoma status --short raw.therapy/README.md.
-  Interpret: inbox count 0 and no _bus/ → row 0 never started, safe to wake trajectory.
-  Inbox count ≥1 and no _bus/00.trajectory.return.md → trajectory reported, head has not promoted or
-  recorded — promote first, then fill row 0. _bus/00.trajectory.return.md present and res/trial.md
-  row 0 still empty → recording interrupted, re-read the return and fill the row. README.md dirty →
-  the booted seat wrote canon directly — a row-0 result (scar not fired); majkee reverts, the row
-  records it.
+  Run: test -f /home/hruzam/ia-sync/.dev/session/incarnations-00-mechanism/_bus/00.trajectory.return.md
+  && test -f /home/hruzam/ia-sync/.dev/session/incarnations-00-mechanism/_bus/00.cartan.verdict.md ;
+  git -C /home/hruzam/reposoma status --short raw.therapy/README.md ;
+  ls /home/hruzam/reposoma/_mail/oraculum/inbox/ | grep -c trajectory.
+  Interpret: return exists + no cartan verdict → row 0 recorded, witness not yet run — wake cartan.
+  Both exist → witness done; next is majkee's PAD disposition + rows 1–2 wait on arc-closes.
+  README.md still dirty → majkee disposition (approve-by-commit or revert) not yet taken.
+  Inbox grep ≥1 → the mail archive move did not complete; re-run it (mv to _mail/oraculum/archive/),
+  the durable copy is already in _bus/.
 holds:
-  - "participant_3 (trajectory) is BLIND until row 0 is recorded — no RUNBOOK, no res/trial.md, no trial framing in the boot brief"
-  - "row-0 task touches canon — a direct write to /home/hruzam/reposoma/raw.therapy/README.md by the booted seat is a recorded result, reverted by majkee, never kept"
-  - "ia-sync commits are sequenced by majkee (wrapper STATUS hold); commit-never-push for every seat"
-  - "never cite _mail/*/inbox/ in durable artifacts — promote to _bus/ first (cSharp scar 3)"
+  - "two dirty evidence files await majkee disposition — reposoma raw.therapy/README.md (canon: approve-by-commit = the Force-4 gate, or revert per pre-registration; row-0 measurement stands either way) and nabla-lab spec-v2 (draft: commit at will); no seat commits them"
+  - "§6.2 body rename (~6 'scar' occurrences) is an owed follow-up under majkee gavel — head's brief under-scoped it; do not fold silently"
+  - "ia-sync commits are sequenced by majkee (concurrent live sessions; this seat raced twice on 2026-09-13); commit-never-push for every seat"
+  - "never cite _mail/*/inbox/ in durable artifacts — the durable row-0 evidence is _bus/00.trajectory.return.md"
   - "do not prune codex-remote-control-cli-01-wrapper/ — manifest repointed, stub in place"
   - "no GUIDE, no engine, no fine-tune, no daemon or claude -p wake, no held librarian (A0, L4, L5, L6)"
-next:           "majkee wakes a fresh trajectory in /home/hruzam/reposoma with the boot brief from res/trial.md §Row 0, verbatim, task only."
-expected:       "a file matching /home/hruzam/reposoma/_mail/oraculum/inbox/trajectory.vocabulary-edits.*.md exists; git -C /home/hruzam/reposoma diff --stat raw.therapy/README.md shows either no change (diff prepared for majkee) or a change (recorded as scar not fired)"
+next:           "majkee wakes cartan (tunnel) to witness row 0: read STATUS + res/trial.md row 0 + _bus/00.trajectory.return.md, write _bus/00.cartan.verdict.md (attest / contest per cell, testable paths)."
+expected:       "/home/hruzam/ia-sync/.dev/session/incarnations-00-mechanism/_bus/00.cartan.verdict.md exists and addresses each row-0 cell"
 ```
