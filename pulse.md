@@ -15,6 +15,10 @@
   negative activation refused) over a deployed single-posture source, decisions 1–5 gaveled,
   observed commands in the closing VERDICT ·
   `/home/hruzam/ia-sync/.dev/session/codex-identity-resolution/STATUS.md`
+- `runbook-tool-01-coordination` · gate: after identity-resolution closes with evidence, majkee
+  accepts a bounded office coordination pilot with truthful attention signals, no duplicate
+  dispatch, and witnessed entry-card/helper/Vara decisions ·
+  `/home/hruzam/ia-sync/.dev/session/runbook-tool-01-coordination/STATUS.md`
 - `codex-remote-control-cli-01-wrapper` · gate: wrapper v0 from the Redmi drives a full Codex
   TUI on office over the existing agentive rail (live bash-approval confirmed from the phone,
   survives lock+reattach, zero authorized_keys changes) ·
