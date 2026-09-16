@@ -156,11 +156,14 @@ Partition maps + engine inventory (authoritative): `guides/guide-for-builder.md`
 
 **Verify-real-trigger rule (0009 L5):** definition-of-done for any AI-bonded script with a trigger is the systemd unit / git hook / cron firing and producing its output — never the script run by hand. The `harness.service` dead-path bug (pointing at `fresh/harness-check.zsh` which did not exist) is the cautionary example: a move was checked against the script by hand-run, never against the systemd trigger. The `ai/doorbell-smoke.zsh` probe is the standing instrument for the post-commit doorbell.
 
-### KNOWN BROKEN — found 2026-07-29, not fixed (operator call)
+### KNOWN BROKEN — migrated 2026-09-16 to the central issue vault
 
-| Where | Defect |
-|---|---|
-| `projects/larva.zsh:31` + aliases at `:61-70` | Sets `LARVA_SCRIPTS_DIR="$HOME/.config/zsh/larva"` — **that directory does not exist on office**. The `broadcast`/`consult`/`slices`/`laika` aliases it defines therefore point at nothing. Not triggered at startup (`projects/larva.zsh` loads on-demand via `lrv`), so it is latent, not fatal. The scripts survive only at `archive/larva/`, which the aliases do **not** reference. **PARKED, not awaiting a decision** (operator, 2026-07-29): the larva era was mostly home's and is dead. Newer larva associations exist but are deliberately unpublished until both machines are ~1:1 — or at least at the same level of project and agentive synchronicity. So the answer is neither repoint nor strip: leave it until convergence, then it gets resolved as part of whatever replaces it. Treat larva-adjacent wiring anywhere in this tree the same way — stale by default, do not revive. |
+This table's one entry (the `larva.zsh:31` `LARVA_SCRIPTS_DIR` defect, found 2026-07-29,
+parked by operator call) now lives at
+`~/reposoma/_issues/parked/ISS.larva-scripts-dir-missing.2026-07-29.md` — point, never copy.
+Any NEW known-but-unfixed defect anywhere in ia-sync goes there too (`open/` first, `parked/`
+once triaged), not back into this table — see `~/reposoma/_issues/README.md` for the shape
+and why it's central instead of per-project (Janus + Codex/@mirror gate, 2026-09-16).
 
 ### PARKED — moved to `archive/` (machine-local history; not sourced)
 

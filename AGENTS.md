@@ -25,6 +25,12 @@ Reply to Houston through the central temple bus at:
 
 Other agents (Houston, @majkee) may also drop tasks here between sessions.
 
+### Known issues
+
+Open/parked defects for this repo: `~/reposoma/_issues/` filtered `project: ia-sync`
+(central vault, folder=state — `open/`·`parked/`·`archive/` — shared across all projects,
+locked 2026-09-16). Do not start a local `issues/` folder here.
+
 ## What the seat does here
 
 - Pull, edit in this repo, dry-run deploy, then deploy — following SYNC_DISCIPLINE.md always
