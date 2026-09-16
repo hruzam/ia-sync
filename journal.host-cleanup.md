@@ -10,6 +10,59 @@
 
 ---
 
+## HOME — 2026-09-16 · Trajectory (ad-hoc) · ts-mount rescue + zombie-sweep fixture
+
+Read `/tmp/metaterminal-20260916-214504/sublime-zombie-tsmount.2026-09-16.md`
+(sublime_text zombie 9201 + orphaned children, one wedged in D-state on a
+stuck ts-mount sshfs RPC). Turned the diagnosis's two "not yet a script change"
+recommendations into real guardrails in `system/` (compose-first: edited here,
+dry-run + deployed on home, this entry precedes commit+push):
+
+- **`ts-mount-kill [peer] [mnt]`** (`system/tailscale.zsh`) — kills the sshfs
+  daemon directly for a wedged mount; daemon death → kernel returns
+  ENOTCONN/EIO to every pending syscall, unblocking a frozen app immediately
+  instead of waiting out the up-to-100s ServerAlive window.
+- **`_ts_umount` hardened** — on lazy-unmount failure it now auto-escalates to
+  the daemon-kill above, then retries once, instead of just failing.
+- **`zombie-sweep [-k]`** (`system/shell.zsh`, new) — lists zombies + their
+  live orphan children, classifies D-state (unkillable, reboot-only) vs
+  killable; `-k` SIGTERMs the killable ones. Read-only by default.
+- **Wiring fix along the way:** `system/base.zsh` PARTITION 3 gated
+  `shell.zsh` to office-only, contradicting the file's own header
+  ("cross-machine"). Widened to both machines — required for zombie-sweep to
+  exist on home at all, confirmed via `grep` that neither `config.home.zsh`
+  nor `base.zsh` sourced it on home before this.
+- **Real zsh bug found + fixed while building `zombie-sweep`:** a bare
+  `local name` (no assignment) re-declared on a later loop iteration, followed
+  by a separate assignment line, makes zsh print the *previous* value as
+  `name=value` stdout noise. Reproduced even via a real pty (`script -qc`),
+  not a sandbox artifact. Fix: declare all locals once above the loops,
+  assign only inside. Worth remembering — it's a general zsh gotcha, not
+  specific to this function.
+
+Verified live on home post-deploy against the actual current zombie chain
+(`zombie-sweep`, `type ts-mount-kill`): output matches the diagnosis exactly —
+9281 (`plugin_host-3.8`) is still D-state / unkillable, 9278 has itself become
+a zombie since the diagnosis (its own SIGTERM landed but its parent, itself a
+zombie, can't reap it), and 9201 remains unreaped. Confirmed there is nothing
+further to safely kill live in that chain — matches the diagnosis's own
+conclusion; clears at next reboot only. Did not force it further or reboot.
+
+**Also noticed, out of scope, flagging only:** ~33 unrelated `zsh <defunct>`
+zombies system-wide on home (none with live children — `zombie-sweep`
+confirmed `-k` would be a no-op against all of them right now). Likely
+accumulated agent/session subshells over the 5-day uptime. Not touched.
+
+**Not applied** (diagnosis flagged as optional, office/home seat's call):
+shortening `ServerAliveInterval`/`ServerAliveCountMax` in
+`system/tailscale.zsh:321` from the current 100s worst-case window. Left as
+documented, undeployed recommendation — no ask to change it this session.
+
+Not mailing Houston — no service, SSH/network, or agent-spec change; pure zsh
+tooling addition, doesn't meet the mail-trigger list in AGENTS.md.
+
+---
+
 ## OFFICE — 2026-09-12 · Cartan · remote-cli keyboard panel
 
 Majkee requested reusable script/aliases for the PC/phone tmux sizing choice and

@@ -20,7 +20,8 @@ alias ts-pull='_ts_pull'              # pull same-path file from peer (mirror co
 alias ts-push='_ts_push'              # push same-path file to peer (mirror copy)
 alias ts-beam='_ts_beam'              # beam file(s) to peer transporter pad
 alias ts-mount='_ts_mount'            # sshfs-mount peer path locally (browse/edit/save in any app)
-alias ts-umount='_ts_umount'          # unmount a ts-mount point
+alias ts-umount='_ts_umount'          # unmount a ts-mount point (auto-escalates to daemon-kill if wedged)
+alias ts-mount-kill='_ts_mount_kill'  # rescue: kill the sshfs daemon to unblock a frozen (D-state) app
 alias ts-help='_ts_help'              # command panel for this scope
 
 # ── Database (cross-host tunnel) ───────────────────────────────────────────────
@@ -43,6 +44,7 @@ alias hasz='openssl rand -hex 12 | cut -c 1-21'  # random 21-char hex token
 alias cod="php -r 'echo uniqid(). PHP_EOL;'"     # PHP uniqid
 alias mygrep='grep -Hrn'               # recursive grep with line numbers
 alias msrc='_msrc'                     # search www tree · arg = pattern
+alias zombie-sweep='_sys_zombie_sweep' # list zombies + live orphan children · -k to kill the killable ones
 
 # ── PHP + Composer (same keys; host-specific engines) ─────────────────────────
 # Bodies in: system/home.php-composer.zsh or system/office.php-switch.zsh

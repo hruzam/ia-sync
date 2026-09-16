@@ -12,10 +12,13 @@
 #           so it does not belong in a signpost. Unchanged from pre-WP5.
 #
 # Scope: system — shell utilities + Tailscale + host-specific PHP/Composer.
-# Reach differs by machine (pre-existing, not introduced by this retrofit):
+# Reach differs by machine for the PHP/Composer engines only (host-specific
+# runtime split — Docker vs native, see the machine table in AGENTS.md).
+# shell.zsh (PARTITION 3) is cross-machine since 2026-09-16 — was wrongly
+# office-guarded here despite always being cross-machine by design:
 #   office: keyboard + tailscale + shell.zsh + office.php-switch.zsh
-#   home:   keyboard + tailscale + home.php-composer.zsh
-# PARTITIONS 3-5 below are MACHINE_NAME-guarded to reproduce that split
+#   home:   keyboard + tailscale + shell.zsh + home.php-composer.zsh
+# PARTITIONS 4-5 below are MACHINE_NAME-guarded to reproduce the PHP split
 # exactly, mirroring the guard idiom office.php-switch.zsh already uses
 # internally (not a new mechanism).
 #
@@ -36,9 +39,12 @@
 [[ -f ~/.config/zsh/system/tailscale.zsh ]] && source ~/.config/zsh/system/tailscale.zsh
 
 # -----------------------------------------------------------------------------
-# PARTITION 3: general shell utilities engine (office only — see header)
+# PARTITION 3: general shell utilities engine (cross-machine — both home +
+# office; widened 2026-09-16, was office-only here despite the engine's own
+# header always having claimed cross-machine reach — zombie-sweep needs to
+# exist on home too, see sublime-zombie-tsmount diagnosis)
 # -----------------------------------------------------------------------------
-[[ "$MACHINE_NAME" == "office" && -f ~/.config/zsh/system/shell.zsh ]] && source ~/.config/zsh/system/shell.zsh
+[[ -f ~/.config/zsh/system/shell.zsh ]] && source ~/.config/zsh/system/shell.zsh
 
 # -----------------------------------------------------------------------------
 # PARTITION 4: office PHP version switching engine (office only — also

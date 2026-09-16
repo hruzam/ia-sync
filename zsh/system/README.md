@@ -15,9 +15,9 @@ read before touching any file here.
 | `keyboard.zsh` | Control panel — aliases + comments only | — |
 | `dashboard.zsh` | Startup dashboard engine | `_dash_header` |
 | `dashboard.md` | Startup dashboard content — @majkee edits this to change what prints on shell open | — |
-| `tailscale.zsh` | Tailscale engine | `_ts_ls` `_ts_header` `_ts_ping` `_ts_ssh` `_ts_session` `_ts_dash` `_ts_dash_stop` `_ts_web` `_ts_help` `_ts_mount` `_ts_umount` |
+| `tailscale.zsh` | Tailscale engine | `_ts_ls` `_ts_header` `_ts_ping` `_ts_ssh` `_ts_session` `_ts_dash` `_ts_dash_stop` `_ts_web` `_ts_help` `_ts_mount` `_ts_umount` `_ts_mount_kill` |
 | `ts-dash.py` | Python HTTP dashboard server — called by `_ts_dash` | — |
-| `shell.zsh` | General shell utilities engine | `_msrc` |
+| `shell.zsh` | General shell utilities engine (cross-machine since 2026-09-16) | `_msrc` `_sys_zombie_sweep` |
 | `home.php-composer.zsh` | Home PHP/Composer engine — Docker PHP 7.4 + Composer, native PHP 8+ | `_php74` `_php8` `_phpst` `_composer74` `_composer8` |
 | `office.php-switch.zsh` | Office PHP/Composer engine — native CLI + concurrent FPM services | `_php74` `_php8` `_phpst` `_composer74` `_composer8` |
 
@@ -57,12 +57,26 @@ Run `ts-help` in the shell for the live panel. Reference:
 | `ts-web` | `_ts_web` | open Tailscale admin panel in browser |
 | `ts-help` | `_ts_help` | command panel |
 | `ts-mount [peer] [path] [mnt]` | `_ts_mount` | sshfs-mount peer path locally · default mnt `~/mnt/<peer>` — find/open/edit/save in Sublime or any app |
-| `ts-umount [mnt]` | `_ts_umount` | unmount a `ts-mount` point (idempotent) |
+| `ts-umount [mnt]` | `_ts_umount` | unmount a `ts-mount` point (idempotent) · falls back to killing the sshfs daemon + retrying if the mount is wedged |
+| `ts-mount-kill [peer] [mnt]` | `_ts_mount_kill` | rescue: kill the sshfs daemon for a mount directly — unblocks an app frozen mid-syscall (D-state) faster than waiting out the ServerAlive window or plain `ts-umount` |
 | `web-reach [peer] [port]` | `_web_reach` | loopback SOCKS v5 proxy through peer (default `127.0.0.1:1080`) |
 | `web-reach-firefox [url]` | `_web_reach_firefox` | start the proxy and open an isolated Firefox profile through peer egress |
 | `web-reach-down [port]` | `_web_reach_down` | close the browser-egress proxy |
 
 Full procedure: `~/reposoma/raw.guides/browser-egress/GUIDE.md` (`/guide browser-egress`).
+
+### Process hygiene (zombies / stuck orphans)
+
+Cross-machine. Added 2026-09-16 from the sublime-zombie-tsmount diagnosis
+(`/tmp/metaterminal-20260916-214504/sublime-zombie-tsmount.2026-09-16.md`):
+a zombie itself is harmless (PID-slot only); its still-live orphan children
+are the actual blockers, and a D-state child cannot be killed at all — only
+the kernel resolving the wait (or reboot) clears it.
+
+| Alias | Body | What |
+|---|---|---|
+| `zombie-sweep` | `_sys_zombie_sweep` | list zombies + their live orphan children, classified by state — read-only |
+| `zombie-sweep -k` | `_sys_zombie_sweep -k` | same, then SIGTERM every killable (non-D) child found |
 
 ---
 

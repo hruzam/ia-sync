@@ -338,10 +338,57 @@ _ts_umount() {
     # -z (lazy) detaches stale/dead mounts even when the SSH connection is gone
     if fusermount -uz "$mnt" 2>/dev/null || umount "$mnt" 2>/dev/null; then
         echo "[ts] unmounted: $mnt"
-    else
-        echo "[ts] unmount failed: $mnt (is a shell/app still using it?)" >&2
-        return 1
+        return 0
     fi
+    # Fallback rescue path (2026-09-16, sublime-zombie-tsmount diagnosis):
+    # a lazy unmount only detaches the mountpoint for NEW opens — a read/write
+    # already in flight (D-state, e.g. an app frozen mid-save) stays pending
+    # until the sshfs daemon itself dies. Kill the daemon directly: daemon
+    # death → kernel returns ENOTCONN/EIO to every pending syscall on the
+    # mount, which unblocks the frozen app immediately instead of waiting out
+    # the ServerAlive window (up to 100s). Then retry the lazy unmount once.
+    echo "[ts] unmount stalled on $mnt — mount looks wedged, trying daemon-kill rescue" >&2
+    _ts_mount_kill "$TAILSCALE_PEER" "$mnt" >/dev/null
+    sleep 0.5
+    if fusermount -uz "$mnt" 2>/dev/null || umount "$mnt" 2>/dev/null; then
+        echo "[ts] unmounted: $mnt (after sshfs daemon kill)"
+        return 0
+    fi
+    echo "[ts] unmount failed: $mnt (is a shell/app still using it?)" >&2
+    return 1
+}
+
+# Rescue for a ts-mount stuck mid-syscall — a frozen app (Sublime, Firefox…)
+# doing synchronous I/O against a dead-link sshfs mount sits in kernel D-state
+# (uninterruptible; SIGTERM/SIGKILL on the APP are no-ops) until the sshfs
+# daemon resolves or dies. Killing the daemon directly is the fast path:
+# daemon death → kernel returns ENOTCONN/EIO to every pending syscall on that
+# mount, unblocking the frozen app right away. `ts-umount` alone cannot rescue
+# an already-in-flight syscall (see its fallback above, which calls this).
+#   ts-mount-kill [peer] [local-mountpoint]   default mnt: ~/mnt/$TAILSCALE_PEER
+_ts_mount_kill() {
+    local peer="${1:-$TAILSCALE_PEER}"
+    local mnt="${2:-${HOME}/mnt/${peer}}"
+    [[ -z "$peer" ]] && { echo "[ts] TAILSCALE_PEER not set — pass a peer"; return 1; }
+    command -v pgrep >/dev/null 2>&1 || { echo "[ts] pgrep required, not installed" >&2; return 1; }
+    local pids
+    # Prefer an exact match on peer + mountpoint; fall back to peer-only if the
+    # mountpoint arg doesn't match what sshfs was actually invoked with.
+    pids=$(pgrep -f -- "sshfs ${peer}:.*${mnt}" 2>/dev/null)
+    [[ -z "$pids" ]] && pids=$(pgrep -f -- "sshfs ${peer}:" 2>/dev/null)
+    if [[ -z "$pids" ]]; then
+        echo "[ts] no sshfs daemon found for peer '$peer' — nothing to kill"
+        return 0
+    fi
+    local pid
+    for pid in ${(f)pids}; do
+        if kill "$pid" 2>/dev/null; then
+            echo "[ts] killed sshfs daemon (pid $pid) — pending I/O on $mnt should unblock now"
+        else
+            echo "[ts] failed to signal sshfs pid $pid" >&2
+        fi
+    done
+    echo "[ts] mountpoint is now stale — run ts-umount to clear it"
 }
 
 # ─── DATABASE TUNNEL (cross-host, over tailscale) ─────────────────────────────
@@ -469,7 +516,8 @@ _ts_help() {
     printf "  web-reach-down   close the web-reach proxy\n"
     printf "  ── remote mount (sshfs — browse/edit peer files locally) ─\n"
     printf "  ts-mount [peer] [path] [mnt]  sshfs-mount peer path · default mnt: ~/mnt/<peer>\n"
-    printf "  ts-umount [mnt]  unmount a ts-mount point · default: ~/mnt/\$TAILSCALE_PEER\n"
+    printf "  ts-umount [mnt]  unmount a ts-mount point · default: ~/mnt/\$TAILSCALE_PEER (auto daemon-kill if wedged)\n"
+    printf "  ts-mount-kill [peer] [mnt]  rescue: kill sshfs daemon to unblock a frozen (D-state) app\n"
     printf "  ──────────────────────────────────────────────────\n"
     printf "  peer: \$TAILSCALE_PEER=%s\n" "${TAILSCALE_PEER:-(not set)}"
     printf "  pad:  %s\n\n" "${_TS_TRANSPORTER}"
