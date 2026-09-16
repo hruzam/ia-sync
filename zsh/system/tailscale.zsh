@@ -380,12 +380,30 @@ _ts_mount_kill() {
         echo "[ts] no sshfs daemon found for peer '$peer' — nothing to kill"
         return 0
     fi
+    # SIGTERM alone is not proof of death — verified live 2026-09-16: a
+    # wedged sshfs daemon can accept/no-op SIGTERM and keep running (observed
+    # sitting in a normal futex wait after "successful" kill(2)), leaving the
+    # blocked app's D-state syscall unresolved. Escalate to SIGKILL if the
+    # PID is still alive after a short grace window — SIGKILL cannot be
+    # caught or ignored, so this is the actual guarantee, not the kill(2)
+    # return value (which only means "signal delivered", not "process died").
     local pid
     for pid in ${(f)pids}; do
-        if kill "$pid" 2>/dev/null; then
-            echo "[ts] killed sshfs daemon (pid $pid) — pending I/O on $mnt should unblock now"
-        else
+        if ! kill "$pid" 2>/dev/null; then
             echo "[ts] failed to signal sshfs pid $pid" >&2
+            continue
+        fi
+        sleep 0.5
+        if [[ -d "/proc/$pid" ]]; then
+            kill -9 "$pid" 2>/dev/null
+            sleep 0.3
+            if [[ -d "/proc/$pid" ]]; then
+                echo "[ts] sshfs pid $pid survived SIGKILL (should be impossible — check manually)" >&2
+                continue
+            fi
+            echo "[ts] sshfs daemon (pid $pid) ignored SIGTERM, force-killed (SIGKILL) — pending I/O on $mnt should unblock now"
+        else
+            echo "[ts] killed sshfs daemon (pid $pid) — pending I/O on $mnt should unblock now"
         fi
     done
     echo "[ts] mountpoint is now stale — run ts-umount to clear it"

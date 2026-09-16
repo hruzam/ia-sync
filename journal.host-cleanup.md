@@ -41,12 +41,32 @@ dry-run + deployed on home, this entry precedes commit+push):
   specific to this function.
 
 Verified live on home post-deploy against the actual current zombie chain
-(`zombie-sweep`, `type ts-mount-kill`): output matches the diagnosis exactly —
-9281 (`plugin_host-3.8`) is still D-state / unkillable, 9278 has itself become
-a zombie since the diagnosis (its own SIGTERM landed but its parent, itself a
-zombie, can't reap it), and 9201 remains unreaped. Confirmed there is nothing
-further to safely kill live in that chain — matches the diagnosis's own
-conclusion; clears at next reboot only. Did not force it further or reboot.
+(`zombie-sweep`, `type ts-mount-kill`): output matched the diagnosis exactly —
+9281 (`plugin_host-3.8`) still D-state, 9278 had itself become a zombie since
+the diagnosis (its own earlier SIGTERM landed but its parent, itself a
+zombie, couldn't reap it), 9201 unreaped.
+
+Operator then asked to actually try clearing it live. Ran `ts-mount-kill
+hruzam-120922` for real: found and SIGTERM'd two live sshfs daemon pairs for
+that peer (one 2 days stale, one ~1h13m old — the mount had been opened
+twice without a matching unmount). `kill` reported success on both, but a
+follow-up check showed the sshfs process was still alive, sitting in a
+normal `futex_do_wait` — **SIGTERM had been silently absorbed, not acted on.
+`ts-mount-kill` declared success purely off `kill(2)`'s return value (signal
+delivered), which is not proof of death.** A manual SIGKILL on the same pids
+actually killed them — and immediately after, 9281 unblocked, exited, and
+the kernel reaped the entire chain: 9281 → 9278 → 9201 all gone from `/proc`
+within ~2s. So the D-state block WAS tied to the ts-mount RPC pipeline after
+all (the diagnosis's "if you suspect ts-mount" framing turned out to be the
+actual cause here, not just a generic future case) — SIGTERM just wasn't
+enough to kill the daemon holding it open.
+
+**Fixed `ts-mount-kill` before committing** (was a real gap, not a documented
+"not yet" item): it now verifies the pid is actually gone after SIGTERM
+(0.5s grace), escalates to SIGKILL if it survived, and only reports success
+once the pid is confirmed absent from `/proc`. Redeployed, reverified alias
+resolution live. This is the corrected version that shipped, not the one
+that only got the operator halfway.
 
 **Also noticed, out of scope, flagging only:** ~33 unrelated `zsh <defunct>`
 zombies system-wide on home (none with live children — `zombie-sweep`
