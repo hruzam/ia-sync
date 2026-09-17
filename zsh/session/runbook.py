@@ -1241,6 +1241,78 @@ def buffer_view(screen, buffer_lines):
             pass
 
 
+def help_dir():
+    return Path(__file__).resolve().parent / "help"
+
+
+HELP_THEMES = ["commands", "keys", "board"]
+
+
+def help_view(screen, start_theme=0):
+    """`?` overlay — browsable help tree (commands/keys/board). Read-only,
+    a subwindow (not fullscreen) over the live screen. Dismiss (q/Q/Esc)
+    just returns — no outer state (cursor/focus/offsets) is ever touched,
+    so the caller lands exactly where it was."""
+    theme = max(0, min(start_theme, len(HELP_THEMES) - 1))
+    off = 0
+    last_theme = None
+    while True:
+        h, w = screen.getmaxyx()
+        win_h = max(6, min(h, int(h * 0.8)))
+        win_w = max(20, min(w, int(w * 0.8)))
+        y0 = max(0, (h - win_h) // 2)
+        x0 = max(0, (w - win_w) // 2)
+        win = curses.newwin(win_h, win_w, y0, x0)
+        win.erase()
+        try:
+            win.box()
+        except curses.error:
+            pass
+        body_w = max(1, win_w - 4)
+        body_h = max(1, win_h - 4)
+
+        name = HELP_THEMES[theme]
+        if name != last_theme:
+            off = 0
+            last_theme = name
+        content = render_file_lines(help_dir() / name / "HELP.md", body_w)
+
+        title = clipped(f" help · {name} ({theme + 1}/{len(HELP_THEMES)}) ", win_w)
+        safe_add(win, 0, max(0, (win_w - len(title)) // 2), title, curses.A_BOLD, win_w)
+
+        off = max(0, min(off, max(0, len(content) - body_h)))
+        for i, (text, attr) in enumerate(content[off: off + body_h]):
+            safe_add(win, 2 + i, 2, text, attr, body_w)
+
+        hint = clipped(" ← → theme · ↑↓ PgUp/PgDn scroll · q/Esc close ", win_w)
+        safe_add(win, win_h - 1, max(0, (win_w - len(hint)) // 2), hint,
+                 curses.A_REVERSE, win_w)
+        win.refresh()
+
+        try:
+            key = win.get_wch()
+        except curses.error:
+            continue
+        except KeyboardInterrupt:
+            return
+        if key in ("q", "Q", "\x1b"):
+            return
+        elif key == curses.KEY_LEFT:
+            theme = (theme - 1) % len(HELP_THEMES)
+        elif key == curses.KEY_RIGHT:
+            theme = (theme + 1) % len(HELP_THEMES)
+        elif key == curses.KEY_UP:
+            off = max(0, off - 1)
+        elif key == curses.KEY_DOWN:
+            off += 1
+        elif key == curses.KEY_PPAGE:
+            off = max(0, off - body_h)
+        elif key == curses.KEY_NPAGE:
+            off += body_h
+        elif key == curses.KEY_RESIZE:
+            pass
+
+
 def refresh_bed_marks(beds):
     """Set bed['marked'] from valid local-host board records. Display-only."""
     pointers = set()
@@ -1267,7 +1339,8 @@ def draw(screen, nodes, cursor, tree_off, focus, content, content_off,
     hints = ("↑↓ move/scroll · →← expand/collapse · Enter open · Tab pane · "
              "J/K bed · 1-5 part · v side · <> split · e edit · y/Y copy · "
              "A drain · B board · "
-             "m/u mark · b buffer · p collect · P manage · r reload · q quit")
+             "m/u mark · b buffer · p collect · P manage · r reload · "
+             "? help · q quit")
     full_status = message if message else f"focus:{focus} · {hints}"
     hint_lines = []
     for seg in full_status.split(" · "):
@@ -1533,6 +1606,9 @@ def palette(screen, beds, root, tree_right=None):
             buffer_view(screen, buffer_lines)
             if not buffer_lines:
                 show_buffer = False
+
+        elif key == "?":
+            help_view(screen)  # overlay only — touches no outer state
 
         elif key == "v":
             tree_right = not tree_right

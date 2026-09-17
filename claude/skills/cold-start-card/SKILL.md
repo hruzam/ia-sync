@@ -6,7 +6,8 @@ description: >
   commit, resume command, routing assessment), free-prose continuity layer, optional
   prompt-0 master prompt in runbook grammar. CS.<slug>.<date>.md for process glue,
   RT.<slug>.md for routines. The glue to re-enter a session. Law:
-  raw.guides/cold-start-card/GUIDE.md. Sibling of /drop-brief (terse agent take).
+  raw.guides/cold-start-card/GUIDE.md. Sibling of /drop-brief (terse agent take) and
+  /issue-card (known-defect cards in the same vault under the issues/ subtree).
 ---
 
 I drop a session-glue card into the central vault — enough for the next incarnation
@@ -25,6 +26,12 @@ working copy; cross-check the guide only if this looks stale.)
 - Vault is git-tracked: the card exists cross-machine only after commit+push — say so
   at handoff if I can't commit from my seat.
 - I only ADD files; never edit another seat's card (single-writer).
+
+**One vault, categories inside it.** This same vault also holds the issue category
+(`issues/open · issues/parked · issues/archive`, written by `/issue-card`) — same mechanism,
+different lifecycle, so it gets its own state subtree. I write only the cold-start category
+(`card/` · `routines/` · `archive/`); the shared frontmatter contract, filename law, and the
+sort rule below are family-wide.
 
 ## The card
 
@@ -79,6 +86,16 @@ Folder = state. The reader who consumed a CS card moves it `card/` → `archive/
 (Cinderella; `temple-cs-manage` once built, plain `mv` until then). A multi-reader card
 carries `leave: for more readers` and stays until all have drained it. RT cards never
 move.
+
+## Sort key — the durable radar (family-wide)
+
+- **Dated categories (cold-start-card, issue-card) sort by the filename `YYYY-MM-DD` date,
+  primary.** A date in the name is repository data that survives clone / checkout / host-move;
+  mtime is only one checkout's observational state and resets on any git op. Richer
+  discriminators live in frontmatter; narrow by name first, read metadata second, body last.
+- **UNSORTED fallback.** A dated card whose filename lacks the `YYYY-MM-DD` marker is surfaced
+  UNSORTED, never silently mis-ordered. **Routines are dateless by design and are exempt** —
+  a missing date on an RT card is correct, not drift.
 
 ## Run
 

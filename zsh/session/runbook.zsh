@@ -113,6 +113,7 @@ _rb_help() {
 |  rb-mark [bed] [note...]   Attach this session to the board      |
 |  rb-unmark [bed|id]        Detach own record(s) (no arg = all)   |
 |  rb-help           This help panel                               |
+|  Inside the TUI, press ? for a browsable help tree.               |
 |                                                                  |
 |  BOARD LAW: raw.guides/runbook/res/presence-board.md — advisory  |
 |  only; informs, never authorizes. ● in D1 = bed attached here.   |

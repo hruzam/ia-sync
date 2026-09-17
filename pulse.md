@@ -29,3 +29,7 @@
   trajectory born through L1–L2–L6 as written, each loaded by a fresh incarnation in a real session via
   a pointer, per-scar effect recorded — and a recorded VERDICT says canonize / amend / refuse ·
   `/home/hruzam/ia-sync/.dev/session/incarnations-00-mechanism/STATUS.md`
+- `cs-card-sys-update` · gate: fresh Claude + fresh Codex sessions each drop and re-locate an
+  issue card and a cold-start card in the one shared vault, the gaveled cold-start-card GUIDE
+  carries the issue category + sort rule + unsorted fallback, and the standalone _issues/ vault
+  is reconciled into that shape · `/home/hruzam/ia-sync/.dev/session/cs-card-sys-update/STATUS.md`
