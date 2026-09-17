@@ -14,9 +14,11 @@ I drop a session-glue card into the central vault — enough for the next incarn
 (any brand, any host) to fully re-enter. Frontmatter carries the parseable truth; the
 body carries the taste.
 
-**Schema of record:** `~/reposoma/raw.guides/cold-start-card/GUIDE.md` — on conflict
-between this skill and the guide, the guide wins. (Pointer note: the schema below is a
-working copy; cross-check the guide only if this looks stale.)
+**Schema of record:** `~/reposoma/raw.guides/cold-start-card/res/cold-start-card.md`
+(subchapter of `~/reposoma/raw.guides/cold-start-card/GUIDE.md`, which is the thin signpost
+— read it first for the shared vault/filename/frontmatter law) — on conflict between this
+skill and the guide, the guide wins. (Pointer note: the schema below is a working copy;
+cross-check the subchapter only if this looks stale.)
 
 ## Where it lands
 
@@ -27,11 +29,14 @@ working copy; cross-check the guide only if this looks stale.)
   at handoff if I can't commit from my seat.
 - I only ADD files; never edit another seat's card (single-writer).
 
-**One vault, categories inside it.** This same vault also holds the issue category
-(`issues/open · issues/parked · issues/archive`, written by `/issue-card`) — same mechanism,
-different lifecycle, so it gets its own state subtree. I write only the cold-start category
-(`card/` · `routines/` · `archive/`); the shared frontmatter contract, filename law, and the
-sort rule below are family-wide.
+**One vault, flat categories.** This same vault also holds the issue category (`issues/` —
+flat, written by `/issue-card`) — same mechanism, different lifecycle, but at the SAME
+folder level as `card/`/`routines/`/`archive/`, not a nested subtree. I write the cold-start
+category (`card/` · `routines/` · `archive/`); the shared frontmatter contract, filename law,
+and the sort rule below are family-wide. `routines/` also receives issue cards that graduate
+out of `issues/` via the fold (three paths: known-recurring → straight to routines · one-shot
+→ archive → routines if it recurs later) — a graduated card keeps its `ISS.` name and
+catch-date; see `res/issue-card.md` for the fold mechanism itself.
 
 ## The card
 

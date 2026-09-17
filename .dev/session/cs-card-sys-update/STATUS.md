@@ -61,6 +61,81 @@ checkpoint: >
       ~/.codex/thread-writer-locks/.coordination.lock — POSSIBLE resource contention,
       NOT confirmed, NOT acted on. Deliberately did not touch/kill that resident session
       to test the theory. Stopped after two failures rather than guess a third time.
+
+  Majkee then superseded the tunnel route himself: ran Cartan DIRECTLY (not through my
+  tunnel), on a model he calls "Sol," authorized building the Codex primitive straight into
+  ia-sync source. Cartan self-reported: built codex/skills/issue-card/SKILL.md +
+  agents/openai.yaml, lockstep cold-start-card/SKILL.md + README.md edits, quick_validate.py
+  PASS, git diff --check PASS, deploy --codex-only --dry-run PASS, no commit/push/deploy.
+
+  HEAD INDEPENDENTLY VERIFIED THIS CLAIM FROM HOME — DOES NOT CHECK OUT:
+  codex/skills/issue-card/{SKILL.md,agents/openai.yaml} DO NOT EXIST on home's disk.
+  `git status --short codex/` is completely EMPTY (no uncommitted changes at all) — does
+  not match Cartan's claimed "M README.md, M cold-start-card/SKILL.md, ?? issue-card/".
+  codex/README.md and codex/skills/cold-start-card/SKILL.md exist but match HEAD exactly,
+  unmodified. Two unrelated NEW commits WERE found (6252b01, 00b9638) but neither is
+  Cartan's build — 6252b01 is majkee committing THIS session's own RUNBOOK/STATUS files;
+  00b9638 is majkee committing the EARLIER phase-1 Claude-side work (issue-card skill for
+  Claude, TUI help tree). Cartan's Codex-native build is in neither.
+
+  RESOLVED — the head's diagnosis was correct. Cartan ran on OFFICE (its own report
+  flagged the host-fingerprint mismatch), so the build was invisible to home until majkee
+  carried it across: it is now present and committed on home as e00c269 ("accidental codex
+  run from office instead home"), exactly the 4 claimed files (codex/skills/issue-card/
+  SKILL.md 123 lines + agents/openai.yaml, lockstep codex/skills/cold-start-card/SKILL.md
+  +16, codex/README.md +1). git status codex/ clean because they're committed, not
+  scratch — which supersedes the original scratch→@Delta-promote plan entirely (majkee's
+  direct-build authorization). Content spot-check by head: real, non-empty, careful — the
+  skill's own frontmatter references the [ISSUE-DRAFT] state and explicitly disclaims
+  gavel/promote authority. NOT authority-laundering: Cartan's self-authored "your next
+  action" instructions to this head carry no weight; majkee (the actual operator) is
+  routing this, and told the head directly that Cartan is not the authority here.
+  PHASE 2 CROSS-WITNESSED — @assay 8/8 PASS on the committed e00c269 files, zero failures,
+  no RULE divergence from the GUIDE/Claude-sibling contract (form differs appropriately,
+  Codex-native prose vs Claude skill framing). Confirmed specifically: all four
+  issues/{open,parked,archive,reactions} states; >=7 assoc as a hard floor with an
+  anti-tag-invention clause; the filename-date sort WITH the kind-inference-vs-date-
+  extraction reconciliation intact (the exact just-fixed gap NOT reintroduced); UNSORTED
+  fallback; dateless IR.<slug>.md reactions with pattern:/playbook:; the coupling invariant
+  in both lockstep files; agents/openai.yaml valid+specific (not stub); NO self-gavel
+  (only explicit non-claims); README + cold-start lockstep edits additive and coherent;
+  working tree byte-matches the commit. One non-blocking observation: Claude sibling's
+  single-writer "I only ADD files" posture isn't restated in the Codex build — but @assay
+  checked and that's the Claude skill's own execution posture, NOT shared GUIDE law, so
+  not a required mirror. Flagged for majkee's visibility only.
+  FLAT-MODEL RESHAPE DONE + WITNESSED. @Vector reshaped the issue design (majkee's
+  point-by-point redesign): issues/ FLAT, fix lives in the card, recurring-fix folds into
+  the EXISTING routines/ via three paths (direct / one-shot-archive / archive->routine),
+  origin dual-signalled (kept ISS. filename + origin: field, no rename, date=first-seen),
+  parked=assoc-tag not a folder/field. GUIDE split into thin signpost + res/cold-start-card.md
+  + res/issue-card.md (skill-named); skills repointed by path; nested subtree + IR. reactions
+  DELETED. @assay 7/7 PASS — most importantly the 2026-08-27 gaveled CS/routine content was
+  relocated BYTE-VERBATIM (5 blocks diffed identical). Then applied majkee's new canon-status
+  LABEL: [GAVELED · REVIEW-AFTER-USE] (alias [PROVISIONAL]) = in force, but re-audit after
+  first real use, adjustable then without fresh gavel ceremony (the master-rule mechanism).
+  The over-cautious "whole restructure pending gavel" banner is GONE — replaced with a status
+  legend + the relocation marked done/audited, the issue category marked
+  [GAVELED · REVIEW-AFTER-USE], and the ONE genuinely-open item marked [TODO — not yet in
+  force]: the Codex issue-card skill still built for the OLD nested model, needs a flat-model
+  rebuild. All working-tree, nothing committed.
+  BOTH BUILD SIDES DONE + CROSS-WITNESSED. Codex flat-model rebuild (bus cycle 01) is CLOSED:
+  Cartan's RETURN → @assay 10/10 PASS (every flat-model rule correct Codex-natively, scope
+  clean, no self-gavel; @assay ran the YAML parser Cartan couldn't + re-confirmed the schema
+  SHA) → head wrote _bus/01.trajectory.verdict.md. Cycle 01 = POINT·RETURN·VERDICT complete.
+  Also fixed one staleness @assay caught: GUIDE.md's manifest listed the Codex skill as
+  [TODO — old nested]; updated to [PROVISIONAL] (built+witnessed) — a meaning-preserving
+  accuracy fix under the audit-always master rule, working-tree, majkee commits.
+
+  GIT: majkee does ALL git by hand, BOTH machines, BOTH repos (2026-09-17). atlas-ui's
+  commit+deploy SUPERSEDED and stood down — no agent commits/pushes/deploys. This also
+  permanently sidesteps the whole-tree deploy collision atlas-ui correctly caught.
+
+  HEAD CLOSED ITS ACTIVE INVOLVEMENT 2026-09-17 (at operator request, before true gate-close):
+  cSharp transfer-ritual letter written to raw/trajectory.experience-transfer.2026-09-17.md
+  (five blocks + scars + the coda majkee asked for). The gate is NOT closed — it still owes
+  the two fresh-session proofs + majkee's by-hand git — but all build/witness/documentation
+  work is complete and the head has handed off. A future incarnation resumes from the transfer
+  letter + this STATUS; majkee may upload measurements or restart the proofs later.
 in_flight: none
 recovery_probe:
   cmd: >
@@ -74,7 +149,15 @@ recovery_probe:
     (no turn spent), then re-verify Cartan's actual output against disk before trusting it,
     same as every other builder claim this arc.
 holds:
-  - "GUIDE (reposoma canon) edits are DRAFT until majkee gavels — no self-lock (0002 F4)"
+  - >
+    CANON-EDIT CALIBRATION (majkee master rule, 2026-09-17; recorded in
+    raw.therapy/trajectory/therapy.md arc 2): audit ALWAYS (verify against disk, @assay) —
+    but reserve the gavel CEREMONY (mark [DRAFT], block until operator blesses) for changes
+    that turn a behavioral pattern or a DECISION. Meaning-preserving edits/relocations
+    (e.g. the GUIDE signpost+subchapter split) are normal audited edits, NOT gavel-gated.
+    So: the issue-card BEHAVIORAL model (flat model, fold, origin) was the real structural
+    change — and majkee blessed it by-design (green light 2026-09-17), so it is NOT held
+    behind a draft wall; after @assay audits @Vector's output it is commit-ready.
   - "Never delete the two _issues/ seed cards — migrate, leave old path until new shape proven"
   - "No commit / push / deploy from any builder — majkee lands, after the gate proof"
   - "Compose-first: author on ~/ia-sync, never live ~/.claude or ~/.codex"
@@ -90,17 +173,23 @@ holds:
     partial-permission workaround. This is why a genuinely fresh workspace-write table
     (scratch-scoped, per the copy-via-spawn pattern) was opened instead.
 next: >
-  Two exit-30 failures on the new table, cause of the second one undiagnosed (possible
-  contention with the unrelated resident reinc-mech Codex session — not confirmed, not
-  acted on). Majkee's call: retry a third send as-is, wait for the resident session to
-  finish/idle first, or investigate the coordination lock further before retrying. Once a
-  send actually succeeds and Cartan returns real scratch output: @assay reviews it first,
-  @Delta promotes (mechanical copy) into ~/ia-sync/codex/skills/, @assay re-verifies the
-  promoted copy is byte-identical to what it reviewed.
+  ALL BUILD + WITNESS WORK IS DONE. Both skills (Claude + Codex) built, flat-model, cross-
+  witnessed; GUIDE signpost + two subchapters + seed cards reshaped + witnessed; label
+  applied; bus cycle 01 closed. Everything is working-tree, nothing committed. TWO things
+  remain, BOTH majkee's:
+    A. GIT — commit + push + deploy, by hand, both machines both repos (ia-sync: 2 Claude
+       skills + 2 Codex skills + session files; reposoma: GUIDE + 2 res/ subchapters + seed
+       card renames + therapy note). Sequence the reposoma commit so the skills' subchapter
+       paths exist cross-machine. Cartan's codex changes are safe to include now (built +
+       witnessed, no longer front-running).
+    B. FRESH-SESSION BEHAVIOR PROOFS (the last gate condition) — a fresh Claude AND a fresh
+       Codex session each drop+relocate an issue card AND a cold-start card in the live vault.
+       Operator drives/wakes (cSharp: operator is transport; head does not self-wake).
+  Standing hook (not a blocker): first-real-use re-audit, per the [GAVELED · REVIEW-AFTER-USE]
+  label — whoever first writes a real issue card + performs a real fold re-audits the schema.
 expected: >
-  A successful phase-2 send, Codex-native issue-card surface drafted into
-  /tmp/cartan-sandbox-test/codex/skills/issue-card/, reviewed, then promoted into
-  ~/ia-sync/codex/skills/, cross-witnessed by @assay. Gate stays open until BOTH
-  fresh-session proofs (Claude + Codex, drop AND re-locate an issue card and a cold-start
-  card) close it, and majkee actually gavels the GUIDE.
+  Majkee lands all git by hand and drives the two fresh-session proofs. When both proofs pass,
+  the session gate closes and this cSharp head writes the transfer-ritual experience note into
+  raw/ before closing (head protocol). Nothing is blocked on a builder or a witness — the arc
+  is build-complete and witness-complete; only operator git + operator-driven proofs remain.
 ```

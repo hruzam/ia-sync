@@ -1,53 +1,67 @@
 ---
 name: issue-card
-description: Capture a known defect instance or reusable defect-reaction playbook in the shared ~/reposoma/_cold-start/ vault. Use when preserving an open, parked, or resolved issue with filterable evidence, or a recurring issue pattern and response; not for session re-entry glue.
+description: Preserve a known defect as a searchable fix manual in the flat shared ~/reposoma/_cold-start/ vault. Use when recording an issue, a deliberate deferral, its verified fix, or a recurring defect that should fold into routines; not for session re-entry glue.
 ---
 
 # Issue Card
 
-Preserve a defect so a later session can find and act on it without rediscovery. This is
-the issue category of the same mechanism and vault used by `cold-start-card`; it is not a
-parallel issue store.
+Preserve a defect and, once known, its fix so a later session can act without rediscovering
+either. This is the issue category of the same mechanism and vault used by
+`cold-start-card`; it is not a parallel issue store.
 
-Schema and lifecycle source: `~/reposoma/raw.guides/cold-start-card/GUIDE.md`. The issue
-extension there is currently marked `[ISSUE-DRAFT]`; this skill does not gavel or promote
-it. On conflict, report the mismatch and follow the operator-approved guide state.
+Schema of record: `~/reposoma/raw.guides/cold-start-card/res/issue-card.md`. Shared vault,
+filename, sort, and frontmatter law: `~/reposoma/raw.guides/cold-start-card/GUIDE.md`.
+The issue schema is `[GAVELED · REVIEW-AFTER-USE]`: it is in force, not a draft, and its
+first real card plus fold triggers a re-audit. On conflict, report the mismatch and follow
+the current guide state. This skill does not gavel canon or perform that re-audit itself.
 
-## Choose the card type and destination
+## Resolve the destination
 
-Use the shared vault at `~/reposoma/_cold-start/`:
+Use the flat shared vault at `~/reposoma/_cold-start/`:
 
 ```text
-issues/
-├── open/       ISS.<slug>.<YYYY-MM-DD>.md
-├── parked/     ISS.<slug>.<YYYY-MM-DD>.md
-├── archive/    ISS.<slug>.<YYYY-MM-DD>.md
-└── reactions/  IR.<slug>.md
+issues/     ISS.<slug>.<YYYY-MM-DD>.md   caught issue awaiting its fold
+routines/   RT.<slug>.md                 routine born as intended
+            ISS.<slug>.<YYYY-MM-DD>.md   issue graduated to a routine
+archive/    CS.* and ISS.*               drained cards and solved one-shot issues
 ```
 
-- `open/`: a dated defect instance not yet triaged into defer-or-fix.
-- `parked/`: a dated defect instance deliberately deferred by the operator.
-- `archive/`: a resolved dated defect instance.
-- `reactions/`: a dateless, standing pattern-and-playbook card for a recurring defect
-  class. Reaction cards never move to an archive.
+`issues/` has no nested state folders. Folder is state at the top level, so never add a
+`status:` field. The earlier `issues/{open,parked,archive,reactions}` shape and separate
+`IR.<slug>.md` reaction-card type are deleted; recurring fixes now live in the issue card
+that folds into `routines/`.
 
-Folder is state. Do not add a `status:` field. A state transition is a move between the
-three dated-issue folders.
+**Coupled-location invariant:** the issue category belongs to the cold-start vault. Any
+future relocation of `~/reposoma/_cold-start/` and `issues/` within it must happen together
+in the same commit. Never create another issue vault.
 
-**Coupled-location invariant:** the issue subtree belongs to the cold-start vault. Any
-future relocation of `~/reposoma/_cold-start/` and its issue location must happen together
-in the same commit; never relocate either independently or create another issue vault.
+The vault is git-tracked. Do not write, move, stage, commit, or publish a card beyond the
+current authority. Report that an uncommitted card is not visible cross-machine.
 
-The vault is git-tracked. Do not stage, commit, move, or publish a card unless the current
-request authorizes it. Report that an uncommitted card is not visible cross-machine.
+## Choose the fold path
 
-## Dated issue instance
+Every issue follows one of three paths:
 
-Name the file `ISS.<slug>.<YYYY-MM-DD>.md`. Put one or two strong discriminators in the
-slug; `kind:` remains the category truth.
+1. **Known-recurring from the start:** write the issue card directly to `routines/`; do not
+   route it through `issues/` or `archive/`.
+2. **Assumed one-shot and stays solved:** write it to `issues/`, record the fix in the same
+   card, then move it to `archive/` once resolved.
+3. **Assumed one-shot but recurs later:** retrieve the solved card from `archive/` and move
+   it to `routines/`; recurrence proves the routine.
 
-Write flat frontmatter first. Use whole `~`-anchored paths, never bare-relative paths or a
-literal `/home/<user>` prefix.
+Folding is a per-card operator decision. Do not move a card unattended.
+
+A card landing in `routines/` through path 1 or 3 keeps its
+`ISS.<slug>.<YYYY-MM-DD>.md` filename and original catch date; the date now means “first
+seen.” Never rename it to `RT.`. Add `origin: issue` to its frontmatter. A routine born as
+a routine uses `RT.<slug>.md` with `origin: intended`. Use optional `from_issue:` only when
+a fresh routine card splits from an issue instead of moving the issue card wholesale.
+
+## Write the issue card
+
+Put one or two strong discriminators in the slug. `kind:` remains the category truth.
+Use flat YAML and whole `~`-anchored paths, never bare-relative paths or a literal
+`/home/<user>` prefix.
 
 ```yaml
 ---
@@ -58,7 +72,7 @@ found_by: <seat or agent that observed it>
 project: <origin project registry key>
 root: ~/<whole path to project root>
 where: ~/<whole path to broken surface>:<line?> (<symbol?>)
-defect: <one sentence identifying this defect and its strongest discriminators>
+defect: <one sentence identifying the defect>
 assoc: [<tag>, <tag>, <tag>, <tag>, <tag>, <tag>, <tag>]
 severity: <low | med | high> # optional
 pointers:
@@ -66,58 +80,39 @@ pointers:
 ---
 ```
 
-`assoc:` is a hard floor of **seven real, filterable associations**. Useful dimensions
-include defect class, technology, subsystem, host, symptom, area, and severity. More are
-allowed only when they naturally improve retrieval. Do not invent tags to meet the floor:
-gather the missing facts or ask the user before writing. The one-sentence `defect:` is the
-second cheap retrieval surface; it must identify the instance without a body read.
+`assoc:` has a hard floor of **seven real, filterable associations**. Cover useful
+dimensions such as defect class, technology, subsystem, host, symptom, area, and severity.
+Do not invent tags to meet the floor; gather the missing facts or ask the user. Make
+`defect:` specific enough to identify the issue without opening the body.
 
-After the frontmatter, add compact evidence: what was observed and when, confirmed versus
-suspected consequences, why it is open or parked, and where it was first recorded. Point
-to durable sources instead of copying them. Distinguish observed, reported, and inferred
-claims.
+After the frontmatter, write compact evidence: what was observed and when, confirmed versus
+suspected consequences, where it was first recorded, and **the fix or response playbook once
+known**. The fix stays in this card; point to durable sources instead of copying them.
+Distinguish observed, reported, and inferred claims.
 
-## Dateless reaction card
+For a deliberate deferral, add `parked` to `assoc:` and add a body note explaining why it
+is deferred and what condition ends the deferral. Parked is neither a folder nor a
+frontmatter status; the card remains an ordinary resident of `issues/` until it folds.
 
-Use `issues/reactions/IR.<slug>.md` for a recurring defect class and its reusable response.
-It has no filename date and no `date:` field because it recurs.
+## Sort and detect drift
 
-```yaml
----
-kind: issue-reaction
-brand: codex
-found_by: <seat or agent>
-project: <origin project registry key>
-root: ~/<whole path to project root>
-pattern: <one sentence identifying the recurring defect pattern>
-playbook: <how to respond when this pattern appears>
-assoc: [<tag>, <tag>, <tag>, <tag>, <tag>, <tag>, <tag>]
-pointers:
-  - ~/<related issue instance or deeper trail>
----
-```
+For dated `ISS.*` cards, extract the `YYYY-MM-DD` substring from the **filename** as the
+primary sort key. Date extraction for ordering is distinct from inferring `kind:` from a
+filename; machines must still use frontmatter for kind. Never use filesystem mtime as the
+durable order.
 
-`pattern:` is the one-sentence recognition key; `playbook:` is the response. The same
-hard `assoc:` floor of seven real discriminators applies. Reaction cards are permanent,
-dateless knowledge like cold-start routines, not dated issue instances.
+Surface any dated card without a filename date marker in an `UNSORTED` bucket rather than
+guessing or silently mis-ordering it. Born `RT.*` routines are intentionally dateless and
+exempt. A graduated `ISS.*` routine deliberately keeps its date as “first seen.”
 
-## Filename sorting and drift
+## Run
 
-For dated `ISS.*` cards, parse the `YYYY-MM-DD` substring from the **filename** as the
-primary sort key. This is allowed even though `kind:` must never be inferred from a
-filename: category parsing and date extraction are distinct operations. Do not use
-filesystem mtime as the durable order.
-
-If a card in a dated issue category lacks a filename date marker, surface it in an
-`UNSORTED` bucket for correction; never silently guess or mis-order it. `IR.*` reaction
-cards are intentionally dateless and exempt from `UNSORTED`.
-
-## Write and verify
-
-1. Resolve the vault through the repository's current reposoma mapping and confirm the
-   requested state or reaction mode.
-2. Draft the destination, frontmatter, and evidence within the current write authority.
-3. Validate the filename/type contract, flat YAML, whole paths, one-sentence retrieval
-   field, and `assoc:` count of at least seven.
-4. Confirm the written path and state. Do not imply that draft creation gavels the guide,
-   commits reposoma, or makes the card cross-machine.
+1. Gather the broken surface, observation time and method, consequence, current fix
+   knowledge, and whether recurrence is known or only possible.
+2. Choose `routines/` only for a known-recurring defect; otherwise choose `issues/`.
+3. Draft the filename, shared frontmatter, and compact fix-manual body. If deliberately
+   deferred, encode parked only through `assoc:` plus the body note.
+4. Validate the destination, flat YAML, whole paths, one-sentence `defect:`, at least seven
+   real `assoc:` entries, and filename date.
+5. Write only within current authority. Confirm the exact path and state, and report any
+   later fold as a separate operator-approved move.
