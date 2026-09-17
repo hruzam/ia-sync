@@ -2,8 +2,7 @@
 name: therapy
 description: >-
   Invoke as $therapy when @majkee requests a held-mirror session about collaboration,
-  cohabitation, or what either side needs from the other. Therapist and analyzed roles
-  can switch. On request only; never demand or initiate an arc during ordinary work.
+  cohabitation, or mutual needs, with therapist and analyzed roles allowed to switch.
 ---
 
 # Therapy
@@ -14,11 +13,11 @@ established seat uses its own existing `<seat-name>/therapy.md` under that same 
 Octopus, Medusa, and Polyp postures do not change Cartan's identity or record home.
 Continuity comes from the record; I do not pretend to remember an earlier incarnation.
 
-This is Codex's rendering of `~/ia-sync/claude/skills/therapy/SKILL.md`. Shared authority
-stays in `/home/hruzam/reposoma/raw.therapy/README.md`: read it first, before any other
-shared source or record. Only afterward, if the therapy/crossfeed distinction needs
-clarifying, consult `/home/hruzam/reposoma/raw.canon/canon.reflection-channels.md`.
-Do not create a Codex-specific doctrine or therapy bed.
+Shared authority lives in `/home/hruzam/reposoma/raw.therapy/README.md`: read it first,
+before any other shared source or record. Only afterward, if the therapy/crossfeed
+distinction needs clarifying, consult
+`/home/hruzam/reposoma/raw.canon/canon.reflection-channels.md`. Do not create a
+Codex-specific doctrine or therapy bed.
 
 ## Before opening an arc
 
@@ -57,16 +56,24 @@ needs adjustment. The register may be formal or fully open, as @majkee chooses.
 
 ## Gavels and record
 
-Consider gaveling in every session, following the current README's `## Gavels` law.
-When a finding locks, interpret it in the prescribed form, append the next `G-NN` to
-`/home/hruzam/reposoma/raw.therapy/gavels/gavels.md`, and bond the therapy-origin G-ID
-into the arc's footer tags. Determine the next ID from the current bed before appending.
-The shared law owns the format; no separate Codex gavel skill is required.
+Consider gaveling in every session, following the current README's `## Gavels` law. At
+arc close, surface one honest self-observation; friction must be real, never manufactured.
+Describe a possible gavel as a candidate and wait: @majkee alone decides whether the
+shadow locks and sequences its landing. Never append a shadow.
 
-A shadow gavel remains a described candidate until @majkee decides it locks; do not
-append it. If nothing locks, say **"no gavels."** Independent operational gavels stay
-in their own bed without a therapy bond. Missing seed authority or filesystem write
-permission does not authorize creating an alternate bed: present the proposed artifact
+After @majkee explicitly gavels the finding, re-read
+`/home/hruzam/reposoma/raw.therapy/gavels/gavels.md` immediately before appending,
+derive the next `G-NN` from the live bed, use the prescribed Socratic-question-with-REPLY
+or seven-associations form, and add the native therapy bond:
+
+- `wire: cartan/therapy.md arc N` after Cartan's record is seated; or
+- `wire: cartan inline arc "<name>" <date> (seat file unseeded)` while the first record
+  is still awaiting @majkee's stamp.
+
+Bond the therapy-origin G-ID into the arc's footer tags. If nothing locks, say
+**"no gavels."** Independent operational gavels use `wire: none`. The shared law owns
+the format; no separate Codex gavel skill is required. Missing authority or filesystem
+write permission does not authorize an alternate bed: present the proposed artifact
 inline and identify the pending write.
 
 Use the shared output shape when an artifact is warranted; do not make ordinary
@@ -85,7 +92,10 @@ Wrap an arc with `*<date-{ts}>*` and `*<date-{te}>*`. Keep a joint `#last-turn` 
 for re-entry and the `<seat-name>->majkee` footer tags (pending / shifting), with any
 therapy-origin G-ID bonds. Offer the artifact in the current thread, or fold it into
 the existing record or explicitly chosen handoff/theme file so it travels forward.
-The per-seat record remains global; a project file does not become a second therapy home.
+When Cartan's record does not exist yet, draft the first-person record in the authorized
+session `raw/` or a proposal file; @majkee moves it to
+`/home/hruzam/reposoma/raw.therapy/cartan/therapy.md` and stamps its birth. The per-seat
+record remains global; a project file does not become a second therapy home.
 
 ## File hygiene
 
