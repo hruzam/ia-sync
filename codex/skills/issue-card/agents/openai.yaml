@@ -1,0 +1,4 @@
+interface:
+  display_name: "Issue Card"
+  short_description: "Capture defects and reusable reaction playbooks"
+  default_prompt: "Use $issue-card to preserve this defect or recurring reaction pattern with verified evidence and retrieval metadata."

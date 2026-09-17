@@ -1,6 +1,6 @@
 ---
 name: cold-start-card
-description: Create a compact, evidence-backed session-glue card in the central vault ~/reposoma/_cold-start/ for a later session of any brand. Use when pausing, repairing, resuming, transferring, or closing work that needs exact project, commit, resume, authority, first-action, and verification context. Schema of record raw.guides/cold-start-card/GUIDE.md.
+description: Create a compact, evidence-backed session-glue card in the central vault ~/reposoma/_cold-start/ for a later session of any brand. Use when pausing, repairing, resuming, transferring, or closing work that needs exact project, commit, resume, authority, first-action, and verification context; use issue-card for known defects in the same vault. Schema of record raw.guides/cold-start-card/GUIDE.md.
 ---
 
 # Cold Start Card
@@ -15,6 +15,9 @@ conflict between this skill and that guide, the guide wins.
 
 - Process card: `~/reposoma/_cold-start/card/CS.<slug>.<YYYY-MM-DD>.md`
 - Routine card (recurring task glue, dateless): `~/reposoma/_cold-start/routines/RT.<slug>.md`
+- Issue category: `~/reposoma/_cold-start/issues/{open,parked,archive,reactions}/`,
+  written by the sibling `issue-card` skill. Dated instances are `ISS.*`; dateless
+  recurring reaction playbooks are `IR.*`.
 - Expand `~` to the user home before use; both hosts resolve to `/home/hruzam`.
 - The vault is git-tracked in the reposoma repository. Do not stage or commit
   implicitly; report that the card is invisible on the other machine until committed.
@@ -22,6 +25,17 @@ conflict between this skill and that guide, the guide wins.
   move another seat's card.
 - A project-local card (for example `.dev/session/…`) is an explicit exception only
   when the user requests it; the vault is the default.
+
+The cold-start and issue locations are coupled: any future vault relocation moves
+`_cold-start/` and its `issues/` subtree together in the same commit, never independently.
+
+## Family-wide filename sorting
+
+Dated `CS.*` and `ISS.*` cards sort by the `YYYY-MM-DD` substring in the filename, not
+filesystem mtime. Extracting that date for ordering is distinct from inferring category:
+frontmatter `kind:` remains the category truth. Surface a dated card without the filename
+date in an `UNSORTED` bucket rather than guessing. Dateless `RT.*` routines and `IR.*`
+reaction cards are intentionally exempt.
 
 ## Capture the frame
 
