@@ -8,16 +8,20 @@ description: Create a compact, evidence-backed session-glue card in the central 
 Leave the next session a precise re-entry point. The card points to durable sources; it
 does not copy their full contents or the session transcript.
 
-Schema and lifecycle of record: `~/reposoma/raw.guides/cold-start-card/GUIDE.md`. On
-conflict between this skill and that guide, the guide wins.
+Read the current shared law at `~/reposoma/raw.guides/cold-start-card/GUIDE.md` and the
+CS/routine schema at `~/reposoma/raw.guides/cold-start-card/res/cold-start-card.md` before
+composing a card. These sources outrank this execution copy.
 
 ## Destination — the central vault
 
-- Process card: `~/reposoma/_cold-start/card/CS.<slug>.<YYYY-MM-DD>.md`
-- Routine card (recurring task glue, dateless): `~/reposoma/_cold-start/routines/RT.<slug>.md`
-- Issue category: `~/reposoma/_cold-start/issues/{open,parked,archive,reactions}/`,
-  written by the sibling `issue-card` skill. Dated instances are `ISS.*`; dateless
-  recurring reaction playbooks are `IR.*`.
+- Resolve the vault through `temple-project-map.zsh` → reposoma root → `_cold-start/`.
+- Process card: `<reposoma>/_cold-start/card/CS.<slug>.<YYYY-MM-DD>.md`.
+- Born routine (recurring task glue, dateless):
+  `<reposoma>/_cold-start/routines/RT.<slug>.md`.
+- The sibling `issue-card` skill writes caught issues into the flat top-level `issues/`
+  category, or directly into `routines/` when recurrence is known from the start.
+  Graduated recurring issues keep their dated `ISS.*` name in `routines/`; solved
+  one-shots move to the shared `archive/`.
 - Expand `~` to the user home before use; both hosts resolve to `/home/hruzam`.
 - The vault is git-tracked in the reposoma repository. Do not stage or commit
   implicitly; report that the card is invisible on the other machine until committed.
@@ -26,16 +30,16 @@ conflict between this skill and that guide, the guide wins.
 - A project-local card (for example `.dev/session/…`) is an explicit exception only
   when the user requests it; the vault is the default.
 
-The cold-start and issue locations are coupled: any future vault relocation moves
-`_cold-start/` and its `issues/` subtree together in the same commit, never independently.
+The cold-start vault and flat issue category are coupled: any future relocation moves
+`_cold-start/` and `issues/` together in the same commit, never independently.
 
 ## Family-wide filename sorting
 
 Dated `CS.*` and `ISS.*` cards sort by the `YYYY-MM-DD` substring in the filename, not
 filesystem mtime. Extracting that date for ordering is distinct from inferring category:
 frontmatter `kind:` remains the category truth. Surface a dated card without the filename
-date in an `UNSORTED` bucket rather than guessing. Dateless `RT.*` routines and `IR.*`
-reaction cards are intentionally exempt.
+date in an `UNSORTED` bucket rather than guessing. Born `RT.*` routines are intentionally
+dateless and exempt; a graduated `ISS.*` routine retains its date as “first seen.”
 
 ## Capture the frame
 
@@ -60,7 +64,7 @@ literal `/home/<user>` prefix.
 
 ```yaml
 ---
-kind: cold-start-card            # cold-start-card | routine
+kind: cold-start-card
 date: <YYYY-MM-DD>
 brand: codex
 seat: <seat or agent name>
@@ -73,7 +77,7 @@ resume: <command + flags for the next session>
 model: <sol | terra | ...>       # thinking level the continuation deserves
 dedicated: <recommended seat/agent>
 recommend: <author's one-line steer>
-runbook: ~/reposoma/_runbook/<project>/<slug>/RUNBOOK.md   # optional
+runbook: ~/<project>/<session-root>/<program>-<NN>-<phase>/RUNBOOK.md   # optional live bed
 pointers:
   - ~/<durable source path>
 ---
@@ -83,6 +87,17 @@ Codex-specific evidence keys (session_id, rollout path, cli version, effort, wor
 tracked/ignored state, authority may_write/gated) go AFTER the shared block, still flat
 where possible. Tooling parses only the shared contract. Skip empty keys; never invent
 values.
+
+Include `runbook:` only when that exact live session bed exists in the owning project. Omit it
+when work has no live bed. Never use reposoma as a project session owner or fallback RUNBOOK
+location; it holds the shared canon and card vault.
+
+For a routine born as a routine, use a dateless `RT.<slug>.md`, omit `date:`, set
+`kind: routine`, and add `origin: intended`. An issue that graduates into `routines/` is
+folded by the `issue-card` lifecycle: keep its `ISS.<slug>.<YYYY-MM-DD>.md` name and catch
+date, add `origin: issue`, and use optional `from_issue:` only when a fresh routine card
+splits from the issue instead of moving it wholesale. Never rename a graduated issue to
+`RT.*`.
 
 **Master prompt (optional)** — use the runbook grammar exactly, so blocks lift verbatim
 into `RUNBOOK.md` files and the palette reveals them without opening the card:

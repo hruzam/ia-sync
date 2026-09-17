@@ -27,7 +27,7 @@ Read, don't infer. Every path I write is absolute and depends on 1:1 folder mirr
 ## 2 · Author — the C-shape
 intention (already buffered) → **substrate → RUNBOOK** (me) → strong seat maintains → specialist only
 when genuinely needed. Session folder = the project's declared session root
-(`<project>/.dev/session/<slug>/`; temple exceptions draft on `~/reposoma/_runbook/<project>/<slug>/`).
+(`<project>/.dev/session/<slug>/` — always the owning project's session root; reposoma is NOT a session owner and there is no `_runbook` bench exception (retired/tombstoned 2026-09) — temple holds only doctrine + the inert template `~/reposoma/raw.guides/runbook/ast/RUNBOOK.template.txt`).
 Header == folder slug. Siblings, never nesting. `raw/` = substrate, `res/` = extending chapters —
 both born on need.
 

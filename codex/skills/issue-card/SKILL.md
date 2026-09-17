@@ -1,6 +1,6 @@
 ---
 name: issue-card
-description: Preserve a known defect as a searchable fix manual in the flat shared ~/reposoma/_cold-start/ vault. Use when recording an issue, a deliberate deferral, its verified fix, or a recurring defect that should fold into routines; not for session re-entry glue.
+description: Preserve a known defect as a searchable fix manual in the flat shared ~/reposoma/_cold-start/ vault. Use when recording an issue, a deliberate deferral, its known fix, or a recurring defect that should fold into routines; not for session re-entry glue.
 ---
 
 # Issue Card
@@ -9,8 +9,10 @@ Preserve a defect and, once known, its fix so a later session can act without re
 either. This is the issue category of the same mechanism and vault used by
 `cold-start-card`; it is not a parallel issue store.
 
-Schema of record: `~/reposoma/raw.guides/cold-start-card/res/issue-card.md`. Shared vault,
-filename, sort, and frontmatter law: `~/reposoma/raw.guides/cold-start-card/GUIDE.md`.
+Read the current schema of record at
+`~/reposoma/raw.guides/cold-start-card/res/issue-card.md` before composing or folding a
+card. Read shared vault, filename, sort, and frontmatter law from
+`~/reposoma/raw.guides/cold-start-card/GUIDE.md`; these sources outrank this execution copy.
 The issue schema is `[GAVELED · REVIEW-AFTER-USE]`: it is in force, not a draft, and its
 first real card plus fold triggers a re-audit. On conflict, report the mismatch and follow
 the current guide state. This skill does not gavel canon or perform that re-audit itself.

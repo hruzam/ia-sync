@@ -57,7 +57,7 @@ Frontmatter first — flat shared cross-brand contract, every path WHOLE and
     model: <fable|opus|sonnet|haiku> # thinking level the continuation deserves
     dedicated: <recommended seat/agent>
     recommend: <one-line steer for the next incarnation>
-    runbook: ~/reposoma/_runbook/<project>/<slug>/RUNBOOK.md   # optional
+    runbook: ~/<project>/<session-root>/<program>-<NN>-<phase>/RUNBOOK.md   # optional — the LIVE RUNBOOK in the owning project's session bed; omit when no live bed exists. reposoma is the card/canon home, never a session owner.
     pointers:
       - ~/<where depth lives>
     ---

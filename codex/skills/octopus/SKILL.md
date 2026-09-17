@@ -22,12 +22,15 @@ settled locks, and current pulse. Read these shared guides completely:
   as the session's shape makes them applicable: delegation → `token-economy`; a cross-vendor
   participant → `cross-vendor-seat`; a multi-session head arc → `csharp-head-protocol`;
   coordinating independent full CLI sessions from one decision → `fanout-turns`.
+- `~/reposoma/raw.guides/runbook/ast/RUNBOOK.template.txt` when authoring a new RUNBOOK.
 - `~/reposoma/raw.guides/status/GUIDE.md`
 
 Reuse an existing live session when the request belongs to its gate. Do not fork another
 RUNBOOK or state surface merely because a new Cartan incarnation opened.
 
-For a new session, define one gate before creating its directory. Author:
+For a new session, define one gate and resolve the owning project's declared session root before
+creating its directory. Reposoma provides doctrine and the inert template asset; it never owns a
+project session or fallback draft bed. Author in the owning project:
 
 - `RUNBOOK.md`: fixed goal, one gate, participants, exact prompts, known constraints,
   references, ownership, and acceptance evidence;
