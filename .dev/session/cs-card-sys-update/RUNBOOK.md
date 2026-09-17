@@ -170,8 +170,9 @@ canon; do not gavel. No commit, no deploy.
 Pulled from office over tailnet 2026-09-17 (scp, read-only, origin
 `/tmp/metaterminal-20260916-012151/brief.agentive-help.instruction.md`, written by
 @Metaterminal): a brief for `agentive-help` — a phone-side Termux lookup viewer for
-`devices/_shared/termux/`. Full text preserved at
-`raw/brief.agentive-help.instruction.office-pull.2026-09-16.md`.
+`devices/_shared/termux/`. Full text lives at its permanent home,
+`devices/_shared/brief.agentive-help.instruction.2026-09-16.md` (moved out of this arc's
+`raw/` — it's not this arc's substrate, just parked here for the pull).
 
 **Why majkee called it converging, not identical:** same underlying shape as this arc — a
 small, editable, categorized tree of short markdown notes
