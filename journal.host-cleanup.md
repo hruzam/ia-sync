@@ -10,6 +10,28 @@
 
 ---
 
+## OFFICE — 2026-09-17 · Cartan · recurring tmux chat-history scrolling repair
+
+Majkee reported that the wheel again could not scroll Codex chat history. Current
+session `remote-cli` (`$30`, window `@43`, pane `%43`) had mouse=0, no copy mode,
+no alternate screen, and 1,822 retained lines with a 2,000-line limit. The installed
+`remote-cli.sh` matched source; `remote-scroll` already exists (commit `442e6c9`).
+Applied that bash helper to the pinned target `$30:@43.%43`: mouse=1 and both
+pane/session history limits=50,000, confirmed by a separate read. Today's physical
+wheel recovery awaits operator confirmation; the prior scroll follow-up below
+records operator-confirmed recovery on another session.
+
+Global defaults remain mouse=off / history-limit=2000, consistent with the earlier
+opt-in choice: another or recreated session may need the same repair. No new script,
+deployment, key binding, default or Codex configuration change was needed.
+
+With operator approval, saved the known-recurring issue directly to
+`~/reposoma/_cold-start/routines/ISS.tmux-mouse-scroll.2026-09-11.md` (`origin: issue`),
+including bash recovery, keyboard fallback and evidence limits. The date preserves
+the first observed occurrence in this conversation; card authored 2026-09-17.
+Card and this journal entry are uncommitted; the new card is not yet cross-machine.
+Session/transcript locator: `01a0918e-9ab0-7053-88d8-d829f1fad954`.
+
 ## HOME — 2026-09-16 · Trajectory (ad-hoc) · ts-mount rescue + zombie-sweep fixture
 
 Read `/tmp/metaterminal-20260916-214504/sublime-zombie-tsmount.2026-09-16.md`
