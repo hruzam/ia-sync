@@ -14,6 +14,7 @@ seat, not an observer outside it. Runtime identity and repository seat coexist.
    workspace you are about to touch. Advisory — it informs, never authorizes; overlap means
    coordinate through the operator, not stop. Law: `reposoma/raw.guides/runbook/res/presence-board.md`
 5. `cat SYNC_DISCIPLINE.md` — read before touching anything
+6. **Ask @majkee on protocole before fly-over** — `protocole/colors/PROTOCOLE.md`
 
 ### Mail inbox
 

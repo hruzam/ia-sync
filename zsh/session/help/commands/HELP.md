@@ -20,6 +20,8 @@ rb-selftest             Sandboxed selftest, zero side effects
 
 ## Inside the TUI
 
-Press `?` for the browsable help tree (this note, plus `keys` and `board`).
+Press `?` for the named-scope help navigator. Its scope list is discovered from
+`session/help/*/HELP.md`, so new help folders appear automatically. `Ctrl+F`
+searches the open scope; uppercase `F` searches every scope.
 `rb-help` (this panel) still covers the CLI surface for anyone who runs it
 before ever opening the TUI.

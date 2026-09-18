@@ -26,6 +26,7 @@ Keybinds:
   y             copy selection path to clipboard (fallback: print buffer)
   B             presence board modal · m / u attach / detach selected bed
   p             collect path into print buffer · b toggle buffer pane
+  ?             open the named-scope help navigator
   r             reload all beds · q / Esc quit (buffer prints to scroll-back)
 
 Board CLI (same grammar core as the TUI):
@@ -44,8 +45,9 @@ import sys
 import textwrap
 from pathlib import Path
 
-# ESCDELAY must be set before curses.initscr()
-os.environ.setdefault("ESCDELAY", "25")
+# ESCDELAY must be set before curses.initscr(). 25 ms split arrow-key escape
+# sequences under terminal multiplexers, making an arrow look like Esc/close.
+os.environ.setdefault("ESCDELAY", "250")
 
 
 # ── Small helpers (cs-palette pattern, stdlib only) ──────────────────────────
@@ -1245,48 +1247,237 @@ def help_dir():
     return Path(__file__).resolve().parent / "help"
 
 
-HELP_THEMES = ["commands", "keys", "board"]
+def load_help_scopes(root=None):
+    """Discover named help scopes from help/<scope>/HELP.md."""
+    base = Path(root) if root is not None else help_dir()
+    try:
+        paths = sorted(base.glob("*/HELP.md"), key=lambda p: p.parent.name.casefold())
+    except OSError:
+        return []
+    return [{"name": path.parent.name, "path": path} for path in paths]
+
+
+def help_tokens(query):
+    """Forgiving case-insensitive AND tokens, with duplicates removed."""
+    return tuple(dict.fromkeys(re.findall(r"\w+", query.casefold())))
+
+
+def help_line_attr(raw, in_fence, matched=False):
+    """Help-only orientation layered on the existing Markdown palette."""
+    if matched:
+        return c("accent", curses.A_BOLD | curses.A_REVERSE)
+    s = raw.lstrip()
+    base = md_line_attr(raw, in_fence)
+    if s.startswith("```"):
+        return base
+    if in_fence and s:
+        return c("good")
+    if re.match(r"(?:[-*+] |\d+[.)] )", s):
+        return c("meta")
+    if "`" in raw:
+        return c("accent")
+    return base
+
+
+def render_help_lines(path, width, tokens=(), landed_line=None):
+    """Wrapped help lines as (text, attr, source-line), preserving search landings."""
+    try:
+        source = path.read_text(encoding="utf-8", errors="replace").splitlines()
+    except OSError:
+        return [("(read error)", c("warn"), 0)]
+    out = []
+    in_fence = False
+    for line_no, raw in enumerate(source, start=1):
+        folded = raw.casefold()
+        matched = line_no == landed_line or bool(tokens) \
+            and all(token in folded for token in tokens)
+        attr = help_line_attr(raw, in_fence, matched)
+        if raw.lstrip().startswith("```"):
+            in_fence = not in_fence
+        for piece in wrap_line(raw, width):
+            out.append((piece, attr, line_no))
+    return out or [("", 0, 0)]
+
+
+def search_help(scopes, query, scope_index=None):
+    """Search one/all scopes; every token must occur on the same source line."""
+    tokens = help_tokens(query)
+    if not tokens:
+        return []
+    indices = range(len(scopes)) if scope_index is None else (scope_index,)
+    results = []
+    for idx in indices:
+        scope = scopes[idx]
+        try:
+            source = scope["path"].read_text(
+                encoding="utf-8", errors="replace").splitlines()
+        except OSError:
+            continue
+        heading = scope["name"]
+        for line_no, raw in enumerate(source, start=1):
+            stripped = raw.strip()
+            if stripped.startswith("#"):
+                heading = stripped.lstrip("#").strip() or heading
+            if all(token in raw.casefold() for token in tokens):
+                results.append({"scope": scope["name"], "scope_index": idx,
+                                "line": line_no, "heading": heading,
+                                "text": stripped or "(blank)"})
+    return results
+
+
+def render_help_results(results, width, selected):
+    """Wrapped scope/context result rows plus each result's head-line index."""
+    if not results:
+        return [("no matches", c("warn", curses.A_BOLD))], []
+    lines, heads = [], []
+    for idx, result in enumerate(results):
+        heads.append(len(lines))
+        label = (f"{result['scope']} · {result['heading']} · "
+                 f"L{result['line']} · {result['text']}")
+        attr = c("accent", curses.A_BOLD) if idx == selected else c("header")
+        if idx == selected:
+            attr |= curses.A_REVERSE
+        lines.extend((piece, attr) for piece in wrap_line(label, width))
+    return lines, heads
+
+
+def help_query(win, label):
+    """One-line curses query prompt. Esc cancels without closing help."""
+    chars = []
+    while True:
+        h, w = win.getmaxyx()
+        text = f" {label}: {''.join(chars)}"
+        safe_add(win, h - 1, 0, " " * w, curses.A_REVERSE, w)
+        safe_add(win, h - 1, 0, clipped(text, w), curses.A_REVERSE, w)
+        win.refresh()
+        try:
+            key = win.get_wch()
+        except curses.error:
+            continue
+        if key in ("\n", "\r", curses.KEY_ENTER):
+            return "".join(chars).strip()
+        if key == "\x1b":
+            return None
+        if key in ("\b", "\x7f", curses.KEY_BACKSPACE):
+            if chars:
+                chars.pop()
+        elif isinstance(key, str) and key.isprintable():
+            chars.append(key)
 
 
 def help_view(screen, start_theme=0):
-    """`?` overlay — browsable help tree (commands/keys/board). Read-only,
-    a subwindow (not fullscreen) over the live screen. Dismiss (q/Q/Esc)
-    just returns — no outer state (cursor/focus/offsets) is ever touched,
-    so the caller lands exactly where it was."""
-    theme = max(0, min(start_theme, len(HELP_THEMES) - 1))
+    """`?` overlay: dynamic named scopes, responsive tree/content navigation,
+    and current/all-scope search. Read-only; outer TUI state is untouched."""
+    scopes = load_help_scopes()
+    scope_idx = max(0, min(start_theme, len(scopes) - 1)) if scopes else 0
+    scope_off = 0
+    focus = "scopes"
     off = 0
-    last_theme = None
+    results = None
+    result_idx = 0
+    query = ""
+    search_all = False
+    active_tokens = ()
+    landed_line = None
+    win = None
+    win_geom = None
+
     while True:
         h, w = screen.getmaxyx()
-        win_h = max(6, min(h, int(h * 0.8)))
-        win_w = max(20, min(w, int(w * 0.8)))
+        win_h = min(h, max(8, int(h * 0.9)))
+        win_w = min(w, max(24, int(w * 0.9)))
         y0 = max(0, (h - win_h) // 2)
         x0 = max(0, (w - win_w) // 2)
-        win = curses.newwin(win_h, win_w, y0, x0)
+        geom = (win_h, win_w, y0, x0)
+        if win is None or geom != win_geom:
+            win = curses.newwin(*geom)
+            win.keypad(True)
+            win.timeout(-1)
+            win_geom = geom
+
+        inner_w = max(1, win_w - 2)
+        body_h = max(0, win_h - 2)
+        wide = inner_w >= 58
+        max_name = max((len(scope["name"]) for scope in scopes), default=8)
+        scope_w = min(max(12, max_name + 4), max(12, inner_w // 3))
+        content_col = 1 + scope_w + 1 if wide else 1
+        content_w = max(1, win_w - content_col - 1)
+
+        if scopes:
+            scope = scopes[scope_idx]
+            if results is None:
+                content = render_help_lines(scope["path"], content_w,
+                                            active_tokens, landed_line)
+                if landed_line is not None:
+                    off = next((i for i, item in enumerate(content)
+                                if item[2] == landed_line), off)
+                    landed_line = None
+                right_lines = [(text, attr) for text, attr, _ in content]
+                heads = []
+            else:
+                right_lines, heads = render_help_results(results, content_w, result_idx)
+                if heads:
+                    target = heads[result_idx]
+                    if target < off:
+                        off = target
+                    elif target >= off + max(1, body_h):
+                        off = target - max(1, body_h) + 1
+        else:
+            right_lines, heads = [("no help scopes found", c("warn"))], []
+
+        off = max(0, min(off, max(0, len(right_lines) - body_h)))
+        if scope_idx < scope_off:
+            scope_off = scope_idx
+        elif scope_idx >= scope_off + max(1, body_h):
+            scope_off = scope_idx - max(1, body_h) + 1
+
         win.erase()
         try:
             win.box()
         except curses.error:
             pass
-        body_w = max(1, win_w - 4)
-        body_h = max(1, win_h - 4)
+        scope_name = scopes[scope_idx]["name"] if scopes else "empty"
+        if results is not None:
+            mode = f"search {'all' if search_all else scope_name}: {query}"
+        elif query:
+            mode = f"{scope_name} · match: {query}"
+        else:
+            mode = scope_name
+        title = clipped(f" help · {mode} ", win_w)
+        safe_add(win, 0, max(0, (win_w - len(title)) // 2), title,
+                 c("header", curses.A_BOLD), win_w)
 
-        name = HELP_THEMES[theme]
-        if name != last_theme:
-            off = 0
-            last_theme = name
-        content = render_file_lines(help_dir() / name / "HELP.md", body_w)
+        show_scopes = wide or focus == "scopes"
+        show_content = wide or focus == "content"
+        if show_scopes:
+            draw_w = scope_w if wide else inner_w
+            for row, (idx, scope) in enumerate(enumerate(
+                    scopes[scope_off: scope_off + body_h], start=scope_off), start=1):
+                selected = idx == scope_idx
+                marker = "▸" if selected else "·"
+                attr = c("header", curses.A_BOLD if selected else 0)
+                if selected and focus == "scopes":
+                    attr |= curses.A_REVERSE
+                safe_add(win, row, 1, clipped(f"{marker} {scope['name']}", draw_w),
+                         attr, draw_w)
+        if wide:
+            sep_col = 1 + scope_w
+            for row in range(1, 1 + body_h):
+                safe_add(win, row, sep_col, "│", curses.A_DIM)
+        if show_content:
+            draw_col = content_col if wide else 1
+            draw_w = content_w if wide else inner_w
+            for row, (text, attr) in enumerate(
+                    right_lines[off: off + body_h], start=1):
+                if focus == "content" and row == 1 and not wide:
+                    attr |= curses.A_BOLD
+                safe_add(win, row, draw_col, text, attr, draw_w)
 
-        title = clipped(f" help · {name} ({theme + 1}/{len(HELP_THEMES)}) ", win_w)
-        safe_add(win, 0, max(0, (win_w - len(title)) // 2), title, curses.A_BOLD, win_w)
-
-        off = max(0, min(off, max(0, len(content) - body_h)))
-        for i, (text, attr) in enumerate(content[off: off + body_h]):
-            safe_add(win, 2 + i, 2, text, attr, body_w)
-
-        hint = clipped(" ← → theme · ↑↓ PgUp/PgDn scroll · q/Esc close ", win_w)
-        safe_add(win, win_h - 1, max(0, (win_w - len(hint)) // 2), hint,
-                 curses.A_REVERSE, win_w)
+        if results is not None:
+            hint = " ↑↓ result · Enter land · Ctrl-F scope · F all · ← scopes · q close "
+        else:
+            hint = " ↑↓ select/scroll · Enter/→ open · Tab focus · Ctrl-F scope · F all · q close "
+        safe_add(win, win_h - 1, 0, clipped(hint, win_w), curses.A_REVERSE, win_w)
         win.refresh()
 
         try:
@@ -1295,22 +1486,84 @@ def help_view(screen, start_theme=0):
             continue
         except KeyboardInterrupt:
             return
+
         if key in ("q", "Q", "\x1b"):
             return
-        elif key == curses.KEY_LEFT:
-            theme = (theme - 1) % len(HELP_THEMES)
-        elif key == curses.KEY_RIGHT:
-            theme = (theme + 1) % len(HELP_THEMES)
-        elif key == curses.KEY_UP:
-            off = max(0, off - 1)
-        elif key == curses.KEY_DOWN:
-            off += 1
-        elif key == curses.KEY_PPAGE:
-            off = max(0, off - body_h)
-        elif key == curses.KEY_NPAGE:
-            off += body_h
-        elif key == curses.KEY_RESIZE:
-            pass
+        if key in ("\x06", "F"):
+            label = "find all scopes" if key == "F" else "find current scope"
+            entered = help_query(win, label)
+            if entered:
+                query = entered
+                search_all = key == "F"
+                active_tokens = help_tokens(entered)
+                results = search_help(scopes, entered,
+                                      None if key == "F" else scope_idx)
+                result_idx = 0
+                off = 0
+                focus = "content"
+            continue
+        if key == "\t":
+            focus = "content" if focus == "scopes" else "scopes"
+            continue
+        if key in ("[", "]") and scopes:
+            step = -1 if key == "[" else 1
+            scope_idx = (scope_idx + step) % len(scopes)
+            results, query, active_tokens, off = None, "", (), 0
+            focus = "content"
+            continue
+
+        if focus == "scopes":
+            old_scope = scope_idx
+            if key == curses.KEY_UP and scopes:
+                scope_idx = max(0, scope_idx - 1)
+                off = 0
+            elif key == curses.KEY_DOWN and scopes:
+                scope_idx = min(len(scopes) - 1, scope_idx + 1)
+                off = 0
+            elif key == curses.KEY_PPAGE and scopes:
+                scope_idx = max(0, scope_idx - max(1, body_h))
+                off = 0
+            elif key == curses.KEY_NPAGE and scopes:
+                scope_idx = min(len(scopes) - 1, scope_idx + max(1, body_h))
+                off = 0
+            elif key in ("\n", "\r", " ", curses.KEY_ENTER, curses.KEY_RIGHT):
+                results, query, active_tokens, off = None, "", (), 0
+                focus = "content"
+            if scope_idx != old_scope and results is None:
+                query, active_tokens = "", ()
+        elif results is not None:
+            if key == curses.KEY_UP and results:
+                result_idx = max(0, result_idx - 1)
+            elif key == curses.KEY_DOWN and results:
+                result_idx = min(len(results) - 1, result_idx + 1)
+            elif key == curses.KEY_PPAGE and results:
+                result_idx = max(0, result_idx - max(1, body_h // 2))
+            elif key == curses.KEY_NPAGE and results:
+                result_idx = min(len(results) - 1,
+                                 result_idx + max(1, body_h // 2))
+            elif key in ("\n", "\r", curses.KEY_ENTER, curses.KEY_RIGHT) and results:
+                result = results[result_idx]
+                scope_idx = result["scope_index"]
+                landed_line = result["line"]
+                results = None
+                off = 0
+            elif key == curses.KEY_LEFT:
+                focus = "scopes"
+        else:
+            if key == curses.KEY_UP:
+                off = max(0, off - 1)
+            elif key == curses.KEY_DOWN:
+                off += 1
+            elif key == curses.KEY_PPAGE:
+                off = max(0, off - max(1, body_h))
+            elif key == curses.KEY_NPAGE:
+                off += max(1, body_h)
+            elif key == "g":
+                off = 0
+            elif key == "G":
+                off = 10 ** 9
+            elif key == curses.KEY_LEFT:
+                focus = "scopes"
 
 
 def refresh_bed_marks(beds):
@@ -1331,27 +1584,18 @@ def refresh_bed_marks(beds):
 
 # ── Draw (v0.3) ───────────────────────────────────────────────────────────────
 
+def main_heights(height, buffer_lines, show_buffer):
+    """Main layout has no footer; only an open buffer reserves bottom rows."""
+    raw_buf_h = (1 + min(len(buffer_lines), 4)) if (show_buffer and buffer_lines) else 0
+    buf_h = min(raw_buf_h, height)
+    return max(0, height - buf_h), buf_h
+
+
 def draw(screen, nodes, cursor, tree_off, focus, content, content_off,
          sel_bed, buffer_lines, show_buffer, message, tree_right=False, split=40):
     screen.erase()
     h, w = screen.getmaxyx()
-
-    hints = ("↑↓ move/scroll · →← expand/collapse · Enter open · Tab pane · "
-             "J/K bed · 1-5 part · v side · <> split · e edit · y/Y copy · "
-             "A drain · B board · "
-             "m/u mark · b buffer · p collect · P manage · r reload · "
-             "? help · q quit")
-    full_status = message if message else f"focus:{focus} · {hints}"
-    hint_lines = []
-    for seg in full_status.split(" · "):
-        if not hint_lines or len(hint_lines[-1]) + 3 + len(seg) > w:
-            hint_lines.append(seg)
-        else:
-            hint_lines[-1] += " · " + seg
-    hint_h = min(len(hint_lines), 2)
-
-    buf_h = (1 + min(len(buffer_lines), 4)) if (show_buffer and buffer_lines) else 0
-    body_h = max(0, h - hint_h - buf_h)
+    body_h, buf_h = main_heights(h, buffer_lines, show_buffer)
 
     # narrow (<60 cols): the focused pane takes the whole screen — the detail
     # view never disappears with the layout (small-screen law)
@@ -1419,11 +1663,10 @@ def draw(screen, nodes, cursor, tree_off, focus, content, content_off,
         for i, bl in enumerate(buffer_lines[-(buf_h - 1):]):
             safe_add(screen, brow + 1 + i, 0, clipped("  " + bl, w), c("accent"), w)
 
-    # ── hints ──
-    for li, hl in enumerate(hint_lines[:hint_h]):
-        row = body_h + buf_h + li
-        if row < h:
-            safe_add(screen, row, 0, clipped(hl, w), curses.A_REVERSE, w)
+    # Feedback overlays row 0 for one tick; it never reserves a row or reflows.
+    if message:
+        safe_add(screen, 0, 0, clipped(f" {message} ", w),
+                 c("accent", curses.A_BOLD | curses.A_REVERSE), w)
 
     screen.refresh()
 
@@ -1476,8 +1719,8 @@ def palette(screen, beds, root, tree_right=None):
 
     def body_height():
         h, _ = screen.getmaxyx()
-        buf_h = (1 + min(len(buffer_lines), 4)) if (show_buffer and buffer_lines) else 0
-        return max(1, h - 2 - buf_h)
+        body_h, _ = main_heights(h, buffer_lines, show_buffer)
+        return max(1, body_h)
 
     def rebuild(keep_key=None):
         nonlocal nodes, cursor
@@ -1894,7 +2137,8 @@ def board_cli(argv):
 def selftest():
     """Sandboxed selftest — temp tree + temp board, zero touches outside it.
     Covers the truth-display regression class (next: block scalars, in_flight
-    raw flag), gate states, D2 build/fold, and the full board contract cycle."""
+    raw flag), help/search/layout behavior, gate states, D2 build/fold, and the
+    full board contract cycle."""
     import tempfile
     failures = []
 
@@ -1950,6 +2194,95 @@ def selftest():
         check("group expand lists bus file", "bed-a/bus/01.seat.point.md" in keys2)
         ov = render_overview(beds["bed-a"], 60, board_recs=[])
         check("overview carries next", any("do the thing" in t for t, _ in ov))
+
+        # Main layout: no footer reservation at any width/height.
+        check("main layout reclaims all footer rows",
+              main_heights(10, [], False) == (10, 0))
+        check("only open buffer reserves bottom rows",
+              main_heights(10, ["a", "b"], True) == (7, 3))
+
+        # Dynamic help scopes + forgiving current/all-scope AND search.
+        help_root = Path(td) / "help"
+        (help_root / "alpha").mkdir(parents=True)
+        (help_root / "beta").mkdir()
+        (help_root / "alpha" / "HELP.md").write_text(
+            "# Alpha\n\n- list orientation\n\n```\nA key row\n```\n")
+        (help_root / "beta" / "HELP.md").write_text(
+            "# Beta\n\n## Presence\n\nPresence board records are advisory.\n")
+        scopes = load_help_scopes(help_root)
+        check("help scopes discovered from folders",
+              [scope["name"] for scope in scopes] == ["alpha", "beta"])
+        check("current-scope search stays scoped",
+              search_help(scopes, "presence records", 0) == [])
+        found = search_help(scopes, "PRESENCE records")
+        check("all-scope search is case-insensitive AND",
+              len(found) == 1 and found[0]["scope"] == "beta")
+        check("search result carries heading context",
+              found[0]["heading"] == "Presence" and found[0]["line"] == 5)
+        check("AND search rejects partial token sets",
+              search_help(scopes, "presence missing") == [])
+        rendered = render_help_lines(scopes[1]["path"], 80,
+                                     help_tokens("presence records"))
+        matched = next(item for item in rendered if item[2] == 5)
+        check("search landing line is visibly highlighted",
+              bool(matched[1] & curses.A_REVERSE))
+
+        saved_cp = CP.copy()
+        CP.update({"header": 1, "accent": 2, "good": 3, "meta": 4})
+        try:
+            attrs = {"heading": help_line_attr("# Head", False),
+                     "list": help_line_attr("- item", False),
+                     "code": help_line_attr("key row", True)}
+            check("help heading/list/code colors differ",
+                  len(set(attrs.values())) == 3)
+        finally:
+            CP.clear()
+            CP.update(saved_cp)
+
+        # Help keeps one keypad-enabled window across ordinary/navigation keys.
+        class FakeHelpWindow:
+            def __init__(self):
+                self.keys = iter(("x", curses.KEY_RIGHT, "q"))
+                self.refreshes = 0
+                self.keypad_enabled = False
+                self.timeout_ms = None
+
+            def getmaxyx(self):
+                return (20, 64)
+
+            def erase(self):
+                pass
+
+            def box(self):
+                pass
+
+            def keypad(self, enabled):
+                self.keypad_enabled = enabled
+
+            def timeout(self, delay):
+                self.timeout_ms = delay
+
+            def addnstr(self, *_args):
+                pass
+
+            def refresh(self):
+                self.refreshes += 1
+
+            def get_wch(self):
+                return next(self.keys)
+
+        fake_help_win = FakeHelpWindow()
+        newwin_calls = []
+        real_newwin = curses.newwin
+        curses.newwin = lambda *args: newwin_calls.append(args) or fake_help_win
+        try:
+            help_view(fake_help_win)
+        finally:
+            curses.newwin = real_newwin
+        check("help window stable across input", len(newwin_calls) == 1
+              and fake_help_win.refreshes == 3)
+        check("help window decodes navigation keys", fake_help_win.keypad_enabled
+              and fake_help_win.timeout_ms == -1)
 
         # D — receipt navigation (display-only)
         busv = [t for t, _ in render_bus_group(beds["bed-a"], 70)]

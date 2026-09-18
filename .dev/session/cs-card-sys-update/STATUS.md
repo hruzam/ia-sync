@@ -136,6 +136,16 @@ checkpoint: >
   the two fresh-session proofs + majkee's by-hand git — but all build/witness/documentation
   work is complete and the head has handed off. A future incarnation resumes from the transfer
   letter + this STATUS; majkee may upload measurements or restart the proofs later.
+  BUS CYCLE 02 CLOSED (ACCEPT). Follow-up stale-pointer cleanup, after Cartan caught the
+  retired reposoma _runbook bench still referenced in skills: (1) cold-start-card skill
+  runbook: line fixed to the project-session-bed form (canon subchapter was already correct
+  — skill was lagging, no lockstep edit); (2) CS.precedence-tail.2026-09-03.md classified
+  CONSUMED (its gate roster-reform-01-triad bed is pruned) and drained card/->archive/ via
+  git mv (content untouched, not a rewrite of atlas-ui's card); (3) majkee-authorized ADDITION
+  beyond Cartan's POINT — the runbook skill's line 30 "temple exceptions draft on _runbook"
+  fixed too (the exact stale line that mis-placed THIS session's bed earlier). All
+  head-verified; Cartan independently verified + closed cycle 02 with ACCEPT
+  (_bus/02.cartan.verdict.md). Both bus cycles now POINT·RETURN·VERDICT complete.
 in_flight: none
 recovery_probe:
   cmd: >

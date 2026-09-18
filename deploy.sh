@@ -221,6 +221,13 @@ if [ -d "$REPO/majkee" ]; then
   echo "  ~/.majkee $LEG_VERB (additive; export/ is machine-local, untouched)"
 fi
 
+# ── ~/.nanorc ─────────────────────────────────────────────────────────────────
+if [ -f "$REPO/nano/nanorc" ]; then
+  echo ""
+  echo "→ ~/.nanorc"
+  copy_file "$REPO/nano/nanorc" "$HOME/.nanorc" ".nanorc"
+fi
+
 # ── ~/.config/zsh ─────────────────────────────────────────────────────────────
 echo ""
 echo "→ ~/.config/zsh"

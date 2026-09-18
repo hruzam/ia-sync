@@ -10,6 +10,7 @@
 
 ---
 
+<<<<<<< Updated upstream
 ## OFFICE — 2026-09-17 · Cartan · recurring tmux chat-history scrolling repair
 
 Majkee reported that the wheel again could not scroll Codex chat history. Current
@@ -31,6 +32,18 @@ including bash recovery, keyboard fallback and evidence limits. The date preserv
 the first observed occurrence in this conversation; card authored 2026-09-17.
 Card and this journal entry are uncommitted; the new card is not yet cross-machine.
 Session/transcript locator: `01a0918e-9ab0-7053-88d8-d829f1fad954`.
+=======
+## HOME — 2026-09-18 · Cartan/Astrobley · nano Markdown colours
+
+Home's terminal had the same 256/true-colour capability and the same nano packages as
+office, but lacked `~/.nanorc`; office loaded
+`/usr/share/nano-syntax-highlighting/*.nanorc`. Added the shared source at
+`nano/nanorc` and a backed-up `copy_file` leg in `deploy.sh`. A full deploy was not run
+because its dry run exposed unrelated live `zsh/system/dashboard.md` drift; deployed
+only the new nanorc from the repository source. Fresh-PTY nano output for the reported
+Markdown file confirmed white headings, blue list markers, green emphasis, and yellow
+code spans. Existing nano sessions must be closed and reopened to read the new config.
+>>>>>>> Stashed changes
 
 ## HOME — 2026-09-16 · Trajectory (ad-hoc) · ts-mount rescue + zombie-sweep fixture
 
