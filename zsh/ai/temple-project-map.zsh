@@ -22,7 +22,8 @@ TEMPLE_PROJECT_MAP=(
   [piql.dev]="/home/hruzam/www/piql/piql.dev"
   [vacuole]="/home/hruzam/vacuole"
   [fantasyobchod]="/home/hruzam/www/imago_cz/fantasyobchod"
-  [psdvsSys]="/home/hruzam/www/psdvs/psdvsSys"
+  [ham]="/home/hruzam/www/psdvs/ham"
+  [ham.devenv]="/home/hruzam/www/psdvs/ham.devenv"
   [applications-in-common]="/home/hruzam/www/elements-factory/applications-in-common"
   [nablarva]="/home/hruzam/unikuklatrix/nablarva"
 )
