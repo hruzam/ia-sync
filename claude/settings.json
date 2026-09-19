@@ -30,9 +30,9 @@
       "/home/hruzam/.remote"
     ]
   },
-  "model": "claude-fable-5[1m]",
+  "model": "claude-fable-5-1",
   "fallbackModel": [
-    "opus"
+    "claude-opus-4-8"
   ],
   "env": {
     "ANTHROPIC_DEFAULT_OPUS_MODEL": "claude-opus-4-8"
