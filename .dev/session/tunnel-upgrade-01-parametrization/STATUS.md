@@ -1,11 +1,13 @@
 ---
-updated: 2026-09-18 01:05 CEST
+updated: 2026-09-18 01:30 CEST
 writer: trajectory · Claude Code (opus-5)
 host: home (hruzam) — verified by mechanism fingerprint, not config string: /usr/bin/php74 ABSENT, valet ABSENT, MACHINE_NAME=home
-worktree: /home/hruzam/ia-sync · branch main · HEAD 6683ee5 · DIRTY — this session owns only `AGENTS.md`(+1 line), `protocole/`, `.dev/session/tunnel-upgrade-01-parametrization/`; all other dirty paths are foreign work (deploy.sh, journal.host-cleanup.md, zsh/session/runbook.py, zsh/system/dashboard.md, zsh/session/help/**, nano/, terminal/). Companion repo /home/hruzam/reposoma also dirty: raw.guides/tunnel/{GUIDE.md, dev-journal.tunnel.md, res/settings.md, src/observation.parametrization-and-session-hygiene.2026-09-18.md}
+worktree: /home/hruzam/ia-sync · branch main · HEAD 9f6ff85 ("2026-09-18. protocole + tunnel") · near-clean — only `.gitignore` modified, owned by this session. Operator synced both repos host-to-host and committed: the session spine, `protocole/`, `AGENTS.md`, and the previously-foreign work all landed in 9f6ff85. Companion repo /home/hruzam/reposoma clean at d909151 (settings.md chapter + both observations + journal entries committed). **A clean rollback point now exists for T2.**
 gate: a preset named in `zsh/registries/tunnel.json` opens a tunnel thread whose sandbox AND reasoning effort demonstrably match that preset, proven by one live turn (`tun status` + one `tun ask`)
-checkpoint: session spine authored (RUNBOOK.md + STATUS.md). No task started. Findings backing all three tasks are durable in reposoma at `raw.guides/tunnel/src/observation.parametrization-and-session-hygiene.2026-09-18.md` + the 2026-09-18 dev-journal entry — both written, both uncommitted. Zero quota spent this session to date; every probe so far was `codex sandbox` or an app-server `initialize` handshake.
-in_flight: none
+checkpoint: session spine authored and COMMITTED (9f6ff85). All backing findings durable and committed in reposoma (d909151). No T-task started yet. Zero quota spent this session to date — every probe so far was `codex sandbox` or an app-server `initialize` handshake. New finding this sitting (pre-T1, operator-instructed): tracked tunnel vault state files are a Law 2.4 hole — `.dev/session/tunnel-home.state.json` and `.dev/session/cs-card-sys-update/tunnel.state.json` both carry `enabled: true` (one with a live threadId, one pre-armed `workspace-write`) and were synced host-to-host, handing office a pre-opened table it never opened. A `.gitignore` rule was added to stop future travel.
+in_flight: |
+  PARTIALLY APPLIED — `.gitignore` now carries `*.state.json` + `tunnel.state.json`, but **`.gitignore` does not untrack already-tracked files**. Both state files remain in the index (`git ls-files` confirms), so the Law 2.4 hole is STILL OPEN until `git rm --cached` + a commit, which is held by @majkee.
+  Observable side effect to expect when that commit lands: the deletion propagates on pull, so the OTHER host's working copies of those two paths are removed by its next `git pull`. Files remain on this host's disk (`--cached` only). Any host wanting a vault must create its own via `tun open --enable` — which is precisely the gate being restored.
 recovery_probe: |
   Three read-only checks, in order, to learn where a dead session stopped:
   (1) `zsh /home/hruzam/ia-sync/zsh/ai/tunnel-codex.selftest.zsh` → "64/64 ... passed" means shim logic is intact (T2 either untouched or landed cleanly); a failure count means T2 was mid-edit and the compose copy is broken.
@@ -14,14 +16,14 @@ recovery_probe: |
 holds: |
   - commits/pushes HELD by @majkee (explicit: "we commit later, requires gentle approach") — this session commits nothing
   - office host declared quiet by operator; no inbound sync expected while this runs
-  - `deploy.sh` is modified+uncommitted by a FOREIGN session (adds an additive `~/.nanorc` leg). Running it for T2 will also deploy `nano/nanorc`, work this session does not own — surface to @majkee BEFORE the deploy leg
+  - `deploy.sh`'s foreign `~/.nanorc` leg is now COMMITTED (9f6ff85), so T2's deploy no longer ships uncommitted foreign work. Side effect stands and is now legitimate: running `deploy.sh` also deploys `nano/nanorc` → `~/.nanorc`. Expect it in the dry-run output; it is not this session's change
   - do not stage, revert, or clean any dirty path outside this session's own files
   - compose-first: `/home/hruzam/.config/zsh/**` is a deploy target, never an authoring surface
   - Law 2.4: operator opens the table; every send/ask spends shared ChatGPT quota
   - never touch `~/.codex/thread-writer-locks/`
   - no self-gavel of canon; T3's chapter lands `[DRAFT]` pending @majkee
-next: open T1 — apply the four canon corrections listed in RUNBOOK.md §T1 (three files in /home/hruzam/reposoma/raw.guides/tunnel/, one in /home/hruzam/ia-sync/AGENTS.md). No code, no deploy, no quota. Awaiting @majkee's go on the `user-run.md` policy question: correct the mechanism while preserving the multi-repo restriction as an explicit house choice (recommended), or drop the restriction entirely.
-expected: the four statements read true against observed 0.154.0 behaviour; `res/user-run.md` still carries the multi-repo restriction but framed as a house choice rather than a mechanical necessity; `AGENTS.md` host-resolution section names tmux 3.7c present on home and drops `~/projects` as an office discriminator; no file outside those four is modified; still zero quota spent.
+next: open T2 with its VERIFICATION leg only — confirm whether a born thread honours spawn-level `-c` sandbox config, before writing any shim code. Concretely: cut a throwaway branchless probe that spawns `codex app-server --stdio -c 'sandbox_mode="workspace-write"' -c 'sandbox_workspace_write.writable_roots=["<tmp dir>"]'`, drives `thread/start` + one minimal `turn/start`, and asks the thread to attempt one write inside that root and one outside it. This SPENDS ONE REAL TURN — @majkee must open the table (Law 2.4) before it runs.
+expected: the thread writes successfully inside the named `writable_roots` path and is refused (EROFS) outside it → `-c` is honoured at thread level, T3's registry can carry the full Card-2 knob set. If instead both writes are refused, or the sandbox reported by `tun status` ignores the `-c` values, then `-c` governs only the app-server process and NOT the thread — in which case T3's registry shrinks to `sandbox_mode` + `model_reasoning_effort`, and the chapter's claims must shrink with it.
 ---
 
 # STATUS — tunnel-upgrade-01-parametrization
@@ -30,9 +32,34 @@ Task ledger (state lives in the front-matter above; this is the map).
 
 | task | scope | colour | state |
 |---|---|---|---|
-| T1 | correct four false canon/AGENTS statements — audited edit, not gavel-gated | 🔴 canon | **next** — awaiting policy answer on `user-run.md` |
-| T2 | shim: `-c` passthrough · occupancy % in usage tail · `close` orphan-guard | 🔴 deployed + quota | not started — opens with one live verification turn |
-| T3 | `zsh/registries/tunnel.json` + `res/registry.md` chapter, `[DRAFT]` | 🔴 canon + deployed | not started — depends on T2's verification outcome |
+| T1 | correct four false canon/AGENTS statements — audited edit, not gavel-gated | 🔴 canon | **DONE** 2026-09-18 — `res/user-run.md`, `res/settings.md`, `AGENTS.md` (×3 facts). Uncommitted. |
+| T2 | shim: `-c` passthrough · occupancy % in usage tail · `close` orphan-guard · **central vault relocation** | 🔴 deployed + quota | **next** — verification leg first, needs @majkee to open the table |
+| T3 | `zsh/registries/tunnel.json` + `res/registry.md` chapter, `[DRAFT]` | 🔴 canon + deployed | not started — scope depends on T2's verification outcome |
+
+### T1 — what was NOT done, deliberately
+
+- `dev-journal.tunnel.md` left untouched. Its own header declares it an **append-only
+  ladder**; rewriting the 2026-09-04 entry would violate that law. The drift is already
+  carried by the newer 2026-09-17 / 2026-09-18 entries, which is how a ladder corrects.
+- Wording kept minimal per @majkee: stale formulation during development is acceptable and
+  reconciled later by an audit pass (@assay, or @Cartan for cross-vendor eyes) rather than
+  by agonising now.
+
+### T2 — scope grew by operator decision (2026-09-18)
+
+Vault state files move OUT of every repo into a central per-host directory —
+**`~/.local/state/tunnel/`** (XDG `STATE_HOME`; *not* `~/.config/zsh/`, which is a
+`deploy.sh` rsync target and would entangle state with deploy). Rationale: gitignore is a
+policy guard that must be remembered — and its absence is exactly how the Law 2.4 hole
+opened. Relocation makes the bad state structurally unrepresentable instead.
+
+Must preserve the shim's existing safety property: **no global default, exit 13 when
+neither `--state` nor `$TUNNEL_CODEX_STATE` is given.** Shape: add `--vault <name>` →
+`~/.local/state/tunnel/<name>.json`, keep `--state <path>` working, default nothing.
+
+Carries a follow-on canon correction, which must land only AFTER the code does: `res/user-run.md`
+currently says "put it where the work lives", which is TRUE today and becomes false only
+once this ships. Migration: two existing vaults move.
 
 ## Open question blocking T1
 

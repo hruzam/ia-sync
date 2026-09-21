@@ -121,7 +121,7 @@ Mail when:
 | claude | `~/.local/bin/claude` | `~/.local/bin/claude` (corrected 2026-08-24 — the "via `office` alias" row was wrong; home has its own binary) |
 | piql | lives here | remote via `oc`/`op`/SSH |
 | zellij | present (0.44.3) | present (0.44.3) — confirmed 2026-09-03 |
-| tmux | present | present (3.7b) — confirmed 2026-09-04 |
+| tmux | present | present (3.7c) — confirmed 2026-09-18 (was recorded 3.7b 2026-09-04) |
 
 ## Which host am I on? (resolve before planning — verified 2026-08-24)
 
@@ -145,9 +145,12 @@ mechanism fingerprints, not config strings — a config edit cannot fake them:
 ls /usr/bin/php74           # exists = office · absent = home
 command -v valet            # found  = office · absent = home
 systemctl is-active nginx   # active on BOTH (Valet-linux runs nginx on office) — NOT a discriminator (corrected 2026-09-02)
-ls -d ~/projects            # exists = office · absent = home
 tailscale status --json | jq -r .Self.ID   # match against machines.json
 ```
+
+**Retired discriminator (2026-09-18):** `ls -d ~/projects` was listed here as
+"exists = office · absent = home". It is FALSE — `~/projects` exists on home too. Do not
+reinstate it; use the php74 / valet / tailscale signals above.
 
 The tailscale node ID is the anti-spoof factor named in `machines.json` — prefer it when
 two signals disagree.
@@ -155,7 +158,8 @@ two signals disagree.
 **Why it matters:** termbrana's M0 host contract is office-pinned
 (`research/evidence/host-versions.md`) and zellij is absent on home, so that work cannot
 run here at all. The phone rail (`devices/_shared/agentive-tmux.md`) forces a `tmux`
-session, and tmux is absent on home — that rail reaches office only.
+session — **corrected 2026-09-18: tmux IS present on home (3.7c, live sessions observed),
+so that rail is not office-only.** The zellij pin is what keeps termbrana office-bound.
 
 ## Home maintenance (ad-hoc seats)
 

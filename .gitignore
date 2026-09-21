@@ -35,6 +35,14 @@ __pycache__/
 gemini/config/projects/
 file-history/
 paste-cache/
+
+# Tunnel vault state (machine-local runtime — MUST NOT travel between hosts).
+# These carry `enabled: true` plus a live threadId: syncing one hands the other host
+# a pre-armed table it never opened, bypassing Law 2.4, and lets it spend quota on a
+# thread it does not own. Same class as *.jsonl rollouts above — runtime, not config.
+# The tunnel PRESET REGISTRY (zsh/registries/tunnel.json) is config and DOES travel.
+*.state.json
+tunnel.state.json
 downloads/
 tmp/
 history/
