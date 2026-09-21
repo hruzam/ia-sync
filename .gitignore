@@ -41,8 +41,11 @@ paste-cache/
 # a pre-armed table it never opened, bypassing Law 2.4, and lets it spend quota on a
 # thread it does not own. Same class as *.jsonl rollouts above — runtime, not config.
 # The tunnel PRESET REGISTRY (zsh/registries/tunnel.json) is config and DOES travel.
-*.state.json
-tunnel.state.json
+# Scoped deliberately: `tunnel*.state.json`, NOT a bare `*.state.json`. The broad form
+# would silently swallow any future <anything>.state.json anywhere in the tree — a file
+# you meant to track would just never appear. Audit the reach of any widening with:
+#   git ls-files | git check-ignore --stdin --no-index -v
+tunnel*.state.json
 downloads/
 tmp/
 history/
