@@ -16,6 +16,9 @@
 *.db-wal
 *.db-shm
 *.pb
+*.wave
+*.mp3
+
 
 # Binary / generated artefacts
 bin/
