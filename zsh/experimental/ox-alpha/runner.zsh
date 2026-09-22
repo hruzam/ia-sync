@@ -1,5 +1,5 @@
 #!/usr/bin/env zsh
-# Ox Alpha experimental runner — executed by ai/experimental.zsh.
+# Ox Alpha experimental runner — executed by experimental/dispatcher.zsh.
 # Usage: exp-run ox-alpha [--stream|--no-stream] <prompt> | chat
 
 _openrouter_load_key() {

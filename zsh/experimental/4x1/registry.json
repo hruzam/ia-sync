@@ -1,0 +1,4 @@
+{
+  "csharp": ["cSharp", "bus", "implement", "audit"],
+  "web":    ["front", "api", "db"]
+}

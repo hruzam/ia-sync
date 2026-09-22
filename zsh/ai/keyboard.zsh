@@ -212,13 +212,10 @@ alias palette-refresh='_palette_refresh'
 bindkey '^[k' _command_palette_zle   # Alt-k — command palette (inserts selection at cursor)
 
 # =============================================================================
-# PARTITION 18: Experimental runners
-# Engine: ~/.config/zsh/ai/experimental.zsh (base.zsh P9); runners are lazy.
+# PARTITION 18: Codex tunnel
+# Experimental runners MOVED 2026-09-22 → experimental/ scope (its own base.zsh +
+# keyboard.zsh). exp-list / exp-run / ox-alpha* now live there, not here.
 # =============================================================================
-alias exp-list='_exp_list'
-alias exp-run='_exp_run'
-alias ox-alpha='_exp_run ox-alpha'
-alias ox-alpha-help='_exp_run ox-alpha --help'
 
 # tunnel (TABLE shape) — operator-gated, see raw.guides/tunnel/GUIDE.md
 alias tun='zsh ~/.config/zsh/ai/tunnel-codex.zsh'

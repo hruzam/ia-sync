@@ -1,8 +1,8 @@
 #!/usr/bin/env zsh
-# Experimental-runner dispatcher — sourced by ai/base.zsh.
+# Experimental-runner dispatcher — sourced by experimental/base.zsh (P2).
 # Runners stay lazy: only exp-run sources no experiment at shell startup.
 
-typeset -g _EXPERIMENTAL_ROOT="${_EXPERIMENTAL_ROOT:-${HOME}/.config/zsh/ai/experimental}"
+typeset -g _EXPERIMENTAL_ROOT="${_EXPERIMENTAL_ROOT:-${HOME}/.config/zsh/experimental}"
 
 _exp_list() {
   local -a runners

@@ -158,6 +158,10 @@ echo "[config] @${MACHINE_NAME} loaded"
 [[ -f ~/.config/zsh/ai/base.zsh ]] && source ~/.config/zsh/ai/base.zsh
 [[ -f ~/.config/zsh/nablarva/base.zsh ]] && source ~/.config/zsh/nablarva/base.zsh
 
+# EXPERIMENTAL BRICK SCOPE (promoted out of ai/experimental/ 2026-09-22 — sibling
+# of ai/; opt-in bricks via exp-run; maintainer log in experimental/base.zsh head)
+[[ -f ~/.config/zsh/experimental/base.zsh ]] && source ~/.config/zsh/experimental/base.zsh
+
 # session scope — session-layer instruments umbrella (runbook browser; reserved:
 # cold-start cards, presence dashboard). RB_ROOT = default .dev/session/ bench;
 # repoint here when the primary bench moves. rb-open <path> targets any other tree.

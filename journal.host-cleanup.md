@@ -10,6 +10,7 @@
 
 ---
 
+<<<<<<< Updated upstream
 ## HOME — 2026-09-18 · Cartan/Astrobley · nano Markdown colours
 
 Home's terminal had the same 256/true-colour capability and the same nano packages as
@@ -21,6 +22,70 @@ only the new nanorc from the repository source. Fresh-PTY nano output for the re
 Markdown file confirmed white headings, blue list markers, green emphasis, and yellow
 code spans. Existing nano sessions must be closed and reopened to read the new config.
 
+=======
+## OFFICE — 2026-09-22 · Trajectory · experimental/ promoted to sibling scope of ai/
+
+Promoted the experimental-runner surface out of `ai/experimental/` into its own
+top-level zsh scope `experimental/` (sibling of `ai/`), matching the ai/-pattern:
+`experimental/base.zsh` (router/signpost + a MAINTAINER LOG in its head) → P1
+`keyboard.zsh` (aliases only) → P2 `dispatcher.zsh` (`_exp_list`/`_exp_run`); bricks
+stay `experimental/<id>/runner.zsh`. `git mv` preserved history (dispatcher, ox-alpha
+runner, reincarnation-session.sh, README). Wired via a `config.office.zsh` source line;
+removed the exp aliases from `ai/keyboard.zsh` P18 (kept `tun`). Deployed + verified on
+office — fresh shell resolves `exp-run`/`ox-alpha*` through the new scope,
+`_EXPERIMENTAL_ROOT=~/.config/zsh/experimental`, `exp-list`→ox-alpha.
+
+**HOME SEAT — parity action needed** (SYNC_DISCIPLINE "mirror new wiring by hand"):
+1. Add to `config.home.zsh` (home-owned — office can't edit it):
+   `[[ -f ~/.config/zsh/experimental/base.zsh ]] && source ~/.config/zsh/experimental/base.zsh`
+   beside the `ai/base.zsh` source line. Until then home loses `exp-*`.
+2. After deploy: `rm ~/.config/zsh/ai/experimental.zsh` and
+   `rm -rf ~/.config/zsh/ai/experimental/` (deploy has no `--delete`; the stale live
+   copies linger and would re-source the old dispatcher via `ai/base.zsh` P9).
+
+**DEFERRED — needs a temple gate** (`ai/base.zsh` is 0009-gated): its P9 still holds the
+now-dead `source ai/experimental.zsh` line. Behaviorally neutral (guard false, file gone),
+cosmetic removal only. Also noted in `zsh/AGENTS.md`.
+
+**PRE-EXISTING (not from this session):** this journal carries committed merge-conflict
+markers below (`<<<<<<<` / `=======` / `>>>>>>>`) from an earlier botched merge — left
+untouched; flag for @majkee to resolve.
+
+**ADDENDUM (same session) — 4x1 sourced brick added, two-kind scope contract established**
+
+A second brief arrived mid-session for `4x1` (tmux session-fold: one command, N named
+windows, thin — no cd, no agent launch, no writes; staged by @Metaterminal). Its own
+brief proposed a separate top-level `4x1/` scope sourced from both `zshrc.{home,office}`;
+operator wanted it experimental instead. Spawned @advisor-advanced before extending the
+scope contract (extending a scope built one turn earlier, cross-host impact) — verdict:
+proceed, Option A, with one hardening: the advisor flagged that hosting non-lazy sourced
+bricks downgrades the scope's safety guarantee from MECHANICAL (a runner physically
+cannot run at source time) to DISCIPLINARY (a sourced brick is merely trusted to be
+define-only) — exactly the failure class this repo's own history warns about (0009 L5,
+the `harness.service` dead-path bug). Folded the fix into the design rather than
+proceeding as first proposed.
+
+`experimental/` now hosts **two brick kinds** (LAW, `experimental/README.md` Contract):
+- `<id>/runner.zsh` — lazy `exp-run` runner (unchanged).
+- `<id>/<id>.zsh` — sourced interactive brick (NEW — `base.zsh` PARTITION 3): wired by
+  **explicit name** (never globbed) + **`zsh -n`-gated** — a syntax error skips the
+  source (command absent, never shell dead).
+
+`4x1` landed at `experimental/4x1/{4x1.zsh,registry.json}`, wired via the new P3 line +
+a maintainer-log row — deliberately NOT via zshrc (eliminates the brief's own flagged
+hazard: "miss one zshrc, command silently absent there" — one loader instead). Verified
+on office in a fresh shell: `4x1 --smoke`/`--help` clean; session create-then-reattach
+is idempotent (no rebuild); `@csharp` registry key resolves; deliberate-red (planted a
+syntax error) — fresh shell still booted clean, `4x1` simply absent, restored and
+reconfirmed present.
+
+No NEW home-parity action beyond HOME SEAT item 1 above — `4x1` ships inside the same
+`experimental/base.zsh` home already needs to source.
+
+---
+
+<<<<<<< Updated upstream
+>>>>>>> Stashed changes
 ## OFFICE — 2026-09-17 · Cartan · recurring tmux chat-history scrolling repair
 
 Majkee reported that the wheel again could not scroll Codex chat history. Current
