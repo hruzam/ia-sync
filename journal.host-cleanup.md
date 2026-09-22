@@ -10,19 +10,6 @@
 
 ---
 
-<<<<<<< Updated upstream
-## HOME — 2026-09-18 · Cartan/Astrobley · nano Markdown colours
-
-Home's terminal had the same 256/true-colour capability and the same nano packages as
-office, but lacked `~/.nanorc`; office loaded
-`/usr/share/nano-syntax-highlighting/*.nanorc`. Added the shared source at
-`nano/nanorc` and a backed-up `copy_file` leg in `deploy.sh`. A full deploy was not run
-because its dry run exposed unrelated live `zsh/system/dashboard.md` drift; deployed
-only the new nanorc from the repository source. Fresh-PTY nano output for the reported
-Markdown file confirmed white headings, blue list markers, green emphasis, and yellow
-code spans. Existing nano sessions must be closed and reopened to read the new config.
-
-=======
 ## OFFICE — 2026-09-22 · Trajectory · experimental/ promoted to sibling scope of ai/
 
 Promoted the experimental-runner surface out of `ai/experimental/` into its own
@@ -46,10 +33,6 @@ office — fresh shell resolves `exp-run`/`ox-alpha*` through the new scope,
 **DEFERRED — needs a temple gate** (`ai/base.zsh` is 0009-gated): its P9 still holds the
 now-dead `source ai/experimental.zsh` line. Behaviorally neutral (guard false, file gone),
 cosmetic removal only. Also noted in `zsh/AGENTS.md`.
-
-**PRE-EXISTING (not from this session):** this journal carries committed merge-conflict
-markers below (`<<<<<<<` / `=======` / `>>>>>>>`) from an earlier botched merge — left
-untouched; flag for @majkee to resolve.
 
 **ADDENDUM (same session) — 4x1 sourced brick added, two-kind scope contract established**
 
@@ -82,10 +65,17 @@ reconfirmed present.
 No NEW home-parity action beyond HOME SEAT item 1 above — `4x1` ships inside the same
 `experimental/base.zsh` home already needs to source.
 
----
+## HOME — 2026-09-18 · Cartan/Astrobley · nano Markdown colours
 
-<<<<<<< Updated upstream
->>>>>>> Stashed changes
+Home's terminal had the same 256/true-colour capability and the same nano packages as
+office, but lacked `~/.nanorc`; office loaded
+`/usr/share/nano-syntax-highlighting/*.nanorc`. Added the shared source at
+`nano/nanorc` and a backed-up `copy_file` leg in `deploy.sh`. A full deploy was not run
+because its dry run exposed unrelated live `zsh/system/dashboard.md` drift; deployed
+only the new nanorc from the repository source. Fresh-PTY nano output for the reported
+Markdown file confirmed white headings, blue list markers, green emphasis, and yellow
+code spans. Existing nano sessions must be closed and reopened to read the new config.
+
 ## OFFICE — 2026-09-17 · Cartan · recurring tmux chat-history scrolling repair
 
 Majkee reported that the wheel again could not scroll Codex chat history. Current
