@@ -13,6 +13,9 @@ seat, not an observer outside it. Runtime identity and repository seat coexist.
 4. `ls ~/reposoma/_active/` (or `rb-board`) — presence board: who else is attached to a
    workspace you are about to touch. Advisory — it informs, never authorizes; overlap means
    coordinate through the operator, not stop. Law: `reposoma/raw.guides/runbook/res/presence-board.md`
+   Mark your own presence too, even for a direct root-level edit outside a formal session
+   bed — `SYNC_DISCIPLINE.md` "Presence — even for non-session, direct-edit work"
+   (**never bare `rb-unmark`** — always by the exact id `rb-mark` returns).
 5. `cat SYNC_DISCIPLINE.md` — read before touching anything
 6. **Ask @majkee on protocole before fly-over** — `protocole/colors/PROTOCOLE.md`
 
@@ -28,9 +31,14 @@ Other agents (Houston, @majkee) may also drop tasks here between sessions.
 
 ### Known issues
 
-Open/parked defects for this repo: `~/reposoma/_issues/` filtered `project: ia-sync`
-(central vault, folder=state — `open/`·`parked/`·`archive/` — shared across all projects,
-locked 2026-09-16). Do not start a local `issues/` folder here.
+Known defects for this repo: the shared cold-start vault `~/reposoma/_cold-start/`, filtered
+`project: ia-sync`. Folder = state via **the fold** (not open/parked): `issues/` (flat —
+one-shot defects) · `routines/` (recurring — an issue that fires regularly) · `archive/`
+(solved one-shot). Deliberately-deferred = a `parked` tag in the card's `assoc:`, not a
+folder. Write with the `/issue-card` skill; schema:
+`~/reposoma/raw.guides/cold-start-card/res/issue-card.md`. Do not start a local `issues/`
+folder here. (Supersedes the retired `~/reposoma/_issues/` open/parked vault — migrated to the
+fold model 2026-09-17.)
 
 ## What the seat does here
 
@@ -77,38 +85,23 @@ or flag it to @majkee. Holding parallel seats earns nothing when the nuance is s
 - Freya app issues (500 errors etc.) — project work, not maintenance
 - piql bus internals — Shannon's domain
 
-## After any meaningful session — mail piql Houston
+## Substrate changes — journal first, escalate to Houston only across a boundary
 
-piql is the living machine and the most connected sibling to this repo.
-Arch Linux tuning directly affects piql's substrate (services, PATH, PHP, SSH).
-Houston needs to know when the substrate changes.
+The journal (`journal.host-cleanup.md`) is the primary record of substrate changes — write
+there first (Orient step 1); that is what the next ad-hoc seat reads. Most machine-layer
+changes stay local to the journal.
 
-Write to: `~/reposoma/_mail/houston/inbox/<seat>.<scope>.<YYYY-MM-DD>.md`
+Escalate to the temple architect bus only when a change reaches beyond this machine — e.g. it
+affects another project's runtime. piql runs on this host, so its services/PATH/PHP/SSH ride
+the same substrate; a change to those may matter to it. @Houston is the architect /
+phase-planner seat (NOT a "piql architect"); reach it at
+`~/reposoma/_mail/houston/inbox/<seat>.<scope>.<YYYY-MM-DD>.md` — addressing law + message
+format live in `~/reposoma/_mail/README.md`; carry `host: office`. This is a judgment call,
+not a per-session ritual. Concrete triggers:
 
-Format:
-```
----
-to: @Houston (piql architect)
-from: @<seat> (office · ia-sync · <date>)
-topic: <one line>
-host: office
----
-
-## What changed on the substrate
-- ...
-
-## Relevant to piql
-- ...
-
-## Open / deferred
-- ...
-```
-
-Mail when:
-- Services changed (sshd, php-fpm, nginx, ollama, tailscale)
+- Services started/stopped/reconfigured (sshd, php-fpm, nginx, ollama, tailscale)
 - SSH or network config changed
-- Agent specs updated (Shannon, machine seats)
-- New zsh tooling that piql's bus or environment may depend on
+- A package/toolchain change another project's environment depends on
 
 ## Machine facts (stable)
 
@@ -144,6 +137,7 @@ mechanism fingerprints, not config strings — a config edit cannot fake them:
 ```bash
 ls /usr/bin/php74           # exists = office · absent = home
 command -v valet            # found  = office · absent = home
+awk '/MemTotal/{print ($2>14000000)?"office":"home"}' /proc/meminfo   # RAM: 16GB office · 12GB home (hardware, ~2GB margin each side)
 systemctl is-active nginx   # active on BOTH (Valet-linux runs nginx on office) — NOT a discriminator (corrected 2026-09-02)
 tailscale status --json | jq -r .Self.ID   # match against machines.json
 ```
@@ -152,8 +146,13 @@ tailscale status --json | jq -r .Self.ID   # match against machines.json
 "exists = office · absent = home". It is FALSE — `~/projects` exists on home too. Do not
 reinstate it; use the php74 / valet / tailscale signals above.
 
-The tailscale node ID is the anti-spoof factor named in `machines.json` — prefer it when
-two signals disagree.
+RAM is a hardware fingerprint (office 15.38 GiB / 16 GB · home ~11.6 GiB / 12 GB, two cards) —
+a cheap second factor a config edit cannot fake, and independent of the PHP setup it helps
+classify (unlike `ls /usr/bin/php74`, which probes the very thing you're deciding, and flickers
+while php74 is mid-rebuild). Verified office-side 2026-09-22.
+
+The tailscale node ID remains the ultimate anti-spoof factor named in `machines.json` — prefer
+it when two signals disagree (RAM can shift on a DIMM swap; the node ID cannot).
 
 **Why it matters:** termbrana's M0 host contract is office-pinned
 (`research/evidence/host-versions.md`) and zellij is absent on home, so that work cannot

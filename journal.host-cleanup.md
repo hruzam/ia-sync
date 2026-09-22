@@ -10,6 +10,49 @@
 
 ---
 
+## OFFICE — 2026-09-22 · Trajectory · pacman -Syu unblock (lib32 drop + deepin-kwin) · php74 rebuilt · AGENTS.md host-check
+
+Routine `sudo pacman -Syu` hit two unrelated blockers; both cleared, system updated.
+
+**lib32-audit multilib drop (RESOLVED).** Manjaro removed `lib32-audit`/`lib32-pam`/
+`lib32-libcap` from multilib, so `audit 4.2.1` couldn't upgrade (`lib32-audit` pinned
+`audit=4.1.4`). Verified the dead set is a self-contained 5-pkg island (nothing else of the
+72 lib32 pkgs depends on it; no steam/wine); removed via `pacman -Rsc lib32-audit`, then
+`-Syu` proceeded. @Epoch confirmed it's a repo drop, not multilib lag. Card:
+`_cold-start/issues/ISS.manjaro-lib32-multilib-drop.2026-09-22.md`.
+
+**deepin-kwin vs kwin (WORKED AROUND — recurring).** Upgraded `deepin-polkit-agent` newly
+pulls `deepin-kwin`, which hard-conflicts with Plasma's `kwin`. Traced: only
+`deepin-screen-recorder` was explicitly installed; it dragged in a 39-pkg Deepin desktop, and
+its recorder→tray-loader→daemon→polkit-agent chain is what pulls the conflict (recorder +
+conflict inseparable). Cleared this cycle with `--ignore deepin-kwin` (holds the Deepin
+slice). RECURS every `-Syu`. Permanent fix (evict Deepin — verified zero non-Deepin
+dependents) mapped in the routine card:
+`_cold-start/routines/ISS.deepin-kwin-vs-plasma-kwin.2026-09-22.md`. Operator kept the
+recorder this round; eviction deferred (majkee's call).
+
+**php74 AUR rebuild (DONE, FPM healthy — TWO exts still stale, OPEN).** php74 stack rebuilt
+`7.4.33-5 → -11` against the updated system; `php74-fpm` active, FantasyObchod (OpenCart)
+loads, imagick now loads (benign 1809/1810 version-skew warning). **OPEN:** `php74-intl` +
+`php74-snmp` did NOT rebuild — still `-5`, linked to ICU 74 / net-snmp 40; system now has ICU
+**78** / net-snmp **45**, so both fail to load (pre-existing, visible since the 01:48 log).
+**Freya hard-requires `ext-intl`** (both `imago_cz` + `freya` composer.json; runtime use in
+`PhoneNumberFormatter`, `cart_manager`, Newsletter `Subscribe`, `Helpers`) → Freya fatals on
+intl paths until fixed. FIX: `yay -S php74-intl php74-snmp && sudo systemctl restart
+php74-fpm`. snmp has no app use found — fix opportunistically. Flagged to operator, not yet
+applied. (Recurring class: AUR php74 exts lag system-lib soname bumps — routine-card candidate.)
+
+**AGENTS.md maintenance (this session).** (1) Known-issues pointer corrected from the retired
+`~/reposoma/_issues/` to the active `_cold-start/` fold vault + `/issue-card` skill. (2)
+Rewrote the stale "mail piql Houston" section — Houston is the architect/phase-planner seat,
+NOT a "piql architect"; the journal is the primary substrate record and Houston-escalation is
+a judgment call, not a per-session ritual. (3) Added RAM as a documented hardware host-check
+(`awk '/MemTotal/{print ($2>14000000)?"office":"home"}' /proc/meminfo` — office 15.38 GiB /
+home ~11.6 GiB): a config-unfakeable second factor, independent of the PHP setup it classifies;
+tailscale node ID stays the tiebreaker. Operator's idea, verified office-side.
+
+---
+
 ## OFFICE — 2026-09-22 · Trajectory · experimental/ promoted to sibling scope of ai/
 
 Promoted the experimental-runner surface out of `ai/experimental/` into its own
