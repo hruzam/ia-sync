@@ -1,0 +1,14 @@
+# .gitattributes — merge-strategy overrides
+#
+# journal.host-cleanup.md is a prepend-only rolling log (NEWEST ENTRY FIRST —
+# see its own header). Every writer inserts at the same anchor point (right
+# after the rules block), so two sessions committing around the same time
+# collide there even when their entries never actually conflict in content.
+# `merge=union` tells git to auto-combine both sides' lines on conflict
+# instead of dropping in <<<<<<< markers — always correct here since "keep
+# both entries" is the only sane resolution for this file. Ordering may still
+# need a manual pass afterward (union doesn't know about "newest first"), but
+# that is a markdown tidy-up, not a broken doc landing in shared history.
+# Recurred twice same-day (2026-09-22, commits 14e38f6 and 6a32375) before
+# this was added.
+journal.host-cleanup.md merge=union
