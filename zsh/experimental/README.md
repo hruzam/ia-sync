@@ -66,8 +66,10 @@ Both kinds:
 
 Every brick is **EXPERIMENTAL ONLY until @majkee approves** graduation to a first-class
 surface. The maintainer log in `base.zsh`'s head records each brick's plug date, origin,
-and approval status. When you plug a new brick, add its row there; when a brick graduates,
-remove its row and move it out of this scope.
+and approval status. When you plug a new brick, add its row there. A brick then has two
+possible fates: it **graduates** (remove its row, move it out of this scope — canon
+elsewhere), or it is **trashed** as inappropriate — see "Remove a brick" below; do not
+just `rm` the folder and move on.
 
 ## Add a runner
 
@@ -92,3 +94,37 @@ The first runner, `ox-alpha`, is the reference implementation.
    clean and the command is simply absent, then restore.
 
 The first sourced brick, `4x1`, is the reference implementation.
+
+## Remove a brick (trashed as inappropriate — not graduated)
+
+Different fate from graduation above: this is for a brick that earns a **no**, not a
+canon promotion. **Two-phase — quarantine, verify, THEN purge. Never in one step** (a
+live shell broken mid-purge is worse than a brick nobody asked to remove yet).
+
+1. **Quarantine first.** Cut the brick off without deleting it, so it can no longer be
+   reached but stays available for one verification cycle:
+   - Sourced brick: delete (or comment out) its `base.zsh` PARTITION 3 wiring line.
+   - Lazy runner: nothing to unwire at startup — it was never sourced. `exp-run <id>`
+     fails closed the moment the folder is gone in step 3; quarantine is effectively
+     step 3 for this kind.
+   - Either kind: remove its row from `keyboard.zsh` if it has a convenience alias
+     (e.g. an `ox-alpha`-style shim).
+2. **Verify the quarantine.** `bash ~/ia-sync/deploy.sh` (repo → this machine), then a
+   **fresh shell**: the command must be gone, the shell must still boot clean, and no
+   sibling brick may be affected. Same fresh-shell discipline used to add a brick
+   (README "Add a runner" / "Add a sourced brick"), run in reverse.
+3. **Purge.** Once quarantine is verified: `git rm -r experimental/<id>/` in the repo;
+   remove its maintainer-log row in `base.zsh` and (sourced bricks) delete the now-empty
+   PARTITION 3 line entirely, not just comment it; commit.
+4. **Sweep the live orphan on every host that ever deployed it.** `deploy.sh` has no
+   `--delete` — purging the repo folder does NOT remove a machine's live copy:
+   `rm -rf ~/.config/zsh/experimental/<id>/`. Mirrored by hand on both office and home,
+   same as any other removal (`SYNC_DISCIPLINE.md`: "Agents are additive on deploy;
+   removals are explicit").
+5. **Refresh the palette.** `palette-refresh` — otherwise the trashed brick's commands
+   linger in `palette.map` as dead entries; the map's staleness check is timestamp-based
+   (any `.zsh` newer than the map), not content-based, so a pure deletion does not by
+   itself force a rebuild.
+6. **Journal it** (`journal.host-cleanup.md`) if the brick ever reached both hosts, so
+   the other seat knows to run step 4 there too. Check the maintainer log for the
+   brick's plug history before assuming it never left this machine.

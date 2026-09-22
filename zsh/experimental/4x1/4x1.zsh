@@ -23,6 +23,7 @@
 #     this default just stops matching, it does not error (default window set still works).
 typeset -g _4X1_DIR="${${(%):-%x}:A:h}"
 
+# 4x1 [session] [win... | @registry-key] — fold/attach a tmux session with N named windows
 4x1() {
   emulate -L zsh                       # NB: hygiene — local options, don't inherit caller's setopts
 

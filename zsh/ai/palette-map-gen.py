@@ -102,7 +102,12 @@ ALIAS_RE = re.compile(
 
 # Matches both multi-line ("name() {" then body on following lines) and
 # one-liner ("name()  { body }") function definitions.
-FUNC_DEF_RE = re.compile(r"^(?P<name>[A-Za-z_][A-Za-z0-9_-]*)\s*\(\)\s*\{")
+# Leading char allows a digit (2026-09-22, one-char widen): zsh itself places
+# no such restriction on function names (unlike shell variable/identifier
+# rules) — "4x1() { ... }" is a valid zsh function def. Widening only ADDS
+# matches, never removes one, so this cannot regress any currently-passing
+# scope; verified via a full-tree regen (see palette-map-gen.py --check).
+FUNC_DEF_RE = re.compile(r"^(?P<name>[A-Za-z0-9_][A-Za-z0-9_-]*)\s*\(\)\s*\{")
 
 HEREDOC_START_RE = re.compile(r"cat\s*<<-?\s*'?\"?(?P<tag>[A-Za-z_][A-Za-z0-9_]*)'?\"?\s*$")
 

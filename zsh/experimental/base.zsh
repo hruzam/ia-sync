@@ -29,8 +29,10 @@
 # STANDING RULE: every brick below is EXPERIMENTAL ONLY until @majkee approves
 # its graduation to a first-class surface (Claude/Codex/Gemini/a stable scope).
 # Until approved it stays here — opt-in, lazy via exp-run or explicit-sourced via
-# P3, never wired into a stable scope. When a brick graduates: remove its row here
-# and move it out.
+# P3, never wired into a stable scope. A brick has two possible fates: GRADUATE
+# (remove its row here, move it out — canon elsewhere) or TRASH (deemed
+# inappropriate; remove its row here as the LAST step of the purge procedure in
+# README.md "Remove a brick" — quarantine, verify, THEN purge, never in one step).
 #
 # Format: <id/file> — plugged <date> — <origin> — <what it probes> — <status>
 #

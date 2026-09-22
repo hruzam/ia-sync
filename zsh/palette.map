@@ -5,10 +5,17 @@ ai	agy-skip	agy --skip-trust	ai/keyboard.zsh
 ai	agy-ver	agy --version	ai/keyboard.zsh
 ai	agy-yolo	agy --approval-mode yolo	ai/keyboard.zsh
 ai	ai-help	this panel	ai/claude.zsh
+ai	ai-metaterminal	terminal-layer seat — drift · PTY/tmux · two-phase quarantine (human-invoked only; args pass through, e.g. -p "…")	ai/claude.zsh
+ai	assert_contains	(no help line)	ai/tunnel-codex.selftest.zsh
+ai	assert_empty	(no help line)	ai/tunnel-codex.selftest.zsh
+ai	assert_equal	(no help line)	ai/codex-run.selftest.zsh
+ai	assert_true	(no help line)	ai/tunnel-codex.selftest.zsh
 ai	bo-deploy	pull --rebase + deploy.sh (repo → app)	ai/devenv.zsh
 ai	bo-status	git status + log -5	ai/devenv.zsh
 ai	bo-sync	pull --rebase + sync.sh (app → repo)	ai/devenv.zsh
+ai	check_exit	(no help line)	ai/tunnel-codex.selftest.zsh
 ai	command-palette	run the palette; prints the selected command to stdout	ai/command-palette.zsh
+ai	cs-palette	cold-start vault TUI — D1/D2/D3 explorer + c/x/t move keys (F+G merged; same as temple-cs-manage in TUI mode)	ai/keyboard.zsh
 ai	devenv-help	full devenv key listing (bo-sync, bo-deploy, fr-sync, fr-deploy …)	ai/devenv.zsh
 ai	doorbell-log	tail ~/.config/zsh/temple-doorbell.log	ai/keyboard.zsh
 ai	doorbell-run	ring stale projects now (engine: temple-doorbell.zsh)	ai/temple-doorbell.zsh
@@ -40,6 +47,9 @@ ai	rc-nabla	Start or attach Remote Control session: Nabla Lab	ai/keyboard.zsh
 ai	rc-reposoma	Start or attach Remote Control session: Reposoma	ai/keyboard.zsh
 ai	rc-status	Show all RC projects and their tmux session status	ai/keyboard.zsh
 ai	rc-stop	Stop a running RC tmux session (freya|reposoma|nabla-lab)	ai/claude.zsh
+ai	run	subshell would never reach the caller's variables).	ai/tunnel-codex.selftest.zsh
+ai	run_split	(no help line)	ai/tunnel-codex.selftest.zsh
+ai	temple-cs-manage	cold-start vault manager — TUI (same as cs-palette) + CLI: --list/--to-card/--to-archive/--to-routines	ai/keyboard.zsh
 ai	temple-doorbell-run	--- Main doorbell run ---	ai/temple-doorbell.zsh
 ai	temple-help	temple transport operator panel (see below)	ai/claude.zsh
 ai	temple-mail	send mail	ai/temple-mail.zsh
@@ -49,6 +59,7 @@ ai	temple-mail-switch	(alias: mail-pick) destination picker + preview	ai/temple-
 ai	temple-project-root	Exits non-zero and prints to stderr if unknown.	ai/temple-project-map.zsh
 ai	transport-selftest	sandboxed logic selftest (4/4 green)	ai/keyboard.zsh
 ai	tree-snapshot	Project file tree as JSON (depth 4 · .gitignore-aware)	ai/temple-tree.zsh
+ai	tun	(no help line)	ai/keyboard.zsh
 ai	zenith-zsh	interactive chatbot — knows keyboard wiring, engine inventory,	ai/keyboard.zsh
 archx	archx-help	this panel	archx/commands.zsh
 archx	cputop	top 10 CPU-consuming processes (substrate_cpu_top 10)	archx/keyboard.zsh
@@ -57,6 +68,11 @@ archx	memtop	top 10 memory-consuming processes (substrate_memory_top 10)	archx/k
 archx	services	check status of the watched systemd services (substrate_services_check)	archx/keyboard.zsh
 archx	sysmon	one-shot system overview (load, mem, disk, top procs — substrate_system_overview)	archx/keyboard.zsh
 archx	troubleshoot	quick diagnostics dump: load, top-5 CPU, memory, disk, services	archx/commands.zsh
+experimental	4x1	4x1 [session] [win... | @registry-key] — fold/attach a tmux session with N named windows	experimental/4x1/4x1.zsh
+experimental	exp-list	list installed experimental runners	experimental/dispatcher.zsh
+experimental	exp-run	execute an experimental runner on demand	experimental/dispatcher.zsh
+experimental	ox-alpha	stream one reasoning-enabled stealth/ox-alpha response via OpenRouter	experimental/keyboard.zsh
+experimental	ox-alpha-help	show ox-alpha usage	experimental/keyboard.zsh
 piql	piql-ask	run a piql query on office over SSH (from home; recommended)	piql/tailscale.zsh
 piql	piql-expose	open piql's HTTP API on the tailnet via tailscale serve (Shannon: audit first)	piql/tailscale.zsh
 piql	piql-expose-off	remove the tailscale serve exposure	piql/tailscale.zsh
@@ -120,6 +136,8 @@ sync	sync-help	this panel	sync/guides.zsh
 system	cod	PHP uniqid	system/keyboard.zsh
 system	composer74	Composer on PHP 7.4	system/home.php-composer.zsh
 system	composer8	Composer on PHP 8+	system/home.php-composer.zsh
+system	db-reach	tunnel peer MariaDB → 127.0.0.1:3307 (default)	system/tailscale.zsh
+system	db-reach-down	close the db-reach tunnel	system/tailscale.zsh
 system	hasz	random 21-char hex token	system/keyboard.zsh
 system	msrc	search www tree · arg = pattern	system/shell.zsh
 system	mygrep	recursive grep with line numbers	system/keyboard.zsh
@@ -129,12 +147,17 @@ system	php8	-> Switch to PHP 8.x	system/home.php-composer.zsh
 system	phpst	-> Show PHP status	system/home.php-composer.zsh
 system	src	reload shell config	system/keyboard.zsh
 system	tmcp	office MariaDB MCP stdio probe	system/home.php-composer.zsh
+system	ts-beam	beam file into peer pad · no arg = sync whole pad	system/tailscale.zsh
 system	ts-dash	start HTTP status dashboard (port %s)	system/tailscale.zsh
 system	ts-dash-stop	stop dashboard	system/tailscale.zsh
 system	ts-header	compact startup line (called on shell open)	system/tailscale.zsh
 system	ts-help	this panel	system/tailscale.zsh
 system	ts-ls	formatted peer list (online/offline)	system/tailscale.zsh
+system	ts-mount	sshfs-mount peer path · default mnt: ~/mnt/<peer>	system/tailscale.zsh
+system	ts-mount-kill	rescue: kill sshfs daemon to unblock a frozen (D-state) app	system/tailscale.zsh
 system	ts-pull	pull same-path file from peer (mirror copy)	system/tailscale.zsh
+system	ts-push	push same-path file to peer (mirror copy)	system/tailscale.zsh
+system	ts-umount	unmount a ts-mount point · default: ~/mnt/\$TAILSCALE_PEER (auto daemon-kill if wedged)	system/tailscale.zsh
 system	ts-web	open login.tailscale.com/admin/machines	system/tailscale.zsh
 system	tsip	my tailscale IP (100.x.x.x)	system/keyboard.zsh
 system	tso	ssh with pre-connect status line	system/tailscale.zsh
@@ -142,5 +165,6 @@ system	tsp	ssh to peer (fast, no header)	system/tailscale.zsh
 system	tsping	ping peer · default: \$TAILSCALE_PEER	system/tailscale.zsh
 system	tss	raw status table	system/keyboard.zsh
 system	web-reach	SOCKS v5 proxy at 127.0.0.1:1080 via peer	system/tailscale.zsh
-system	web-reach-firefox	open isolated Firefox through peer	system/tailscale.zsh
 system	web-reach-down	close the web-reach proxy	system/tailscale.zsh
+system	web-reach-firefox	open isolated Firefox through peer	system/tailscale.zsh
+system	zombie-sweep	list zombies + live orphan children · -k to kill the killable ones	system/shell.zsh

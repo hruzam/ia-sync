@@ -33,3 +33,7 @@
   issue card and a cold-start card in the one shared vault, the gaveled cold-start-card GUIDE
   carries the issue category + sort rule + unsorted fallback, and the standalone _issues/ vault
   is reconciled into that shape · `/home/hruzam/ia-sync/.dev/session/cs-card-sys-update/STATUS.md`
+- `voice-meetings-01-threshold` · gate: each of paprika · blackout run once single-agent against
+  claude-voice and gpt-voice with a run record, and a VERDICT per test×vendor scores three
+  checkpoints clear/assisted/miss — four VERDICTs in loops/ ·
+  `/home/hruzam/ia-sync/.dev/session/voice-meetings-01-threshold/STATUS.md`

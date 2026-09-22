@@ -1,6 +1,6 @@
 {
   "comment": "Operator-maintainable list of folders the palette composer (ai/palette-map-gen.py) consumes. 'scopes' are the top-level directories under the zsh root scanned for aliases/functions, each mapping 1:1 to a palette scope name. 'root_files' are the root-level files (directly under the zsh root, no subdirectory) scanned the same way and grouped under scope 'root'. 'excluded' folders are known top-level folders that are deliberately kept OFF the palette until the operator promotes them here (nablarva: not yet wired in — operator decision, decided at the design gate).",
-  "scopes": ["ai", "system", "projects", "piql", "sync", "archx"],
+  "scopes": ["ai", "system", "projects", "piql", "sync", "archx", "experimental"],
   "root_files": [
     "config.home.zsh",
     "config.office.zsh",

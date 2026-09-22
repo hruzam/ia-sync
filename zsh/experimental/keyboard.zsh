@@ -18,4 +18,4 @@ alias exp-run='_exp_run'
 # PARTITION 2: per-brick convenience shims (delegate to _exp_run <id>)
 # -----------------------------------------------------------------------------
 alias ox-alpha='_exp_run ox-alpha'
-alias ox-alpha-help='_exp_run ox-alpha --help'
+alias ox-alpha-help='_exp_run ox-alpha --help'  # show ox-alpha usage
