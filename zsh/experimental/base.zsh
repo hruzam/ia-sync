@@ -43,8 +43,12 @@
 #                           — tmux bed (claude-0/1, codex-0) with pipe-pane
 #                             transcript; loose script, not an exp-run brick
 #                           — EXPERIMENTAL ONLY (not approved)
-#   4x1                    — plugged 2026-09-22 — staged by @Metaterminal, wired by
-#                           @Trajectory (advisor-advanced consulted: proceed, Option A)
+#   t41                    — plugged 2026-09-22 as "4x1", renamed same-day to "t41"
+#                           (digit-leading name broke the palette generator's regex —
+#                             see ai/palette-map-gen.py FUNC_DEF_RE history; renamed to
+#                             sidestep the whole class, not just patch the one symptom)
+#                           — staged by @Metaterminal, wired by @Trajectory
+#                             (advisor-advanced consulted: proceed, Option A)
 #                             — tmux session-fold bed, N named windows, thin/no-cage;
 #                             SOURCED brick (P3), not a runner; brief proposed its own
 #                             top-level 4x1/ scope, hosted here instead (operator call)
@@ -68,6 +72,6 @@
 # or the brick is skipped (degrades to "command absent", never "shell dead").
 # Bricks must be define-only: no work, no prints on source (0009 L2 discipline).
 # -----------------------------------------------------------------------------
-[[ -f ~/.config/zsh/experimental/4x1/4x1.zsh ]] \
-  && zsh -n ~/.config/zsh/experimental/4x1/4x1.zsh 2>/dev/null \
-  && source ~/.config/zsh/experimental/4x1/4x1.zsh
+[[ -f ~/.config/zsh/experimental/t41/t41.zsh ]] \
+  && zsh -n ~/.config/zsh/experimental/t41/t41.zsh 2>/dev/null \
+  && source ~/.config/zsh/experimental/t41/t41.zsh

@@ -68,11 +68,11 @@ archx	memtop	top 10 memory-consuming processes (substrate_memory_top 10)	archx/k
 archx	services	check status of the watched systemd services (substrate_services_check)	archx/keyboard.zsh
 archx	sysmon	one-shot system overview (load, mem, disk, top procs — substrate_system_overview)	archx/keyboard.zsh
 archx	troubleshoot	quick diagnostics dump: load, top-5 CPU, memory, disk, services	archx/commands.zsh
-experimental	4x1	4x1 [session] [win... | @registry-key] — fold/attach a tmux session with N named windows	experimental/4x1/4x1.zsh
-experimental	exp-list	list installed experimental runners	experimental/dispatcher.zsh
+experimental	exp-list	list installed experimental bricks (runners + sourced)	experimental/dispatcher.zsh
 experimental	exp-run	execute an experimental runner on demand	experimental/dispatcher.zsh
 experimental	ox-alpha	stream one reasoning-enabled stealth/ox-alpha response via OpenRouter	experimental/keyboard.zsh
 experimental	ox-alpha-help	show ox-alpha usage	experimental/keyboard.zsh
+experimental	t41	t41 [session] [win... | @registry-key] — fold/attach a tmux session with N named windows	experimental/t41/t41.zsh
 piql	piql-ask	run a piql query on office over SSH (from home; recommended)	piql/tailscale.zsh
 piql	piql-expose	open piql's HTTP API on the tailnet via tailscale serve (Shannon: audit first)	piql/tailscale.zsh
 piql	piql-expose-off	remove the tailscale serve exposure	piql/tailscale.zsh

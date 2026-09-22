@@ -1,9 +1,15 @@
 #!/usr/bin/env zsh
 # =============================================================================
-# 4x1 — tmux session bed. Fold a named session with N named windows.
+# t41 — tmux session bed. Fold a named session with N named windows.
 # =============================================================================
+# NAME    : renamed from 4x1 → t41, 2026-09-22 (same session, operator call) —
+#           4x1's leading digit was the exact class that broke the palette
+#           generator's function-name regex (ai/palette-map-gen.py); t41 (a
+#           letter-first identifier) sidesteps that whole class of friction.
+#           Old references ("4x1") in the maintainer log / journal history
+#           below this date describe the SAME brick under its original name.
 # KIND    : interactive sourced function (lives in the shell), NOT an exp-run runner.
-# STAGE   : experimental brick, hosted under experimental/4x1/ (operator call,
+# STAGE   : experimental brick, hosted under experimental/t41/ (operator call,
 #           2026-09-22 — the staging brief originally proposed its own top-level
 #           4x1/ scope; kept experimental instead). See the MAINTAINER LOG in
 #           experimental/base.zsh for plug date / approval status.
@@ -19,23 +25,23 @@
 
 # NB: capture THIS file's directory at source time so the folder-local registry.json
 #     is found while experimental. `%x` = file being sourced; `:A:h` = abs dir.
-#     On canon, when registry.json moves to registries/, set $_4X1_REGISTRY instead —
+#     On canon, when registry.json moves to registries/, set $_T41_REGISTRY instead —
 #     this default just stops matching, it does not error (default window set still works).
-typeset -g _4X1_DIR="${${(%):-%x}:A:h}"
+typeset -g _T41_DIR="${${(%):-%x}:A:h}"
 
-# 4x1 [session] [win... | @registry-key] — fold/attach a tmux session with N named windows
-4x1() {
+# t41 [session] [win... | @registry-key] — fold/attach a tmux session with N named windows
+t41() {
   emulate -L zsh                       # NB: hygiene — local options, don't inherit caller's setopts
 
   # --- self-check (no tmux side effects) -----------------------------------
   if [[ $1 == --smoke ]]; then
-    print "4x1: ok · dir=$_4X1_DIR · registry=${_4X1_REGISTRY:-$_4X1_DIR/registry.json}"
-    command -v tmux >/dev/null || print -u2 "4x1: WARN tmux not found"
-    command -v jq   >/dev/null || print -u2 "4x1: note jq absent — registry keys disabled, default set still works"
+    print "t41: ok · dir=$_T41_DIR · registry=${_T41_REGISTRY:-$_T41_DIR/registry.json}"
+    command -v tmux >/dev/null || print -u2 "t41: WARN tmux not found"
+    command -v jq   >/dev/null || print -u2 "t41: note jq absent — registry keys disabled, default set still works"
     return 0
   fi
   if [[ $1 == --help || $1 == -h ]]; then
-    print -r -- 'usage: 4x1 [session] [win... | @registry-key]   (default wins: cSharp bus implement audit)'
+    print -r -- 'usage: t41 [session] [win... | @registry-key]   (default wins: cSharp bus implement audit)'
     return 0
   fi
 
@@ -43,10 +49,10 @@ typeset -g _4X1_DIR="${${(%):-%x}:A:h}"
   local s="$1"; (( $# )) && shift      # NB: shift only if there was an arg, else "shift" errors on empty $@
   local -a wins=("$@")                  # remaining args = window names (may be empty, or a single @key)
 
-  # --- registry expansion: `4x1 <sess> @key` -------------------------------
+  # --- registry expansion: `t41 <sess> @key` -------------------------------
   # NB: registry is OPTIONAL. jq missing / file missing / key missing -> wins stays empty
   #     -> falls through to the default set below. Never make this a hard dependency.
-  local reg="${_4X1_REGISTRY:-$_4X1_DIR/registry.json}"
+  local reg="${_T41_REGISTRY:-$_T41_DIR/registry.json}"
   if [[ ${wins[1]} == @* ]] && command -v jq >/dev/null && [[ -f $reg ]]; then
     wins=(${(f)"$(jq -r --arg k "${wins[1]#@}" '.[$k][]? // empty' $reg 2>/dev/null)"})
   fi
@@ -61,7 +67,7 @@ typeset -g _4X1_DIR="${${(%):-%x}:A:h}"
 
   # --- build or re-enter ----------------------------------------------------
   if tmux has-session -t "=$s" 2>/dev/null; then
-    print -u2 "4x1: '$s' exists — attaching"      # NB: idempotent. Never rebuild a live session.
+    print -u2 "t41: '$s' exists — attaching"      # NB: idempotent. Never rebuild a live session.
   else
     tmux new-session -d -s "$s" -n "${wins[1]}" || return   # NB: -d so we can add windows before attach
     local w

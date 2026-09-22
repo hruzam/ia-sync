@@ -62,7 +62,7 @@ keyboard.zsh — AI interactive surface (Gemini + Claude Code RC)
   ox-alpha --no-stream "prompt"
                        print the non-streaming OpenRouter response as JSON
   ox-alpha chat        multi-turn terminal chat; /exit or Ctrl-D leaves and clears history
-  exp-list             list installed experimental runners
+  exp-list             list installed experimental bricks (runners + sourced)
   exp-run <id> [...]   execute an experimental runner on demand
 
   ── Hygiene / freshness ──────────────────────────────────────────────────────

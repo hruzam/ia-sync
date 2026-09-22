@@ -93,7 +93,9 @@ The first runner, `ox-alpha`, is the reference implementation.
    temporarily break the brick's syntax, open a fresh shell, confirm it still boots
    clean and the command is simply absent, then restore.
 
-The first sourced brick, `4x1`, is the reference implementation.
+The first sourced brick, `t41` (staged as `4x1`, renamed same-day — digit-leading names
+broke the palette generator's regex; see `base.zsh` maintainer log), is the reference
+implementation.
 
 ## Remove a brick (trashed as inappropriate — not graduated)
 

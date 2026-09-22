@@ -65,6 +65,35 @@ reconfirmed present.
 No NEW home-parity action beyond HOME SEAT item 1 above — `4x1` ships inside the same
 `experimental/base.zsh` home already needs to source.
 
+**ADDENDUM 2 (same session) — `4x1` renamed to `t41`; `exp-list` fixed to show both
+brick kinds**
+
+Two operator follow-ups. (1) `exp-list` only ever enumerated lazy runners
+(`<id>/runner.zsh`) — a real gap, since the sourced brick above never appeared in its
+own dispatcher's listing. Extended `_exp_list` (`experimental/dispatcher.zsh`) to
+discover both kinds, one line per brick labeled with how to invoke it (`exp-run <id>`
+vs call directly); `_exp_run` now says "call it directly" instead of "unknown
+experiment" when the id names a real sourced brick instead of a runner. (2) Renamed
+`4x1` → `t41` — its digit-leading name was the exact class that broke the palette
+generator's regex earlier today (`ai/palette-map-gen.py` `FUNC_DEF_RE`); renaming
+sidesteps the whole class rather than leaving a fixed-but-fragile precedent standing.
+`git mv` preserved history; every reference updated (`base.zsh` wiring + maintainer
+log, `README.md`, `zsh/AGENTS.md`, the now-stale "runners"-only help line in
+`ai/claude.zsh`). Live orphan sweep required on office after deploy: old
+`~/.config/zsh/experimental/4x1/` removed (`deploy.sh` has no `--delete`).
+
+**HOME SEAT — same sweep needed there once it deploys:**
+`rm -rf ~/.config/zsh/experimental/4x1/` after its next `deploy.sh` run. No other new
+home action beyond ADDENDUM 1's item above.
+
+**NOTE — concurrent committer observed this session:** git history shows commits
+landing directly (`git log`, author `hruzam <hruzam.tempos@hotmail.cz>`) while this
+conversation was running — including one that swept this session's turns 1–2 work
+(the `experimental/` promotion + the `4x1` brick) into a commit, and another that
+resolved this file's own conflict markers (flagged earlier in this entry, now gone).
+No collision on this session's side — re-verified against fresh `git status`/`git log`
+before continuing; this session never ran `git add`/`commit` itself.
+
 ## HOME — 2026-09-18 · Cartan/Astrobley · nano Markdown colours
 
 Home's terminal had the same 256/true-colour capability and the same nano packages as
