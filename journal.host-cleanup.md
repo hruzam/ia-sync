@@ -10,7 +10,7 @@
 
 ---
 
-## OFFICE — 2026-09-22 · Trajectory · pacman -Syu unblock (lib32 drop + deepin-kwin) · php74 rebuilt · AGENTS.md host-check
+## OFFICE — 2026-09-22 · Trajectory · pacman -Syu unblock (lib32 drop + deepin-kwin) · php74 AUR stale vs updated system · AGENTS.md host-check
 
 Routine `sudo pacman -Syu` hit two unrelated blockers; both cleared, system updated.
 
@@ -31,16 +31,20 @@ dependents) mapped in the routine card:
 `_cold-start/routines/ISS.deepin-kwin-vs-plasma-kwin.2026-09-22.md`. Operator kept the
 recorder this round; eviction deferred (majkee's call).
 
-**php74 AUR rebuild (DONE, FPM healthy — TWO exts still stale, OPEN).** php74 stack rebuilt
-`7.4.33-5 → -11` against the updated system; `php74-fpm` active, FantasyObchod (OpenCart)
-loads, imagick now loads (benign 1809/1810 version-skew warning). **OPEN:** `php74-intl` +
-`php74-snmp` did NOT rebuild — still `-5`, linked to ICU 74 / net-snmp 40; system now has ICU
-**78** / net-snmp **45**, so both fail to load (pre-existing, visible since the 01:48 log).
-**Freya hard-requires `ext-intl`** (both `imago_cz` + `freya` composer.json; runtime use in
+**php74 — system updated, AUR stack NOT rebuilt (CORRECTION 2026-09-23).** An earlier version
+of this entry wrongly said the php74 stack was rebuilt `-5 → -11` in-session. It was NOT: the
+09-22 `pacman -Syu` updated only the repo/system side (ICU 74→**78**, net-snmp 40→**45**,
+openssl); php74-* are **AUR** packages, untouched by pacman, and the whole ~60-pkg stack
+stayed at `-5`. Most extensions kept loading (sonames unchanged) so `php74-fpm` ran and
+FantasyObchod (OpenCart) loaded — but `php74-intl` (needs `libicuio.so.74`) and `php74-snmp`
+(needs `libnetsnmp.so.40`) broke, their old sonames gone after the system bump. **Freya
+hard-requires `ext-intl`** (both `imago_cz` + `freya` composer.json; runtime use in
 `PhoneNumberFormatter`, `cart_manager`, Newsletter `Subscribe`, `Helpers`) → Freya fatals on
-intl paths until fixed. FIX: `yay -S php74-intl php74-snmp && sudo systemctl restart
-php74-fpm`. snmp has no app use found — fix opportunistically. Flagged to operator, not yet
-applied. (Recurring class: AUR php74 exts lag system-lib soname bumps — routine-card candidate.)
+intl paths until fixed. FIX: rebuild the php74 AUR stack to `-11` against the current system —
+`yay -S openssl-1.1 $(pacman -Qq | grep '^php74') && sudo systemctl restart php74-fpm` — then
+verify `php74 -m` lists intl/snmp with no load errors. **STILL OPEN as of 2026-09-23:**
+intl/snmp re-checked, both still `-5` and not loading — the AUR rebuild has not taken effect
+yet. Recurring class: AUR php74 exts lag system-lib soname bumps — routine-card candidate.
 
 **AGENTS.md maintenance (this session).** (1) Known-issues pointer corrected from the retired
 `~/reposoma/_issues/` to the active `_cold-start/` fold vault + `/issue-card` skill. (2)
