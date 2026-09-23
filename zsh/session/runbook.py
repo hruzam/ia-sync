@@ -26,7 +26,8 @@ Keybinds:
   y             copy selection path to clipboard (fallback: print buffer)
   B             presence board modal · m / u attach / detach selected bed
   p             collect path into print buffer · b toggle buffer pane
-  ?             open the named-scope help navigator
+  ? h           open the named-scope help navigator
+  H             hide / show the bottom hint belt (remembered)
   r             reload all beds · q / Esc quit (buffer prints to scroll-back)
 
 Board CLI (same grammar core as the TUI):
@@ -729,7 +730,8 @@ def load_ui_state(root):
     return {}
 
 
-def save_ui_state(root, selected_key, expanded, tree_right=False, split=40):
+def save_ui_state(root, selected_key, expanded, tree_right=False, split=40,
+                  belt=True):
     import json
     try:
         p = ui_state_path()
@@ -737,7 +739,7 @@ def save_ui_state(root, selected_key, expanded, tree_right=False, split=40):
         p.write_text(json.dumps({"root": str(root), "selected": selected_key,
                                  "expanded": sorted(expanded),
                                  "tree_right": tree_right,
-                                 "split": split}), encoding="utf-8")
+                                 "split": split, "belt": belt}), encoding="utf-8")
     except OSError:
         pass
 
@@ -1584,18 +1586,24 @@ def refresh_bed_marks(beds):
 
 # ── Draw (v0.3) ───────────────────────────────────────────────────────────────
 
-def main_heights(height, buffer_lines, show_buffer):
-    """Main layout has no footer; only an open buffer reserves bottom rows."""
+BELT_TEXT = " h / ? help · H hide this belt "
+
+
+def main_heights(height, buffer_lines, show_buffer, belt=False):
+    """Bottom rows: optional 1-row hint belt (last row), then an open buffer
+    above it. Belt off = main layout reclaims every row (small-screen law)."""
+    belt_h = 1 if (belt and height >= 2) else 0
     raw_buf_h = (1 + min(len(buffer_lines), 4)) if (show_buffer and buffer_lines) else 0
-    buf_h = min(raw_buf_h, height)
-    return max(0, height - buf_h), buf_h
+    buf_h = min(raw_buf_h, max(0, height - belt_h))
+    return max(0, height - buf_h - belt_h), buf_h
 
 
 def draw(screen, nodes, cursor, tree_off, focus, content, content_off,
-         sel_bed, buffer_lines, show_buffer, message, tree_right=False, split=40):
+         sel_bed, buffer_lines, show_buffer, message, tree_right=False, split=40,
+         belt=False):
     screen.erase()
     h, w = screen.getmaxyx()
-    body_h, buf_h = main_heights(h, buffer_lines, show_buffer)
+    body_h, buf_h = main_heights(h, buffer_lines, show_buffer, belt)
 
     # narrow (<60 cols): the focused pane takes the whole screen — the detail
     # view never disappears with the layout (small-screen law)
@@ -1663,6 +1671,10 @@ def draw(screen, nodes, cursor, tree_off, focus, content, content_off,
         for i, bl in enumerate(buffer_lines[-(buf_h - 1):]):
             safe_add(screen, brow + 1 + i, 0, clipped("  " + bl, w), c("accent"), w)
 
+    # ── hint belt (last row, H toggles) ──
+    if belt and h >= 2:
+        safe_add(screen, h - 1, 0, clipped(BELT_TEXT.ljust(w), w), curses.A_REVERSE, w)
+
     # Feedback overlays row 0 for one tick; it never reserves a row or reflows.
     if message:
         safe_add(screen, 0, 0, clipped(f" {message} ", w),
@@ -1687,6 +1699,7 @@ def palette(screen, beds, root, tree_right=None):
     if tree_right is None:  # CLI flag wins; else remembered preference
         tree_right = bool(ui.get("tree_right", False))
     split = min(80, max(20, int(ui.get("split", 40))))
+    belt = bool(ui.get("belt", True))  # hint belt on by default; H toggles, remembered
     arm_archive = None  # two-press confirm for the drain move
     expanded = set(ui.get("expanded", []))
     cursor = 0
@@ -1719,7 +1732,7 @@ def palette(screen, beds, root, tree_right=None):
 
     def body_height():
         h, _ = screen.getmaxyx()
-        body_h, _ = main_heights(h, buffer_lines, show_buffer)
+        body_h, _ = main_heights(h, buffer_lines, show_buffer, belt)
         return max(1, body_h)
 
     def rebuild(keep_key=None):
@@ -1795,7 +1808,7 @@ def palette(screen, beds, root, tree_right=None):
 
         content = render_selection(node, content_width())
         draw(screen, nodes, cursor, tree_off, focus, content, content_off,
-             bed, buffer_lines, show_buffer, message, tree_right, split)
+             bed, buffer_lines, show_buffer, message, tree_right, split, belt)
         message = ""
 
         try:
@@ -1850,8 +1863,13 @@ def palette(screen, beds, root, tree_right=None):
             if not buffer_lines:
                 show_buffer = False
 
-        elif key == "?":
+        elif key in ("?", "h"):
             help_view(screen)  # overlay only — touches no outer state
+
+        elif key == "H":
+            belt = not belt
+            ensure_visible()
+            message = "hint belt " + ("on" if belt else "off — H brings it back")
 
         elif key == "v":
             tree_right = not tree_right
@@ -2061,7 +2079,7 @@ def palette(screen, beds, root, tree_right=None):
             elif key == curses.KEY_LEFT:
                 focus = "tree"
 
-    save_ui_state(root, last_sel_key, expanded, tree_right, split)
+    save_ui_state(root, last_sel_key, expanded, tree_right, split, belt)
     return buffer_lines
 
 
@@ -2195,11 +2213,17 @@ def selftest():
         ov = render_overview(beds["bed-a"], 60, board_recs=[])
         check("overview carries next", any("do the thing" in t for t, _ in ov))
 
-        # Main layout: no footer reservation at any width/height.
-        check("main layout reclaims all footer rows",
+        # Belt off: main layout reclaims every row. Belt on: exactly one row.
+        check("belt off reclaims all footer rows",
               main_heights(10, [], False) == (10, 0))
         check("only open buffer reserves bottom rows",
               main_heights(10, ["a", "b"], True) == (7, 3))
+        check("hint belt reserves exactly one row",
+              main_heights(10, [], False, belt=True) == (9, 0))
+        check("belt + buffer stack without overlap",
+              main_heights(10, ["a", "b"], True, belt=True) == (6, 3))
+        check("belt yields on a 1-row screen",
+              main_heights(1, [], False, belt=True) == (1, 0))
 
         # Dynamic help scopes + forgiving current/all-scope AND search.
         help_root = Path(td) / "help"

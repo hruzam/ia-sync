@@ -7,7 +7,8 @@ code is truth.
 ## Global (any focus)
 
 ```
-?         open the named-scope help navigator
+? h       open the named-scope help navigator
+H         hide / show the bottom hint belt (remembered)
 Tab       switch pane: tree ↔ content
 q Q Esc   quit (buffer prints to scroll-back)
 r         reload all beds + board + vault
