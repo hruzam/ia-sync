@@ -11,6 +11,26 @@
 ---
 
 ## OFFICE — 2026-09-22 · Trajectory · pacman -Syu unblock (lib32 drop + deepin-kwin) · php74 AUR stale vs updated system · AGENTS.md host-check
+## HOME — 2026-09-23 · Trajectory (ad-hoc) · pacman -Syu + AUR upgrade · same lib32 drop as office
+
+Operator ran all sudo steps by hand (sudo for the driver declined — no NOPASSWD). PAD:
+`.dev/session/upgrade-home/pad.1-upgrade-home.2026-09-23.md`.
+
+- `-Syu` blocked by the **same lib32 multilib drop office hit 2026-09-22**
+  (`ISS.manjaro-lib32-multilib-drop.2026-09-22.md` — now confirmed on both hosts). Home's
+  island was identical (lib32-libcap/pam/audit/libnsl/libtirpc, `lib32-libcap` Required By
+  None); removed via `pacman -Rs`, `-Syu` then clean.
+- AUR (`yay -Sua`): 9 pkgs updated (cursor-bin, claude-desktop, vscodium-bin, chatgpt-desktop,
+  zapzap, lib32-tdb, litehtml0.9, libkcompactdisc, accounts-qml-module). `sublime-text-4
+  4.4200-1` already current. `pacman-contrib` installed → `checkupdates` works sudo-free.
+- Verified after: repo + AUR pending = 0, no failed units.
+- **OPEN — reboot owed:** installed `linux618 6.18.49-1`, running `6.18.39`.
+- **OPEN — orphans (not touched):** `pacman -Qdtq` lists 20 (electron39/41, apache, go,
+  qemu-system-aarch64, ffmpeg4.4, …). Review before any `-Rns`; some may be wanted.
+
+---
+
+## OFFICE — 2026-09-22 · Trajectory · pacman -Syu unblock (lib32 drop + deepin-kwin) · php74 rebuilt · AGENTS.md host-check
 
 Routine `sudo pacman -Syu` hit two unrelated blockers; both cleared, system updated.
 

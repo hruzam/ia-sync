@@ -150,7 +150,9 @@ Expected: running kernel matches installed `linux618`, no failed units, Sublime 
 
 >MAJKEE report 4
 ```zsh
-
+uname -r; systemctl --failed --no-legend; pacman -Q sublime-text-4
+6.18.39-1-MANJARO
+sublime-text-4 4.4200-1
 ```
 
 ### STEP 5 — close out
@@ -164,8 +166,16 @@ Expected: number of changed packages. Driver writes one line to `journal.host-cl
 
 >MAJKEE report 5
 ```zsh
-
+9
 ```
+
+**Driver verification (2026-09-23):**
+- `9` = the 9 AUR packages (STEP 3 did run; report 3 was left empty). The before-list was
+  taken after STEP 2/2a, so repo changes + lib32 removal are not in the diff.
+- lib32 chain gone · `checkupdates` = 0 · `yay -Qua` = 0 · no failed units.
+- **STEP 4 not done:** installed `linux618 6.18.49-1`, running `6.18.39-1` → reboot owed.
+  Report 4 was taken before any reboot.
+- Journal line written: `journal.host-cleanup.md` HOME 2026-09-23. pkglist files may be deleted.
 
 ---
 
@@ -201,3 +211,9 @@ list — the former disappears after STEP 2a.
 ## parked
 
 - Install `pacman-contrib` so future drivers can run `checkupdates` sudo-free.
+
+majkee: I used
+```zsh
+sudo pacman -S pacman-contrib
+```
+installation finished.
