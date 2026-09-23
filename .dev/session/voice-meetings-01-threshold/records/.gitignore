@@ -1,0 +1,3 @@
+# audio stays out of git — ignore everything here except this file
+*
+!.gitignore
