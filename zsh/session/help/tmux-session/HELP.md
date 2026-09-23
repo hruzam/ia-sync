@@ -202,6 +202,87 @@ view; the shared windows live on in `default_2`.
 **Fix a twin already in place:** `tmux detach-client -t /dev/pts/NN`, then
 re-enter that terminal via step 3.
 
+## Build a bed by hand — one terminal column per window
+
+The full manual flow (no `t41`): one **base** session holds the windows and is
+never attached directly; each terminal column gets its own **view** session
+(`<base>--<window>`, same `--` naming as `t41`, so either tool reuses the other's
+views).
+
+```text
+column 1 ──► view  S--cSharp ─┐
+                               ├─► base  S   windows: cSharp | bus
+column 2 ──► view  S--bus    ─┘
+```
+
+Run from a plain terminal — `echo $TMUX` must print nothing (else you nest).
+`=` in a target means exact session name (no prefix match).
+
+**1. Base session + windows** — once per bed:
+
+```sh
+tmux new-session -d -s tunnel-upgrade-01-parametrization                     # -d: create, do not show
+tmux rename-window -t '=tunnel-upgrade-01-parametrization:0' cSharp          # window 0 → cSharp
+tmux new-window -d -t '=tunnel-upgrade-01-parametrization:' -n bus           # next free slot → bus
+tmux list-windows -t '=tunnel-upgrade-01-parametrization' -F '#{window_index}:#{window_name}'   # expect 0:cSharp 1:bus
+```
+
+**2. Column 1 → `cSharp`** (start agent session #1 here):
+
+```sh
+tmux new-session -d -t '=tunnel-upgrade-01-parametrization' -s tunnel-upgrade-01-parametrization--cSharp
+tmux select-window -t '=tunnel-upgrade-01-parametrization--cSharp:cSharp'
+tmux attach -t '=tunnel-upgrade-01-parametrization--cSharp'
+```
+
+`-t` (on new-session) = share that session's windows · `-s` = name of the new view.
+
+**3. Column 2 → `bus`** (start agent session #2 here) — same three lines, `bus`:
+
+```sh
+tmux new-session -d -t '=tunnel-upgrade-01-parametrization' -s tunnel-upgrade-01-parametrization--bus
+tmux select-window -t '=tunnel-upgrade-01-parametrization--bus:bus'
+tmux attach -t '=tunnel-upgrade-01-parametrization--bus'
+```
+
+**4. Verify** — each column must show a *different* view name:
+
+```sh
+tmux list-clients -F '#{client_tty} -> #{session_name}:#{window_name}'
+```
+
+Expected:
+
+```text
+/dev/pts/A -> tunnel-upgrade-01-parametrization--cSharp:cSharp
+/dev/pts/B -> tunnel-upgrade-01-parametrization--bus:bus
+```
+
+Same name on both lines = you attached the base by mistake (twins). Detach, redo 2 or 3.
+
+**Everyday:**
+
+- leave a column, agent keeps running → `Ctrl-b d`
+- come back → only the `attach` line (view still exists; re-running
+  `new-session` fails with `duplicate session` — harmless, just attach)
+- close a view → `tmux kill-session -t '=S--bus'` — window `bus` and its agent live on in `S`
+- stop everything → kill the base `S` (terminates the agents), then the `S--*` views
+- inside a column, do not switch windows (`Ctrl-b n/p/0-9`) — that view then
+  shows the other column's window again. One column = one window.
+
+**Template:**
+
+```text
+S = session name      W = window name
+
+once per session:  tmux new-session -d -s S
+                   tmux rename-window -t '=S:0' <first W>
+once per window:   tmux new-window -d -t '=S:' -n W
+per column:        tmux new-session -d -t '=S' -s S--W
+                   tmux select-window -t '=S--W:W'
+                   tmux attach -t '=S--W'
+```
+
 ## Stop deliberately
 
 These terminate running shells/programs:
