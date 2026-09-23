@@ -36,9 +36,8 @@ holds: >
   Read-only against the presence board, unconditionally — the mechanism itself may never call
   mark or unmark under any code path. Never bare rb-unmark while testing, always by the exact
   id rb-mark returns — proven costly once already this parent session, five real records lost.
-  The five presence records deleted by the parent session's bare unmark sit as uncommitted
-  deletions in ~/reposoma — an open operator decision; never stage anything under
-  ~/reposoma/_active/ from this session. No execution on home from this session — office builds and
+  Never stage anything under ~/reposoma/_active/ from this session (the five records a bare
+  unmark deleted were restored by the operator via git restore, 2026-09-23). No execution on home from this session — office builds and
   verifies; home parity is a journal flag only.
 next: Wake @Trajectory on prompt-0 (RUNBOOK.md) — the operator's deliberate action, on whichever
   carriage they choose.
