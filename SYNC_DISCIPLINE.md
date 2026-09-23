@@ -193,6 +193,41 @@ Before touching ia-sync:
 
 ---
 
+## Presence — even for non-session, direct-edit work
+
+Most work in this repo is NOT a formal `.dev/session/<slug>` bed — it's a quick, direct
+edit to a shared root-level file (`journal.host-cleanup.md`, `AGENTS.md`, etc.), done
+outside any project-session. The presence board (`~/reposoma/_active/`, law:
+`reposoma/raw.guides/runbook/res/presence-board.md`) still applies to that case — `bed`
+may equal `workspace` when there is no formal bed; nothing in the schema requires a
+`.dev/session/` path (verified live, 2026-09-22).
+
+Before a direct edit to a shared root-level file, when you are not already attached to a
+`.dev/session/<slug>` bed for this work:
+
+```bash
+rb-mark ~/ia-sync "direct edit — <what, one line>"   # attach once, before you start
+# rb-mark prints: attached: <32-hex-id> — copy that id
+# ... do the work ...
+rb-unmark <32-hex-id>                                 # detach by THAT EXACT ID when done
+```
+
+**Never run bare `rb-unmark` (no argument) on this shared host.** Verified live 2026-09-22:
+its documented behavior is "no arg = all own on this machine" — every record on this board
+currently shares the same default seat, so "own" means *every* attachment on the board, not
+just yours. A bare `rb-unmark` during doc verification for this very section detached 5
+unrelated, legitimate attachments belonging to other active sessions in one shot. Always
+target the exact id `rb-mark` handed back — proven safe live (mark two, unmark one by id,
+confirm the other survives) before this instruction was written.
+
+This is the WRITE half of what step 4 of "Orient first" (`AGENTS.md`) already asks you to
+CHECK for — mark your own presence so the next seat sees it, not just read others'. Advisory
+only, same as always — it informs, it never blocks, locks, or requires waiting
+(`presence-board.md` "Advisory boundary"). Detach when the edit is done; a stale attachment
+is clutter, not a claim.
+
+---
+
 ## Red flags — stop and flag before continuing
 
 - `git status` shows files you did not touch
@@ -200,7 +235,10 @@ Before touching ia-sync:
 - An agent file appears deleted that you did not delete
 - A deny'd file appears in `git diff --staged`
 - You are about to `git rm` more than 2 files at once
+- Presence-board attachments (`~/reposoma/_active/`) disappear that you did not detach —
+  see "Presence" above; do not try to silently recreate them, tell the operator
 - **Anyone — human or agent — runs or proposes running `sync.sh`**
+- **Anyone — human or agent — runs bare `rb-unmark` (no id argument) on a shared host**
 
 When a red flag appears: commit nothing, write a journal entry describing what you found,
 and leave the decision to the operator or the other machine's seat.

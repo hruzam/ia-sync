@@ -37,3 +37,8 @@
   claude-voice and gpt-voice with a run record, and a VERDICT per test×vendor scores three
   checkpoints clear/assisted/miss — four VERDICTs in loops/ ·
   `/home/hruzam/ia-sync/.dev/session/voice-meetings-01-threshold/STATUS.md`
+- `presence-freshness-00-precmd` · gate: a precmd-hooked presence-board freshness check is live
+  and deployed on office — silent unless a new attachment appeared since the shell started,
+  read-only against the board, no noticeable prompt delay, degrades to silent no-op if unavailable,
+  documented in SYNC_DISCIPLINE.md's Presence section ·
+  `/home/hruzam/ia-sync/.dev/session/presence-freshness-00-precmd/STATUS.md`
