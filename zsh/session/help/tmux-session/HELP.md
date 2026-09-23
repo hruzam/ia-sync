@@ -267,8 +267,11 @@ Same name on both lines = you attached the base by mistake (twins). Detach, redo
   `new-session` fails with `duplicate session` — harmless, just attach)
 - close a view → `tmux kill-session -t '=S--bus'` — window `bus` and its agent live on in `S`
 - stop everything → kill the base `S` (terminates the agents), then the `S--*` views
-- inside a column, do not switch windows (`Ctrl-b n/p/0-9`) — that view then
-  shows the other column's window again. One column = one window.
+- switching windows inside a column (`Ctrl-b n/p/0-9`) is safe — each view keeps its
+  own current window, so the other column does not move. Pattern: **left column
+  switches like tabs** (cSharp / implement / audit), **right column stays fixed**
+  (bus). Only avoid landing both columns on the same window: harmless (same agent,
+  two views), just confusing.
 
 **Template:**
 
