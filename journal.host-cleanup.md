@@ -62,9 +62,14 @@ hard-requires `ext-intl`** (both `imago_cz` + `freya` composer.json; runtime use
 `PhoneNumberFormatter`, `cart_manager`, Newsletter `Subscribe`, `Helpers`) → Freya fatals on
 intl paths until fixed. FIX: rebuild the php74 AUR stack to `-11` against the current system —
 `yay -S openssl-1.1 $(pacman -Qq | grep '^php74') && sudo systemctl restart php74-fpm` — then
-verify `php74 -m` lists intl/snmp with no load errors. **STILL OPEN as of 2026-09-23:**
-intl/snmp re-checked, both still `-5` and not loading — the AUR rebuild has not taken effect
-yet. Recurring class: AUR php74 exts lag system-lib soname bumps — routine-card candidate.
+verify `php74 -m` lists intl/snmp with no load errors. **RESOLVED 2026-09-23:** the php74 AUR
+stack was rebuilt to `-11` — `yay -S php74-intl` compiled the whole php74 split PKGBUILD clean
+against ICU 78 (no EOL-PHP ICU wall; Docker route NOT needed), then the full stack installed
+from `~/.cache/yay/php74/*-7.4.33-11-*.pkg.tar.zst` with no recompile, and `php74-fpm`
+restarted. Verified: 0 packages left at `-5`, `php74 -m` reports 0 load errors, `intl.so`
+links `libicuio.so.78` — Freya's `ext-intl` satisfied. Recurring class: AUR php74 exts lag
+system-lib soname bumps — the fast fix is rebuild-once + install the whole split from the yay
+cache (routine-card candidate).
 
 **AGENTS.md maintenance (this session).** (1) Known-issues pointer corrected from the retired
 `~/reposoma/_issues/` to the active `_cold-start/` fold vault + `/issue-card` skill. (2)
