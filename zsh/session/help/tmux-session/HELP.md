@@ -9,6 +9,22 @@ server → session → windows → panes
 A target is `session:window.pane`. Real office example: `agentive:1.0` means
 session `agentive`, window `1`, pane `0`.
 
+## Most used
+
+```sh
+tmux ls                                  # what sessions exist
+tmux list-windows -a                     # every window, every session
+tmux list-clients                        # who is attached where (collision check)
+tmux attach -t default_2                 # attach — ONLY if nobody else is on it
+t41 default_2 audit                      # 2nd+ terminal → own view, locked to 'audit'
+tmux detach-client -t /dev/pts/NN        # kick a stray twin client
+```
+
+Inside tmux, after `Ctrl-b`: `s` session tree · `w` window tree · `d` detach ·
+`c` new window · `0`–`9` jump window · `z` zoom pane.
+
+Never bare `tmux attach` from a second terminal — see "Find and attach safely".
+
 ## Sessions
 
 List sessions:
@@ -143,6 +159,48 @@ List or delete named buffers:
 tmux list-buffers
 tmux delete-buffer -b agentive-help
 ```
+
+## Find and attach safely (no twin windows)
+
+Twin windows: two terminals on the same session always show the same window —
+"current window" belongs to the **session**, not the terminal. Bare
+`tmux attach` grabs the most-recently-used session, so a second terminal
+silently lands on top of the first.
+
+**1. Find** — what exists, and what is already occupied:
+
+```sh
+tmux list-sessions -F '#{session_name}: #{session_windows} windows'
+tmux list-windows -a -F '#{session_name}:#{window_index} #{window_name}'
+tmux list-clients -F '#{client_tty} -> #{session_name}'
+```
+
+**2. Decide** — is the target session in the `list-clients` output?
+
+- no client on it → plain attach is safe: `tmux attach -t default_2`
+- already has a client → join instead (step 3), or you get twin windows
+
+`Ctrl-b s` (tree browser) has the same trap: `Enter` on an occupied session
+makes you its second client.
+
+**3. Join** — own view on shared windows/panes, reuse if it already exists:
+
+```sh
+tmux attach -t default_2-audit 2>/dev/null \
+  || tmux new-session -t default_2 -s default_2-audit \; select-window -t default_2-audit:audit
+```
+
+Shortcut (experimental brick, same logic): `t41 default_2 audit`. One join per
+bed — 4 terminals on 4 windows = `t41 default_2 cSharp|bus|implement|audit`.
+
+Avoid `new-session -A -t ... \; select-window` — when the session exists, `-A`
+attaches (and blocks) before `select-window` runs.
+
+Killing a joined view (`tmux kill-session -t default_2-audit`) closes only that
+view; the shared windows live on in `default_2`.
+
+**Fix a twin already in place:** `tmux detach-client -t /dev/pts/NN`, then
+re-enter that terminal via step 3.
 
 ## Stop deliberately
 

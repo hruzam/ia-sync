@@ -42,6 +42,8 @@ t41() {
   fi
   if [[ $1 == --help || $1 == -h ]]; then
     print -r -- 'usage: t41 [session] [win... | @registry-key]   (default wins: cSharp bus implement audit)'
+    print -r -- '       t41 <existing-session> <existing-window>  -> join as a grouped session'
+    print -r -- '           locked to that window (second terminal, no twin-window collision)'
     return 0
   fi
 
@@ -67,6 +69,25 @@ t41() {
 
   # --- build or re-enter ----------------------------------------------------
   if tmux has-session -t "=$s" 2>/dev/null; then
+    # --- join as a grouped session, locked to one window ---------------------
+    # NB: tmux tracks "current window" per SESSION, not per client. A second
+    #     terminal that plain-attaches to $s becomes a second client on the
+    #     SAME session, so switching windows in either terminal drags the
+    #     other along ("twin window" collision). A grouped session (new
+    #     session sharing $s's windows/panes via `-t`) tracks its own current
+    #     window instead, so two terminals can sit on two different windows
+    #     of the same fold without colliding.
+    #     Trigger: exactly one window name given, and it already exists in $s.
+    if (( ${#wins} == 1 )) && tmux list-windows -t "=$s" -F '#{window_name}' 2>/dev/null | grep -qxF -- "${wins[1]}"; then
+      local gs="${s}--${wins[1]}"        # NB: stable name -> re-running the join re-enters, not a pileup
+      if ! tmux has-session -t "=$gs" 2>/dev/null; then
+        tmux new-session -t "=$s" -s "$gs" -d || return   # NB: -t joins $s's window group; -d, select before attach
+      fi
+      tmux select-window -t "=$gs:${wins[1]}"
+      print -u2 "t41: joining '$s' locked to window '${wins[1]}' (group session '$gs')"
+      [[ -n $TMUX ]] && tmux switch-client -t "=$gs" || tmux attach -t "=$gs"
+      return
+    fi
     print -u2 "t41: '$s' exists — attaching"      # NB: idempotent. Never rebuild a live session.
   else
     tmux new-session -d -s "$s" -n "${wins[1]}" || return   # NB: -d so we can add windows before attach

@@ -52,6 +52,14 @@
 #                             — tmux session-fold bed, N named windows, thin/no-cage;
 #                             SOURCED brick (P3), not a runner; brief proposed its own
 #                             top-level 4x1/ scope, hosted here instead (operator call)
+#                           — 2026-09-23 @Trajectory: added `t41 <session> <window>` join
+#                             mode — second (third, fourth...) terminal attaches as a
+#                             grouped session (`new-session -t`) locked to one window,
+#                             instead of a second plain-attach client on the same
+#                             session. Fixes the "twin window" collision (tmux tracks
+#                             current-window per SESSION, so two plain-attached clients
+#                             were forced onto the same window). Smoke-tested live
+#                             against a throwaway session — independent curw confirmed.
 #                           — EXPERIMENTAL ONLY (not approved)
 # -----------------------------------------------------------------------------
 
