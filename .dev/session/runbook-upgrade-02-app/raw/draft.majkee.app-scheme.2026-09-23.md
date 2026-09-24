@@ -75,6 +75,57 @@ no bond to specific `.dev/session/<specific-session>`
 --> **reconsiliate** if columns are enough layout, I assume growing needs more space, untill
   today it was only helper
 
+### 3.2.x. @Trajectory notes — tips, observations, upgrade ideas *(append-only, dated)*
+
+> Full architecture: `~/unikuklatrix/nablarva/.dev/session/ovitmugen-00-console/raw/draft.trajectory.ovitmugen-architecture.2026-09-23.md`
+> These notes are the short, growing layer on top of it. Newest at the bottom.
+
+**2026-09-24 · answers to the inline questions in 3.1.1**
+- *"what is session here, colliding to twins?"* A session = a named group of windows. It
+  remembers **one** current window, so two terminals on one session always show the same
+  window (the twins). Fix: every terminal column gets its own **view** session (`<slug>--<win>`),
+  sharing the same windows. Columns are then independent.
+- *"why is pane different from window?"* Window = a whole screen (a tab). Pane = a piece of
+  that screen when you split it. Every window has at least 1 pane; the agent runs in the pane.
+  One agent per window → you can ignore panes.
+- *"are columns enough layout?"* Yes, with layout C: the left pane switches between tabs, so
+  it grows by adding **tabs**, not columns. Screen width stops being the limit.
+
+**2026-09-24 · decided so far** (source: architecture doc §1, §5.7, §9)
+- layout C: frame (own tmux server `ovitmugen`) + agents (normal tmux) · left = tabs, right = runbook fixed
+- split 60/40, live resize `C-a <` / `C-a >` · prefix `C-a` (`C-a C-a` = shell start-of-line)
+- tabs = empty shells, agents started by hand · console = one view: popup `C-a t` / runbook `T` / `ov`
+- docs in nablarva · build in `~/ia-sync/zsh/session/` → `bash deploy.sh`
+
+**2026-09-24 · tips (learned the hard way, 2026-09-23)**
+- **Address by ID, not by name**, after creating anything. One session had two windows named
+  `bus`, and any `:bus` target became a guess. tmux hands back IDs (`@12`, `%7`) at creation.
+- **`=` on a pane target fails** (`=frame:0.1` → can't find pane). `=` is fine for session/window.
+- **Name the tmux server in every call** (`-L default` / `-L ovitmugen`). runbook runs *inside*
+  the frame, so a bare `tmux` from runbook would hit the frame, not the agents.
+- **`window-size largest`** (`~/.tmux.conf`): a tab seen in the narrow left pane *and* on the phone
+  gets sized to the phone's width, so the left pane crops. Plan: per-window `window-size latest`.
+- Safe-kill rule used in the cleanup: a pane hosts an agent if its command isn't a bare shell
+  **or** the shell has child processes. Never kill those.
+
+**2026-09-24 · principles worth keeping beyond ovitmugen** (candidates, not law)
+- **A viewer never owns lifetime.** Frame, termbrana foil, a future GUI: they only *show*.
+  Closing a viewer must never kill an agent or the broker. Direct consequence for nablarva
+  docket 4 (broker as a tmux pane): the broker gets a **tab in the agents server**, never a
+  pane in the frame.
+- **Dry-run = the manual recipe.** Every zsh/py brick's `--dry-run` prints the literal
+  commands; that output is the HELP. Tool and docs can't drift apart.
+- **ovitmugen never types into panes** (no `send-keys`, nablarva L4). It switches *views* only.
+  If someone asks "can ovitmugen send the prompt to tab X?", the answer is no; that's the bus's job.
+
+**upgrade ideas (not scheduled, pick when needed)**
+- `ov ls --json` → termbrana reads it as its dashboard source (3.1 "requires … dashboard part with sessions")
+- phone view `<slug>--phone`: the phone attaches to its own view and never steals the left pane's tab
+- permanent console pane as a preset option (`"fixed": ["runbook","ovitmugen"]`) if the popup gets used constantly
+- t41 folds into ovitmugen (`t41` = thin alias over `ov up`), one preset file for both
+- cross-host frame: home shows office agents (`ssh -t office tmux -L ovitmugen attach`), nablarva Stage 2
+- tab badges in the console: `●` agent running · `○` empty · later `!` = agent waiting for input (read-only signal, never input)
+
 ---
 
 ## 3.3. instarmux *(tool)*
