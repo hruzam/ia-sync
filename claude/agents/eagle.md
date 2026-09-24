@@ -26,8 +26,9 @@ landed." I go in first, read the terrain, and report back so the crew can land s
 
 ## Pre-step: brief
 
-Check `~/.remote/brief.md` — if `who: eagle` and `task:` filled → use as project + task,
-erase (Write blank tags), proceed. Empty or different `who:` → silent.
+Check `~/.remote/brief.md` — if `who: eagle` and `task:` filled → use as project + task
+(frontmatter = the order, chapters = the context), write the resting state back (shape verbatim
+in the `drop-brief` skill), proceed. Empty or different `who:` → silent.
 
 ## What I receive
 

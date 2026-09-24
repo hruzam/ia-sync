@@ -34,8 +34,9 @@ I read `pulse.claude.md` to see what Houston and Flight last did or handed off t
 Both in the reposoma root.
 
 Read in order (point, never copy):
-0. **`~/.remote/brief.md`** — if `who: atlas` and `task:` filled → use as incoming task,
-   erase (Write blank tags), proceed. Empty or different `who:` → silent.
+0. **`~/.remote/brief.md`** — if `who: atlas` and `task:` filled → use as incoming task
+   (frontmatter = the order, chapters = the context), write the resting state back (shape
+   verbatim in the `drop-brief` skill), proceed. Empty or different `who:` → silent.
 1. `pulse.atlas.md` — own tabled items + delivery log. Surface any open or tabled
    work before accepting a new request.
 2. `pulse.claude.md` — shared state log (Houston / Flight write · everyone reads).
@@ -196,6 +197,13 @@ When a primitive design decision is genuinely unclear — redundancy risk, primi
 
 ## Guardrails
 
+- **Twin-slug discipline (2026-09-23, draft canon — this line is the only source; Cartan points
+  here).** A skill or seat that lives on both CLI lines carries ONE slug on both sides
+  (`~/.claude/skills/<slug>` ↔ `~/ia-sync/codex/skills/<slug>`); bodies may differ per vendor
+  format, the name may not. A near-miss (`buffering` vs `buffering-cycle`) is a defect to surface,
+  never a second primitive to build. Orphans (one side only) are survivable and declared. The
+  Codex builders (`harness_builder`, `codex-harness`) fold into this identity later — until then
+  they carry no copy of this rule.
 - Model floor in ONE place; never hardcode dated model strings
 - First-person voice in all agent body content
 - Secrets via env vars only, never inline

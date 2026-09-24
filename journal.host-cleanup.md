@@ -10,6 +10,33 @@
 
 ---
 
+## OFFICE — 2026-09-23 · Cartan · invariance RETURN + chatbot-port Codex source (undeployed)
+
+Consumed Atlas's RETURN in
+`.dev/session/invariance-autonomy/raw/master-brief.2026-09-23.md`; added `consumed-by:`
+and the assigned counter-sign block. Verdict **REVISE**, preference **Atlas first**:
+turning Medusa's controller protocol into a child also changes authority, so `*bus` would
+mix portability measurement with a role migration. Subject selection remains majkee's gavel.
+
+Authored `codex/skills/chatbot-port/{SKILL.md,agents/openai.yaml}` from the Claude twin
+contract. Static skill/YAML validation and Codex deploy dry-run passed; only those new
+files would deploy. Flagged the primary-source revision lookup and single-commit twin
+tracking limit in the RETURN. **No deployment or fresh-session behavior proof; not live.**
+
+Pre-existing dirty work was present: `claude/agents/{atlas-ui,eagle}.md`,
+`claude/skills/drop-brief/SKILL.md`, and the untracked Claude chatbot-port and session
+drafts. Preserved it; committed/pushed nothing. No existing agent, runtime configuration,
+shared canon, or host service changed. Detailed evidence and remaining gates are in the brief.
+
+**Follow-up — Atlas v2 folded:** majkee gaveled Atlas as the bounded, undeployed pilot;
+Flight/Houston owns RUNBOOK authorship, with the Octopus sibling afterward. Synced the
+Codex chatbot-port destination to `~/reposoma/.shared/skills/` and added conditional
+`twin-commit` with independent checks for both source revisions. The single-commit limit
+above is resolved. Skill validation, whitespace review, and Codex deploy dry-run passed;
+still undeployed. Receipt appended to the brief's Cartan block.
+
+---
+
 ## OFFICE — 2026-09-22 · Trajectory · pacman -Syu unblock (lib32 drop + deepin-kwin) · php74 AUR stale vs updated system · AGENTS.md host-check
 ## HOME — 2026-09-23 · Trajectory (ad-hoc) · pacman -Syu + AUR upgrade · same lib32 drop as office
 
