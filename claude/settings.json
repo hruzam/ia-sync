@@ -37,20 +37,9 @@
   "env": {
     "ANTHROPIC_DEFAULT_OPUS_MODEL": "claude-opus-4-8"
   },
-  "hooks": {
-    "SessionStart": [
-      {
-        "hooks": [
-          {
-            "type": "command",
-            "command": "[ -f \"$HOME/.remote/OFF\" ] || { timeout 4 git -C \"$HOME/.remote\" pull --ff-only origin core -q 2>/dev/null; grep -q '^what: .' \"$HOME/.remote/task.md\" 2>/dev/null && { echo 'REMOTE TASK WAITING — take it with /remote-read:'; cat \"$HOME/.remote/task.md\"; }; }; exit 0"
-          }
-        ]
-      }
-    ]
-  },
   "effortLevel": "high",
   "showThinkingSummaries": true,
+  "enableWorkflows": false,
   "skipWorkflowUsageWarning": true,
   "theme": "dark",
   "inputNeededNotifEnabled": true,
