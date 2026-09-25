@@ -1,0 +1,5 @@
+{
+  "_about": "ovitmugen presets — ov-up <slug> @<key>. tabs = window names (empty shells); fixed = named command (runbook | shell); split = width of the fixed RIGHT pane (40% → left 60 / right 40). Keys starting with _ are ignored. Seeded from experimental/t41/registry.json 2026-09-25.",
+  "csharp": { "tabs": ["cSharp", "bus", "implement", "audit"], "fixed": "runbook", "split": "40%" },
+  "web":    { "tabs": ["front", "api", "db"],                   "fixed": "runbook", "split": "40%" }
+}

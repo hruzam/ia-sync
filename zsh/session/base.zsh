@@ -34,3 +34,10 @@
 # -----------------------------------------------------------------------------
 # PARTITION 4+ (reserved): cold-start cards engine (post temple gate)
 # -----------------------------------------------------------------------------
+
+# -----------------------------------------------------------------------------
+# PARTITION 5: ovitmugen engine — tmux manager (frame + agents; views only)
+# Added 2026-09-25 (@Trajectory, majkee go). Design + notice:
+#   ~/unikuklatrix/nablarva/.dev/session/ovitmugen-00-console/raw/
+# -----------------------------------------------------------------------------
+[[ -f ~/.config/zsh/session/ovitmugen.zsh ]] && source ~/.config/zsh/session/ovitmugen.zsh
