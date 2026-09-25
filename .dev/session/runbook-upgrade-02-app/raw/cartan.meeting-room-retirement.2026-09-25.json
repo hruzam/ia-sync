@@ -1,0 +1,60 @@
+{
+  "schema": "muticula-evidence-retirement/v1",
+  "writer": "cartan-muticula",
+  "verified_at": "2026-09-25T03:03:01+02:00",
+  "authority": "/home/hruzam/ia-sync/.dev/session/runbook-upgrade-02-app/raw/cartan.b0-go.2026-09-25.md",
+  "prior_move_map": "/home/hruzam/ia-sync/.dev/session/runbook-upgrade-02-app/raw/cartan.meeting-room-move.2026-09-25.json",
+  "retired_redirects": [
+    ".dev/session/rellays-claude-codex/CARTAN-TRAJECTORY-concurrency-verdict.2026-09-24.md",
+    ".dev/session/rellays-claude-codex/CARTAN-TRAJECTORY-muticula-coordination.2026-09-24.md",
+    ".dev/session/rellays-claude-codex/TRAJECTORY-CARTAN-concurrency-challenge.2026-09-24.md",
+    ".dev/session/rellays-claude-codex/TRAJECTORY-CARTAN-research.hardcoded-boundaries.2026-09-24.md"
+  ],
+  "verification": {
+    "redirects_absent": 4,
+    "raw_original_hashes_preserved": 4,
+    "active_citations_rewired": [
+      "RUNBOOK.md",
+      "raw/draft.majkee.app-scheme.2026-09-23.md"
+    ],
+    "frozen_bus_and_migration_map_unchanged": true,
+    "protected_files_unchanged": true,
+    "staged_diff_unchanged": true
+  },
+  "commit_authorized": false,
+  "committer": "cartan-muticula",
+  "commit_paths": [
+    ".dev/session/presence-freshness-00-precmd/RUNBOOK.md",
+    ".dev/session/presence-freshness-00-precmd/STATUS.md",
+    ".dev/session/runbook-upgrade-02-app/RUNBOOK.md",
+    ".dev/session/runbook-upgrade-02-app/STATUS.md",
+    ".dev/session/runbook-upgrade-02-app/_bus/01.cartan-muticula.point.md",
+    ".dev/session/runbook-upgrade-02-app/_bus/01.cartan-muticula.verdict.md",
+    ".dev/session/runbook-upgrade-02-app/_bus/01.trajectory-dashboard.return.md",
+    ".dev/session/runbook-upgrade-02-app/_bus/02.trajectory-dashboard.point.md",
+    ".dev/session/runbook-upgrade-02-app/_bus/03.cartan-muticula.point.md",
+    ".dev/session/runbook-upgrade-02-app/_bus/04.cartan-muticula.point.md",
+    ".dev/session/runbook-upgrade-02-app/raw/CARTAN-TRAJECTORY-concurrency-verdict.2026-09-24.md",
+    ".dev/session/runbook-upgrade-02-app/raw/CARTAN-TRAJECTORY-muticula-coordination.2026-09-24.md",
+    ".dev/session/runbook-upgrade-02-app/raw/TRAJECTORY-CARTAN-concurrency-challenge.2026-09-24.md",
+    ".dev/session/runbook-upgrade-02-app/raw/TRAJECTORY-CARTAN-research.hardcoded-boundaries.2026-09-24.md",
+    ".dev/session/runbook-upgrade-02-app/raw/cartan.b0-go.2026-09-25.md",
+    ".dev/session/runbook-upgrade-02-app/raw/cartan.control-validation.2026-09-24.md",
+    ".dev/session/runbook-upgrade-02-app/raw/cartan.meeting-room-move.2026-09-25.json",
+    ".dev/session/runbook-upgrade-02-app/raw/cartan.meeting-room-retirement.2026-09-25.json",
+    ".dev/session/runbook-upgrade-02-app/raw/cartan.native-runbook-skill-design.2026-09-24.md",
+    ".dev/session/runbook-upgrade-02-app/raw/cartan.native-runbook-skill-review.2026-09-24.md",
+    ".dev/session/runbook-upgrade-02-app/raw/coordination.germline-00-home.2026-09-25.md",
+    ".dev/session/runbook-upgrade-02-app/raw/csharp-head/SKILL.md",
+    ".dev/session/runbook-upgrade-02-app/raw/draft.majkee.app-scheme.2026-09-23.md",
+    ".dev/session/runbook-upgrade-02-app/raw/trajectory.keeper.presence-freshness-00-precmd.2026-09-24.md",
+    "pulse.md"
+  ],
+  "excluded_dirty_paths": [
+    "codex/skills/chatbot-port/SKILL.md",
+    "journal.host-cleanup.md",
+    "_staging/codex/germline-home.return.2026-09-25.md",
+    ".dev/session/germline-00-home/"
+  ],
+  "note": "This inventory replaces the prior move-time set for review. B0 evidence and RETURNs created later need separate content review before inclusion. Historical source paths remain only in frozen evidence/mappings."
+}

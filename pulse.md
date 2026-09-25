@@ -3,6 +3,13 @@
 `bounded router (raw.guides/runbook/GUIDE.md): active slug · gate · exact STATUS path. No next`
 `action, no narrative — STATUS.md is the sole doing-state for its gate.`
 
+- `germline-00-home` · gate: after commit + deploy, a fresh Claude session and a fresh Codex session
+  each resolve buffering-cycle from ~/reposoma/.germline/skills/ via chatbot-port (update-ask → no;
+  --check equal), ~/.germline resolves on office, .shared/ + raw.shared-skills/ absent from reposoma ·
+  `/home/hruzam/ia-sync/.dev/session/germline-00-home/STATUS.md`
+
+- `runbook-upgrade-02-app` · gate: Majkee records GO or STOP on an independently witnessed muticula v0 qualification package covering unique writer binding, atomic file/subtree reservations, pre-write refusal in fresh Claude and Codex sessions, explicit release/recovery, and truthful coverage and integration boundaries. · `/home/hruzam/ia-sync/.dev/session/runbook-upgrade-02-app/STATUS.md`
+
 - `reversal-tunel-00-leader` · gate: both instrument siblings closed with receipts promoted +
   leader's closing sweep confirms owed edits landed (HANDSHAKE r4 · tunnel GUIDE direction section ·
   wiring verified) · `/home/hruzam/ia-sync/.dev/session/reversal-tunel-00-leader/STATUS.md`
@@ -37,8 +44,3 @@
   claude-voice and gpt-voice with a run record, and a VERDICT per test×vendor scores three
   checkpoints clear/assisted/miss — four VERDICTs in loops/ ·
   `/home/hruzam/ia-sync/.dev/session/voice-meetings-01-threshold/STATUS.md`
-- `presence-freshness-00-precmd` · gate: a precmd-hooked presence-board freshness check is live
-  and deployed on office — silent unless a new attachment appeared since the shell started,
-  read-only against the board, no noticeable prompt delay, degrades to silent no-op if unavailable,
-  documented in SYNC_DISCIPLINE.md's Presence section ·
-  `/home/hruzam/ia-sync/.dev/session/presence-freshness-00-precmd/STATUS.md`

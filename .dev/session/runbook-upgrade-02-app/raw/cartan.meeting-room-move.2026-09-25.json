@@ -1,0 +1,85 @@
+{
+  "schema": "muticula-evidence-relocation/v1",
+  "phase": "verified",
+  "writer": "cartan-muticula",
+  "date": "2026-09-25",
+  "authority": "/home/hruzam/ia-sync/.dev/session/runbook-upgrade-02-app/_bus/02.trajectory-dashboard.point.md",
+  "prior_verdict": "/home/hruzam/ia-sync/.dev/session/runbook-upgrade-02-app/_bus/01.cartan-muticula.verdict.md",
+  "files": [
+    {
+      "name": "TRAJECTORY-CARTAN-concurrency-challenge.2026-09-24.md",
+      "source": "/home/hruzam/ia-sync/.dev/session/rellays-claude-codex/TRAJECTORY-CARTAN-concurrency-challenge.2026-09-24.md",
+      "target": "/home/hruzam/ia-sync/.dev/session/runbook-upgrade-02-app/raw/TRAJECTORY-CARTAN-concurrency-challenge.2026-09-24.md",
+      "original_sha256": "db9d7a902170a7f7a2e6d43e4a5ad1db77eb91cebd67f39f4ce3c65df4ba2a27",
+      "stub_sha256": "8b14b560d4cdf89e62f2474aa3830e3570f76cd90d0e10783161a34aa84c3fe8",
+      "stub": "Moved to [TRAJECTORY-CARTAN-concurrency-challenge.2026-09-24.md](/home/hruzam/ia-sync/.dev/session/runbook-upgrade-02-app/raw/TRAJECTORY-CARTAN-concurrency-challenge.2026-09-24.md); safe to delete this stub only after its RUNBOOK/BUS citations are retired.\n"
+    },
+    {
+      "name": "CARTAN-TRAJECTORY-concurrency-verdict.2026-09-24.md",
+      "source": "/home/hruzam/ia-sync/.dev/session/rellays-claude-codex/CARTAN-TRAJECTORY-concurrency-verdict.2026-09-24.md",
+      "target": "/home/hruzam/ia-sync/.dev/session/runbook-upgrade-02-app/raw/CARTAN-TRAJECTORY-concurrency-verdict.2026-09-24.md",
+      "original_sha256": "933f21514252eab450756c07a71bb26b7dd2d80f45b87af3f46b633719eb9929",
+      "stub_sha256": "df4ddd9faa15283c8ff1e17ca813aa5e27090215635788aac73149962fb0df8f",
+      "stub": "Moved to [CARTAN-TRAJECTORY-concurrency-verdict.2026-09-24.md](/home/hruzam/ia-sync/.dev/session/runbook-upgrade-02-app/raw/CARTAN-TRAJECTORY-concurrency-verdict.2026-09-24.md); safe to delete this stub only after its RUNBOOK/BUS citations are retired.\n"
+    },
+    {
+      "name": "CARTAN-TRAJECTORY-muticula-coordination.2026-09-24.md",
+      "source": "/home/hruzam/ia-sync/.dev/session/rellays-claude-codex/CARTAN-TRAJECTORY-muticula-coordination.2026-09-24.md",
+      "target": "/home/hruzam/ia-sync/.dev/session/runbook-upgrade-02-app/raw/CARTAN-TRAJECTORY-muticula-coordination.2026-09-24.md",
+      "original_sha256": "1d054b053dfccc1be6afc6926dc57760b2c2b5f3c3ce38c303c7376429889cd9",
+      "stub_sha256": "240d989ce6e1e788c8ac0b619f32a1262197e722d4762600b7bda44c0fbb569d",
+      "stub": "Moved to [CARTAN-TRAJECTORY-muticula-coordination.2026-09-24.md](/home/hruzam/ia-sync/.dev/session/runbook-upgrade-02-app/raw/CARTAN-TRAJECTORY-muticula-coordination.2026-09-24.md); safe to delete this stub only after its RUNBOOK/BUS citations are retired.\n"
+    },
+    {
+      "name": "TRAJECTORY-CARTAN-research.hardcoded-boundaries.2026-09-24.md",
+      "source": "/home/hruzam/ia-sync/.dev/session/rellays-claude-codex/TRAJECTORY-CARTAN-research.hardcoded-boundaries.2026-09-24.md",
+      "target": "/home/hruzam/ia-sync/.dev/session/runbook-upgrade-02-app/raw/TRAJECTORY-CARTAN-research.hardcoded-boundaries.2026-09-24.md",
+      "original_sha256": "0fa3357d834893d9549a52a684a5a71a317b2af8ed795451c1f61f2eeb34ec2b",
+      "stub_sha256": "3d3c70c922dbecd6b3948b225c4c9f0252e1bf3d9a89b34f630f11c8b6147a0d",
+      "stub": "Moved to [TRAJECTORY-CARTAN-research.hardcoded-boundaries.2026-09-24.md](/home/hruzam/ia-sync/.dev/session/runbook-upgrade-02-app/raw/TRAJECTORY-CARTAN-research.hardcoded-boundaries.2026-09-24.md); safe to delete this stub only after its RUNBOOK/BUS citations are retired.\n"
+    }
+  ],
+  "committer": "cartan-muticula",
+  "commit_authorized": false,
+  "commit_paths": [
+    ".dev/session/presence-freshness-00-precmd/RUNBOOK.md",
+    ".dev/session/presence-freshness-00-precmd/STATUS.md",
+    ".dev/session/rellays-claude-codex/CARTAN-TRAJECTORY-concurrency-verdict.2026-09-24.md",
+    ".dev/session/rellays-claude-codex/CARTAN-TRAJECTORY-muticula-coordination.2026-09-24.md",
+    ".dev/session/rellays-claude-codex/TRAJECTORY-CARTAN-concurrency-challenge.2026-09-24.md",
+    ".dev/session/rellays-claude-codex/TRAJECTORY-CARTAN-research.hardcoded-boundaries.2026-09-24.md",
+    ".dev/session/runbook-upgrade-02-app/RUNBOOK.md",
+    ".dev/session/runbook-upgrade-02-app/STATUS.md",
+    ".dev/session/runbook-upgrade-02-app/_bus/01.cartan-muticula.point.md",
+    ".dev/session/runbook-upgrade-02-app/_bus/01.cartan-muticula.verdict.md",
+    ".dev/session/runbook-upgrade-02-app/_bus/01.trajectory-dashboard.return.md",
+    ".dev/session/runbook-upgrade-02-app/_bus/02.trajectory-dashboard.point.md",
+    ".dev/session/runbook-upgrade-02-app/raw/CARTAN-TRAJECTORY-concurrency-verdict.2026-09-24.md",
+    ".dev/session/runbook-upgrade-02-app/raw/CARTAN-TRAJECTORY-muticula-coordination.2026-09-24.md",
+    ".dev/session/runbook-upgrade-02-app/raw/TRAJECTORY-CARTAN-concurrency-challenge.2026-09-24.md",
+    ".dev/session/runbook-upgrade-02-app/raw/TRAJECTORY-CARTAN-research.hardcoded-boundaries.2026-09-24.md",
+    ".dev/session/runbook-upgrade-02-app/raw/cartan.control-validation.2026-09-24.md",
+    ".dev/session/runbook-upgrade-02-app/raw/cartan.meeting-room-move.2026-09-25.json",
+    ".dev/session/runbook-upgrade-02-app/raw/cartan.native-runbook-skill-design.2026-09-24.md",
+    ".dev/session/runbook-upgrade-02-app/raw/cartan.native-runbook-skill-review.2026-09-24.md",
+    ".dev/session/runbook-upgrade-02-app/raw/csharp-head/SKILL.md",
+    ".dev/session/runbook-upgrade-02-app/raw/draft.majkee.app-scheme.2026-09-23.md",
+    ".dev/session/runbook-upgrade-02-app/raw/trajectory.keeper.presence-freshness-00-precmd.2026-09-24.md",
+    "pulse.md"
+  ],
+  "excluded_dirty_paths": [
+    "codex/skills/chatbot-port/SKILL.md",
+    "journal.host-cleanup.md",
+    "_staging/codex/germline-home.return.2026-09-25.md"
+  ],
+  "interpretation": "This records relocation and a bounded proposed commit set, not stage/commit/push authorization. Recheck the exact diff for concurrent edits before Git operations.",
+  "verified_at": "2026-09-25T00:49:42+02:00",
+  "verification": {
+    "originals_byte_preserved": 4,
+    "old_path_redirects_verified": 4,
+    "protected_files_unchanged": 16,
+    "presence_set_unchanged": true,
+    "git_index_diff_unchanged": true,
+    "verdict_existed_before_relocation": true
+  }
+}
