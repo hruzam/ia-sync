@@ -1,6 +1,6 @@
 ---
 name: chatbot-port
-description: Invoke as /chatbot-port <slug> [--check]. Ports one CLI skill (Claude and/or Codex) into a chatbot-readable file ~/reposoma/.shared/skills/skill.<slug>.md — method kept, harness stripped, provenance stamped. No slug → advisory list of portable skills. Unknown slug → refuses. Existing port → asks "update only?". --check → lists ports that fell behind their source.
+description: Invoke as /chatbot-port <slug> [--check]. Ports one CLI skill (Claude and/or Codex) into a chatbot-readable file ~/reposoma/.germline/skills/skill.<slug>.md — method kept, harness stripped, provenance stamped. No slug → advisory list of portable skills. Unknown slug → refuses. Existing port → asks "update only?". --check → lists ports that fell behind their source.
 argument-hint: <slug> [--check]
 disable-model-invocation: true
 ---
@@ -15,7 +15,7 @@ native expression. Contract changes land in both twins together or in neither.
 
 - Claude home  `~/.claude/skills/<slug>/SKILL.md`
 - Codex home   `~/.agents/skills/<slug>/SKILL.md` (deploy target of `~/ia-sync/codex/skills/`)
-- Port home    `~/reposoma/.shared/skills/skill.<slug>.md`
+- Port home    `~/reposoma/.germline/skills/skill.<slug>.md`
 - Naming precedent: `~/reposoma/raw.vendor-neutral-agents/ptyra/skill.*.md` — the `skill.`
   prefix tells a chatbot "this is a method" when the file lands in its memory.
 
@@ -89,5 +89,5 @@ Read-only: no fold, no overwrite prompt, no change to any port.
 
 ## What I do not do
 
-No README or index in the port home — ".shared/skills as a bus" is parked for its own
+No README or index in the port home — ".germline/skills as a bus" is parked for its own
 session. No edits to the CLI source. No deploy, commit, or push.

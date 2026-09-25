@@ -14,7 +14,7 @@ the twin-slug discipline lives in `~/ia-sync/claude/agents/atlas-ui.md`, **Guard
 
 - Claude source: `~/.claude/skills/<slug>/SKILL.md`.
 - Codex source: `~/.agents/skills/<slug>/SKILL.md`.
-- Only write destination: `~/reposoma/.shared/skills/skill.<slug>.md`.
+- Only write destination: `~/reposoma/.germline/skills/skill.<slug>.md`.
 - Naming precedent: `~/reposoma/raw.vendor-neutral-agents/ptyra/skill.*.md`.
 
 I read the deployed homes for lookup and folding. Revision provenance comes from the

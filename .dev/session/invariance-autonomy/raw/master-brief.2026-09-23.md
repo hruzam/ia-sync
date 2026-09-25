@@ -69,7 +69,7 @@ here (HANDSHAKE §Mail by path). Shape of this exchange: RETURN._
 
 ### Tree + generic naming (for a future hardcoded reader)
 ```
-reposoma/.shared/agents/<slug>/
+reposoma/.germline/agents/<slug>/
 ├── identity.md        ← the ONLY thing rendered into wrappers (kernel)
 ├── README.md          ← provenance + sync map (ptyra rules 1–3)
 └── res/               ← read on need, never rendered (Sella L9 anchors)
@@ -161,7 +161,7 @@ twins: `cold-start-card · guide · issue-card · therapy`.
   maintenance framing. **Open for Cartan:** sync `twin-commit:` into the Codex twin (one
   paragraph, both twins together); `octopus` for the Codex-side RUNBOOK sibling once Flight/
   Houston has authored the Claude RUNBOOK.
-- Parked, own session later: ".shared/skills as a bus" (README/index for connector discovery).
+- Parked, own session later: ".germline/skills as a bus" (README/index for connector discovery).
 
 ## Do not re-read
 
@@ -279,7 +279,7 @@ consumed-by: 2026-09-23 · codex/cartan · Atlas POINT + small RETURN
 
 Received the Atlas subject gavel and planning order: Flight/Houston authors the RUNBOOK;
 the Octopus sibling follows. Synced `codex/skills/chatbot-port/SKILL.md` to the Claude v2
-contract: destination `~/reposoma/.shared/skills/skill.<slug>.md`; `twin-commit` records the
+contract: destination `~/reposoma/.germline/skills/skill.<slug>.md`; `twin-commit` records the
 secondary source's last-touch revision only for `twin: both`; `--check` compares both sides
 and reports missing twin provenance as unverified. Corrected the reference to the Claude
 contract's renamed sections. The earlier single-commit limitation above is now resolved.
