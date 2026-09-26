@@ -15,6 +15,7 @@
       "Bash(systemctl is-active:*)",
       "Bash(systemctl is-enabled:*)",
       "Bash(systemctl status:*)",
+      "Bash(ssh hruzam:*)",
       "Read(//home/hruzam/**)"
     ],
     "deny": [

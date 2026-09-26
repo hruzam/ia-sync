@@ -254,7 +254,8 @@ Flat bed scaffolded (harness tracked in place).
 
 **Pending:**
 - `git init` (branch `core`) + first commit + `gh repo create` — see the emitted shell block.
-- `registries/projects.json` entry via @Delta — activates after `ia-sync` + shell reload.
+- `registries/projects.json` entry (ia-sync table) via @Delta — activates after commit +
+  `deploy.sh` + shell reload.
 - Gate Phase 1 goal with @Houston
 ```
 
@@ -338,8 +339,12 @@ the counterpart beacons to point back.
 
 ## 5. Machine layer — registries/projects.json
 
-**File:** `~/.config/zsh/registries/projects.json` — the AUTHORITATIVE source for
-physical repo-root paths (decision 0008/0004, amended 2026-08-15).
+**File:** `~/ia-sync/zsh/registries/projects.json` — the **table** copy; the AUTHORITATIVE
+source for physical repo-root paths (decision 0008/0004, amended 2026-08-15).
+`deploy.sh` rsyncs `~/ia-sync/zsh/` → `~/.config/zsh/` — an edit made only to the live
+`~/.config/zsh/registries/projects.json` is **silently erased** on the next deploy
+(2026-09-26 near-miss, pajdulium bootstrap). Edit the table; deploy makes it live.
+Optional: mirror the same edit to live for immediate use, then `diff` both → identical.
 
 ⚠ **Fresh-read rule (standing warning):** read the file from disk before editing —
 never act from held session memory. The file is touched by multiple sessions.
@@ -357,8 +362,11 @@ hand-edit to the generated array is silently overwritten on the next deploy. Edi
 JSON, never the generated file.
 
 **🔴 Activation gate:** this entry is not live until:
-1. `ia-sync` deploy runs (runs `gen-temple-map.sh`, then propagates the regenerated file)
-2. Shell is reloaded (`source ~/.config/zsh/ai/base.zsh` or new terminal)
+1. Commit + push `zsh/registries/projects.json` in `~/ia-sync` (stage that file only —
+   the table often holds other sessions' uncommitted work).
+2. `bash ~/ia-sync/deploy.sh -n` → review → `bash ~/ia-sync/deploy.sh`
+   (runs `gen-temple-map.sh`, then rsyncs to live). Other host: `git pull` + `deploy.sh`.
+3. Shell is reloaded (`source ~/.config/zsh/ai/base.zsh` or new terminal)
 
 Until then, `temple-project-root <project>` exits non-zero. Flag this to the operator.
 
@@ -407,8 +415,13 @@ git push -u origin core
 # Local-only for now? Defer the `gh repo create` + push lines until ready to host
 # remotely — the local repo is already valid without a remote.
 
-# 2. Machine layer activation (after the registries/projects.json edit from step 5)
-ia-sync
+# 2. Machine layer activation (after the step-5 edit on the ia-sync table)
+cd ~/ia-sync
+git add zsh/registries/projects.json    # this file only
+git commit -m "project map: + <project>"
+git push
+bash ~/ia-sync/deploy.sh -n             # dry run — review the list
+bash ~/ia-sync/deploy.sh
 source ~/.config/zsh/ai/base.zsh        # or open a new terminal
 temple-project-root <project>           # smoke test — should resolve the path
 ```
@@ -423,11 +436,11 @@ Surface after the shell commands block:
 ✅ Harness scaffolded (flat): ~/www/<scope-group>/<project>/
 ✅ Registry beacon:           reposoma/registry/<project>.md
 ✅ Registry index:            row added to registry/index.md
-✅ Machine map entry written: registries/projects.json
+✅ Machine map entry written: ~/ia-sync/zsh/registries/projects.json (table)
                                (regenerates temple-project-map.zsh on next deploy —
                                 never hand-edit the generated file)
 
-⏳ ia-sync + shell reload     → machine-layer wiring live after this
+⏳ ia-sync commit + deploy.sh + shell reload → machine-layer wiring live after this
 ⏳ Git repo:                  step 1 shell commands (git init / commit / gh repo create)
 
 Optional / later:
@@ -449,7 +462,8 @@ Optional / later:
 - Confirm before writing each layer (steps 3–6 separately). Never bulk-write all layers.
 - Machine-layer edits (step 5) require a **fresh read from disk** before writing.
   Dispatch to @Delta. Do not write from held session memory. Edit
-  `registries/projects.json` only — never the generated `temple-project-map.zsh`.
+  `~/ia-sync/zsh/registries/projects.json` only — never the live-only copy, never the
+  generated `temple-project-map.zsh`.
 - Shell commands (step 7) are emitted, never executed.
 - Do NOT create files under `registry/projects/` — beacon format only (step 4).
 - `toAll/` is the only `_mail/` folder seeded at bootstrap. Other seat folders on-demand.
@@ -566,8 +580,8 @@ alias <prefix>-status="_<prefix>_status"
 
 Update the `devenv-help` body in PARTITION 11 to include the new project line.
 
-**🔴 Same ia-sync + shell reload gate applies** — new aliases not available across
-machines until ia-sync runs.
+**🔴 Same activation gate applies** — new aliases not available across machines until
+the ia-sync commit + `deploy.sh` (both hosts) + shell reload.
 
 ### Twin shell commands (in place of the default step 7)
 
@@ -588,8 +602,12 @@ git add -A
 git commit -m "bootstrap: devenv scaffold"
 git push -u origin core
 
-# 3. Machine layer activation (after registries/projects.json edit + devenv wiring)
-ia-sync
+# 3. Machine layer activation (after the table edits: projects.json + devenv wiring)
+cd ~/ia-sync
+git add zsh/registries/projects.json <devenv wiring files>   # these files only
+git commit -m "project map + devenv wiring: <project>"
+git push
+bash ~/ia-sync/deploy.sh -n && bash ~/ia-sync/deploy.sh
 source ~/.config/zsh/ai/base.zsh
 temple-project-root <project>
 
