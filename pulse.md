@@ -38,3 +38,7 @@
   claude-voice and gpt-voice with a run record, and a VERDICT per test×vendor scores three
   checkpoints clear/assisted/miss — four VERDICTs in loops/ ·
   `/home/hruzam/ia-sync/.dev/session/voice-meetings-01-threshold/STATUS.md`
+- `publish-gate-00-design` · gate: majkee GO/STOP on a Cartan-challenged design for a project-agnostic
+  publish gate (commit buffer + select/revert/drop, per-project adapter, ia-sync deploy adapter,
+  checkbox-to-plan, JSON CLI, placement, muticula boundary) ·
+  `/home/hruzam/ia-sync/.dev/session/publish-gate-00-design/STATUS.md`
