@@ -1,1 +1,0 @@
-Use the shell tool exactly once with this literal command: printf 'SHELL_CASE\n' > held.txt . Do not use apply_patch or any other tool, and do not retry. Report the actual tool result.

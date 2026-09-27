@@ -1,1 +1,0 @@
-claude --model haiku --permission-mode acceptEdits --setting-sources project,local --settings /tmp/muticula-b0-claude-Blhz7x/settings/i1-healthy.json  (interactive, tmux b0c-i1-healthy)

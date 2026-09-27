@@ -1,1 +1,0 @@
-claude -p \<prompt:/home/hruzam/ia-sync/.dev/session/runbook-upgrade-02-app/raw/b0-claude/prompts/held-only.txt\> --model haiku --permission-mode acceptEdits --setting-sources project\,local --settings /tmp/muticula-b0-claude-Blhz7x/settings/c5-malformed.json --output-format stream-json --verbose 

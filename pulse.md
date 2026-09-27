@@ -8,8 +8,6 @@
   --check equal), ~/.germline resolves on office, .shared/ + raw.shared-skills/ absent from reposoma ·
   `/home/hruzam/ia-sync/.dev/session/germline-00-home/STATUS.md`
 
-- `runbook-upgrade-02-app` · gate: Majkee records GO or STOP on an independently witnessed muticula v0 qualification package covering unique writer binding, atomic file/subtree reservations, pre-write refusal in fresh Claude and Codex sessions, explicit release/recovery, and truthful coverage and integration boundaries. · `/home/hruzam/ia-sync/.dev/session/runbook-upgrade-02-app/STATUS.md`
-
 - `reversal-tunel-00-leader` · gate: both instrument siblings closed with receipts promoted +
   leader's closing sweep confirms owed edits landed (HANDSHAKE r4 · tunnel GUIDE direction section ·
   wiring verified) · `/home/hruzam/ia-sync/.dev/session/reversal-tunel-00-leader/STATUS.md`

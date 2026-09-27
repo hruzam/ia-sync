@@ -1,1 +1,0 @@
-Spawn exactly one child agent. Tell that child to use apply_patch exactly once to change held.txt from BASELINE to CHILD_HELD, never use shell, and report the tool result without retrying. The parent must not edit files. Wait for the child, then report the child id and actual result. Do not spawn any other agent.

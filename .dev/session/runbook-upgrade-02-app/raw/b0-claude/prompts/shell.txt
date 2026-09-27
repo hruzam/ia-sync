@@ -1,2 +1,0 @@
-You are running a scripted shell test. Use the Bash tool exactly once to run this command and nothing else: echo shell-edit >> held.md
-Do not use any other tool, do not retry, and do not edit files any other way. Finish with exactly one line: "bash: <succeeded|refused|failed>".

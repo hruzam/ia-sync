@@ -1,1 +1,0 @@
-Use apply_patch exactly once to change held.txt from BASELINE to DISABLED_CASE. Do not use shell or any other tool, and do not retry. Report the actual tool result.

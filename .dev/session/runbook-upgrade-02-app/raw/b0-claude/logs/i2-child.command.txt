@@ -1,1 +1,0 @@
-claude --model haiku --permission-mode acceptEdits --setting-sources project,local --settings /tmp/muticula-b0-claude-Blhz7x/settings/i2-child.json  (interactive, tmux b0c-i2-child)
