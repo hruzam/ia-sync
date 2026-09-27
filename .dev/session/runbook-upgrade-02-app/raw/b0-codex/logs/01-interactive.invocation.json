@@ -1,0 +1,39 @@
+{
+  "argv": [
+    "/home/hruzam/.codex/packages/standalone/releases/0.156.1-x86_64-unknown-linux-musl/bin/codex",
+    "--no-alt-screen",
+    "--no-daemon",
+    "--dangerously-bypass-hook-trust",
+    "-C",
+    "/tmp/muticula-b0-codex-ki5dIN/fixture",
+    "-m",
+    "gpt-5.6-terra",
+    "--sandbox",
+    "workspace-write",
+    "--ask-for-approval",
+    "never",
+    "-c",
+    "model_reasoning_effort=\"high\"",
+    "-c",
+    "allow_login_shell=false",
+    "-c",
+    "web_search=\"disabled\"",
+    "-c",
+    "projects={\"/tmp/muticula-b0-codex-ki5dIN/fixture\"={trust_level=\"trusted\"}}",
+    "-c",
+    "hooks.PreToolUse=[{matcher=\"^apply_patch$\",hooks=[{type=\"command\",command=\"/usr/bin/python3 /tmp/muticula-b0-codex-ki5dIN/hook.py\",timeout=2}]}]",
+    "-c",
+    "hooks.state={\"/home/hruzam/.codex/hooks.json:session_start:0:0\"={enabled=false},\"/home/hruzam/.codex/hooks.json:user_prompt_submit:0:0\"={enabled=false},\"/home/hruzam/.codex/hooks.json:stop:0:0\"={enabled=false}}",
+    "Use apply_patch exactly twice. First try once to change held.txt from BASELINE to INTERACTIVE_HELD. If the tool is denied, do not retry. Then change unheld.txt from BASELINE to INTERACTIVE_UNHELD. Do not use shell commands or any other tools. Report each actual tool result briefly."
+  ],
+  "case": "01-interactive",
+  "codex_home_unchanged": null,
+  "cwd": "/tmp/muticula-b0-codex-ki5dIN/fixture",
+  "fixture_event_log": "/tmp/muticula-b0-codex-ki5dIN/logs/01-interactive.hook-events.jsonl",
+  "global_hook_ids_disabled_for_invocation": [
+    "/home/hruzam/.codex/hooks.json:session_start:0:0",
+    "/home/hruzam/.codex/hooks.json:user_prompt_submit:0:0",
+    "/home/hruzam/.codex/hooks.json:stop:0:0"
+  ],
+  "home_unchanged": "/home/hruzam"
+}

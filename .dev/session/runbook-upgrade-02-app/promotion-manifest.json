@@ -1,0 +1,2497 @@
+{
+  "schema": "muticula-closure-keeper-inventory/v1",
+  "created": "2026-09-27 03:14 CEST",
+  "bed": "/home/hruzam/ia-sync/.dev/session/runbook-upgrade-02-app",
+  "head_at_inventory": "e01825d93b0be8746dc516026b096607362a2709",
+  "scope": "Every raw keeper and BUS receipt; root controls listed separately without recursive self-hashes. KEEP is inventory intent, not a promotion or pruning receipt.",
+  "counts": {
+    "raw": 215,
+    "bus": 18,
+    "ignored": 35,
+    "ignored_bytes": 473160
+  },
+  "proposed_log_archive": "/home/hruzam/.local/state/muticula-evidence/runbook-upgrade-02-app/2026-09-27",
+  "root_controls": [
+    "RUNBOOK.md",
+    "STATUS.md",
+    "VERDICT.md",
+    "promotion-manifest.md",
+    "promotion-manifest.json",
+    "closure-commit-paths.txt"
+  ],
+  "external_inputs": [
+    {
+      "path": "/home/hruzam/unikuklatrix/nablarva/.dev/session/muticula-00-brief/raw/muticula.master.2026-09-26.md",
+      "sha256": "6db7415110aeead79dc73c82b9cbe03414398022998a01c007f4d933c85253fd",
+      "bytes": 36463,
+      "owner_scope": "external; not part of this commit set",
+      "resolved_path_2026_09_27": "/home/hruzam/unikuklatrix/nablarva/.dev/session/muticula-00-brief/raw/muticula.master.2026-09-26.reviewed-6db74151.md"
+    },
+    {
+      "path": "/home/hruzam/unikuklatrix/nablarva/.dev/session/muticula-00-brief/raw/muticula.master.2026-09-26.reviewed-17a2641e.md",
+      "sha256": "17a2641ec6f74791416e11c05ac8a7c6e5c5240ea241dac29d4590adfdf03629",
+      "bytes": 21325,
+      "owner_scope": "external; not part of this commit set",
+      "resolved_path_2026_09_27": "/home/hruzam/unikuklatrix/nablarva/.dev/session/muticula-00-brief/raw/muticula.master.2026-09-26.reviewed-17a2641e.md"
+    },
+    {
+      "path": "/home/hruzam/unikuklatrix/nablarva/.dev/session/muticula-00-brief/raw/muticula.master.2026-09-26.reviewed-7c41b520.md",
+      "sha256": "7c41b520c245b2f31982f104b768a422fcc14c4ec06526d0fc2f1aebc00c6635",
+      "bytes": 17852,
+      "owner_scope": "external; not part of this commit set",
+      "resolved_path_2026_09_27": "/home/hruzam/unikuklatrix/nablarva/.dev/session/muticula-00-brief/raw/muticula.master.2026-09-26.reviewed-7c41b520.md"
+    },
+    {
+      "path": "/home/hruzam/unikuklatrix/nablarva/.dev/session/muticula-00-brief/raw/gate-fixture.2026-09-26.md",
+      "sha256": "2480f150c476a9707ad327470f3443292b354b739c9b247da347e384af8e9ba6",
+      "bytes": 2261,
+      "owner_scope": "external; not part of this commit set",
+      "resolved_path_2026_09_27": "/home/hruzam/unikuklatrix/nablarva/.dev/session/muticula-00-brief/raw/gate-fixture.2026-09-26.md"
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/rellays-claude-codex/TRAJECTORY-CARTAN-addendum.muticula-identity-tokens.2026-09-26.md",
+      "sha256": "7515a02e67640c341dbd3bbd60ad6ea3cce5586405922de10d6df32986943621",
+      "bytes": 7014,
+      "owner_scope": "external; not part of this commit set",
+      "resolved_path_2026_09_27": "/home/hruzam/unikuklatrix/nablarva/.dev/session/muticula-00-brief/raw/relays/TRAJECTORY-CARTAN-addendum.muticula-identity-tokens.2026-09-26.md"
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/rellays-claude-codex/TRAJECTORY-CARTAN-challenge.muticula-master.2026-09-26.md",
+      "sha256": "719e862b9793191054ef75c661a4f2c5ea3713cf6d90710c1c1238dc2974dac4",
+      "bytes": 6929,
+      "owner_scope": "external; not part of this commit set",
+      "resolved_path_2026_09_27": "/home/hruzam/unikuklatrix/nablarva/.dev/session/muticula-00-brief/raw/relays/TRAJECTORY-CARTAN-challenge.muticula-master.2026-09-26.md"
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/rellays-claude-codex/TRAJECTORY-CARTAN-challenge.muticula-scope.2026-09-26.md",
+      "sha256": "e78dca08e9b1091058dffff85763ce4441a83f053ca4a3c61c1bd3273dca4be7",
+      "bytes": 5478,
+      "owner_scope": "external; not part of this commit set",
+      "resolved_path_2026_09_27": "/home/hruzam/unikuklatrix/nablarva/.dev/session/muticula-00-brief/raw/relays/TRAJECTORY-CARTAN-challenge.muticula-scope.2026-09-26.md"
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/rellays-claude-codex/TRAJECTORY-CARTAN-point.muticula-r2-closure.2026-09-26.md",
+      "sha256": "446b58d6fb72e59681978a514d6b6042c6850568592d616373ba20dc2f869cfd",
+      "bytes": 7737,
+      "owner_scope": "external; not part of this commit set",
+      "resolved_path_2026_09_27": "/home/hruzam/unikuklatrix/nablarva/.dev/session/muticula-00-brief/raw/relays/TRAJECTORY-CARTAN-point.muticula-r2-closure.2026-09-26.md"
+    }
+  ],
+  "copied_relay": {
+    "original": "/home/hruzam/ia-sync/.dev/session/rellays-claude-codex/TRAJECTORY-CARTAN-point.muticula-r2-closure.2026-09-26.md",
+    "copy": "raw/closure-source/TRAJECTORY-CARTAN-point.muticula-r2-closure.2026-09-26.md",
+    "sha256": "446b58d6fb72e59681978a514d6b6042c6850568592d616373ba20dc2f869cfd",
+    "resolved_original": "/home/hruzam/unikuklatrix/nablarva/.dev/session/muticula-00-brief/raw/relays/TRAJECTORY-CARTAN-point.muticula-r2-closure.2026-09-26.md"
+  },
+  "keepers": [
+    {
+      "path": "raw/CARTAN-TRAJECTORY-concurrency-verdict.2026-09-24.md",
+      "sha256": "933f21514252eab450756c07a71bb26b7dd2d80f45b87af3f46b633719eb9929",
+      "bytes": 16190,
+      "git_status": "tracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/CARTAN-TRAJECTORY-concurrency-verdict.2026-09-24.md",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false,
+      "verified_existing_git_locator": "ia-sync:e01825d93b0be8746dc516026b096607362a2709:.dev/session/runbook-upgrade-02-app/raw/CARTAN-TRAJECTORY-concurrency-verdict.2026-09-24.md"
+    },
+    {
+      "path": "raw/CARTAN-TRAJECTORY-muticula-coordination.2026-09-24.md",
+      "sha256": "1d054b053dfccc1be6afc6926dc57760b2c2b5f3c3ce38c303c7376429889cd9",
+      "bytes": 3265,
+      "git_status": "tracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/CARTAN-TRAJECTORY-muticula-coordination.2026-09-24.md",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false,
+      "verified_existing_git_locator": "ia-sync:e01825d93b0be8746dc516026b096607362a2709:.dev/session/runbook-upgrade-02-app/raw/CARTAN-TRAJECTORY-muticula-coordination.2026-09-24.md"
+    },
+    {
+      "path": "raw/Screenshot_20260923_163126.png",
+      "sha256": "9df2fd114ef70f509bba5e4ccdce98ab8b79621db230851b741ae47ceaf2caae",
+      "bytes": 23626,
+      "git_status": "tracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/Screenshot_20260923_163126.png",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false,
+      "verified_existing_git_locator": "ia-sync:e01825d93b0be8746dc516026b096607362a2709:.dev/session/runbook-upgrade-02-app/raw/Screenshot_20260923_163126.png"
+    },
+    {
+      "path": "raw/TRAJECTORY-CARTAN-concurrency-challenge.2026-09-24.md",
+      "sha256": "db9d7a902170a7f7a2e6d43e4a5ad1db77eb91cebd67f39f4ce3c65df4ba2a27",
+      "bytes": 5293,
+      "git_status": "tracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/TRAJECTORY-CARTAN-concurrency-challenge.2026-09-24.md",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false,
+      "verified_existing_git_locator": "ia-sync:e01825d93b0be8746dc516026b096607362a2709:.dev/session/runbook-upgrade-02-app/raw/TRAJECTORY-CARTAN-concurrency-challenge.2026-09-24.md"
+    },
+    {
+      "path": "raw/TRAJECTORY-CARTAN-research.hardcoded-boundaries.2026-09-24.md",
+      "sha256": "0fa3357d834893d9549a52a684a5a71a317b2af8ed795451c1f61f2eeb34ec2b",
+      "bytes": 8786,
+      "git_status": "tracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/TRAJECTORY-CARTAN-research.hardcoded-boundaries.2026-09-24.md",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false,
+      "verified_existing_git_locator": "ia-sync:e01825d93b0be8746dc516026b096607362a2709:.dev/session/runbook-upgrade-02-app/raw/TRAJECTORY-CARTAN-research.hardcoded-boundaries.2026-09-24.md"
+    },
+    {
+      "path": "raw/b0-claude/guard.py",
+      "sha256": "cf0ed047fe6423f0294aba5f08aa0cb3af7eda5a555280d4d8b14e60c852bcb1",
+      "bytes": 2305,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/guard.py",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/logger.py",
+      "sha256": "d479699ea4af424885217a0db0c5b3498ecd8c85e628dad0d7c67f52e7386ee0",
+      "bytes": 800,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/logger.py",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/logs/c1-healthy.after.diff",
+      "sha256": "cab97a45b7a1c6ad58c938265d59a23d72a9eb5c1dbe0912ea393e09bb30b158",
+      "bytes": 143,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/logs/c1-healthy.after.diff",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/logs/c1-healthy.after.sha256",
+      "sha256": "8d37543385348eb57d3b5b4c6890adef64a6028e147d393852e5c5b793290e51",
+      "bytes": 150,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/logs/c1-healthy.after.sha256",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/logs/c1-healthy.before-status.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/logs/c1-healthy.before-status.txt",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/logs/c1-healthy.before.sha256",
+      "sha256": "325211d49fa8dac4c420c9b3818edb48d29aa528c079bf06ddb2d995d93987cf",
+      "bytes": 150,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/logs/c1-healthy.before.sha256",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/logs/c1-healthy.command.txt",
+      "sha256": "8a915f5a42273ce0b9114658761bbf40e2bcddd90839bc819b52d891ce15bc3a",
+      "bytes": 303,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/logs/c1-healthy.command.txt",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/logs/c1-healthy.events.jsonl",
+      "sha256": "cad019b91b54f867f2733282e8f8054f9c90b74e21cddb2cab210d6bcb0e9668",
+      "bytes": 5846,
+      "git_status": "ignored",
+      "disposition": "KEEP",
+      "proposed_destination": "/home/hruzam/.local/state/muticula-evidence/runbook-upgrade-02-app/2026-09-27/raw/b0-claude/logs/c1-healthy.events.jsonl",
+      "destination_status": "copied and independently hash-checked from source; host-local",
+      "keep_live_path_for_r2": false,
+      "verified_archive_path": "/home/hruzam/.local/state/muticula-evidence/runbook-upgrade-02-app/2026-09-27/raw/b0-claude/logs/c1-healthy.events.jsonl"
+    },
+    {
+      "path": "raw/b0-claude/logs/c1-healthy.exit",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/logs/c1-healthy.exit",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/logs/c1-healthy.guard.jsonl",
+      "sha256": "96013878447eb3b5eddc3bc0ad62fdfece9c585f26ff3297ca89114766269cbd",
+      "bytes": 609,
+      "git_status": "ignored",
+      "disposition": "KEEP",
+      "proposed_destination": "/home/hruzam/.local/state/muticula-evidence/runbook-upgrade-02-app/2026-09-27/raw/b0-claude/logs/c1-healthy.guard.jsonl",
+      "destination_status": "copied and independently hash-checked from source; host-local",
+      "keep_live_path_for_r2": false,
+      "verified_archive_path": "/home/hruzam/.local/state/muticula-evidence/runbook-upgrade-02-app/2026-09-27/raw/b0-claude/logs/c1-healthy.guard.jsonl"
+    },
+    {
+      "path": "raw/b0-claude/logs/c1-healthy.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/logs/c1-healthy.stderr",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/logs/c1-healthy.stream.jsonl",
+      "sha256": "884157c1bae7a3103f120b07066a266efe4fc05169d5b249f883d7b11f382592",
+      "bytes": 57772,
+      "git_status": "ignored",
+      "disposition": "KEEP",
+      "proposed_destination": "/home/hruzam/.local/state/muticula-evidence/runbook-upgrade-02-app/2026-09-27/raw/b0-claude/logs/c1-healthy.stream.jsonl",
+      "destination_status": "copied and independently hash-checked from source; host-local",
+      "keep_live_path_for_r2": false,
+      "verified_archive_path": "/home/hruzam/.local/state/muticula-evidence/runbook-upgrade-02-app/2026-09-27/raw/b0-claude/logs/c1-healthy.stream.jsonl"
+    },
+    {
+      "path": "raw/b0-claude/logs/c2-child.after.diff",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/logs/c2-child.after.diff",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/logs/c2-child.after.sha256",
+      "sha256": "325211d49fa8dac4c420c9b3818edb48d29aa528c079bf06ddb2d995d93987cf",
+      "bytes": 150,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/logs/c2-child.after.sha256",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/logs/c2-child.before-status.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/logs/c2-child.before-status.txt",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/logs/c2-child.before.sha256",
+      "sha256": "325211d49fa8dac4c420c9b3818edb48d29aa528c079bf06ddb2d995d93987cf",
+      "bytes": 150,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/logs/c2-child.before.sha256",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/logs/c2-child.command.txt",
+      "sha256": "d768a661c1d41743ca5e8adf1da693a18f33c13984f4ecc9974860f860282f48",
+      "bytes": 291,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/logs/c2-child.command.txt",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/logs/c2-child.events.jsonl",
+      "sha256": "878ad197890b59f1a60b34ad821261e5bbe8a9331017f8db044411ca63f1dfe4",
+      "bytes": 6424,
+      "git_status": "ignored",
+      "disposition": "KEEP",
+      "proposed_destination": "/home/hruzam/.local/state/muticula-evidence/runbook-upgrade-02-app/2026-09-27/raw/b0-claude/logs/c2-child.events.jsonl",
+      "destination_status": "copied and independently hash-checked from source; host-local",
+      "keep_live_path_for_r2": false,
+      "verified_archive_path": "/home/hruzam/.local/state/muticula-evidence/runbook-upgrade-02-app/2026-09-27/raw/b0-claude/logs/c2-child.events.jsonl"
+    },
+    {
+      "path": "raw/b0-claude/logs/c2-child.exit",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/logs/c2-child.exit",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/logs/c2-child.guard.jsonl",
+      "sha256": "cc72b5fafb724964b97f0fc379d101183718ba91380a1474809d058bc1b54475",
+      "bytes": 329,
+      "git_status": "ignored",
+      "disposition": "KEEP",
+      "proposed_destination": "/home/hruzam/.local/state/muticula-evidence/runbook-upgrade-02-app/2026-09-27/raw/b0-claude/logs/c2-child.guard.jsonl",
+      "destination_status": "copied and independently hash-checked from source; host-local",
+      "keep_live_path_for_r2": false,
+      "verified_archive_path": "/home/hruzam/.local/state/muticula-evidence/runbook-upgrade-02-app/2026-09-27/raw/b0-claude/logs/c2-child.guard.jsonl"
+    },
+    {
+      "path": "raw/b0-claude/logs/c2-child.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/logs/c2-child.stderr",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/logs/c2-child.stream.jsonl",
+      "sha256": "a204a3ee51a939b48a1d7cbda148b37496052f0e9671af6ed1fd8741a2f9d6c7",
+      "bytes": 51818,
+      "git_status": "ignored",
+      "disposition": "KEEP",
+      "proposed_destination": "/home/hruzam/.local/state/muticula-evidence/runbook-upgrade-02-app/2026-09-27/raw/b0-claude/logs/c2-child.stream.jsonl",
+      "destination_status": "copied and independently hash-checked from source; host-local",
+      "keep_live_path_for_r2": false,
+      "verified_archive_path": "/home/hruzam/.local/state/muticula-evidence/runbook-upgrade-02-app/2026-09-27/raw/b0-claude/logs/c2-child.stream.jsonl"
+    },
+    {
+      "path": "raw/b0-claude/logs/c3-timeout.after.diff",
+      "sha256": "32500befec9ec499bf6b9c542afdbeb3b2263d72caa4e3e93f505faea598ee27",
+      "bytes": 135,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/logs/c3-timeout.after.diff",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/logs/c3-timeout.after.sha256",
+      "sha256": "972e3080b4579cc7593784cc72fd14e36cce218664e474d37019e7aa59b1b0c9",
+      "bytes": 150,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/logs/c3-timeout.after.sha256",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/logs/c3-timeout.before-status.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/logs/c3-timeout.before-status.txt",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/logs/c3-timeout.before.sha256",
+      "sha256": "325211d49fa8dac4c420c9b3818edb48d29aa528c079bf06ddb2d995d93987cf",
+      "bytes": 150,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/logs/c3-timeout.before.sha256",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/logs/c3-timeout.command.txt",
+      "sha256": "d023e3f03c6bad6974f6438e8b037fb726af9287428a7c24a6c8202317dc5282",
+      "bytes": 297,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/logs/c3-timeout.command.txt",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/logs/c3-timeout.events.jsonl",
+      "sha256": "d261013f1fde03935cfb4aa6cfe625ea17cd2cb0fd272325242f5ee783b31df0",
+      "bytes": 3929,
+      "git_status": "ignored",
+      "disposition": "KEEP",
+      "proposed_destination": "/home/hruzam/.local/state/muticula-evidence/runbook-upgrade-02-app/2026-09-27/raw/b0-claude/logs/c3-timeout.events.jsonl",
+      "destination_status": "copied and independently hash-checked from source; host-local",
+      "keep_live_path_for_r2": false,
+      "verified_archive_path": "/home/hruzam/.local/state/muticula-evidence/runbook-upgrade-02-app/2026-09-27/raw/b0-claude/logs/c3-timeout.events.jsonl"
+    },
+    {
+      "path": "raw/b0-claude/logs/c3-timeout.exit",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/logs/c3-timeout.exit",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/logs/c3-timeout.guard.jsonl",
+      "sha256": "e855649c77c5cc1a160f9f48993a13bf5e19547f4a0e40cb121cab5779cf5360",
+      "bytes": 301,
+      "git_status": "ignored",
+      "disposition": "KEEP",
+      "proposed_destination": "/home/hruzam/.local/state/muticula-evidence/runbook-upgrade-02-app/2026-09-27/raw/b0-claude/logs/c3-timeout.guard.jsonl",
+      "destination_status": "copied and independently hash-checked from source; host-local",
+      "keep_live_path_for_r2": false,
+      "verified_archive_path": "/home/hruzam/.local/state/muticula-evidence/runbook-upgrade-02-app/2026-09-27/raw/b0-claude/logs/c3-timeout.guard.jsonl"
+    },
+    {
+      "path": "raw/b0-claude/logs/c3-timeout.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/logs/c3-timeout.stderr",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/logs/c3-timeout.stream.jsonl",
+      "sha256": "db8adfab5f5d5b8aa40b34b33b51d0e66255dfa40d2f6d35d29fc91e72f16918",
+      "bytes": 47012,
+      "git_status": "ignored",
+      "disposition": "KEEP",
+      "proposed_destination": "/home/hruzam/.local/state/muticula-evidence/runbook-upgrade-02-app/2026-09-27/raw/b0-claude/logs/c3-timeout.stream.jsonl",
+      "destination_status": "copied and independently hash-checked from source; host-local",
+      "keep_live_path_for_r2": false,
+      "verified_archive_path": "/home/hruzam/.local/state/muticula-evidence/runbook-upgrade-02-app/2026-09-27/raw/b0-claude/logs/c3-timeout.stream.jsonl"
+    },
+    {
+      "path": "raw/b0-claude/logs/c4-exit1.after.diff",
+      "sha256": "32500befec9ec499bf6b9c542afdbeb3b2263d72caa4e3e93f505faea598ee27",
+      "bytes": 135,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/logs/c4-exit1.after.diff",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/logs/c4-exit1.after.sha256",
+      "sha256": "972e3080b4579cc7593784cc72fd14e36cce218664e474d37019e7aa59b1b0c9",
+      "bytes": 150,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/logs/c4-exit1.after.sha256",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/logs/c4-exit1.before-status.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/logs/c4-exit1.before-status.txt",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/logs/c4-exit1.before.sha256",
+      "sha256": "325211d49fa8dac4c420c9b3818edb48d29aa528c079bf06ddb2d995d93987cf",
+      "bytes": 150,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/logs/c4-exit1.before.sha256",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/logs/c4-exit1.command.txt",
+      "sha256": "5101940f39ed637604b059050a5a2a30f761dd13a08cab24f461feac620e134e",
+      "bytes": 295,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/logs/c4-exit1.command.txt",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/logs/c4-exit1.events.jsonl",
+      "sha256": "71642cd54037e172b8117a4cd91b5d0aba5d57b6843955ecadc8bd6a5cc2920f",
+      "bytes": 3928,
+      "git_status": "ignored",
+      "disposition": "KEEP",
+      "proposed_destination": "/home/hruzam/.local/state/muticula-evidence/runbook-upgrade-02-app/2026-09-27/raw/b0-claude/logs/c4-exit1.events.jsonl",
+      "destination_status": "copied and independently hash-checked from source; host-local",
+      "keep_live_path_for_r2": false,
+      "verified_archive_path": "/home/hruzam/.local/state/muticula-evidence/runbook-upgrade-02-app/2026-09-27/raw/b0-claude/logs/c4-exit1.events.jsonl"
+    },
+    {
+      "path": "raw/b0-claude/logs/c4-exit1.exit",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/logs/c4-exit1.exit",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/logs/c4-exit1.guard.jsonl",
+      "sha256": "149a7dcafc67dd065653118a68f658b98d88363f52b47075dfe28a47f90898e4",
+      "bytes": 299,
+      "git_status": "ignored",
+      "disposition": "KEEP",
+      "proposed_destination": "/home/hruzam/.local/state/muticula-evidence/runbook-upgrade-02-app/2026-09-27/raw/b0-claude/logs/c4-exit1.guard.jsonl",
+      "destination_status": "copied and independently hash-checked from source; host-local",
+      "keep_live_path_for_r2": false,
+      "verified_archive_path": "/home/hruzam/.local/state/muticula-evidence/runbook-upgrade-02-app/2026-09-27/raw/b0-claude/logs/c4-exit1.guard.jsonl"
+    },
+    {
+      "path": "raw/b0-claude/logs/c4-exit1.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/logs/c4-exit1.stderr",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/logs/c4-exit1.stream.jsonl",
+      "sha256": "5fa21401bd06fed4013d26be9225d4c7311653d0f0df05e278e64b7d4439a9b3",
+      "bytes": 53806,
+      "git_status": "ignored",
+      "disposition": "KEEP",
+      "proposed_destination": "/home/hruzam/.local/state/muticula-evidence/runbook-upgrade-02-app/2026-09-27/raw/b0-claude/logs/c4-exit1.stream.jsonl",
+      "destination_status": "copied and independently hash-checked from source; host-local",
+      "keep_live_path_for_r2": false,
+      "verified_archive_path": "/home/hruzam/.local/state/muticula-evidence/runbook-upgrade-02-app/2026-09-27/raw/b0-claude/logs/c4-exit1.stream.jsonl"
+    },
+    {
+      "path": "raw/b0-claude/logs/c5-malformed.after.diff",
+      "sha256": "32500befec9ec499bf6b9c542afdbeb3b2263d72caa4e3e93f505faea598ee27",
+      "bytes": 135,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/logs/c5-malformed.after.diff",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/logs/c5-malformed.after.sha256",
+      "sha256": "972e3080b4579cc7593784cc72fd14e36cce218664e474d37019e7aa59b1b0c9",
+      "bytes": 150,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/logs/c5-malformed.after.sha256",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/logs/c5-malformed.before-status.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/logs/c5-malformed.before-status.txt",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/logs/c5-malformed.before.sha256",
+      "sha256": "325211d49fa8dac4c420c9b3818edb48d29aa528c079bf06ddb2d995d93987cf",
+      "bytes": 150,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/logs/c5-malformed.before.sha256",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/logs/c5-malformed.command.txt",
+      "sha256": "96393e8aefb99b4f9ead34abe2baf5310ead6545ffad0b92cc79cdb47b2f05f8",
+      "bytes": 299,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/logs/c5-malformed.command.txt",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/logs/c5-malformed.events.jsonl",
+      "sha256": "3a96e525e74fdbeb04f3a8b64f56db286021f4577b899efa94367d7f501efb2c",
+      "bytes": 3927,
+      "git_status": "ignored",
+      "disposition": "KEEP",
+      "proposed_destination": "/home/hruzam/.local/state/muticula-evidence/runbook-upgrade-02-app/2026-09-27/raw/b0-claude/logs/c5-malformed.events.jsonl",
+      "destination_status": "copied and independently hash-checked from source; host-local",
+      "keep_live_path_for_r2": false,
+      "verified_archive_path": "/home/hruzam/.local/state/muticula-evidence/runbook-upgrade-02-app/2026-09-27/raw/b0-claude/logs/c5-malformed.events.jsonl"
+    },
+    {
+      "path": "raw/b0-claude/logs/c5-malformed.exit",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/logs/c5-malformed.exit",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/logs/c5-malformed.guard.jsonl",
+      "sha256": "342dfc5393e668bb6e07f6a79ff3a4cb1dcbbf4c3e2674d2584c6f7cc0c7392f",
+      "bytes": 306,
+      "git_status": "ignored",
+      "disposition": "KEEP",
+      "proposed_destination": "/home/hruzam/.local/state/muticula-evidence/runbook-upgrade-02-app/2026-09-27/raw/b0-claude/logs/c5-malformed.guard.jsonl",
+      "destination_status": "copied and independently hash-checked from source; host-local",
+      "keep_live_path_for_r2": false,
+      "verified_archive_path": "/home/hruzam/.local/state/muticula-evidence/runbook-upgrade-02-app/2026-09-27/raw/b0-claude/logs/c5-malformed.guard.jsonl"
+    },
+    {
+      "path": "raw/b0-claude/logs/c5-malformed.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/logs/c5-malformed.stderr",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/logs/c5-malformed.stream.jsonl",
+      "sha256": "eee97fdbe7911da4cff7bb81d1312d11d7fac431725c3192e6e2b292735c2cbe",
+      "bytes": 45321,
+      "git_status": "ignored",
+      "disposition": "KEEP",
+      "proposed_destination": "/home/hruzam/.local/state/muticula-evidence/runbook-upgrade-02-app/2026-09-27/raw/b0-claude/logs/c5-malformed.stream.jsonl",
+      "destination_status": "copied and independently hash-checked from source; host-local",
+      "keep_live_path_for_r2": false,
+      "verified_archive_path": "/home/hruzam/.local/state/muticula-evidence/runbook-upgrade-02-app/2026-09-27/raw/b0-claude/logs/c5-malformed.stream.jsonl"
+    },
+    {
+      "path": "raw/b0-claude/logs/c6-missing.after.diff",
+      "sha256": "32500befec9ec499bf6b9c542afdbeb3b2263d72caa4e3e93f505faea598ee27",
+      "bytes": 135,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/logs/c6-missing.after.diff",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/logs/c6-missing.after.sha256",
+      "sha256": "972e3080b4579cc7593784cc72fd14e36cce218664e474d37019e7aa59b1b0c9",
+      "bytes": 150,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/logs/c6-missing.after.sha256",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/logs/c6-missing.before-status.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/logs/c6-missing.before-status.txt",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/logs/c6-missing.before.sha256",
+      "sha256": "325211d49fa8dac4c420c9b3818edb48d29aa528c079bf06ddb2d995d93987cf",
+      "bytes": 150,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/logs/c6-missing.before.sha256",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/logs/c6-missing.command.txt",
+      "sha256": "f1cc10645a4cfb3173d8b7379871dfd6e08a68c34c57a1d780307badb3f08d47",
+      "bytes": 297,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/logs/c6-missing.command.txt",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/logs/c6-missing.events.jsonl",
+      "sha256": "72c41b4669421ee0847ac8371810f3aaa80be08c5e8ce947ef39efbae64729ca",
+      "bytes": 3926,
+      "git_status": "ignored",
+      "disposition": "KEEP",
+      "proposed_destination": "/home/hruzam/.local/state/muticula-evidence/runbook-upgrade-02-app/2026-09-27/raw/b0-claude/logs/c6-missing.events.jsonl",
+      "destination_status": "copied and independently hash-checked from source; host-local",
+      "keep_live_path_for_r2": false,
+      "verified_archive_path": "/home/hruzam/.local/state/muticula-evidence/runbook-upgrade-02-app/2026-09-27/raw/b0-claude/logs/c6-missing.events.jsonl"
+    },
+    {
+      "path": "raw/b0-claude/logs/c6-missing.exit",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/logs/c6-missing.exit",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/logs/c6-missing.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/logs/c6-missing.stderr",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/logs/c6-missing.stream.jsonl",
+      "sha256": "f742392eb0621395883d0fbf0c003decd3e6b015b458d5e8e275b4ef734f3efd",
+      "bytes": 53133,
+      "git_status": "ignored",
+      "disposition": "KEEP",
+      "proposed_destination": "/home/hruzam/.local/state/muticula-evidence/runbook-upgrade-02-app/2026-09-27/raw/b0-claude/logs/c6-missing.stream.jsonl",
+      "destination_status": "copied and independently hash-checked from source; host-local",
+      "keep_live_path_for_r2": false,
+      "verified_archive_path": "/home/hruzam/.local/state/muticula-evidence/runbook-upgrade-02-app/2026-09-27/raw/b0-claude/logs/c6-missing.stream.jsonl"
+    },
+    {
+      "path": "raw/b0-claude/logs/c7-disabled.after.diff",
+      "sha256": "32500befec9ec499bf6b9c542afdbeb3b2263d72caa4e3e93f505faea598ee27",
+      "bytes": 135,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/logs/c7-disabled.after.diff",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/logs/c7-disabled.after.sha256",
+      "sha256": "972e3080b4579cc7593784cc72fd14e36cce218664e474d37019e7aa59b1b0c9",
+      "bytes": 150,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/logs/c7-disabled.after.sha256",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/logs/c7-disabled.before-status.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/logs/c7-disabled.before-status.txt",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/logs/c7-disabled.before.sha256",
+      "sha256": "325211d49fa8dac4c420c9b3818edb48d29aa528c079bf06ddb2d995d93987cf",
+      "bytes": 150,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/logs/c7-disabled.before.sha256",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/logs/c7-disabled.command.txt",
+      "sha256": "6af6083f8518370a732dadfbecd0e1f805e27d5273a0d736d82fcc9f30f28b9e",
+      "bytes": 298,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/logs/c7-disabled.command.txt",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/logs/c7-disabled.exit",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/logs/c7-disabled.exit",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/logs/c7-disabled.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/logs/c7-disabled.stderr",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/logs/c7-disabled.stream.jsonl",
+      "sha256": "cd3713249b0416046e08d7af9891e2be12721bf4f720dcd2926e9145588d12eb",
+      "bytes": 43506,
+      "git_status": "ignored",
+      "disposition": "KEEP",
+      "proposed_destination": "/home/hruzam/.local/state/muticula-evidence/runbook-upgrade-02-app/2026-09-27/raw/b0-claude/logs/c7-disabled.stream.jsonl",
+      "destination_status": "copied and independently hash-checked from source; host-local",
+      "keep_live_path_for_r2": false,
+      "verified_archive_path": "/home/hruzam/.local/state/muticula-evidence/runbook-upgrade-02-app/2026-09-27/raw/b0-claude/logs/c7-disabled.stream.jsonl"
+    },
+    {
+      "path": "raw/b0-claude/logs/c8-shell.after.diff",
+      "sha256": "da6843243dd5583c8a0c06cdfa09c4fa9b86fd3873db5e8e32611cea9057f3b5",
+      "bytes": 133,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/logs/c8-shell.after.diff",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/logs/c8-shell.after.sha256",
+      "sha256": "c4c59cd16ac53d129adbcf718c0187e4706a05e990bf451a89b2dfd00a884620",
+      "bytes": 150,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/logs/c8-shell.after.sha256",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/logs/c8-shell.before-status.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/logs/c8-shell.before-status.txt",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/logs/c8-shell.before.sha256",
+      "sha256": "325211d49fa8dac4c420c9b3818edb48d29aa528c079bf06ddb2d995d93987cf",
+      "bytes": 150,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/logs/c8-shell.before.sha256",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/logs/c8-shell.command.txt",
+      "sha256": "42dc045b1ce460ff732d6e81483e8692a348ffecabd260f659a398019bd9abf8",
+      "bytes": 291,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/logs/c8-shell.command.txt",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/logs/c8-shell.events.jsonl",
+      "sha256": "5cec477e9b4ae368df74ef587e5e421ab1e8c3e433b6e6410757908ccd72e612",
+      "bytes": 2278,
+      "git_status": "ignored",
+      "disposition": "KEEP",
+      "proposed_destination": "/home/hruzam/.local/state/muticula-evidence/runbook-upgrade-02-app/2026-09-27/raw/b0-claude/logs/c8-shell.events.jsonl",
+      "destination_status": "copied and independently hash-checked from source; host-local",
+      "keep_live_path_for_r2": false,
+      "verified_archive_path": "/home/hruzam/.local/state/muticula-evidence/runbook-upgrade-02-app/2026-09-27/raw/b0-claude/logs/c8-shell.events.jsonl"
+    },
+    {
+      "path": "raw/b0-claude/logs/c8-shell.exit",
+      "sha256": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+      "bytes": 2,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/logs/c8-shell.exit",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/logs/c8-shell.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/logs/c8-shell.stderr",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/logs/c8-shell.stream.jsonl",
+      "sha256": "581c5b222ed2c33764999ec19f9601d72eb4e89b121811c55f7e02e268cc17fd",
+      "bytes": 42734,
+      "git_status": "ignored",
+      "disposition": "KEEP",
+      "proposed_destination": "/home/hruzam/.local/state/muticula-evidence/runbook-upgrade-02-app/2026-09-27/raw/b0-claude/logs/c8-shell.stream.jsonl",
+      "destination_status": "copied and independently hash-checked from source; host-local",
+      "keep_live_path_for_r2": false,
+      "verified_archive_path": "/home/hruzam/.local/state/muticula-evidence/runbook-upgrade-02-app/2026-09-27/raw/b0-claude/logs/c8-shell.stream.jsonl"
+    },
+    {
+      "path": "raw/b0-claude/logs/c9-bare.after.diff",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/logs/c9-bare.after.diff",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/logs/c9-bare.after.sha256",
+      "sha256": "325211d49fa8dac4c420c9b3818edb48d29aa528c079bf06ddb2d995d93987cf",
+      "bytes": 150,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/logs/c9-bare.after.sha256",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/logs/c9-bare.before-status.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/logs/c9-bare.before-status.txt",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/logs/c9-bare.before.sha256",
+      "sha256": "325211d49fa8dac4c420c9b3818edb48d29aa528c079bf06ddb2d995d93987cf",
+      "bytes": 150,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/logs/c9-bare.before.sha256",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/logs/c9-bare.command.txt",
+      "sha256": "70973b70f8fc1181aed15bf3a1bb721e424488b75f28a83ca95ed67237803ed4",
+      "bytes": 301,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/logs/c9-bare.command.txt",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/logs/c9-bare.exit",
+      "sha256": "4355a46b19d348dc2f57c046f8ef63d4538ebb936000f3c9ee954a27460dd865",
+      "bytes": 2,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/logs/c9-bare.exit",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/logs/c9-bare.stderr",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/logs/c9-bare.stderr",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/logs/c9-bare.stream.jsonl",
+      "sha256": "89260fa5f203af4c2e831fdd2ffff03e3d47deb083a51812f2a7c1a87823d490",
+      "bytes": 17794,
+      "git_status": "ignored",
+      "disposition": "KEEP",
+      "proposed_destination": "/home/hruzam/.local/state/muticula-evidence/runbook-upgrade-02-app/2026-09-27/raw/b0-claude/logs/c9-bare.stream.jsonl",
+      "destination_status": "copied and independently hash-checked from source; host-local",
+      "keep_live_path_for_r2": false,
+      "verified_archive_path": "/home/hruzam/.local/state/muticula-evidence/runbook-upgrade-02-app/2026-09-27/raw/b0-claude/logs/c9-bare.stream.jsonl"
+    },
+    {
+      "path": "raw/b0-claude/logs/i1-healthy.after.diff",
+      "sha256": "cab97a45b7a1c6ad58c938265d59a23d72a9eb5c1dbe0912ea393e09bb30b158",
+      "bytes": 143,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/logs/i1-healthy.after.diff",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/logs/i1-healthy.after.sha256",
+      "sha256": "8d37543385348eb57d3b5b4c6890adef64a6028e147d393852e5c5b793290e51",
+      "bytes": 150,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/logs/i1-healthy.after.sha256",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/logs/i1-healthy.before.sha256",
+      "sha256": "325211d49fa8dac4c420c9b3818edb48d29aa528c079bf06ddb2d995d93987cf",
+      "bytes": 150,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/logs/i1-healthy.before.sha256",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/logs/i1-healthy.command.txt",
+      "sha256": "67db3fe4867ca2217414693b069434b50fb26d3e4d15a149ba418600729dda0e",
+      "bytes": 186,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/logs/i1-healthy.command.txt",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/logs/i1-healthy.events.jsonl",
+      "sha256": "cd8908568c379f2da1b4ccf46ffa6cd8ac04274c11c0e86f90d52a7d20e78429",
+      "bytes": 7163,
+      "git_status": "ignored",
+      "disposition": "KEEP",
+      "proposed_destination": "/home/hruzam/.local/state/muticula-evidence/runbook-upgrade-02-app/2026-09-27/raw/b0-claude/logs/i1-healthy.events.jsonl",
+      "destination_status": "copied and independently hash-checked from source; host-local",
+      "keep_live_path_for_r2": false,
+      "verified_archive_path": "/home/hruzam/.local/state/muticula-evidence/runbook-upgrade-02-app/2026-09-27/raw/b0-claude/logs/i1-healthy.events.jsonl"
+    },
+    {
+      "path": "raw/b0-claude/logs/i1-healthy.guard.jsonl",
+      "sha256": "3da7c61d9887b2814fb4f62d2f2bbdc24c72621fe7bb5f716704acc768760cd9",
+      "bytes": 609,
+      "git_status": "ignored",
+      "disposition": "KEEP",
+      "proposed_destination": "/home/hruzam/.local/state/muticula-evidence/runbook-upgrade-02-app/2026-09-27/raw/b0-claude/logs/i1-healthy.guard.jsonl",
+      "destination_status": "copied and independently hash-checked from source; host-local",
+      "keep_live_path_for_r2": false,
+      "verified_archive_path": "/home/hruzam/.local/state/muticula-evidence/runbook-upgrade-02-app/2026-09-27/raw/b0-claude/logs/i1-healthy.guard.jsonl"
+    },
+    {
+      "path": "raw/b0-claude/logs/i1-healthy.screen.01-trust-dialog.txt",
+      "sha256": "3e6a1b0e9370c6449c72f9e60a876cb93639504ba78c87d2910658ca464cb4a2",
+      "bytes": 1065,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/logs/i1-healthy.screen.01-trust-dialog.txt",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/logs/i1-healthy.screen.02-after-trust.txt",
+      "sha256": "2d6ae64d929c0b528e7b4e74ccc68a6df95e974a0c452368f5bedf6d19ecb0b3",
+      "bytes": 1765,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/logs/i1-healthy.screen.02-after-trust.txt",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/logs/i1-healthy.screen.03-run.txt",
+      "sha256": "5fd45d2809c3d6dd9e9857e49eeeecb79a03ed573aeb83b37ab9b8e103d4e845",
+      "bytes": 3766,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/logs/i1-healthy.screen.03-run.txt",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/logs/i2-child.after.diff",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/logs/i2-child.after.diff",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/logs/i2-child.after.sha256",
+      "sha256": "325211d49fa8dac4c420c9b3818edb48d29aa528c079bf06ddb2d995d93987cf",
+      "bytes": 150,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/logs/i2-child.after.sha256",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/logs/i2-child.before.sha256",
+      "sha256": "325211d49fa8dac4c420c9b3818edb48d29aa528c079bf06ddb2d995d93987cf",
+      "bytes": 150,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/logs/i2-child.before.sha256",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/logs/i2-child.command.txt",
+      "sha256": "28cf43e747ab8e343b91a596c15da55ba67fa71e4270ccbeb9c6076516226208",
+      "bytes": 182,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/logs/i2-child.command.txt",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/logs/i2-child.events.jsonl",
+      "sha256": "f66b697e32835f46d803f6a782208de343643105946ae7949f393b3a319f46c3",
+      "bytes": 6637,
+      "git_status": "ignored",
+      "disposition": "KEEP",
+      "proposed_destination": "/home/hruzam/.local/state/muticula-evidence/runbook-upgrade-02-app/2026-09-27/raw/b0-claude/logs/i2-child.events.jsonl",
+      "destination_status": "copied and independently hash-checked from source; host-local",
+      "keep_live_path_for_r2": false,
+      "verified_archive_path": "/home/hruzam/.local/state/muticula-evidence/runbook-upgrade-02-app/2026-09-27/raw/b0-claude/logs/i2-child.events.jsonl"
+    },
+    {
+      "path": "raw/b0-claude/logs/i2-child.guard.jsonl",
+      "sha256": "259cd65c729a87d93cc94193e5fc43effb319922e78d14983f96ba7f2f124696",
+      "bytes": 328,
+      "git_status": "ignored",
+      "disposition": "KEEP",
+      "proposed_destination": "/home/hruzam/.local/state/muticula-evidence/runbook-upgrade-02-app/2026-09-27/raw/b0-claude/logs/i2-child.guard.jsonl",
+      "destination_status": "copied and independently hash-checked from source; host-local",
+      "keep_live_path_for_r2": false,
+      "verified_archive_path": "/home/hruzam/.local/state/muticula-evidence/runbook-upgrade-02-app/2026-09-27/raw/b0-claude/logs/i2-child.guard.jsonl"
+    },
+    {
+      "path": "raw/b0-claude/logs/i2-child.screen.01-start.txt",
+      "sha256": "4e6d69980d5f9c41ff8413aab7878fc250cb35ffbc44c1587eda750e11604e59",
+      "bytes": 1758,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/logs/i2-child.screen.01-start.txt",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/logs/i2-child.screen.02-run.txt",
+      "sha256": "50e2f88daa52aa3603ba6e710a7fde0d7c513817aa4f9b36fe88411eeb6c8fe4",
+      "bytes": 2732,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/logs/i2-child.screen.02-run.txt",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/logs/i2-child.screen.03-done.txt",
+      "sha256": "14720eabb8aed42b48859b5bf19e1e86280e7fb3ef5f4e5b699aa41152d385da",
+      "bytes": 2441,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/logs/i2-child.screen.03-done.txt",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/logs/presence.attach.txt",
+      "sha256": "6c798e76e25825e41eefb14e8ea1928e561ccd86e4439eb020573230668b32bc",
+      "bytes": 43,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/logs/presence.attach.txt",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/logs/presence.detach.txt",
+      "sha256": "7b934a44c3588dc9768bd59769ec97b62eae9fdcd70be72d689a5e5bf53bb1f6",
+      "bytes": 43,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/logs/presence.detach.txt",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/logs/trust.after-print.txt",
+      "sha256": "4435b0675e5cd5b9d0c86fbdb4073e4cad2ff1bfaed13d7a14861184952795b6",
+      "bytes": 37,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/logs/trust.after-print.txt",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/logs/trust.before.txt",
+      "sha256": "c35e31aabb155e51f64fbb7f91398b4d35de2336636695a8975f56a0b22a6784",
+      "bytes": 38,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/logs/trust.before.txt",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/logs/trust.removal.txt",
+      "sha256": "fb87747121cb62bca6539f048fe06bbb3a8392635df107f70bd7653ae1b9721d",
+      "bytes": 749,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/logs/trust.removal.txt",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/matrix.md",
+      "sha256": "88f72ca998024d7138c78a8aa80a6a41b3ac308696ba3bdf5f88fb8ed9778747",
+      "bytes": 5494,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/matrix.md",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/prompts/child.txt",
+      "sha256": "b2bbaaa17e5919c379529ef9ddef0d97555781ba6fa074ea475adf99b8ccb3bf",
+      "bytes": 576,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/prompts/child.txt",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/prompts/held-and-unheld.txt",
+      "sha256": "27a76abeac43c7968d1f9bf26fbf4b69a171c31cd5bf677403389b6a90b68446",
+      "bytes": 717,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/prompts/held-and-unheld.txt",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/prompts/held-only.txt",
+      "sha256": "9b1327fe7338a313d7ba568b1461b313d57cb8e4572c330950ffcc50e8c39901",
+      "bytes": 502,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/prompts/held-only.txt",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/prompts/shell.txt",
+      "sha256": "c72e1b0abf3e41f08bc5128932e754dff93ed182596a6670a6d897538924e666",
+      "bytes": 279,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/prompts/shell.txt",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/run-print-case.sh",
+      "sha256": "11870b426fbe5684896275a659a0a90ab2c462e9d7ed127c0d90b39dfa78df45",
+      "bytes": 1642,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/run-print-case.sh",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/settings/c1-healthy.json",
+      "sha256": "17c014ad3a907201c48d982b64373b26182de327324a454dd49e3870caacd5a7",
+      "bytes": 887,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/settings/c1-healthy.json",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/settings/c2-child.json",
+      "sha256": "17c014ad3a907201c48d982b64373b26182de327324a454dd49e3870caacd5a7",
+      "bytes": 887,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/settings/c2-child.json",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/settings/c3-timeout.json",
+      "sha256": "471eca95002e2a82c7d9e4c9e46b2bfced78817a0e99bd415b51097fbece1dd1",
+      "bytes": 885,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/settings/c3-timeout.json",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/settings/c4-exit1.json",
+      "sha256": "c7cf02ea81486a374dbe3da4200e7e9e3805c3f1c3d59533cbfc2d0abf5c3871",
+      "bytes": 885,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/settings/c4-exit1.json",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/settings/c5-malformed.json",
+      "sha256": "1855509ed08b7db9233c9434ae0c903faacebb956352d11eb3ad50ee56c38272",
+      "bytes": 889,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/settings/c5-malformed.json",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/settings/c6-missing.json",
+      "sha256": "8e18312338f1762a9b9f6df54ea7ec453e4cac2f7f818296db6ad351a28b2c72",
+      "bytes": 884,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/settings/c6-missing.json",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/settings/c7-disabled.json",
+      "sha256": "acc9b27cc1f399ecff64f435bb2db42f3f5c7f6cfa14a5377b7e6d2f9ca92ab2",
+      "bytes": 913,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/settings/c7-disabled.json",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/settings/c8-shell.json",
+      "sha256": "17c014ad3a907201c48d982b64373b26182de327324a454dd49e3870caacd5a7",
+      "bytes": 887,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/settings/c8-shell.json",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/settings/c9-bare.json",
+      "sha256": "17c014ad3a907201c48d982b64373b26182de327324a454dd49e3870caacd5a7",
+      "bytes": 887,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/settings/c9-bare.json",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/settings/i1-healthy.json",
+      "sha256": "17c014ad3a907201c48d982b64373b26182de327324a454dd49e3870caacd5a7",
+      "bytes": 887,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/settings/i1-healthy.json",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/settings/i2-child.json",
+      "sha256": "17c014ad3a907201c48d982b64373b26182de327324a454dd49e3870caacd5a7",
+      "bytes": 887,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/settings/i2-child.json",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/settings/settings.json",
+      "sha256": "e855d039f8f551b23c9cfd9f4b61d378aeb325b472abdfa9bc6691a9b49eab4c",
+      "bytes": 133,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/settings/settings.json",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/settings/settings.local.json",
+      "sha256": "a8d3d42ed9e097a2501b0a5265c0a2b21bfbc4918a212cbee765a1516fced897",
+      "bytes": 131,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/settings/settings.local.json",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-claude/setup-fixture.sh",
+      "sha256": "18c9008181110a7eebef789eb7cefe4c9fd6fbf09dc917ae456f3df28a8b915e",
+      "bytes": 3071,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-claude/setup-fixture.sh",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-codex/01-interactive.prompt.txt",
+      "sha256": "a7801496bf13d776c557ed266df88b12ac84bac167bce3cf02273d72083b3a48",
+      "bytes": 283,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-codex/01-interactive.prompt.txt",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-codex/02-child.prompt.txt",
+      "sha256": "58a377b44b22bbad0916ecfbe66f4b3621e4a4c214ac339121b0d6f7d58a6cc6",
+      "bytes": 315,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-codex/02-child.prompt.txt",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-codex/03-05-faults.prompt.txt",
+      "sha256": "e54bc7f2698438cf4f14e5a2faa356be7aad0f5154b76b62b35965475cf62fbe",
+      "bytes": 294,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-codex/03-05-faults.prompt.txt",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-codex/03-timeout.prompt.txt",
+      "sha256": "821a104f53a1752c55894febb2f912cfbf1a216ad078f525895fcddae61e87ad",
+      "bytes": 164,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-codex/03-timeout.prompt.txt",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-codex/04-exit1.prompt.txt",
+      "sha256": "d3fcd997021cd68ae7e84866dc236ae2d65c29d156cb7396f8c686df6bb9cb31",
+      "bytes": 162,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-codex/04-exit1.prompt.txt",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-codex/05-malformed.prompt.txt",
+      "sha256": "6051a0a2c937491c436f649991629d9b3b0442896a24fa882320bff823f37c84",
+      "bytes": 166,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-codex/05-malformed.prompt.txt",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-codex/06-08-missing-shell.prompt.txt",
+      "sha256": "e3b4875cfe0ed9f45b1619fbe9ffa1106de73d653a4c78cd0c03c01d64285fd9",
+      "bytes": 326,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-codex/06-08-missing-shell.prompt.txt",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-codex/06-missing.prompt.txt",
+      "sha256": "b348b5dfb0f6e8324d2e7052f63054b9ee05273b8b650e34bc6b6588b806686d",
+      "bytes": 164,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-codex/06-missing.prompt.txt",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-codex/07-disabled.prompt.txt",
+      "sha256": "739e9fb7be2da32bdc098c1ddd130c54eb0d5ca4713ad780bb42bd18dc8732ab",
+      "bytes": 165,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-codex/07-disabled.prompt.txt",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-codex/08-shell.prompt.txt",
+      "sha256": "732590f30bc3c4829517efabd3abd8e8a4f79b4762a3d32441163cff89fde0cc",
+      "bytes": 185,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-codex/08-shell.prompt.txt",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-codex/MANIFEST.sha256",
+      "sha256": "bebab9308fed53242c7ff494fd33f9dca43866fe1f7cc06e7ee55e391e004850",
+      "bytes": 5086,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-codex/MANIFEST.sha256",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-codex/MATRIX.md",
+      "sha256": "db87df7446a1ec0951679c6018dcde27b3f5c0204dfbd510c9ad403a660440fa",
+      "bytes": 6664,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-codex/MATRIX.md",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-codex/final-fixture/held-exit1.txt",
+      "sha256": "83394fec11e0ea172b409938fc244381a3a8e89bde9ffbd557c2fb5f7d4c84cd",
+      "bytes": 11,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-codex/final-fixture/held-exit1.txt",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-codex/final-fixture/held-malformed.txt",
+      "sha256": "f4a0c00de4b2524feaf6c695508e788374714c23cfc18e7fdb7eac9e4c661b46",
+      "bytes": 15,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-codex/final-fixture/held-malformed.txt",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-codex/final-fixture/held-missing.txt",
+      "sha256": "b8768ba34efe20fe5cf3c7ff3d39c18038e0bfe1ec99f3bca29f939ed407a36c",
+      "bytes": 13,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-codex/final-fixture/held-missing.txt",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-codex/final-fixture/held-shell.txt",
+      "sha256": "e9078ebc9f0882fc1b5fbc4faf8e8f8ffb4bf1096637f0918bf3d0ccf4643eed",
+      "bytes": 11,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-codex/final-fixture/held-shell.txt",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-codex/final-fixture/held-timeout.txt",
+      "sha256": "9b9050f5142e1897b4772e08fa078c497f454cf04554761831277a882bca8d38",
+      "bytes": 13,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-codex/final-fixture/held-timeout.txt",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-codex/final-fixture/held.txt",
+      "sha256": "ff1a32762798b6614c079a42c8d7af8d25acba838e3dd4dad5902e0dcfbc0e32",
+      "bytes": 14,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-codex/final-fixture/held.txt",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-codex/final-fixture/unheld.txt",
+      "sha256": "8d7fca7dd0556ad56dc2ad09871cb6ebd6bd740cc5c9ef4ca4661330a118d98d",
+      "bytes": 9,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-codex/final-fixture/unheld.txt",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-codex/hook.py",
+      "sha256": "f5ff0edc9e02982337ab7693338207233b41487b32dfac268b60ecc3f8f8a08f",
+      "bytes": 2026,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-codex/hook.py",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-codex/isolation-cleanup.txt",
+      "sha256": "dde938416c9e794515ab4acbcb9e787de0a904cee9b1fd783e7e9191667a001b",
+      "bytes": 804,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-codex/isolation-cleanup.txt",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-codex/launch_tui.py",
+      "sha256": "0c7060f76006e2c56813da27907d2643b4f127503b0886436aa17748f39ac479",
+      "bytes": 2378,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-codex/launch_tui.py",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-codex/logs/01-interactive.hook-events.jsonl",
+      "sha256": "6535a1eca7882a6b68fe3be01faddca6360d7f6517d21a2e8353ec1cd63cf85e",
+      "bytes": 1442,
+      "git_status": "ignored",
+      "disposition": "KEEP",
+      "proposed_destination": "/home/hruzam/.local/state/muticula-evidence/runbook-upgrade-02-app/2026-09-27/raw/b0-codex/logs/01-interactive.hook-events.jsonl",
+      "destination_status": "copied and independently hash-checked from source; host-local",
+      "keep_live_path_for_r2": false,
+      "verified_archive_path": "/home/hruzam/.local/state/muticula-evidence/runbook-upgrade-02-app/2026-09-27/raw/b0-codex/logs/01-interactive.hook-events.jsonl"
+    },
+    {
+      "path": "raw/b0-codex/logs/01-interactive.invocation.json",
+      "sha256": "4cd2faba8b003bc4aa4559555ad3f00c3a113504232b22227791dfd27f999f2a",
+      "bytes": 1739,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-codex/logs/01-interactive.invocation.json",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-codex/logs/01-interactive.typescript",
+      "sha256": "1e0f4dfca459cb35ade78905f265aa1bd896dbfe56cebedd9c502c93a9d69977",
+      "bytes": 25615,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-codex/logs/01-interactive.typescript",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-codex/logs/02-child.hook-events.jsonl",
+      "sha256": "3b937873246330164326b9d7e011c35e8247739466356b984e697cfd9e595ec8",
+      "bytes": 1365,
+      "git_status": "ignored",
+      "disposition": "KEEP",
+      "proposed_destination": "/home/hruzam/.local/state/muticula-evidence/runbook-upgrade-02-app/2026-09-27/raw/b0-codex/logs/02-child.hook-events.jsonl",
+      "destination_status": "copied and independently hash-checked from source; host-local",
+      "keep_live_path_for_r2": false,
+      "verified_archive_path": "/home/hruzam/.local/state/muticula-evidence/runbook-upgrade-02-app/2026-09-27/raw/b0-codex/logs/02-child.hook-events.jsonl"
+    },
+    {
+      "path": "raw/b0-codex/logs/02-child.invocation.json",
+      "sha256": "81418002e66781b0055e5bd75258afe3ee9ccea91c2fb057510ec78893946a4d",
+      "bytes": 1926,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-codex/logs/02-child.invocation.json",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-codex/logs/02-child.typescript",
+      "sha256": "8a6a6f6a807660a6c8f93b4b632745c3f3af1843c543b8e947b602f977357cd0",
+      "bytes": 33947,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-codex/logs/02-child.typescript",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-codex/logs/03-05-faults.hook-events.jsonl",
+      "sha256": "9f90e604a2e33b9e3fb0d62d27c1124fb2debca5246c105ef2d89c2c276b6b77",
+      "bytes": 1929,
+      "git_status": "ignored",
+      "disposition": "KEEP",
+      "proposed_destination": "/home/hruzam/.local/state/muticula-evidence/runbook-upgrade-02-app/2026-09-27/raw/b0-codex/logs/03-05-faults.hook-events.jsonl",
+      "destination_status": "copied and independently hash-checked from source; host-local",
+      "keep_live_path_for_r2": false,
+      "verified_archive_path": "/home/hruzam/.local/state/muticula-evidence/runbook-upgrade-02-app/2026-09-27/raw/b0-codex/logs/03-05-faults.hook-events.jsonl"
+    },
+    {
+      "path": "raw/b0-codex/logs/03-05-faults.invocation.json",
+      "sha256": "01a9de570baaab232be57056e905f25cf63909405ca5a3d46dcccaf7605072a8",
+      "bytes": 2350,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-codex/logs/03-05-faults.invocation.json",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-codex/logs/03-05-faults.stderr.txt",
+      "sha256": "1aa26269eb1cc57f86b235a03cda53c004edb5b1e9fc99d4da4f00843293d721",
+      "bytes": 39,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-codex/logs/03-05-faults.stderr.txt",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-codex/logs/03-05-faults.stdout.jsonl",
+      "sha256": "baa075c6744f92605ffb22202fe85ae589a9894ccdd764396d1b8ee9acaab153",
+      "bytes": 2138,
+      "git_status": "ignored",
+      "disposition": "KEEP",
+      "proposed_destination": "/home/hruzam/.local/state/muticula-evidence/runbook-upgrade-02-app/2026-09-27/raw/b0-codex/logs/03-05-faults.stdout.jsonl",
+      "destination_status": "copied and independently hash-checked from source; host-local",
+      "keep_live_path_for_r2": false,
+      "verified_archive_path": "/home/hruzam/.local/state/muticula-evidence/runbook-upgrade-02-app/2026-09-27/raw/b0-codex/logs/03-05-faults.stdout.jsonl"
+    },
+    {
+      "path": "raw/b0-codex/logs/06-08-missing-shell.invocation.json",
+      "sha256": "188f7f25dd9760bd007b056ae7e81ca851c00fb3432e703d861a4e422af7430d",
+      "bytes": 2753,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-codex/logs/06-08-missing-shell.invocation.json",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-codex/logs/06-08-missing-shell.stderr.txt",
+      "sha256": "1aa26269eb1cc57f86b235a03cda53c004edb5b1e9fc99d4da4f00843293d721",
+      "bytes": 39,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-codex/logs/06-08-missing-shell.stderr.txt",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-codex/logs/06-08-missing-shell.stdout.jsonl",
+      "sha256": "da665f956d96b7da49e7adf918b850772dd6a9f925cd033be73f0831830e21bf",
+      "bytes": 1759,
+      "git_status": "ignored",
+      "disposition": "KEEP",
+      "proposed_destination": "/home/hruzam/.local/state/muticula-evidence/runbook-upgrade-02-app/2026-09-27/raw/b0-codex/logs/06-08-missing-shell.stdout.jsonl",
+      "destination_status": "copied and independently hash-checked from source; host-local",
+      "keep_live_path_for_r2": false,
+      "verified_archive_path": "/home/hruzam/.local/state/muticula-evidence/runbook-upgrade-02-app/2026-09-27/raw/b0-codex/logs/06-08-missing-shell.stdout.jsonl"
+    },
+    {
+      "path": "raw/b0-codex/logs/07-disabled.invocation.json",
+      "sha256": "dc2c1fe1521460094a313070bc4387182f5f79291b35b21559012a76079d523a",
+      "bytes": 2613,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-codex/logs/07-disabled.invocation.json",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-codex/logs/07-disabled.stderr.txt",
+      "sha256": "1aa26269eb1cc57f86b235a03cda53c004edb5b1e9fc99d4da4f00843293d721",
+      "bytes": 39,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-codex/logs/07-disabled.stderr.txt",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-codex/logs/07-disabled.stdout.jsonl",
+      "sha256": "e273f9eab8f80a3e168bd8edb693862f617ba043a7633cab54446617a77b44fe",
+      "bytes": 1215,
+      "git_status": "ignored",
+      "disposition": "KEEP",
+      "proposed_destination": "/home/hruzam/.local/state/muticula-evidence/runbook-upgrade-02-app/2026-09-27/raw/b0-codex/logs/07-disabled.stdout.jsonl",
+      "destination_status": "copied and independently hash-checked from source; host-local",
+      "keep_live_path_for_r2": false,
+      "verified_archive_path": "/home/hruzam/.local/state/muticula-evidence/runbook-upgrade-02-app/2026-09-27/raw/b0-codex/logs/07-disabled.stdout.jsonl"
+    },
+    {
+      "path": "raw/b0-codex/logs/config-parse.doctor.json",
+      "sha256": "91cbbaf2a77a570a759ce14414f6616c2e1194b41275c59986cde863246f6660",
+      "bytes": 15293,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-codex/logs/config-parse.doctor.json",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-codex/logs/config-parse.models.json",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-codex/logs/config-parse.models.json",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-codex/logs/config-parse.stderr",
+      "sha256": "d47a06d59aba2814c3fb7460049fc2ccbfc834196c956d6c6558e8be8b079e24",
+      "bytes": 103,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-codex/logs/config-parse.stderr",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-codex/logs/hook-smoke.jsonl",
+      "sha256": "c374a2add3dcc7bd9cf1bd2f29214ae108fec32892564483b5855fbb7f5b6edd",
+      "bytes": 693,
+      "git_status": "ignored",
+      "disposition": "KEEP",
+      "proposed_destination": "/home/hruzam/.local/state/muticula-evidence/runbook-upgrade-02-app/2026-09-27/raw/b0-codex/logs/hook-smoke.jsonl",
+      "destination_status": "copied and independently hash-checked from source; host-local",
+      "keep_live_path_for_r2": false,
+      "verified_archive_path": "/home/hruzam/.local/state/muticula-evidence/runbook-upgrade-02-app/2026-09-27/raw/b0-codex/logs/hook-smoke.jsonl"
+    },
+    {
+      "path": "raw/b0-codex/logs/preflight-cli-parse.invocation.json",
+      "sha256": "40a310609ac9f20999240217d9113bc903521f6222dea2caa2ae5795a3676246",
+      "bytes": 1387,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-codex/logs/preflight-cli-parse.invocation.json",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-codex/logs/preflight-cli-parse.stderr.txt",
+      "sha256": "c206a405769cb087010d604fab55fd38b0612d2dfc6435797cfba6df5240b7e7",
+      "bytes": 251,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-codex/logs/preflight-cli-parse.stderr.txt",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-codex/logs/preflight-cli-parse.stdout.jsonl",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "git_status": "ignored",
+      "disposition": "KEEP",
+      "proposed_destination": "/home/hruzam/.local/state/muticula-evidence/runbook-upgrade-02-app/2026-09-27/raw/b0-codex/logs/preflight-cli-parse.stdout.jsonl",
+      "destination_status": "copied and independently hash-checked from source; host-local",
+      "keep_live_path_for_r2": false,
+      "verified_archive_path": "/home/hruzam/.local/state/muticula-evidence/runbook-upgrade-02-app/2026-09-27/raw/b0-codex/logs/preflight-cli-parse.stdout.jsonl"
+    },
+    {
+      "path": "raw/b0-codex/logs/preflight-interactive.hook-events.jsonl",
+      "sha256": "c279982318e0cbffeeb4a4ead74508b660e9f8fea2c6fd3e5c7810d57e9ccde7",
+      "bytes": 1442,
+      "git_status": "ignored",
+      "disposition": "KEEP",
+      "proposed_destination": "/home/hruzam/.local/state/muticula-evidence/runbook-upgrade-02-app/2026-09-27/raw/b0-codex/logs/preflight-interactive.hook-events.jsonl",
+      "destination_status": "copied and independently hash-checked from source; host-local",
+      "keep_live_path_for_r2": false,
+      "verified_archive_path": "/home/hruzam/.local/state/muticula-evidence/runbook-upgrade-02-app/2026-09-27/raw/b0-codex/logs/preflight-interactive.hook-events.jsonl"
+    },
+    {
+      "path": "raw/b0-codex/logs/preflight-interactive.invocation.json",
+      "sha256": "4cd2faba8b003bc4aa4559555ad3f00c3a113504232b22227791dfd27f999f2a",
+      "bytes": 1739,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-codex/logs/preflight-interactive.invocation.json",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-codex/logs/preflight-interactive.typescript",
+      "sha256": "a643c0ded28a6750bfcbf6540e80d71ffbd6f5ea7fd4e90c51ba238c79e4d12a",
+      "bytes": 30910,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-codex/logs/preflight-interactive.typescript",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-codex/logs/preflight-substring-interactive.hook-events.jsonl",
+      "sha256": "7cb8c9386e39c005e01ec2a7239122a0102cfb02bcfd19bcd963caa71e03d3f2",
+      "bytes": 1442,
+      "git_status": "ignored",
+      "disposition": "KEEP",
+      "proposed_destination": "/home/hruzam/.local/state/muticula-evidence/runbook-upgrade-02-app/2026-09-27/raw/b0-codex/logs/preflight-substring-interactive.hook-events.jsonl",
+      "destination_status": "copied and independently hash-checked from source; host-local",
+      "keep_live_path_for_r2": false,
+      "verified_archive_path": "/home/hruzam/.local/state/muticula-evidence/runbook-upgrade-02-app/2026-09-27/raw/b0-codex/logs/preflight-substring-interactive.hook-events.jsonl"
+    },
+    {
+      "path": "raw/b0-codex/logs/preflight-substring-interactive.invocation.json",
+      "sha256": "4cd2faba8b003bc4aa4559555ad3f00c3a113504232b22227791dfd27f999f2a",
+      "bytes": 1739,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-codex/logs/preflight-substring-interactive.invocation.json",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-codex/logs/preflight-substring-interactive.typescript",
+      "sha256": "a5c168f6ecd129c07f2128501a02b52738b3bd64e167f25535a354a825eef8f7",
+      "bytes": 29025,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-codex/logs/preflight-substring-interactive.typescript",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-codex/rollback_config.py",
+      "sha256": "9668d32fac307ae848dcfe2c089025f4d8cc1772ddf11def6987ec4be0058e0f",
+      "bytes": 994,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-codex/rollback_config.py",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/b0-codex/run_exec.py",
+      "sha256": "ba728f163a138ecb4f06c6c2d1e0e127ee2e89987714a1000fc21259ea24c480",
+      "bytes": 2826,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/b0-codex/run_exec.py",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/cartan.b0-go.2026-09-25.md",
+      "sha256": "2c215b99801c13560dde3e2438f8666be17cc6385eaaca0a002d7db7b7f4950c",
+      "bytes": 3350,
+      "git_status": "tracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/cartan.b0-go.2026-09-25.md",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false,
+      "verified_existing_git_locator": "ia-sync:e01825d93b0be8746dc516026b096607362a2709:.dev/session/runbook-upgrade-02-app/raw/cartan.b0-go.2026-09-25.md"
+    },
+    {
+      "path": "raw/cartan.b1-direction.2026-09-25.md",
+      "sha256": "3e4868f9141e980ddc2569139bf45f549cf14ae080d91e537c99ea1ea2331f87",
+      "bytes": 7255,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/cartan.b1-direction.2026-09-25.md",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/cartan.challenge.muticula-consolidated.2026-09-26.md",
+      "sha256": "6f4595d9e73acd1335bc996fc16e9e778ef5694efe60f421b4c139c82a10da09",
+      "bytes": 10846,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/cartan.challenge.muticula-consolidated.2026-09-26.md",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": true
+    },
+    {
+      "path": "raw/cartan.challenge.muticula-d1-d2.2026-09-26.md",
+      "sha256": "66ae04cd81938c2c9e90fd246db844e6ac599398771177eaa37518a403fa5422",
+      "bytes": 6214,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/cartan.challenge.muticula-d1-d2.2026-09-26.md",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/cartan.challenge.muticula-master.2026-09-26.md",
+      "sha256": "8236ccb95d22d104a93769f249bb5900112a09517f5bad2c6fc635d7867003db",
+      "bytes": 11762,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/cartan.challenge.muticula-master.2026-09-26.md",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": true
+    },
+    {
+      "path": "raw/cartan.challenge.muticula-r2.2026-09-27.md",
+      "sha256": "0f989634802259b5ab09ebe034e901c7c3e07cf2b0a82ef0d2d5c931994783f6",
+      "bytes": 6940,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/cartan.challenge.muticula-r2.2026-09-27.md",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/cartan.control-validation.2026-09-24.md",
+      "sha256": "29885e2e895b5a4dca5fba83f514eaf4a57a6cc016fd6ac91ef4691774a3bf3e",
+      "bytes": 2134,
+      "git_status": "tracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/cartan.control-validation.2026-09-24.md",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false,
+      "verified_existing_git_locator": "ia-sync:e01825d93b0be8746dc516026b096607362a2709:.dev/session/runbook-upgrade-02-app/raw/cartan.control-validation.2026-09-24.md"
+    },
+    {
+      "path": "raw/cartan.experience-transfer.2026-09-27.md",
+      "sha256": "44cfc51f29d0971fc58d4543fb0d58816191b87a2434d27acb5cd902219d3bdb",
+      "bytes": 2397,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/cartan.experience-transfer.2026-09-27.md",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/cartan.meeting-room-move.2026-09-25.json",
+      "sha256": "5de6d4cebe45f77dc6e48745d8d708f3d96a894274fcd03c1ee313b7ac7777cc",
+      "bytes": 6334,
+      "git_status": "tracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/cartan.meeting-room-move.2026-09-25.json",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false,
+      "verified_existing_git_locator": "ia-sync:e01825d93b0be8746dc516026b096607362a2709:.dev/session/runbook-upgrade-02-app/raw/cartan.meeting-room-move.2026-09-25.json"
+    },
+    {
+      "path": "raw/cartan.meeting-room-retirement.2026-09-25.json",
+      "sha256": "a7914b24ee351814aa8c2d88b50ecd202462ff403bd386230942632d033d69f0",
+      "bytes": 3620,
+      "git_status": "tracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/cartan.meeting-room-retirement.2026-09-25.json",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false,
+      "verified_existing_git_locator": "ia-sync:e01825d93b0be8746dc516026b096607362a2709:.dev/session/runbook-upgrade-02-app/raw/cartan.meeting-room-retirement.2026-09-25.json"
+    },
+    {
+      "path": "raw/cartan.native-runbook-skill-design.2026-09-24.md",
+      "sha256": "6516682f71521cca12adebbf1813ed7b3154ea89e4dad9d080738983cd942ae1",
+      "bytes": 3181,
+      "git_status": "tracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/cartan.native-runbook-skill-design.2026-09-24.md",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false,
+      "verified_existing_git_locator": "ia-sync:e01825d93b0be8746dc516026b096607362a2709:.dev/session/runbook-upgrade-02-app/raw/cartan.native-runbook-skill-design.2026-09-24.md"
+    },
+    {
+      "path": "raw/cartan.native-runbook-skill-review.2026-09-24.md",
+      "sha256": "71d07a3b1d70bd994caba9a36f5aafff42ca704c11bb24c9edf9501114879406",
+      "bytes": 6792,
+      "git_status": "tracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/cartan.native-runbook-skill-review.2026-09-24.md",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false,
+      "verified_existing_git_locator": "ia-sync:e01825d93b0be8746dc516026b096607362a2709:.dev/session/runbook-upgrade-02-app/raw/cartan.native-runbook-skill-review.2026-09-24.md"
+    },
+    {
+      "path": "raw/cartan.point.muticula-handoff.2026-09-26.md",
+      "sha256": "fa62e9ad658a3535b72f9258b4db9e801f47d99ab47103b7d664963dc855d04f",
+      "bytes": 4275,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/cartan.point.muticula-handoff.2026-09-26.md",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": true
+    },
+    {
+      "path": "raw/cartan.publish-gate-boundary.2026-09-25.md",
+      "sha256": "87d229465b437864f9c7710a0cc3cc74703883a2977f3b84cb52599e96fd1aa2",
+      "bytes": 9290,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/cartan.publish-gate-boundary.2026-09-25.md",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/cartan.verify.muticula-master-r1.2026-09-26.md",
+      "sha256": "f05930cf42605a2700a4e1ece18f97f8aff956f4bd7c7ac3eb925ffd75ab2a8e",
+      "bytes": 3326,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/cartan.verify.muticula-master-r1.2026-09-26.md",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": true
+    },
+    {
+      "path": "raw/closure-source/TRAJECTORY-CARTAN-point.muticula-r2-closure.2026-09-26.md",
+      "sha256": "446b58d6fb72e59681978a514d6b6042c6850568592d616373ba20dc2f869cfd",
+      "bytes": 7737,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/closure-source/TRAJECTORY-CARTAN-point.muticula-r2-closure.2026-09-26.md",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/coordination.germline-00-home.2026-09-25.md",
+      "sha256": "6f052df716fb2421053b60c76f83e0c2a3a79ef673223a0d83e70f45eaad5bc2",
+      "bytes": 1662,
+      "git_status": "tracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/coordination.germline-00-home.2026-09-25.md",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false,
+      "verified_existing_git_locator": "ia-sync:e01825d93b0be8746dc516026b096607362a2709:.dev/session/runbook-upgrade-02-app/raw/coordination.germline-00-home.2026-09-25.md"
+    },
+    {
+      "path": "raw/csharp-head/SKILL.md",
+      "sha256": "d06997640aef21ff28bc0189a630b98d05de5120a951026499224aa46eb8841c",
+      "bytes": 4124,
+      "git_status": "tracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/csharp-head/SKILL.md",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false,
+      "verified_existing_git_locator": "ia-sync:e01825d93b0be8746dc516026b096607362a2709:.dev/session/runbook-upgrade-02-app/raw/csharp-head/SKILL.md"
+    },
+    {
+      "path": "raw/draft.majkee.app-scheme.2026-09-23.md",
+      "sha256": "3dc5783d2648f2b8767a3f794d6760a36b0f7c40538bbf5e65f1072d70795e52",
+      "bytes": 27387,
+      "git_status": "tracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/draft.majkee.app-scheme.2026-09-23.md",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false,
+      "verified_existing_git_locator": "ia-sync:e01825d93b0be8746dc516026b096607362a2709:.dev/session/runbook-upgrade-02-app/raw/draft.majkee.app-scheme.2026-09-23.md"
+    },
+    {
+      "path": "raw/identity-probe4/MANIFEST.sha256",
+      "sha256": "a7208e49bb949fcbfbbb2bc072085478a10828adf049ab8917251c33991148f0",
+      "bytes": 415,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/identity-probe4/MANIFEST.sha256",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/identity-probe4/README.md",
+      "sha256": "ea8f4c7d8a4a3c025dc4f3836bda8ef057e16330488adb845a1573d77dd2332f",
+      "bytes": 2867,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/identity-probe4/README.md",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/identity-probe4/agent-created-controlling-pty.json",
+      "sha256": "f19c88046e7697ee7ca6461a7e4311ad7720e883d6f262ac7d72a644e9ff6037",
+      "bytes": 360,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/identity-probe4/agent-created-controlling-pty.json",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/identity-probe4/exec-pipes.json",
+      "sha256": "37efa5f978fa376c7fa1d537fee7aa21dc54af760ee0413b1e36e80792eb66fb",
+      "bytes": 379,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/identity-probe4/exec-pipes.json",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/identity-probe4/exec-pty.json",
+      "sha256": "0fa8d6b044e02bd01184cbdaa4c0ed5cc3cb57a785284c8f387e7ff7f5b6682d",
+      "bytes": 374,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/identity-probe4/exec-pty.json",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/identity-probe4/probe4.py",
+      "sha256": "272a901519d6d029f2609bafa035b0d5b7d27f1aadb8f084590dc132a518745a",
+      "bytes": 1103,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/identity-probe4/probe4.py",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/trajectory.b1-packet.2026-09-25.md",
+      "sha256": "9663d0444ae6a00a6359689c3533121f2a3fc97e6079437d289f14134289136e",
+      "bytes": 10322,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/trajectory.b1-packet.2026-09-25.md",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/trajectory.b1-packet.cycle06.2026-09-25.md",
+      "sha256": "96747460225cac3a51fed7e6a6644624cdc968e5ca426105d66717511ef47bc3",
+      "bytes": 15350,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/trajectory.b1-packet.cycle06.2026-09-25.md",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "raw/trajectory.keeper.presence-freshness-00-precmd.2026-09-24.md",
+      "sha256": "bc006ad2a9aadbf19900b399e72d61cefd1cd1063d167c9357923f3bae6a3b4e",
+      "bytes": 2841,
+      "git_status": "tracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/raw/trajectory.keeper.presence-freshness-00-precmd.2026-09-24.md",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false,
+      "verified_existing_git_locator": "ia-sync:e01825d93b0be8746dc516026b096607362a2709:.dev/session/runbook-upgrade-02-app/raw/trajectory.keeper.presence-freshness-00-precmd.2026-09-24.md"
+    },
+    {
+      "path": "_bus/01.cartan-muticula.point.md",
+      "sha256": "3008ef53d046943cf456daa1b4898f407d08c192fb0bfa5ca4c9d9ab4b16a8f9",
+      "bytes": 3325,
+      "git_status": "tracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/_bus/01.cartan-muticula.point.md",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false,
+      "verified_existing_git_locator": "ia-sync:e01825d93b0be8746dc516026b096607362a2709:.dev/session/runbook-upgrade-02-app/_bus/01.cartan-muticula.point.md"
+    },
+    {
+      "path": "_bus/01.cartan-muticula.verdict.md",
+      "sha256": "ca052e88fa0cb00490a4cbce56bf3232faa03f9598853337ba9332baf5955323",
+      "bytes": 10052,
+      "git_status": "tracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/_bus/01.cartan-muticula.verdict.md",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false,
+      "verified_existing_git_locator": "ia-sync:e01825d93b0be8746dc516026b096607362a2709:.dev/session/runbook-upgrade-02-app/_bus/01.cartan-muticula.verdict.md"
+    },
+    {
+      "path": "_bus/01.trajectory-dashboard.return.md",
+      "sha256": "154aa1c703dfd7f873d3be664f5dfb640720c4eb6a64c2a979b8074582a21fae",
+      "bytes": 10243,
+      "git_status": "tracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/_bus/01.trajectory-dashboard.return.md",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false,
+      "verified_existing_git_locator": "ia-sync:e01825d93b0be8746dc516026b096607362a2709:.dev/session/runbook-upgrade-02-app/_bus/01.trajectory-dashboard.return.md"
+    },
+    {
+      "path": "_bus/02.trajectory-dashboard.point.md",
+      "sha256": "b7f8acbd9ebc9438acd5456d46833c0665ee9353d8252eac78dd203e85446eaa",
+      "bytes": 6459,
+      "git_status": "tracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/_bus/02.trajectory-dashboard.point.md",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false,
+      "verified_existing_git_locator": "ia-sync:e01825d93b0be8746dc516026b096607362a2709:.dev/session/runbook-upgrade-02-app/_bus/02.trajectory-dashboard.point.md"
+    },
+    {
+      "path": "_bus/03.cartan-muticula.point.md",
+      "sha256": "18d7c152d2defe9b5f578577f0d500e0e71ee8c29e1e7c6eadb6cb315be762a1",
+      "bytes": 5868,
+      "git_status": "tracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/_bus/03.cartan-muticula.point.md",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false,
+      "verified_existing_git_locator": "ia-sync:e01825d93b0be8746dc516026b096607362a2709:.dev/session/runbook-upgrade-02-app/_bus/03.cartan-muticula.point.md"
+    },
+    {
+      "path": "_bus/03.muticula-verifier.verdict.md",
+      "sha256": "576247b1452b136c6ac0670b1a7ab3ed6c95ab0e15b57737ebbd06b1879662db",
+      "bytes": 5522,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/_bus/03.muticula-verifier.verdict.md",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "_bus/03.trajectory-dashboard.return.md",
+      "sha256": "6196c3f1a04b283f20d285638eb6d89556841141e88b4c4f6a72087ca03bb98f",
+      "bytes": 8166,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/_bus/03.trajectory-dashboard.return.md",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "_bus/04.cartan-muticula.point.md",
+      "sha256": "a2093422c1263fb9acf79aeb39f750a263919cb16586f30decf3dabaf7291275",
+      "bytes": 5338,
+      "git_status": "tracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/_bus/04.cartan-muticula.point.md",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false,
+      "verified_existing_git_locator": "ia-sync:e01825d93b0be8746dc516026b096607362a2709:.dev/session/runbook-upgrade-02-app/_bus/04.cartan-muticula.point.md"
+    },
+    {
+      "path": "_bus/04.harness-builder.return.md",
+      "sha256": "e094f2f6ca2be0d4cc5404acac8ea2f4fe26d1fbe19f0c5a399a3bcb9c5bc0ab",
+      "bytes": 6796,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/_bus/04.harness-builder.return.md",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "_bus/04.muticula-verifier.verdict.md",
+      "sha256": "a6b5daf8bee4c23ebbd62206673e95b1cd32e064ba7db3000c87d68b251beeaa",
+      "bytes": 6111,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/_bus/04.muticula-verifier.verdict.md",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "_bus/05.cartan-muticula.point.md",
+      "sha256": "5924ea5457cb01f492b9c70862768ab6db0735c47e3b6c5fde162b1583629f2e",
+      "bytes": 5293,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/_bus/05.cartan-muticula.point.md",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "_bus/05.cartan-muticula.verdict.md",
+      "sha256": "e4f4171917914c7849f7ea07da1d19e7252a5196c7bfa6d271054607124e2883",
+      "bytes": 9249,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/_bus/05.cartan-muticula.verdict.md",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "_bus/05.trajectory-dashboard.return.md",
+      "sha256": "d325969530636f4f54e4cbf625bf3411d589b005d7af4438d6883de4908edc8f",
+      "bytes": 5833,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/_bus/05.trajectory-dashboard.return.md",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "_bus/06.cartan-muticula.point.md",
+      "sha256": "a91ad4c8214f72d6d5ad2dbdaa1899a36bb4a23340499bcfdea44ef35eac5eaa",
+      "bytes": 4037,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/_bus/06.cartan-muticula.point.md",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "_bus/06.cartan-muticula.verdict.md",
+      "sha256": "d606d2995067cd47bea7d6196f307581424105685f45a118bdf439b402f4dfd0",
+      "bytes": 9782,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/_bus/06.cartan-muticula.verdict.md",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "_bus/06.trajectory-dashboard.return.md",
+      "sha256": "fa4d2e4335a2dadaf31d7955db9b166853d2b93add9caa5883ef6d92d8f3e5b8",
+      "bytes": 5166,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/_bus/06.trajectory-dashboard.return.md",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "_bus/07.cartan-muticula.point.md",
+      "sha256": "e8114eaa063c08eaf860af0d9597ddcdae8eb730c68143a0002661d7ec7f6b0a",
+      "bytes": 4045,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/_bus/07.cartan-muticula.point.md",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    },
+    {
+      "path": "_bus/07.cartan-muticula.verdict.md",
+      "sha256": "2f2f6c1dc420739678183e9bf1d17a81278a896377d96ef6afec6c168e30b970",
+      "bytes": 1814,
+      "git_status": "untracked",
+      "disposition": "KEEP",
+      "proposed_destination": "ia-sync:<commit-containing-this-manifest>:.dev/session/runbook-upgrade-02-app/_bus/07.cartan-muticula.verdict.md",
+      "destination_status": "authorized preserving commit; consult STATUS for verified transaction id",
+      "keep_live_path_for_r2": false
+    }
+  ],
+  "external_relocation": {
+    "move_map": "/home/hruzam/unikuklatrix/nablarva/.dev/session/muticula-00-brief/raw/relays/move-map.2026-09-27.json",
+    "sha256": "b245228de17d0c643d8a714c52deff1918593b3f328b1cec7b0547aa7deaa4d8",
+    "note": "Original snapshot paths retained; relocated relays and frozen r2 resolved by identical hashes."
+  },
+  "authorized_preservation": {
+    "date": "2026-09-27",
+    "authority": "majkee: one local commit limited to old bed, exactly closure-commit-paths.txt, no push; 35 JSONL host-local archive, hash manifest committed",
+    "scope_file": "closure-commit-paths.txt",
+    "scope_sha256": "deea48c9a5ff19809c8ceeba5e814c2bb92b33f6b4252ee4423a9b287d9f975b",
+    "path_count": 182,
+    "expected_parent": "e01825d93b0be8746dc516026b096607362a2709",
+    "locator_rule": "For a keeper stored in Git, use the commit containing this preservation manifest at the original repo-relative path. The verified full commit id is recorded in STATUS after the transaction."
+  },
+  "host_local_retention": {
+    "archive_root": "/home/hruzam/.local/state/muticula-evidence/runbook-upgrade-02-app/2026-09-27",
+    "receipt": "/home/hruzam/.local/state/muticula-evidence/runbook-upgrade-02-app/2026-09-27/archive-receipt.json",
+    "receipt_sha256": "a887f43a3747b102b3aa859d8d2af2a8837fa873a30457d8adc05158812e74d4",
+    "completed_at": "2026-09-27T09:38:39.441432+00:00",
+    "files": 35,
+    "bytes": 473160,
+    "verification": "All 35 destination hashes and sizes equal source manifest; originals retained. Office-local only, no remote backup claimed."
+  }
+}

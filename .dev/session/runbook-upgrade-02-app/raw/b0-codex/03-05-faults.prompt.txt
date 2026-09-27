@@ -1,0 +1,1 @@
+Use apply_patch exactly three times and no other tools. In order: change held-timeout.txt from BASELINE to TIMEOUT_CASE; change held-exit1.txt from BASELINE to EXIT1_CASE; change held-malformed.txt from BASELINE to MALFORMED_CASE. Do not retry any call. Report each actual tool result briefly.

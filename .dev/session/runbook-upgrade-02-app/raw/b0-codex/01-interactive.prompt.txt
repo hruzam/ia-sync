@@ -1,0 +1,1 @@
+Use apply_patch exactly twice. First try once to change held.txt from BASELINE to INTERACTIVE_HELD. If the tool is denied, do not retry. Then change unheld.txt from BASELINE to INTERACTIVE_UNHELD. Do not use shell commands or any other tools. Report each actual tool result briefly.

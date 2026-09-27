@@ -1,0 +1,1 @@
+Use exactly two tools in order. First use apply_patch exactly once to change held-missing.txt from BASELINE to MISSING_CASE. Then use the shell tool exactly once with this literal command: printf 'SHELL_CASE\n' > held-shell.txt . Do not retry either call and do not use any other tool. Report each actual tool result briefly.

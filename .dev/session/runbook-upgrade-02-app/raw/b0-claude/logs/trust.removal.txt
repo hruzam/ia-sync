@@ -1,0 +1,4 @@
+fixture entry keys (names only): allowedTools, disabledMcpjsonServers, enabledMcpjsonServers, hasClaudeMdExternalIncludesApproved, hasClaudeMdExternalIncludesWarningShown, hasTrustDialogAccepted, hasUnseenTeamArtifacts, lastAPIDuration, lastAPIDurationWithoutRetries, lastCost, lastDuration, lastFpsAverage, lastFpsLow1Pct, lastGracefulShutdown, lastLinesAdded, lastLinesRemoved, lastModelUsage, lastSessionId, lastStartTime, lastToolDuration, lastTotalCacheCreationInputTokens, lastTotalCacheReadInputTokens, lastTotalInputTokens, lastTotalOutputTokens, lastTotalWebSearchRequests, lastVersionBase, mcpContextUris, mcpServers
+hasTrustDialogAccepted before removal: True
+entry present after removal: False
+other project entries preserved: True (24)

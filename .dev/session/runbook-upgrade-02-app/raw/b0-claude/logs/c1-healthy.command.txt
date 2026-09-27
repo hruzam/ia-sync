@@ -1,0 +1,1 @@
+claude -p \<prompt:/home/hruzam/ia-sync/.dev/session/runbook-upgrade-02-app/raw/b0-claude/prompts/held-and-unheld.txt\> --model haiku --permission-mode acceptEdits --setting-sources project\,local --settings /tmp/muticula-b0-claude-Blhz7x/settings/c1-healthy.json --output-format stream-json --verbose 
