@@ -393,6 +393,47 @@ def close_idle_tab(slug: str, ref: str) -> dict:
     return w
 
 
+OPEN = "open:"   # console result prefix: the host must hand its terminal to the frame
+
+
+def attach_argv(slug: str) -> list[str]:
+    return servers()[1].argv("attach", "-t", f"={slug}")
+
+
+def open_frame(slug: str) -> str:
+    """Console `o`: build any missing part (frame included), then show this bed's frame.
+    Inside the frame server → switch the client, return a message. Plain terminal →
+    return OPEN+slug: the host leaves curses and execs attach_argv(slug). Inside any
+    other tmux → refuse (a frame inside tmux nests)."""
+    n = build_bed(slug, [])
+    _, F = servers()
+    if inside(F):
+        F.run("switch-client", "-t", f"={slug}", check=True, keep_tmux_env=True)
+        return f"frame '{slug}' shown" + (f" ({n} steps built)" if n else "")
+    if os.environ.get("TMUX"):
+        raise OvError(f"inside tmux — leave it (C-b d), then: ov-up {slug}")
+    return OPEN + slug
+
+
+def exec_attach(slug: str) -> None:
+    """Replace this process with the frame client on the controlling terminal.
+    NB: tmux refuses a terminal named "/dev/tty" ("open terminal failed: can't use
+    /dev/tty"), so never reopen that alias: keep a real tty fd, or reopen the REAL
+    device path (os.ttyname of a std fd that is a tty)."""
+    if not os.isatty(0):
+        real = next((os.ttyname(fd) for fd in (1, 2) if os.isatty(fd)), None)
+        if real:
+            try:
+                fd = os.open(real, os.O_RDWR)
+                for std in (0, 1, 2):
+                    os.dup2(fd, std)
+            except OSError:
+                pass
+    env = dict(os.environ)
+    env.pop("TMUX", None)
+    os.execvpe("tmux", attach_argv(slug), env)
+
+
 def cmd_up(a) -> int:
     A, F = servers()
     a.slug = resolve_slug(a.slug)
@@ -559,7 +600,11 @@ def cmd_console(a) -> int:
     import locale
     locale.setlocale(locale.LC_ALL, "")
     os.environ.setdefault("ESCDELAY", "25")
-    curses.wrapper(console_view, slug)
+    got = curses.wrapper(console_view, slug)
+    if got and got.startswith(OPEN):
+        exec_attach(got[len(OPEN):])
+    if got:
+        print(f"ovitmugen: {got}", file=sys.stderr)
     return 0
 
 
@@ -567,8 +612,8 @@ def console_view(scr, slug: str) -> str | None:
     """The one console view (§5.7). Hosts: `ov-console` (own curses screen), the frame's
     C-a t popup, and runbook's T modal (runbook's screen — its 1 s tick is switched off
     here; the caller restores it). Returns a one-line result for the host, or None.
-    Keys: Enter switch left pane · a add tab · x x close an IDLE tab · b build a missing
-    bed · r refresh · q back. Closing never touches a ● tab (law L-c)."""
+    Keys: Enter switch left pane · a add tab · x x close an IDLE tab · o open the bed's
+    frame · b build a missing bed · r refresh · q back. Closing never touches a ● tab (law L-c)."""
     import curses
     try:
         curses.curs_set(0)
@@ -591,9 +636,9 @@ def console_view(scr, slug: str) -> str | None:
         h, w = scr.getmaxyx()
         _put(scr, 0, 0, f" ovitmugen · {slug}", w, curses.A_BOLD)
         if exists:
-            hint = " Enter switch left pane · a add tab · x x close idle tab · r refresh · q back"
+            hint = " Enter switch · a add · x x close idle · o open frame · r · q"
         else:
-            hint = " b build this bed (base + tabs + left view + frame) · q back"
+            hint = " b build this bed · q back"
             _put(scr, 3, 0, f" no tmux bed '{slug}' yet", w, curses.A_NORMAL)
         _put(scr, 1, 0, hint, w, curses.A_DIM)
         for i, t in enumerate(rows[: max(0, h - 4)]):
@@ -645,6 +690,11 @@ def console_view(scr, slug: str) -> str | None:
                     msg = f"closed tab '{t['name']}'"
                 except OvError as e:
                     msg = str(e)
+        elif k == "o" and exists:
+            try:
+                return open_frame(slug)
+            except OvError as e:
+                msg = str(e)
         elif k == "b" and not exists:
             name = _prompt(scr, f"bed name [{slug}]: ") or slug
             spec = _prompt(scr, "tabs: @preset or names [cSharp bus implement audit]: ")
@@ -659,7 +709,7 @@ def console_view(scr, slug: str) -> str | None:
             if name != slug:
                 return f"built '{name}' ({n} steps) — attach: ov-up {name}"
             slug = name
-            msg = f"built '{name}' ({n} steps) — attach from a plain terminal: ov-up {name}"
+            msg = f"built '{name}' ({n} steps) — o opens its frame"
 
 
 def _put(scr, y, x, text, w, attr):
@@ -832,6 +882,22 @@ def selftest() -> int:
             check("slug: exactly one frame up → that frame", resolve_slug(None) == slug)
         finally:
             os.chdir(here)
+        # P2.2 — console `o`: rebuild a missing frame, then ask the host to attach
+        F.run("kill-session", "-t", f"={slug}", check=True)
+        got = open_frame(slug)
+        check("o: a missing frame is rebuilt and the host is asked to attach",
+              got == OPEN + slug and F.has(slug), got)
+        check("o: attach argv targets this bed's frame on the frame server",
+              attach_argv(slug)[-2:] == ["-t", f"={slug}"] and F.sock in attach_argv(slug))
+        os.environ["TMUX"] = "/tmp/some-other-tmux-sock,1,0"
+        try:
+            open_frame(slug)
+            check("o: inside another tmux it refuses (would nest)", False, "no error raised")
+        except OvError as e:
+            check("o: inside another tmux it refuses (would nest)", "inside tmux" in str(e), str(e))
+        finally:
+            os.environ.pop("TMUX", None)
+
         check("frame binds C-a q to persistent pane numbers",
               any(" q " in l and "display-panes -d 0" in l
                   for l in F.lines("list-keys", "-T", "prefix")))

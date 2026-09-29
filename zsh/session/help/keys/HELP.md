@@ -19,7 +19,7 @@ v         flip tree column left ↔ right (remembered)
 <  >      move the pane divider (5% steps, remembered)
 A A       drain a consumed card → archive/ (two presses; routines never archive)
 B         presence board modal (Enter lands on a local-host record's bed)
-T         ovitmugen tabs: switch the frame's left pane (inside a frame: the frame's bed)
+T         ovitmugen console: tabs · o opens the frame
 J K       jump to next / previous bed
 1-5       jump to bed part: STATUS / _bus / RUNBOOK / files / raw
 m         attach selected bed to the presence board

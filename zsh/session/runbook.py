@@ -592,6 +592,7 @@ def build_tree(beds, expanded, cards=None):
 TMUX_LINE_TTL = 5.0          # overview renders every 1 s tick — tmux is asked at most per 5 s
 _TMUX_LINE_CACHE = {}        # slug -> (monotonic time, text|None)
 _FRAME_SLUG = []             # [] = not probed yet; [slug|None] after one probe
+_OPEN_AFTER = []             # [slug] when T → o asked to open a frame: exec after curses ends
 
 
 def _ovitmugen():
@@ -1986,6 +1987,7 @@ def palette(screen, beds, root, tree_right=None):
             elif not slug:
                 message = "T needs a bed — select one, or run runbook inside an ovitmugen frame"
             else:
+                got = None
                 try:  # a missing bed opens too: the console offers b = build it
                     got = ov.console_view(screen, slug)
                     message = got or "tabs: no change"
@@ -1998,6 +2000,9 @@ def palette(screen, beds, root, tree_right=None):
                         curses.curs_set(0)
                     except curses.error:
                         pass
+                if got and got.startswith(getattr(ov, "OPEN", "open:")):
+                    _OPEN_AFTER[:] = [got.split(":", 1)[1]]
+                    break  # leave cleanly; run_on_tty hands the terminal to the frame
 
         elif key == "J":
             jump_bed(+1)
@@ -2204,6 +2209,11 @@ def run_on_tty(root, tree_right=None):
         print("── rb buffer ──")
         for line in buffer_lines:
             print(line)
+    if _OPEN_AFTER:  # T → o in a plain terminal: this process becomes the frame client
+        ov = _ovitmugen()
+        if ov is not None:
+            print(f"rb-open: opening frame '{_OPEN_AFTER[0]}' …")
+            ov.exec_attach(_OPEN_AFTER[0])
     return 0
 
 
