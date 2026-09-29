@@ -44,6 +44,8 @@ Tabs start as empty shells. Start each agent yourself (`claude --agent …`).
 - `C-a h` / `C-a l` — focus left (agents) / right (runbook)
 - `C-a <` / `C-a >` — move the split (default left 60 / right 40)
 - `C-a d` — detach the frame (everything keeps running)
+- `C-a r` — restart the focused pane: after `q` / `C-c` in runbook ("Pane is dead
+  (status 0)") or an inner detach in the left pane. `ov-up <slug>` revives both too.
 - `C-a C-a` — send a literal `C-a` (shell: start of line)
 - mouse click — focus a pane
 

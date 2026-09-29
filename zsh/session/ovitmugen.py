@@ -260,12 +260,16 @@ def plan_up(slug: str, want_tabs: list[str], split: str, fixed: str, cwd: str,
                       f"fixed right pane: {fixed} ({split})", capture="fr", fmt="#{pane_id}"))
         ops.append(op("frame", ["select-pane", "-t", "<<fl>>"], "focus the left (agents) pane"))
     else:
+        # remain-on-exit keeps exited panes visible as "Pane is dead". Revive each with its
+        # ORIGINAL start command (respawn-pane without a command): left = inner detach,
+        # right = the fixed app quit (q / C-c in runbook exits 0).
         for line in F.lines("list-panes", "-t", f"={slug}", "-F",
                             "#{pane_id}\t#{pane_dead}\t#{pane_left}"):
             pid_, dead, left = line.split("\t")
-            if dead == "1" and left == "0":
-                ops.append(op("frame", ["respawn-pane", "-k", "-t", pid_, left_cmd],
-                              "left pane had exited (inner detach) — reconnect it"))
+            if dead == "1":
+                which = "left pane (inner detach) — reconnect" if left == "0" else \
+                        "fixed pane (app quit) — restart"
+                ops.append(op("frame", ["respawn-pane", "-t", pid_], f"{which} it"))
     return ops
 
 
@@ -664,6 +668,24 @@ def selftest() -> int:
         check("left pane reconnected",
               wait(lambda: any(s["name"] == slug + LEFT and s["attached"] >= 1
                                for s in sessions(A))))
+
+        # fixed app quits (runbook q / C-c → exit 0) → dead right pane → up restarts it
+        right = [l.split("\t")[0] for l in F.lines("list-panes", "-t", f"={slug}", "-F",
+                                                     "#{pane_id}\t#{pane_left}")
+                 if l.split("\t")[1] != "0"]
+        F.run("respawn-pane", "-k", "-t", right[0], "exit 0")
+        def right_dead():
+            return F.run("display-message", "-p", "-t", right[0],
+                         "#{pane_dead}").stdout.strip() == "1"
+        rdead = wait(right_dead)
+        r_ops = plan_up(slug, [], DEFAULT_SPLIT, "shell", tmp, (160, 40))
+        check("after the fixed app quits, up plans a respawn of the right pane only",
+              rdead and len(r_ops) == 1 and r_ops[0]["args"][:3] == ["respawn-pane", "-t", right[0]],
+              [o["args"] for o in r_ops])
+        apply(r_ops)
+        check("fixed pane restarted (alive again)",
+              wait(lambda: all(l.endswith(" 0") for l in F.lines(
+                  "list-panes", "-t", f"={slug}", "-F", "#{pane_left} #{pane_dead}"))))
 
         apply(plan_down(slug, "idle"))
         left = [t["name"] for t in tabs(A, slug)]
