@@ -20,10 +20,6 @@
   accepts a bounded office coordination pilot with truthful attention signals, no duplicate
   dispatch, and witnessed entry-card/helper/Vara decisions ·
   `/home/hruzam/ia-sync/.dev/session/runbook-tool-01-coordination/STATUS.md`
-- `codex-remote-control-cli-01-wrapper` · gate: wrapper v0 from the Redmi drives a full Codex
-  TUI on office over the existing agentive rail (live bash-approval confirmed from the phone,
-  survives lock+reattach, zero authorized_keys changes) ·
-  `/home/hruzam/ia-sync/.dev/session/codex-remote-control-cli-01-wrapper/STATUS.md`
 - `incarnations-00-mechanism` · gate: the pre-registered trial ledger (res/trial.md) is filled — row 0 =
   one measured cold-boot of the EXISTING trajectory seed on a real task inside a scar's trigger range,
   per-scar effect recorded head-side and the claim witnessed by cartan; rows 1–2 = two seeds beyond

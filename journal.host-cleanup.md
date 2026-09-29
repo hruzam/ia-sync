@@ -10,6 +10,25 @@
 
 ---
 
+## OFFICE — 2026-09-29 · Trajectory · SSH rotation debt cleared on both PCs · two gate-met beds closed
+
+- **SSH rotation cleanup** (majkee's "Ok", 2026-09-29): removed
+  `~/.ssh/authorized_keys.pre-rotation-2026-09-10` on office and home. A fingerprint check first
+  confirmed that each held only the unchanged PC key and the two rotated-out keys, old redmi
+  `mMS4…` and old tab `SI8z…`. Neither is live anywhere. The live keys are untouched on both
+  hosts: the PC key, redmi `JFoh…` and galaxy `UHP7…`. The `authorized_keys.before-galaxy-write-*`
+  rollback copies from the Galaxy setup were kept (Cartan's entry below). **Still owed on the
+  phone** (Redmi Termux; sshd was unreachable): `rm ~/.ssh/id_ed25519.old ~/.ssh/id_ed25519.pub.old`.
+- **Closed and pruned** by majkee's word ("close … runbooks by the status"):
+  - `codex-remote-control-cli-01-wrapper` (gate passed 2026-09-10) — its router row is dropped.
+  - `runbook-tool-00` (gate closed 2026-09-10).
+
+  What they still owed moved to nablarva `ovitmugen-00-console`: the remote-cli PAD and the
+  session-browser `res/examples.md` walkthrough. The program folder `codex-remote-control-cli/`
+  stays, per its manifest.
+
+---
+
 ## OFFICE — 2026-09-23 · Cartan · invariance RETURN + chatbot-port Codex source (undeployed)
 
 Consumed Atlas's RETURN in
