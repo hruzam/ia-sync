@@ -36,8 +36,10 @@ needs a gate for publishing work from several sessions; only ia-sync also deploy
 - Operator's `(?)` convention: a `(?)` marks a proposal for architecting, never an order.
 - `deploy.sh`: one `$REPO` source variable (35 uses), additive (no `--delete`), no record of the
   deployed commit, one repo-writing step (`gen-temple-map.sh`), only `--codex-only` as a leg flag.
-- Muticula (`runbook-upgrade-02-app`) already names a Git-transaction resource and a deploy-target
-  resource; this design must not become a second owner of either.
+- Muticula owns claims, the beacon and its commit gate (brief r3, nablarva `muticula-01-qualify`);
+  this design must not become a second owner of them. Corrected 2026-09-29 (Cartan's RETURN 01):
+  r3 has no deploy-target reservation API, so deploy-target state is publish-gate's. The old bed's
+  resource model and the 2026-09-25 memo are historical (ia-sync `9bb608b`).
 
 ## prompt-0 — trajectory (design author · status_owner)
 
@@ -95,8 +97,9 @@ target), which you head. Write only the RETURN path the POINT names. No edits el
 ## References
 
 - `/home/hruzam/ia-sync/deploy.sh` · `/home/hruzam/ia-sync/SYNC_DISCIPLINE.md` · `/home/hruzam/ia-sync/zsh/AGENTS.md`
-- `/home/hruzam/ia-sync/.dev/session/runbook-upgrade-02-app/` — muticula (resource model, B1 packet)
-- `/home/hruzam/ia-sync/.dev/session/runbook-upgrade-02-app/raw/TRAJECTORY-CARTAN-research.hardcoded-boundaries.2026-09-24.md` — flock / lock-file patterns
+- muticula's old bed `runbook-upgrade-02-app` (pruned; resolve at ia-sync `9bb608b`) — historical resource model, B1 packet
+- `git -C ~/ia-sync show 9bb608b:.dev/session/runbook-upgrade-02-app/raw/TRAJECTORY-CARTAN-research.hardcoded-boundaries.2026-09-24.md` — flock / lock-file patterns
+- `/home/hruzam/unikuklatrix/nablarva/.dev/session/muticula-01-qualify/raw/muticula.master.2026-09-26.md` — muticula brief r3, the current boundary
 - `/home/hruzam/unikuklatrix/nablarva/.dev/session/flag.md` — L6, L12 (worktrees; the inheriting framework)
 - `/home/hruzam/reposoma/raw.guides/runbook/GUIDE.md` · `status/GUIDE.md` · `bus/GUIDE.md`
 
