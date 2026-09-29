@@ -1,7 +1,7 @@
 # STATUS: publish-gate-00-design
 
 ```yaml
-updated: 2026-09-29 (design written and head-reviewed; POINT 01 out to cartan)
+updated: 2026-09-29 (majkee decided Q1; design folded; POINT re-pinned)
 writer: trajectory · anthropic
 host: office
 worktree: >-
@@ -15,7 +15,10 @@ checkpoint: >-
   Cartan's 2026-09-25 memo point by point, and 7 open questions for majkee. A Sonnet Trajectory
   spawn drafted it; the head reviewed it and applied 9 corrections (listed in its frontmatter).
   The most material: the push sends exactly the selected prefix (<sha>:refs/heads/main), and the
-  human's drop opens with the beacon in an enrolled checkout. Nothing live changed.
+  human's drop opens with the beacon in an enrolled checkout. Nothing live changed. The same day
+  majkee decided Q1: every unpushed commit stays droppable, even when deployed, with its own
+  command and button. This is folded (design sha256 a83551be…), and the POINT was re-pinned before
+  any reply.
 in_flight: >-
   _bus/01.trajectory.point.md → cartan: CHALLENGE of the design. The RETURN is expected at
   _bus/01.cartan.return.md.
@@ -25,10 +28,10 @@ recovery_probe: >-
 holds:
   - Design only — no edits to deploy.sh, SYNC_DISCIPLINE.md, zsh/ or live files in this session.
   - Muticula (brief r3) owns claims, the beacon and the commit gate; this design draws a boundary, not ownership.
-  - Open Question 1 revises a fixed fact from majkee's gavel ("unpushed ⇒ droppable"); it waits for his word.
+  - Decided 2026-09-29 (majkee): unpushed ⇒ droppable holds even at deployed_push_pending; drop has its own command and button.
 next: >-
-  majkee relays POINT 01 to Cartan and answers the design's open questions (Q1 is the
-  load-bearing one). After Cartan's RETURN the head folds, and majkee records GO or STOP.
+  majkee relays POINT 01 to Cartan. After Cartan's RETURN the head folds, and majkee records GO or
+  STOP. The six minor open questions can ride with that fold.
 expected: >-
   _bus/01.cartan.return.md, then a folded design revision, then majkee's GO/STOP.
 ```

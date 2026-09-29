@@ -1,6 +1,6 @@
 ---
 title: Design — publish-gate (core buffer model + ia-sync deploy adapter)
-status: "head-reviewed 2026-09-29 — ready for Cartan's CHALLENGE (9 head corrections: beacon on drop · deploy.sh gains no --ref · status name · prefix push <sha>:main · remote check via ls-remote as its own step · manifest location · r3 vocabulary · snapshot purity · §5 receipt numbering)"
+status: "head-reviewed 2026-09-29 — ready for Cartan's CHALLENGE (9 head corrections: beacon on drop · deploy.sh gains no --ref · status name · prefix push <sha>:main · remote check via ls-remote as its own step · manifest location · r3 vocabulary · snapshot purity · §5 receipt numbering) · OQ1 decided by majkee 2026-09-29: droppable, with its own command and button"
 date: 2026-09-29
 author: trajectory (design author, publish-gate-00-design)
 inputs:
@@ -85,7 +85,7 @@ through the same publish flow. This is the only backward-moving action available
 commit is pushed — dropping/rewriting pushed history is out of scope everywhere in this
 design (RUNBOOK "Known constraints": no history rewriting of pushed commits).
 
-### drop (unpushed only, with the qualification in §7)
+### drop (every unpushed commit, deployed or not — majkee 2026-09-29)
 Unpushed commits may be dropped — via an interactive rebase that removes them, or a reset
 to the parent when they are the tip. **This literally moves HEAD.** Under muticula r3's
 deny list, `git rebase`/`git reset --hard` are HEAD-mover verbs, human-only (§4 Leg 2), and the
@@ -93,7 +93,10 @@ human's HEAD movers are beacon-class (§4 Leg 3). In an enrolled checkout, the p
 with the beacon (the human stops the other teams and lights it) and closes by clearing it. Publish-gate never executes this itself when `$MUTICULA_ID` is set
 in its own environment (running as an enrolled sharp) — it prints the literal command and
 hands it to the human's own terminal. Full treatment: §"Boundary with muticula"; this
-action's *eligibility* (not just its execution path) is still open — Open Questions #1.
+action's *eligibility* is decided (majkee, 2026-09-29): every unpushed commit stays droppable, deployed
+or not. Drop gets its own command (`pg-drop`), and a button once the dashboard exists. For a deployed
+commit, the drop plan re-deploys the new tip and prints the orphan list (below), so the live files
+are handled explicitly.
 
 **Foreign commits** — an unpushed commit whose trailers/author identify a different seat or
 session than the one invoking drop/revert — require explicit operator confirmation:
@@ -228,7 +231,7 @@ this existing scope, unchanged in shape:
 ```
 zsh/sync/
   base.zsh          existing — add PARTITION 3: source publish-gate.zsh
-  keyboard.zsh       existing — add pg-status / pg-plan / pg-run aliases (aliases only)
+  keyboard.zsh       existing — add pg-status / pg-plan / pg-run / pg-drop aliases (aliases only)
   guides.zsh          existing, untouched
   publish-gate.zsh    NEW engine — thin zsh wrapper functions, mirrors ai/gemini-processor.sh's
                        "dual-sourced" shape: sourced for interactive use, logic calls into a
@@ -311,8 +314,9 @@ and drop is legal inside it" — is **not safe as stated** once a commit reaches
 `deployed_push_pending`. A commit in that state has already changed live files on this host;
 dropping it from the buffer (rewriting it away) would leave those live files with no
 corresponding commit at all, and a later re-deploy of an older commit cannot undo them
-(additive, no `--delete`). This is folded as a **revision proposal**, not silently applied,
-because it touches a fixed fact from majkee's own gavel — see Open Questions #1.
+(additive, no `--delete`). majkee kept the fixed fact (2026-09-29): such a commit is still
+droppable. So the drop plan for a deployed commit re-deploys the new tip and prints the orphan
+list; the live files are handled explicitly, never left silently.
 
 Per-leg receipts, not one whole-repo claim: `--codex-only` deploys only the Codex leg, so a
 successful `--codex-only` deploy must never be recorded as "deployed at `<sha>`" for the
@@ -393,10 +397,9 @@ performed to resolve this.
 
 These are proposals, never decisions — each needs a gavel.
 
-1. **(?)** Does "everything in the buffer is unpushed and drop is legal inside it" still hold
-   once a commit reaches `deployed_push_pending`? Proposed narrowing: drop eligibility =
-   *unpushed AND not-locally-deployed-with-live-effect* — revises a fixed fact from this
-   session's own RUNBOOK, on Cartan's direct challenge. Your call before implementation.
+1. **DECIDED (majkee, 2026-09-29):** every unpushed commit stays droppable, even at
+   `deployed_push_pending`. Drop gets its own command (`pg-drop`) and, later, a dashboard button.
+   The drop plan re-deploys the new tip and lists the orphans (§2).
 2. **(?)** Should publish-gate reuse muticula's exit-code convention (`0`/`1`/`3`/`4`) for
    consistency, or keep an independently numbered scheme? Not load-bearing either way.
 3. **(?)** Rename the manifest key `materialize` back toward the RUNBOOK's original
@@ -429,4 +432,4 @@ These are proposals, never decisions — each needs a gavel.
   internals) — §7 only draws the boundary line, never redraws muticula's side of it.
 - Pin exact JSON schema versions, flock timeout numbers, or the stamp file's on-disk format
   beyond the sketch in §5/§3 — those are implementation-phase detail, not architecture.
-- Resolve any of the seven open questions above — each is explicitly majkee's call.
+- Resolve the six open questions still open (Q1 is decided) — each is majkee's call.
