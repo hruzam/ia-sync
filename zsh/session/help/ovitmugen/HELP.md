@@ -37,6 +37,9 @@ Tabs start as empty shells. Start each agent yourself (`claude --agent …`).
 
 ## Keys inside the frame (prefix C-a)
 
+- `T` in runbook (right pane) — the same console inside runbook; Enter switches the
+  left pane. Inside a frame it always targets the frame's bed. The bed overview shows
+  `tmux: N tabs · M agents · frame up · left → <tab>` (refreshed at most every 5 s).
 - `C-a t` — console popup (Enter = switch left pane, `a` = add tab, `q` = close)
 - `C-a h` / `C-a l` — focus left (agents) / right (runbook)
 - `C-a <` / `C-a >` — move the split (default left 60 / right 40)

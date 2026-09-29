@@ -44,6 +44,7 @@ import re
 import subprocess
 import sys
 import textwrap
+import time
 from pathlib import Path
 
 # ESCDELAY must be set before curses.initscr(). 25 ms split arrow-key escape
@@ -584,6 +585,64 @@ def build_tree(beds, expanded, cards=None):
     return nodes
 
 
+# --- ovitmugen bridge (P2) ----------------------------------------------------
+# Sibling module ~/.config/zsh/session/ovitmugen.py (tmux manager, layout C). Optional:
+# if it is missing or tmux fails, runbook shows no tmux line and T reports why — the
+# browser never depends on tmux. RB_NO_TMUX=1 switches the bridge off (selftest).
+TMUX_LINE_TTL = 5.0          # overview renders every 1 s tick — tmux is asked at most per 5 s
+_TMUX_LINE_CACHE = {}        # slug -> (monotonic time, text|None)
+_FRAME_SLUG = []             # [] = not probed yet; [slug|None] after one probe
+
+
+def _ovitmugen():
+    if os.environ.get("RB_NO_TMUX"):
+        return None
+    try:
+        import ovitmugen  # sibling of this file (sys.path[0] = script dir)
+        return ovitmugen
+    except Exception:
+        return None
+
+
+def tmux_bed_slug(bed_slug):
+    """Inside an ovitmugen frame the left pane shows the FRAME's bed, whatever bed the
+    tree has selected — T and the overview follow the frame. Elsewhere: the bed's slug."""
+    if not _FRAME_SLUG:
+        ov = _ovitmugen()
+        try:
+            _FRAME_SLUG.append(ov.frame_slug() if ov else None)
+        except Exception:
+            _FRAME_SLUG.append(None)
+    return _FRAME_SLUG[0] or bed_slug
+
+
+def tmux_overview_line(slug, now=None):
+    """One dim line for the bed overview, cached TMUX_LINE_TTL seconds per slug."""
+    if not slug:
+        return None
+    now = time.monotonic() if now is None else now
+    hit = _TMUX_LINE_CACHE.get(slug)
+    if hit and now - hit[0] < TMUX_LINE_TTL:
+        return hit[1]
+    ov, text = _ovitmugen(), None
+    if ov is not None:
+        try:
+            if ov.servers()[0].has(slug):
+                rep = ov.bed_report(slug)
+                tabs = rep["tabs"]
+                busy = sum(1 for t in tabs if t.get("fg", t["busy"]))  # display: fg programs
+                left = next((t["name"] for t in tabs if t["left"]), None)
+                text = (f"tmux: {len(tabs)} tabs · {busy} agent{'' if busy == 1 else 's'} · "
+                        f"frame {'up' if rep['frame'] else 'down'}"
+                        + (f" · left → {left}" if left else "") + " · T tabs")
+            else:
+                text = f"tmux: no bed '{slug}' · ov-up {slug} (plain terminal)"
+        except Exception:
+            text = None
+    _TMUX_LINE_CACHE[slug] = (now, text)
+    return text
+
+
 def render_overview(bed, width, board_recs=None):
     """Right-pane composed view for a bed node — the 30-second cold-start read."""
     lines = []
@@ -599,6 +658,9 @@ def render_overview(bed, width, board_recs=None):
     raw = bed.get("in_flight_raw")
     if not _inflight_idle(raw):
         add(f"in_flight: {raw}", c("warn", curses.A_BOLD))
+    tline = tmux_overview_line(tmux_bed_slug(bed["slug"]))
+    if tline:
+        add(tline, c("meta"))
     lines.append(("", 0))
     recs = board_recs if board_recs is not None else load_board()
     mine = [r for r in recs
@@ -1916,6 +1978,30 @@ def palette(screen, beds, root, tree_right=None):
                 if not landed:
                     message = "record's bed is not in this tree (other root)"
 
+        elif key == "T":  # ovitmugen tabs: switch the frame's left pane (views only)
+            ov = _ovitmugen()
+            slug = tmux_bed_slug(bed["slug"] if bed else None)
+            if ov is None:
+                message = "T: ovitmugen.py not found next to runbook.py (or RB_NO_TMUX set)"
+            elif not slug:
+                message = "T needs a bed — select one, or run runbook inside an ovitmugen frame"
+            else:
+                try:
+                    if not ov.servers()[0].has(slug):
+                        message = f"no tmux bed '{slug}' — ov-up {slug} from a plain terminal"
+                    else:
+                        got = ov.console_view(screen, slug)
+                        message = f"left pane → {got}" if got else "tabs: no change"
+                except Exception as e:  # tmux trouble must never kill the browser
+                    message = f"T: {e}"
+                finally:
+                    _TMUX_LINE_CACHE.pop(slug, None)
+                    screen.timeout(1000)  # restore the 1 s tick the console switched off
+                    try:
+                        curses.curs_set(0)
+                    except curses.error:
+                        pass
+
         elif key == "J":
             jump_bed(+1)
             ensure_visible()
@@ -2159,6 +2245,8 @@ def selftest():
     full board contract cycle."""
     import tempfile
     failures = []
+    saved_no_tmux = os.environ.get("RB_NO_TMUX")
+    os.environ["RB_NO_TMUX"] = "1"  # never query the real tmux server from a selftest
 
     def check(label, cond):
         print(("PASS  " if cond else "FAIL  ") + label)
@@ -2212,6 +2300,49 @@ def selftest():
         check("group expand lists bus file", "bed-a/bus/01.seat.point.md" in keys2)
         ov = render_overview(beds["bed-a"], 60, board_recs=[])
         check("overview carries next", any("do the thing" in t for t, _ in ov))
+        check("RB_NO_TMUX: no tmux line in the overview",
+              not any(t.startswith("tmux:") for t, _ in ov))
+
+        # ovitmugen bridge (P2) — a fake module stands in; no tmux is touched.
+        class _FakeAgents:
+            def has(self, slug):
+                return slug == "tabbed"
+
+        class _FakeOv:
+            def servers(self):
+                return (_FakeAgents(), None)
+
+            def bed_report(self, slug):
+                return {"tabs": [{"name": "cSharp", "busy": True, "fg": True, "left": False},
+                                 {"name": "bus", "busy": True, "fg": False, "left": True}],
+                        "frame": {"attached": 1}}
+
+        saved_bridge = globals()["_ovitmugen"]
+        _TMUX_LINE_CACHE.clear()
+        _FRAME_SLUG.clear()
+        try:
+            globals()["_ovitmugen"] = lambda: _FakeOv()
+            line = tmux_overview_line("tabbed", now=100.0)
+            check("tmux line: tabs · agents · frame · left pane",
+                  line == "tmux: 2 tabs · 1 agent · frame up · left → bus · T tabs")
+            check("tmux line: missing bed hints ov-up",
+                  "ov-up nope" in (tmux_overview_line("nope", now=100.0) or ""))
+            globals()["_ovitmugen"] = lambda: None
+            check("tmux line cached within TTL (no re-query)",
+                  tmux_overview_line("tabbed", now=102.0) == line)
+            check("tmux line re-queried after TTL",
+                  tmux_overview_line("tabbed", now=100.0 + TMUX_LINE_TTL + 1) is None)
+            _FRAME_SLUG[:] = ["framebed"]
+            check("inside a frame, the frame's bed wins over the selected bed",
+                  tmux_bed_slug("bed-a") == "framebed")
+            _FRAME_SLUG[:] = [None]
+            check("outside a frame, the selected bed's slug is used",
+                  tmux_bed_slug("bed-a") == "bed-a")
+        finally:
+            globals()["_ovitmugen"] = saved_bridge
+            _TMUX_LINE_CACHE.clear()
+            _FRAME_SLUG.clear()
+        check("RB_NO_TMUX switches the bridge off", _ovitmugen() is None)
 
         # Belt off: main layout reclaims every row. Belt on: exactly one row.
         check("belt off reclaims all footer rows",
@@ -2413,6 +2544,10 @@ def selftest():
         finally:
             os.environ["HOME"] = saved_home
 
+    if saved_no_tmux is None:
+        os.environ.pop("RB_NO_TMUX", None)
+    else:
+        os.environ["RB_NO_TMUX"] = saved_no_tmux
     print(("SELFTEST PASS" if not failures else
            f"SELFTEST FAIL — {len(failures)}: {failures}"))
     return 0 if not failures else 1

@@ -157,7 +157,10 @@ def tabs(t: Tmux, slug: str) -> list[dict]:
     out = []
     for w in windows(t, slug):
         info = per.get(w["id"], {"busy": False, "cmd": "?"})
-        out.append({**w, "busy": info["busy"], "cmd": info["cmd"]})
+        # busy = kill-safety (fg program OR shell children, law L-c) · fg = display count:
+        # a program other than a shell in the foreground (startup shells never count).
+        out.append({**w, "busy": info["busy"], "cmd": info["cmd"],
+                    "fg": info["cmd"].lstrip("-") not in SHELLS and info["cmd"] != "?"})
     return out
 
 
@@ -458,6 +461,7 @@ def cmd_down(a) -> int:
 # --------------------------------------------------------------------------- console
 
 def frame_slug() -> str | None:
+    """The bed this process's frame shows, when running inside the frame server."""
     _, F = servers()
     if not inside(F):
         return None
@@ -476,12 +480,20 @@ def cmd_console(a) -> int:
     import locale
     locale.setlocale(locale.LC_ALL, "")
     os.environ.setdefault("ESCDELAY", "25")
-    return curses.wrapper(_console_loop, slug)
+    curses.wrapper(console_view, slug)
+    return 0
 
 
-def _console_loop(scr, slug: str) -> int:
+def console_view(scr, slug: str) -> str | None:
+    """The one console view (§5.7). Hosts: `ov-console` (own curses screen), the frame's
+    C-a t popup, and runbook's T modal (runbook's screen — its 1 s tick is switched off
+    here; the caller restores it). Returns the tab name switched to, or None."""
     import curses
-    curses.curs_set(0)
+    try:
+        curses.curs_set(0)
+    except curses.error:
+        pass
+    scr.timeout(-1)                           # block on keys; a host tick would raise
     sel, msg = 0, ""
     while True:
         try:
@@ -504,10 +516,13 @@ def _console_loop(scr, slug: str) -> int:
         if msg:
             _put(scr, h - 1, 0, " " + msg, w, curses.A_BOLD)
         scr.refresh()
-        k = scr.get_wch()
+        try:
+            k = scr.get_wch()
+        except curses.error:
+            continue
         msg = ""
         if k in ("q", "\x1b"):
-            return 0
+            return None
         if k in ("j", curses.KEY_DOWN):
             sel += 1
         elif k in ("k", curses.KEY_UP):
@@ -516,8 +531,7 @@ def _console_loop(scr, slug: str) -> int:
             pass
         elif k in ("\n", "\r", curses.KEY_ENTER) and rows:
             try:
-                switch_tab(slug, rows[sel]["id"])
-                return 0                          # popup closes after one action
+                return switch_tab(slug, rows[sel]["id"])["name"]   # one action, then close
             except OvError as e:
                 msg = str(e)
         elif k == "a":
