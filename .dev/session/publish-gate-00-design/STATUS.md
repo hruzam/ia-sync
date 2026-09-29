@@ -1,35 +1,34 @@
 # STATUS: publish-gate-00-design
 
 ```yaml
-updated: 2026-09-27 (locator note — still awaiting prompt-0)
+updated: 2026-09-29 (design written and head-reviewed; POINT 01 out to cartan)
 writer: trajectory · anthropic
 host: office
 worktree: >-
-  /home/hruzam/ia-sync · main · 4db6745df955bebf4fb388924a920511a718e6fd · dirty — this new bed
-  and the pulse.md router line (this session's), plus muticula bed files owned by cartan-muticula
-  (not ours; never stage them from here)
+  /home/hruzam/ia-sync · main. The bed is tracked since a541808. Other writers' dirty paths
+  (journal.host-cleanup.md and others) are not ours; never stage them from here.
 gate: >-
-  Majkee records GO or STOP on a design package, challenged by Cartan, that fixes the core
-  buffer model and its select/revert/drop rules, the per-project adapter contract with ia-sync's
-  deploy adapter specified, the checkbox-to-plan translation, a JSON CLI contract, placement,
-  and the resource boundary shared with muticula (Git transaction, deploy target).
+  Majkee records GO or STOP on a design package, challenged by Cartan, that fixes the core buffer model and its select/revert/drop rules, the per-project adapter contract with ia-sync's deploy adapter specified, the checkbox-to-plan translation, a JSON CLI contract, placement, and the resource boundary shared with muticula (Git transaction, deploy target).
 checkpoint: >-
-  RUNBOOK and STATUS authored; router line added to /home/hruzam/ia-sync/pulse.md. No design
-  file yet, no _bus/, no POINT to Cartan. Locator note 2026-09-27: the muticula bed
-  runbook-upgrade-02-app was pruned (ia-sync 143914c); every file prompt-0 cites there resolves
-  with git -C /home/hruzam/ia-sync show 9bb608b:.dev/session/runbook-upgrade-02-app/<path>.
-in_flight: none
+  prompt-0 is done (majkee's schedule step 2, 2026-09-29). raw/design.publish-gate.2026-09-29.md
+  (sha256 873214c7…, 432 lines) covers items (1)–(7), a muticula boundary section that folds
+  Cartan's 2026-09-25 memo point by point, and 7 open questions for majkee. A Sonnet Trajectory
+  spawn drafted it; the head reviewed it and applied 9 corrections (listed in its frontmatter).
+  The most material: the push sends exactly the selected prefix (<sha>:refs/heads/main), and the
+  human's drop opens with the beacon in an enrolled checkout. Nothing live changed.
+in_flight: >-
+  _bus/01.trajectory.point.md → cartan: CHALLENGE of the design. The RETURN is expected at
+  _bus/01.cartan.return.md.
 recovery_probe: >-
-  ls /home/hruzam/ia-sync/.dev/session/publish-gate-00-design/raw/ — absent or empty means the
-  design has not started; a design.publish-gate.*.md file means prompt-0 began: read it against
-  items (1)–(7) before continuing. Then ls _bus/ in the same bed — a trajectory POINT without a
-  cartan RETURN means the challenge is out, not received.
+  sha256sum raw/design.publish-gate.2026-09-29.md must equal the POINT's subject_sha256. In
+  ls _bus/, a POINT without its RETURN means the challenge is out, not received.
 holds:
   - Design only — no edits to deploy.sh, SYNC_DISCIPLINE.md, zsh/ or live files in this session.
-  - No deploy.sh run while germline construction or muticula B-bricks hold it.
-  - Muticula owns its named resources; this design proposes a boundary, not ownership.
+  - Muticula (brief r3) owns claims, the beacon and the commit gate; this design draws a boundary, not ownership.
+  - Open Question 1 revises a fixed fact from majkee's gavel ("unpushed ⇒ droppable"); it waits for his word.
 next: >-
-  Majkee wakes @Trajectory on prompt-0 (this bed's RUNBOOK) to write the design and the POINT to Cartan.
+  majkee relays POINT 01 to Cartan and answers the design's open questions (Q1 is the
+  load-bearing one). After Cartan's RETURN the head folds, and majkee records GO or STOP.
 expected: >-
-  raw/design.publish-gate.<date>.md covering items (1)–(7) and _bus/01.trajectory.point.md to cartan.
+  _bus/01.cartan.return.md, then a folded design revision, then majkee's GO/STOP.
 ```
