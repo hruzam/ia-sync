@@ -184,10 +184,23 @@ def load_presets() -> dict:
     return {k: v for k, v in data.items() if not k.startswith("_")}
 
 
-def fixed_argv(name: str) -> list[str]:
-    """Named fixed-pane commands only — presets never carry raw shell strings."""
+def project_of(root: str | None) -> str | None:
+    """<project>/.dev/session → <project> (where agents in the tabs should start)."""
+    if not root:
+        return None
+    r = Path(root).expanduser().resolve()
+    return str(r.parent.parent) if r.name == "session" and r.parent.name == ".dev" else None
+
+
+def fixed_argv(name: str, root: str | None = None) -> list[str]:
+    """Named fixed-pane commands only — presets never carry raw shell strings.
+    NB: runbook resolves its root as --root > $RB_ROOT > cwd walk-up. $RB_ROOT (the
+    operator's default bench) would win over the cwd, so the bed's root is passed
+    explicitly — else a nablarva bed's frame opens runbook on ~/ia-sync (walk bug
+    2026-09-29)."""
+    rb = [sys.executable or "python3", str(HERE / "runbook.py")]
     table = {
-        "runbook": [sys.executable or "python3", str(HERE / "runbook.py")],
+        "runbook": rb + (["--root", str(Path(root).expanduser())] if root else []),
         "shell": [os.environ.get("SHELL", "/bin/sh")],
     }
     if name not in table:
@@ -206,7 +219,7 @@ def op(srv, args, desc, capture=None, fmt="#{window_id}"):
 
 
 def plan_up(slug: str, want_tabs: list[str], split: str, fixed: str, cwd: str,
-            size: tuple[int, int]) -> list[dict]:
+            size: tuple[int, int], root: str | None = None) -> list[dict]:
     if not slug or "--" in slug or any(c in slug for c in ":.= \t"):
         raise OvError(f"bad slug '{slug}' (no '--', ':', '.', '=', spaces)")
     A, F = servers()
@@ -256,16 +269,21 @@ def plan_up(slug: str, want_tabs: list[str], split: str, fixed: str, cwd: str,
         ops.append(op("frame", ["set-environment", "-g", "OV_AGENTS_SOCKET", A.sock],
                       "frame popup talks to the same agents server"))
         ops.append(op("frame", ["split-window", "-h", "-l", split, "-t", "<<fl>>", "-c", cwd,
-                                shlex.join(fixed_argv(fixed))],
+                                shlex.join(fixed_argv(fixed, root))],
                       f"fixed right pane: {fixed} ({split})", capture="fr", fmt="#{pane_id}"))
         ops.append(op("frame", ["select-pane", "-t", "<<fl>>"], "focus the left (agents) pane"))
     else:
         # remain-on-exit keeps exited panes visible as "Pane is dead". Revive each with its
         # ORIGINAL start command (respawn-pane without a command): left = inner detach,
         # right = the fixed app quit (q / C-c in runbook exits 0).
+        want_rb = shlex.join(fixed_argv("runbook", root)) if root else None
         for line in F.lines("list-panes", "-t", f"={slug}", "-F",
-                            "#{pane_id}\t#{pane_dead}\t#{pane_left}"):
-            pid_, dead, left = line.split("\t")
+                            "#{pane_id}\t#{pane_dead}\t#{pane_left}\t#{pane_start_command}"):
+            pid_, dead, left, start = (line.split("\t") + [""])[:4]
+            if want_rb and left != "0" and "runbook.py" in start and start != want_rb:
+                ops.append(op("frame", ["respawn-pane", "-k", "-t", pid_, "-c", cwd, want_rb],
+                              f"fixed runbook showed another root — reopen on {root}"))
+                continue
             if dead == "1":
                 which = "left pane (inner detach) — reconnect" if left == "0" else \
                         "fixed pane (app quit) — restart"
@@ -326,6 +344,15 @@ def bed_names(A: Tmux | None = None) -> list[str]:
     return out
 
 
+def session_root_from_cwd(cwd: str | None = None) -> str | None:
+    """Inside <project>/.dev/session/<bed>/… → '<project>/.dev/session'."""
+    p = Path(cwd or os.getcwd()).resolve()
+    for d in [p, *p.parents]:
+        if d.parent.name == "session" and d.parent.parent.name == ".dev":
+            return str(d.parent)
+    return None
+
+
 def session_bed_from_cwd(cwd: str | None = None) -> str | None:
     """Inside <project>/.dev/session/<bed>/… → '<bed>' (the RUNBOOK bed's folder name)."""
     p = Path(cwd or os.getcwd()).resolve()
@@ -367,11 +394,13 @@ def tabs_spec(spec: list[str], split: str | None = None, fixed: str | None = Non
     return want, split or DEFAULT_SPLIT, fixed or DEFAULT_FIXED
 
 
-def build_bed(slug: str, spec: list[str] | None = None) -> int:
-    """Build every missing part (base, tabs, view, frame) without attaching. Returns steps."""
+def build_bed(slug: str, spec: list[str] | None = None, root: str | None = None) -> int:
+    """Build every missing part (base, tabs, view, frame) without attaching. Returns steps.
+    root = the bed's <project>/.dev/session: runbook opens there, tabs start in <project>."""
     want, split, fixed = tabs_spec(spec or [])
     size = shutil.get_terminal_size((200, 50))
-    ops = plan_up(slug, want, split, fixed, os.getcwd(), (size.columns, size.lines))
+    cwd = project_of(root) or os.getcwd()
+    ops = plan_up(slug, want, split, fixed, cwd, (size.columns, size.lines), root)
     apply(ops)
     return len(ops)
 
@@ -400,12 +429,12 @@ def attach_argv(slug: str) -> list[str]:
     return servers()[1].argv("attach", "-t", f"={slug}")
 
 
-def open_frame(slug: str) -> str:
+def open_frame(slug: str, root: str | None = None) -> str:
     """Console `o`: build any missing part (frame included), then show this bed's frame.
     Inside the frame server → switch the client, return a message. Plain terminal →
     return OPEN+slug: the host leaves curses and execs attach_argv(slug). Inside any
     other tmux → refuse (a frame inside tmux nests)."""
-    n = build_bed(slug, [])
+    n = build_bed(slug, [], root)
     _, F = servers()
     if inside(F):
         F.run("switch-client", "-t", f"={slug}", check=True, keep_tmux_env=True)
@@ -443,7 +472,9 @@ def cmd_up(a) -> int:
         print(f"ovitmugen: warning — '{a.slug}' has duplicate tab names {sorted(dups)}; "
               "address them by id (@N)", file=sys.stderr)
     size = shutil.get_terminal_size((200, 50))
-    ops = plan_up(a.slug, want, split, fixed, os.getcwd(), (size.columns, size.lines))
+    root = a.root or (session_root_from_cwd() if session_bed_from_cwd() == a.slug else None)
+    ops = plan_up(a.slug, want, split, fixed, project_of(root) or os.getcwd(),
+                  (size.columns, size.lines), root)
     attach = ["attach", "-t", f"={a.slug}"]
     if a.dry_run:
         print("\n".join(render(ops) or ["# nothing to build — bed is complete"]))
@@ -608,7 +639,7 @@ def cmd_console(a) -> int:
     return 0
 
 
-def console_view(scr, slug: str) -> str | None:
+def console_view(scr, slug: str, root: str | None = None) -> str | None:
     """The one console view (§5.7). Hosts: `ov-console` (own curses screen), the frame's
     C-a t popup, and runbook's T modal (runbook's screen — its 1 s tick is switched off
     here; the caller restores it). Returns a one-line result for the host, or None.
@@ -673,7 +704,7 @@ def console_view(scr, slug: str) -> str | None:
             name = _prompt(scr, "new tab name: ")
             if name:
                 try:
-                    build_bed(slug, [name])
+                    build_bed(slug, [name], root)
                     msg = f"added tab '{name}'"
                 except OvError as e:
                     msg = str(e)
@@ -692,23 +723,21 @@ def console_view(scr, slug: str) -> str | None:
                     msg = str(e)
         elif k == "o" and exists:
             try:
-                return open_frame(slug)
+                return open_frame(slug, root)
             except OvError as e:
                 msg = str(e)
         elif k == "b" and not exists:
             name = _prompt(scr, f"bed name [{slug}]: ") or slug
             spec = _prompt(scr, "tabs: @preset or names [cSharp bus implement audit]: ")
             try:
-                n = build_bed(name, spec.split() if spec else [])
+                n = build_bed(name, spec.split() if spec else [], root)
             except OvError as e:
                 msg = str(e)
                 continue
             if inside(F):                     # we are in a frame → show the new one
                 F.run("switch-client", "-t", f"={name}", keep_tmux_env=True)
                 return f"built '{name}' ({n} steps) — frame switched"
-            if name != slug:
-                return f"built '{name}' ({n} steps) — attach: ov-up {name}"
-            slug = name
+            slug = name                       # stay on the new bed (any name): o opens it
             msg = f"built '{name}' ({n} steps) — o opens its frame"
 
 
@@ -898,6 +927,25 @@ def selftest() -> int:
         finally:
             os.environ.pop("TMUX", None)
 
+        # walk bug 2026-09-29 — the frame's runbook must open on the bed's own root
+        proot = Path(tmp) / "proj" / ".dev" / "session"
+        rp = plan_up("rooted", [], DEFAULT_SPLIT, "runbook", project_of(str(proot)) or tmp,
+                     (160, 40), str(proot))
+        txt = "\n".join(render(rp))
+        check("root: runbook gets --root <bed session root>, tabs start in the project",
+              f"--root {proot}" in txt and f"-c {proot.parent.parent}" in txt, txt[-400:])
+        A.run("new-session", "-d", "-s", "rerooted", check=True)
+        A.run("new-session", "-d", "-t", "=rerooted", "-s", "rerooted--left", check=True)
+        F.run("new-session", "-d", "-s", "rerooted", "sleep 600", check=True)
+        F.run("split-window", "-h", "-t", "rerooted", "sleep 600 # runbook.py", check=True)
+        fix = plan_up("rerooted", [], DEFAULT_SPLIT, "runbook", tmp, (160, 40), str(proot))
+        check("root: an existing frame's runbook on another root is reopened on the right one",
+              [o["args"][:2] for o in fix] == [["respawn-pane", "-k"]]
+              and f"--root {proot}" in fix[0]["args"][-1], [o["args"] for o in fix])
+        for srv in (F, A):
+            srv.run("kill-session", "-t", "=rerooted")
+        A.run("kill-session", "-t", "=rerooted--left")
+
         check("frame binds C-a q to persistent pane numbers",
               any(" q " in l and "display-panes -d 0" in l
                   for l in F.lines("list-keys", "-T", "prefix")))
@@ -974,6 +1022,9 @@ def main(argv=None) -> int:
     u.add_argument("tabs", nargs="*", help="tab names, or @preset")
     u.add_argument("--split", default=None, help=f"fixed (right) pane width, default {DEFAULT_SPLIT.replace('%', '%%')}")
     u.add_argument("--fixed", default=None, help=f"fixed pane command name, default {DEFAULT_FIXED}")
+    u.add_argument("--root", default=None,
+                   help="the bed's <project>/.dev/session: runbook opens there, tabs start "
+                        "in <project>; re-roots an existing frame's runbook pane")
     u.add_argument("--dry-run", action="store_true", help="print the tmux commands only")
     u.add_argument("--no-attach", action="store_true")
     u.add_argument("--force", action="store_true", help="attach even from inside tmux (nests)")

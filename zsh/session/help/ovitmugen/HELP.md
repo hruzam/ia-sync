@@ -29,6 +29,9 @@ ov-tab [bed] <tab>
   left pane → that tab
 ov-console [bed]
   the console (keys below)
+ov-up <bed> --root <p>/.dev/session
+  runbook on that root, tabs in <p>
+  (re-roots an existing frame too)
 ov-down [bed]           frame only
 ov-down [bed] --views   + views
 ov-down [bed] --idle    + idle tabs
@@ -154,6 +157,11 @@ no tmux yet.
   left = tabs, right = runbook
 6 start agents in the tabs
 ```
+
+Keep the default name (= bed folder):
+then T finds the bed again later.
+A typed name works, but T on the bed
+won't find it (use ov-ls / C-a s).
 
 Later, the same bed again: rb-open ·
 bed · T · o. Or from a shell: ov-up.

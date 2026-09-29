@@ -1989,7 +1989,12 @@ def palette(screen, beds, root, tree_right=None):
             else:
                 got = None
                 try:  # a missing bed opens too: the console offers b = build it
-                    got = ov.console_view(screen, slug)
+                    # the bed's own session root: the frame's runbook opens there and the
+                    # tabs start in its project (not $RB_ROOT / this process's cwd)
+                    in_frame = bool(_FRAME_SLUG and _FRAME_SLUG[0])
+                    broot = (str(bed["path"].parent)
+                             if bed and (bed["slug"] == slug or not in_frame) else None)
+                    got = ov.console_view(screen, slug, broot)
                     message = got or "tabs: no change"
                 except Exception as e:  # tmux trouble must never kill the browser
                     message = f"T: {e}"
