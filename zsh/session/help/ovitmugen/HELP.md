@@ -23,12 +23,17 @@ ov-up tunnel-01 --dry-run        # print the tmux commands = the manual recipe
 ov-tab tunnel-01 bus             # left pane → bus  (name, index or @id)
 ov-ls                            # every bed: ● agent running · ○ empty shell
 ov-ls tunnel-01 --json           # machine-readable (termbrana later)
-ov-console tunnel-01             # pick a tab with Enter
+ov-console tunnel-01             # console: Enter switch · a add · x x close idle · b build
 ov-down tunnel-01                # close the frame only (agents untouched)
 ov-down tunnel-01 --views        # + close all views (tabs stay in the base)
 ov-down tunnel-01 --idle         # + close tabs with NO running agent
 ov-selftest                      # isolated test servers, zero side effects
 ```
+
+The slug is optional: `ov-up`, `ov-down`, `ov-tab bus`, `ov-console` pick the frame's bed
+(inside a frame), else the RUNBOOK bed of the current dir (`…/.dev/session/<bed>/`), else
+the only frame that is up — otherwise they list the beds. `ov-up @csharp` = preset, name
+by the same rules. Default name = the RUNBOOK bed's folder name, kept 1:1 so runbook finds it.
 
 Run `ov-up` from a **plain terminal**. From inside tmux it refuses (it would nest) and
 prints the attach line to use later.
@@ -40,9 +45,12 @@ Tabs start as empty shells. Start each agent yourself (`claude --agent …`).
 - `T` in runbook (right pane) — the same console inside runbook; Enter switches the
   left pane. Inside a frame it always targets the frame's bed. The bed overview shows
   `tmux: N tabs · M agents · frame up · left → <tab>` (refreshed at most every 5 s).
-- `C-a t` — console popup (Enter = switch left pane, `a` = add tab, `q` = close)
+- `C-a t` — console popup (Enter = switch left pane, `a` = add tab, `x x` = close an idle
+  tab, `b` = build a missing bed, `q` = close). `x` on a ● tab is refused: end the agent
+  in its tab first (`/exit`); the last tab is refused too (that is `ov-down`).
 - `C-a h` / `C-a l` — focus left (agents) / right (runbook)
 - `C-a <` / `C-a >` — move the split (default left 60 / right 40)
+- `C-a q` — pane numbers (stay until you press a key; a number jumps there)
 - `C-a d` — detach the frame (everything keeps running)
 - `C-a r` — restart the focused pane: after `q` / `C-c` in runbook ("Pane is dead
   (status 0)") or an inner detach in the left pane. `ov-up <slug>` revives both too.

@@ -636,7 +636,7 @@ def tmux_overview_line(slug, now=None):
                         f"frame {'up' if rep['frame'] else 'down'}"
                         + (f" · left → {left}" if left else "") + " · T tabs")
             else:
-                text = f"tmux: no bed '{slug}' · ov-up {slug} (plain terminal)"
+                text = f"tmux: no bed '{slug}' · T then b builds it"
         except Exception:
             text = None
     _TMUX_LINE_CACHE[slug] = (now, text)
@@ -1986,12 +1986,9 @@ def palette(screen, beds, root, tree_right=None):
             elif not slug:
                 message = "T needs a bed — select one, or run runbook inside an ovitmugen frame"
             else:
-                try:
-                    if not ov.servers()[0].has(slug):
-                        message = f"no tmux bed '{slug}' — ov-up {slug} from a plain terminal"
-                    else:
-                        got = ov.console_view(screen, slug)
-                        message = f"left pane → {got}" if got else "tabs: no change"
+                try:  # a missing bed opens too: the console offers b = build it
+                    got = ov.console_view(screen, slug)
+                    message = got or "tabs: no change"
                 except Exception as e:  # tmux trouble must never kill the browser
                     message = f"T: {e}"
                 finally:
@@ -2325,8 +2322,8 @@ def selftest():
             line = tmux_overview_line("tabbed", now=100.0)
             check("tmux line: tabs · agents · frame · left pane",
                   line == "tmux: 2 tabs · 1 agent · frame up · left → bus · T tabs")
-            check("tmux line: missing bed hints ov-up",
-                  "ov-up nope" in (tmux_overview_line("nope", now=100.0) or ""))
+            check("tmux line: missing bed hints T then b",
+                  "no bed 'nope' · T then b" in (tmux_overview_line("nope", now=100.0) or ""))
             globals()["_ovitmugen"] = lambda: None
             check("tmux line cached within TTL (no re-query)",
                   tmux_overview_line("tabbed", now=102.0) == line)

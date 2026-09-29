@@ -308,18 +308,95 @@ def inside(t: Tmux) -> bool:
     return bool(sock) and Path(sock).name == t.sock
 
 
-def cmd_up(a) -> int:
+def bed_names(A: Tmux | None = None) -> list[str]:
+    """Beds = base sessions. A session in another session's group is a VIEW (columns,
+    <slug>--left, or any hand-made `new-session -t`), never listed as its own bed. An
+    orphan group (base killed, views left) shows once, under its first member."""
+    A = A or servers()[0]
+    all_s = sessions(A)
+    names = {s["name"] for s in all_s}
+    out, seen_orphan = [], set()
+    for s in all_s:
+        g = s["group"]
+        if not g or g == s["name"]:
+            out.append(s["name"])
+        elif g not in names and g not in seen_orphan:
+            seen_orphan.add(g)
+            out.append(s["name"])
+    return out
+
+
+def session_bed_from_cwd(cwd: str | None = None) -> str | None:
+    """Inside <project>/.dev/session/<bed>/… → '<bed>' (the RUNBOOK bed's folder name)."""
+    p = Path(cwd or os.getcwd()).resolve()
+    for d in [p, *p.parents]:
+        if d.parent.name == "session" and d.parent.parent.name == ".dev":
+            return d.name
+    return None
+
+
+def resolve_slug(given: str | None, need_existing: bool = False) -> str:
+    """Slug rules (P2.1): given → frame's bed (inside a frame) → RUNBOOK bed folder of the
+    cwd → the only frame that is up. Otherwise refuse and name the beds."""
+    if given and not given.startswith("#{"):
+        return given
+    for cand in (frame_slug(), session_bed_from_cwd()):
+        if cand:
+            return cand
     A, F = servers()
-    want, split, fixed = list(a.tabs), a.split, a.fixed
+    frames = [s["name"] for s in sessions(F)]
+    if len(frames) == 1:
+        return frames[0]
+    beds = bed_names(A)
+    why = f"{len(frames)} frames up" if frames else "no frame up"
+    raise OvError(f"which bed? ({why}; not inside a frame or a .dev/session/<bed>/ dir) — "
+                  f"beds: {', '.join(beds) or 'none'}  (ov-ls for details)")
+
+
+def tabs_spec(spec: list[str], split: str | None = None, fixed: str | None = None):
+    """['@preset'] or tab names → (tabs, split, fixed); explicit split/fixed win."""
+    want = list(spec)
     if want and want[0].startswith("@"):
         presets = load_presets()
         key = want[0][1:]
         if key not in presets:
             raise OvError(f"no preset '{key}' (have: {', '.join(presets) or 'none'})")
         p = presets[key]
-        want = list(p.get("tabs", []))
-        split = a.split_given or p.get("split", DEFAULT_SPLIT)
-        fixed = a.fixed_given or p.get("fixed", DEFAULT_FIXED)
+        return (list(p.get("tabs", [])), split or p.get("split", DEFAULT_SPLIT),
+                fixed or p.get("fixed", DEFAULT_FIXED))
+    return want, split or DEFAULT_SPLIT, fixed or DEFAULT_FIXED
+
+
+def build_bed(slug: str, spec: list[str] | None = None) -> int:
+    """Build every missing part (base, tabs, view, frame) without attaching. Returns steps."""
+    want, split, fixed = tabs_spec(spec or [])
+    size = shutil.get_terminal_size((200, 50))
+    ops = plan_up(slug, want, split, fixed, os.getcwd(), (size.columns, size.lines))
+    apply(ops)
+    return len(ops)
+
+
+def close_idle_tab(slug: str, ref: str) -> dict:
+    """Close ONE idle tab (○). Refuses a busy tab (law L-c) and the last tab (it would end
+    the bed and every view — that is ov-down's job). Busy is re-read at close time."""
+    A, _ = servers()
+    w = resolve_tab(A, slug, ref)
+    now = {t["id"]: t for t in tabs(A, slug)}
+    if len(now) <= 1:
+        raise OvError(f"'{w['name']}' is the last tab — closing it ends the bed; "
+                      f"use: ov-down {slug} --idle")
+    t = now.get(w["id"])
+    if t and t["busy"]:
+        raise OvError(f"'{w['name']}' runs {t['cmd']} — end the agent in its tab first "
+                      "(/exit), then close the empty tab")
+    A.run("kill-window", "-t", w["id"], check=True)
+    return w
+
+
+def cmd_up(a) -> int:
+    A, F = servers()
+    a.slug = resolve_slug(a.slug)
+    want, split, fixed = tabs_spec(a.tabs, a.split_given, a.fixed_given)
     dups = _dups(A, a.slug)
     if dups:
         print(f"ovitmugen: warning — '{a.slug}' has duplicate tab names {sorted(dups)}; "
@@ -382,7 +459,8 @@ def switch_tab(slug: str, ref: str) -> dict:
 
 
 def cmd_tab(a) -> int:
-    w = switch_tab(a.slug, a.tab)
+    slug, ref = (a.args[0], a.args[1]) if len(a.args) == 2 else (resolve_slug(None), a.args[0])
+    w = switch_tab(slug, ref)
     print(f"ovitmugen: left pane → {w['index']}:{w['name']} ({w['id']})", file=sys.stderr)
     return 0
 
@@ -390,7 +468,7 @@ def cmd_tab(a) -> int:
 def bed_report(slug: str) -> dict:
     A, F = servers()
     all_s = sessions(A)
-    views = [s["name"] for s in all_s if s["name"].startswith(slug + "--") and s["group"] == slug]
+    views = [s["name"] for s in all_s if s["group"] == slug and s["name"] != slug]
     frame = next((s for s in sessions(F) if s["name"] == slug), None)
     cur = view_current(A, slug + LEFT) if (slug + LEFT) in views else None
     return {
@@ -403,7 +481,7 @@ def bed_report(slug: str) -> dict:
 
 def cmd_ls(a) -> int:
     A, _ = servers()
-    beds = [a.slug] if a.slug else [s["name"] for s in sessions(A) if "--" not in s["name"]]
+    beds = [a.slug] if a.slug else bed_names(A)
     if a.slug and not A.has(a.slug):
         raise OvError(f"no bed '{a.slug}' on tmux -L {A.sock}")
     reports = [bed_report(b) for b in beds]
@@ -415,7 +493,8 @@ def cmd_ls(a) -> int:
     for r in reports:
         fr = "frame: down" if r["frame"] is None else \
              f"frame: up ({r['frame']['attached']} attached)"
-        vs = " ".join(v[len(r["bed"]):] for v in r["views"]) or "-"
+        vs = " ".join(v[len(r["bed"]):] if v.startswith(r["bed"] + "--") else v
+                      for v in r["views"]) or "-"
         print(f"{r['bed']}   {fr}   views: {vs}")
         for t in r["tabs"]:
             mark = "●" if t["busy"] else "○"
@@ -450,6 +529,7 @@ def plan_down(slug: str, level: str) -> list[dict]:
 
 def cmd_down(a) -> int:
     level = "idle" if a.idle else "views" if a.views else "frame"
+    a.slug = resolve_slug(a.slug)
     ops = plan_down(a.slug, level)
     if a.dry_run:
         print("\n".join(render(ops) or ["# nothing to close"]))
@@ -474,12 +554,7 @@ def frame_slug() -> str | None:
 
 
 def cmd_console(a) -> int:
-    slug = a.slug if a.slug and not a.slug.startswith("#{") else frame_slug()
-    if not slug:
-        raise OvError("console needs a bed: ov <slug>   (beds: ov-ls)")
-    A, _ = servers()
-    if not A.has(slug):
-        raise OvError(f"no bed '{slug}' — build it: ov-up {slug}")
+    slug = resolve_slug(a.slug)
     import curses
     import locale
     locale.setlocale(locale.LC_ALL, "")
@@ -491,27 +566,36 @@ def cmd_console(a) -> int:
 def console_view(scr, slug: str) -> str | None:
     """The one console view (§5.7). Hosts: `ov-console` (own curses screen), the frame's
     C-a t popup, and runbook's T modal (runbook's screen — its 1 s tick is switched off
-    here; the caller restores it). Returns the tab name switched to, or None."""
+    here; the caller restores it). Returns a one-line result for the host, or None.
+    Keys: Enter switch left pane · a add tab · x x close an IDLE tab · b build a missing
+    bed · r refresh · q back. Closing never touches a ● tab (law L-c)."""
     import curses
     try:
         curses.curs_set(0)
     except curses.error:
         pass
     scr.timeout(-1)                           # block on keys; a host tick would raise
-    sel, msg = 0, ""
+    A, F = servers()
+    sel, msg, armed = 0, "", None
     while True:
-        try:
-            rep = bed_report(slug)
-        except OvError as e:
-            rep, msg = {"tabs": [], "views": [], "frame": None}, str(e)
-        rows = rep["tabs"]
+        exists = A.has(slug)
+        rows = []
+        if exists:
+            try:
+                rows = bed_report(slug)["tabs"]
+            except OvError as e:
+                msg = str(e)
         if rows:
             sel = max(0, min(sel, len(rows) - 1))
         scr.erase()
         h, w = scr.getmaxyx()
         _put(scr, 0, 0, f" ovitmugen · {slug}", w, curses.A_BOLD)
-        _put(scr, 1, 0, " Enter switch left pane · a add tab · r refresh · q quit", w,
-             curses.A_DIM)
+        if exists:
+            hint = " Enter switch left pane · a add tab · x x close idle tab · r refresh · q back"
+        else:
+            hint = " b build this bed (base + tabs + left view + frame) · q back"
+            _put(scr, 3, 0, f" no tmux bed '{slug}' yet", w, curses.A_NORMAL)
+        _put(scr, 1, 0, hint, w, curses.A_DIM)
         for i, t in enumerate(rows[: max(0, h - 4)]):
             mark = "●" if t["busy"] else "○"
             left = "  ← left pane" if t["left"] else ""
@@ -525,6 +609,8 @@ def console_view(scr, slug: str) -> str | None:
         except curses.error:
             continue
         msg = ""
+        if k != "x":
+            armed = None                      # any other key disarms the close confirm
         if k in ("q", "\x1b"):
             return None
         if k in ("j", curses.KEY_DOWN):
@@ -535,19 +621,45 @@ def console_view(scr, slug: str) -> str | None:
             pass
         elif k in ("\n", "\r", curses.KEY_ENTER) and rows:
             try:
-                return switch_tab(slug, rows[sel]["id"])["name"]   # one action, then close
+                return "left pane → " + switch_tab(slug, rows[sel]["id"])["name"]
             except OvError as e:
                 msg = str(e)
-        elif k == "a":
+        elif k == "a" and exists:
             name = _prompt(scr, "new tab name: ")
             if name:
                 try:
-                    size = shutil.get_terminal_size((200, 50))
-                    apply(plan_up(slug, [name], DEFAULT_SPLIT, DEFAULT_FIXED, os.getcwd(),
-                                  (size.columns, size.lines)))
+                    build_bed(slug, [name])
                     msg = f"added tab '{name}'"
                 except OvError as e:
                     msg = str(e)
+        elif k == "x" and rows:
+            t = rows[sel]
+            if t["busy"]:
+                msg = f"'{t['name']}' runs {t['cmd']} — end the agent there first (/exit)"
+            elif armed != t["id"]:
+                armed, msg = t["id"], f"close idle tab '{t['name']}'? press x again"
+            else:
+                armed = None
+                try:
+                    close_idle_tab(slug, t["id"])
+                    msg = f"closed tab '{t['name']}'"
+                except OvError as e:
+                    msg = str(e)
+        elif k == "b" and not exists:
+            name = _prompt(scr, f"bed name [{slug}]: ") or slug
+            spec = _prompt(scr, "tabs: @preset or names [cSharp bus implement audit]: ")
+            try:
+                n = build_bed(name, spec.split() if spec else [])
+            except OvError as e:
+                msg = str(e)
+                continue
+            if inside(F):                     # we are in a frame → show the new one
+                F.run("switch-client", "-t", f"={name}", keep_tmux_env=True)
+                return f"built '{name}' ({n} steps) — frame switched"
+            if name != slug:
+                return f"built '{name}' ({n} steps) — attach: ov-up {name}"
+            slug = name
+            msg = f"built '{name}' ({n} steps) — attach from a plain terminal: ov-up {name}"
 
 
 def _put(scr, y, x, text, w, attr):
@@ -687,6 +799,43 @@ def selftest() -> int:
               wait(lambda: all(l.endswith(" 0") for l in F.lines(
                   "list-panes", "-t", f"={slug}", "-F", "#{pane_left} #{pane_dead}"))))
 
+        # P2.1 — close from the console: busy refused, idle closed (by id: 'bus' is duplicated)
+        ids = {t["name"]: t["id"] for t in tabs(A, slug)}
+        try:
+            close_idle_tab(slug, ids["busy"])
+            check("closing a busy tab is refused", False, "no error raised")
+        except OvError as e:
+            check("closing a busy tab is refused", "end the agent" in str(e), str(e))
+        close_idle_tab(slug, ids["implement"])
+        check("closing an idle tab works",
+              "implement" not in [t["name"] for t in tabs(A, slug)])
+
+        # P2.1 — grouped views are not beds
+        A.run("new-session", "-d", "-t", f"={slug}", "-s", "hand-view", check=True)
+        names = bed_names(A)
+        check("ov-ls: a hand-made grouped view is not listed as a bed",
+              slug in names and "hand-view" not in names and slug + LEFT not in names, names)
+        check("bed report lists the hand-made view under its bed",
+              "hand-view" in bed_report(slug)["views"])
+        A.run("kill-session", "-t", "=hand-view")
+
+        # P2.1 — slug rules: given → cwd .dev/session/<bed>/ → the only frame up
+        check("slug: an explicit name wins", resolve_slug("given") == "given")
+        deep = Path(tmp) / "proj" / ".dev" / "session" / "my-bed" / "raw"
+        deep.mkdir(parents=True)
+        here = os.getcwd()
+        try:
+            os.chdir(deep)
+            check("slug: inside .dev/session/<bed>/ → the RUNBOOK bed's folder name",
+                  resolve_slug(None) == "my-bed")
+            os.chdir(tmp)
+            check("slug: exactly one frame up → that frame", resolve_slug(None) == slug)
+        finally:
+            os.chdir(here)
+        check("frame binds C-a q to persistent pane numbers",
+              any(" q " in l and "display-panes -d 0" in l
+                  for l in F.lines("list-keys", "-T", "prefix")))
+
         apply(plan_down(slug, "idle"))
         left = [t["name"] for t in tabs(A, slug)]
         check("down --idle keeps only the busy tab", left == ["busy"], left)
@@ -694,11 +843,34 @@ def selftest() -> int:
               not F.has(slug) and not A.has(slug + LEFT))
 
         slug2 = "duo"
-        ops2 = plan_up(slug2, ["alpha", "beta"], "30%", "shell", tmp, (160, 40))
-        apply(ops2)
-        check("second bed coexists (two beds, one agents server)",
+        here = os.getcwd()
+        os.chdir(tmp)
+        try:
+            build_bed(slug2, ["@duo"])                 # the console's b path, via a preset
+        finally:
+            os.chdir(here)
+        check("second bed built from preset @duo (two beds, one agents server)",
               [w["name"] for w in windows(A, slug2)] == ["alpha", "beta"] and A.has(slug))
-        check("preset file loads (@duo)", load_presets().get("duo", {}).get("split") == "30%")
+        fw = [int(x) for x in F.lines("list-panes", "-t", f"={slug2}", "-F", "#{pane_width}")]
+        check("preset split 30% sizes the fixed pane", len(fw) == 2 and fw[1] < fw[0], fw)
+        close_idle_tab(slug2, "alpha")
+        try:
+            close_idle_tab(slug2, "beta")
+            check("the last tab is refused (would end the bed)", False, "no error raised")
+        except OvError as e:
+            check("the last tab is refused (would end the bed)", "last tab" in str(e), str(e))
+        try:
+            os.chdir(tmp)
+            A.run("new-session", "-d", "-s", "third", check=True)
+            F.run("new-session", "-d", "-s", "third", "sleep 60", check=True)
+            try:
+                resolve_slug(None)
+                check("slug: two frames and no hint → refused with the bed list", False)
+            except OvError as e:
+                check("slug: two frames and no hint → refused with the bed list",
+                      "which bed?" in str(e) and "duo" in str(e), str(e))
+        finally:
+            os.chdir(here)
         try:
             plan_up("a--b", [], DEFAULT_SPLIT, "shell", tmp, (80, 24))
             check("slug with '--' refused", False)
@@ -732,7 +904,7 @@ def main(argv=None) -> int:
     sub = ap.add_subparsers(dest="cmd", required=True)
 
     u = sub.add_parser("up", help="build missing parts of a bed, then attach the frame")
-    u.add_argument("slug")
+    u.add_argument("slug", nargs="?", help="default: frame's bed / .dev/session/<bed> cwd / only frame")
     u.add_argument("tabs", nargs="*", help="tab names, or @preset")
     u.add_argument("--split", default=None, help=f"fixed (right) pane width, default {DEFAULT_SPLIT.replace('%', '%%')}")
     u.add_argument("--fixed", default=None, help=f"fixed pane command name, default {DEFAULT_FIXED}")
@@ -741,15 +913,14 @@ def main(argv=None) -> int:
     u.add_argument("--force", action="store_true", help="attach even from inside tmux (nests)")
 
     t = sub.add_parser("tab", help="switch the left pane to a tab (name, index or @id)")
-    t.add_argument("slug")
-    t.add_argument("tab")
+    t.add_argument("args", nargs="+", metavar="[slug] tab")
 
     l = sub.add_parser("ls", help="beds, tabs (● agent / ○ idle), views, frame")
     l.add_argument("slug", nargs="?")
     l.add_argument("--json", action="store_true")
 
     d = sub.add_parser("down", help="peel layers; never closes a tab with a running agent")
-    d.add_argument("slug")
+    d.add_argument("slug", nargs="?")
     g = d.add_mutually_exclusive_group()
     g.add_argument("--frame", action="store_true", help="close the frame only (default)")
     g.add_argument("--views", action="store_true", help="frame + all views")
@@ -764,7 +935,10 @@ def main(argv=None) -> int:
     a = ap.parse_args(argv)
     if a.cmd == "up":
         a.split_given, a.fixed_given = a.split, a.fixed
-        a.split, a.fixed = a.split or DEFAULT_SPLIT, a.fixed or DEFAULT_FIXED
+    if a.cmd == "up" and a.slug and a.slug.startswith("@"):
+        a.tabs, a.slug = [a.slug, *a.tabs], None          # `ov-up @csharp` → preset, slug by rules
+    if a.cmd == "tab" and len(a.args) > 2:
+        ap.error("tab takes [slug] tab")
     try:
         return {"up": cmd_up, "tab": cmd_tab, "ls": cmd_ls, "down": cmd_down,
                 "console": cmd_console, "selftest": lambda _a: selftest()}[a.cmd](a)
