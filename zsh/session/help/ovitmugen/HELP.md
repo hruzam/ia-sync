@@ -4,66 +4,95 @@ One terminal: **agents on the left, switchable like tabs** · **runbook fixed on
 
 ```text
 ┌─ frame (tmux -L ovitmugen, prefix C-a) ──────────────────────┐
-│ left: view <slug>--left          │ right: runbook (fixed)    │
+│ left: view <bed>--left           │ right: runbook (fixed)    │
 │ [0:cSharp 1:bus 2:implement*]    │                           │
 └──────────────────────────────────┴───────────────────────────┘
-agents live in your normal tmux: base <slug> + views <slug>--*
+agents live in your normal tmux (prefix C-b): base <bed> + views <bed>--*
 ```
 
-Closing the frame never stops an agent. ovitmugen only switches *views*; it never
-types into a pane.
+Closing the frame never stops an agent. ovitmugen only switches *views*; it never types
+into a pane, and it never closes a tab where something runs (●).
 
-## Commands
+## All keys — one table
 
-```sh
-ov-up tunnel-01                  # build base + 4 tabs + left view + frame, attach
-ov-up tunnel-01 @csharp          # tabs from a preset (ovitmugen.presets.json)
-ov-up tunnel-01 front api db     # your own tab names
-ov-up tunnel-01 --dry-run        # print the tmux commands = the manual recipe
-ov-tab tunnel-01 bus             # left pane → bus  (name, index or @id)
-ov-ls                            # every bed: ● agent running · ○ empty shell
-ov-ls tunnel-01 --json           # machine-readable (termbrana later)
-ov-console tunnel-01             # console: Enter switch · a add · x x close idle · b build
-ov-down tunnel-01                # close the frame only (agents untouched)
-ov-down tunnel-01 --views        # + close all views (tabs stay in the base)
-ov-down tunnel-01 --idle         # + close tabs with NO running agent
-ov-selftest                      # isolated test servers, zero side effects
+```text
+WHERE              KEY            DOES
+shell              ov-up [bed] [@preset|tabs]   build what is missing, attach the frame
+shell              ov-up … --dry-run            print the tmux commands (= manual recipe)
+shell              ov-ls [bed] [--json]         dashboard: beds · tabs ● agent / ○ idle · frame
+shell              ov-tab [bed] <tab>           left pane → tab (name, index, @id)
+shell              ov-console [bed]             the console (see below)
+shell              ov-down [bed] [--views|--idle]  peel: frame · +views · +idle tabs
+shell              ov-selftest                  isolated test servers, zero side effects
+frame  (C-a …)     h  l  ← →                    focus left (agents) / right (runbook)
+frame              o                            next pane
+frame              q  then a number             pane numbers (stay until a key)
+frame              z                            zoom the focused pane (again = back)
+frame              < >                          move the split (default 60 / 40)
+frame              t                            console popup
+frame              r                            restart the focused pane (after a quit / detach)
+frame              s  w                         switch between FRAMES (= between beds)
+frame              x                            close the focused pane (asks; viewer only)
+frame              d                            detach — everything keeps running
+frame              C-a                          a literal C-a (shell: start of line)
+left pane (C-b …)  n  p  0-9                    switch tab inside the left pane
+left pane          d                            detaches the inner view → pane dead → C-a r
+left pane          s  w   ⚠ avoid               moves the left pane OFF its bed — use T / C-a t
+runbook (right)    T                            the console, for the frame's bed
+runbook            J K · 1-5 · 3 then Y         jump beds · bed parts · copy RUNBOOK content
+runbook            R                            copy a cold-start card's resume: line
+runbook            m  u                         presence: attach / detach the selected bed
+runbook            q  (or C-c)                  quit runbook → "Pane is dead" → C-a r
+console            ↑↓ / j k · Enter             choose a tab · switch the left pane to it
+console            a                            add a tab (empty shell)
+console            x x                          close an IDLE tab (● and the last tab refused)
+console            b                            build this bed when it has no tmux yet
+console            r · q / Esc                  refresh · back
 ```
 
-The slug is optional: `ov-up`, `ov-down`, `ov-tab bus`, `ov-console` pick the frame's bed
-(inside a frame), else the RUNBOOK bed of the current dir (`…/.dev/session/<bed>/`), else
-the only frame that is up — otherwise they list the beds. `ov-up @csharp` = preset, name
-by the same rules. Default name = the RUNBOOK bed's folder name, kept 1:1 so runbook finds it.
+**Which bed?** When `[bed]` is left out: the frame's bed (inside a frame) → the RUNBOOK bed
+of your current directory (`…/.dev/session/<bed>/`) → the only frame that is up → otherwise
+the command lists the beds. Default name = the bed's folder name, kept 1:1 so runbook finds it.
 
-Run `ov-up` from a **plain terminal**. From inside tmux it refuses (it would nest) and
-prints the attach line to use later.
+Run `ov-up` from a **plain terminal** (inside tmux it refuses: it would nest).
 
-Tabs start as empty shells. Start each agent yourself (`claude --agent …`).
+## Scenario 1 — a clean new bed: prepare → work → close
 
-## Keys inside the frame (prefix C-a)
+```text
+1  /runbook has written <project>/.dev/session/<bed>/RUNBOOK.md + STATUS.md
+2  plain terminal:  cd <project>/.dev/session/<bed>/  →  ov-up @csharp
+   → frame "<bed>": left = tab cSharp (empty shell), right = runbook
+3  right pane: select the bed · 3 (RUNBOOK) · Y copies it · m marks your presence
+4  C-a h → left pane: start the head agent (claude --agent …), paste prompt-0
+5  a second seat? T (or C-a t) → Enter on "bus" → start it there. Need another tab: a
+6  moving around: T / C-a t for tabs · C-a h / C-a l for panes · C-a d to leave
+7  gate closed: in each tab end its agent (/exit) → tab turns ○
+8  ov-down --idle   (from the bed dir, or inside the frame: no name needed)
+   → frame, views and idle tabs closed; any ● tab is kept and reported
+9  the bed's own closure (STATUS, commit, presence u) follows the RUNBOOK, not tmux
+```
 
-- `T` in runbook (right pane) — the same console inside runbook; Enter switches the
-  left pane. Inside a frame it always targets the frame's bed. The bed overview shows
-  `tmux: N tabs · M agents · frame up · left → <tab>` (refreshed at most every 5 s).
-- `C-a t` — console popup (Enter = switch left pane, `a` = add tab, `x x` = close an idle
-  tab, `b` = build a missing bed, `q` = close). `x` on a ● tab is refused: end the agent
-  in its tab first (`/exit`); the last tab is refused too (that is `ov-down`).
-- `C-a h` / `C-a l` — focus left (agents) / right (runbook)
-- `C-a <` / `C-a >` — move the split (default left 60 / right 40)
-- `C-a q` — pane numbers (stay until you press a key; a number jumps there)
-- `C-a d` — detach the frame (everything keeps running)
-- `C-a r` — restart the focused pane: after `q` / `C-c` in runbook ("Pane is dead
-  (status 0)") or an inner detach in the left pane. `ov-up <slug>` revives both too.
-- `C-a C-a` — send a literal `C-a` (shell: start of line)
-- mouse click — focus a pane
+## Scenario 2 — unfinished business: reincarnate, prepare, then cSharp
 
-Inside the left pane the agents' own tmux still uses `C-b`. `C-b d` there detaches the
-inner view: the left pane goes dead. `ov-up <slug>` reconnects it.
+```text
+1  ov-ls → is the bed still there?
+   yes (tabs listed)  → ov-up <bed>   reattaches; dead panes are revived
+   no  (reboot/gone)  → cd …/.dev/session/<bed>/ → ov-up @csharp   same names, empty tabs
+2  right pane: select the bed · 1 (STATUS) → where it stopped; select its cold-start
+   card · R copies the resume: line
+3  PREPARER in tab cSharp: resume or cold start (paste R, or claude --resume), let it
+   gather and write the handoff (STATUS / raw/), then /exit → tab turns ○
+4  REAL cSharp in the SAME tab: start it; it reads the handoff and takes the head.
+   One tab = one seat at a time: the preparer leaves before the head sits.
+5  parallel instead? T → a "prep" → preparer works there while cSharp waits in cSharp;
+   when prep is done: T → select prep → x x (closes only once it is ○)
+6  close as in scenario 1, steps 7–9
+```
 
 ## Safety rules
 
-- `ov-down` never closes a tab whose pane runs anything but a bare shell, or whose shell
-  has child processes.
+- `ov-down` and `x x` never close a tab whose pane runs anything but a bare shell, or whose
+  shell has child processes. `x x` also refuses the last tab (that is `ov-down`).
 - Views are closed only while the base exists (closing the last view of a missing base
   would kill the windows).
 - Duplicate tab names are refused by name; use the id from `ov-ls` (`@12`).
@@ -81,4 +110,4 @@ inner view: the left pane goes dead. `ov-up <slug>` reconnects it.
 ## Without the tool
 
 The same result by hand: scope **tmux-session**, section "Build a bed by hand".
-`ov-up <slug> --dry-run` prints the exact commands for your bed.
+`ov-up <bed> --dry-run` prints the exact commands for your bed.
