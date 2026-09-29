@@ -96,6 +96,10 @@ Run `ov-up` from a **plain terminal** (inside tmux it refuses: it would nest).
 - Views are closed only while the base exists (closing the last view of a missing base
   would kill the windows).
 - Duplicate tab names are refused by name; use the id from `ov-ls` (`@12`).
+- `ov-down --views` / `--idle` close **every** view of the bed, t41 columns included
+  (`t41 <bed> <tab>` shares the `<bed>--<tab>` naming): a terminal on such a column drops
+  back to its shell. Agents are untouched. Don't name a tab `left` (it would collide with
+  the frame's `<bed>--left` view).
 
 ## Presets
 

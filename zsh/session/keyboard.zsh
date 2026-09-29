@@ -29,7 +29,7 @@ alias rb-board='_rb_board'     # render board; * = own attachments
 alias rb-selftest='python3 ~/.config/zsh/session/runbook.py selftest'  # sandboxed, zero side effects
 
 # --- P5: keys panel ----------------------------------------------------------
-alias rb-keys='grep -E "^alias (rb|cs)-" ~/.config/zsh/session/keyboard.zsh | sed "s/alias //"'
+alias rb-keys='grep -E "^alias (rb|cs|ov)-" ~/.config/zsh/session/keyboard.zsh | sed "s/alias //"'
 
 # --- P6: ovitmugen — tmux manager (frame + agents; views only, never send-keys) ---
 # Frame: C-a prefix · C-a h/l focus · C-a </> move split · C-a t console popup
