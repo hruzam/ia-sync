@@ -38,3 +38,6 @@
   publish gate (commit buffer + select/revert/drop, per-project adapter, ia-sync deploy adapter,
   checkbox-to-plan, JSON CLI, placement, muticula boundary) ·
   `/home/hruzam/ia-sync/.dev/session/publish-gate-00-design/STATUS.md`
+- `tunnel-upgrade-01-parametrization` · gate: a preset named in `zsh/registries/tunnel.json` opens a
+  tunnel thread whose sandbox AND reasoning effort demonstrably match that preset, proven by one live
+  turn (`tun status` + one `tun ask`) · `/home/hruzam/ia-sync/.dev/session/tunnel-upgrade-01-parametrization/STATUS.md`

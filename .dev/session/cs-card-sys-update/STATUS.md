@@ -1,5 +1,5 @@
 ```yaml
-updated: 2026-09-17
+updated: 2026-09-29 (correction by trajectory — git + deploy landed; only the two proofs remain)
 writer: trajectory
 host: home
 worktree: >
@@ -183,6 +183,10 @@ holds:
     partial-permission workaround. This is why a genuinely fresh workspace-write table
     (scratch-scoped, per the copy-via-spawn pattern) was opened instead.
 next: >
+  CORRECTION 2026-09-29 (trajectory, majkee's step-3 word). Part A has landed: git in ia-sync
+  10caacc and reposoma 0a0c55b (majkee, 2026-09-17), both on origin. All four skill files are live on
+  office and home, hash-equal to the table (~/.claude/skills, ~/.agents/skills). Only B remains:
+  the two fresh-session proofs. The text below predates those commits.
   ALL BUILD + WITNESS WORK IS DONE. Both skills (Claude + Codex) built, flat-model, cross-
   witnessed; GUIDE signpost + two subchapters + seed cards reshaped + witnessed; label
   applied; bus cycle 01 closed. Everything is working-tree, nothing committed. TWO things

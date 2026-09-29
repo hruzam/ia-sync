@@ -17,8 +17,8 @@
   confirmed that each held only the unchanged PC key and the two rotated-out keys, old redmi
   `mMS4…` and old tab `SI8z…`. Neither is live anywhere. The live keys are untouched on both
   hosts: the PC key, redmi `JFoh…` and galaxy `UHP7…`. The `authorized_keys.before-galaxy-write-*`
-  rollback copies from the Galaxy setup were kept (Cartan's entry below). **Still owed on the
-  phone** (Redmi Termux; sshd was unreachable): `rm ~/.ssh/id_ed25519.old ~/.ssh/id_ed25519.pub.old`.
+  rollback copies from the Galaxy setup were kept (Cartan's entry below). **Phone:** majkee
+  removed `id_ed25519.old` and `.pub.old` himself the same day. The rotation debt is zero.
 - **Closed and pruned** by majkee's word ("close … runbooks by the status"):
   - `codex-remote-control-cli-01-wrapper` (gate passed 2026-09-10) — its router row is dropped.
   - `runbook-tool-00` (gate closed 2026-09-10).
