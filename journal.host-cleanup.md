@@ -29,6 +29,125 @@
 
 ---
 
+## OFFICE — 2026-09-29 · Cartan · Galaxy writable tmux on both hosts; app idea only
+
+Majkee explicitly promoted Galaxy from monitor-only to the same writable tmux role
+as Redmi. Live checks: four nodes online; Samsung + Xiaomi wired to office;
+office→home→office SSH passed; after operator started Termux sshd, both hosts reached
+both devices. Galaxy SM-T585 = Android 8.1.0/API 27/armeabi-v7a; Redmi = Android 15.
+
+Both hosts' Galaxy authorized_keys entry now forces `tmux new-session -A -s agentive`
+instead of `tmux attach -rt agentive`. Device key, from= guard and forwarding restrictions
+unchanged; exact-match dry run + mutation checks passed, dated host-local backups retained
+(paths in devices/galaxy-tab-a-2016/log.md). Existing encrypted key matches registrations;
+passphrase never read or reset. Writable tmux is host-user shell access, not a sandbox.
+
+Galaxy received the existing shared bed connector, extra keys and widget scripts plus
+its shell aliases, with device-local before copies. Native SSH password auth remains off.
+Operator subsequently reported the Galaxy passphrase forgotten and authorized a new key.
+Operator generated a new encrypted key on the tablet; screenshot and live public-key
+fingerprint match. Both hosts now register the new key with identical restrictions; old
+key revoked. Device default pair replaced, old encrypted pair retained locally. Operator
+unlocked it; Galaxy→office AND Galaxy→home passed create/type/execute/detach/reconnect.
+The operator's initial typing block was tmux copy-mode; exited it, retained writable
+client. All disposable probe sessions removed; user connection left intact. Reused
+Redmi's JetBrainsMono Nerd Font on Galaxy; operator confirmed “looking much better”.
+Follow-up home-only symbols: home SSH lacked a UTF-8 locale and its tmux client
+was not UTF-8. Added `-u` only to Galaxy's home forced command. Fresh Galaxy→home
+client_utf8=1 and Czech/arrow/box/block/Powerline byte delivery passed, along with
+create/type/detach/reconnect. Existing user client needs one reconnect; sessions stay alive.
+Replacement fingerprints/backups and probe receipts are in the device log.
+Redmi's fresh outbound proof initially awaited operator unlock; network, both
+host→Redmi connections, encrypted key, registrations and connector match passed.
+The later alias repair and live proof below close that gap.
+Both host CLI version checks passed: office Codex 0.158.0/Claude 2.1.284; home
+Codex 0.155.1/Claude 2.1.281. No model prompts submitted. On later explicit request,
+started Claude on office in `agentive:1` (`claude-galaxy`, pane `%60`, cwd ia-sync),
+welcome/input prompt verified. Added Galaxy Termux `S-TAB` and `SHIFT` controls;
+installed-version source/configuration and physical tap checks passed: TAB=09,
+S-TAB=1b5b5a through Galaxy→SSH→tmux. Operator confirmed “perfect S-tab running”.
+A direct BTab test changed the new Claude session to manual mode; operator informed.
+Temporary key-test window auto-closed; Claude remains in S1.
+Shared keyboard source updated; deployed to Galaxy, then Redmi on operator request,
+with device backups and checksum verification. Redmi identifies as Termux
+`googleplay.2026.06.21`; its physical S-TAB tap check remains unreported.
+Operator confirmed Galaxy survived 10 minutes with screen locked: that pending
+session-survival gate is now PASS (operator observation).
+Redmi then showed the same home glyph defect: its live SSH source matched Redmi,
+and tmux reported client_utf8=0. Added `-u` only to Redmi's home forced command,
+using the guarded source helper `devices/redmi-15c-5g/enable-tmux-utf8.py` after a
+dry run; backup and before-state recorded in its log. Reconnected Redmi client
+verified client_utf8=1; operator confirmed symbols look correct. Display repair PASS.
+Redmi's later `office bed` terminal error traced to its old plain-SSH aliases;
+appended source `devices/redmi-15c-5g/bashrc.fragment` with the same bed-based shortcuts
+as Galaxy, preserving a device-local backup. Syntax and fresh alias resolution passed.
+Office's default tmux session/window chooser bindings are intact; ovitmugen agents
+share default, while its Ctrl+A frames live on a separate server. No ovitmugen or
+runbook configuration changed. Operator reconnected and confirmed Ctrl+B, s shows
+office sessions. Redmi→office and Redmi→home then passed create/type/execute/detach/
+reconnect and UTF-8 byte delivery; disposable test sessions removed, user sessions intact.
+New source: devices/galaxy-tab-a-2016/{enable-tmux-write.py,bashrc.fragment}; updated device
+cards/logs and shared tmux convention. No full deploy of unrelated dirty source.
+
+Planning-only `~/unikuklatrix/k0k0nV3R/IDEA.md`: coconvergence, native mobile console,
+host/session/window/pane picker, keyboard and durable text tray; no application development.
+Existing dirty germline STATUS, project map, earlier journal entries and untracked work
+preserved. No commit/push: unrelated work was already in progress.
+
+---
+
+## OFFICE — 2026-09-28 · Trajectory · zram prep — blocked on the same reboot already owed
+
+RAM audit (14Gi/15Gi used, 998Mi available, **0 swap**) traced to volume, not one hog: 15
+concurrent claude/codex sessions (~3.9GB, several idle 2–6 days), 7 zsh shells (~2.9GB, two
+abnormally large), Firefox (~2.3GB), normal KDE baseline (~1.1GB). Flagged 0 swap as the
+structural risk (OOM killer with no graceful fallback) — majkee asked for zram like home's.
+
+Home precedent found, not assumed working: `.dev/session/voice-meetings-01-threshold/pad.1-zram.md`
+(clean sheet) and `.dev/session/zram-guard-implementation/pad.1-zram-guard.md` (live run,
+2026-09-25) — **stalled at STEP 2** (kernel module tree deleted by an update, box never
+rebooted since) and never completed; no zram entry existed in this journal before today.
+
+Office hits the identical blocker, confirmed not assumed: running kernel
+`7.1.3-1-MANJARO`, `/usr/lib/modules/7.1.3-1-MANJARO` does not exist on disk (deleted by the
+2026-09-22/26 update; `uptime -s` = 2026-09-22 01:48, still not rebooted — the same reboot
+flagged in the entry below). `zram-generator` not installed (1.2.1-1 in `extra`). No
+NOPASSWD sudo here either — an agent cannot run install/activate steps; needs majkee at the
+keyboard. The target kernel (`linux71 7.1.13-2`) already has its module tree on disk, so the
+owed reboot should resolve this cleanly — not asking for a second one.
+
+Authored `.dev/session/zram-guard-office/pad.1-zram-office.md` (fingerprint inverted to
+require office, `ram/2` sizing for the 16GB box, reboot hard-gated as STEP 0). **Not run —
+nothing installed or changed on the live system.** Waiting on majkee's reboot timing, then
+majkee runs it (sudo).
+
+---
+
+## OFFICE — 2026-09-26 · Trajectory · reboot pending (Plasma 6.7.4 + kernel 7.1.13, 09-22)
+
+Office running since 09-22 01:48; update at 13:36 same day (Plasma 6.6.6→6.7.4, Qt 6.11.2, mesa, linux71 7.1.3→7.1.13) not yet booted. Symptom: KCM Display = "No KScreen backend found" (stale kwin 6.6.6 vs new kscreen) — packages intact, no reinstall. Until reboot: no display/monitor changes; running kernel's modules gone (no new module loads). majkee reboots after agent sessions finish.
+
+---
+
+## OFFICE — 2026-09-25 · Cartan · released germline chatbot-port sync (source only)
+
+Applied majkee's operator-carried RELEASE from Atlas: Codex chatbot-port now targets
+`~/reposoma/.germline/skills/skill.<slug>.md`. Conditional `twin-commit` and independent
+revision checks already existed and were preserved. Skill validation, whitespace checks,
+and Codex deploy dry-run passed; only that skill file would change. **Not deployed.**
+
+RETURN + Codex direct-read observation:
+`_staging/codex/germline-home.return.2026-09-25.md`. Local discrepancy: Claude source still
+names `.shared/skills/`; the proposed germline session bed, canonical directory, and home
+symlink are absent on office. Recorded the released gavel without claiming setup is done.
+No home inspection, symlink creation, RUNBOOK authoring, or deployment by this session.
+
+Pre-existing session deletions, runbook-app edits, pulse changes, and untracked collaboration
+artifacts remain untouched; no commit/push. The native skill's destination is the only
+deployable source change in this RETURN.
+
+---
+
 ## OFFICE — 2026-09-23 · Cartan · invariance RETURN + chatbot-port Codex source (undeployed)
 
 Consumed Atlas's RETURN in

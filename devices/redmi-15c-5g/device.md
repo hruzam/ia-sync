@@ -3,22 +3,22 @@
 | Fact | Value |
 |---|---|
 | Tailscale IP | 100.105.201.3 |
-| Android | TBD (modern MIUI/HyperOS expected — likely Android 13+) |
+| Android | **15**, model **2508CRN2BE** (live check 2026-09-29) |
 | Trust class | restrict (daily-carry phone; holds operator's Google account) |
-| Termux | installed; openssh installed 2026-08-21; sshd started once |
-| Tailnet connectivity | ✅ online (verified ~2026-08-21) |
+| Termux | `googleplay.2026.06.21` (live check 2026-09-29); sshd on 8022 |
+| Tailnet connectivity | ✅ online 2026-09-29; Termux SSH verified from both hosts |
 | Termux sshd | ✅ key-only (PasswordAuthentication no, hardened 2026-08-20) |
 | PC→device key auth | ✅ office RSA + home ed25519 — both seated 2026-08-20 |
-| Device→PC access | none intended (doctrine: default-deny; JIT via passphrase key if needed) |
+| Device→PC access | Writable tmux on both hosts through registered encrypted device key; create/type/execute/detach/reconnect and UTF-8 tests passed 2026-09-29 |
+| Host shortcuts | `office` / `home` use `~/bin/bed` with an SSH terminal; fresh shell or `source ~/.bashrc` after the 2026-09-29 update |
+| Shift keys | Same shared `S-TAB` macro (`SHIFT TAB`) and `SHIFT` button as Galaxy; deployed and reloaded 2026-09-29 |
+| Home display | Forced command uses `tmux -u` (2026-09-29); reconnected Redmi client verified `client_utf8=1`, operator confirmed symbols look correct |
 | Wireless debugging | likely available (Android 11+) — no USB needed for adb, if ever wanted |
-
 | Device→PC JIT access | ✅ ed25519 key, restricted entry (agentive tmux, from= guard). Use `ssh hruzam@<pc-ip>` |
 
 ## Open
 
 - Banner test (screen-off 10+ min acceptance gate) — wakefulness not yet proven under sleep
-- Verify Android version (`getprop ro.build.version.release`)
-- Document tmux `agentive` convention (shared with tablet) in `_shared/`
 
 ## Notes
 

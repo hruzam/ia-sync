@@ -1,0 +1,7 @@
+# Galaxy writable tmux access — ia-sync, 2026-09-29
+case ":$PATH:" in
+  *":$HOME/bin:"*) ;;
+  *) export PATH="$HOME/bin:$PATH" ;;
+esac
+alias office='$HOME/bin/bed office'
+alias home='$HOME/bin/bed home'

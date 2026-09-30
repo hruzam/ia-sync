@@ -32,10 +32,16 @@ bed office     # office workbench (100.126.182.111)
 bed home       # home workbench (100.110.27.60)
 ```
 
+Galaxy and Redmi also have `office` / `home` aliases for these commands. After an
+alias update, use a fresh local Termux shell or `source ~/.bashrc`. The command
+order is `bed office`, not `office bed`.
+
 **From phone home-screen:**
 - Tap `office-attach` or `home-attach` — one-tap Termux:Widget shortcut
 
 **Keyboard:**
+- `S-TAB` — Shift+Tab in one tap (for example, Claude's mode selector)
+- `SHIFT` — Termux's Shift modifier for its extra keys; Android soft-keyboard Shift is separate
 - `S1`–`S4` — switch between 4 seat windows (tmux window select)
 - `PASTE` — Android clipboard paste (hands-free PTYRA voice loop: talk → ChatGPT copies result → tap PASTE)
 - `DETACH` — close bed (Ctrl+B d)
