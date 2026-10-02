@@ -44,6 +44,7 @@ DEFAULT_TABS = ["cSharp", "bus", "implement", "audit"]
 DEFAULT_SPLIT = "40%"                         # width of the FIXED (right) pane → 60/40
 DEFAULT_FIXED = "runbook"
 LEFT = "--left"
+CLOSE_TRIES, CLOSE_GAP = 4, 0.3               # close_idle_tab patience (prompt-redraw helpers)
 FMT_WIN = "#{window_id}\t#{window_index}\t#{window_name}\t#{window_active}"
 FMT_PANE = "#{window_id}\t#{pane_id}\t#{pane_current_command}\t#{pane_pid}\t#{pane_dead}"
 FMT_SESS = "#{session_name}\t#{session_group}\t#{session_attached}\t#{session_windows}"
@@ -410,16 +411,27 @@ def close_idle_tab(slug: str, ref: str) -> dict:
     the bed and every view — that is ov-down's job). Busy is re-read at close time."""
     A, _ = servers()
     w = resolve_tab(A, slug, ref)
-    now = {t["id"]: t for t in tabs(A, slug)}
-    if len(now) <= 1:
-        raise OvError(f"'{w['name']}' is the last tab — closing it ends the bed; "
-                      f"use: ov-down {slug} --idle")
-    t = now.get(w["id"])
-    if t and t["busy"]:
+    # NB: an idle zsh briefly forks a helper when it redraws its prompt (resize, attach —
+    #     seen on home 2026-10-02). Re-read up to CLOSE_TRIES times and close RIGHT AFTER an
+    #     idle observation; refuse only if every read was busy. The race window stays the
+    #     same few milliseconds as a single check.
+    t = None
+    for attempt in range(CLOSE_TRIES):
+        now = {x["id"]: x for x in tabs(A, slug)}
+        if len(now) <= 1:
+            raise OvError(f"'{w['name']}' is the last tab — closing it ends the bed; "
+                          f"use: ov-down {slug} --idle")
+        t = now.get(w["id"])
+        if t is None or not t["busy"]:
+            A.run("kill-window", "-t", w["id"], check=True)
+            return w
+        time.sleep(CLOSE_GAP)                 # even a fg program may be a startup blip
+                                              # (home 2026-10-02: `groups`); an agent stays
+    if t and t["fg"]:
         raise OvError(f"'{w['name']}' runs {t['cmd']} — end the agent in its tab first "
                       "(/exit), then close the empty tab")
-    A.run("kill-window", "-t", w["id"], check=True)
-    return w
+    raise OvError(f"the shell in '{w['name']}' is still running something (a child process) "
+                  "— wait a moment or check it, then x x again")
 
 
 OPEN = "open:"   # console result prefix: the host must hand its terminal to the frame
@@ -592,10 +604,19 @@ def plan_down(slug: str, level: str) -> list[dict]:
             ops.append(op("agents", ["kill-session", "-t", f"={v}"],
                           f"close view '{v}' (tabs live on in '{slug}')"))
     if level == "idle":
+        # Patience as in close_idle_tab: a tab counts idle if ANY of CLOSE_TRIES reads sees
+        # it idle (prompt redraws / startup commands fork briefly). Busy every time → kept.
+        idle: dict[str, dict] = {}
+        for attempt in range(CLOSE_TRIES):
+            for t in tabs(A, slug):
+                if not t["busy"]:
+                    idle.setdefault(t["id"], t)
+            if attempt < CLOSE_TRIES - 1:
+                time.sleep(CLOSE_GAP)
         for t in tabs(A, slug):
-            if not t["busy"]:
+            if t["id"] in idle and not (t["fg"] and t["cmd"] != idle[t["id"]]["cmd"]):
                 ops.append(op("agents", ["kill-window", "-t", t["id"]],
-                              f"close idle tab {t['name']} ({t['id']}, {t['cmd']})"))
+                              f"close idle tab {t['name']} ({t['id']}, {idle[t['id']]['cmd']})"))
     return ops
 
 
@@ -835,7 +856,7 @@ def selftest() -> int:
         A.run("new-window", "-d", "-t", f"={slug}:", "-n", "busy", "sleep 600", check=True)
         # shells have transient children while the prompt initialises — wait for settle.
         # (A transient "busy" is the SAFE error: it only ever refuses a close.)
-        settled = wait(lambda: not any(t["busy"] for t in tabs(A, slug) if t["name"] != "busy"), 8)
+        settled = wait(lambda: not any(t["busy"] for t in tabs(A, slug) if t["name"] != "busy"), 20)
         busy = {t["name"]: t["busy"] for t in tabs(A, slug)}
         check("agent detection: 'sleep' tab busy, shell tabs idle",
               settled and busy.get("busy") is True and busy.get("cSharp") is False,
