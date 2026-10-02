@@ -1,6 +1,6 @@
 ---
 title: Design — publish-gate (core buffer model + ia-sync deploy adapter)
-status: "r3 — folds Cartan's RETURN 02 (REVISE, bounded: R1–R4 + consistency fixes); majkee's drop decision kept · head-reviewed (2 corrections: plan steps 0/1/5/9 use the shared mutex + target.json and revalidate ancestry; r3 intro clause)"
+status: "r2 — folds Cartan's RETURN 01 (REVISE); for his fold check · majkee's drop decision kept · head-reviewed (6 corrections: prefix-closure linearity, nablarva buffer fact, host-global mutex, --ref wording, check scope, beacon on drop)"
 date: 2026-09-29
 author: trajectory (design author, publish-gate-00-design)
 folds:
@@ -10,12 +10,6 @@ folds:
   P4: "§7 Boundary with muticula — enrollment states, revert-through-the-gate, pg-drop route, detached worktree, Q5 reframe, obsolete references"
   P5: "§3b Deployment mutex"
   P6: "§4 Checkbox-to-plan translation · §5 JSON CLI contract · §7 Remote movement"
-folds_r3:
-  R1: "§3 Adapter contract manifest · §3b Deployment mutex · §6 Placement state paragraph · Q4"
-  R2: "§1 Resolved facts · §4 Checkbox-to-plan translation (typed inputs, plan rendering, revalidation) · §5 JSON CLI contract · §7 Remote movement"
-  R3: "§7 Git transaction · pg-drop paragraph"
-  R4: "§1 Buffer model · §1a Project integration policy · §7 Prefix publication · §7 Remote movement"
-  consistency: "§1 Authoring/receiving host · §2a Operation receipts · §4 plan rendering order · §5 JSON orphans comment · §7 Residual inventory · §7 Remote movement · closing 'what this design does not do'"
 inputs:
   - /home/hruzam/ia-sync/.dev/session/publish-gate-00-design/RUNBOOK.md
   - /home/hruzam/ia-sync/.dev/session/publish-gate-00-design/STATUS.md
@@ -44,7 +38,7 @@ verified-live-facts:
 This is a design, not an implementation. It answers RUNBOOK prompt-0's items (1)–(7), gives
 the muticula boundary the depth the RUNBOOK asks for, and names what is open for majkee.
 `(?)` marks a proposal to architect — never an order. **This r2 folds Cartan's RETURN 01
-(CHALLENGE, disposition REVISE) in full** — six findings, P1–P6, mapped above; **r3 folds RETURN 02** (bounded: R1–R4 plus consistency fixes, `folds_r3` above). Cartan's
+(CHALLENGE, disposition REVISE) in full** — six findings, P1–P6, mapped above. Cartan's
 primary point stands: a confirmed list of shell commands is not sufficient to preserve the
 relationship between selected Git content and live files through failure, retry and drop.
 Every fold below turns a narrated partial state into something the design actually writes
@@ -60,11 +54,9 @@ scoping muticula uses for its own state (`muticula.master.2026-09-26.md` §3 D2)
 never a cross-host object; there is no "office's buffer, viewed from home."
 
 **Resolved, not assumed (P3).** The core resolves and pins, per checkout, before building any
-buffer: the local branch, the configured remote/target ref, and two separately-named facts read
-at that time — `observed_remote_tip` (the ref's current value) and, only where a divergence
-calculation actually needs it, `merge_base` (the merge-base of the local branch and that ref).
-It never hardcodes `main`/`origin/main` — those are ia-sync's *policy answer*, supplied by §1a,
-not the core's default.
+buffer: the local branch, the configured remote/target ref, and the observed base (the
+merge-base or the ref's current value at read time). It never hardcodes `main`/`origin/main`
+— those are ia-sync's *policy answer*, supplied by §1a, not the core's default.
 
 **Contents.** Given the resolved local branch and target ref:
 
@@ -74,11 +66,10 @@ git rev-list --reverse <target-ref>..<local-branch>     # oldest first
 
 is the ordered candidate list — **valid as the whole buffer only when that range is a
 verified linear segment** (no merge commit inside it: `git rev-list --merges <target-ref>..<local-branch>`
-is empty). Publishing `c_k` publishes its whole ancestor closure `<target-ref>..c_k`, so v0
-**refuses publish selection for the whole range the moment it contains a merge commit** — there
-is no partial "segment up to the first merge" selection. The entire range is reported as
-**unsupported history** when a merge is present, never silently flattened or reordered. See
-§1a for when this bites.
+is empty). Publishing `c_k` publishes its whole ancestor closure `<target-ref>..c_k`, so v0 can
+select only commits whose closure is linear: the segment from the observed base up to the first
+merge. Every later commit is reported as **unsupported history**, never silently flattened or
+reordered. See §1a for when this bites.
 
 Each entry carries:
 
@@ -96,9 +87,7 @@ Each entry carries:
 from. What a host pulls was, by definition, already pushed — SYNC_DISCIPLINE's pull-before-push
 invariant never lets a host pull someone else's *unpushed* commits. So the receiving host never
 sees the authoring host's buffer; it runs its own local `deploy.sh` per SYNC_DISCIPLINE's
-existing steps — through publish-gate, subject to §3a's mandatory preflight gate; a dirty-tree,
-by-hand `bash deploy.sh` remains the noncompliant exception §3a already names, not a second
-blessed path. There is no deploy-on-behalf-of-another-host operation to add.
+existing steps. There is no deploy-on-behalf-of-another-host operation to add.
 
 **Live pointer per host.** `HEAD`, read fresh at plan time and re-read immediately before
 execute (§7 "Remote movement") — never cached across confirm.
@@ -114,7 +103,7 @@ Verified 2026-09-29, not assumed:
 | Remote/target ref | `origin/main` | `origin/core` |
 | Integration mode | `pull --rebase` (SYNC_DISCIPLINE.md, `pull.rebase=true` on both clones) | plain `pull`, **never** `pull --rebase` — subtree history, flag L12 |
 | History shape in the buffer range | linear by discipline (`pull --rebase`) | linear today (`origin/core..core`: 0 merges, checked 2026-09-29). But plain `pull` makes a merge commit whenever local and remote diverge, so the buffer holds a merge exactly then; pushed history already has 3 |
-| v0 buffer selection | the full range qualifies | qualifies today — the current range has 0 merges. R4: v0 refuses selection for the **whole** range, not just the commits after it, the moment that range contains a merge; a future diverged `pull` that introduces one needs an explicit human plan before any commit in that range is selectable again. v0 does not fully solve nablarva's inheritance |
+| v0 buffer selection | the full range qualifies | qualifies while the range is linear. After a diverged `pull`, only commits before the merge are selectable, and the rest is reported as unsupported history. v0 does not fully solve nablarva's inheritance |
 
 A merge commit inside a selected range needs an explicit mainline for `revert` (`git revert
 -m <n> <sha>`) — the core never guesses parent 1. `pushed` for nablarva is checked against
@@ -150,10 +139,9 @@ droppable, deployed or not; `pg-drop` gets its own command and, later, a dashboa
    destinations, and the residual-file inventory (§7). Preserve the old OID/tree and write a
    receipt for it — e.g. a local ref `refs/publish-gate/dropped/<op-id>`, never pushed — so
    recovery does not depend on reflog retention alone.
-2. **Perform and record.** Run the authorized history operation; record whether it completed in
-   the receipt's `history_op_outcome` (§2a). If it computes a new OID (rewriting descendants),
-   bind that resulting OID into `history_op_outcome` before deploying — it is a separate, new
-   binding, never the old `expected_head` re-read as if it were the originally approved one.
+2. **Perform and record.** Run the authorized history operation; record whether it completed.
+   If it computes a new OID (rewriting descendants), bind that resulting OID into the receipt
+   before deploying — never re-read a movable HEAD as if it were the originally approved one.
 3. **Deploy under §3a's checks.** A failure here means history has already changed while live
    files remain old/mixed — keep that fact visible with an offered recovery path; never report
    it as either "drop failed, nothing happened" or a clean success.
@@ -180,7 +168,6 @@ An operation receipt is written **before** the effect it describes, not after su
 | `actual_destination_set` | before deploy | from the adapter's source→destination map (§7 Residual inventory), not the source tree |
 | `expected_remote_ref` | before push | the target ref this operation intends to advance |
 | `status` | updated at each step | `unknown` (default, unreconciled) → `deploying` → `deployed_push_pending` → `deployed_pushed`, or `deploy_failed[:leg]` |
-| `history_op_outcome` | before deploy (drop/revert only) | the git history operation's own result — completed/failed, and any new OID it computed — recorded independently of `status`'s deploy/push states, never folded into them |
 
 Rules:
 
@@ -193,12 +180,7 @@ Rules:
 - **No promised per-leg completion evidence beyond what the adapter can actually obtain.**
   `deploy.sh` emits human-readable output and can stop mid-script; unknown legs may remain
   `unknown` rather than being inferred from what ran before or after them.
-- **Earlier publication receipts are retained, never overwritten by a fresh fetch.** A newly
-  fetched `<target-ref>` is evidence about that ref *now*; it does not erase or supersede a
-  prior receipt recording that a commit was already published — drop classification consults
-  both, never discards history in favor of the latest read alone.
-- The same receipt shape (not a separate one) backs drop's four-step sequence in §2, carrying
-  `history_op_outcome` alongside the independent deploy and push results in `status`.
+- The same receipt shape (not a separate one) backs drop's four-step sequence in §2.
 
 ---
 
@@ -217,8 +199,7 @@ adapter."
   "pre_deploy_check": "zsh/registries/gen-temple-map.sh --check",
   "deploy_command": "bash deploy.sh",
   "deployed_stamp_dir": "$(git rev-parse --git-common-dir)/publish-gate/",
-  "mutex": "~/.local/state/publish-gate/ia-sync/deploy.lock",
-  "target_state": "~/.local/state/publish-gate/ia-sync/target.json"
+  "mutex": "~/.local/state/publish-gate/locks/<digest of the sorted destination set>.lock"
 }
 ```
 
@@ -260,28 +241,12 @@ effects. So:
 
 A common-dir flock alone under-serializes: a second independent clone of the same repo on the
 same host has its own common dir and can deploy into the same `~/.config/zsh`, `~/.claude`, or
-`~/.agents` destinations concurrently. A destination-set digest does not fix this either — a
-full deploy writing `{zsh, codex, claude, …}` and a Codex-only deploy writing `{codex}` hash to
-different keys, both locks succeed, and both write the Codex destinations; the same gap opens
-between two full snapshots whenever a commit adds or removes a file the digest enumerates. The
-fold:
+`~/.agents` destinations concurrently. The fold:
 
-- **One stable, coarse host/user ia-sync deployment-domain mutex** — never keyed to any single
-  operation's destination set or exact file inventory. Its lock file lives host-global at
-  `~/.local/state/publish-gate/ia-sync/deploy.lock`, never inside a git common dir, because a
-  second clone has its own common dir. It is shared by **all** clones, snapshots and
-  full/partial/redeploy/drop-redeploy paths for this project, and it may intentionally serialize
-  disjoint legs (the full deploy and the Codex-only deploy above simply wait on each other even
-  though their destinations don't overlap) — accepted v0 cost, not a defect. An overlap-aware
-  set of locks keyed to destinations is a possible later refinement, not v0's design.
-- **Current target truth lives under the same shared domain, not in any clone's private
-  receipt.** A clone's own stamp (§2a `old_target_observation`, §7 deployed-stamp) can go stale
-  the instant a *different* clone deploys under this same mutex — rereading that private stamp
-  cannot detect the other clone's write. So the current target generation/state is read and
-  written only under this mutex, from the shared `target_state` file (§3,
-  `~/.local/state/publish-gate/ia-sync/target.json`); or, equivalently, live-target evidence is
-  obtained and validated fresh under the mutex before being trusted. Common-dir receipts remain
-  valid as **operation history** — they are simply no longer read as current target truth.
+- The mutex is **host-local, keyed to the resolved physical destination set** this operation's
+  plan will write (from §7's source→destination map) — not to the git-common-dir alone. Its lock
+  file lives host-global at `~/.local/state/publish-gate/locks/<digest>.lock`, never inside a git
+  common dir, because a second clone has its own common dir.
 - It is **shared by every path that can write those destinations through this adapter**:
   publish, plain redeploy, and drop-triggered redeploy all acquire the same mutex.
 - **Cooperative limit, stated plainly:** a direct, unmediated `bash deploy.sh` call still
@@ -308,27 +273,22 @@ typed inputs, not just command strings (P6):
 |---|---|
 | `op_id` | opaque identifier, minted at confirm; threads through every later record (§2a) |
 | `host`, `checkout` | resolved identity of this run |
-| `local_branch`, `remote_ref`, `observed_remote_tip` | §1's resolved facts, pinned at plan time |
+| `local_branch`, `remote_ref`, `observed_base` | §1's resolved facts, pinned at plan time |
 | `adapter_digest` | sha256 of the resolved adapter manifest + its check/deploy scripts (§3a) |
-| `selected_oid` | the commit this operation publishes — the prefix `<target-ref>..selected_oid` (§7 Prefix publication) |
-| `expected_head` | `HEAD` as observed at plan time; execute revalidates fresh `HEAD` against this value — never against `selected_oid`, which can sit behind HEAD inside the current buffer |
+| `expected_head` | the selected commit; what HEAD must still resolve to at execute time |
 | `prior_deployment_state` | the last known `deployed[host]` reading, so execute can detect drift |
 
 ```
 Plan <op_id> for publish-to-here <sha7> "commit subject"   (ia-sync rendering: remote, branch and host come from the typed inputs)
-  0. acquire ~/.local/state/publish-gate/ia-sync/deploy.lock (bounded wait); read target.json;
-     revalidate: HEAD == expected_head · fresh ls-remote == observed_remote_tip ·
-     observed_remote_tip is an ancestor of selected_oid — any mismatch refuses the plan
-  1. write the op receipt (history) and target.json: {op_id, ref: <sha>, status: deploying, at: <ts>}   # before any live effect
-  2. git worktree add --detach <exclusive tmp dir>  <sha>
-  3. bash <worktree>/zsh/registries/gen-temple-map.sh --check     # mandatory — any nonzero exit refuses (§3a)
-  4. bash <worktree>/deploy.sh
-  5. update the receipt and target.json: {op_id, ref: <sha>, status: deployed_push_pending, at: <ts>}
-  6. git ls-remote origin refs/heads/main     # cheap early check — must equal observed_remote_tip
-  7. git push origin <sha>:refs/heads/main    # pushes exactly the selected prefix, never the whole buffer
-  8. git ls-remote origin refs/heads/main     # reconciliation — <sha>, or a verified descendant (published-but-advanced, §7)
-  9. update the receipt and target.json: {op_id, ref: <sha>, status: deployed_pushed, at: <ts>}
-  10. git worktree remove <exclusive tmp dir>; release the deploy mutex
+  1. git worktree add --detach <exclusive tmp dir>  <sha>
+  2. bash <worktree>/zsh/registries/gen-temple-map.sh --check     # mandatory — any nonzero exit refuses (§3a)
+  3. bash <worktree>/deploy.sh
+  4. write deployed.office.json: {op_id, ref: <sha>, status: deployed_push_pending, at: <ts>}
+  5. git ls-remote origin refs/heads/main     # cheap early check — must equal observed_base
+  6. git push origin <sha>:refs/heads/main    # pushes exactly the selected prefix, never the whole buffer
+  7. git ls-remote origin refs/heads/main     # reconciliation — must now equal <sha>
+  8. write deployed.office.json: {op_id, ref: <sha>, status: deployed_pushed, at: <ts>}
+  9. git worktree remove <exclusive tmp dir>
 
 Also unpublished after this operation (unchanged, still in the buffer):
   <sha of c(k+1)> .. <sha of cN>
@@ -336,16 +296,14 @@ Also unpublished after this operation (unchanged, still in the buffer):
 Confirm? [y/N]
 ```
 
-Step 3 is no longer a declinable `(?)` proposal — it is mandatory (§3a). Nothing runs until
+Step 2 is no longer a declinable `(?)` proposal — it is mandatory (§3a). Nothing runs until
 the whole plan is confirmed as one unit.
 
-**Before effects begin (P6):** the shared deploy mutex (§3b) is acquired first; while held, the
-current target generation/state is read from the shared `target_state` domain (or equivalent
-live-target evidence is obtained and validated fresh under the mutex), and the plan's typed
-inputs are revalidated — `HEAD` still equals `expected_head`, `observed_remote_tip` still
-matches a fresh `ls-remote` — and a stale plan is refused outright rather than executed against
-inputs that moved underneath it. Materialization uses an exclusively allocated `mktemp -d`,
-never a predictable, collision-prone fixed path.
+**Before effects begin (P6):** the mutex (§3b) is acquired, then the plan's typed inputs are
+revalidated fresh — `HEAD` still equals `expected_head`, `observed_base` still matches a fresh
+`ls-remote` — and a stale plan is refused outright rather than executed against inputs that
+moved underneath it. Materialization uses an exclusively allocated `mktemp -d`, never a
+predictable, collision-prone fixed path.
 
 Human-readable command text is a **rendering** of the typed operation above, never free shell
 text accepted from a dashboard. **Resuming** an interrupted operation (same `op_id`,
@@ -374,21 +332,18 @@ no-adapter consumer (nablarva) ignores it entirely.
 // plan --json   (input: {"action":"publish-to-here","sha":"..."})
 { "op_id": "pg-2026-09-29T...-a1b2", "action": "publish-to-here", "sha": "89b81cb...",
   "inputs": {"host": "office", "local_branch": "main", "remote_ref": "origin/main",
-             "observed_remote_tip": "<sha of origin/main>", "adapter_digest": "sha256:...",
-             "selected_oid": "89b81cb...", "expected_head": "f3c2a10..."},
-             // selected_oid is what this operation publishes; expected_head is HEAD as observed
-             // at plan time — they differ whenever the buffer still holds commits after the
-             // selection (e.g. buffer c1→c2→c3, HEAD c3, selected_oid c1)
-  "steps": [ {"n": 2, "cmd": "git worktree add --detach ...", "mandatory": true},
-             {"n": 3, "cmd": "bash .../gen-temple-map.sh --check", "mandatory": true} ],
-  "remains_unpublished": ["<sha>", "..."], "orphans": [] }   // orphans: revert/drop only — includes forward deletions too (§7)
+             "observed_base": "<sha of origin/main>", "adapter_digest": "sha256:...",
+             "expected_head": "89b81cb..."},
+  "steps": [ {"n": 1, "cmd": "git worktree add --detach ...", "mandatory": true},
+             {"n": 2, "cmd": "bash .../gen-temple-map.sh --check", "mandatory": true} ],
+  "remains_unpublished": ["<sha>", "..."], "orphans": [] }   // orphans: revert/drop only
 
 // execute --json   (input: {"op_id": "pg-2026-09-29T...-a1b2"} — never a bare action/sha)
 { "op_id": "pg-2026-09-29T...-a1b2", "sha": "89b81cb...",
   "result": "ok" | "refused" | "partial" | "unknown",
-  "receipts": [ {"n": 2, "exit": 0},
-                {"n": 6, "exit": 1, "note": "remote moved since the plan — replan required"},
-                {"n": 8, "exit": 0, "reconciled_remote": "89b81cb..."} ] }
+  "receipts": [ {"n": 1, "exit": 0},
+                {"n": 5, "exit": 1, "note": "remote moved since the plan — replan required"},
+                {"n": 7, "exit": 0, "reconciled_remote": "89b81cb..."} ] }
 ```
 
 ---
@@ -414,11 +369,10 @@ zsh/sync/
                        root (nablarva simply has none).
 ```
 
-State (`deployed.<host>.json`, operation receipts — history) lives **outside** the repo at
+State (`deployed.<host>.json`, operation receipts) lives **outside** the repo at
 `$(git rev-parse --git-common-dir)/publish-gate/` — no `sync.deny` entry needed, same reasoning
-as muticula's `.git/muticula/`. The mutex and the current target-state file are the exception:
-both live host-global at `~/.local/state/publish-gate/ia-sync/` (§3b — `deploy.lock` and
-`target.json`), because they must also exclude and describe other clones, not just this one.
+as muticula's `.git/muticula/`. The mutex file is the exception: it lives host-global at
+`~/.local/state/publish-gate/locks/` (§3b), because it must also exclude other clones.
 
 ---
 
@@ -443,38 +397,30 @@ corrects RUNBOOK.md directly, outside this design file.
 ### Git transaction (P4)
 
 Enrollment is **three states**, not a binary enrolled/absent — a missing `MUTICULA_ID` never
-proves state 2. Each state is **muticula's own authority decision** (the answer of a muticula
-verb), never a hash comparison publish-gate re-implements itself:
+proves state 2:
 
 | State | Condition | Effect on publish-gate |
 |---|---|---|
-| 1. Validated enrolled client | Muticula's own authority check returns validated-enrolled for this identity, checkout and host — key hash matches `keys/<id>` in `.git/muticula/`, the credential is not closed/reaped/stopped, and the checkout/host matches the registered one | Every commit publish-gate needs (e.g. `revert`) goes through `muticula commit`; HEAD-mover verbs (`rebase`, `reset --hard`, drop's machinery) are refused for this identity and printed for the human's own terminal instead. That printed drop plan opens with `muticula beacon on` once the other teams have stopped, and closes with `muticula beacon off` (r3 Leg 3, beacon-class) |
+| 1. Validated enrolled client | `MUTICULA_ID`/`MUTICULA_KEY` set and key hash matches `keys/<id>` in `.git/muticula/` | Every commit publish-gate needs (e.g. `revert`) goes through `muticula commit`; HEAD-mover verbs (`rebase`, `reset --hard`, drop's machinery) are refused for this identity and printed for the human's own terminal instead. That printed drop plan opens with `muticula beacon on` once the other teams have stopped, and closes with `muticula beacon off` (r3 Leg 3, beacon-class) |
 | 2. Confirmed no muticula state | No `.git/muticula/` directory exists for this checkout at all | Publish-gate is the sole coordinator of its own git transaction; still never rewrites pushed history, still follows pull-before-push |
-| 3. Refused-unknown authority | Muticula's own check returns anything short of validated enrollment — `MUTICULA_ID` missing/wrong/revoked, a closed/reaped/stopped credential, damaged or unreadable `.git/muticula/` state, or a checkout/host that doesn't match the registered one | Publish-gate refuses commit/HEAD-mover routes outright rather than guessing state 2; tells the operator to resolve enrollment first. Publish-gate never maintains a second implementation of muticula's grant logic — it only consumes this verb's answer |
+| 3. Refused-unknown authority | `.git/muticula/` exists, but this identity's `MUTICULA_ID` is missing/wrong/revoked, or this checkout doesn't match the registered one | Publish-gate refuses commit/HEAD-mover routes outright rather than guessing state 2; tells the operator to resolve enrollment first |
 
 **Revert's execution gap, closed.** `git revert <sha>` alone creates a commit directly,
-contradicting the commit-gate requirement. **One route, no raw-revert alternative:** the
-prepared form is always `git revert --no-commit <sha>`, under (a) explicit affected-path
-ownership already claimed/adopted by the invoking identity, (b) a clean-index precondition
-checked before starting, and (c) defined conflict handling — on conflict, `git revert --abort`,
-refuse the plan, tell the operator. The staged tree then goes through `muticula commit`, never
-raw `git commit` — this is the only commit route publish-gate has for revert, whether the
-invoking session is an agent or a human at a terminal. Preparation and abort are coordinated
-with other writers to the shared index through an explicit operator-lit maintenance interval —
-the same `muticula beacon on` / `muticula beacon off` bracket drop already uses above — never
-through the §3b deploy mutex, which wraps only the deploy+push sequence and says nothing about
-concurrent index writers during revert preparation.
+contradicting the commit-gate requirement. The prepared form: `git revert --no-commit <sha>`
+only under (a) explicit affected-path ownership already claimed/adopted by the invoking
+identity, (b) a clean-index precondition checked before starting, and (c) defined conflict
+handling — on conflict, `git revert --abort`, refuse the plan, tell the operator. The staged
+tree then goes through `muticula commit`, never raw `git commit`. Alternative: keep the whole
+revert human-coordinated (the human runs `git revert` by hand), with the commit gate still
+honoured either way.
 
 **`pg-drop`'s own authorization gate** is independent of `MUTICULA_ID` and must not use "is
 `MUTICULA_ID` set" as a human/agent classifier — an unenrolled agent session is not a human
 either. `pg-drop`, like the raw HEAD-mover verbs it wraps, requires an explicit operator route
 (the same interactive-confirmation surface as muticula's own human verbs) regardless of
-enrollment state; that route stays off agent paths through the same deny-list contract r3
-already defines, not through anything publish-gate adds — an interactive confirmation by itself
-is not proof of a human, only cooperative with the deny-list's known, step-0 coverage limits.
-**Validated enrollment** (state 1 above), when it applies, only decides whether the resulting
-commit (if any) goes through the gate — it never decides who was allowed to run `pg-drop` in
-the first place.
+enrollment state; `MUTICULA_ID`, when present, only decides whether the resulting commit (if
+any) goes through the gate — it never decides who was allowed to run `pg-drop` in the first
+place.
 
 **The detached deployment worktree is never enrolled.** It shares the common git dir (claims
 and the beacon stay visible from it — visibility, not authority) but is not itself a muticula
@@ -520,9 +466,7 @@ the residual inventory is computed **on physical destinations**, comparing what 
 was deployed at the *old* target against what the *new* target's mapping would produce:
 
 - **Observed leftovers** — a destination path a prior receipt says this adapter deployed, that
-  the new target's source mapping no longer produces, **and that is currently present on disk**
-  — a receipt alone is not enough. A path the receipt lists but that no longer exists is not an
-  observed leftover; it is reported as an expected/candidate residual instead.
+  the new target's source mapping no longer produces.
 - **Candidates** — a destination path that exists but carries no receipt evidence linking it to
   any publish-gate deploy (pre-existing or unrelated file); reported separately, never merged
   into "observed."
@@ -542,14 +486,6 @@ in every earlier change by git's own definition. Selecting a middle commit lists
 as explicitly remaining unpublished. Wanting `c_{k+2}` but not `c_{k+1}` is not a buffer
 selection — it is a replan (revert `c_{k+1}`, or an interactive rebase before re-selecting),
 never a silent cherry-pick underneath a checkbox tick.
-
-**A unique publishable prefix, verified before any deploy (R4).** v0 additionally requires
-`observed_remote_tip` to be an ancestor of `selected_oid`, and the selection to belong to the
-approved local history (§1) — the adapter verifies this ancestry fresh, before materializing a
-worktree, not only at plan time. A candidate already known to require a rejected non-fast-
-forward push is never deployed; the operation refuses and asks for a replan instead.
-Unsupported history — a merge inside the range (§1), or a selection that fails this ancestry
-check — can require an explicit human plan outside v0's scope.
 
 ### Snapshot fidelity (P1)
 
@@ -575,31 +511,23 @@ of scope here (see §3a on why that shortcut is not a compliant exception to thi
 ### Remote movement (P6)
 
 Between plan confirmation and push, the adapter re-checks `git ls-remote origin
-refs/heads/main` as a **cheap early-exit optimization** against the plan's
-`observed_remote_tip` — useful, but not atomic: another writer can move the ref in the gap
-after that read. The actual correctness comes from two things together, not from the pre-push
-check alone:
+refs/heads/main` as a **cheap early-exit optimization** against the plan's `observed_base` —
+useful, but not atomic: another writer can move the ref in the gap after that read. The actual
+correctness comes from two things together, not from the pre-push check alone:
 
 - **Git's own fast-forward constraint on a normal (non-force) push.** The push either advances
   the ref to exactly `<sha>` or is rejected outright — there is no partial or ambiguous
   "moved-but-not-quite" outcome from git's side.
-- **A post-push reconciliation read** (§4 step 8): `ls-remote` again, asserting the remote ref
+- **A post-push reconciliation read** (§4 step 7): `ls-remote` again, asserting the remote ref
   now equals `<sha>`. If the push exit code and the reconciliation read disagree — exit 0 but a
   mismatched ref — the operation is `unknown`/`partial`, never silently retried and never
   silently reported as success.
 
-Exact post-push equality is a **conservative sufficient observation**, not the only proof of
-publication: another successful publisher can immediately advance the ref to a descendant of
-`<sha>`. When ancestry can be verified, that case is reported **published-but-advanced**, kept
-distinct from a genuine `unknown`. Either way, a mismatch at this read may conservatively stop
-the operation, but it is never proof that publication failed, and never license to rewrite the
-selected commit away.
-
 No force push, no unspecified lease, anywhere in this design. On rejection or reconciliation
 mismatch, the operation refuses, preserves its `deployed_push_pending` (or equivalent) receipt
-unchanged, and tells the operator to run the project's integration command (§1a) and rebuild a
-fresh plan — publish-gate never rebases the buffer onto a moved target on the operator's
-behalf, and never silently substitutes a new tree under an old approval.
+unchanged, and tells the operator to `git pull --rebase` (per §1a's policy) and rebuild a fresh
+plan — publish-gate never rebases the buffer onto a moved target on the operator's behalf, and
+never silently substitutes a new tree under an old approval.
 
 ---
 
@@ -615,12 +543,9 @@ Proposals, never decisions — each needs a gavel.
 3. **(?)** Rename the manifest key `materialize` back toward the RUNBOOK's original
    `--worktree` word, now that its meaning has narrowed to an implementation-strategy flag?
    Cosmetic, but the old name risks being misread as the bypass Cartan flagged.
-4. **(?)** Deployed-stamp/receipt **history** location: `$(git rev-parse --git-common-dir)/publish-gate/`
+4. **(?)** Deployed-stamp/receipt location: `$(git rev-parse --git-common-dir)/publish-gate/`
    (this design's proposal) vs. `~/.local/state/ia-sync/` alongside `install-pkgs`'s
-   `installed.json`. **No longer purely cosmetic once several clones exist (R1, §3b):** the
-   *current* target generation/state must live under the shared
-   `~/.local/state/publish-gate/ia-sync/` domain regardless of this call, so only the
-   operation-history receipts' placement remains open. Both candidates are host-local/never-synced.
+   `installed.json`. Both are host-local/never-synced; picking one is a placement call.
 5. **(?) [reframed, §7]** The original dichotomy — register as a muticula sharp and claim, or
    keep a flock — was false (a check needs no claim, a commit already carries one, the §3b
    mutex grants neither). What remains open: does publish-gate ever need its **own**
@@ -640,10 +565,8 @@ Proposals, never decisions — each needs a gavel.
   file. A numbered sibling session opens after GO.
 - Build the dashboard/TUI view — the JSON CLI contract (§5) is the interface; a view is later.
 - Decide nablarva's language, store, or its own publishing semantics beyond "no adapter ⇒
-  publish == push." §1a already states the honest fact: nablarva's buffer qualifies for v0's
-  linear-segment selection today (0 merges in the current range), and only a future diverged
-  `pull` that introduces a merge would require an explicit human plan (R4) before that range is
-  selectable again.
+  publish == push," and beyond §1a's honest statement that its current history does not
+  qualify for v0's linear-segment selection as-is.
 - Own or re-specify any of muticula's named resources (claims, the beacon, the commit gate's
   internals) — §7 only draws the boundary line, including the corrected note that r3 has no
   deploy-target reservation API to defer to.

@@ -1,7 +1,7 @@
 # STATUS: publish-gate-00-design
 
 ```yaml
-updated: 2026-09-29 (Cartan's RETURN 01 folded into design r2; POINT 02 out)
+updated: 2026-10-02 (Cartan's RETURN 02 folded into design r3; POINT 03 out)
 writer: trajectory · anthropic
 host: office
 worktree: >-
@@ -22,9 +22,15 @@ checkpoint: >-
   kept. It is folded into design r2 (sha256 9aaca51f…, 575 lines); a Sonnet spawn drafted it and
   the head applied 6 corrections. r1 is kept as reviewed-a83551be. The RUNBOOK's obsolete
   deploy-target fact and its pruned-bed references were corrected by the head.
+  On 2026-10-02 Cartan returned RETURN 02 REVISE (bounded: R1–R4 plus consistency fixes) and kept
+  majkee's drop decision. It is folded into design r3 (sha256 ecfc7ec3…, 652 lines): one coarse
+  shared deploy mutex with shared target truth; selected_oid and expected_head separated; one
+  revert route through the muticula gate; v0 refuses ranges with merges. A Sonnet spawn applied
+  the fold in place; the head reviewed the diff and made 2 corrections. r2 is kept as
+  reviewed-9aaca51f.
 in_flight: >-
-  _bus/02.trajectory.point.md → cartan: a fold check of design r2. The RETURN is expected at
-  _bus/02.cartan.return.md.
+  _bus/03.trajectory.point.md → cartan: a fold check of design r3. The RETURN is expected at
+  _bus/03.cartan.return.md.
 recovery_probe: >-
   sha256sum raw/design.publish-gate.2026-09-29.md must equal the POINT's subject_sha256. In
   ls _bus/, a POINT without its RETURN means the challenge is out, not received.
@@ -33,8 +39,8 @@ holds:
   - Muticula (brief r3) owns claims, the beacon and the commit gate; this design draws a boundary, not ownership.
   - Decided 2026-09-29 (majkee): unpushed ⇒ droppable holds even at deployed_push_pending; drop has its own command and button.
 next: >-
-  majkee relays POINT 02 to Cartan. After his fold check, majkee records GO or STOP on the design.
+  majkee relays POINT 03 to Cartan. After his fold check, majkee records GO or STOP on the design.
   The five minor open questions (Q2–Q4, Q6, Q7) and the narrowed Q5 can ride with that.
 expected: >-
-  _bus/02.cartan.return.md — PROCEED → majkee's GO/STOP; REVISE → r3.
+  _bus/03.cartan.return.md — PROCEED → majkee's GO/STOP; REVISE → r4.
 ```
