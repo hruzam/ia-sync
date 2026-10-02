@@ -67,6 +67,9 @@ C-a       literal C-a (line start)
 
 ```text
 n p 0-9   switch tab
+[         history: PgUp/PgDn, q back
+          (if the mouse wheel won't
+          scroll an agent pane)
 d         detach view → C-a r
 s w       ⚠ avoid: leaves the bed
           use T or C-a t instead
