@@ -556,17 +556,33 @@ def _extract_agent_text(read_result, turn_id):
 
 
 def _format_usage_tail(usage):
-    """Render the final `[usage: {...}]` stdout line (codex-run.zsh convention). Never
-    silent on absence: emits a stderr note explaining why before falling back to
+    """Render the final usage stdout line. BRICK-01b (2026-10-03): shape is chosen by
+    $TUNNEL_CODEX_USAGE —
+      compact (default)  [usage: ctx=<last.inputTokens>/<modelContextWindow> (<pct>%) out=<n>]
+                         — the one number that matters (occupancy = last.input / window),
+                         never `total` (cumulative billing, the trap that rotates threads early)
+      full               [usage: {...}] — the raw thread/tokenUsage/updated payload (pre-brick shape)
+      off                no tail line at all (returns None; callers skip the print)
+    Never silent on absence in compact/full: a stderr note explains, then
     '[usage: unavailable]'."""
-    if usage:
+    mode = (os.environ.get("TUNNEL_CODEX_USAGE") or "compact").strip().lower()
+    if mode == "off":
+        return None
+    if not usage:
+        print(
+            "tunnel-codex.py: no thread/tokenUsage/updated notification observed for this "
+            "turn before turn/completed — usage unavailable",
+            file=sys.stderr,
+        )
+        return "[usage: unavailable]"
+    if mode == "full":
         return "[usage: " + json.dumps(usage, separators=(",", ":"), ensure_ascii=False) + "]"
-    print(
-        "tunnel-codex.py: no thread/tokenUsage/updated notification observed for this "
-        "turn before turn/completed — usage unavailable",
-        file=sys.stderr,
-    )
-    return "[usage: unavailable]"
+    last = usage.get("last") or {}
+    win = usage.get("modelContextWindow")
+    inp = last.get("inputTokens")
+    out = last.get("outputTokens")
+    pct = f"{100.0 * inp / win:.1f}%" if isinstance(inp, (int, float)) and win else "?"
+    return f"[usage: ctx={inp}/{win} ({pct}) out={out}]"
 
 
 def load_state(path):
@@ -767,7 +783,9 @@ def cmd_send(args):
     finally:
         _release_turn_lock(lock)
     print(text)
-    print(_format_usage_tail(usage))
+    tail = _format_usage_tail(usage)
+    if tail is not None:
+        print(tail)
 
 
 def cmd_steer(args):
@@ -799,7 +817,9 @@ def cmd_steer(args):
     # Kept consistent with send/ask under the one-return-channel law: steer drives a
     # turn the same way send does, so it gets the same usage tail even though it isn't
     # separately enumerated in the send/ask/read stdout list.
-    print(_format_usage_tail(usage))
+    tail = _format_usage_tail(usage)
+    if tail is not None:
+        print(tail)
 
 
 def cmd_ask(args):
@@ -837,7 +857,9 @@ def cmd_ask(args):
         )
 
     print(streamed_text)
-    print(_format_usage_tail(usage))
+    tail = _format_usage_tail(usage)
+    if tail is not None:
+        print(tail)
 
 
 def cmd_read(args):

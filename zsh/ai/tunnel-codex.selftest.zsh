@@ -173,6 +173,8 @@ chmod +x "$fixture_dir/codex"
 export PATH="$fixture_dir:$PATH"
 export TUNNEL_CODEX_STATE="$state_file"
 export TUNNEL_CODEX_TIMEOUT=5   # fixture replies instantly; keep any real hang short
+export TUNNEL_CODEX_USAGE=full  # BRICK-01b: pin the raw-JSON tail so the original fixtures
+                                # below keep asserting on it; compact/off get their own cases
 
 integer ok_count=0
 integer fail_count=0
@@ -544,6 +546,19 @@ assert_contains "brick-01: close names the released thread" "$LAST_STDERR" "rele
 assert_contains "brick-01: close prints the re-bind command" "$LAST_STDERR" "open --enable --thread thread-bound-7"
 assert_empty "brick-01: close stdout is EMPTY" "$LAST_STDOUT"
 assert_true "brick-01: close removed state" "$([[ -f "$state_file" ]] && echo false || echo true)"
+
+# --- BRICK-01b: usage tail shapes (default compact · full · off) ----------------
+run zsh "$wrapper" open --enable
+check_exit "brick-01b: open for usage-shape cases" 0
+run_split env -u TUNNEL_CODEX_USAGE zsh "$wrapper" send "shape default"
+check_exit "brick-01b: send with no TUNNEL_CODEX_USAGE set" 0
+assert_contains "brick-01b: DEFAULT tail is compact ctx=…/… (…%)" "$LAST_STDOUT" "[usage: ctx="
+assert_true "brick-01b: default tail carries no raw JSON" "$([[ "$LAST_STDOUT" == *'[usage: {'* ]] && echo false || echo true)"
+run_split env TUNNEL_CODEX_USAGE=off zsh "$wrapper" send "shape off"
+check_exit "brick-01b: send with TUNNEL_CODEX_USAGE=off" 0
+assert_true "brick-01b: off → no usage line on stdout" "$([[ "$LAST_STDOUT" == *'[usage:'* ]] && echo false || echo true)"
+assert_true "brick-01b: off → stdout is exactly the result text (one line)" "$([[ $(print -r -- "$LAST_STDOUT" | wc -l) -eq 1 ]] && echo true || echo false)"
+run zsh "$wrapper" close
 
 if (( fail_count == 0 )); then
   print -- "$ok_count/$ok_count tunnel-codex self-tests passed"

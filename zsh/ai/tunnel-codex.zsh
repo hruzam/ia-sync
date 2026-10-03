@@ -142,6 +142,11 @@
 #   TUNNEL_CODEX_STATE     state file path (see STATE PATH SELECTION above) — no default
 #   TUNNEL_CODEX_BIN       codex binary name/path (default: "codex", resolved via PATH —
 #                          this is how the fixture selftest substitutes a fake binary)
+#   TUNNEL_CODEX_USAGE     shape of the final usage line on send/ask/steer stdout (BRICK-01b):
+#                          compact (default) → [usage: ctx=<last.input>/<window> (<pct>%) out=<n>]
+#                          full → [usage: {raw tokenUsage JSON}]   off → no tail line at all.
+#                          Occupancy is last.input/window; `total` is cumulative and is the
+#                          trap that rotates threads ~3× early — hence compact hides it.
 #   TUNNEL_CODEX_TIMEOUT   seconds to wait per JSON-RPC response / turn/completed
 #                          (default: 120, read by tunnel-codex.py)
 #
