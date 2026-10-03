@@ -54,6 +54,25 @@ In your TUI, run `/status` and tell majkee: **cwd · sandbox · approval policy 
 tells us your real profile without the tunnel touching your thread. If your cwd is not
 `~/ia-sync`, §2's "bed is writable" does not hold and the bind must use `--cwd` that matches.
 
+## 3a. Your `/status`, as reported 2026-10-03 — and what it changes
+
+`Directory ~/ia-sync` · `Permissions: Workspace (Ask for approval)` · `Agents.md: ~/.codex/AGENTS.md,
+AGENTS.md` · `Thread name: ff-sync.cartan.cSharp-tunnel-02` · **`Context window: 14% left (224K / 258K)`**.
+
+§2 is confirmed: bed-internal bash and writes work through the tunnel today. But **86 % occupancy
+is past the rotation trigger** (`/guide tunnel user-run` §"Clearing a session": ~80 %, or a
+project pivot). A head bound at 86 % will auto-compact mid-pilot — lossy and silent — and the
+BUS will observe behaviour it cannot attribute. Recommendation, in order:
+
+1. **Transfer, then a fresh head.** Finish the RUNBOOK; write your experience transfer into this
+   bed's `raw/` (cSharp protocol, "the transfer ritual"); majkee births a fresh `codex` in
+   `~/ia-sync`, briefed from the bed; **that** thread is the one the tunnel binds. The head
+   posture outlives the incarnation — that is what the ritual is for.
+2. Deliberate `/compact` at a milestone, then bind — only after the transfer is on disk.
+3. Bind this incarnation as-is — advised against.
+
+Whichever you choose, §5's bind command takes the *new* session id if you take option 1.
+
 ## 4. The decision — BRICK-02, if you must write beyond the root
 
 The protocol allows it: `thread/resume` accepts `sandbox` (the three-value enum),
