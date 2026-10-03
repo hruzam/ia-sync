@@ -486,6 +486,65 @@ run zsh "$wrapper" send "should be refused"
 check_exit "post-close: send refuses again (Law 2.4 re-armed)" 10
 
 print --
+# --- BRICK-01 (2026-10-03): bind · --cwd · turn lock · close orphan-guard ---------
+# Start from a known-empty vault regardless of what the chain above left behind
+# (it may already be closed — Law 2.4 would make a `close` here exit 10, which is
+# correct behaviour, not a brick failure).
+rm -f -- "$state_file" "$state_file.lock"
+
+# --cwd must be a directory (refused at the zsh layer, before any spawn)
+run zsh "$wrapper" open --enable --cwd "$work_dir/does-not-exist"
+check_exit "brick-01: open --cwd <missing dir> refuses" 11
+assert_true "brick-01: refused --cwd created no state file" "$([[ -f "$state_file" ]] && echo false || echo true)"
+
+# --thread / --cwd are open-only
+run zsh "$wrapper" send --thread thread-x "hi"
+check_exit "brick-01: --thread on send refuses" 11
+
+# BIND: open --enable --thread <existing id> → state carries that threadId, bound:true,
+# NO thread/resume at bind (fixture would answer it anyway; the point is the state shape).
+run zsh "$wrapper" open --enable --thread thread-bound-7 --cwd "$work_dir"
+check_exit "brick-01: open --enable --thread binds" 0
+assert_empty "brick-01: bind stdout is EMPTY (banner-only)" "$(zsh "$wrapper" status 2>/dev/null)"
+assert_contains "brick-01: state has the bound threadId" "$(cat "$state_file")" '"threadId": "thread-bound-7"'
+assert_contains "brick-01: state marks bound:true" "$(cat "$state_file")" '"bound": true'
+assert_contains "brick-01: state stores cwd" "$(cat "$state_file")" "\"cwd\": \"$work_dir\""
+assert_contains "brick-01: bind banner names the thread" "$LAST_OUTPUT" "BOUND to existing thread thread-bound-7"
+
+# a vault that already holds a thread never silently re-targets on a second --thread
+run zsh "$wrapper" open --enable --thread thread-other-9
+check_exit "brick-01: --thread on an already-bound vault refuses" 11
+assert_contains "brick-01: refusal names the held thread" "$LAST_OUTPUT" "already holds thread thread-bound-7"
+assert_contains "brick-01: state still holds the ORIGINAL thread" "$(cat "$state_file")" '"threadId": "thread-bound-7"'
+
+# send after bind goes the RESUME path (fixture echoes the bound id) and drives a turn
+run_split zsh "$wrapper" send "hello bound head"
+check_exit "brick-01: send on a bound vault resumes + drives" 0
+assert_contains "brick-01: lastTurnId recorded after bound send" "$(cat "$state_file")" '"lastTurnId"'
+assert_true "brick-01: turn lock released after send" "$([[ -f "$state_file.lock" ]] && echo false || echo true)"
+
+# TURN LOCK: a LIVE pid holding <state>.lock → exit 61, no turn driven
+print -- "$$" > "$state_file.lock"
+run zsh "$wrapper" send "must not run"
+check_exit "brick-01: send refuses while a live pid holds the turn lock" 61
+assert_contains "brick-01: 61 message names the lock" "$LAST_OUTPUT" "turn already in flight"
+assert_true "brick-01: live lock is NOT removed by the refused caller" "$([[ -f "$state_file.lock" ]] && echo true || echo false)"
+rm -f -- "$state_file.lock"
+
+# STALE LOCK: a dead pid → cleared automatically, send proceeds
+print -- "999999" > "$state_file.lock"
+run_split zsh "$wrapper" send "after stale lock"
+check_exit "brick-01: stale (dead-pid) lock is cleared and send proceeds" 0
+assert_true "brick-01: stale lock gone after send" "$([[ -f "$state_file.lock" ]] && echo false || echo true)"
+
+# CLOSE orphan-guard: names the thread + the re-bind command on stderr; stdout stays empty
+run_split zsh "$wrapper" close
+check_exit "brick-01: close on a bound vault" 0
+assert_contains "brick-01: close names the released thread" "$LAST_STDERR" "releasing thread thread-bound-7"
+assert_contains "brick-01: close prints the re-bind command" "$LAST_STDERR" "open --enable --thread thread-bound-7"
+assert_empty "brick-01: close stdout is EMPTY" "$LAST_STDOUT"
+assert_true "brick-01: close removed state" "$([[ -f "$state_file" ]] && echo false || echo true)"
+
 if (( fail_count == 0 )); then
   print -- "$ok_count/$ok_count tunnel-codex self-tests passed"
   exit 0

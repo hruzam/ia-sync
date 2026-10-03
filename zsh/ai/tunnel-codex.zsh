@@ -39,6 +39,13 @@
 #
 # VERBS
 #   open   [--enable] [--sandbox read-only|workspace-write|danger-full-access] [--model M]
+#          [--thread <threadId>] [--cwd <dir>]        (BRICK-01, 2026-10-03)
+#          --thread BINDS the new vault to an EXISTING stored thread (Protocol 1
+#          reading C: an interactive cSharp head). No thread/resume at bind — that is
+#          the operator's explicit `resume` AFTER the interactive client released it.
+#          --cwd = workspace root: app-server spawn dir on every verb + thread/start.cwd
+#          on birth, so head identity (which AGENTS.md loads) is deliberate, not
+#          wherever the caller happened to be.
 #          First call MUST pass --enable (Law 2.4) — creates tunnel.state.json via a
 #          zero-turn preflight (initialize -> account/read -> model/list). Does NOT call
 #          thread/start (see THREAD BIRTH above) — state is persisted with
@@ -105,6 +112,19 @@
 #   --model <id>          open only; omit to have `open` resolve+stamp the account's
 #                         `isDefault` model from model/list (fix, 2026-09-03 — this used
 #                         to stamp state/banner with a literal `model=None`)
+#   --thread <threadId>   open only (BRICK-01); bind to an existing stored thread.
+#                         Still requires --enable (Law 2.4). State gets bound:true.
+#   --cwd <dir>           open only (BRICK-01); must exist; stored in state as `cwd`.
+#
+# BRICK-01 LOCKS (2026-10-03): send/ask/steer hold <state>.lock (our pid) for the whole
+#   verb — a second caller on the same vault gets exit 61, never a second turn on the
+#   same head. Dead-pid residue is cleared automatically (it is OUR lock). The Codex
+#   writer-lock (~/.codex/thread-writer-locks/<id>.lock) is only READ for an advisory
+#   stderr note; it is never a gate and never touched.
+# BRICK-01 RUNTIME STAMP: after thread/start, thread/resume, or `resume`, the server's
+#   reported sandbox / reasoningEffort / cwd / model / instructionSources land in
+#   state.runtime (+observedAt). `status` therefore shows runtime truth as of last contact,
+#   not only our saved intent.
 #
 # STATE PATH SELECTION (hardened 2026-09-03 — Cartan safe-order fix, resurrection trap
 #   removed): there is NO hardcoded default state path anymore. Precedence, explicit
@@ -140,6 +160,8 @@
 #                            (streamed agent text != thread/read read-back text for the
 #                            same turn) — both texts named on stderr, never silently
 #                            picks one
+#   61  turn-in-flight     — BRICK-01: another send/ask/steer on this vault still holds
+#                            <state>.lock with a live pid. Wait, or `read` to reconcile.
 #   12  no-thread          — read/resume/steer called before any thread has been born
 #                            (state threadId is null); run 'send' first — thread birth
 #                            happens on first send, not on open (see THREAD BIRTH above)
@@ -175,6 +197,8 @@ esac
 enable_flag=0
 sandbox_val="read-only"
 model_val=""
+thread_val=""   # BRICK-01
+cwd_val=""      # BRICK-01
 state_flag=""
 state_flag_given=0
 positional=()
@@ -185,6 +209,8 @@ while (( $# )); do
     --state) (( $# >= 2 )) || _usage "--state requires a path (exit 11)"; state_flag="$2"; state_flag_given=1; shift 2 ;;
     --sandbox) (( $# >= 2 )) || _usage "--sandbox requires a value (exit 11)"; sandbox_val="$2"; shift 2 ;;
     --model) (( $# >= 2 )) || _usage "--model requires a value (exit 11)"; model_val="$2"; shift 2 ;;
+    --thread) (( $# >= 2 )) || _usage "--thread requires a threadId (exit 11)"; thread_val="$2"; shift 2 ;;
+    --cwd) (( $# >= 2 )) || _usage "--cwd requires a directory (exit 11)"; cwd_val="$2"; shift 2 ;;
     --) shift; positional+=("$@"); break ;;
     -*) _usage "unknown flag '$1' (exit 11)" ;;
     *) positional+=("$1"); shift ;;
@@ -214,6 +240,13 @@ if [[ "$verb" == open ]]; then
   if (( ! ${SANDBOX_VALUES[(Ie)$sandbox_val]} )); then
     _usage "--sandbox must be one of: ${(j:, :)SANDBOX_VALUES} — got '$sandbox_val' (exit 11)"
   fi
+  # BRICK-01: --cwd validated here too so the refusal is exit 11 before any spawn.
+  if [[ -n "$cwd_val" && ! -d "$cwd_val" ]]; then
+    _usage "--cwd is not a directory: $cwd_val (exit 11)"
+  fi
+else
+  [[ -n "$thread_val" ]] && _usage "--thread is only valid with 'open' (exit 11)"
+  [[ -n "$cwd_val" ]] && _usage "--cwd is only valid with 'open' (exit 11)"
 fi
 
 # --- Law 2.4 explicit-enable gate: every verb refuses without the state file, except
@@ -230,7 +263,20 @@ fi
 # --- close / status are local-only: no app-server spawn, no python needed. Both are
 # narrative/diagnostic, not a result — stdout purity (see header): nothing on stdout. ---
 if [[ "$verb" == close ]]; then
-  rm -f -- "$state_file"
+  # BRICK-01 orphan-guard: the state file is the ONLY local holder of the threadId.
+  # Print it (and where its transcript lives) BEFORE discarding, so `close` never
+  # silently loses the address of a thread that lives on server-side.
+  local_tid=""
+  if (( $+commands[jq] )); then
+    local_tid="$(jq -r '.threadId // empty' "$state_file" 2>/dev/null)"
+  else
+    local_tid="$(grep -o '"threadId": *"[^"]*"' "$state_file" 2>/dev/null | head -1 | sed 's/.*"\([^"]*\)"$/\1/')"
+  fi
+  if [[ -n "$local_tid" ]]; then
+    print -u2 -- "close: releasing thread ${local_tid} — it still exists server-side. To return to it later:"
+    print -u2 -- "close:   tun open --enable --thread ${local_tid}   (transcript: ~/.codex/sessions/*/*/*/rollout-*-${local_tid}.jsonl)"
+  fi
+  rm -f -- "$state_file" "$state_file.lock"
   print -u2 -- "close: tunnel.state.json removed — Law 2.4 re-arms; next 'open' requires --enable again"
   exit 0
 fi
@@ -255,6 +301,8 @@ case "$verb" in
   open)
     py_args+=(--sandbox "$sandbox_val")
     [[ -n "$model_val" ]] && py_args+=(--model "$model_val")
+    [[ -n "$thread_val" ]] && py_args+=(--thread "$thread_val")   # BRICK-01
+    [[ -n "$cwd_val" ]] && py_args+=(--cwd "$cwd_val")            # BRICK-01
     ;;
   send|ask|steer)
     py_args+=("$text_arg")

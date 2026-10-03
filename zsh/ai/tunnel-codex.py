@@ -28,7 +28,11 @@ verb is allowed to run.
 
 EXIT CODES (must match tunnel-codex.zsh's contract exactly — see that file's header):
   0  ok
-  11 usage error (bad args, unknown verb, invalid sandbox value)
+  11 usage error (bad args, unknown verb, invalid sandbox value, --cwd not a directory)
+  61 turn-in-flight (BRICK-01: another send/ask/steer on this same vault is still
+     running — <state>.lock is held by a live pid. Never two turns on one head. A lock
+     whose pid is dead is stale residue and is removed automatically; it is OURS, unlike
+     ~/.codex/thread-writer-locks/ which is Codex's and is never touched)
   20 spawn-fail (codex binary not found / app-server process would not start)
   30 protocol-error (JSON-RPC transport broke: bad JSON, EOF, timeout, error reply)
   40 turn-error (turn/start|steer returned an error, the turn ended non-"completed",
@@ -101,6 +105,10 @@ EXIT_PROTOCOL_ERROR = 30
 EXIT_TURN_ERROR = 40
 EXIT_RECONCILE_MISMATCH = 50
 EXIT_NO_THREAD = 12
+# BRICK-01 (2026-10-03, Protocol 1 prep): one turn in flight per vault. send/ask/steer
+# take <state>.lock (own pid) for the whole verb; a second caller on the same vault
+# refuses with this code instead of racing a second turn onto the same head.
+EXIT_TURN_IN_FLIGHT = 61
 # Reserved, not raised from here: the zsh wrapper (tunnel-codex.zsh) refuses with this
 # code BEFORE ever invoking this script if neither --state nor $TUNNEL_CODEX_STATE was
 # given — see that file's STATE PATH SELECTION section. Kept here so the two exit-code
@@ -153,11 +161,110 @@ class NoThreadError(TunnelError):
         super().__init__(EXIT_NO_THREAD, message)
 
 
+class TurnInFlightError(TunnelError):
+    def __init__(self, message):
+        super().__init__(EXIT_TURN_IN_FLIGHT, message)
+
+
+# --- BRICK-01 helpers -------------------------------------------------------------
+# Per-vault turn lock (ours). Path = <state>.lock, content = our pid. Taken for the
+# whole of send/ask/steer; refused (exit 61) while a LIVE pid holds it; a dead pid is
+# stale residue from a killed driver and is cleared. O_EXCL makes acquisition atomic.
+
+def _turn_lock_path(state_path):
+    return state_path + ".lock"
+
+
+def _pid_alive(pid):
+    try:
+        os.kill(pid, 0)
+    except ProcessLookupError:
+        return False
+    except PermissionError:
+        return True
+    return True
+
+
+def _acquire_turn_lock(state_path):
+    lock = _turn_lock_path(state_path)
+    for _ in range(2):
+        try:
+            fd = os.open(lock, os.O_CREAT | os.O_EXCL | os.O_WRONLY, 0o644)
+        except FileExistsError:
+            try:
+                with open(lock, "r", encoding="utf-8") as f:
+                    pid = int((f.read() or "0").strip() or "0")
+            except (OSError, ValueError):
+                pid = 0
+            if pid and _pid_alive(pid):
+                raise TurnInFlightError(
+                    f"turn already in flight on this vault (pid {pid} holds {lock}); "
+                    "never two turns on one head — wait for it, or `tun read` to reconcile"
+                )
+            # stale: holder is dead — clear and retry once
+            try:
+                os.unlink(lock)
+            except FileNotFoundError:
+                pass
+            continue
+        with os.fdopen(fd, "w", encoding="utf-8") as f:
+            f.write(f"{os.getpid()}\n")
+        return lock
+    raise TurnInFlightError(f"could not acquire {lock} after clearing a stale holder")
+
+
+def _release_turn_lock(lock):
+    try:
+        os.unlink(lock)
+    except FileNotFoundError:
+        pass
+
+
+# Codex-owned writer lock — READ-ONLY existence check, advisory only. Present means
+# another client (typically an interactive `codex` TUI) MAY hold this thread; it may
+# also be residue after a crash. We never block on it and never remove it (GUIDE
+# §Limits, @Cartan 2026-09-03). The operator's discipline for a bound head is: the
+# interactive session releases before the tunnel sends; `tun read` reconciles after.
+
+def _codex_writer_lock_path(thread_id):
+    home = os.environ.get("CODEX_HOME") or os.path.join(os.path.expanduser("~"), ".codex")
+    return os.path.join(home, "thread-writer-locks", f"{thread_id}.lock")
+
+
+def _warn_if_writer_lock(thread_id):
+    p = _codex_writer_lock_path(thread_id)
+    if os.path.exists(p):
+        print(
+            f"tunnel-codex.py: NOTE — Codex writer-lock present for thread {thread_id} "
+            f"({p}). Another client may hold this thread, or this is residue. Proceeding; "
+            "the lock is Codex-owned and is never touched by this shim.",
+            file=sys.stderr,
+        )
+
+
+# Persist what the SERVER reports about the thread after thread/start or thread/resume —
+# the effective sandbox / effort / cwd / model and which instruction files it loaded.
+# `tun status` otherwise only echoes our saved intent (Cartan audit 2026-10-03).
+
+def _stamp_runtime(state, resp):
+    rt = {}
+    for key in ("sandbox", "reasoningEffort", "cwd", "model", "instructionSources", "approvalPolicy"):
+        if key in resp:
+            rt[key] = resp.get(key)
+    if rt:
+        rt["observedAt"] = now_iso()
+        state["runtime"] = rt
+
+
 class AppServerTransport:
     """One `codex app-server --stdio` subprocess, newline-delimited JSON-RPC 2.0."""
 
-    def __init__(self, codex_bin=None):
+    def __init__(self, codex_bin=None, cwd=None):
         self.codex_bin = codex_bin or os.environ.get("TUNNEL_CODEX_BIN", "codex")
+        # BRICK-01: spawn directory = the thread's workspace root for a NEW thread and
+        # the directory Codex discovers AGENTS.md from. Previously inherited from
+        # wherever the caller happened to be — which made head identity accidental.
+        self.cwd = cwd
         self.proc = None
         self._next_id = 1
         self._out_q = queue.Queue()
@@ -174,6 +281,7 @@ class AppServerTransport:
                 stderr=subprocess.PIPE,
                 text=True,
                 bufsize=1,
+                cwd=self.cwd,
             )
         except (FileNotFoundError, PermissionError, OSError) as exc:
             raise SpawnFailError(
@@ -322,10 +430,14 @@ class Session:
         rid = self.t.request("model/list", {})
         return self._await_response(rid)
 
-    def thread_start(self, model=None, sandbox="read-only"):
+    def thread_start(self, model=None, sandbox="read-only", cwd=None):
         params = {"sandbox": sandbox, "approvalPolicy": "never"}
         if model:
             params["model"] = model
+        if cwd:
+            # BRICK-01: explicit workspace root on birth. NOT sent on thread/resume —
+            # a bound/existing thread keeps the cwd it was born with.
+            params["cwd"] = cwd
         rid = self.t.request("thread/start", params)
         return self._await_response(rid)
 
@@ -487,13 +599,31 @@ def cmd_open(args):
     if args.sandbox not in SANDBOX_VALUES:
         raise UsageError(f"--sandbox must be one of {SANDBOX_VALUES}, got {args.sandbox!r}")
 
+    # BRICK-01: --cwd must be an existing directory; it is stored and used as the
+    # app-server spawn dir on every verb and as thread/start.cwd on birth.
+    cwd = None
+    if getattr(args, "cwd", None):
+        cwd = os.path.abspath(os.path.expanduser(args.cwd))
+        if not os.path.isdir(cwd):
+            raise UsageError(f"--cwd is not a directory: {cwd}")
+
     state = load_state(args.state)
+
+    if state is not None and getattr(args, "thread", None):
+        # BRICK-01 guard: a vault already addressing a thread never silently re-targets.
+        # Binding is a birth-time declaration; to point this handle elsewhere, `close`
+        # it first (the orphan-guard prints the old thread's re-bind command).
+        raise UsageError(
+            f"vault already holds thread {state.get('threadId')} — `--thread` is only valid "
+            "when creating a vault; run 'close' first to release it"
+        )
 
     if state is None:
         # Zero-turn preflight only — deliberately NO thread/start (see THREAD BIRTH
         # note above the exit-code table). This spawns app-server, confirms the
-        # handshake + account/model surface work, then persists threadId: null.
-        transport = AppServerTransport()
+        # handshake + account/model surface work, then persists threadId: null —
+        # or, with --thread (BRICK-01 bind), the operator-named EXISTING threadId.
+        transport = AppServerTransport(cwd=cwd)
         transport.start()
         try:
             session = Session(transport)
@@ -513,13 +643,43 @@ def cmd_open(args):
             "sandbox": args.sandbox,
             "created": now_iso(),
         }
+        if cwd:
+            state["cwd"] = cwd
+        bound = getattr(args, "thread", None)
+        if bound:
+            # BIND — reading (C) of the Protocol 1 handoff: the head is an existing
+            # stored thread (e.g. an interactive cSharp session). No thread/resume here:
+            # binding is a local declaration, and a resume while the interactive client
+            # still holds the thread would race its writer-lock. The liveness probe is
+            # the operator's explicit `tun resume` AFTER that client has released.
+            state["threadId"] = bound
+            state["bound"] = True
+            state["boundAt"] = now_iso()
+            _warn_if_writer_lock(bound)
         save_state(args.state, state)
-        print(
-            f"open: enabled (model={state['model']}, sandbox={state['sandbox']}); "
-            "no thread yet — thread will be born on first send",
-            file=sys.stderr,
-        )
+        if bound:
+            print(
+                f"open: enabled and BOUND to existing thread {bound} "
+                f"(model={state['model']}, sandbox intent={state['sandbox']}"
+                f"{', cwd=' + cwd if cwd else ''}); first send/resume will thread/resume it — "
+                "ensure any interactive client has released it first",
+                file=sys.stderr,
+            )
+        else:
+            print(
+                f"open: enabled (model={state['model']}, sandbox={state['sandbox']}"
+                f"{', cwd=' + cwd if cwd else ''}); "
+                "no thread yet — thread will be born on first send",
+                file=sys.stderr,
+            )
         return
+
+    if cwd and state.get("cwd") != cwd:
+        # Re-open with a different --cwd on an existing vault: record it (used as spawn
+        # dir); a born thread's own cwd is not changed by this.
+        state["cwd"] = cwd
+        save_state(args.state, state)
+        print(f"open: cwd updated to {cwd} (spawn dir; a born thread keeps its own cwd)", file=sys.stderr)
 
     if state.get("threadId") is None:
         print(
@@ -528,8 +688,10 @@ def cmd_open(args):
         )
         return
 
-    # An existing, already-born thread: liveness-probe it (unchanged behavior).
-    transport = AppServerTransport()
+    # An existing, already-born thread: liveness-probe it (unchanged behavior) and
+    # BRICK-01: persist the server-reported runtime policy from the resume response.
+    _warn_if_writer_lock(state["threadId"])
+    transport = AppServerTransport(cwd=state.get("cwd"))
     transport.start()
     try:
         session = Session(transport)
@@ -542,6 +704,8 @@ def cmd_open(args):
         )
     finally:
         transport.close()
+    _stamp_runtime(state, resumed)
+    save_state(args.state, state)
 
 
 def _require_state(args):
@@ -557,35 +721,51 @@ def _require_thread(state):
     return state["threadId"]
 
 
+def _birth_or_resume(session, state):
+    """BRICK-01: shared birth/resume for send/ask. Birth = thread/start (+cwd) then the
+    caller's turn/start in the SAME connection (Cartan's proven continuous sequence).
+    Resume = thread/resume of the saved/bound threadId. Either way the server-reported
+    runtime policy is stamped into state. Returns thread_id."""
+    if state.get("threadId") is None:
+        start = session.thread_start(
+            model=state.get("model"),
+            sandbox=state.get("sandbox", "read-only"),
+            cwd=state.get("cwd"),
+        )
+        thread = start.get("thread", {})
+        thread_id = thread.get("id")
+        if not thread_id:
+            raise ProtocolError(f"thread/start did not return a thread id: {start}")
+        state["threadId"] = thread_id
+        state["model"] = start.get("model") or state.get("model")
+        state["sandbox"] = start.get("sandbox") or state.get("sandbox")
+        _stamp_runtime(state, start)
+    else:
+        thread_id = state["threadId"]
+        _warn_if_writer_lock(thread_id)
+        resumed = session.thread_resume(thread_id)
+        _stamp_runtime(state, resumed)
+    return state["threadId"]
+
+
 def cmd_send(args):
     state = _require_state(args)
-    transport = AppServerTransport()
-    transport.start()
+    lock = _acquire_turn_lock(args.state)
     try:
-        session = Session(transport)
-        session.initialize()
-        if state.get("threadId") is None:
-            # Thread birth: thread/start then turn/start in THIS SAME connection —
-            # Cartan's proven continuous sequence — so the rollout exists before any
-            # other verb (running in its own fresh subprocess) could try to resume it.
-            start = session.thread_start(model=state.get("model"), sandbox=state.get("sandbox", "read-only"))
-            thread = start.get("thread", {})
-            thread_id = thread.get("id")
-            if not thread_id:
-                raise ProtocolError(f"thread/start did not return a thread id: {start}")
-            state["threadId"] = thread_id
-            state["model"] = start.get("model") or state.get("model")
-            state["sandbox"] = start.get("sandbox") or state.get("sandbox")
-        else:
-            thread_id = state["threadId"]
-            session.thread_resume(thread_id)
-        thread_id = state["threadId"]
-        turn_id, turn, text, usage = session.drive_turn(thread_id, args.text)
-        session.reconcile(thread_id, turn_id)
+        transport = AppServerTransport(cwd=state.get("cwd"))
+        transport.start()
+        try:
+            session = Session(transport)
+            session.initialize()
+            thread_id = _birth_or_resume(session, state)
+            turn_id, turn, text, usage = session.drive_turn(thread_id, args.text)
+            session.reconcile(thread_id, turn_id)
+        finally:
+            transport.close()
+        state["lastTurnId"] = turn_id
+        save_state(args.state, state)
     finally:
-        transport.close()
-    state["lastTurnId"] = turn_id
-    save_state(args.state, state)
+        _release_turn_lock(lock)
     print(text)
     print(_format_usage_tail(usage))
 
@@ -595,20 +775,26 @@ def cmd_steer(args):
     thread_id = _require_thread(state)
     if not state.get("lastTurnId"):
         raise TurnError("no lastTurnId recorded in state — nothing to steer (run 'send' first)")
-    transport = AppServerTransport()
-    transport.start()
+    lock = _acquire_turn_lock(args.state)
     try:
-        session = Session(transport)
-        session.initialize()
-        session.thread_resume(thread_id)
-        turn_id, turn, text, usage = session.drive_turn(
-            thread_id, args.text, expected_turn_id=state["lastTurnId"]
-        )
-        session.reconcile(thread_id, turn_id)
+        _warn_if_writer_lock(thread_id)
+        transport = AppServerTransport(cwd=state.get("cwd"))
+        transport.start()
+        try:
+            session = Session(transport)
+            session.initialize()
+            resumed = session.thread_resume(thread_id)
+            _stamp_runtime(state, resumed)
+            turn_id, turn, text, usage = session.drive_turn(
+                thread_id, args.text, expected_turn_id=state["lastTurnId"]
+            )
+            session.reconcile(thread_id, turn_id)
+        finally:
+            transport.close()
+        state["lastTurnId"] = turn_id
+        save_state(args.state, state)
     finally:
-        transport.close()
-    state["lastTurnId"] = turn_id
-    save_state(args.state, state)
+        _release_turn_lock(lock)
     print(text)
     # Kept consistent with send/ask under the one-return-channel law: steer drives a
     # turn the same way send does, so it gets the same usage tail even though it isn't
@@ -625,35 +811,24 @@ def cmd_ask(args):
     one. Same Law 2.4 gates as every other verb (enforced by the caller before this
     function runs): no auto-enable, no state-path default."""
     state = _require_state(args)
-    transport = AppServerTransport()
-    transport.start()
+    lock = _acquire_turn_lock(args.state)
     try:
-        session = Session(transport)
-        session.initialize()
-        if state.get("threadId") is None:
-            # Thread birth — same continuous thread/start -> turn/start sequence as
-            # cmd_send (see THREAD BIRTH note in this file's header).
-            start = session.thread_start(model=state.get("model"), sandbox=state.get("sandbox", "read-only"))
-            thread = start.get("thread", {})
-            thread_id = thread.get("id")
-            if not thread_id:
-                raise ProtocolError(f"thread/start did not return a thread id: {start}")
-            state["threadId"] = thread_id
-            state["model"] = start.get("model") or state.get("model")
-            state["sandbox"] = start.get("sandbox") or state.get("sandbox")
-        else:
-            thread_id = state["threadId"]
-            session.thread_resume(thread_id)
-        thread_id = state["threadId"]
-        turn_id, turn, streamed_text, usage = session.drive_turn(thread_id, args.text)
-        read_result = session.reconcile(thread_id, turn_id)
+        transport = AppServerTransport(cwd=state.get("cwd"))
+        transport.start()
+        try:
+            session = Session(transport)
+            session.initialize()
+            thread_id = _birth_or_resume(session, state)
+            turn_id, turn, streamed_text, usage = session.drive_turn(thread_id, args.text)
+            read_result = session.reconcile(thread_id, turn_id)
+        finally:
+            transport.close()
+        state["lastTurnId"] = turn_id
+        save_state(args.state, state)
     finally:
-        transport.close()
+        _release_turn_lock(lock)
 
     readback_text = _extract_agent_text(read_result, turn_id)
-
-    state["lastTurnId"] = turn_id
-    save_state(args.state, state)
 
     if streamed_text != readback_text:
         raise ReconcileMismatch(
@@ -668,7 +843,8 @@ def cmd_ask(args):
 def cmd_read(args):
     state = _require_state(args)
     thread_id = _require_thread(state)
-    transport = AppServerTransport()
+    # BRICK-01: same spawn dir as every other verb (read creates nothing; consistency only).
+    transport = AppServerTransport(cwd=state.get("cwd"))
     transport.start()
     try:
         session = Session(transport)
@@ -682,7 +858,8 @@ def cmd_read(args):
 def cmd_resume(args):
     state = _require_state(args)
     thread_id = _require_thread(state)
-    transport = AppServerTransport()
+    _warn_if_writer_lock(thread_id)
+    transport = AppServerTransport(cwd=state.get("cwd"))
     transport.start()
     try:
         session = Session(transport)
@@ -690,8 +867,19 @@ def cmd_resume(args):
         result = session.thread_resume(thread_id)
     finally:
         transport.close()
+    # BRICK-01: `tun resume` is the operator's liveness probe for a bound head — persist
+    # what the server reports (effective sandbox/effort/cwd, loaded instruction files)
+    # so the next `tun status` shows runtime truth as of this contact.
+    _stamp_runtime(state, result)
+    save_state(args.state, state)
     thread = result.get("thread", {})
-    print(f"resume: thread {thread_id} status={thread.get('status')}", file=sys.stderr)
+    rt = state.get("runtime", {})
+    print(
+        f"resume: thread {thread_id} status={thread.get('status')} "
+        f"sandbox={rt.get('sandbox')} effort={rt.get('reasoningEffort')} cwd={rt.get('cwd')} "
+        f"instructionSources={rt.get('instructionSources')}",
+        file=sys.stderr,
+    )
 
 
 def build_parser():
@@ -702,6 +890,9 @@ def build_parser():
     p_open.add_argument("--state", required=True)
     p_open.add_argument("--sandbox", default="read-only")
     p_open.add_argument("--model", default=None)
+    # BRICK-01
+    p_open.add_argument("--thread", default=None, help="bind this vault to an EXISTING stored threadId")
+    p_open.add_argument("--cwd", default=None, help="workspace root: app-server spawn dir + thread/start.cwd on birth")
     p_open.set_defaults(func=cmd_open)
 
     p_send = sub.add_parser("send")
