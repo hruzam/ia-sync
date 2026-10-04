@@ -41,3 +41,11 @@
 #   ~/unikuklatrix/nablarva/.dev/session/ovitmugen-00-console/raw/
 # -----------------------------------------------------------------------------
 [[ -f ~/.config/zsh/session/ovitmugen.zsh ]] && source ~/.config/zsh/session/ovitmugen.zsh
+
+# -----------------------------------------------------------------------------
+# PARTITION 6: tunnel manager engine — vault on/off/use/list per session bed
+# Added 2026-10-04 (@Trajectory, majkee ask). Thin: resolves which vault a shell
+# points at and wraps the ai/ shim's open/close; never speaks JSON-RPC itself.
+# Vault law + bed resolution in the engine header. Guide: /guide tunnel.
+# -----------------------------------------------------------------------------
+[[ -f ~/.config/zsh/session/tunnel.zsh ]] && source ~/.config/zsh/session/tunnel.zsh

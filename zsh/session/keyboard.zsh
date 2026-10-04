@@ -39,3 +39,11 @@ alias ov-ls='_ov_ls'             # beds · tabs (● agent / ○ idle) · views 
 alias ov-down='_ov_down'         # peel: ov-down <slug> [--frame|--views|--idle] [--dry-run]
 alias ov-console='_ov_console'   # console: ov-console <slug> — Enter switches the left pane
 alias ov-selftest='_ov_selftest' # isolated tmux servers, PASS/FAIL, zero side effects
+
+# --- P6: tunnel manager (vault per bed; the shim stays in ai/) — added 2026-10-04 ---
+alias tn-ls='_tn_ls'             # list vaults under $RB_ROOT (* = this shell's current)
+alias tn-use='_tn_use'           # point this shell at a vault: tn-use <bed> [name]
+alias tn-on='_tn_on'             # open: tn-on <bed> [name] [-- --thread <id> --cwd <dir> …]
+alias tn-off='_tn_off'           # close: tn-off [bed] [name]
+alias tn-st='_tn_st'             # status, intent vs runtime: tn-st [bed] [name]
+alias tn-help='_tn_help'         # help panel
