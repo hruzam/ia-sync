@@ -214,6 +214,33 @@ NOT run (second sitting): step 5 turn-lock live (exit 61 on a real in-flight tur
 interrupt + `tun read` recovery · F-B6 overlap clarification.
 Quota spent: 2 turns (B5 + the extra ask).
 
+### Probe C — Trajectory → Cartan's real head, driven from a Claude seat via Bash (2026-10-05 02:38 CEST)
+
+Majkee's ask: measure how far the tunnel can wait and how long a Claude seat can hold, by
+sending the HEAD a real message from the future BUS. Vault: Cartan's (`tunnel.state.json`).
+Run: `TUNNEL_CODEX_TIMEOUT=600 … ask --state <vault> "<brief, no tools, ≤8 lines, end with TRAJECTORY>"`,
+in a **background** Bash call (no harness cap).
+
+- Preceding turn (majkee, default 120 s): **interrupted at exactly +120 s, 0 items** — the
+  head at ~226K/87.5 % context, effort max, question inviting tool attempts. `tun read` settled
+  the state; no re-send until then.
+- This turn: **elapsed 21 s · exit 0 · ask verified (streamed == read-back) · TRAJECTORY ✓** ·
+  no writer-lock NOTE (previous tunnel contact had cleared the TUI residue).
+- Reply: model "GPT-6 family, variant not exposed"; effort "not exposed"; a BUS turn must carry
+  **task/cycle · requested decision · observed results · evidence paths**; **accepts
+  transfer → fresh head** "with a durable handoff and explicit HEAD ownership".
+- **F-C1 — `[usage: ctx=28632/258400 (11.1%)]`.** The thread was at 226K an hour earlier. It was
+  compacted between turns — by `/compact` in the TUI or by Codex auto-compaction (majkee to
+  say which). If automatic: the "silent mid-pilot compaction" risk realised, benignly timed.
+  The 120 s → 21 s difference is the context, not the tunnel.
+- BRICK-01b confirmed deployed (compact usage line on a live turn).
+
+**Limits, measured:** tunnel side — `TUNNEL_CODEX_TIMEOUT` is uncapped (600 s set, 21 s used).
+Claude side — a foreground Bash call caps at 10 min; a background call is unbounded with a
+completion notification. Rule for the BUS: **tunnel timeout ≥ expected turn, and the Bash call
+backgrounded or given a timeout ≥ the tunnel's** — otherwise the harness kills the driver and the
+driver's death interrupts the server turn (09-04 lesson, now re-proven from the Claude side).
+
 ## What this ladder proves / does not
 
 Proves: deliberate identity via `--cwd`; runtime stamping on birth and resume; vault
