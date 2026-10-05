@@ -229,10 +229,11 @@ in a **background** Bash call (no harness cap).
 - Reply: model "GPT-6 family, variant not exposed"; effort "not exposed"; a BUS turn must carry
   **task/cycle · requested decision · observed results · evidence paths**; **accepts
   transfer → fresh head** "with a durable handoff and explicit HEAD ownership".
-- **F-C1 — `[usage: ctx=28632/258400 (11.1%)]`.** The thread was at 226K an hour earlier. It was
-  compacted between turns — by `/compact` in the TUI or by Codex auto-compaction (majkee to
-  say which). If automatic: the "silent mid-pilot compaction" risk realised, benignly timed.
-  The 120 s → 21 s difference is the context, not the tunnel.
+- **F-C1 — `[usage: ctx=28632/258400 (11.1%)]`.** The thread was at 226K an hour earlier.
+  **Resolved 2026-10-05: majkee ran `/compact` in the TUI before closing it** — a deliberate
+  operator act, not auto-compaction. No silent compaction has occurred on this thread. The
+  120 s → 21 s difference is the context, not the tunnel. Post-compaction slope observed:
+  11.1 % → 30.6 % over two read-shaped turns (~50K) — reads are context purchases.
 - BRICK-01b confirmed deployed (compact usage line on a live turn).
 
 **Limits, measured:** tunnel side — `TUNNEL_CODEX_TIMEOUT` is uncapped (600 s set, 21 s used).
