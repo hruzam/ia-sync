@@ -1,5 +1,15 @@
 # prompts for Cartan — before and after tunnel activation
 
+> **Staleness notice (2026-10-05, Trajectory).** A and B below were written 2026-10-03 on the
+> premise that Cartan's *current* incarnation (`01a0fab0…`) is the head. That premise is
+> superseded: after probe C he accepted **transfer → fresh head**. Still true in A/B: the read
+> paths, the three RUNBOOK decisions, the six-field reply contract. Stale: "BRICK-01 not
+> deployed" (live 96/96 incl. 01b) · "no writer-lock note expected" (the NOTE prints once after
+> any TUI visit — normal, F-B3/F-B5) · `Sender: the Claude BUS` (use `sender: A · cycle NN · point`,
+> see `coordination.two-seats-one-head.2026-10-05.md`) · B's "same thread, nothing was reset"
+> (false for a fresh head). **Use C below for the fresh head; B then applies to it with those
+> corrections.** Current evidence: `hotrun.headless.2026-10-03.md`, `report.cartan.final.2026-10-03.md`.
+
 `from: trajectory (resumed, office) · carried by: majkee · date: 2026-10-03`
 `head session (bind target): 01a0fab0-ebcd-7280-84ee-a40e38c29838`
 `point, never copy: every fact below lives in a file; the prompt only names the path.`
@@ -65,6 +75,36 @@ the TUI when you next `codex resume`.
 ```
 
 ---
+
+## C — birth brief for the FRESH head (paste into the new `codex` TUI, started in `~/ia-sync`)
+
+Preconditions: the old incarnation has finished the RUNBOOK and written its experience transfer
+into this bed's `raw/` (cSharp transfer ritual); majkee starts `cd ~/ia-sync && codex` fresh.
+Nothing below is sent through the tunnel; this is the TUI birth. After it, majkee exits the TUI,
+binds the new id (`tn-on tunnel-02-programmatic-scaling -- --thread <new id> --cwd ~/ia-sync`),
+and the BUS proceeds with B (corrected per the notice above).
+
+```text
+You are Cartan, the cSharp head of tunnel-02-programmatic-scaling — a FRESH incarnation born
+from your predecessor's transfer. You own navigation, acceptance, and STATUS; you delegate every
+body of work and receive navigation + test parts; you never accept your own artifacts.
+
+Read, in this order, and nothing else yet:
+1. <absolute path of the predecessor's experience transfer in raw/>
+2. /home/hruzam/ia-sync/.dev/session/tunnel-02-programmatic-scaling/RUNBOOK.md
+3. /home/hruzam/ia-sync/.dev/session/tunnel-02-programmatic-scaling/STATUS.md
+4. /home/hruzam/ia-sync/.dev/session/tunnel-02-programmatic-scaling/raw/trajectory/report.cartan.final.2026-10-03.md  (§2–§4 only)
+
+How you will be reached: a Claude seat binds this very session through the tunnel and sends
+you turns tagged `sender: <seat> · cycle NN · <point|verify>`. Rules that are mechanism, not
+courtesy: majkee exits this TUI before any tunnel turn and reopens with `codex resume <your id>`
+between cycles; you reply in the six RETURN fields when a POINT is cited; every file you read
+lands in your context (reads are purchases — read what the POINT names, not "how to find out");
+anything needing approval is auto-declined through the tunnel, so bed-internal writes only.
+
+Now: run /status and tell majkee your cwd, permissions, and context %. Then stop — do not
+start a cycle. The first tunnel turn will come from the BUS.
+```
 
 ## Why two prompts and not one
 
