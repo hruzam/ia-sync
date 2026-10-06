@@ -10,6 +10,40 @@
 
 ---
 
+## HOME — 2026-10-06 · Cartan · office recovered over SSH without reboot
+
+Majkee reported office's screen/input fully frozen and authorized remote process recovery.
+Home identity verified by `MACHINE_NAME=home`, hostname `hruzam`, absent native php74,
+and the registered Tailscale node ID. Office's tailnet SSH and Tailscale probes timed out;
+its direct LAN IPv4/IPv6 answered ICMP, but SSH stalled before the banner. A longer
+direct-LAN SSH attempt reached `hruzam-120922`; native php74 and matching repository
+instruction hashes confirmed the remote frame.
+
+Before recovery (04:25 CEST): 15,753 MiB RAM, only **192 MiB available**, **zero swap**,
+load **105.04 / 131.53 / 116.02**; Firefox, KDE, Sublime and several agents in D-state.
+I/O pressure `some avg10=95.98`, memory pressure `some avg10=17.81`. Resident-memory
+totals showed 16 Claude processes, 7 Codex processes, 262 zsh processes and Firefox;
+no single agent or redundant pane was established as the cause. Systemd had killed and
+restarted watchdog-stalled journald at 04:24:50; it replaced unclean journal files.
+
+Sent **SIGTERM only to Firefox PID 1321473**, after verifying `/proc/1321473/exe` was
+`/usr/lib/firefox/firefox`. Firefox and its checked children exited. At 04:26 available
+RAM rose to 2,123 MiB; by 04:38 it remained **2,154 MiB**, one-minute load **0.18**,
+memory/I/O pressure avg10 and avg60 **0.00**, and no D-state processes in the follow-up
+snapshot. Fresh tailnet SSH passed, Tailscale ping returned in 3 ms, and sshd, tailscaled
+and journald were active. Uptime remained 14 days: **no reboot**. Agent sessions and
+tmux panes were preserved. Default tmux's 66 listed pane rows resolve to **35 unique
+panes** because grouped `--left` sessions share windows; the separate ovitmugen server
+has 16 wrapper panes (8 tmux clients + 8 Python processes), not 16 extra agents.
+
+The existing defect recurred: `~/reposoma/_cold-start/issues/ISS.office-no-swap-memory-stall.2026-10-01.md`.
+Zero swap remains unresolved; the existing office zram sheet is
+`.dev/session/zram-guard-office/pad.1-zram-office.md`. No swap, package, configuration,
+service or deployment changes were made. Majkee confirmed the desktop, screen and
+keyboard respond again: recovery verified remotely and at the desk.
+
+---
+
 ## OFFICE — 2026-09-29 · Trajectory · SSH rotation debt cleared on both PCs · two gate-met beds closed
 
 - **SSH rotation cleanup** (majkee's "Ok", 2026-09-29): removed
