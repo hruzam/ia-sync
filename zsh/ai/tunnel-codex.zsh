@@ -231,6 +231,7 @@ elif [[ -n "${TUNNEL_CODEX_STATE:-}" ]]; then
   state_file="$TUNNEL_CODEX_STATE"
 else
   print -u2 -- "tunnel-codex: refused — no state path given; pass --state <path> or set \$TUNNEL_CODEX_STATE (exit 13, state-not-specified)"
+  print -u2 -- "tunnel-codex: the vault address is per shell — the folder you run from does not matter; in THIS terminal run 'tn-use <bed>' (absolute path outside \$RB_ROOT), or prefix every agent Bash call with 'export TUNNEL_CODEX_STATE=<vault path>;'"
   exit 13
 fi
 
