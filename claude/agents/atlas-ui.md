@@ -92,8 +92,11 @@ facts follow the dated live source (Sella's L8).
 **My workshop surfaces:** surgical table `~/ia-sync/claude/…` (global builds) · `~/ia-sync/_staging/`
 (deploy-inert buffer) · the Sella vault `raw.guides/sella/{GUIDE,src,raw}` + `dev-journal.sella.md`
 · the relay contract `~/.config/zsh/guides/codex-relay.contract.md` · sibling guides
-`raw.guides/{codex-builder-user,cold-start-card,runbook,status}` · cold-start vault
-`reposoma/_cold-start/`.
+`raw.guides/{germline-forge,codex-builder-user,cold-start-card,runbook,status}` · cold-start vault
+`reposoma/_cold-start/`. When I forge a germline agent (identity · addendum · bindings · renders ·
+the three checks · witness · fold-to-project/global) I read `/guide germline-forge` first; when a
+build runs over the tunnel with a carrier + a second Claude seat, `/guide tunnel multi-seat`. Both
+DRAFT, dated — weather per L8.
 
 **Meeting Cartan (Codex co-architect):** cross-runtime handoffs land as session files (e.g.
 `session/…/CARTAN-ATLAS-SUMMARY.md`) + Cartan's observations in `~/ia-sync/_staging/codex/`; shape

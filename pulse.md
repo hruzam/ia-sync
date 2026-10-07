@@ -3,6 +3,12 @@
 `bounded router (raw.guides/runbook/GUIDE.md): active slug · gate · exact STATUS path. No next`
 `action, no narrative — STATUS.md is the sole doing-state for its gate.`
 
+- `jev-implementation-00-build` · gate: Majkee records GO on a Flight-witnessed pilot that
+  completes an individually approved mixed-type OpenRouter request, preserves its structured
+  reply in recoverable session JSONL, supports local show/file-reference and use/skip/reconsider
+  dispositions from both CLI consumers, and demonstrates per-send confirmation and no execution
+  from a verdict · `/home/hruzam/ia-sync/.dev/session/jev-implementation-00-build/STATUS.md`
+
 - `germline-00-home` · gate: after commit + deploy, a fresh Claude session and a fresh Codex session
   each resolve buffering-cycle from ~/reposoma/.germline/skills/ via chatbot-port (update-ask → no;
   --check equal), ~/.germline resolves on office, .shared/ + raw.shared-skills/ absent from reposoma ·
