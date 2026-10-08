@@ -85,6 +85,8 @@
 #                   Requires a threadId already born (exit 12 otherwise).
 #   compact         thread/compact/start on the bound thread (a turn; id kept; no TUI).
 #                   Banner-only (stdout empty). Takes the turn lock. 2026-10-09.
+#   fork            thread/fork of the bound thread → stdout = NEW thread id (history +
+#                   policy inherited); the vault is unchanged. 2026-10-09.
 #   close           LOCAL ONLY — removes tunnel.state.json; re-arms the Law 2.4 gate.
 #                   RESIDUE (v0, honest): send's thread birth leaves ~/.codex/thread-writer-locks/<threadId>.lock;
 #                   local-only close does not clean codex-side state.
@@ -194,14 +196,14 @@ _usage() {
 }
 
 if (( $# == 0 )); then
-  _usage "usage: tunnel-codex.zsh <open|send|ask|steer|read|resume|compact|close|status> [...] (exit 11)"
+  _usage "usage: tunnel-codex.zsh <open|send|ask|steer|read|resume|compact|fork|close|status> [...] (exit 11)"
 fi
 
 verb="$1"
 shift
 
 case "$verb" in
-  open|send|ask|steer|read|resume|compact|close|status) ;;
+  open|send|ask|steer|read|resume|compact|fork|close|status) ;;
   *) _usage "unknown verb '$verb' — see this file's header for the verb list (exit 11)" ;;
 esac
 

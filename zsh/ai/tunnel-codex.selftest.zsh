@@ -113,6 +113,11 @@ for raw in sys.stdin:
             send({"jsonrpc": "2.0", "id": rid, "result": {
                 "thread": {"id": thread_id, "status": "idle"},
             }})
+    elif method == "thread/fork":
+        send({"jsonrpc": "2.0", "id": rid, "result": {
+            "thread": {"id": "thread-fork-1", "status": {"type": "idle"}}, "model": "fixture-model",
+            "reasoningEffort": "medium", "approvalPolicy": "on-request", "approvalsReviewer": "auto_review",
+            "cwd": "/tmp"}})
     elif method == "thread/compact/start":
         thread_id = params.get("threadId")
         send({"jsonrpc": "2.0", "id": rid, "result": {}})
@@ -643,6 +648,16 @@ assert_contains "compact: stderr reports compaction" "$LAST_STDERR" "compacted i
 assert_true "compact: stdout stays empty (banner-only)" "$([[ -z "$LAST_STDOUT" ]] && echo true || echo false)"
 assert_contains "compact: lastCompactAt stamped" "$(cat "$state_file")" "lastCompactAt"
 assert_true "compact: turn lock released" "$([[ -f "$state_file.lock" ]] && echo false || echo true)"
+before_fork="$(cat "$state_file")"
+run_split zsh "$wrapper" fork
+check_exit "fork: thread/fork" 0
+assert_true "fork: stdout is exactly the new id" "$([[ "$LAST_STDOUT" == "thread-fork-1" ]] && echo true || echo false)"
+assert_contains "fork: stderr names inherited policy" "$LAST_STDERR" "reviewer=auto_review"
+assert_true "fork: vault unchanged" "$([[ "$(cat "$state_file")" == "$before_fork" ]] && echo true || echo false)"
+run zsh "$wrapper" close
+run zsh "$wrapper" open --enable
+run zsh "$wrapper" fork
+check_exit "fork: refused before a thread is born" 12
 run zsh "$wrapper" close
 
 if (( fail_count == 0 )); then

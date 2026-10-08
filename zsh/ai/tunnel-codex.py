@@ -1061,6 +1061,38 @@ def cmd_compact(args):
           "id kept — the next send/ask shows the new ctx", file=sys.stderr)
 
 
+def cmd_fork(args):
+    """thread/fork of the bound thread (2026-10-09 probe on 0.162): the fork inherits the
+    parent's history (through its last turn) and policy (model, effort, approvals, cwd);
+    its rollout exists at once (0 turns) and it resumes and takes turns. The vault is NOT
+    changed — the fork is a new thread; bind it with tn-rebind / tn-on --thread. stdout =
+    the new thread id only (so `$(tun fork)` works); stderr = the inherited policy."""
+    state = _require_state(args)
+    thread_id = _require_thread(state)
+    lock = _acquire_turn_lock(args.state)
+    try:
+        _warn_if_writer_lock(thread_id)
+        transport = AppServerTransport(cwd=state.get("cwd"))
+        transport.start()
+        try:
+            session = Session(transport)
+            session.initialize()
+            session.thread_resume(thread_id)
+            rid = transport.request("thread/fork", {"threadId": thread_id, "excludeTurns": True})
+            result = session._await_response(rid)
+        finally:
+            transport.close()
+    finally:
+        _release_turn_lock(lock)
+    new = (result.get("thread") or {}).get("id")
+    if not new:
+        raise ProtocolError(f"thread/fork returned no thread id: {result}")
+    print(f"fork: {thread_id} → {new} (model={result.get('model')} effort={result.get('reasoningEffort')} "
+          f"approval={result.get('approvalPolicy')} reviewer={result.get('approvalsReviewer')} cwd={result.get('cwd')}); "
+          "vault unchanged — bind the fork with tn-rebind or tn-on --thread", file=sys.stderr)
+    print(new)
+
+
 def build_parser():
     parser = argparse.ArgumentParser(prog="tunnel-codex.py", add_help=True)
     sub = parser.add_subparsers(dest="verb", required=True)
@@ -1095,6 +1127,10 @@ def build_parser():
     p_read = sub.add_parser("read")
     p_read.add_argument("--state", required=True)
     p_read.set_defaults(func=cmd_read)
+
+    p_fork = sub.add_parser("fork")
+    p_fork.add_argument("--state", required=True)
+    p_fork.set_defaults(func=cmd_fork)
 
     p_compact = sub.add_parser("compact")
     p_compact.add_argument("--state", required=True)

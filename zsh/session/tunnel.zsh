@@ -211,7 +211,9 @@ if tid:
         if last_ctx and last_ctx[0] is not None and last_ctx[1]:
             print(f"ctx       {last_ctx[0]}/{last_ctx[1]} ({100*last_ctx[0]/last_ctx[1]:.1f} %) @ {last_ctx[2]}"
                   + ("  ← reset by compaction, next turn re-measures" if last_ctx[0] == 0 else ""))
-        if turns == 0: bad.append("rollout has zero turns — give it a first turn before binding")
+        if meta.get("forked_from_id"):
+            print(f"fork of   {meta['forked_from_id']}  (history inherited; 0 turns is fine for a fork)")
+        elif turns == 0: bad.append("rollout has zero turns — give it a first turn before binding")
         if isinstance(src, dict) and "subagent" in src: bad.append(f"subagent thread ({json.dumps(src)}) — not a head")
         if want_cwd and meta.get("cwd") and os.path.realpath(meta["cwd"]) != os.path.realpath(want_cwd):
             bad.append(f"cwd mismatch: thread {meta['cwd']} vs expected {want_cwd}")
@@ -447,7 +449,7 @@ for f in sorted(glob.glob(f"{home}/.codex/sessions/*/*/*/rollout-*.jsonl"), key=
                     if u is not None and w: ctx = f"{100*u/w:.0f}%"
                 except Exception: pass
     tid = meta.get("id") or os.path.basename(f)[-41:-5]
-    fit = "ok" if turns and not sub else ("subagent" if sub else "0 turns")
+    fit = "subagent" if sub else ("ok" if turns else ("ok (fork)" if meta.get("forked_from_id") else "0 turns"))
     s = src if isinstance(src, str) else "sub:" + "/".join(str(x) for x in (src or {}).get("subagent", {}).values()) if sub else str(src)
     rows.append((tid, (lambda b: f"{b[13:15]}-{b[16:18]} {b[19:21]}:{b[22:24]}")(os.path.basename(f)),
                  time.strftime('%m-%d %H:%M', time.localtime(os.path.getmtime(f))), turns, ctx or "—", s, bound.get(tid, ""), fit))
@@ -517,6 +519,8 @@ tn — tunnel manager (vault per session bed · one vault = one Codex thread)
   bed = slug under $RB_ROOT · "." · a path.   name → tunnel.<name>.state.json
   Then drive it with the shim: tun ask / tun send / tun read / tun resume / tun compact (/guide tunnel)
   tun compact                  compaction INSIDE the tunnel (no TUI, id kept, ~30–45 s, a turn)
+  tun fork                     clone the bound thread (history + policy) → prints NEW id; vault unchanged
+                               e.g. tn-rebind @1 --thread "$(tun fork)"
   tun open --override effort=low   set model/effort/approvals on the next turns (they persist in the thread)
 EOF
 }
