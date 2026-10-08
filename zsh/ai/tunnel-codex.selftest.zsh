@@ -116,6 +116,9 @@ for raw in sys.stdin:
     elif method in ("turn/start", "turn/steer"):
         thread_id = params.get("threadId")
         turn_id = params.get("expectedTurnId") or "turn-fixture-1"
+        if os.environ.get("FIXTURE_INPUT_LOG"):
+            with open(os.environ["FIXTURE_INPUT_LOG"], "w") as _f:
+                _f.write("".join(i.get("text", "") for i in params.get("input", [])))
         send({"jsonrpc": "2.0", "id": rid, "result": {
             "turn": {"id": turn_id, "status": "inProgress", "items": []},
         }})
@@ -558,6 +561,38 @@ run_split env TUNNEL_CODEX_USAGE=off zsh "$wrapper" send "shape off"
 check_exit "brick-01b: send with TUNNEL_CODEX_USAGE=off" 0
 assert_true "brick-01b: off → no usage line on stdout" "$([[ "$LAST_STDOUT" == *'[usage:'* ]] && echo false || echo true)"
 assert_true "brick-01b: off → stdout is exactly the result text (one line)" "$([[ $(print -r -- "$LAST_STDOUT" | wc -l) -eq 1 ]] && echo true || echo false)"
+run zsh "$wrapper" close
+
+# --- PREAMBLE (2026-10-08, nablarva X1 T13): open-time standing turn rule -------------
+pre_file="$work_dir/preamble.md"
+in_log="$work_dir/input.log"
+print -r -- "RULE: you are oriented; read only what is named." > "$pre_file"
+run zsh "$wrapper" open --enable --preamble "$work_dir/missing.md"
+check_exit "preamble: open with a missing file refused" 11
+assert_true "preamble: refused open created no state" "$([[ -f "$state_file" ]] && echo false || echo true)"
+run zsh "$wrapper" open --enable --preamble "$pre_file"
+check_exit "preamble: open --enable --preamble <file>" 0
+assert_contains "preamble: path stored in vault" "$(cat "$state_file")" "preamble.md"
+run_split env FIXTURE_INPUT_LOG="$in_log" zsh "$wrapper" send "the actual message"
+check_exit "preamble: send with preamble" 0
+assert_contains "preamble: turn input starts with the preamble" "$(cat "$in_log")" "RULE: you are oriented"
+assert_contains "preamble: turn input still carries the message" "$(cat "$in_log")" "the actual message"
+assert_contains "preamble: stderr names the prepend" "$LAST_STDERR" "prepended"
+assert_true "preamble: stdout carries no preamble text" "$([[ "$LAST_STDOUT" == *RULE:* ]] && echo false || echo true)"
+run_split env FIXTURE_INPUT_LOG="$in_log" zsh "$wrapper" ask "asked message"
+check_exit "preamble: ask with preamble" 0
+assert_contains "preamble: ask input carries the preamble" "$(cat "$in_log")" "RULE: you are oriented"
+rm -f -- "$pre_file"
+run zsh "$wrapper" send "after the file vanished"
+check_exit "preamble: vanished file → loud refusal, no turn" 11
+assert_true "preamble: refusal left no turn lock" "$([[ -f "$state_file.lock" ]] && echo false || echo true)"
+run zsh "$wrapper" open --preamble none
+check_exit "preamble: open --preamble none clears it" 0
+run_split env FIXTURE_INPUT_LOG="$in_log" zsh "$wrapper" send "plain again"
+check_exit "preamble: send after clear" 0
+assert_true "preamble: cleared → input is the message only" "$([[ "$(cat "$in_log")" == "plain again" ]] && echo true || echo false)"
+run zsh "$wrapper" send --preamble "$pre_file" "x"
+check_exit "preamble: --preamble refused outside open" 11
 run zsh "$wrapper" close
 
 if (( fail_count == 0 )); then

@@ -115,6 +115,11 @@
 #   --thread <threadId>   open only (BRICK-01); bind to an existing stored thread.
 #                         Still requires --enable (Law 2.4). State gets bound:true.
 #   --cwd <dir>           open only (BRICK-01); must exist; stored in state as `cwd`.
+#   --preamble <file|none> open only (2026-10-08); file text is prepended to EVERY
+#                         send/ask/steer ("\n\n---\n\n" separator) — a standing turn rule
+#                         set once at open (law 2.4). Works on an existing vault (update/clear).
+#                         Missing file at turn time → exit 11, no turn sent. Field origin:
+#                         nablarva X1 T13 (bound head re-read its read order per turn).
 #
 # BRICK-01 LOCKS (2026-10-03): send/ask/steer hold <state>.lock (our pid) for the whole
 #   verb — a second caller on the same vault gets exit 61, never a second turn on the
@@ -204,6 +209,7 @@ sandbox_val="read-only"
 model_val=""
 thread_val=""   # BRICK-01
 cwd_val=""      # BRICK-01
+preamble_val="" # 2026-10-08 preamble
 state_flag=""
 state_flag_given=0
 positional=()
@@ -216,6 +222,7 @@ while (( $# )); do
     --model) (( $# >= 2 )) || _usage "--model requires a value (exit 11)"; model_val="$2"; shift 2 ;;
     --thread) (( $# >= 2 )) || _usage "--thread requires a threadId (exit 11)"; thread_val="$2"; shift 2 ;;
     --cwd) (( $# >= 2 )) || _usage "--cwd requires a directory (exit 11)"; cwd_val="$2"; shift 2 ;;
+    --preamble) (( $# >= 2 )) || _usage "--preamble requires a file or 'none' (exit 11)"; preamble_val="$2"; shift 2 ;;
     --) shift; positional+=("$@"); break ;;
     -*) _usage "unknown flag '$1' (exit 11)" ;;
     *) positional+=("$1"); shift ;;
@@ -250,9 +257,13 @@ if [[ "$verb" == open ]]; then
   if [[ -n "$cwd_val" && ! -d "$cwd_val" ]]; then
     _usage "--cwd is not a directory: $cwd_val (exit 11)"
   fi
+  if [[ -n "$preamble_val" && "$preamble_val" != none && ! -f "$preamble_val" ]]; then
+    _usage "--preamble is not a readable file: $preamble_val (exit 11)"
+  fi
 else
   [[ -n "$thread_val" ]] && _usage "--thread is only valid with 'open' (exit 11)"
   [[ -n "$cwd_val" ]] && _usage "--cwd is only valid with 'open' (exit 11)"
+  [[ -n "$preamble_val" ]] && _usage "--preamble is only valid with 'open' (exit 11)"
 fi
 
 # --- Law 2.4 explicit-enable gate: every verb refuses without the state file, except
@@ -309,6 +320,7 @@ case "$verb" in
     [[ -n "$model_val" ]] && py_args+=(--model "$model_val")
     [[ -n "$thread_val" ]] && py_args+=(--thread "$thread_val")   # BRICK-01
     [[ -n "$cwd_val" ]] && py_args+=(--cwd "$cwd_val")            # BRICK-01
+    [[ -n "$preamble_val" ]] && py_args+=(--preamble "$preamble_val")  # 2026-10-08
     ;;
   send|ask|steer)
     py_args+=("$text_arg")

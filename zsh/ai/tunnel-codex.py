@@ -623,7 +623,19 @@ def cmd_open(args):
         if not os.path.isdir(cwd):
             raise UsageError(f"--cwd is not a directory: {cwd}")
 
+    preamble = _resolve_preamble_arg(getattr(args, "preamble", None))
+
     state = load_state(args.state)
+
+    if state is not None and preamble is not None:
+        # Existing vault: record/clear the preamble (local only; the thread is untouched).
+        if preamble == "none":
+            state.pop("preamble", None)
+            print("open: preamble cleared", file=sys.stderr)
+        else:
+            state["preamble"] = preamble
+            print(f"open: preamble set to {preamble}", file=sys.stderr)
+        save_state(args.state, state)
 
     if state is not None and getattr(args, "thread", None):
         # BRICK-01 guard: a vault already addressing a thread never silently re-targets.
@@ -661,6 +673,8 @@ def cmd_open(args):
         }
         if cwd:
             state["cwd"] = cwd
+        if preamble and preamble != "none":
+            state["preamble"] = preamble
         bound = getattr(args, "thread", None)
         if bound:
             # BIND — reading (C) of the Protocol 1 handoff: the head is an existing
@@ -724,6 +738,42 @@ def cmd_open(args):
     save_state(args.state, state)
 
 
+# PREAMBLE (2026-10-08, field finding nablarva-X1 T13): a vault may name a preamble file at
+# open time (law 2.4: intent is an open-time act). Its text is prepended to every
+# send/ask/steer, so a standing turn rule ("you are oriented; read only what is named")
+# cannot be forgotten per message. Measured cause it answers: a bound head re-read its whole
+# read order on many tunnel turns (30-42 kB per batch). Missing file at turn time = loud
+# refusal before any spawn (exit 11), never a silent drop.
+
+def _resolve_preamble_arg(value):
+    if value is None:
+        return None
+    if value == "none":
+        return "none"
+    path = os.path.abspath(os.path.expanduser(value))
+    if not os.path.isfile(path):
+        raise UsageError(f"--preamble is not a readable file: {path}")
+    return path
+
+
+def _apply_preamble(state, text):
+    path = state.get("preamble")
+    if not path:
+        return text
+    try:
+        with open(path, "r", encoding="utf-8") as f:
+            pre = f.read().strip()
+    except OSError as exc:
+        raise UsageError(
+            f"vault preamble {path} unreadable ({exc}) — no turn sent; fix the file or "
+            "`open --preamble none` to clear it"
+        ) from exc
+    if not pre:
+        return text
+    print(f"tunnel-codex.py: preamble {path} ({len(pre)} chars) prepended", file=sys.stderr)
+    return f"{pre}\n\n---\n\n{text}"
+
+
 def _require_state(args):
     state = load_state(args.state)
     if state is None:
@@ -766,6 +816,7 @@ def _birth_or_resume(session, state):
 
 def cmd_send(args):
     state = _require_state(args)
+    text_out = _apply_preamble(state, args.text)
     lock = _acquire_turn_lock(args.state)
     try:
         transport = AppServerTransport(cwd=state.get("cwd"))
@@ -774,7 +825,7 @@ def cmd_send(args):
             session = Session(transport)
             session.initialize()
             thread_id = _birth_or_resume(session, state)
-            turn_id, turn, text, usage = session.drive_turn(thread_id, args.text)
+            turn_id, turn, text, usage = session.drive_turn(thread_id, text_out)
             session.reconcile(thread_id, turn_id)
         finally:
             transport.close()
@@ -793,6 +844,7 @@ def cmd_steer(args):
     thread_id = _require_thread(state)
     if not state.get("lastTurnId"):
         raise TurnError("no lastTurnId recorded in state — nothing to steer (run 'send' first)")
+    text_out = _apply_preamble(state, args.text)
     lock = _acquire_turn_lock(args.state)
     try:
         _warn_if_writer_lock(thread_id)
@@ -804,7 +856,7 @@ def cmd_steer(args):
             resumed = session.thread_resume(thread_id)
             _stamp_runtime(state, resumed)
             turn_id, turn, text, usage = session.drive_turn(
-                thread_id, args.text, expected_turn_id=state["lastTurnId"]
+                thread_id, text_out, expected_turn_id=state["lastTurnId"]
             )
             session.reconcile(thread_id, turn_id)
         finally:
@@ -831,6 +883,7 @@ def cmd_ask(args):
     one. Same Law 2.4 gates as every other verb (enforced by the caller before this
     function runs): no auto-enable, no state-path default."""
     state = _require_state(args)
+    text_out = _apply_preamble(state, args.text)
     lock = _acquire_turn_lock(args.state)
     try:
         transport = AppServerTransport(cwd=state.get("cwd"))
@@ -839,7 +892,7 @@ def cmd_ask(args):
             session = Session(transport)
             session.initialize()
             thread_id = _birth_or_resume(session, state)
-            turn_id, turn, streamed_text, usage = session.drive_turn(thread_id, args.text)
+            turn_id, turn, streamed_text, usage = session.drive_turn(thread_id, text_out)
             read_result = session.reconcile(thread_id, turn_id)
         finally:
             transport.close()
@@ -915,6 +968,7 @@ def build_parser():
     # BRICK-01
     p_open.add_argument("--thread", default=None, help="bind this vault to an EXISTING stored threadId")
     p_open.add_argument("--cwd", default=None, help="workspace root: app-server spawn dir + thread/start.cwd on birth")
+    p_open.add_argument("--preamble", default=None, help="file prepended to every send/ask/steer ('none' clears)")
     p_open.set_defaults(func=cmd_open)
 
     p_send = sub.add_parser("send")
