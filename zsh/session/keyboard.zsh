@@ -47,4 +47,6 @@ alias tn-on='_tn_on'             # open: tn-on <bed> [name] [-- --thread <id> --
 alias tn-off='_tn_off'           # close: tn-off [bed] [name]
 alias tn-st='_tn_st'             # status, intent vs runtime: tn-st [bed] [name]
 alias tn-check='_tn_check'       # read-only verdict: tn-check [bed] [name] · tn-check --id <thread> [--cwd <dir>]
+alias tn-back='_tn_back'         # after a TUI visit: wait writer-lock holder → resume → check: tn-back [bed] [name] [--timeout S]
+alias tn-rebind='_tn_rebind'     # successor: tn-rebind <bed> [name] --thread NEW [--reason TEXT] (carries intent, logs lineage)
 alias tn-help='_tn_help'         # help panel

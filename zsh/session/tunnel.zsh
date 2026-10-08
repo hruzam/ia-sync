@@ -224,6 +224,109 @@ print("VERDICT   READY" + (" (as a successor: bind it with tn-on … --thread)" 
 PY
 }
 
+# tn-back [bed] [name] [--timeout S] → "tunnel back" after a TUI visit (compact, /permissions…):
+#   waits until NO process holds ~/.codex/thread-writer-locks/<thread>.lock (the 0.160+/0.162
+#   daemon keeps the writer for a while after TUI /exit — support log T10/T18), then `tun resume`,
+#   then tn-check. Never touches the lock. Refuses while a shim turn is in flight.
+#   exit = resume's exit · 2 BUSY · 3 still HELD at timeout (nothing sent) · 10 no vault
+_tn_back() {
+    local timeout=300 args=()
+    while [[ $# -gt 0 ]]; do
+        case "$1" in
+            --timeout) timeout="$2"; shift 2 ;;
+            *) args+=("$1"); shift ;;
+        esac
+    done
+    local p tid lk wl pid t0 rc
+    if [[ ${#args} -eq 0 && -n "${TUNNEL_CODEX_STATE:-}" ]]; then p="$TUNNEL_CODEX_STATE"
+    else p="$(_tn_path "${args[@]}")"; fi
+    [[ -f "$p" ]] || { print -u2 -- "[tn-back] no vault at $p"; return 10; }
+    tid="$(python3 -c 'import json,sys; print(json.load(open(sys.argv[1])).get("threadId") or "")' "$p")"
+    [[ -n "$tid" ]] || { print -u2 -- "[tn-back] vault has no threadId — nothing to resume"; return 10; }
+    lk="$p.lock"
+    if [[ -f "$lk" ]]; then
+        pid="$(<"$lk")"
+        if [[ -n "$pid" ]] && kill -0 "$pid" 2>/dev/null; then
+            print -u2 -- "[tn-back] BUSY — shim turn in flight (pid $pid); wait, never retry in a loop"; return 2
+        fi
+    fi
+    wl="$HOME/.codex/thread-writer-locks/$tid.lock"
+    t0=$SECONDS
+    while [[ -e "$wl" ]] && fuser "$wl" >/dev/null 2>&1; do
+        if (( SECONDS - t0 >= timeout )); then
+            print -u2 -- "[tn-back] still HELD after ${timeout}s by pid(s)$(fuser "$wl" 2>/dev/null) — nothing sent. TUI still open? pgrep -af 'codex resume'"
+            return 3
+        fi
+        (( (SECONDS - t0) % 15 == 0 )) && print -u2 -- "[tn-back] writer-lock held ($(( SECONDS - t0 ))s) — waiting for release…"
+        sleep 1
+    done
+    print -u2 -- "[tn-back] writer free after $(( SECONDS - t0 ))s — resuming $tid"
+    _tn_shim resume --state "$p"; rc=$?
+    _tn_check "${args[@]}" >/dev/null 2>&1; print -u2 -- "[tn-back] resume exit=$rc · tn-check exit=$? (0 READY)"
+    return $rc
+}
+
+# tn-rebind <bed> [name] --thread <NEW> [--reason TEXT] → successor without the hand-copied line.
+#   Carries the vault's intent (cwd, sandbox, model, preamble) to NEW, appends
+#   {old,new,at,reason} to the vault's `lineage` array, keeps the old lineage.
+#   Gate: `tn-check --id NEW --cwd <vault cwd>` must not be BROKEN (zero-turn / no rollout /
+#   subagent / cwd mismatch are refused); refuses NEW == old and a shim turn in flight.
+#   Local only: no resume. HELD is allowed (binding is local) — follow with `tn-back`.
+#   If the re-open fails, the old vault is restored byte-for-byte.
+#   exit 0 rebound · 2 BUSY · 4 NEW refused · 10 no vault · 11 usage · other = shim open failed (restored)
+_tn_rebind() {
+    local new="" reason="" args=()
+    while [[ $# -gt 0 ]]; do
+        case "$1" in
+            --thread) new="$2"; shift 2 ;;
+            --reason) reason="$2"; shift 2 ;;
+            *) args+=("$1"); shift ;;
+        esac
+    done
+    [[ -n "$new" ]] || { print -u2 -- "usage: tn-rebind <bed> [name] --thread NEW_ID [--reason TEXT]"; return 11; }
+    local p
+    if [[ ${#args} -eq 0 && -n "${TUNNEL_CODEX_STATE:-}" ]]; then p="$TUNNEL_CODEX_STATE"
+    else p="$(_tn_path "${args[@]}")"; fi
+    [[ -f "$p" ]] || { print -u2 -- "[tn-rebind] no vault at $p (closed? use tn-on … --thread)"; return 10; }
+    local saved; saved="$(<"$p")"
+    local -a f; f=("${(@f)$(python3 -c '
+import json,sys; s=json.load(open(sys.argv[1]))
+for k in ("threadId","cwd","sandbox","model","preamble"): print(s.get(k) or "")' "$p")}")
+    local old="${f[1]}" cwd="${f[2]}" sandbox="${f[3]:-read-only}" model="${f[4]}" pre="${f[5]}"
+    [[ "$new" != "$old" ]] || { print -u2 -- "[tn-rebind] NEW == current thread $old — nothing to do"; return 11; }
+    if [[ -f "$p.lock" ]] && kill -0 "$(<"$p.lock")" 2>/dev/null; then
+        print -u2 -- "[tn-rebind] BUSY — shim turn in flight; wait"; return 2
+    fi
+    _tn_check --id "$new" ${cwd:+--cwd "$cwd"}
+    local crc=$?
+    if (( crc == 4 )); then print -u2 -- "[tn-rebind] refused — $new is not bindable (see VERDICT above); vault unchanged"; return 4; fi
+    local -a open_args; open_args=(--enable --state "$p" --thread "$new" --sandbox "$sandbox")
+    [[ -n "$cwd" ]] && open_args+=(--cwd "$cwd")
+    [[ -n "$model" ]] && open_args+=(--model "$model")
+    [[ -n "$pre" ]] && open_args+=(--preamble "$pre")
+    _tn_shim close --state "$p" 2>/dev/null
+    _tn_shim open "${open_args[@]}"
+    local orc=$?
+    if (( orc != 0 )); then
+        print -r -- "$saved" > "$p"
+        print -u2 -- "[tn-rebind] open on $new FAILED (exit $orc) — old vault restored ($old)"; return $orc
+    fi
+    python3 - "$p" "$old" "$new" "$reason" "$saved" <<'PY'
+import json, os, sys, datetime
+p, old, new, reason, saved = sys.argv[1:6]
+s = json.load(open(p)); prev = json.loads(saved)
+lin = list(prev.get("lineage") or [])
+lin.append({"old": old, "new": new, "reason": reason or None,
+            "at": datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")})
+s["lineage"] = lin
+tmp = p + ".tmp"; json.dump(s, open(tmp, "w"), indent=2, sort_keys=True); os.replace(tmp, p)
+PY
+    print -u2 -- "[tn-rebind] $old → $new (carried: cwd=${cwd:-—} sandbox=$sandbox model=${model:-—} preamble=${pre:-—}); lineage recorded"
+    (( crc == 3 )) && print -u2 -- "[tn-rebind] NEW is HELD right now — run tn-back (waits for release, then resumes)" \
+                   || print -u2 -- "[tn-rebind] next: tn-back   (resume + tn-check)"
+    return 0
+}
+
 # tn-ls → every vault under $RB_ROOT (and $PWD if outside it); * marks the shell's current one
 _tn_ls() {
     local root="${RB_ROOT:-$HOME/ia-sync/.dev/session}"
@@ -264,6 +367,8 @@ tn — tunnel manager (vault per session bed · one vault = one Codex thread)
   tn-st  [bed] [name]          intent vs runtime layers of the vault
   tn-check [bed] [name]        read-only verdict READY/BUSY/HELD/BROKEN (locks, rollout, ctx, versions)
   tn-check --id <thread> [--cwd <dir>]   is this id fit to bind? (successor check, before tn-on)
+  tn-back  [bed] [name] [--timeout S]    after a TUI visit: wait for the writer-lock holder to go, resume, check
+  tn-rebind <bed> [name] --thread NEW [--reason TEXT]   successor: carry cwd/sandbox/model/preamble, log lineage
   bed = slug under $RB_ROOT · "." · a path.   name → tunnel.<name>.state.json
   Then drive it with the shim: tun ask / tun send / tun read / tun resume (/guide tunnel)
 EOF
