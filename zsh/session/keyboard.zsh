@@ -46,4 +46,5 @@ alias tn-use='_tn_use'           # point this shell at a vault: tn-use <bed> [na
 alias tn-on='_tn_on'             # open: tn-on <bed> [name] [-- --thread <id> --cwd <dir> …]
 alias tn-off='_tn_off'           # close: tn-off [bed] [name]
 alias tn-st='_tn_st'             # status, intent vs runtime: tn-st [bed] [name]
+alias tn-check='_tn_check'       # read-only verdict: tn-check [bed] [name] · tn-check --id <thread> [--cwd <dir>]
 alias tn-help='_tn_help'         # help panel

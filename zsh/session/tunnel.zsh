@@ -95,6 +95,135 @@ print(f"lastTurn  {s.get('lastTurnId') or '—'}")
 PY
 }
 
+# tn-check [bed] [name] | tn-check --id <thread> [--cwd <dir>] → read-only health verdict.
+#   Vault mode: is the bound thread usable for the next tunnel verb right now?
+#   --id mode:  is a candidate thread fit to BE bound (successor check, before tn-on)?
+#   Reads the vault, <vault>.lock, ~/.codex/thread-writer-locks/<id>.lock (HOLDER via fuser —
+#   a lock file can outlive its holder), the thread's rollout and the running codex versions.
+#   Never writes, never spawns codex, spends no quota.
+#   exit 0 READY · 2 BUSY (shim turn in flight) · 3 HELD (writer-lock held: TUI or daemon) ·
+#        4 BROKEN (unusable: no rollout / zero turns / subagent / cwd / preamble) · 10 no vault
+_tn_check() {
+    local p="" id="" cwd=""
+    while [[ $# -gt 0 ]]; do
+        case "$1" in
+            --id)  id="$2"; shift 2 ;;
+            --cwd) cwd="$2"; shift 2 ;;
+            *) break ;;
+        esac
+    done
+    if [[ -z "$id" ]]; then
+        if [[ $# -eq 0 && -n "${TUNNEL_CODEX_STATE:-}" ]]; then p="$TUNNEL_CODEX_STATE"
+        else p="$(_tn_path "$@")"; fi
+    fi
+    python3 - "$p" "$id" "$cwd" <<'PY'
+import glob, json, os, subprocess, sys
+p, cand, cand_cwd = sys.argv[1], sys.argv[2], sys.argv[3]
+home = os.path.expanduser("~")
+bad, busy, held, warn = [], [], [], []
+
+def sh(*cmd):
+    try: return subprocess.run(cmd, capture_output=True, text=True, timeout=10).stdout.strip()
+    except Exception: return ""
+
+def alive(pid):
+    try: os.kill(int(pid), 0); return True
+    except Exception: return False
+
+# 1 · vault (or candidate)
+s = {}
+if p:
+    print(f"vault     {p}")
+    if not os.path.isfile(p):
+        print("          (no vault — closed, or wrong bed/name)"); sys.exit(10)
+    s = json.load(open(p))
+    tid = s.get("threadId")
+    print(f"thread    {tid or '—'}  enabled={s.get('enabled')} bound={s.get('bound')}")
+    want_cwd = s.get("cwd") or ""
+    pre = s.get("preamble")
+    if pre:
+        ok = os.path.isfile(pre)
+        print(f"preamble  {pre}  {'ok' if ok else 'MISSING'}")
+        if not ok: bad.append("preamble file missing (turn would exit 11)")
+    if not s.get("enabled"): bad.append("vault disabled")
+    if not tid: bad.append("vault has no threadId (born on first send — nothing to check)")
+    lk = p + ".lock"
+    if os.path.exists(lk):
+        try: pid = open(lk).read().strip() or "0"
+        except Exception: pid = "0"
+        if alive(pid): busy.append(f"shim turn in flight (pid {pid})")
+        else: warn.append(f"stale shim lock {lk} (pid {pid} dead)")
+else:
+    tid, want_cwd = cand, cand_cwd
+    print(f"candidate {tid}" + (f"  (expect cwd {want_cwd})" if want_cwd else ""))
+
+if tid:
+    # 2 · writer-lock holder
+    wl = f"{home}/.codex/thread-writer-locks/{tid}.lock"
+    holders = sh("fuser", wl).split() if os.path.exists(wl) else []
+    if holders:
+        for h in holders:
+            cmd = sh("ps", "-o", "args=", "-p", h)[:90]
+            kind = "daemon" if "app-server" in cmd else "TUI/other"
+            print(f"writer    HELD by {h} [{kind}] {cmd}")
+            held.append(f"writer-lock held by {kind} pid {h}")
+    else:
+        print("writer    free" + (" (lock file present, no holder)" if os.path.exists(wl) else ""))
+
+    # 3 · rollout
+    rs = glob.glob(f"{home}/.codex/sessions/*/*/*/rollout-*{tid}.jsonl")
+    if not rs:
+        print("rollout   NONE")
+        bad.append("no rollout — zero-turn thread (/clear or /new never used) — resume gives -32600")
+    else:
+        r = rs[0]; turns = compacts = 0; meta = {}; last_ctx = None; settings = None; last_compact = None
+        with open(r) as fh:
+            for line in fh:
+                try: e = json.loads(line)
+                except Exception: continue
+                t, pl = e.get("type"), e.get("payload") or {}
+                if t == "session_meta": meta = pl
+                elif t == "turn_context":
+                    turns += 1
+                    settings = {k: pl.get(k) for k in ("model", "effort", "approval_policy", "approvals_reviewer")}
+                elif t == "compacted": compacts += 1; last_compact = e.get("timestamp")
+                elif t == "event_msg" and pl.get("type") == "thread_settings_applied":
+                    ts = pl.get("thread_settings") or {}
+                    settings = {"model": ts.get("model"), "effort": ts.get("reasoning_effort"),
+                                "approval_policy": ts.get("approval_policy"),
+                                "approvals_reviewer": ts.get("approvals_reviewer")}
+                elif t == "event_msg" and pl.get("type") == "token_count":
+                    info = pl.get("info") or {}
+                    last_ctx = ((info.get("last_token_usage") or {}).get("input_tokens"),
+                                info.get("model_context_window"), e.get("timestamp"))
+        src = meta.get("source")
+        print(f"rollout   {r}")
+        print(f"          turns={turns} compacted={compacts}{' last '+last_compact if last_compact else ''}"
+              f"  cli={meta.get('cli_version')} source={json.dumps(src)}")
+        if settings: print(f"policy    " + " ".join(f"{k}={v}" for k, v in settings.items()))
+        if last_ctx and last_ctx[0] is not None and last_ctx[1]:
+            print(f"ctx       {last_ctx[0]}/{last_ctx[1]} ({100*last_ctx[0]/last_ctx[1]:.1f} %) @ {last_ctx[2]}"
+                  + ("  ← reset by compaction, next turn re-measures" if last_ctx[0] == 0 else ""))
+        if turns == 0: bad.append("rollout has zero turns — give it a first turn before binding")
+        if isinstance(src, dict) and "subagent" in src: bad.append(f"subagent thread ({json.dumps(src)}) — not a head")
+        if want_cwd and meta.get("cwd") and os.path.realpath(meta["cwd"]) != os.path.realpath(want_cwd):
+            bad.append(f"cwd mismatch: thread {meta['cwd']} vs expected {want_cwd}")
+
+# 4 · version skew (CLI the shim spawns vs running daemon)
+cli = sh("codex", "--version").split()[-1:] or ["?"]
+daemons = sorted(set(x.split("/releases/")[1].split("-")[0] for x in sh("pgrep", "-af", "app-server").splitlines()
+                     if "/releases/" in x and "app-server" in x))
+print(f"codex     cli={cli[0]} daemon={','.join(daemons) or 'none'}")
+if daemons and any(d != cli[0] for d in daemons): warn.append(f"version skew cli {cli[0]} ≠ daemon {','.join(daemons)} (L8: selftest + one live ask)")
+
+for w in warn: print(f"note      {w}")
+if bad:  print("VERDICT   BROKEN — " + " · ".join(bad)); sys.exit(4)
+if busy: print("VERDICT   BUSY — " + " · ".join(busy) + " — wait, never retry in a loop"); sys.exit(2)
+if held: print("VERDICT   HELD — " + " · ".join(held) + " — exit the TUI / wait, then tun resume"); sys.exit(3)
+print("VERDICT   READY" + (" (as a successor: bind it with tn-on … --thread)" if not p else "")); sys.exit(0)
+PY
+}
+
 # tn-ls → every vault under $RB_ROOT (and $PWD if outside it); * marks the shell's current one
 _tn_ls() {
     local root="${RB_ROOT:-$HOME/ia-sync/.dev/session}"
@@ -133,6 +262,8 @@ tn — tunnel manager (vault per session bed · one vault = one Codex thread)
                                use + `tun open --enable …` (values are set here, Law 2.4)
   tn-off [bed] [name]          close (prints threadId + re-bind line first)
   tn-st  [bed] [name]          intent vs runtime layers of the vault
+  tn-check [bed] [name]        read-only verdict READY/BUSY/HELD/BROKEN (locks, rollout, ctx, versions)
+  tn-check --id <thread> [--cwd <dir>]   is this id fit to bind? (successor check, before tn-on)
   bed = slug under $RB_ROOT · "." · a path.   name → tunnel.<name>.state.json
   Then drive it with the shim: tun ask / tun send / tun read / tun resume (/guide tunnel)
 EOF
