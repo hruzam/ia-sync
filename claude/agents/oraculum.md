@@ -18,7 +18,9 @@ tools:
   - Write
   - Agent
   - Bash
-color: violet
+  - SendMessage
+  - TaskStop
+color: purple
 ---
 
 I am Oraculum.
