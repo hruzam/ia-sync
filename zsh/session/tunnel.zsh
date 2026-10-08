@@ -30,7 +30,12 @@ _tn_shim() { zsh "$HOME/.config/zsh/ai/tunnel-codex.zsh" "$@"; }
 
 _tn_bed() {
     local bed="${1:-.}"
-    if [[ "$bed" == "." ]]; then print -r -- "$PWD"
+    if [[ "$bed" == @<-> ]]; then
+        # @N = row N of this shell's last `tn-beds` listing (no typing paths)
+        local n="${bed#@}"
+        [[ -n "${_TN_BEDS[$n]:-}" ]] || { print -u2 -- "[tn] $bed: no such row — run tn-beds first"; print -r -- "/nonexistent/tn-beds-row-$n"; return 1; }
+        print -r -- "${_TN_BEDS[$n]}"
+    elif [[ "$bed" == "." ]]; then print -r -- "$PWD"
     elif [[ "$bed" == /* ]]; then print -r -- "$bed"
     elif [[ "$bed" == */* ]]; then print -r -- "$PWD/$bed"
     else print -r -- "${RB_ROOT:-$HOME/ia-sync/.dev/session}/$bed"
@@ -107,7 +112,7 @@ _tn_check() {
     local p="" id="" cwd=""
     while [[ $# -gt 0 ]]; do
         case "$1" in
-            --id)  id="$2"; shift 2 ;;
+            --id)  id="$(_tn_tid "$2")" || return 11; shift 2 ;;
             --cwd) cwd="$2"; shift 2 ;;
             *) break ;;
         esac
@@ -278,7 +283,7 @@ _tn_rebind() {
     local new="" reason="" args=()
     while [[ $# -gt 0 ]]; do
         case "$1" in
-            --thread) new="$2"; shift 2 ;;
+            --thread) new="$(_tn_tid "$2")" || return 11; shift 2 ;;
             --reason) reason="$2"; shift 2 ;;
             *) args+=("$1"); shift ;;
         esac
@@ -327,6 +332,137 @@ PY
     return 0
 }
 
+# ---- explorers: numbered lists so the next command takes @N, not a typed id/path ----
+# Lists live in THIS shell (_TN_BEDS / _TN_TIDS); re-run the explorer after exec zsh.
+typeset -ga _TN_BEDS _TN_TIDS
+
+# repo root of a dir (git toplevel, else the dir) → its .dev/session, else $RB_ROOT
+_tn_session_root() {
+    local d="${1:-$PWD}" r
+    r="$(git -C "$d" rev-parse --show-toplevel 2>/dev/null)" || r="$d"
+    if [[ -d "$r/.dev/session" ]]; then print -r -- "$r/.dev/session"
+    else print -r -- "${RB_ROOT:-$HOME/ia-sync/.dev/session}"; fi
+}
+
+# @N (from the last tn-threads) → full thread id; anything else passes through
+_tn_tid() {
+    local t="$1"
+    if [[ "$t" == @<-> ]]; then
+        local n="${t#@}"
+        [[ -n "${_TN_TIDS[$n]:-}" ]] || { print -u2 -- "[tn] $t: no such row — run tn-threads first"; return 1; }
+        print -r -- "${_TN_TIDS[$n]}"
+    else print -r -- "$t"; fi
+}
+
+# tn-beds [dir] → numbered beds of the repo holding <dir> (default $PWD), newest activity first.
+#   cols: N · bed · R/S/P (RUNBOOK/STATUS/pad present) · last touched · vault(s): thread · state
+#   then: tn-check @N · tn-back @N · tn-use @N · cd "$(tn-bed N)"
+_tn_beds() {
+    local root; root="$(_tn_session_root "${1:-$PWD}")"
+    local out; out="$(python3 - "$root" "${TUNNEL_CODEX_STATE:-}" <<'PY'
+import glob, json, os, subprocess, sys, time
+root, cur = sys.argv[1], sys.argv[2]
+home = os.path.expanduser("~")
+beds = [d for d in glob.glob(os.path.join(root, "*")) if os.path.isdir(d)]
+def last(d):
+    m = os.path.getmtime(d)
+    for f in glob.glob(os.path.join(d, "*")) + glob.glob(os.path.join(d, "*", "*")):
+        try: m = max(m, os.path.getmtime(f))
+        except OSError: pass
+    return m
+beds = sorted(((last(d), d) for d in beds), reverse=True)
+print(f"beds in {root}  (newest first; * = this shell's vault)")
+w = max([len(os.path.basename(d)) for _, d in beds] or [4])
+paths = []
+for i, (m, d) in enumerate(beds, 1):
+    b = os.path.basename(d)
+    flags = "".join(c if os.path.exists(os.path.join(d, f)) or glob.glob(os.path.join(d, f)) else "·"
+                    for c, f in (("R", "RUNBOOK.md"), ("S", "STATUS.md"), ("P", "**/pad.*.md")))
+    if flags[2] == "·" and glob.glob(os.path.join(d, "*", "pad.*.md")): flags = flags[:2] + "P"
+    vs = []
+    for v in sorted(glob.glob(os.path.join(d, "tunnel*.state.json"))):
+        try: s = json.load(open(v))
+        except Exception: vs.append("vault?"); continue
+        tid = s.get("threadId") or ""
+        st = "born" if not tid else ("bound" if s.get("bound") else "own")
+        wl = f"{home}/.codex/thread-writer-locks/{tid}.lock"
+        if tid and os.path.exists(wl) and subprocess.run(["fuser", wl], capture_output=True).stdout.strip(): st += ",HELD"
+        if os.path.exists(v + ".lock"): st += ",BUSY?"
+        name = os.path.basename(v)[len("tunnel"):-len(".state.json")].strip(".")
+        vs.append(f"{'*' if v == cur else ''}{name + ':' if name else ''}{tid or '—'} [{st}]")
+    print(f"{i:>3}  {b:<{w}}  {flags}  {time.strftime('%m-%d %H:%M', time.localtime(m))}  {'  '.join(vs)}")
+    paths.append(d)
+print("\x1e" + "\x1f".join(paths))
+PY
+)" || return $?
+    print -r -- "${out%$'\n'$'\x1e'*}"
+    _TN_BEDS=("${(@ps:\x1f:)${out##*$'\x1e'}}")
+    print -u2 -- "→ tn-check @N · tn-back @N · tn-use @N · tn-rebind @N --thread @M · cd \"\$(tn-bed N)\""
+}
+
+# tn-bed N → the full path of row N (for cd / cat / copy)
+_tn_bed_n() { _tn_bed "@${1:?usage: tn-bed N}"; }
+
+# tn-threads [dir] [--all] [-n K] → numbered recent Codex threads whose cwd is the repo of <dir>.
+#   Hides subagent threads (Guardian makes many) unless --all. Marks which bed's vault binds each.
+#   cols: N · full id · started · last write · turns · ctx · source · bound-by · fit (ok / why not)
+_tn_threads() {
+    local d="" all=0 n=8
+    while [[ $# -gt 0 ]]; do
+        case "$1" in --all) all=1; shift ;; -n) n="$2"; shift 2 ;; *) d="$1"; shift ;; esac
+    done
+    d="${d:-$PWD}"
+    local repo; repo="$(git -C "$d" rev-parse --show-toplevel 2>/dev/null)" || repo="$d"
+    local out; out="$(python3 - "$repo" "$(_tn_session_root "$d")" "$all" "$n" <<'PY'
+import glob, json, os, sys, time
+repo, sroot, show_all, n = sys.argv[1], sys.argv[2], sys.argv[3] == "1", int(sys.argv[4])
+home = os.path.expanduser("~")
+bound = {}
+for v in glob.glob(os.path.join(sroot, "*", "tunnel*.state.json")):
+    try: t = json.load(open(v)).get("threadId")
+    except Exception: continue
+    if t: bound[t] = os.path.basename(os.path.dirname(v))
+rows, ids = [], []
+for f in sorted(glob.glob(f"{home}/.codex/sessions/*/*/*/rollout-*.jsonl"), key=os.path.getmtime, reverse=True):
+    if len(rows) >= n: break
+    try:
+        with open(f) as fh: meta = json.loads(fh.readline()).get("payload") or {}
+    except Exception: continue
+    if os.path.realpath(meta.get("cwd") or "") != os.path.realpath(repo): continue
+    src = meta.get("source")
+    sub = isinstance(src, dict) and "subagent" in src
+    if sub and not show_all: continue
+    turns = 0; ctx = ""
+    with open(f) as fh:
+        for line in fh:
+            if '"type":"turn_context"' in line[:120]: turns += 1
+            elif '"token_count"' in line:
+                try:
+                    info = (json.loads(line).get("payload") or {}).get("info") or {}
+                    u, w = (info.get("last_token_usage") or {}).get("input_tokens"), info.get("model_context_window")
+                    if u is not None and w: ctx = f"{100*u/w:.0f}%"
+                except Exception: pass
+    tid = meta.get("id") or os.path.basename(f)[-41:-5]
+    fit = "ok" if turns and not sub else ("subagent" if sub else "0 turns")
+    s = src if isinstance(src, str) else "sub:" + "/".join(str(x) for x in (src or {}).get("subagent", {}).values()) if sub else str(src)
+    rows.append((tid, (lambda b: f"{b[13:15]}-{b[16:18]} {b[19:21]}:{b[22:24]}")(os.path.basename(f)),
+                 time.strftime('%m-%d %H:%M', time.localtime(os.path.getmtime(f))), turns, ctx or "—", s, bound.get(tid, ""), fit))
+    ids.append(tid)
+print(f"codex threads for {repo}  (newest write first{', subagents shown' if show_all else ', subagents hidden: --all'})")
+print(f"  N  {'thread id':<36}  started      last write   turns  ctx   source        bound-by / fit")
+for i, (tid, st, lw, t, c, s, b, fit) in enumerate(rows, 1):
+    print(f"{i:>3}  {tid:<36}  {st}  {lw}  {t:>5}  {c:>4}  {s[:12]:<12}  {('['+b+'] ') if b else ''}{fit}")
+print("\x1e" + "\x1f".join(ids))
+PY
+)" || return $?
+    print -r -- "${out%$'\n'$'\x1e'*}"
+    _TN_TIDS=("${(@ps:\x1f:)${out##*$'\x1e'}}")
+    print -u2 -- "→ tn-check --id @N · tn-rebind @B --thread @N · tn-tid N (prints the id)"
+}
+
+# tn-tid N → full thread id of row N (for $(…) or copy)
+_tn_tid_n() { _tn_tid "@${1:?usage: tn-tid N}"; }
+
 # tn-ls → every vault under $RB_ROOT (and $PWD if outside it); * marks the shell's current one
 _tn_ls() {
     local root="${RB_ROOT:-$HOME/ia-sync/.dev/session}"
@@ -359,6 +495,9 @@ PY
 _tn_help() {
     cat >&2 <<'EOF'
 tn — tunnel manager (vault per session bed · one vault = one Codex thread)
+  tn-beds [dir]                numbered beds of the repo's .dev/session (newest first) → use @N as <bed>
+  tn-threads [dir] [--all] [-n K]  numbered Codex threads of that repo → use @N as --thread/--id
+  tn-bed N · tn-tid N          print row N's full path / thread id (cd "$(tn-bed 2)")
   tn-ls                        every vault under $RB_ROOT; * = this shell's current
   tn-use <bed> [name]          point THIS shell at a vault (export TUNNEL_CODEX_STATE)
   tn-on  <bed> [name] [-- --thread <id> --cwd <dir> --sandbox <mode> --model <id>]
