@@ -449,7 +449,7 @@ class Session:
         rid = self.t.request("thread/read", {"threadId": thread_id, "includeTurns": include_turns})
         return self._await_response(rid)
 
-    def drive_turn(self, thread_id, text, expected_turn_id=None):
+    def drive_turn(self, thread_id, text, expected_turn_id=None, overrides=None):
         """turn/start (expected_turn_id is None) or turn/steer (expected_turn_id given
         — the ID of the turn this same shim already recorded), then consume streamed
         notifications until turn/completed for this thread. Returns
@@ -460,7 +460,14 @@ class Session:
         header); None if the app-server never emitted one for this turn."""
         user_input = [{"type": "text", "text": text}]
         if expected_turn_id is None:
-            rid = self.t.request("turn/start", {"threadId": thread_id, "input": user_input})
+            params = {"threadId": thread_id, "input": user_input}
+            if overrides:
+                # TURN OVERRIDES (2026-10-09): open-time intent, sent on every turn/start.
+                # Server semantics: "for this turn and subsequent turns" — they PERSIST in
+                # the thread; clearing the vault field does not revert the thread.
+                params.update(overrides)
+                print(f"tunnel-codex.py: turn overrides {json.dumps(overrides, sort_keys=True)} sent", file=sys.stderr)
+            rid = self.t.request("turn/start", params)
         else:
             rid = self.t.request(
                 "turn/steer",
@@ -624,8 +631,13 @@ def cmd_open(args):
             raise UsageError(f"--cwd is not a directory: {cwd}")
 
     preamble = _resolve_preamble_arg(getattr(args, "preamble", None))
+    ov_merge, ov_clear = _parse_overrides(getattr(args, "override", None))
 
     state = load_state(args.state)
+
+    if state is not None and (ov_merge is not None):
+        _apply_overrides(state, ov_merge, ov_clear)
+        save_state(args.state, state)
 
     if state is not None and preamble is not None:
         # Existing vault: record/clear the preamble (local only; the thread is untouched).
@@ -675,6 +687,8 @@ def cmd_open(args):
             state["cwd"] = cwd
         if preamble and preamble != "none":
             state["preamble"] = preamble
+        if ov_merge is not None:
+            _apply_overrides(state, ov_merge, ov_clear)
         bound = getattr(args, "thread", None)
         if bound:
             # BIND — reading (C) of the Protocol 1 handoff: the head is an existing
@@ -774,6 +788,44 @@ def _apply_preamble(state, text):
     return f"{pre}\n\n---\n\n{text}"
 
 
+OVERRIDE_KEYS = ("model", "effort", "approvalPolicy", "approvalsReviewer", "summary")
+
+
+def _parse_overrides(items):
+    """--override key=value (repeatable) → (dict_to_merge, clear_all). Empty value
+    (key=) removes that key; the single word 'none' clears every override. Keys are
+    the turn/start override fields of the 0.162 schema (TurnStartParams)."""
+    if not items:
+        return None, False
+    merge, clear = {}, False
+    for it in items:
+        if it == "none":
+            clear = True
+            continue
+        if "=" not in it:
+            raise UsageError(f"--override expects key=value or 'none', got {it!r}")
+        k, v = it.split("=", 1)
+        if k not in OVERRIDE_KEYS:
+            raise UsageError(f"--override key must be one of {OVERRIDE_KEYS}, got {k!r}")
+        merge[k] = v
+    return merge, clear
+
+
+def _apply_overrides(state, merge, clear):
+    cur = {} if clear else dict(state.get("turnOverrides") or {})
+    for k, v in (merge or {}).items():
+        if v == "":
+            cur.pop(k, None)
+        else:
+            cur[k] = v
+    if cur:
+        state["turnOverrides"] = cur
+    else:
+        state.pop("turnOverrides", None)
+    print(f"open: turn overrides now {json.dumps(cur, sort_keys=True) if cur else 'none'}"
+          " (sent on every send/ask; they persist in the thread once sent)", file=sys.stderr)
+
+
 def _require_state(args):
     state = load_state(args.state)
     if state is None:
@@ -825,7 +877,7 @@ def cmd_send(args):
             session = Session(transport)
             session.initialize()
             thread_id = _birth_or_resume(session, state)
-            turn_id, turn, text, usage = session.drive_turn(thread_id, text_out)
+            turn_id, turn, text, usage = session.drive_turn(thread_id, text_out, overrides=state.get("turnOverrides"))
             session.reconcile(thread_id, turn_id)
         finally:
             transport.close()
@@ -892,7 +944,7 @@ def cmd_ask(args):
             session = Session(transport)
             session.initialize()
             thread_id = _birth_or_resume(session, state)
-            turn_id, turn, streamed_text, usage = session.drive_turn(thread_id, text_out)
+            turn_id, turn, streamed_text, usage = session.drive_turn(thread_id, text_out, overrides=state.get("turnOverrides"))
             read_result = session.reconcile(thread_id, turn_id)
         finally:
             transport.close()
@@ -957,6 +1009,58 @@ def cmd_resume(args):
     )
 
 
+def cmd_compact(args):
+    """thread/compact/start on the bound thread (2026-10-09, PAD J probe on 0.162): the
+    server runs compaction as a turn — turn/started … turn/completed (≈43 s observed) —
+    and keeps the thread id. NO thread/compacted notification arrives on this connection;
+    turn/completed is the completion signal. Takes the turn lock (it is a turn). Banner-only:
+    stdout stays empty; stderr reports duration; the next send/ask shows the new ctx."""
+    state = _require_state(args)
+    thread_id = _require_thread(state)
+    lock = _acquire_turn_lock(args.state)
+    t0 = time.time()
+    try:
+        _warn_if_writer_lock(thread_id)
+        transport = AppServerTransport(cwd=state.get("cwd"))
+        transport.start()
+        try:
+            session = Session(transport, timeout=max(DEFAULT_TIMEOUT, 600.0))
+            session.initialize()
+            resumed = session.thread_resume(thread_id)
+            _stamp_runtime(state, resumed)
+            rid = transport.request("thread/compact/start", {"threadId": thread_id})
+            session._await_response(rid)
+            deadline = time.time() + session.timeout
+            turn_id = None
+            while True:
+                remaining = deadline - time.time()
+                if remaining <= 0:
+                    raise ProtocolError(f"compact: no turn/completed within {session.timeout:.0f}s — run 'read' before retrying")
+                msg = transport.next_message(remaining)
+                if "method" in msg and "id" in msg:
+                    session._auto_decline(msg)
+                    continue
+                m, prm = msg.get("method"), msg.get("params") or {}
+                if prm.get("threadId") not in (None, thread_id):
+                    continue
+                if m == "turn/started":
+                    turn_id = (prm.get("turn") or {}).get("id")
+                elif m == "turn/completed":
+                    turn = prm.get("turn") or {}
+                    if turn.get("status") != "completed":
+                        raise TurnError(f"compact turn ended {turn.get('status')}: {turn.get('error')}")
+                    turn_id = turn.get("id") or turn_id
+                    break
+        finally:
+            transport.close()
+    finally:
+        _release_turn_lock(lock)
+    state["lastCompactAt"] = now_iso()
+    save_state(args.state, state)
+    print(f"compact: thread {thread_id} compacted in {time.time() - t0:.0f}s (turn {turn_id}); "
+          "id kept — the next send/ask shows the new ctx", file=sys.stderr)
+
+
 def build_parser():
     parser = argparse.ArgumentParser(prog="tunnel-codex.py", add_help=True)
     sub = parser.add_subparsers(dest="verb", required=True)
@@ -969,6 +1073,8 @@ def build_parser():
     p_open.add_argument("--thread", default=None, help="bind this vault to an EXISTING stored threadId")
     p_open.add_argument("--cwd", default=None, help="workspace root: app-server spawn dir + thread/start.cwd on birth")
     p_open.add_argument("--preamble", default=None, help="file prepended to every send/ask/steer ('none' clears)")
+    p_open.add_argument("--override", action="append", default=None,
+                        help="turn/start override key=value (model|effort|approvalPolicy|approvalsReviewer|summary); key= removes; 'none' clears all")
     p_open.set_defaults(func=cmd_open)
 
     p_send = sub.add_parser("send")
@@ -989,6 +1095,10 @@ def build_parser():
     p_read = sub.add_parser("read")
     p_read.add_argument("--state", required=True)
     p_read.set_defaults(func=cmd_read)
+
+    p_compact = sub.add_parser("compact")
+    p_compact.add_argument("--state", required=True)
+    p_compact.set_defaults(func=cmd_compact)
 
     p_resume = sub.add_parser("resume")
     p_resume.add_argument("--state", required=True)

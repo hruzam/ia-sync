@@ -113,12 +113,22 @@ for raw in sys.stdin:
             send({"jsonrpc": "2.0", "id": rid, "result": {
                 "thread": {"id": thread_id, "status": "idle"},
             }})
+    elif method == "thread/compact/start":
+        thread_id = params.get("threadId")
+        send({"jsonrpc": "2.0", "id": rid, "result": {}})
+        send({"jsonrpc": "2.0", "method": "turn/started", "params": {
+            "threadId": thread_id, "turn": {"id": "turn-compact-1", "status": "inProgress", "items": []}}})
+        send({"jsonrpc": "2.0", "method": "turn/completed", "params": {
+            "threadId": thread_id, "turn": {"id": "turn-compact-1", "status": "completed", "items": []}}})
     elif method in ("turn/start", "turn/steer"):
         thread_id = params.get("threadId")
         turn_id = params.get("expectedTurnId") or "turn-fixture-1"
         if os.environ.get("FIXTURE_INPUT_LOG"):
             with open(os.environ["FIXTURE_INPUT_LOG"], "w") as _f:
                 _f.write("".join(i.get("text", "") for i in params.get("input", [])))
+        if os.environ.get("FIXTURE_PARAMS_LOG"):
+            with open(os.environ["FIXTURE_PARAMS_LOG"], "w") as _f:
+                _f.write(json.dumps({k: v for k, v in params.items() if k != "input"}, sort_keys=True))
         send({"jsonrpc": "2.0", "id": rid, "result": {
             "turn": {"id": turn_id, "status": "inProgress", "items": []},
         }})
@@ -593,6 +603,46 @@ check_exit "preamble: send after clear" 0
 assert_true "preamble: cleared → input is the message only" "$([[ "$(cat "$in_log")" == "plain again" ]] && echo true || echo false)"
 run zsh "$wrapper" send --preamble "$pre_file" "x"
 check_exit "preamble: --preamble refused outside open" 11
+run zsh "$wrapper" close
+
+# --- TURN OVERRIDES (2026-10-09, majkee A1): open-time model/effort/approvals intent ----
+par_log="$work_dir/params.log"
+run zsh "$wrapper" open --enable --override effort=low --override model=fixture-model
+check_exit "override: open --enable with overrides" 0
+assert_contains "override: stored in vault" "$(cat "$state_file")" '"effort": "low"'
+run_split env FIXTURE_PARAMS_LOG="$par_log" zsh "$wrapper" send "with overrides"
+check_exit "override: send" 0
+assert_contains "override: turn/start carries effort" "$(cat "$par_log")" '"effort": "low"'
+assert_contains "override: turn/start carries model" "$(cat "$par_log")" '"model": "fixture-model"'
+assert_contains "override: stderr names the overrides" "$LAST_STDERR" "turn overrides"
+run zsh "$wrapper" open --override effort=high --override model=
+check_exit "override: change one, remove one on an existing vault" 0
+run_split env FIXTURE_PARAMS_LOG="$par_log" zsh "$wrapper" ask "changed"
+check_exit "override: ask after change" 0
+assert_contains "override: effort changed" "$(cat "$par_log")" '"effort": "high"'
+assert_true "override: model removed" "$([[ "$(cat "$par_log")" == *'"model"'* ]] && echo false || echo true)"
+run zsh "$wrapper" open --override badkey=1
+check_exit "override: unknown key refused" 11
+run zsh "$wrapper" open --override none
+check_exit "override: none clears all" 0
+run_split env FIXTURE_PARAMS_LOG="$par_log" zsh "$wrapper" send "plain"
+check_exit "override: send after clear" 0
+assert_true "override: cleared → no effort in turn/start" "$([[ "$(cat "$par_log")" == *effort* ]] && echo false || echo true)"
+run zsh "$wrapper" send --override effort=low "x"
+check_exit "override: --override refused outside open" 11
+run zsh "$wrapper" close
+
+# --- COMPACT (2026-10-09, PAD J): thread/compact/start as a verb --------------------------
+run zsh "$wrapper" open --enable
+run zsh "$wrapper" compact
+check_exit "compact: refused before a thread is born" 12
+run zsh "$wrapper" send "birth"
+run_split zsh "$wrapper" compact
+check_exit "compact: compact/start → turn/completed" 0
+assert_contains "compact: stderr reports compaction" "$LAST_STDERR" "compacted in"
+assert_true "compact: stdout stays empty (banner-only)" "$([[ -z "$LAST_STDOUT" ]] && echo true || echo false)"
+assert_contains "compact: lastCompactAt stamped" "$(cat "$state_file")" "lastCompactAt"
+assert_true "compact: turn lock released" "$([[ -f "$state_file.lock" ]] && echo false || echo true)"
 run zsh "$wrapper" close
 
 if (( fail_count == 0 )); then

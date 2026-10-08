@@ -150,6 +150,8 @@ if p:
         ok = os.path.isfile(pre)
         print(f"preamble  {pre}  {'ok' if ok else 'MISSING'}")
         if not ok: bad.append("preamble file missing (turn would exit 11)")
+    if s.get("turnOverrides"):
+        print("overrides " + " ".join(f"{k}={v}" for k, v in sorted(s["turnOverrides"].items())) + "  (sent on every send/ask)")
     if not s.get("enabled"): bad.append("vault disabled")
     if not tid: bad.append("vault has no threadId (born on first send — nothing to check)")
     lk = p + ".lock"
@@ -296,8 +298,9 @@ _tn_rebind() {
     local saved; saved="$(<"$p")"
     local -a f; f=("${(@f)$(python3 -c '
 import json,sys; s=json.load(open(sys.argv[1]))
-for k in ("threadId","cwd","sandbox","model","preamble"): print(s.get(k) or "")' "$p")}")
-    local old="${f[1]}" cwd="${f[2]}" sandbox="${f[3]:-read-only}" model="${f[4]}" pre="${f[5]}"
+for k in ("threadId","cwd","sandbox","model","preamble"): print(s.get(k) or "")
+print(" ".join(f"{k}={v}" for k, v in sorted((s.get("turnOverrides") or {}).items())))' "$p")}")
+    local old="${f[1]}" cwd="${f[2]}" sandbox="${f[3]:-read-only}" model="${f[4]}" pre="${f[5]}" ovs="${f[6]}"
     [[ "$new" != "$old" ]] || { print -u2 -- "[tn-rebind] NEW == current thread $old — nothing to do"; return 11; }
     if [[ -f "$p.lock" ]] && kill -0 "$(<"$p.lock")" 2>/dev/null; then
         print -u2 -- "[tn-rebind] BUSY — shim turn in flight; wait"; return 2
@@ -309,6 +312,7 @@ for k in ("threadId","cwd","sandbox","model","preamble"): print(s.get(k) or "")'
     [[ -n "$cwd" ]] && open_args+=(--cwd "$cwd")
     [[ -n "$model" ]] && open_args+=(--model "$model")
     [[ -n "$pre" ]] && open_args+=(--preamble "$pre")
+    local ov; for ov in ${(z)ovs}; do open_args+=(--override "$ov"); done
     _tn_shim close --state "$p" 2>/dev/null
     _tn_shim open "${open_args[@]}"
     local orc=$?
@@ -326,7 +330,7 @@ lin.append({"old": old, "new": new, "reason": reason or None,
 s["lineage"] = lin
 tmp = p + ".tmp"; json.dump(s, open(tmp, "w"), indent=2, sort_keys=True); os.replace(tmp, p)
 PY
-    print -u2 -- "[tn-rebind] $old → $new (carried: cwd=${cwd:-—} sandbox=$sandbox model=${model:-—} preamble=${pre:-—}); lineage recorded"
+    print -u2 -- "[tn-rebind] $old → $new (carried: cwd=${cwd:-—} sandbox=$sandbox model=${model:-—} preamble=${pre:-—} overrides=${ovs:-—}); lineage recorded"
     (( crc == 3 )) && print -u2 -- "[tn-rebind] NEW is HELD right now — run tn-back (waits for release, then resumes)" \
                    || print -u2 -- "[tn-rebind] next: tn-back   (resume + tn-check)"
     return 0
@@ -500,7 +504,9 @@ tn — tunnel manager (vault per session bed · one vault = one Codex thread)
   tn-bed N · tn-tid N          print row N's full path / thread id (cd "$(tn-bed 2)")
   tn-ls                        every vault under $RB_ROOT; * = this shell's current
   tn-use <bed> [name]          point THIS shell at a vault (export TUNNEL_CODEX_STATE)
-  tn-on  <bed> [name] [-- --thread <id> --cwd <dir> --sandbox <mode> --model <id>]
+  tn-on  <bed> [name] [-- --thread <id> --cwd <dir> --sandbox <mode> --model <id> --override k=v]
+                               --override effort=low|model=…|approvalsReviewer=…|approvalPolicy=…|summary=…
+                               (repeatable; k= removes one; none clears; on an open vault: tun open --override …)
                                use + `tun open --enable …` (values are set here, Law 2.4)
   tn-off [bed] [name]          close (prints threadId + re-bind line first)
   tn-st  [bed] [name]          intent vs runtime layers of the vault
@@ -509,6 +515,8 @@ tn — tunnel manager (vault per session bed · one vault = one Codex thread)
   tn-back  [bed] [name] [--timeout S]    after a TUI visit: wait for the writer-lock holder to go, resume, check
   tn-rebind <bed> [name] --thread NEW [--reason TEXT]   successor: carry cwd/sandbox/model/preamble, log lineage
   bed = slug under $RB_ROOT · "." · a path.   name → tunnel.<name>.state.json
-  Then drive it with the shim: tun ask / tun send / tun read / tun resume (/guide tunnel)
+  Then drive it with the shim: tun ask / tun send / tun read / tun resume / tun compact (/guide tunnel)
+  tun compact                  compaction INSIDE the tunnel (no TUI, id kept, ~30–45 s, a turn)
+  tun open --override effort=low   set model/effort/approvals on the next turns (they persist in the thread)
 EOF
 }

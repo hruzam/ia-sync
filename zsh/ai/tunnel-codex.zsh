@@ -83,6 +83,8 @@
 #                   Requires a threadId already born (exit 12 otherwise).
 #   resume          thread/resume only (liveness probe); prints thread id + status.
 #                   Requires a threadId already born (exit 12 otherwise).
+#   compact         thread/compact/start on the bound thread (a turn; id kept; no TUI).
+#                   Banner-only (stdout empty). Takes the turn lock. 2026-10-09.
 #   close           LOCAL ONLY — removes tunnel.state.json; re-arms the Law 2.4 gate.
 #                   RESIDUE (v0, honest): send's thread birth leaves ~/.codex/thread-writer-locks/<threadId>.lock;
 #                   local-only close does not clean codex-side state.
@@ -192,14 +194,14 @@ _usage() {
 }
 
 if (( $# == 0 )); then
-  _usage "usage: tunnel-codex.zsh <open|send|ask|steer|read|resume|close|status> [...] (exit 11)"
+  _usage "usage: tunnel-codex.zsh <open|send|ask|steer|read|resume|compact|close|status> [...] (exit 11)"
 fi
 
 verb="$1"
 shift
 
 case "$verb" in
-  open|send|ask|steer|read|resume|close|status) ;;
+  open|send|ask|steer|read|resume|compact|close|status) ;;
   *) _usage "unknown verb '$verb' — see this file's header for the verb list (exit 11)" ;;
 esac
 
@@ -210,6 +212,7 @@ model_val=""
 thread_val=""   # BRICK-01
 cwd_val=""      # BRICK-01
 preamble_val="" # 2026-10-08 preamble
+override_vals=() # 2026-10-09 turn overrides
 state_flag=""
 state_flag_given=0
 positional=()
@@ -223,6 +226,7 @@ while (( $# )); do
     --thread) (( $# >= 2 )) || _usage "--thread requires a threadId (exit 11)"; thread_val="$2"; shift 2 ;;
     --cwd) (( $# >= 2 )) || _usage "--cwd requires a directory (exit 11)"; cwd_val="$2"; shift 2 ;;
     --preamble) (( $# >= 2 )) || _usage "--preamble requires a file or 'none' (exit 11)"; preamble_val="$2"; shift 2 ;;
+    --override) (( $# >= 2 )) || _usage "--override requires key=value or 'none' (exit 11)"; override_vals+=("$2"); shift 2 ;;
     --) shift; positional+=("$@"); break ;;
     -*) _usage "unknown flag '$1' (exit 11)" ;;
     *) positional+=("$1"); shift ;;
@@ -264,6 +268,7 @@ else
   [[ -n "$thread_val" ]] && _usage "--thread is only valid with 'open' (exit 11)"
   [[ -n "$cwd_val" ]] && _usage "--cwd is only valid with 'open' (exit 11)"
   [[ -n "$preamble_val" ]] && _usage "--preamble is only valid with 'open' (exit 11)"
+  (( ${#override_vals} )) && _usage "--override is only valid with 'open' (exit 11)"
 fi
 
 # --- Law 2.4 explicit-enable gate: every verb refuses without the state file, except
@@ -321,6 +326,7 @@ case "$verb" in
     [[ -n "$thread_val" ]] && py_args+=(--thread "$thread_val")   # BRICK-01
     [[ -n "$cwd_val" ]] && py_args+=(--cwd "$cwd_val")            # BRICK-01
     [[ -n "$preamble_val" ]] && py_args+=(--preamble "$preamble_val")  # 2026-10-08
+    for ov in "${override_vals[@]}"; do py_args+=(--override "$ov"); done  # 2026-10-09
     ;;
   send|ask|steer)
     py_args+=("$text_arg")
