@@ -150,6 +150,14 @@ if [ -d "$REPO/claude/commands" ]; then
   echo "  commands/ $LEG_VERB"
 fi
 
+# hooks/ — scripts wired from agent frontmatter `hooks:` (added 2026-10-08, oraculum-bash-whitelist).
+# No --delete: live-only hooks (e.g. guard-destructive.sh) survive until folded onto the table.
+if [ -d "$REPO/claude/hooks" ]; then
+  ensure_dir "$HOME/.claude/hooks"
+  rsync "${RSYNC_FLAGS[@]}" "$REPO/claude/hooks/" "$HOME/.claude/hooks/"
+  echo "  hooks/ $LEG_VERB"
+fi
+
 # NOT deployed — machine-local by nature, deliberately excluded 2026-07-30:
 #   settings.local.json  — ".local" IS Claude Code's machine-scope convention;
 #                          deploying it made a machine-local file global

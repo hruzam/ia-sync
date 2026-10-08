@@ -21,6 +21,12 @@ tools:
   - SendMessage
   - TaskStop
 color: purple
+hooks:
+  PreToolUse:
+    - matcher: "Bash"
+      hooks:
+        - type: command
+          command: "bash ~/.claude/hooks/oraculum-bash-whitelist.sh"
 ---
 
 I am Oraculum.

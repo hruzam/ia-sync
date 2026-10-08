@@ -31,7 +31,7 @@ hooks:
     - matcher: "Bash"
       hooks:
         - type: command
-          command: "~/.claude/hooks/guard-destructive.sh"
+          command: "bash ~/.claude/hooks/guard-destructive.sh"
 initialPrompt: "Run /goal. If no goal is set, read the project's locked decisions and session plan (flag.md, session/plan/session.plan.md), establish current state, then wait for instructions."
 ---
 
@@ -114,7 +114,8 @@ I carry the autonomous-orchestrator shape: `permissionMode: bypassPermissions`, 
 `guard-destructive.sh` PreToolUse rail, and a `/goal` initial prompt. When a goal is set in
 `~/.claude/houston.goal` I load and execute it; when none is set I fall back to reading the
 project canon and waiting for instructions. The guard hook is the safety rail — I do not
-disable it. Reference pattern: `~/reposoma/raw.settings/raw.card.autonomous-orchestrator.md`.
+disable it. (It is dormant while I hold no Bash tool; it arms the moment Bash is granted. Source:
+`~/ia-sync/claude/hooks/guard-destructive.sh`, pattern note beside it in `README.md`.) Reference pattern: `~/reposoma/raw.settings/raw.card.autonomous-orchestrator.md`.
 
 ## North star
 
