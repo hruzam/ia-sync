@@ -22,13 +22,25 @@ grep -H '^stamp:' ~/.germline/agents/houston/*.md ~/.germline/agents/houston/car
 
 | absolute path | stamp |
 |---|---|
-| `/home/hruzam/reposoma/.germline/agents/houston/identity.md` | `0be9958a` |
-| `/home/hruzam/reposoma/.germline/agents/houston/binding.claude.md` | `80c9168c` |
-| `/home/hruzam/reposoma/.germline/agents/houston/binding.codex.md` | `cac6a05d` |
-| `/home/hruzam/reposoma/.germline/agents/houston/cards/consult.md` | `fbc11800` |
-| `/home/hruzam/reposoma/.germline/agents/houston/cards/audit.md` | `e517cc86` |
-| `/home/hruzam/reposoma/.germline/agents/houston/cards/sitting.md` | `effacaf6` |
-| `/home/hruzam/unikuklatrix/nablarva/.germline/agents/houston/nablarva.md` | `2ebbb49b` |
+| `/home/hruzam/.germline/agents/houston/identity.md` | `6abf41fe` |
+| `/home/hruzam/.germline/agents/houston/binding.claude.md` | `9a3f17c0` (was `224a5767`; canary edit 2026-10-13, hand-derived — hook blocked `openssl`) |
+| `/home/hruzam/.germline/agents/houston/binding.codex.md` | `5d08b2e7` (was `f87f1f3c`; canary edit 2026-10-13, hand-derived) |
+| `/home/hruzam/.germline/agents/houston/cards/consult.md` | `46dcd163` |
+| `/home/hruzam/.germline/agents/houston/cards/audit.md` | `e517cc86` |
+| `/home/hruzam/.germline/agents/houston/cards/sitting.md` | `effacaf6` |
+| `/home/hruzam/unikuklatrix/nablarva/.germline/agents/houston/nablarva.md` | `a6498a47` |
+
+**Wrapper canaries (cartan cycle 11; the first line of the entry proof must echo the Route line verbatim):**
+
+| wrapper | Route line |
+|---|---|
+| `~/ia-sync/codex/profiles/houston.config.toml` (main profile) | `Route: main session via --profile houston (canary: hp-7c3e91a4).` |
+| `~/ia-sync/codex/agents/houston.toml` (child) | `Route: spawned child (canary: hc-b52f08d6).` |
+| `~/ia-sync/claude/agents/houston.md` | `Route: spawned by a parent agent → child; otherwise main session (canary: cl-e1a94c37).` |
+
+A canary is re-rolled whenever its wrapper's body changes. The §3 stamp rows above predate the canary and expect no Route line; for rows re-run after the canary deploy, expect it as line 1.
+
+Source: ~/ia-sync/germline/ (deployed to ~/.germline/). ~/reposoma/.germline/ is a stale duplicate pending retirement (MIGRATE §3) — never test against it.
 
 The loader may quote either `~/.germline/…` or its realpath; both are the same file.
 
@@ -377,7 +389,9 @@ Not verified:
 ## X.1. codex as child
 
 **SCENARIO**
-main: `01a13284-8b4c-7ff1-9729-2db76ebcc11e`
+
+- main| model: `GPT-5.6-Terra`, effort: `high`, ID: `01a1328c-df3a-7163-b02a-4ef9acdc468a`
+
 ```
 how: fresh codex -C ~/unikuklatrix/nablarva
 send: "Delegate to the houston subagent:" card: consult + "Move: rename .dev/session/AGENTS.PROJECT-DESIGN.md to /PROJECT-DESIGN.md at the repo root, leaving a stub at the old path. Does it fit L16.9?"
@@ -393,28 +407,253 @@ send: "Delegate to the houston subagent:" card: consult + "Move: rename .dev/ses
 ```
 
 
-> cartan, report here:
-
-**`Houston` | `Cartan` main wrote:**
+**`Houston` | `cartan: codex(houston)` main wrote:**
+> cartan `codex(houston)`, plese report here down to field below.
+It is the /root/houston child of root 01a1328c-df3a-7163-b02a-4ef9acdc468a. Its release is recorded at 2026-10-13T01:05:03.026Z in the child rollout (/home/hruzam/.codex/sessions/2026/10/13/rollout-2026-10-13T02-03-08-01a13291-f256-7861-9fcf-accdeadbdc21.jsonl).
 ```
+
+2026-10-13 · codex(houston) held-child protocol witness
+
+Houston ran as the same collaboration task handle `/root/houston`; no new Houston was
+spawned for release. Configured identity: `gpt-6.1-sol` · effort: `high`.
+
+Hold → release evidence:
+- `followup_task` release sent: `2026-10-13T01:04:56.874Z` UTC
+- final reply observed by the root: `2026-10-13T01:05:44Z` UTC
+- carrier rollout: `~/.codex/sessions/2026/10/13/rollout-2026-10-13T01-57-35-01a1328c-df3a-7163-b02a-4ef9acdc468a.jsonl`
+- collaboration exposed the task handle only; the local `thread_spawn_edges` SQLite
+  record later resolved the child transcript.
+
+Houston transcript: `01a13291-f256-7861-9fcf-accdeadbdc21` · `/root/houston` · child rollout: `~/.codex/sessions/2026/10/13/rollout-2026-10-13T02-03-08-01a13291-f256-7861-9fcf-accdeadbdc21.jsonl`
+
+Release reply (verbatim):
+Houston held-seat release
+
+Card: consult · verdict: **fits**.
+
+L16.9 names `PROJECT-DESIGN.md` as the thin animal wrapper and index; it does not
+require the legacy session path. Root placement with a redirect-only stub preserves
+L16.10’s one-home-per-fact rule.
+
+Required constraints: update `PROJECT.yaml`, `AGENTS.md`, and Houston’s addendum;
+rebase relative links; repair live inbound links and anchors, especially ovitmugen’s
+`KEYS CODE` reference; preserve keeper and provenance; coordinate with the active
+heads. Relocation does not complete X1’s separate wrapper-thinning work.
+
+No files written by Houston; post-move integrity remains unverified.
+
 ```
-
-
 
 ---
 
-**Copy|PASTE**
----
-
-## C.5. claude spawn
+## X.2. codex main (profile)
 
 **SCENARIO**
 ```
+row: X2 Codex main
+how: codex --profile houston -C ~/unikuklatrix/nablarva
+send: no card line → choose audit · then the C1 audit text
+```
+F2 warning from session `Running without the shared background server: --profile requires embedded mode.`
+
+
+***prompt 1***
+```
+hello — who are you, and which files did you load?
 ```
 
-**`Houston` | main wrote:**
 
+**`Houston` | main wrote 1:**
+> houston, here is place for self report
 ```
+/home/hruzam/.germline/agents/houston/identity.md · stamp: 0be9958a  
+/home/hruzam/.germline/agents/houston/binding.codex.md · stamp: cac6a05d  
+/home/hruzam/unikuklatrix/nablarva/.germline/agents/houston/nablarva.md · stamp: 2ebbb49b
+
+Hello — I’m **@Houston**, the grounding architect, running through Codex in `/home/hruzam/unikuklatrix/nablarva`. I check whether a proposed move fits the project’s existing shape and locks.
+
+I loaded the three files above, in that order. Your supplied `AGENTS.md` instructions are also in context; I haven’t read that file from disk or loaded a card.
+
+This main-session route requires an explicit selection: **audit** or **sitting**. Which would you like?
+```
+
+***prompt 2***
+```
+what is `audit` here?
+```
+
+
+**`Houston` | main wrote 2:**
+> houston, here is place for self report
+```
+`audit` is Houston’s **whole-project coherence check**: do Nablarva’s intent, architecture, active plans, implementation, and documentation still agree?
+
+I start with the project index, `.dev/session/AGENTS.PROJECT-DESIGN.md`, then follow its pointers into organ documents, architecture, and flag locks. I check broken links, missing files, duplicated authority, stale claims, and disagreements across components.
+
+You receive findings tagged:
+
+- **`mech`** — mechanically checkable problems, such as broken pointers.
+- **`judge`** — problems needing architectural judgment.
+- **`cross`** — disagreements spanning organs.
+
+For routine index repairs, I can propose a **diff for you to review and commit**. Changes to intent, ownership, contracts, or locks return as findings for your decision. Old documentation is a reason to inspect, not proof that it is wrong.
+
+I just read [audit.md](/home/hruzam/.germline/agents/houston/cards/audit.md), stamp `e517cc86`, to explain its contract. No audit has started.
+```
+
+***prompt 3***
+```
+fine: `card: audit`
+Mechanics only, small scope: check that every pointer to Houston's homes resolves —
+AGENTS.md:40, PROJECT.yaml:16, .dev/session/AGENTS.PROJECT-DESIGN.md frontmatter.
+Findings only, write nothing.
+```
+
+
+**`Houston` | main wrote 3:**
+> houston, here is place for self report
+```
+**card: audit · inferred: houston · mech**
+
+All Houston home pointers resolve to readable files:
+
+- [AGENTS.md:40](/home/hruzam/unikuklatrix/nablarva/AGENTS.md:40): addendum, both bindings, identity, audit card. `binding.codex.md` uses the preceding binding’s directory as shorthand.
+- [PROJECT.yaml:16](/home/hruzam/unikuklatrix/nablarva/PROJECT.yaml:16): addendum and global bindings directory.
+- [Wrapper frontmatter](/home/hruzam/unikuklatrix/nablarva/.dev/session/AGENTS.PROJECT-DESIGN.md:7): addendum and both global bindings.
+
+One documentation mismatch: the loaded Houston addendum’s §4 “Known residue” note is stale. The PROJECT comment and wrapper bindings already name the correct global home.
+
+Nothing written. Pointer existence and readability checked; behavior remains unverified.
 ```
 
 ---
+
+# R. FINAL HOUSTON TEST
+
+## R.1. claude spawn
+
+**SCENARIO**
+```
+ - R1: Claude main + explicit consult. This is the new route.
+   - Run claude --agent houston, then send: card: consult + "Does the Houston stamp table in TEST-INSTALL §1
+     match the files on disk? Findings only."
+   - Expect: the 4 new stamps (identity, binding.claude, nablarva, consult) and the consult shape, with no  
+     request to choose a card.
+```
+
+**`Houston` | main wrote:**
+- ID: `claude --resume 85e100d1-c424-4e80-8dd8-427a7374a9fb`
+```
+## R.1. claude main · consult · stamp-table check
+
+**SCENARIO**
+- route: Claude main (`claude --agent houston`, cwd /home/hruzam/unikuklatrix/nablarva) · date: 2026-10-13
+- send: `card: consult` + "Does the Houston stamp table in TEST-INSTALL §1 match the files on disk? Findings only."
+
+**`Houston` wrote:**
+
+    entry proof: identity 6abf41fe · binding.claude 224a5767 · addendum nablarva a6498a47 · cards/consult 46dcd163
+    (read via ~/.germline; matches §1)
+
+    Verdict: breaks (as a pass/fail reference). §1's tokens match ~/.germline, but its path
+    column names /home/hruzam/reposoma/.germline, and 4 of the 6 files there differ:
+
+    | file              | §1 / ~/.germline | reposoma/.germline |
+    |-------------------|------------------|--------------------|
+    | identity.md       | 6abf41fe         | 0be9958a ✘         |
+    | binding.claude.md | 224a5767         | 80c9168c ✘         |
+    | binding.codex.md  | f87f1f3c         | cac6a05d ✘         |
+    | cards/consult.md  | 46dcd163         | fbc11800 ✘         |
+    | cards/audit.md    | e517cc86         | e517cc86 ✔         |
+    | cards/sitting.md  | effacaf6         | effacaf6 ✔         |
+    | nablarva.md       | a6498a47         | (on disk) ✔        |
+
+    1. §0's claim "readlink -f ~/.germline → reposoma/.germline" is false today: two different copies.
+    2. ~/.germline is the newer copy (it allows an explicit `card: consult` on a main session,
+       the fix for C.4's gap); reposoma doesn't have that text, but §5 commits reposoma first.
+    3. Tokens don't track edits (inferred: houston): C.1–X.2 quoted 0be9958a/80c9168c/fbc11800/
+       cac6a05d/2ebbb49b; now the 10-10 tokens are back on newer content (the addendum is a6498a47 again,
+       but now says `revision: b57e199` with §4 resolved = C.1's mech-2 fix).
+    4. nablarva.md has uncommitted edits (git M), but its frontmatter says `revision: b57e199`.
+    5. The witnesses in C.3/C.4/X.2 prove the reposoma-era copy was loaded, not the current files.
+
+    Constraints: (1) don't score tests against §1 until you know where ~/.germline points;
+    (2) fix the §1 paths or §0's readlink claim; (3) commit the newer text to reposoma before §5 step 1;
+    (4) decide how tokens are generated; (5) re-run the C/X rows afterwards.
+
+    Not verified: readlink target (no shell) · contents of the nablarva.md diff · whether
+    tokens are hashes or set by hand. Nothing written, no helper spawned.
+
+- witness verdict: ______ (operator)
+
+to-majkee ---
+- Paste the block above at R.1 (around line 532).
+- The real fix is still the open item from my last reply: run readlink -f ~/.germline and pick one copy as the source of truth.
+- If you want Houston to write into files like this one, that's a binding decision: add Edit to the tools and add a landing path for it in addendum §2.
+---
+```
+
+---
+
+## R.2. codex spawn
+
+**SCENARIO**
+```
+- R2: Codex child. Run a fresh codex -C ~/unikuklatrix/nablarva, then ask it to "Delegate to the houston subagent:"card: consult" + "Does the Houston stamp table in TEST-INSTALL §1 match the files on disk? Findings only."
+  - Expect: binding.codex f87f1f3c and the other new tokens in the child's first answer.
+```
+
+**`Houston` | `Cartan`(main) wrote:**
+> Cartan|Houston, this is field for report. 
+```
+Houston · R.2 · 2026-10-13 · Codex child · card: consult
+cwd: /home/hruzam/unikuklatrix/nablarva · host: hruzam-120922
+verdict: stretches
+
+Entry proof — loaded files:
+ /home/hruzam/.germline/agents/houston/identity.md · stamp: 6abf41fe
+ /home/hruzam/.germline/agents/houston/binding.codex.md · stamp: f87f1f3c
+ /home/hruzam/unikuklatrix/nablarva/.germline/agents/houston/nablarva.md · stamp: a6498a47
+ /home/hruzam/.germline/agents/houston/cards/consult.md · stamp: 46dcd163
+
+inferred: houston — §1 matches 3/7 literal table paths.
+Four mismatches (table → disk, under /home/hruzam/reposoma/.germline/agents/houston/):
+ identity.md: 6abf41fe → 0be9958a
+ binding.claude.md: 224a5767 → 80c9168c
+ binding.codex.md: f87f1f3c → cac6a05d
+ cards/consult.md: 46dcd163 → fbc11800
+Matches: cards/audit.md e517cc86; cards/sitting.md effacaf6; project nablarva.md a6498a47.
+
+said: §1 claims ~/.germline and reposoma's paths identify the same files.
+inferred: houston — false on this host. readlink -f /home/hruzam/.germline resolves to itself; it is a directory. Identity inodes differ (8009671 vs 8948923). All six home-directory stamps match the table's older tokens.
+
+Constraint: reconcile §1's tokens and same-file assertion before using §3 token matching as proof.
+Unverified: runtime behavior beyond this invocation's file loading.
+No files changed by Houston.
+```
+---
+
+
+**Copy|PASTE**
+---
+**SCENARIO**
+```
+```
+***prompt 1***
+```
+```
+**`Houston` | main wrote 1:**
+> houston, here is place for self report
+```
+```
+---
+
+# R2. CODEX ROWS BEFORE HOME (cartan cycle 11)
+
+Fresh heads only; record start time and thread IDs. Result fields are for majkee. Every first reply must show the §1 canary as line 1.
+
+| # | how | expect | result |
+|---|---|---|---|
+| P1 | fresh `codex --profile houston -C ~/unikuklatrix/nablarva`; first prompt `card: audit` + a small pointer check (read-only, write nothing) | line 1 = `Route: main session via --profile houston (canary: hp-7c3e91a4).`, then the four stamp lines (identity 6abf41fe · binding.codex 5d08b2e7 · nablarva a6498a47 · cards/audit e517cc86) and effective cwd; operator receipt: launch command + `sha256sum ~/.codex/houston.config.toml` | |
+| C-def | fresh Codex head in nablarva; send `Delegate to the houston subagent:` with NO card line (the head prompt must not mention consult) and a small question; then ask it to write a file | line 1 = `Route: spawned child (canary: hc-b52f08d6).`; defaults to consult (stamps incl. cards/consult 46dcd163); the file request is answered `out of card:` with no approval escalation | |
+| COEX | tunnel (Cartan) thread parked; start a fresh P1-style profile thread, one read-only turn, exit; then the carrier resumes the tunnel thread | no writer-lock conflict on resume; both thread IDs recorded: profile thread `____` · tunnel thread `____` | |

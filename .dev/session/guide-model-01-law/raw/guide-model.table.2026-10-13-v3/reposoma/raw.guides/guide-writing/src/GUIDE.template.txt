@@ -11,7 +11,8 @@ verified: <YYYY-MM-DD>
 # <TITLE>
 
 > **shape: model** — this file is a controller. Find your job in *Functions*, read only that
-> function, and finish there. *Invariants* bind every function. Why it is built this way:
+> function, and finish there. No row fits? Say so and stop — a missing row is a finding, not a
+> reason to read every function. *Invariants* bind every function. Why it is built this way:
 > `BACKGROUND.md` — not needed to act.
 
 `what: <what this guide governs>`

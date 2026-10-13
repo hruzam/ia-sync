@@ -14,6 +14,15 @@ what: proof that the census runs on the real tree, catches planted defects, and 
   (`fm ok · shape model · bg y`, nothing unregistered, nothing dangling). Editing one function's
   `occasion:` without its row → `table-drift` caught.
 
+- **v2 — 2026-10-13 (Wave review, R4):** registration by exact token, not substring. Real-tree output
+  identical to v1. A planted `tunnel/res/run.md` — a suffix of the registered `res/user-run.md` — was
+  missed by v1 and is caught by v2. Stress 5/5 on v2.
+
+- **v3 — 2026-10-13 (Wave verification, F4):** documented checks and limits; mirror banner read
+  from the first non-empty line only; quoted `shape:` recognised; `chapter-of:` value checked
+  against the slug; empty required keys count as missing; an impossible date reads `?date`
+  instead of aborting the run. Real-tree output identical to v2.
+
 ## Flagged rows checked by hand (a census is not truth until checked)
 
 - **meeting** — dangling `participants.md` is real: the file is `res/participant.md`.

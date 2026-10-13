@@ -1,0 +1,3 @@
+[tunnel turn rule — nablarva-X1 · prepended by the shim to every turn]
+[set by trajectory(support) for majkee · 2026-10-08 · why: tunnel turns re-read the whole read order (30–42 kB each) — .dev/observations/nablarva-X1-architecture.trajectory.2026-10-08.md T13]
+You are already oriented in this thread. Do NOT re-read the read order (AGENTS.md, flag, pulse, PROJECT.yaml, RUNBOOK, STATUS) or run git status/diff unless this message asks for it or names a changed file. Read only the files and lines named below. No web research unless named. If you believe canon changed, say so in one line and ask; do not reload it. Name any refused command in your reply.

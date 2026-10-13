@@ -5,16 +5,52 @@ Facts only, never verdicts. Writes nothing; prints markdown to stdout.
 Usage:  python3 guide-census.py [RAW_GUIDES_DIR] [--today YYYY-MM-DD]
 Default RAW_GUIDES_DIR: ~/reposoma/raw.guides
 Law it reads against: raw.guides/guide-writing/GUIDE.md (+ res/slug-directories.md).
+
+Checks — all mechanical:
+  frontmatter   YAML block present; required keys present and non-empty (C4)
+  clock         verified + half_life_days → fresh / STALE (L3)
+  registration  every sibling named by an exact token in ## Manifest or ## Functions (C1)
+  dangling      res/ pointers in GUIDE.md that resolve to no file (C2)
+  chapters      chapter-of: present, and equal to the slug
+  table drift   shape: model guides — Functions rows against occasion: fields (C3)
+  flags         mirror banner (first non-empty line) · non-kebab slug · undeclared dirs · manifest heading
+Assumptions and limits — verify by reading when they matter:
+  frontmatter is line-based `key: value` (no nested YAML); dates are ISO
+  a name mentioned anywhere in the Manifest or Functions section counts as registered, prose included
+  a function listed in both Functions and Manifest is not flagged
+v2 2026-10-13 exact-token registration (Wave R4) · v3 2026-10-13 boundary fixes (Wave F4)
 """
 import re, sys, datetime as dt
 from pathlib import Path
 
 REQ = ("title", "scope", "audience", "machine", "verified")
 SLOTS = ("res", "raw", "src", "ast", "cod")
-MIRROR = re.compile(r"^<!--\s*PUBLISHED MIRROR", re.M)
+MIRROR = re.compile(r"^<!--\s*PUBLISHED MIRROR")
 DATE = re.compile(r"\d{4}-\d{2}-\d{2}")
 RESREF = re.compile(r"(?<![\w/.-])res/([\w.@-]+\.md)")
 KEBAB = re.compile(r"^[a-z0-9]+(-[a-z0-9]+)*$")
+TOKEN = re.compile(r"[\w.@/~-]+")
+
+def named(toks, slug, rel, bare):
+    """exact registration: 'res/x.md' · 'x.md' · 'raw/' (or 'raw/<file>') · '…/<slug>/<rel>'."""
+    for t in toks:
+        if t == rel or (bare and t == bare) or t.endswith(f"/{slug}/{rel}"):
+            return True
+        if rel.endswith("/") and (t.startswith(rel) or f"/{slug}/{rel}" in t):
+            return True
+    return False
+
+def mirrored(text):
+    """a mirror carries the banner as its first non-empty line (guide-publishing); quotes elsewhere don't count."""
+    for ln in text.splitlines():
+        if ln.strip():
+            return bool(MIRROR.match(ln.strip()))
+    return False
+
+def val(fm, key):
+    """a frontmatter value, trimmed and unquoted; '' when absent or empty."""
+    v = (fm or {}).get(key)
+    return v.strip().strip("\"'").strip() if v else ""
 
 def frontmatter(text):
     lines = text.splitlines()
@@ -67,38 +103,44 @@ def table_drift(fbody, res):
     return out
 
 def clock(fm, today):
-    if not fm or "verified" not in fm:
+    v = val(fm, "verified")
+    if not v:
         return "—"
-    d = DATE.search(fm["verified"])
+    d = DATE.search(v)
     if not d:
         return "?date"
-    if "half_life_days" not in fm:
-        return f"{d.group()} no-clock"
     try:
-        limit = int(re.match(r"\d+", fm["half_life_days"]).group())
-    except (AttributeError, ValueError):
+        when = dt.date.fromisoformat(d.group())
+    except ValueError:
+        return f"{d.group()} ?date"
+    hl = val(fm, "half_life_days")
+    if not hl:
+        return f"{d.group()} no-clock"
+    m = re.match(r"\d+", hl)
+    if not m:
         return f"{d.group()} ?hl"
-    age = (today - dt.date.fromisoformat(d.group())).days
+    limit, age = int(m.group()), (today - when).days
     return f"{d.group()} {'STALE' if age > limit else 'fresh'} {age}/{limit}d"
 
 def fm_cell(fm):
     if fm is None:
         return "no-yaml"
-    miss = [k for k in REQ if k not in fm]
+    miss = [k for k in REQ if not val(fm, k)]
     return "ok" if not miss else "−" + ",".join(miss)
 
 def audit_folder(d, today):
     g = d / "GUIDE.md"
     files = sorted(p for p in d.rglob("*.md"))
-    mirror = sum(1 for p in files if MIRROR.search(p.read_text(errors="replace")))
+    mirror = sum(1 for p in files if mirrored(p.read_text(errors="replace")))
     if not g.exists():
         return dict(slug=d.name, kind="mirror-dir" if mirror else "no-GUIDE",
                     note=f"{len(files)} md, {mirror} mirror-bannered")
     text = g.read_text(errors="replace")
     fm = frontmatter(text)
     res = sorted((d / "res").glob("*.md")) if (d / "res").is_dir() else []
-    no_chof = [p.name for p in res
-               if "chapter-of" not in (frontmatter(p.read_text(errors="replace")) or {})]
+    chof = {p.name: val(frontmatter(p.read_text(errors="replace")), "chapter-of") for p in res}
+    no_chof = [n for n, c in chof.items() if not c]
+    bad_chof = [n for n, c in chof.items() if c and c != d.name]
     siblings = [p for p in d.iterdir() if p.name != "GUIDE.md"]
     dirs = [p.name for p in siblings if p.is_dir()]
     head, man, lawful = manifest(text)
@@ -109,13 +151,14 @@ def audit_folder(d, today):
     if siblings and man is None:
         unreg = [f"(no manifest section: {len(siblings)} siblings)"]
     elif man is not None:
+        toks = {t.rstrip(".,;:") for t in TOKEN.findall(man)}
         for p in siblings:
             if p.is_dir() and p.name == "res":
-                unreg += [f"res/{c.name}" for c in res if c.name not in man]
+                unreg += [f"res/{c.name}" for c in res if not named(toks, d.name, f"res/{c.name}", c.name)]
             elif p.is_dir():
-                if f"{p.name}/" not in man:
+                if not named(toks, d.name, f"{p.name}/", None):
                     unreg.append(p.name + "/")
-            elif p.name not in man:
+            elif not named(toks, d.name, p.name, p.name):
                 unreg.append(p.name)
     dangling = sorted({r for r in RESREF.findall(text) if not (d / "res" / r).exists()})
     flags = []
@@ -123,7 +166,9 @@ def audit_folder(d, today):
         flags.append(f"mirror×{mirror}")
     if not KEBAB.match(d.name):
         flags.append("non-kebab")
-    if (fm or {}).get("shape") == "model":
+    if bad_chof:
+        flags.append("chapter-of≠slug:" + ",".join(bad_chof))
+    if val(fm, "shape") == "model":
         drift = table_drift(fbody, res)
         if drift:
             flags.append("table-drift:" + ",".join(drift))
@@ -134,7 +179,7 @@ def audit_folder(d, today):
         flags.append("dirs:" + ",".join(other))
     return dict(
         slug=d.name, kind="folder", lines=len(text.splitlines()), fm=fm_cell(fm),
-        shape=(fm or {}).get("shape", "—"), clock=clock(fm, today),
+        shape=val(fm, "shape") or "—", clock=clock(fm, today),
         res=f"{len(res)}" + (f" (✗chapter-of {len(no_chof)})" if no_chof else ""),
         side=" ".join(s for s in SLOTS[1:] if s in dirs) or "—",
         jnl="y" if any(p.name.startswith("dev-journal") for p in siblings) else "—",
@@ -174,7 +219,7 @@ def main(argv):
         fm = frontmatter(t)
         toks = set(re.split(r"[-.]", p.stem))
         overlap = sorted(n for n in names if n in toks or n == p.stem)
-        flags = (["mirror"] if MIRROR.search(t) else []) + \
+        flags = (["mirror"] if mirrored(t) else []) + \
                 ([f"name-overlap:{','.join(overlap)}/"] if overlap else [])
         print(f"| {p.name} | {len(t.splitlines())} | {fm_cell(fm)} | {clock(fm, today)} "
               f"| {' '.join(flags) or '—'} |")

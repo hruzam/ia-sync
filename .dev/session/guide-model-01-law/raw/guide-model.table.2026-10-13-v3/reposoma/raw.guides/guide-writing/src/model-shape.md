@@ -2,7 +2,7 @@
 title: model-shape — when a guide becomes a controller with functions; how to write, convert and prove one
 chapter-of: guide-writing
 state: DRAFT — gavel text for guide-model-01-law · staged in guide-writing/src/ · lands inside guide-writing (the fold distributes it into controller + functions)
-verified: 2026-10-12
+verified: 2026-10-13
 by: claude.ai seat (Symmetry project thread) from majkee's brief, 2026-10-12
 ---
 
@@ -46,7 +46,8 @@ In this order (copy `ast/GUIDE.template.txt`):
 
 1. **Frontmatter** — the five required keys + `shape: model` (+ knowledge-card extras if volatile).
 2. **Reader banner** — fixed text: this file is a controller; find your job in *Functions*, read
-   only that function, finish there; *Invariants* bind every function; the why is in `BACKGROUND.md`.
+   only that function, finish there; no row fits → say so and stop (a missing row is a finding, not
+   a reason to read every function); *Invariants* bind every function; the story is in `BACKGROUND.md`.
 3. **`what:` / `not:`** — what the guide governs; what it never owns, and where that lives.
 4. **Invariants** — rules every function obeys. A rule whose breach is costly or irreversible
    lives here, never only in a function: **safety lines load eagerly, procedure loads lazily.**
@@ -85,6 +86,9 @@ Copy `ast/BACKGROUND.template.txt`.
   never act from it.
 - Holds what a conversion removes from procedure: why the guide exists, decisions with reasons,
   options rejected, the arc, the incident behind a rule.
+- **Never holds what the job needs.** Understanding the reader needs to do the job right — a reason
+  that decides between options, or covers the unexpected — stays on the operational path, beside
+  its rule, as a short clause. BACKGROUND keeps the history, not the working reason.
 - **Tells and links, never copies.** Its own prose for the arc; pointers into `raw/` (briefs,
   evidence, session stories), `src/` (staging in progress), `dev-journal.<slug>.md` (maintenance).
   That material already exists in those slots — BACKGROUND is the one door a human can open.
@@ -103,9 +107,9 @@ Copy `ast/BACKGROUND.template.txt`.
 1. **Occasions first.** Read `GUIDE.md` and every chapter; list the jobs readers come for, with
    evidence (headings, `→ chapter` pointers, journal entries showing use). One occasion → stop: flat.
 2. **Sort every paragraph** to one home: invariant → controller · shared core → controller ·
-   occasion procedure → function · lookup → reference chapter · why and story → BACKGROUND ·
-   field observation → `raw/` or the journal · dead → retired with a dated line in BACKGROUND or
-   the journal. Nothing leaves silently.
+   occasion procedure → function · lookup → reference chapter · a reason the job needs → beside
+   its rule, one clause · history and story → BACKGROUND · field observation → `raw/` or the
+   journal · dead → retired with a dated line in BACKGROUND or the journal. Nothing leaves silently.
 3. **Write in this order:** Functions table → functions → controller → BACKGROUND. Workpieces stage
    in the slug's `src/` (outbound — slug-directories law) and leave it when they land.
 4. **Collapse map:** `old location → new home | retired (why)`, one line per source paragraph. It is
@@ -150,7 +154,8 @@ reports the ones marked ✓; the rest are judgment.
 - **K1 over-split** — functions never reached alone; a guide small enough to grep, split anyway.
 - **K2 under-split** — several occasions in one body; every reader wades through jobs that are not
   theirs.
-- **K3 teaching bloat** — story, rationale and incident narrative inside procedure (→ BACKGROUND).
+- **K3 teaching bloat** — history, historical rationale and incident narrative inside procedure
+  (→ BACKGROUND). A reason the job needs is not K3: it stays beside its rule.
 - **K4 embedded reference** — lookup material longer than the procedure it serves, inline.
 - **K5 prose for command** — "adjust as needed" where an exact command and its expected output
   belong.
@@ -159,7 +164,8 @@ reports the ones marked ✓; the rest are judgment.
 
 - The listing shows `shape` beside title · machine · verified (model only; absent = flat).
 - `/guide <slug>` presents `GUIDE.md` verbatim — for a model guide, the controller. The reader then
-  reads only the function whose row matches the job.
+  reads only the function whose row matches the job. If no row fits, it says so and stops — it
+  does not read every function.
 - `/guide <slug> <fn>` reads one function — the resolver is unchanged.
 - `/guide <slug> background` reads `BACKGROUND.md`; never served unasked. `background` is therefore
   a reserved word: no `res/` chapter is named `background*` — the keyword would shadow it.
@@ -197,3 +203,5 @@ session `guide-model-01-law`.
 - The defect list: practitioner write-ups on progressive disclosure and agent instruction files
   (ardalis.com, mindstudio.ai, synthesiscoding.org, agentpatterns.ai, aihero.dev, wordman.dev,
   blakecrosley.com; arXiv 2607.17598), read 2026-10-12 and folded into house vocabulary.
+- Review: Wave's loop with majkee, 2026-10-13 — R1 (what the job needs stays operational) and R3
+  (the no-match clause) folded here; record in `raw/` beside Symmetry's countersign.

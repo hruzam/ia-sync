@@ -25,6 +25,7 @@ germline-01 (design `.dev/session/germline-01-builds-and-deploy/raw/design.globa
   on the host → `rm ~/.germline` (link only, never `rm -r`) → `bash ~/ia-sync/deploy.sh --germline-only --dry-run` →
   `bash ~/ia-sync/deploy.sh --germline-only` → verify Houston stamps are readable at `~/.germline`.
 - **status:** **OPEN** — office migration pending, home migration pending
+- **2026-10-14 · atlas-ui (via vector) — office migration DONE (verified): `~/.germline` is a real dir, byte-identical to `~/ia-sync/germline` @ e3231c3. Home still unchecked. Status → office done · home pending. Card: _cold-start/issues/ISS.germline-migration-tail.2026-10-14.md**
 
 ---
 

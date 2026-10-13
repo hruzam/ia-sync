@@ -3,7 +3,7 @@ title: write-background — how to write and keep a guide's BACKGROUND.md (the s
 chapter-of: guide-writing
 occasion: "write or extend a guide's BACKGROUND.md"
 state: DRAFT — addendum to model-shape.md · staged in guide-writing/src/ · lands as res/write-background.md in guide-model-01-law
-verified: 2026-10-12
+verified: 2026-10-13
 ---
 
 # write-background — the BACKGROUND.md standard
@@ -39,6 +39,7 @@ Never because a template exists, or because a guide feels incomplete without one
 | a decision about the guide, with its reason | BACKGROUND · a Decisions row |
 | an option considered and rejected | BACKGROUND · that row's *instead of* |
 | the incident behind a rule | BACKGROUND · arc — the **rule itself** stays in `GUIDE.md` or its function |
+| a reason the job needs — to choose, or to handle the unexpected | `GUIDE.md` or the function, beside its rule, as a short clause — never only here |
 | verbatim evidence, receipts, session stories | `raw/` — BACKGROUND points |
 | a change being prepared | `src/` — BACKGROUND points while it is open |
 | maintenance entries — what changed, when | `dev-journal.<slug>.md` — BACKGROUND points |
@@ -84,7 +85,7 @@ test.
 ## Review checks — the writer before commit, an auditor on a walk
 
 1. The `authority:` line is present.
-2. No rule or command lives only here.
+2. No rule, command, or reason the job needs lives only here.
 3. Nothing is copied from `raw/`, `src/` or the journal — it is pointed to.
 4. Exactly the three sections.
 5. Every Decisions row has a date and a reason; rejected options are named wherever there were any.

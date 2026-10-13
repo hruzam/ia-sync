@@ -3,7 +3,7 @@ title: guide-writing — background
 scope: guide-writing
 audience: human first — agents grep it for "why", never act from it
 authority: none — explains, never legislates; GUIDE.md wins any conflict
-verified: 2026-10-12
+verified: 2026-10-13
 seed: DRAFT — staged in guide-writing/src/ · majkee confirms each Decisions row before it lands as guide-writing/BACKGROUND.md (guide-model-01-law) · the writer then adds what the collapse map retires into it
 ---
 
@@ -50,9 +50,12 @@ story out — this file is where the story goes.
 | 2026-10-12 | split by occasion of use, never by size | clean context is the reason to split; finishing the job outranks token thrift | splitting long guides by size or token budget |
 | 2026-10-12 | a guide's story gets one door — `BACKGROUND.md`, no authority | the collapse to a controller removes the *why*; a human needs one door into `raw/`, `src/` and the journal | story left inside procedure; repurposing GLOSS, which explains a run |
 | 2026-10-12 | the door is named BACKGROUND | says context-for-understanding with no authority to act; collides with nothing in the tree | README — already used in the tree, and read as "start here, act from me"; context — collides with the live-window sense and is broad enough to become a junk drawer; story — undersells the job |
+| 2026-10-12 | `background` is a reserved chapter word | `/guide <slug> background` serves `BACKGROUND.md`; a chapter named `background*` would be shadowed | — |
+| 2026-10-13 | `BACKGROUND.md` never holds what the job needs | an agent arriving with a job must find everything the job needs on the operational path (Wave review, R1) | necessary understanding left in an optional background read |
 
 ## Where the material lives
 
 - `~/ia-sync/_staging/dev-journal.guides.md` — the trace of the 2026-08-20 gavel (session `REP.Offc.Atlas-fable.guides`)
 - `res/slug-directories.md` — the 2026-09-04 fold and the recorded `raw/` ↔ `src/` lean
+- `raw/` — Wave's 2026-10-13 review loop and Symmetry's countersign, once majkee places them there
 - `~/ia-sync/.dev/session/guide-model-01-law/` and `…/guide-model-02-audit/` — the model-shape sessions, while their beds exist

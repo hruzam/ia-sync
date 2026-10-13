@@ -19,7 +19,17 @@ ROUTE="spawn @delta / @vector / @trajectory for this; carrier Bash is bookkeepin
 deny() { echo "bash-whitelist: $1 — $ROUTE" >&2; exit 2; }
 
 command -v jq >/dev/null 2>&1 || deny "jq missing, cannot read the command (fail closed)"
-CMD=$(jq -r '.tool_input.command // empty' 2>/dev/null) || deny "unreadable hook input (fail closed)"
+INPUT=$(cat)                                   # capture stdin ONCE — jq must not consume it twice
+
+# ── subagent exemption ──────────────────────────────────────────────────────
+# This frontmatter hook (wired only on oraculum) fires on the carrier AND on every subagent oraculum
+# spawns — undocumented inheritance, observed 2026-10-13 (delta/trajectory Bash denied). Judge the
+# carrier ONLY: subagents are bound by their own tools: lists, not this economy fence. agent_id is
+# present in a subagent's hook input, absent on the main carrier thread → non-empty agent_id = spawn.
+# See patch.hook-subagent-exempt.atlas.2026-10-13.md (risk §6: spawns gain fully unrestricted Bash).
+[ -n "$(jq -r '.agent_id // empty' 2>/dev/null <<< "$INPUT")" ] && exit 0
+
+CMD=$(jq -r '.tool_input.command // empty' 2>/dev/null <<< "$INPUT") || deny "unreadable hook input (fail closed)"
 [ -z "$CMD" ] && exit 0
 
 # ── pass 1: quote-aware mask ────────────────────────────────────────────────
@@ -86,6 +96,21 @@ for seg in "${SEGS[@]}"; do
     ((k++))
   done
   [ ${#argv[@]} -eq 0 ] && continue
+
+  # Peel a leading tunnel env prefix so `TUNNEL_CODEX_TIMEOUT=1800 zsh …tunnel… ask "…"`
+  # resolves to the helper, not to the assignment word (tunnel protocol Rule 4). Only the
+  # two tunnel vars, each shape-checked; any other prefix is left in place → vetted/denied
+  # normally below, so this cannot widen the whitelist.
+  e=0
+  while [ $e -lt ${#argv[@]} ]; do
+    case "${argv[e]}" in
+      TUNNEL_CODEX_TIMEOUT=*) [[ ${argv[e]} =~ ^TUNNEL_CODEX_TIMEOUT=[0-9]+$ ]] || break; ((e++)) ;;
+      TUNNEL_CODEX_STATE=*)   [[ ${argv[e]} == TUNNEL_CODEX_STATE=/*tunnel.state.json ]] || break; ((e++)) ;;
+      *) break ;;
+    esac
+  done
+  [ $e -gt 0 ] && argv=("${argv[@]:e}")
+  [ ${#argv[@]} -eq 0 ] && continue
   cmd=${argv[0]}
 
   if [ ${#redir_md[@]} -gt 0 ] && [[ $cmd != echo && $cmd != printf ]]; then
@@ -112,8 +137,13 @@ for seg in "${SEGS[@]}"; do
     ls|cat|head|tail|wc|grep|cmp|diff|sha256sum|cd|pwd|date|hostname|jq|echo|printf) ;;
     zsh)
       case "${argv[1]}" in
-        '~/.config/zsh/ai/tunnel-codex.zsh'|'$HOME/.config/zsh/ai/tunnel-codex.zsh'|"$home_tunnel") ;;
+        '~/.config/zsh/ai/tunnel-codex.zsh'|'$HOME/.config/zsh/ai/tunnel-codex.zsh'|'/home/hruzam/.config/zsh/ai/tunnel-codex.zsh'|"$home_tunnel") ;;
         *) deny "zsh ${argv[1]:-<none>} (only the tunnel helper)" ;;
+      esac
+      case "${argv[2]}" in
+        ask|send)    [ ${#argv[@]} -eq 4 ] || deny "tunnel ${argv[2]} takes exactly one quoted argument" ;;
+        read|status) [ ${#argv[@]} -eq 3 ] || deny "tunnel ${argv[2]} takes no argument" ;;
+        *) deny "tunnel verb '${argv[2]:-<none>}' — only ask/send/read/status (open/close/resume/steer stay carrier/majkee)" ;;
       esac ;;
     export)
       [ ${#argv[@]} -eq 2 ] && [[ ${argv[1]} == TUNNEL_CODEX_STATE=* ]] || deny "export (only TUNNEL_CODEX_STATE=…)" ;;
