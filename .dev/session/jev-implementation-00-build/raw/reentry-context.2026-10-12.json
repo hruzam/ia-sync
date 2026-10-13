@@ -1,0 +1,153 @@
+{
+  "schema": "codex-context-capture/v1",
+  "captured_at": "2026-10-12T23:53:29+02:00",
+  "host": {
+    "hostname": "hruzam-120922",
+    "logical": "office",
+    "platform": "Linux-7.1.3-1-MANJARO-x86_64-with-glibc2.44",
+    "shell": "/usr/bin/zsh"
+  },
+  "tools": {
+    "codex": {
+      "path": "/home/hruzam/.local/bin/codex",
+      "version": "codex-cli 0.162.0"
+    },
+    "git": {
+      "path": "/usr/bin/git",
+      "version": "git version 2.55.0"
+    },
+    "rg": {
+      "path": "/home/hruzam/.codex/packages/app-server-daemon/releases/0.162.1-x86_64-unknown-linux-musl/codex-path/rg",
+      "version": "ripgrep 15.2.0 (rev e89fff89ac)\n\nfeatures:+pcre2\nsimd(compile):+SSE2,-SSSE3,-AVX2\nsimd(runtime):+SSE2,+SSSE3,+AVX2\n\nPCRE2 10.45 is available (JIT is available)"
+    },
+    "python3": {
+      "path": "/usr/bin/python3",
+      "version": "Python 3.14.7"
+    },
+    "jq": {
+      "path": "/usr/bin/jq",
+      "version": "jq-1.8.2"
+    }
+  },
+  "cwd": "/home/hruzam/ia-sync",
+  "instructions": [
+    "/home/hruzam/.codex/AGENTS.md",
+    "/home/hruzam/ia-sync/AGENTS.md",
+    "/home/hruzam/ia-sync/CLAUDE.md"
+  ],
+  "repository": {
+    "root": "/home/hruzam/ia-sync",
+    "branch": "main",
+    "head": "0a1bff9483ea362a2b60828afb650399fbd65128",
+    "upstream": "origin/main",
+    "tracked_state": "dirty",
+    "status": [
+      "M AGENTS.md",
+      " M SYNC_DISCIPLINE.md",
+      " M claude/agents/houston.md",
+      " M claude/skills/chatbot-port/SKILL.md",
+      " M codex/skills/chatbot-port/SKILL.md",
+      " M deploy.sh",
+      " M journal.host-cleanup.md",
+      "?? .dev/session/germline-01-builds-and-deploy/",
+      "?? .dev/session/jev-implementation-00-build/",
+      "?? .dev/session/tunnel-02-programmatic-scaling/raw/atlas-ui.return.2026-10-03.md",
+      "?? .dev/session/tunnel-02-programmatic-scaling/raw/atlas-ui/",
+      "?? .dev/session/tunnel-02-programmatic-scaling/raw/brief.atlas-ui.2026-10-03.md",
+      "?? .dev/session/tunnel-02-programmatic-scaling/raw/prompt.trajectory.2026-10-03.md",
+      "?? codex/agents/houston.toml",
+      "?? codex/profiles/",
+      "?? germline/"
+    ],
+    "ignored_project_state": [
+      "?? .dev/session/germline-01-builds-and-deploy/",
+      "?? .dev/session/jev-implementation-00-build/",
+      "?? .dev/session/tunnel-02-programmatic-scaling/raw/atlas-ui.return.2026-10-03.md",
+      "?? .dev/session/tunnel-02-programmatic-scaling/raw/atlas-ui/",
+      "?? .dev/session/tunnel-02-programmatic-scaling/raw/brief.atlas-ui.2026-10-03.md",
+      "?? .dev/session/tunnel-02-programmatic-scaling/raw/prompt.trajectory.2026-10-03.md",
+      "!! .dev/session/jev-implementation-00-build/raw/jev-events.example.jsonl",
+      "!! .dev/session/jev-implementation-00-build/raw/majkee-photos.2026-10-03/p0.jev-implementation.creative-buffer-loop.jpg",
+      "!! .dev/session/jev-implementation-00-build/raw/majkee-photos.2026-10-03/p1.jev-implementation.protocol-1-shuttle.jpg",
+      "!! .dev/session/jev-implementation-00-build/raw/majkee-photos.2026-10-03/p2.jev-implementation.protocol-2-placement.jpg",
+      "!! .dev/session/jev-implementation-00-build/raw/majkee-photos.2026-10-03/p3.jev-implementation.harness-shape-challenger.jpg",
+      "!! .dev/session/jev-implementation-00-build/raw/majkee-photos.2026-10-03/p4.jev-implementation.math-conflict-judgement.jpg",
+      "!! .dev/session/jev-implementation-00-build/raw/majkee-photos.2026-10-03/p5.jev-implementation.cascade-schema-map.jpg",
+      "!! .dev/session/jev-implementation-00-build/raw/majkee-photos.2026-10-03/s1.study.advisor-agent-stack.jpg",
+      "!! .dev/session/jev-implementation-00-build/raw/majkee-photos.2026-10-03/s2.study.jev-as-a-judge.post-1.jpg",
+      "!! .dev/session/jev-implementation-00-build/raw/majkee-photos.2026-10-03/s3.study.jev-as-a-judge.post-2.jpg",
+      "!! .dev/session/jev-implementation-00-build/raw/majkee-photos.2026-10-03/s4.study.jev-engineering-coding-agents.jpg",
+      "!! .dev/session/jev-implementation-00-build/raw/majkee-photos.2026-10-03/t1.tunnel.protocol-1-two-hemispheres.jpg",
+      "!! .dev/session/jev-implementation-00-build/raw/majkee-photos.2026-10-03/t2.tunnel.protocol-2-claude-head-codex-workers.jpg",
+      "!! .dev/session/jev-implementation-00-build/raw/majkee-photos.2026-10-03/t3.tunnel.protocol-3-tester-hands-on.jpg",
+      "!! .dev/session/tunnel-02-programmatic-scaling/tunnel.state.json",
+      "!! .dev/session/tunnel-03-feedback-upgrade/tunnel.fork.state.json",
+      "!! .dev/session/tunnel-03-feedback-upgrade/tunnel.state.json",
+      "!! .dev/session/tunnel-upgrade-01-parametrization/raw/"
+    ],
+    "unstaged_stat": [
+      "AGENTS.md                           |   9 +-",
+      " SYNC_DISCIPLINE.md                  |   4 +-",
+      " claude/agents/houston.md            | 154 +++++++-------------------------",
+      " claude/skills/chatbot-port/SKILL.md |   4 +-",
+      " codex/skills/chatbot-port/SKILL.md  |   2 +-",
+      " deploy.sh                           | 171 ++++++++++++++++++++++++++++++++++--",
+      " journal.host-cleanup.md             |  33 +++++++",
+      " 7 files changed, 240 insertions(+), 137 deletions(-)"
+    ],
+    "staged_stat": [],
+    "recent_commits": [
+      {
+        "sha": "0a1bff9483ea362a2b60828afb650399fbd65128",
+        "date": "2026-10-09T00:31:24+02:00",
+        "author": "hruzam",
+        "subject": "tunnel: tun fork (clone bound thread → new id on stdout) + tn-check/tn-threads accept 0-turn forks; selftest 139/139; backlog F20"
+      },
+      {
+        "sha": "bf21d30f9e6f5e156d7d71a0fec67e3fe7938543",
+        "date": "2026-10-09T00:20:10+02:00",
+        "author": "hruzam",
+        "subject": "tunnel: turn overrides (open --override model/effort/approvals…, persisted per thread) + tun compact (thread/compact/start, no TUI); selftest 134/134; backlog F18/F19, F12 answered"
+      },
+      {
+        "sha": "f2304d948fc45af62745410fa39d72d577492559",
+        "date": "2026-10-08T22:48:34+02:00",
+        "author": "hruzam",
+        "subject": "tunnel: explorers tn-beds / tn-threads + @N row addressing (tn-bed N, tn-tid N); backlog F17"
+      },
+      {
+        "sha": "d6e8f5a75dc1ccd47e61c9df9aebccd8d4c305d1",
+        "date": "2026-10-08T22:42:21+02:00",
+        "author": "hruzam",
+        "subject": "tunnel: tn-back (wait writer-lock holder → resume → check) + tn-rebind (successor: carry intent, lineage, restore on failure); backlog F16a"
+      },
+      {
+        "sha": "134b08f9a18fa83865f5a995a51102afa0c989a6",
+        "date": "2026-10-08T21:48:07+02:00",
+        "author": "hruzam",
+        "subject": "tunnel: tn-check — read-only READY/BUSY/HELD/BROKEN verdict (vault or --id successor check); tunnel-03 backlog F12–F16"
+      }
+    ]
+  },
+  "codex_session": {
+    "session_id": "01a0f5b9-b2ae-7392-af89-f434d5536d88",
+    "rollout": "/home/hruzam/.codex/sessions/2026/10/01/rollout-2026-10-01T06-29-43-01a0f5b9-b2ae-7392-af89-f434d5536d88.jsonl",
+    "started_at": "2026-10-01T04:29:43.027Z",
+    "originator": "codex-tui",
+    "cli_version_at_start": "0.159.3",
+    "source": "vscode",
+    "model_provider": "openai",
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "transport_candidate": null,
+  "safety": {
+    "excluded": [
+      "environment values except MACHINE_NAME and SHELL",
+      "credentials and authentication state",
+      "remote URLs",
+      "session transcript content",
+      "database contents"
+    ]
+  }
+}

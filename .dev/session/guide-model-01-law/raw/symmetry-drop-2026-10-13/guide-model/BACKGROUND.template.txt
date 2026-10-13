@@ -1,0 +1,28 @@
+---
+title: <slug> — background
+scope: <slug>
+audience: human first — agents grep it for "why", never act from it
+authority: none — explains, never legislates; GUIDE.md wins any conflict
+verified: <YYYY-MM-DD>
+---
+
+# <slug> — background
+
+`what: the story behind <slug> — why it exists, what was decided and why, what was rejected, how it got here.`
+`not: procedure (→ GUIDE.md, res/) · evidence (→ raw/) · staging (→ src/) · maintenance log (→ dev-journal.<slug>.md)`
+`how to treat: tell the arc in your own words and link the material — never copy it. Decisions are append-only,`
+`newest last; a reversal is a new row. When a conversion removes a paragraph of "why" from the guide, it lands here, dated.`
+
+## The arc
+
+<a few paragraphs: the problem, what was tried, what held>
+
+## Decisions
+
+| date | decision | why | instead of |
+|---|---|---|---|
+
+## Where the material lives
+
+- `raw/<…>` — <briefs, evidence, session stories>
+- `dev-journal.<slug>.md` — <maintenance history>

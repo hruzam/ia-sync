@@ -1,0 +1,21 @@
+{
+  "published_at": "2026-10-13T00:43:57.703797+02:00",
+  "journal": "/home/hruzam/reposoma/.majkee/journal/2026-10-13.md",
+  "chapter": "1.1 JEV PLAN",
+  "journal_before_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "append_sha256": "b5bfd92ce54507d17aeb2c7f01df9729d0b26079ef6f82efc65ba8bccbcd507b",
+  "journal_after_sha256": "b5bfd92ce54507d17aeb2c7f01df9729d0b26079ef6f82efc65ba8bccbcd507b",
+  "preserved_prefix_bytes": 0,
+  "cards": [
+    {
+      "path": "/home/hruzam/reposoma/_cold-start/card/CS.jev-implementation-00-build.cartan-head.2026-10-12.md",
+      "sha256": "b06afd132c894201cca60644c521879c78ae3eaf0765491c0397ce0736de8f63"
+    },
+    {
+      "path": "/home/hruzam/reposoma/_cold-start/card/CS.jev-implementation-00-build.flight-carrier.2026-10-12.md",
+      "sha256": "c777af727fc41de461435ed58ca1489ec7132ddfe30397a365d9a558e3ae1a40"
+    }
+  ],
+  "commit": "none",
+  "tunnel_enabled": false
+}

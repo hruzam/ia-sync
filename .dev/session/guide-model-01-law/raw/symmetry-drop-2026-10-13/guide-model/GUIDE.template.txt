@@ -1,0 +1,41 @@
+---
+title: <slug> — <one line>
+scope: <slug>
+shape: model
+audience: <operator | agent | builder — combine with +>
+machine: <office | home | both>
+verified: <YYYY-MM-DD>
+# volatile content (versions, flags, vendor features)? add: half_life_days · recheck · verify_cmd
+---
+
+# <TITLE>
+
+> **shape: model** — this file is a controller. Find your job in *Functions*, read only that
+> function, and finish there. *Invariants* bind every function. Why it is built this way:
+> `BACKGROUND.md` — not needed to act.
+
+`what: <what this guide governs>`
+`not: <what it never owns — and where that lives>`
+
+## Invariants
+
+- <a rule every function obeys — every rule whose breach is costly or irreversible lives here>
+
+## Functions
+
+| when you need to … | read | you get |
+|---|---|---|
+| <the reader's job, in their words — not the topic> | `res/<fn>.md` | <the result> |
+
+## Core
+
+<optional: branch-free steps every function assumes — delete this section if there are none>
+
+## Manifest
+
+Functions are registered by the table above — not repeated here.
+
+| file | class | role |
+|---|---|---|
+| `BACKGROUND.md` | background | the story — why, decisions, arc (no authority) |
+| `raw/` | side-directory | <inbound evidence, session stories> |

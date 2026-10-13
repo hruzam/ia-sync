@@ -116,11 +116,12 @@ not a per-session ritual. Concrete triggers:
 | zellij | present (0.44.3) | present (0.44.3) — confirmed 2026-09-03 |
 | tmux | present | present (3.7c) — confirmed 2026-09-18 (was recorded 3.7b 2026-09-04) |
 
-## `~/.germline` — symlink, never a deploy target (gaveled 2026-09-25)
+## `~/.germline` — a deploy target (germline-01, majkee GO 2026-10-12; supersedes the 2026-09-25 symlink rule)
 
-`~/.germline` → `~/reposoma/.germline` on both hosts: the canonical vendor-blind source
-(`agents/<slug>/identity.md` · `skills/skill.<slug>.md`). Renderings still go table → `deploy.sh` →
-live; `deploy.sh` has no germline leg and must not get one. Rule + layout: `~/reposoma/.germline/README.md`.
+The global germline source is authored here: `~/ia-sync/germline/` (`agents/<slug>/identity.md` ·
+`skills/skill.<slug>.md`). `deploy.sh` copies it to a real host-local `~/.germline/` (never a symlink);
+`<project>/.germline/` stays that project's separate layer. The leg fails closed while `~/.germline` is
+still the old symlink (manual per-host migration — `journal.host-cleanup.md`). Rule + layout: `germline/README.md`.
 
 ## Which host am I on? (resolve before planning — verified 2026-08-24)
 

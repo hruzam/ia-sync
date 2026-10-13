@@ -17,7 +17,7 @@ edit in ~/ia-sync  →  commit  →  push
 ```
 
 Consequence: **`sync.sh` (the harvest leg) is RETIRED** — see its section below.
-The live trees (`~/.claude/`, `~/.config/zsh/`, `~/.gemini/`) are deployed copies.
+The live trees (`~/.claude/`, `~/.config/zsh/`, `~/.gemini/`, `~/.germline/`) are deployed copies.
 `zsh/AGENTS.md` has said it since before the burn: *"Truth is living THERE: `~/ia-sync`
 (the surgical table). Cut in ia-sync, deploy outward."* This file now agrees.
 
@@ -89,7 +89,7 @@ bulk harvest.
 ## Authoring surface rule (inverted 2026-07-31 — this replaces the old rule verbatim)
 
 **`claude/`, `zsh/`, `gemini/` inside this repo ARE the authoring surfaces.**
-The live machine trees are deploy targets, not sources.
+The live machine trees (incl. `~/.germline/`, source `germline/`) are deploy targets, not sources.
 
 - **Author here.** Edit `ia-sync/claude/agents/<agent>.md`, `ia-sync/zsh/<file>.zsh`,
   then deploy. The old rule ("author in live files, sync.sh carries it in") is dead.

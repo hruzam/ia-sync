@@ -10,6 +10,39 @@
 
 ---
 
+## OFFICE — 2026-10-12 · Trajectory · global germline source moved to ia-sync (copy); manual host migration pending
+
+germline-01 (design `.dev/session/germline-01-builds-and-deploy/raw/design.global-germline-deploy.oraculum.2026-10-12.md`, majkee GO 2026-10-12):
+
+- **source:** `~/ia-sync/germline/` is now the global germline source — a COPY, byte-identical except germline/README.md (rewritten for the new source/deploy rule), of `~/reposoma/.germline/`
+  (working tree incl. uncommitted files). Nothing under `~/reposoma/.germline` was moved, edited or deleted.
+- **deploy:** `deploy.sh` gained `deploy_germline()` (`--germline-only`, `--adopt-germline`; runs first in a full deploy,
+  fails closed on a symlinked `~/.germline`, prints a ghost inventory) and an allowlisted Codex leg
+  `codex/profiles/houston.config.toml` → `~/.codex/houston.config.toml` (this supersedes "NOT in the deploy map" below).
+- **host state:** `~/.germline` is STILL the symlink → `~/reposoma/.germline` on office; home unchecked. Until migrated, a
+  full `deploy.sh` prints the germline HOLD and exits 3 (the other legs still run).
+- **manual migration, per host (majkee):** `readlink -f ~/.germline` → commit reposoma `.germline` (and ia-sync) → pull both
+  on the host → `rm ~/.germline` (link only, never `rm -r`) → `bash ~/ia-sync/deploy.sh --germline-only --dry-run` →
+  `bash ~/ia-sync/deploy.sh --germline-only` → verify Houston stamps are readable at `~/.germline`.
+- **status:** **OPEN** — office migration pending, home migration pending
+
+---
+
+## OFFICE — 2026-10-09 · Delta · Houston Codex profile — planned install-for-test (office)
+
+Planned install-for-test for nablarva X1 (check-3 follow-up). To be copied by hand by majkee, host-local only:
+
+- **path:** `~/.codex/houston.config.toml` (Codex main-session profile for Houston) — **not present yet**
+  (checked 2026-10-10 by atlas(harness): no such file on office)
+- **host:** office (hruzam-120922) only. NOT in the ia-sync deploy map. — superseded 2026-10-12: now deployed by deploy.sh (allowlisted leg).
+- **source (after the final fold 2026-10-10):** `~/ia-sync/codex/profiles/houston.config.toml` (thin loader
+  wrapper; replaces the earlier project render `nablarva/.codex/profiles/houston-nablarva.config.toml`, now archived)
+- **how:** `~/ia-sync/.dev/session/germline-01-builds-and-deploy/raw/TEST-INSTALL.houston.2026-10-10.md`
+- **disposition:** keep after a witnessed PASS, or remove (rollback in the same file)
+- **status:** **OPEN** — planned install; becomes "installed" only when majkee's `cp` actually happens
+
+---
+
 ## HOME — 2026-10-06 · Cartan · office recovered over SSH without reboot
 
 Majkee reported office's screen/input fully frozen and authorized remote process recovery.

@@ -1,0 +1,24 @@
+---
+title: <fn> — <one line>
+chapter-of: <slug>
+occasion: "<the exact 'when you need to …' text of this function's row in GUIDE.md>"
+# volatile? add: verified · half_life_days
+---
+
+# <fn>
+
+`gives: <the result this function delivers>`
+`assumes: the Invariants of <slug>/GUIDE.md — already read`
+
+## Steps
+
+1. `<exact command>` → <what success looks like>
+2. <…>
+
+## When it fails
+
+- <condition or exit code> → <the specific action — never a generic retry>
+
+## Next
+
+- <optional: the Functions row that usually follows — a pointer, never a preload>

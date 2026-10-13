@@ -16,21 +16,45 @@ if [ -z "$MACHINE" ] && command -v jq >/dev/null && [ -f "$REPO/machines.json" ]
 fi
 MACHINE="${MACHINE:-$(hostname -s)}"
 
-# --dry-run / -n: report every change without writing anything. --codex-only
-# selects the portable Codex leg, so unrelated live runtime drift is not touched.
-# rsync legs get -n -i; cp legs report via copy_file().
+# --dry-run / -n: report every change without writing anything. rsync legs get
+# -n -i; cp legs report via copy_file().
+# Scope modes (mutually exclusive — a contradictory pair exits 2):
+#   (none)           full deploy. The global germline leg (~/.germline) runs FIRST,
+#                    because the Claude/Codex Houston wrappers load from it.
+#   --germline-only  only the global germline leg (germline-01, 2026-10-12).
+#   --codex-only     only the portable Codex leg (incl. the allowlisted Houston profile).
+#                    It does NOT refresh ~/.germline — run --germline-only for that.
+# --adopt-germline   germline modes only: allow the first deploy over a PRE-EXISTING
+#                    real ~/.germline whose files differ from source (the tree is
+#                    copied to ~/.germline.bak-<date> first). Never touches a symlink.
+# A "hold" (symlinked ~/.germline, symlinked copy_file destination, unreviewed
+# pre-existing tree) skips that item loudly, lets the other legs run, and makes the
+# script exit 3 at the end. Under --germline-only that is the whole run.
 DRY=0
 CODEX_ONLY=0
+GERMLINE_ONLY=0
+ADOPT_GERMLINE=0
 for arg in "$@"; do
   case "$arg" in
     --dry-run|-n) DRY=1 ;;
     --codex-only) CODEX_ONLY=1 ;;
+    --germline-only) GERMLINE_ONLY=1 ;;
+    --adopt-germline) ADOPT_GERMLINE=1 ;;
     *)
-      echo "Usage: $0 [--dry-run|-n] [--codex-only]" >&2
+      echo "Usage: $0 [--dry-run|-n] [--codex-only | --germline-only] [--adopt-germline]" >&2
       exit 2
       ;;
   esac
 done
+if [ "$CODEX_ONLY" = 1 ] && [ "$GERMLINE_ONLY" = 1 ]; then
+  echo "ERROR: --codex-only and --germline-only are mutually exclusive (run them one after the other)." >&2
+  exit 2
+fi
+if [ "$ADOPT_GERMLINE" = 1 ] && [ "$CODEX_ONLY" = 1 ]; then
+  echo "ERROR: --adopt-germline applies to the germline leg; it contradicts --codex-only." >&2
+  exit 2
+fi
+HOLDS=()
 RSYNC_FLAGS=(-a)
 LEG_VERB="deployed"
 if [ "$DRY" = 1 ]; then
@@ -45,6 +69,9 @@ if [ "$DRY" = 1 ]; then
 fi
 if [ "$CODEX_ONLY" = 1 ]; then
   echo "Scope: Codex portable surface only"
+fi
+if [ "$GERMLINE_ONLY" = 1 ]; then
+  echo "Scope: global germline (~/.germline) only"
 fi
 
 # Backup a live file before deploy overwrites it. Host-specific files (~/.zshrc,
@@ -72,6 +99,13 @@ backup_live() {
 # — the guard existed but was only wired to config.zsh and ~/.zshrc.
 copy_file() {
   local src="$1" dst="$2" label="$3"
+  # Never write through a symlinked destination: cp would overwrite the link's target
+  # (and backup_live would save contents, not the link). Migrate the link by hand first.
+  if [ -L "$dst" ]; then
+    echo "  REFUSE  $label — destination is a symlink ($dst → $(readlink "$dst")); not written"
+    HOLDS+=("copy_file: $dst is a symlink")
+    return 0
+  fi
   if [ "$DRY" = 1 ]; then
     if [ ! -f "$dst" ]; then
       echo "  [dry] CREATE  $label"
@@ -96,6 +130,99 @@ ensure_dir() {
   fi
 }
 
+# ── ~/.germline — global germline layer (germline-01, 2026-10-12) ────────────────
+# Source: $REPO/germline/ → live: a REAL host-local directory ~/.germline/. Additive
+# like the skills legs (no --delete). Fails closed — returns 1, writes nothing — when:
+#   * ~/.germline is a symlink (a write would go through into the link target; the
+#     operator migrates it by hand, this script never unlinks anything);
+#   * ~/.germline is not a directory, or contains symlinks (writes could escape it);
+#   * a pre-existing real tree that this script never deployed differs in content
+#     from source (needs --adopt-germline, which backs the tree up first).
+# Ghost inventory (always, dry and live): live files absent from source. Reported,
+# never removed — retire them by hand, with a backup.
+deploy_germline() {
+  local src="$REPO/germline/" dst="$HOME/.germline"
+  local marker="$HOME/.local/state/ia-sync/germline.deployed"
+  echo ""
+  echo "→ ~/.germline (global germline layer)"
+
+  if [ ! -d "$REPO/germline" ]; then
+    echo "  HOLD  $REPO/germline/ is missing — nothing to deploy"
+    HOLDS+=("germline: source dir missing")
+    return 1
+  fi
+
+  if [ -L "$dst" ]; then
+    echo "  HOLD  ~/.germline is a SYMLINK → $(readlink "$dst"). Refusing to write through it (dry and live)."
+    echo "        deploy.sh never unlinks it. Manual migration, once per host:"
+    echo "          1. readlink -f ~/.germline     # verify the target is the old source (~/reposoma/.germline)"
+    echo "          2. commit/save that source (reposoma) so nothing uncommitted is lost"
+    echo "          3. rm ~/.germline              # the LINK only — never rm -r"
+    echo "          4. bash $REPO/deploy.sh --germline-only --dry-run, then without --dry-run"
+    HOLDS+=("germline: ~/.germline is a symlink (manual migration pending)")
+    return 1
+  fi
+  if [ -e "$dst" ] && [ ! -d "$dst" ]; then
+    echo "  HOLD  ~/.germline exists but is not a directory — move it aside by hand"
+    HOLDS+=("germline: ~/.germline is not a directory")
+    return 1
+  fi
+
+  if [ -d "$dst" ]; then
+    local links; links="$(find "$dst" -type l 2>/dev/null | head -5)"
+    if [ -n "$links" ]; then
+      echo "  HOLD  symlinks inside ~/.germline (rsync could write through them):"
+      echo "$links" | sed 's/^/          /'
+      HOLDS+=("germline: symlink inside ~/.germline")
+      return 1
+    fi
+    if [ ! -f "$marker" ] && [ -n "$(ls -A "$dst")" ]; then
+      # Pre-existing real tree this script has never deployed: compare content (-c)
+      # so that mtime-only differences do not count; created files (+++) are fine.
+      local differ
+      differ="$(rsync -a -n -i -c "$src" "$dst/" | grep '^>f' | grep -v '^>f+++++++++' || true)"
+      if [ -n "$differ" ]; then
+        if [ "$ADOPT_GERMLINE" != 1 ]; then
+          echo "  HOLD  pre-existing real ~/.germline never deployed by ia-sync; these files differ from source:"
+          echo "$differ" | sed 's/^/          /'
+          echo "        Review them; then re-run with --adopt-germline (backs the tree up to ~/.germline.bak-$(date +%F) first)."
+          HOLDS+=("germline: pre-existing ~/.germline differs from source (review, then --adopt-germline)")
+          return 1
+        fi
+        local bak="$dst.bak-$(date +%F)"
+        if [ "$DRY" = 1 ]; then
+          echo "  [dry] would back up ~/.germline → $(basename "$bak") (--adopt-germline)"
+        elif [ -e "$bak" ]; then
+          echo "  backup kept: $(basename "$bak") (earlier state today preserved)"
+        else
+          cp -a "$dst" "$bak"
+          echo "  backup: .germline → $(basename "$bak")"
+        fi
+      fi
+    fi
+  fi
+
+  ensure_dir "$dst"
+  rsync "${RSYNC_FLAGS[@]}" "$src" "$dst/"
+  echo "  germline/ $LEG_VERB"
+  if [ "$DRY" != 1 ]; then
+    mkdir -p "$(dirname "$marker")"
+    echo "deployed $(date -Is) from $REPO ($(git -C "$REPO" rev-parse --short HEAD 2>/dev/null || echo no-git))" > "$marker"
+  fi
+
+  # Ghost inventory — dry itemisation with --delete, deleting lines only. Never executed live.
+  if [ -d "$dst" ]; then
+    local ghosts; ghosts="$(rsync -a -n -i --delete "$src" "$dst/" | grep '^\*deleting' | sed 's/^\*deleting *//' | sort || true)"
+    if [ -n "$ghosts" ]; then
+      echo "  GHOSTS — live files absent from source ($(echo "$ghosts" | wc -l) entries; NOT removed; retire by hand, with a backup):"
+      echo "$ghosts" | sed 's/^/          /'
+    else
+      echo "  ghosts: none"
+    fi
+  fi
+  return 0
+}
+
 deploy_codex() {
   # Portable instructions are narrow by design. Codex auth, config, hooks,
   # rules, histories, sessions, SQLite state, caches, logs, and trust hashes
@@ -107,6 +234,15 @@ deploy_codex() {
   if [ -f "$REPO/codex/AGENTS.md" ]; then
     copy_file "$REPO/codex/AGENTS.md" "$HOME/.codex/AGENTS.md" "Codex AGENTS.md"
   fi
+
+  # Houston main-session profile — ALLOWLISTED single file (no wildcard over
+  # codex/profiles/). Neutral name on purpose: a project profile would collide with
+  # a hand-written one. Loads from ~/.germline, see deploy_germline.
+  for f in houston.config.toml; do
+    if [ -f "$REPO/codex/profiles/$f" ]; then
+      copy_file "$REPO/codex/profiles/$f" "$HOME/.codex/$f" "Codex profile $f"
+    fi
+  done
 
   if [ -d "$REPO/codex/agents" ]; then
     ensure_dir "$HOME/.codex/agents"
@@ -121,12 +257,32 @@ deploy_codex() {
   fi
 }
 
-if [ "$CODEX_ONLY" = 1 ]; then
-  deploy_codex
+# Single exit path: a hold anywhere → loud summary + exit 3 (nothing else is aborted).
+finish() {
+  local label="$1"
   echo ""
-  echo "=== Codex deploy complete ==="
+  if [ "${#HOLDS[@]}" -gt 0 ]; then
+    echo "=== $label complete WITH HOLDS (exit 3) ==="
+    printf '  HOLD: %s\n' "${HOLDS[@]}"
+    exit 3
+  fi
+  echo "=== $label complete ==="
+}
+
+if [ "$GERMLINE_ONLY" = 1 ]; then
+  deploy_germline || true
+  finish "Germline deploy"
   exit 0
 fi
+
+if [ "$CODEX_ONLY" = 1 ]; then
+  deploy_codex
+  finish "Codex deploy"
+  exit 0
+fi
+
+# ── ~/.germline (first: the Houston wrappers below load from it) ─────────────────
+deploy_germline || true
 
 # ── ~/.claude ────────────────────────────────────────────────────────────────
 echo ""
@@ -279,7 +435,6 @@ else
   ls "$REPO/zsh/zshrc."* 2>/dev/null | sed 's|.*/||' | sed 's/^/    /' || echo "    (none)"
 fi
 
-echo ""
-echo "=== Deploy complete ==="
+finish "Deploy"
 echo "Next (out-of-repo installs deploy.sh can't do):"
 echo "  bash $REPO/install-pkgs/run.sh update"
