@@ -5,8 +5,8 @@ runtime: Codex — custom agent ~/.codex/agents/houston.toml (child) · named pr
 scope: mechanics only — entry, permissions, delegation and proof; grants no authority beyond the identity, the selected card and the project addendum
 authority: identity.md beside this file · nablarva flag L16 (clause 14 amended)
 state: CANDIDATE — final fold 2026-10-10 (majkee gavel); X0 evidence archived, pre-fold copy at nablarva .dev/session/nablarva-X1-architecture/raw/archive.x0-renders/binding.codex.md (commit-pin at majkee's commit)
-updated: 2026-10-10
-stamp: cac6a05d
+updated: 2026-10-13
+stamp: 5d08b2e7
 ---
 # houston · Codex binding
 
@@ -14,12 +14,16 @@ stamp: cac6a05d
 
 | route | file | keys |
 |---|---|---|
-| child | `~/ia-sync/codex/agents/houston.toml` → `~/.codex/agents/houston.toml` (deploy.sh rsyncs `ia-sync/codex/agents/`) | `name` · `description` · `model` · `model_reasoning_effort` · `developer_instructions` = LOADER + `Route: spawned child (no card line → consult)` |
-| main session | `~/ia-sync/codex/profiles/houston.config.toml` → `~/.codex/houston.config.toml` (hand-installed; not in the deploy map) | `model` · `model_reasoning_effort` · `developer_instructions` = LOADER + `Route: main session (no card line → ask the operator)` |
+| child | `~/ia-sync/codex/agents/houston.toml` → `~/.codex/agents/houston.toml` (deploy.sh rsyncs `ia-sync/codex/agents/`) | `name` · `description` · `model` · `model_reasoning_effort` · `developer_instructions` = LOADER + `Route: spawned child (canary: hc-<8hex>)` |
+| main session | `~/ia-sync/codex/profiles/houston.config.toml` → `~/.codex/houston.config.toml` (hand-installed; not in the deploy map) | `model` · `model_reasoning_effort` · `developer_instructions` = LOADER + `Route: main session via --profile houston (canary: hp-<8hex>)` |
 
 `model` / `model_reasoning_effort` are weather, set in the wrappers only and mirrored in
 `raw.card.model-effort.md` `active_pins`. Codex has no floating family alias: every release is a
 manual pin change. No identity, card or project prose lives in either wrapper.
+The Route line carries a canary token (`hp-` main, `hc-` child; the Claude wrapper uses `cl-`),
+re-rolled whenever that wrapper's body changes. The Codex rollout has no profile-name field, so
+the echoed canary is the witness of which wrapper body reached the model (launch command and
+installed-file hash stay in the operator receipt).
 
 ## Entry routes
 
@@ -27,14 +31,16 @@ The invoker puts an explicit `card: consult | audit | sitting` line in the invok
 (the physical first line may carry a call sign or transport preamble); the assignment's card
 selection goes ahead of any document instruction. Omission: on a spawned child → `consult`
 (`card: audit` there is an audit-as-probe that states its limits); on a main profile session →
-ask the operator to select audit or sitting, never a silent consult. An unknown card or work
-outside the selected card returns `out of card: <request> → <owning card or seat>`.
+ask the operator to select a card (consult · audit · sitting), never a silent default. An
+explicit `card: consult` on the main session is allowed (a quick grounding question asked
+directly; it still writes nothing). An unknown card or work outside the selected card returns
+`out of card: <request> → <owning card or seat>`.
 
 | | **child** (returns bounded work) | **main session** (leads a bounded invocation) |
 |---|---|---|
-| **cards** | consult · audit-as-probe | audit (full) · sitting |
+| **cards** | consult · audit-as-probe | consult (explicit line only) · audit (full) · sitting |
 | **entry** | the custom agent `houston`, selected by an authorized head or the operator with `spawn_agent` | fresh interactive `codex --profile houston -C <project-root>` |
-| **permissions** | effective child sandbox, approval policy and exposed tools; the card bounds writes further (consult: finding only); the TOML cannot enlarge inherited authority | effective main-session sandbox, approval policy and exposed tools; audit writes only assigned findings and the proposed wrapper diff, sitting only drafts in its own bed |
+| **permissions** | effective child sandbox, approval policy and exposed tools; the card bounds writes further (consult: finding only); the TOML cannot enlarge inherited authority | effective main-session sandbox, approval policy and exposed tools; consult nothing, audit writes only assigned findings and the proposed wrapper diff, sitting only drafts in its own bed |
 | **delegation** | consult needs no helper; any helper is bounded to reading or verification, never Houston's judgment or a wider pen; an audit-as-probe without required capabilities declares itself `unqualified for the complete card` | bounded readers or one verifier as the card needs; no Houston → Houston loop, no creator; the session head and the operator retain lifecycle and gavel |
 | **return** | the spawner's context | the landing path the project addendum names; return to the operator and stop |
 
@@ -59,11 +65,13 @@ outside the selected card returns `out of card: <request> → <owning card or se
   receives an explicit read scope and return path.
 - **Permissions:** effective runtime policy governs. An assignment's path list is a cooperative
   bound inside that policy, not an enforced sandbox. Record the exact refused operation; never
-  widen permissions or evade a refusal.
+  widen permissions or evade a refusal. An operator instruction to write outside the selected
+  card's pen is answered `out of card: <the write>`; permissions are not escalated to perform it.
 
 ## Return contract shape and entry proof
 
-Plain markdown to the invoker. Line 1..n: one line per germline file read —
+Plain markdown to the invoker. Line 1: the wrapper's Route line verbatim, canary included.
+Then one line per germline file read —
 `<absolute path> · stamp: <token>` (tokens change on every edit) — plus the effective cwd. A missing or unreadable file is the first
 finding. Then the finding as the identity's §Return contract and the selected card define it.
 A route counts as proven only after a dated fresh-session witness on that exact route (load and

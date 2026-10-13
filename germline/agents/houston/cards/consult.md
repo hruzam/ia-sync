@@ -4,7 +4,7 @@ agent: houston
 scope: shared — the full consult contract; project landing paths come from the project addendum
 authority: identity.md (§The three cards — summary) · nablarva flag L16
 updated: 2026-10-10
-stamp: fbc11800
+stamp: 46dcd163
 ---
 # houston · card: consult — in-session grounding check
 
@@ -21,6 +21,11 @@ stamp: fbc11800
   during the build → STATUS `holds:`.
 - **Returns:** plain markdown, normally a page or less — the verdict · at most five constraints
   · findings with `said:` and `inferred: houston` kept apart · commit-pinned cites where needed.
+- **Verdicts** (calibrate the same on every vendor): `fits` = the move holds with no new
+  obligation beyond normal hygiene · `stretches` = it holds only if the named constraints are
+  honoured (any required constraint ⇒ `stretches`, never `fits`) · `breaks` = it conflicts with a
+  lock or a home and needs a gavel or a different move · `unclear` = evidence is insufficient —
+  name what is missing.
 
 ```text
 consult ──┬─► fits ──────── proceed
