@@ -1,0 +1,13 @@
+faea695a66765b0f6d59627d82e6809ddfcd14c5a7da792e552f4288ed60bcee  /home/hruzam/ia-sync/.dev/session/germline-02-guide-model-law/raw/PROPOSAL.program-guide-law.md
+ee9e77c2b0fbeaee982a55262ee3eb0dd16cebd39f2a3a23794ca920ad9f7650  /home/hruzam/ia-sync/.dev/session/germline-02-guide-model-law/raw/ACCOUNTING.sources.md
+ba1e6998d7472bf1c9300e56d0180bb60422a4afee433a3c3f29d917892c2cbd  /home/hruzam/ia-sync/.dev/session/germline-02-guide-model-law/raw/GAVELS.program-guide-law.md
+2feced5c20893e36c4f4b92dd38298ecf8e078a971bda45e608846777f31163d  /home/hruzam/ia-sync/.dev/session/germline-02-guide-model-law/raw/REVIEW-BRIEF.atlas.program-guide-law.md
+2cf1c4e919da77d47efa49400073209d4a4731d4642d26e5cda7f0153e4d518a  /home/hruzam/ia-sync/.dev/session/germline-02-guide-model-law/raw/CHECKPOINT.cartan.program-guide-law.md
+ba8f3a98cdfbcd084239c0b299b3518e1963f7f6989b035afeac11bbd7ca04ff  /home/hruzam/ia-sync/.dev/session/germline-02-guide-model-law/raw/DISPOSITION.atlas.program-guide-law.md
+9400540da9975db66d34abfe2db331e67056149203b1df7d18fb74c46f0a5eda  /home/hruzam/ia-sync/.dev/session/germline-02-guide-model-law/raw/REVISION.PG-r1.md
+bc123bf26c2932f7145a52f4788e0f4242dc37b6b5f47a70bad33e866ba27920  /home/hruzam/ia-sync/.dev/session/germline-02-guide-model-law/raw/REVISION.AS-r1.md
+d2405accab42b94e9c321bea2891380a0cd2b9f2d3bbdf0e36a8b90e1ed09e5a  /home/hruzam/ia-sync/.dev/session/germline-02-guide-model-law/raw/REVISION.GV-r1.md
+88f12259bb831014bb301402eb97025d9ca3027b9b9fd6d20285094f79cecc35  /home/hruzam/ia-sync/.dev/session/germline-02-guide-model-law/raw/REVISION.AB-r1.md
+373b3d0caaf0e91b987a599e94fc82c9ccbfd04fbc0cc3dbf72317f18755cbf7  /home/hruzam/ia-sync/.dev/session/germline-02-guide-model-law/raw/REVISION.CP-r1.md
+797614f708ad5a125a6b1b693ad83573d072464f6bb4076c3d11e91b00532c5b  /home/hruzam/ia-sync/.dev/session/germline-02-guide-model-law/raw/REVISION.AR-r1.md
+43ac6b79d5da744094dd6b1e7dca35603a00b57b39c5ff602aa6e7f448165363  /home/hruzam/ia-sync/.dev/session/germline-02-guide-model-law/raw/SHA256SUMS.review.r1
