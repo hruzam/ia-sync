@@ -5,8 +5,8 @@ runtime: Codex — custom agent ~/.codex/agents/houston.toml (child) · named pr
 scope: mechanics only — entry, permissions, delegation and proof; grants no authority beyond the identity, the selected card and the project addendum
 authority: identity.md beside this file · nablarva flag L16 (clause 14 amended)
 state: CANDIDATE — final fold 2026-10-10 (majkee gavel); X0 evidence archived, pre-fold copy at nablarva .dev/session/nablarva-X1-architecture/raw/archive.x0-renders/binding.codex.md (commit-pin at majkee's commit)
-updated: 2026-10-13
-stamp: 5d08b2e7
+updated: 2026-10-15
+stamp: c4218b5f
 ---
 # houston · Codex binding
 
@@ -14,7 +14,7 @@ stamp: 5d08b2e7
 
 | route | file | keys |
 |---|---|---|
-| child | `~/ia-sync/codex/agents/houston.toml` → `~/.codex/agents/houston.toml` (deploy.sh rsyncs `ia-sync/codex/agents/`) | `name` · `description` · `model` · `model_reasoning_effort` · `developer_instructions` = LOADER + `Route: spawned child (canary: hc-<8hex>)` |
+| child | `~/ia-sync/codex/agents/houston.toml` → `~/.codex/agents/houston.toml` (deploy.sh rsyncs `ia-sync/codex/agents/`) | `name` · `description` · `model` · `model_reasoning_effort` · `sandbox_mode = "read-only"` · `developer_instructions` = LOADER + `Route: spawned child (canary: hc-<8hex>)` |
 | main session | `~/ia-sync/codex/profiles/houston.config.toml` → `~/.codex/houston.config.toml` (hand-installed; not in the deploy map) | `model` · `model_reasoning_effort` · `developer_instructions` = LOADER + `Route: main session via --profile houston (canary: hp-<8hex>)` |
 
 `model` / `model_reasoning_effort` are weather, set in the wrappers only and mirrored in
@@ -40,10 +40,17 @@ directly; it still writes nothing). An unknown card or work outside the selected
 |---|---|---|
 | **cards** | consult · audit-as-probe | consult (explicit line only) · audit (full) · sitting |
 | **entry** | the custom agent `houston`, selected by an authorized head or the operator with `spawn_agent` | fresh interactive `codex --profile houston -C <project-root>` |
-| **permissions** | effective child sandbox, approval policy and exposed tools; the card bounds writes further (consult: finding only); the TOML cannot enlarge inherited authority | effective main-session sandbox, approval policy and exposed tools; consult nothing, audit writes only assigned findings and the proposed wrapper diff, sitting only drafts in its own bed |
+| **permissions** | effective child sandbox, approval policy and exposed tools; the card bounds writes further (consult: none); the TOML cannot enlarge inherited authority | effective main-session sandbox, approval policy and exposed tools; consult nothing, audit writes only assigned findings and the proposed wrapper diff, sitting only drafts in its own bed |
 | **delegation** | consult needs no helper; any helper is bounded to reading or verification, never Houston's judgment or a wider pen; an audit-as-probe without required capabilities declares itself `unqualified for the complete card` | bounded readers or one verifier as the card needs; no Houston → Houston loop, no creator; the session head and the operator retain lifecycle and gavel |
 | **return** | the spawner's context | the landing path the project addendum names; return to the operator and stop |
 
+- **Consult writes no file on any route; a write request is `out of card: <the write>`.** Child
+  sandbox: the TOML sets `sandbox_mode = "read-only"` as a mechanical backstop (precedent:
+  `challenger.toml`); the Claude child has prose only. **Unwitnessed:** local rollouts show
+  challenger/architect children (same key) running `workspace-write` under `workspace-write` parents
+  (2026-09-12, 09-14, 10-04), so the key may not bind a spawned child. Until a Houston child
+  rollout shows `sandbox_policy: read-only` (TEST-INSTALL C-def.2), the card prose is the fence.
+  An audit-as-probe on this route never writes (it opens `unqualified for the complete card`).
 - A custom-agent file configures spawned sessions, not direct CLI entry; `--profile` does not
   load it. The two wrappers carry the same LOADER, so both routes load the same germline.
 - **Placement:** projects carry **no** Houston TOML or profile. A project `.codex/agents/houston.toml`

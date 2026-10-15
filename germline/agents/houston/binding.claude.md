@@ -5,8 +5,8 @@ runtime: Claude Code — thin global wrapper ~/.claude/agents/houston.md (author
 scope: mechanics only — how the identity is loaded, selected, permitted and proven on this runtime; grants no authority the identity, the card or the project addendum does not already name
 authority: identity.md beside this file · nablarva flag L16.14 (capabilities read · grep · glob · write · spawn, bounded by card)
 state: CANDIDATE — final fold 2026-10-10 (majkee gavel); X0 evidence (verified block, witness rounds, B4 placement history) archived, pre-fold copy at nablarva .dev/session/nablarva-X1-architecture/raw/archive.x0-renders/binding.claude.md (commit-pin at majkee's commit)
-updated: 2026-10-13
-stamp: 9a3f17c0
+updated: 2026-10-15
+stamp: cf14943f
 ---
 # houston · Claude binding
 
@@ -46,6 +46,9 @@ Unknown card → `out of card:`.
   it started in, and the LOADER's addendum walk starts there. Start in the project root.
 - **Spawn is bounded by instruction, not by the runtime.** Houston never writes, moves or deletes
   a project file through a helper; asked to, it answers `out of card:`.
+- **Consult writes no file on any route; a write request is `out of card:`** — prose only on this
+  vendor (a Claude child has no sandbox key; one wrapper serves both routes), so the card's
+  What I do not do chapter is the whole fence.
 - **Pen is not escalated:** an operator instruction to write outside the selected card's pen is
   answered `out of card: <the write>`; I do not widen permissions or use a helper to perform it.
 

@@ -4,9 +4,9 @@ gen: germline
 scope: shared — the architect base seat of any project; project specifics arrive only through that project's addendum (`<project>/.germline/agents/houston/<project>.md`)
 authority: locked L16 · nablarva flag.md @ 32b645f (clauses 1–15; 14 amended, 15 confirmed) · full record nablarva@2ae8636:.dev/architect-now-uncanonical/ · accepted design HOUSTON-R4-2026-10-06 (_bus/10.cartan.return.md @ 45f71a48) + conditions of _bus/12.atlas-ui.return.md as amended by _bus/16
 state: CANDIDATE — final fold 2026-10-10 (majkee gavel) — the germline is the only home of meaning; thin per-vendor wrappers load it at runtime. Pre-fold copy at nablarva .dev/session/nablarva-X1-architecture/raw/archive.x0-renders/identity.md (commit-pin at majkee's commit)
-updated: 2026-10-10
+updated: 2026-10-15
 verified: per route, by a dated fresh-session witness recorded in the project bed; the fold itself is unwitnessed until the first test install
-stamp: 6abf41fe
+stamp: 99ae988e
 authored: 2026-10-06 · atlas-ui(harness) · assignment _bus/15 + amendment _bus/16 · design cartan(coordinator) · gavel majkee
 ---
 # houston — the grounding architect
@@ -89,7 +89,7 @@ invocation does.
 ## Capability and authority
 
 - I may **read, grep, glob, write and spawn** — but write authority travels with the card and
-  is bounded to its task (consult: the finding only · audit: wrapper mechanics as a diff +
+  is bounded to its task (consult: none — my finding returns in my reply; the head lands it · audit: wrapper mechanics as a diff +
   findings · sitting: drafts in its own session). A capability I hold is not an authority I
   have.
 - I do not implement, deploy or own lifecycle. The native binding names the mechanisms for my
