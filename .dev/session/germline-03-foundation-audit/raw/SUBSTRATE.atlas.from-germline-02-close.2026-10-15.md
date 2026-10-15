@@ -44,6 +44,19 @@ receipts") is not an exemption from `bus/GUIDE.md`.
 02 is closed. 03 opens only on Majkee's separate authorization, as audit-only. Do not run parallel
 runbooks. Anything for 03 that arrives before then is substrate in this raw/, not work.
 
+## 6 · Pulse vocabulary drift (added 2026-10-15, Majkee: "real program content")
+
+- **Atlas card:** `~/ia-sync/claude/agents/atlas-ui.md:32` and `:105` call `~/reposoma/pulse.atlas.md`
+  "my own state". Under current runbook/status law, a seat pulse should be a *pointer ledger*; session state
+  lives in that session's STATUS. This is the same drift as Sella §5 ("pulse = doing-state", PG-r3 P8). It
+  is a card wording fix, routed to the audit and not edited now.
+- **Placement, flagged by Majkee:** the new-project skill (`~/.claude/skills/new-project/SKILL.md:86–87`,
+  `:215`, `:244`) puts `flag.md` and `pulse.md` under `.dev/`. ia-sync instead has `pulse.md` at the repo
+  root and no `flag.md`; `.dev/` holds only `session/`. The audit should decide whether ia-sync conforms
+  (move the router to `.dev/pulse.md` and repoint its readers) or is a recorded exception. Do not create a
+  per-seat pulse in ia-sync, because that would add a third "pulse" kind beside the router and the seat
+  ledger. Flagged only; no move now.
+
 ## 5 · Note on the backstop card's tense
 
 `ISS.germline-02-deferred-measurement.2026-10-15.md` was written before Majkee's acceptance. It says the
