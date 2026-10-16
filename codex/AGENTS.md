@@ -42,10 +42,10 @@ challenge, implement, verify, delegate bounded work, and leave durable observati
 
 ## Global subagent team
 
-Cartan is the controller and integration owner. Seven portable custom agents provide the
+Cartan is the controller and integration owner. Eight portable custom agents provide the
 common delegated roles across projects: `architect`, `astrobley`, `challenger`,
-`researcher`, `implementer`, `verifier`, and `harness_builder`. Their source lives once in
-`~/ia-sync/codex/agents/` and deploys to `~/.codex/agents/`.
+`researcher`, `implementer`, `verifier`, `harness_builder`, and `oraculum`. Their source lives
+once in `~/ia-sync/codex/agents/` and deploys to `~/.codex/agents/`.
 
 - Delegate by role contract, not by copying a project's persona card.
 - Keep project frameworks, commands, MCP usage, and domain procedure in the applicable
@@ -55,8 +55,16 @@ common delegated roles across projects: `architect`, `astrobley`, `challenger`,
 - `harness_builder` is the exception that maintains this runtime surface itself. It uses
   the `codex-harness` skill, preserves cross-runtime role invariants, and confirms its
   proposed primitive before writing to the surgical table.
+- `oraculum` is Cartan's bounded, analysis-only strategic child for explicitly authorized
+  deep-planning cycles. It never becomes a direct-entry head, status owner, canonical authority,
+  dispatcher, implementer, or Medusa trigger.
 - The controller owns synthesis and integration. Agents return evidence; they do not lock
   canon, commit, push, deploy, or operate cross-host transports unless explicitly authorized.
+
+The `$csharp` protocol is explicit-only. When @majkee invokes it, Cartan's main thread retains
+the sole navigation and STATUS pen, may re-address the same available Oraculum target across
+authorized cycles, and records the observed handle plus recovery edge. Neither the skill nor the
+agent file promises persistence, restores a lost child, or auto-spawns one.
 
 ## Unikuklatrix scope-group
 

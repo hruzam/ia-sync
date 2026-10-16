@@ -33,6 +33,7 @@ bash deploy.sh --codex-only
 | `implementer` | scoped changes and tests | Terra/high, workspace-write |
 | `verifier` | independent acceptance gate | Sol/high, workspace-write for test artifacts only |
 | `harness_builder` | interactive Codex primitive design and authoring | Sol/xhigh, confirm-before-write |
+| `oraculum` | substrate-first strategic analysis under Cartan | Astra/high, analysis-only |
 
 Projects specialize these agents through their own `AGENTS.md`, `.codex/config.toml`, MCP
 servers, and skills. Do not copy these TOMLs into projects or create same-name variants;
@@ -55,12 +56,13 @@ Claude↔Codex semantic cross-section.
 | `octopus` | Sol-grade planning head creates RUNBOOK + STATUS, names the executor, and parks | Expensive judgment is separated from implementation by an operator wake gate |
 | `medusa` | Normally Terra-grade working head executes a RUNBOOK and returns curvature upward | Full engineering tools below a fixed gate; architecture remains with Octopus/Cartan |
 | `polyp` | Drive a human/model PAD one step and one evidence branch at a time | Raw evidence stays in the PAD; the driver never authors or fixes the work under test |
+| `csharp` | Explicitly keep Cartan as navigator and status owner through a delegated RUNBOOK arc | The main thread may retain and re-address an available Oraculum target, but never promises persistence or auto-spawns it |
 
 Cartan remains the identity and integration owner in every protocol. Octopus, Medusa, and
-Polyp are operator-selected working postures, not additional global personas. Their model
-assignments are default carriages rather than identity locks: the operator selects the model
-when opening the session, and each skill states the authority boundary that must survive a
-future model change.
+Polyp are operator-selected working postures, and cSharp is an explicit-only head protocol;
+none is an additional global persona. Their model assignments are default carriages rather than
+identity locks: the operator selects the model when opening the session, and each skill states
+the authority boundary that must survive a future model change.
 
 Project continuity remains vendor-neutral: settled locks live in the declared `flag.md`, the
 project heartbeat/router in `pulse.md`, and the machine contract in `PROJECT.yaml`. When pulse
