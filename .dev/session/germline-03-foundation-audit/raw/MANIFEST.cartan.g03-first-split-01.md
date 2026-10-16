@@ -23,6 +23,20 @@ not followed.
 | guide-author | none | none | none | source path not supplied by authorized locators; requires Majkee-approved mapping |
 | session-position | none | none | none | source path not supplied by authorized locators; requires Majkee-approved mapping |
 
+## Locator mapping attempt — proposed, unapproved
+
+The authorized locator read identifies all three labels only in
+`/home/hruzam/ia-sync/.dev/session/germline-03-foundation-audit/raw/SUBSTRATE.atlas.from-germline-02-close.2026-10-15.md:17-18`.
+It does not associate any of them with an absolute candidate-source path. The separate paths it
+names for Atlas-card and pulse-placement drift are not labelled as any of these candidates, so
+they are not proposed here.
+
+| candidate label | proposed mapping | identity | reason |
+|---|---|---|---|
+| primitive-build | none — unresolved locator boundary | none | no absolute candidate path appears in either authorized locator |
+| guide-author | none — unresolved locator boundary | none | no absolute candidate path appears in either authorized locator |
+| session-position | none — unresolved locator boundary | none | no absolute candidate path appears in either authorized locator |
+
 ## Freeze and dirty-byte rule
 
 Before the body starts, every candidate must have an absolute path and repository identity. Each

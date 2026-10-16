@@ -1,41 +1,36 @@
 ```yaml
-updated: 2026-10-17 00:51 CEST
+updated: 2026-10-17 01:06 CEST
 writer: Cartan · codex · cSharp
 host: office · hruzam-120922
 worktree: >-
-  /home/hruzam/ia-sync · main · a30acc4 · protected unrelated dirty paths:
-  .dev/session/germline-01-builds-and-deploy/raw/TEST-INSTALL.houston.2026-10-10.md,
-  codex/AGENTS.md, codex/README.md, codex/agents/oraculum.toml, codex/skills/csharp/,
-  .dev/session/oraculum-01-codex-fold/, and .dev/session/oraculum-02-csharp-cooperation/;
-  this opening adds RUNBOOK.md, STATUS.md, raw/NAVIGATION.cartan.g03-csharp-01-process-prep.2026-10-16.md,
-  raw/MANIFEST.cartan.g03-first-split-01.md, and raw/CRITERION.cartan.g03-first-split-01.md
-  to the previously raw-only germline-03 bed.
+  /home/hruzam/ia-sync · main · 82f8779f9f65c7fd0beb5b7d403955fc83045497 · dirty only:
+  .dev/session/germline-03-foundation-audit/STATUS.md and
+  .dev/session/germline-03-foundation-audit/raw/MANIFEST.cartan.g03-first-split-01.md,
+  the current Route-A mapping preparation.
 gate: >-
   Majkee accepts a source-accounted audit of every named deferred input, with any required
   design choice independently reviewed and every non-audit implementation deferred to a later gate.
 checkpoint: >-
-  Route-A preparation is verified: draft manifest
-  raw/MANIFEST.cartan.g03-first-split-01.md and criterion
-  raw/CRITERION.cartan.g03-first-split-01.md exist, Atlas is reconciled as later independent
-  witness/auditor, and G03-Research-01 is requested only at gpt-6.1-sol/high. The drafts contain
-  no research result, the other three candidate labels remain unmapped, and no body or _bus/ exists.
+  Route-A locator mapping is verified in raw/MANIFEST.cartan.g03-first-split-01.md: the authorized
+  locators name primitive-build, guide-author, and session-position but bind none to an absolute
+  candidate path. The draft records all three as proposed, unapproved unresolved boundaries; no
+  candidate content, historical citation, research body, report route, or _bus/ was opened.
 in_flight: none
 recovery_probe: >-
-  Run `rg -n 'head_note:|status_owner: Cartan|participant_2:' /home/hruzam/ia-sync/.dev/session/germline-03-foundation-audit/RUNBOOK.md`,
-  `test ! -e /home/hruzam/ia-sync/.dev/session/germline-03-foundation-audit/_bus`,
-  `sha256sum /home/hruzam/ia-sync/.dev/session/germline-03-foundation-audit/raw/MANIFEST.cartan.g03-first-split-01.md /home/hruzam/ia-sync/.dev/session/germline-03-foundation-audit/raw/CRITERION.cartan.g03-first-split-01.md`, and
-  `git -C /home/hruzam/ia-sync status --short`. Expect the Route-A participant wording, both
-  drafts, no _bus/ or launched child, and no protected-path change. A missing draft, changed
-  draft hash, one-sided draft, or protected-path change holds the next action.
+  Run `rg -n 'Locator mapping attempt|primitive-build|guide-author|session-position' /home/hruzam/ia-sync/.dev/session/germline-03-foundation-audit/raw/MANIFEST.cartan.g03-first-split-01.md`,
+  `test ! -e /home/hruzam/ia-sync/.dev/session/germline-03-foundation-audit/_bus`, and
+  `git -C /home/hruzam/ia-sync status --short`. Expect one explicit disposition per label, no
+  _bus/ or launched child, and no protected-path change. An absent or partial mapping disposition
+  is an incomplete action, not permission to infer a candidate path.
 holds: >-
-  No researcher child launch, substantive audit/source reading, result, Cartan receipt, _bus/,
-  Atlas activation, Medusa, closed Germline-02 edit, implementation, deploy, commit, push,
-  canon promotion, archive, or cleanup. Cartan alone owns STATUS and the drafts; Atlas's next
-  involvement is design-only review, not audit execution.
+  Do not freeze the manifest or criterion; do not apply F2-F5; do not name a report writer/path;
+  do not launch G03-Research-01, inspect candidate content, create _bus/, activate Atlas, mount
+  Medusa, edit closed Germline-02 material, implement, deploy, commit, push, promote canon,
+  archive, or clean up. Cartan alone owns STATUS and the drafts.
 next: >-
-  Carry the exact Route-A draft manifest, criterion, and participant/researcher wording to Atlas
-  for the design-only g03-research-prep-atlas-01 method review.
+  Majkee approves or corrects the three unresolved source mappings, or explicitly excludes each
+  label from G03-Research-01 before any draft freezes.
 expected: >-
-  Atlas identifies whether the drafts prevent fitted conclusions, scope drift, and witness
-  self-audit; it does not freeze them, launch a body, create a bus, or alter project state.
+  A Majkee mapping decision gives every in-cycle label an approved absolute path and identity or
+  an explicit exclusion, without authorizing a research body or any F2-F5 follow-on change.
 ```
