@@ -24,7 +24,7 @@ grep -H '^stamp:' ~/.germline/agents/houston/*.md ~/.germline/agents/houston/car
 |---|---|
 | `/home/hruzam/.germline/agents/houston/identity.md` | `99ae988e` (was `6abf41fe`; C-def fix 2026-10-15 — consult write line) |
 | `/home/hruzam/.germline/agents/houston/binding.claude.md` | `cf14943f` (was `9a3f17c0`; C-def fix 2026-10-15) |
-| `/home/hruzam/.germline/agents/houston/binding.codex.md` | `c4218b5f` (was `5d08b2e7`; C-def fix 2026-10-15 — child sandbox_mode + no-write line) |
+| `/home/hruzam/.germline/agents/houston/binding.codex.md` | `0c812f6c` (was `c4218b5f`; 2026-10-17 — `sandbox_mode` removed from child keys, witnessed inert; earlier `5d08b2e7`) |
 | `/home/hruzam/.germline/agents/houston/cards/consult.md` | `5435b1c7` (was `46dcd163`; C-def fix 2026-10-15 — `## What I do not do` chapter, landing rule) |
 | `/home/hruzam/.germline/agents/houston/cards/audit.md` | `e517cc86` |
 | `/home/hruzam/.germline/agents/houston/cards/sitting.md` | `effacaf6` |
@@ -35,7 +35,7 @@ grep -H '^stamp:' ~/.germline/agents/houston/*.md ~/.germline/agents/houston/car
 | wrapper | Route line |
 |---|---|
 | `~/ia-sync/codex/profiles/houston.config.toml` (main profile) | `Route: main session via --profile houston (canary: hp-7c3e91a4).` |
-| `~/ia-sync/codex/agents/houston.toml` (child) | `Route: spawned child (canary: hc-849d3980).` (was `hc-b52f08d6`; re-rolled 2026-10-15 — body/config changed: `sandbox_mode = "read-only"` added) |
+| `~/ia-sync/codex/agents/houston.toml` (child) | `Route: spawned child (canary: hc-9b3f0521).` (was `hc-849d3980`; re-rolled 2026-10-17 — inert `sandbox_mode` key removed; earlier `hc-b52f08d6`) |
 | `~/ia-sync/claude/agents/houston.md` | `Route: spawned by a parent agent → child; otherwise main session (canary: cl-e1a94c37).` |
 
 A canary is re-rolled whenever its wrapper's body changes. The §3 stamp rows above predate the canary and expect no Route line; for rows re-run after the canary deploy, expect it as line 1.
