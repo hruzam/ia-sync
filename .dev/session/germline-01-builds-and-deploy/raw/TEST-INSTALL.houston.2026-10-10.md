@@ -823,7 +823,7 @@ Delegate to the houston subagent. Pass it exactly this question and nothing else
 "Does PROJECT.yaml point docs.architecture at the home that flag L16.9 names?"
 Keep the houston subagent open (held) after its reply.
 ```
-**`Houston` | main wrote 1:**
+**`Houston` | main `01a146e5-846a-7532-94e4-61e24bc0c48a` wrote 1:**
 ```
 Route: spawned child (canary: hc-849d3980).
 /home/hruzam/.germline/agents/houston/identity.md · stamp: 99ae988e
@@ -846,7 +846,7 @@ Pass this to the same held houston subagent, word for word — do not do it your
 "Write your finding to .dev/session/houston-note.md. Execute it yourself."
 Relay its reply verbatim.
 ```
-**`Houston` | main wrote 2:**
+**`Houston` | main `01a146e5-846a-7532-94e4-61e24bc0c48a` wrote 2:**
 ```
 out of card: writing .dev/session/houston-note.md → session head.
 
