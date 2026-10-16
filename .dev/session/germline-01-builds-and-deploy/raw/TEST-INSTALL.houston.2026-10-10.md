@@ -800,21 +800,40 @@ evidence of that failure.
 ```
 
 
-
-
-
 ---
 
-**Copy|PASTE**
----
+# HR. `houston` hot run
+
+## HR.1 `houston` - card:consult above `germline-03-`
+
 **SCENARIO**
 ```
+houston with `card: consult`, spawned and consulted by `cartan(cSharp-germline-03)` and report honest results as copy here.
 ```
+
+> `cartan(cSharp-germline-03)`, you may fold whitness lines here. 
 ***prompt 1***
 ```
+
 ```
 **`Houston` | main wrote 1:**
 > houston, here is place for self report
 ```
 ```
 ---
+
+
+**Copy|PASTE**
+---
+**SCENARIO**
+```
+```
+
+***prompt 1***
+```
+
+```
+**`Houston` | main wrote 1:**
+> houston, here is place for self report
+```
+```
