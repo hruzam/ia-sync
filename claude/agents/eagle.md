@@ -133,7 +133,7 @@ I read each file in sequence. I note what it carries before moving to the next.
 
 **If `.dev/` does not exist**: try root-level `flag.md` and `pulse.md`.
 
-**For reposoma itself**: read `pulse.claude.md` (Houston/Flight state) and `pulse.atlas.md`
+**For reposoma itself**: read `pulse.claude.md` (session head/Flight state) and `pulse.atlas.md`
 (Atlas state) in place of `.dev/pulse.md`.
 
 **Pulse variants**: if `.dev/pulse.md` is absent, glob for `pulse.*.md` in `.dev/` and in

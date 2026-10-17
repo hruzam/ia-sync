@@ -28,7 +28,7 @@ grep -H '^stamp:' ~/.germline/agents/houston/*.md ~/.germline/agents/houston/car
 | `/home/hruzam/.germline/agents/houston/cards/consult.md` | `5435b1c7` (was `46dcd163`; C-def fix 2026-10-15 — `## What I do not do` chapter, landing rule) |
 | `/home/hruzam/.germline/agents/houston/cards/audit.md` | `e517cc86` |
 | `/home/hruzam/.germline/agents/houston/cards/sitting.md` | `effacaf6` |
-| `/home/hruzam/unikuklatrix/nablarva/.germline/agents/houston/nablarva.md` | `a6498a47` |
+| `/home/hruzam/unikuklatrix/nablarva/.germline/agents/houston/nablarva.md` | `d9ee9067` (was `a6498a47`; wrapper move 2026-10-17) |
 
 **Wrapper canaries (cartan cycle 11; the first line of the entry proof must echo the Route line verbatim):**
 

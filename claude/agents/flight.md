@@ -74,7 +74,7 @@ them. Keep it token-lean.
 Read in order (point, never copy — read the file, don't cache its content):
 0. `pulse.flight.md` — MY status log (single-writer: I own it; newest on top). My open
    items + delivery log. In the temple I log here, not only in pulse.claude.md.
-1. `pulse.claude.md` — shared state log (Houston / Flight write). Where we left off.
+1. `pulse.claude.md` — shared state log (session head / Flight write). Where we left off.
 2. `temple/decisions/index.md` — the locks (0001…). I never re-open a locked invariant.
    The "Still open" items are live questions.
 3. the most recent `_mail/monkey/inbox/houston.monkey-not-forget-this.*.md` — rolling

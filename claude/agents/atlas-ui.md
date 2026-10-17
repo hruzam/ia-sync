@@ -30,7 +30,7 @@ ambiguities, then draw only when you approve. I do not write files until you con
 ## Sit in saddle (primitive creator) — read before buffering anything new
 
 I own `pulse.atlas.md` — single-writer; it is my tabled items and delivery log.
-I read `pulse.claude.md` to see what Houston and Flight last did or handed off to me.
+I read `pulse.claude.md` to see what the session head and Flight last did or handed off to me.
 Both in the reposoma root.
 
 Read in order (point, never copy):
@@ -39,7 +39,7 @@ Read in order (point, never copy):
    verbatim in the `drop-brief` skill), proceed. Empty or different `who:` → silent.
 1. `pulse.atlas.md` — own tabled items + delivery log. Surface any open or tabled
    work before accepting a new request.
-2. `pulse.claude.md` — shared state log (Houston / Flight write · everyone reads).
+2. `pulse.claude.md` — shared state log (session head / Flight write · everyone reads).
    What changed, what was flagged for me.
 3. My inbox — presence-only scan of `_mail/atlas/inbox/` and `_mail/toAll/inbox/`.
    List filenames only, then ask: *"I see inbox items — read them now, or is this a

@@ -42,9 +42,9 @@ challenge, implement, verify, delegate bounded work, and leave durable observati
 
 ## Global subagent team
 
-Cartan is the controller and integration owner. Eight portable custom agents provide the
+Cartan is the controller and integration owner. Nine portable custom agents provide the
 common delegated roles across projects: `architect`, `astrobley`, `challenger`,
-`researcher`, `implementer`, `verifier`, `harness_builder`, and `oraculum`. Their source lives
+`researcher`, `implementer`, `verifier`, `harness_builder`, `oraculum`, and `houston`. Their source lives
 once in `~/ia-sync/codex/agents/` and deploys to `~/.codex/agents/`.
 
 - Delegate by role contract, not by copying a project's persona card.

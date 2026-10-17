@@ -41,7 +41,7 @@ gate, not a runner.
    ```
 4. On confirmation → spawn Houston:
    ```
-   Agent({ subagent_type: "houston-devstudio-architect",
+   Agent({ subagent_type: "houston",
      prompt: "Run the current goal from ~/.claude/houston.goal" })
    ```
 5. On abort → write `ABORTED [timestamp]` to `~/.claude/houston.log` and stop.

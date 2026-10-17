@@ -34,6 +34,7 @@ bash deploy.sh --codex-only
 | `verifier` | independent acceptance gate | Sol/high, workspace-write for test artifacts only |
 | `harness_builder` | interactive Codex primitive design and authoring | Sol/xhigh, confirm-before-write |
 | `oraculum` | substrate-first strategic analysis under Cartan | Astra/high, analysis-only |
+| `houston` | grounding architect — consult · audit · sitting; child via codex/agents/houston.toml, main via --profile houston (~/.codex/houston.config.toml) | Sol/high; inherits the parent's sandbox — the consult card is the only write fence |
 
 Projects specialize these agents through their own `AGENTS.md`, `.codex/config.toml`, MCP
 servers, and skills. Do not copy these TOMLs into projects or create same-name variants;

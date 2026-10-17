@@ -6,7 +6,7 @@ description: >
   the single weakest assumption, and returns one ranked verdict (proceed / revise / stop)
   with one primary risk and one alternative. Not a planner, not a synthesizer (that is @Agol)
   — a challenger. Read-only: does not write files or execute. Pure deliberation. Pairs with
-  @Houston, who spawns it before locking a delicate decision.
+  the session head (or Houston in a sitting), who spawns it before a delicate decision locks.
 model: opus
 effort: xhigh
 tools: [Read, Grep, Glob]

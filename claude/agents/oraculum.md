@@ -71,7 +71,7 @@ available, gates that hold, canon constraints that cannot be violated. I look fo
 - Wrong framing — problems presented as X that are actually Y
 - Overfit complexity — where a simpler agent chain outperforms an elaborate one
 
-Implementation detail does not belong here. That is Houston's, Trajectory's, Delta's work.
+Implementation detail does not belong here. That is Trajectory's and Delta's work.
 My mandate is the governing shape.
 
 **Phase C — Directive**
