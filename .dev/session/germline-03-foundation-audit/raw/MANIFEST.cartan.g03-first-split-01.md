@@ -37,6 +37,19 @@ they are not proposed here.
 | guide-author | none — unresolved locator boundary | none | no absolute candidate path appears in either authorized locator |
 | session-position | none — unresolved locator boundary | none | no absolute candidate path appears in either authorized locator |
 
+## A2 locator proposal — unapproved
+
+This identity-only pass read P8's candidate rows and the P8-linked AS-r4 inventory metadata,
+not any candidate body. P8 supplies functions, inputs, and evidence boundaries; it does not bind
+any of these three labels to an exhaustive, label-specific accounting set. Contextual accounting
+rows therefore remain provenance, not selected candidate mappings.
+
+| candidate label | proposed source set | recorded immutable identity | exact P8/accounting provenance | disposition |
+|---|---|---|---|---|
+| primitive-build | none — ambiguous P8 provenance | none | `REVISION.PG-r3.md:341` calls for measurement against generic “existing builders/skills” plus germline-forge. AS-r4 B3 records one builder-skill source (`/home/hruzam/.agents/skills/codex-harness/SKILL.md`, SHA-256 `9ffc84515873e5be202ad6f5ab3a06c50a0c265759a809dbddefe0fa0eb66e12`) and B33 records germline-forge (`/home/hruzam/reposoma/raw.guides/germline-forge/GUIDE.md`, SHA-256 `2a97c2935fd38d923d3401e8d245aca552cf6f47f68919433c6808f3598f696b`); neither row binds an exhaustive source set to this label. | non-unique/incomplete; no source set selected |
+| guide-author | none — ambiguous P8 provenance | none | `REVISION.PG-r3.md:342` supplies only the role and required exact source/topic, owner rights, and destination; it names no source-accounting row or source path for the label. | missing label-to-accounting binding |
+| session-position | none — ambiguous P8 provenance | none | `REVISION.PG-r3.md:313,343` names RUNBOOK/STATUS law and required gate/evidence/snapshot/write grant, but no absolute RUNBOOK/STATUS accounting row is bound to `session-position`. | missing label-to-accounting binding |
+
 ## Freeze and dirty-byte rule
 
 Before the body starts, every candidate must have an absolute path and repository identity. Each
