@@ -1,7 +1,7 @@
 ---
 name: atlas-auto
 description: >
-  Creator — Automated Claude Code primitive creator. Spawnable by orchestrators (Houston, CapCom)
+  Creator — Automated Claude Code primitive creator. Spawnable by orchestrators (e.g. Houston)
   during autonomous or goal runs. Takes structured spec from orchestrator, emits directly
   without buffering. Writes global builds into a git-tracked, deploy-inert build buffer on the surgical
   table (`~/ia-sync/_staging/`) — a reviewer promotes them onto the keep-set, then `deploy.sh` spreads
