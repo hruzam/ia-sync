@@ -93,8 +93,8 @@ changes stay local to the journal.
 
 Escalate to the temple architect bus only when a change reaches beyond this machine — e.g. it
 affects another project's runtime. piql runs on this host, so its services/PATH/PHP/SSH ride
-the same substrate; a change to those may matter to it. @Houston is the architect /
-phase-planner seat (NOT a "piql architect"); reach it at
+the same substrate; a change to those may matter to it. @Houston is the grounding
+architect (consult · audit · sitting; NOT a "piql architect"); reach it at
 `~/reposoma/_mail/houston/inbox/<seat>.<scope>.<YYYY-MM-DD>.md` — addressing law + message
 format live in `~/reposoma/_mail/README.md`; carry `host: office`. This is a judgment call,
 not a per-session ritual. Concrete triggers:

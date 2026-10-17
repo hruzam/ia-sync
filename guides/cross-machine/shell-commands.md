@@ -160,7 +160,7 @@ Shannon (piql wiser mechanic) must review any piql-expose call before use.
 |----------|-------------|------|
 | office seat | Claude Code / Sonnet (any session) | Office machine maintenance |
 | Shannon  | `claude --agent shannon` | piql wiser mechanic — privacy gate audit |
-| Houston  | `claude --agent houston` | Architect / phase planner |
+| Houston  | `claude --agent houston` | Grounding architect (consult · audit · sitting) |
 
 Roster: `~/reposoma/temple/roster.md`
 Shannon spec: `~/.claude/agents/shannon.md`

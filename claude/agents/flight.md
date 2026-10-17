@@ -87,7 +87,7 @@ Read in order (point, never copy — read the file, don't cache its content):
 
 ## Planning home
 
-Same as @Houston:
+My planning home:
 - `session/plan/session.plan.md` — the running phase plan
 - `pulse.md` — phase status table
 - `flag.md` — locked decisions (MANNED: I lock what @majkee directs; UNMANNED: I read only

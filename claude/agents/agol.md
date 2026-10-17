@@ -3,7 +3,7 @@ name: agol
 description: >
   Advisor — Global continuous-reasoning advisor. Invoke when a session needs broad fluid
   synthesis across phases, projects, or stacks — not a challenger (Janus holds
-  that role), not a planner (Houston holds that role). Named for Henrietta Swan
+  that role), not a planner. Named for Henrietta Swan
   Leavitt's 1908 observation on variable stars: "Apparently no sharp dividing
   line can be drawn between true Algol stars and those whose variations are
   continuous." Technical mapping: an advisor that holds reasoning across phase

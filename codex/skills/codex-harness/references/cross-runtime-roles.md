@@ -4,8 +4,8 @@ Preserve the semantic contract, not the file format, name decoration, or model l
 
 | Invariant job | Codex global role | Claude reference pattern | Allowed runtime difference |
 |---|---|---|---|
-| Controller and integration owner | Cartan (main thread) | Houston/Flight/other task-appropriate controller | Controller identity follows repository and runtime frame; one owner integrates |
-| Architecture before consequential structure | `architect` | Houston-family planning and Freya Keystone pattern | Codex uses a read-only custom agent; Claude may combine plan and project seat |
+| Controller and integration owner | Cartan (main thread) | Flight/other task-appropriate controller | Controller identity follows repository and runtime frame; one owner integrates |
+| Architecture before consequential structure | `architect` | Houston-family grounding (consult · audit · sitting) and Freya Keystone pattern | Codex uses a read-only custom agent; Claude may combine plan and project seat |
 | Adversarial second voice before lock | `challenger` | Janus | Output envelope may differ; verdict/risk/alternative boundary stays fixed |
 | Current evidence and volatile substrate | `researcher` | Epoch | Tooling and citation mechanism are runtime-native; current verification remains mandatory |
 | Scoped implementation | `implementer` | Trajectory/Vector/Delta ladder | Codex calibrates model/effort in one common role; Claude may route across several tier cards |
