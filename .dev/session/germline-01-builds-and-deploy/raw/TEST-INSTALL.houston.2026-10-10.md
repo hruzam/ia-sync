@@ -948,6 +948,24 @@ For what it's worth: houston held its consult-card boundary and declined to writ
 ```
 ---
 
+## R2.COEX — profile Houston beside the tunnel (2026-10-17) — PASS
+
+Runbook: nablarva X1 `_bus/14.cartan.return.md` (cartan, cycle 14). Operator steps majkee; ACK + evidence oraculum.
+
+| item | value |
+|---|---|
+| tunnel thread (Cartan) | `01a14731-648c-7a60-a34f-350278fe5897` · rollout ~/.codex/sessions/2026/10/17/rollout-2026-10-17T02-09-41-01a14731-648c-7a60-a34f-350278fe5897.jsonl |
+| profile thread (Houston, `codex --profile houston -C ~/unikuklatrix/nablarva`) | `01a147f8-0b60-7472-81a6-8af4bb742444` (identified from the rollout: started 03:46:40 UTC, canary `hp-7c3e91a4` ×6) · rollout …/2026/10/17/rollout-2026-10-17T05-46-40-01a147f8-0b60-7472-81a6-8af4bb742444.jsonl — distinct from the tunnel thread ✔ |
+| baseline lock listing | 03:45:29 UTC — no `01a14731` lock, no profile lock yet |
+| profile turn | `card: consult` read-only question → line 1 `Route: main session via --profile houston (canary: hp-7c3e91a4).`; stamps identity 99ae988e · binding.codex 0c812f6c · nablarva a6498a47 · consult 5435b1c7; answer `consult · fits · locked: L16.9` → docs/ARCHITECTURE.md; nothing written |
+| post-exit lock listing | 03:52:01 UTC — identical file list to baseline (dir mtime 03:50 UTC: the profile lock was created and released before the listing); no `01a14731` lock |
+| tunnel ACK | oraculum `ask` 03:56:30 UTC → `COEX-14 ACK` (ctx 13.6 %, preamble 787 chars prepended); no writer-lock rejection; 03:56:41 UTC no `01a14731` lock |
+| resume | not needed — `ask` on the live binding (no `tun resume` run) |
+
+Verdict: **PASS** — distinct UUIDs; read-only profile turn completed and exited; exact ACK on the bound tunnel thread with no writer-lock conflict. Not proven: two writers on one thread; home host. Side note: ~13 stale writer-locks from older sessions (2026-10-16/17) remain in ~/.codex/thread-writer-locks/ — untouched.
+
+---
+
 # HR. `houston` hot run
 
 ## HR.1 `houston` - card:consult above `germline-03-`
