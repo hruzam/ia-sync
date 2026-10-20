@@ -10,6 +10,15 @@
 
 ---
 
+## OFFICE — 2026-10-20 · Oraculum caller contract broadened
+
+`codex/agents/oraculum.toml` now accepts bounded, explicitly authorized consultations from
+Cartan, myShell, Astrobley, or Houston. The assignment must still name the current cycle or
+consultation, actual owner/gate, question, evidence boundary, and return; a RUNBOOK remains
+required only where the caller's authorized scope uses one. The role remains analysis-only and
+cannot grant caller authority. The source is committed and pushed before this host deploy; verify
+the deployed copy equals source before a fresh-session behavior check.
+
 ## OFFICE — 2026-10-12 · Trajectory · global germline source moved to ia-sync (copy); manual host migration pending
 
 germline-01 (design `.dev/session/germline-01-builds-and-deploy/raw/design.global-germline-deploy.oraculum.2026-10-12.md`, majkee GO 2026-10-12):
