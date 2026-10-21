@@ -1,0 +1,47 @@
+# DEC.01 — Germline load contract: five decisions from U1+U2
+Prepared by Flight (G06) 2026-10-21 for Majkee + myShell review. Processed evidence, alternatives, consequences, recommendation. **Not a gavel. No ledger invented.** Evidence: units/RESULT.U1.md, units/RESULT.U2.md, _bus/oraculum.assess.U1-U2.return.md (attributed), _bus/field.U{1,2}.return.md.
+Audit-only holds apply: nothing here has been edited anywhere.
+
+> **Status 2026-10-21 (after reconciliation with germline-01 — units/RECONCILE.G01.md; receipts: `~/reposoma/.majkee/journal/2026-10-21.md` §§1.1–1.4).**
+> D1 **ACCEPTED with amendment** · D2 **GAVELED** · D3 **PENDING U4** (MIGRATE §3 + live CHATBOT consumer folded in) · D4 **GAVELED** · D5 **WITHDRAWN as gavel item** (not gaveled; reassessed → mech remainder). The option/recommendation text below is kept as the historical proposal; the accepted wording governs. **Nothing here is currently ready for `/gavel-loop`.**
+> - D1 accepted wording (synthesis §1.1): describe the general agent structure, not a "Houston-class" category; each agent declares how its runtime consumes its sources; generated files identify their source, runtime loaders identify what to read and when; an agent's own identity/bindings/cards coexist with a shared program layer (controllers, selected functions) — a requirement. Option (i)'s "Houston-class" phrasing is withdrawn.
+> - D2 gaveled wording (§1.2): "Runtime loading remains the current working design. Its behaviour through compaction—including retention and the intended rereading/recovery path—remains unverified. Carry validation to the germline-planning owner as later work. The October 10 gavel is cited; its original receipt remains unlocated. No universal production gate follows from this finding." Option (a)'s backdated acceptance sentence is withdrawn.
+> - D4 gaveled wording (§1.3): "Germline provides the shared agent definition and shared programs. A project may explicitly attach an agent-specific local layer carrying its project context, paths and applicable locks. The effective composition includes the selected shared and local parts. Source/deployment paths and the current file split describe its packaging, not its permanent architecture." Existing project-lock and authority limits remain; option (a) is one possible later implementation.
+> - D5: bindings own route availability, cards own write limits/landing (G01 fixes, witnessed); the four copies of the selection rule were maintained together on 10-15; remaining conflict = Codex wrapper lacks the binding's "effective cwd" proof line (mech). Recommendation: no ownership relocation.
+
+## D1 — Scope of the README:3 "one-way stamped rendering" rule
+Evidence: README.md:3 (gaveled 2026-09-25) says vendor files derived from source are stamped renderings; README.md:8–11 says Houston wrappers are thin loaders. `grep "derived from"` over vendor files: zero instances. No written criterion says which seats are germline-bound (Houston) vs vendor-native (Oraculum).
+Options: (i) rewrite :3 to say Houston-class seats load at runtime via thin loaders, other derived vendor files are stamped renderings, and name the criterion; (ii) keep :3, name Houston wrappers an exception; (iii) retire the rendering rule.
+Consequence: (i) closes README contradiction + Oraculum criterion gap with one edit but amends a gaveled sentence; (ii) leaves the criterion unwritten; (iii) deletes a gaveled rule that nothing uses.
+Recommendation: (i). Destination: `/home/hruzam/ia-sync/germline/README.md:3–5` (+ cite from binding.claude.md table header). Needs: your word, since :3 is your gavel.
+
+## D2 — Write down acceptance of the identity-below-kernel risk (Sella L1/L7) pending the pilot
+Evidence: master-brief (09-23) chose build-time because identity must sit in the kernel; 10-10 fold reversed it. Acceptance appears nowhere in writing; the 10-10 operator receipt is not located (cited only by agent-authored files). Compaction mechanism is now documented (≤5 recently read files ≤5k tokens each re-read; larger files degrade to path refs; Epoch/E4); survival of the agent definition body is undocumented. Not a demonstrated failure.
+Options: (a) one sentence in identity.md:8/README:8–11: "accepted 2026-10-10 by Majkee; measured by pilot P1"; (b) revert to build-time for the kernel-critical fence only (the card's "What I do not do"); (c) leave implicit.
+Consequence: (a) cheap, honest, keeps runtime-load; (b) removes the L7 exposure for the fence but reintroduces a rendered fragment + checks; (c) keeps an unrecorded risk acceptance.
+Recommendation: (a), and separately decide whether to authorize pilot P1 (U9 will state the question sheet). Receipt: please say if you recall where the 10-10 and 10-12 gavels are recorded, else rows stay "cited, receipt unlocated".
+
+## D3 — Fate of the `reposoma/.germline/` fork given CHATBOT.md points chatbots at it
+Evidence: CHATBOT.md routes to GitHub `hruzam/reposoma` `.germline/`; fork has 6 files differing from live (identity stamp 0be9958a vs 99ae988e), no deploy leg; skills equal; Forge R04 still names the fork as canonical; both repos have GitHub remotes (ia-sync private status/visibility to a chatbot connector unverified).
+Options: (a) add a deploy/mirror leg ia-sync/germline → reposoma/.germline; (b) repoint CHATBOT.md at ia-sync (needs connector access verified); (c) freeze fork for skills only, remove `agents/` there; (d) leave.
+Consequence: (a) keeps the chatbot path working, adds a second deploy target (README:14 additive rule); (b) single source, depends on access; (c) stops stale identity being served; (d) chatbots keep reading a stale Houston identity.
+Recommendation: not yet — decide after U4 (deploy/source-of-truth). Listed here so it is not retired by accident: the fork is NOT a ghost. **Added 2026-10-21:** G01 `MIGRATE.germline.2026-10-12.md §3` already proposes conditional retirement (`git rm` global files + README stub, only after BOTH hosts are migrated and verified, on Majkee's word). Prerequisites unmet: home not migrated (`journal.host-cleanup.md:53`; `ISS.germline-migration-tail` open); CHATBOT.md still points chatbots at the fork, so §3 as written would cut a live consumer. U4 reconciles consumers + prerequisites before any disposition; options (a)–(d) are alternatives to §3, not replacements.
+**U4 result (2026-10-21, units/RESULT.U4.md §8) — D3 brought back, still NOT ripe; now with the complete list.** Lever: the chatbot channel was split on 10-12 — write side (chatbot-port) moved to ia-sync, read side (CHATBOT.md:9) stayed on the fork; new ports never reach chatbots by construction. Prerequisites: **P1** operator tests GitHub-connector access to private `hruzam/ia-sync` · **P2** operator names which chatbots hold a Houston identity / memory copy · **P3** home `~/.germline` verified (unreachable today) and migrated, or the ordering rule "home migrates before any reposoma pull of a stripped fork" · **P4** scope stated against CHATBOT.md:18 · **P5** fold-scheme + fork README re-pointed in the same move. Options re-ranked: **re-home CHATBOT.md to ia-sync if P1 passes** (= old option b; route works at every step; MIGRATE §3 becomes the last step after P3); **mirror into a non-dot `reposoma/germline/` if P1 fails** (= old option a, amended); ISS-card scope / freeze = holding states; MIGRATE §3 as written breaks the route at the commit; leave = de-facto state. Also for Majkee (not gavels): an open watchdog card holding the P3 gate; who may write into `reposoma/.germline` until D3 (default nobody — reposoma `5357179` wrote there on 10-14). **Ready for `/gavel-loop` only after P1–P3 are answered; P1 and P2 are operator actions no agent can perform.**
+
+## D4 — identity.md `scope: shared` vs `authority:` pinned to nablarva
+Evidence: identity.md:4–5. A second project's Houston would inherit nablarva's flag commits as its authority. Edit touches gaveled design (atlas-ui authored).
+Options: (a) generalize authority to "the flag lock of the project loaded via the addendum" and keep pins in nablarva.md; (b) keep, annotate "first project"; (c) leave.
+Recommendation: (a). Re-rolls identity stamp.
+
+## D5 — Single owner of card-selection and entry-proof law
+Evidence: card-selection stated 4× with diverged edge clauses (binding.claude:28, binding.codex:31–32, wrapper, identity); entry-proof 3× with Codex "effective cwd" missing in the Codex wrapper.
+Options: (a) vendor binding owns card selection, wrapper owns entry proof, others cite; (b) identity owns card selection; (c) status quo.
+Recommendation: (a). Consequence: edits to 5 gaveled files, stamps/canaries re-rolled, three-route witness run recommended afterwards.
+
+## Non-decisions (mechanical, listed for completeness)
+binding.codex.md:18 deploy-map wording (stale, verifiable); a named delegation ban list for Codex; mark convergence.md retired in-file (U5).
+
+## Review path (for Majkee + myShell)
+Review file: `/home/hruzam/ia-sync/.dev/session/germline-06-full-audit/decisions/DEC.01.germline-identity-and-load-contract.md`
+Invocation line: `/gavel-loop /home/hruzam/ia-sync/.dev/session/germline-06-full-audit/decisions/DEC.01.germline-identity-and-load-contract.md`
+~~Flight's suggestion: D1, D2, D4, D5 are ready to qualify; D3 should wait for U4~~ — superseded 2026-10-21: D1/D2/D4 accepted (journal receipts), D5 withdrawn, D3 waits for U4. Further decisions from U3–U9 will arrive in DEC.02+.

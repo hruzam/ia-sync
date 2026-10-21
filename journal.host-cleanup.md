@@ -10,6 +10,44 @@
 
 ---
 
+## OFFICE — 2026-10-21 · Flight · germline-06-full-audit CLOSED — accepted by Majkee
+
+Audit-only session, bed `.dev/session/germline-06-full-audit/` (uncommitted; nothing outside it
+edited; no deploy, commit, experiment). Delivered: 45-row inventory + E1–E26 dispositioned;
+reconciliation with the germline-01 install record (every Houston route WAS witnessed by Assay on
+office 2026-10-13..17 — U1/U2's "unwitnessed" withdrawn; gaps = current revisions, home host,
+compaction); nine unit results; five decision files with `/gavel-loop` lines; the C2 compaction
+question sheet (no run); integrated handoff `units/INTEGRATED.recommendations.md`.
+Accepted by Majkee today: D1 (general agent structure; shared programs coexist), D2 (runtime
+load = working design; compaction unverified; no universal gate), D4 (project layer = explicitly
+attached local layer); D5 withdrawn. Pending his inputs: D3 (fork is the chatbot read-side —
+write side moved to ia-sync 10-12; connector access to private ia-sync untested; which chatbots
+hold Houston copies; home `~/.germline` state — unreachable over tailscale today, last record
+10-14 "home pending"; MIGRATE §3 as written would cut the chatbot route). Proposed, not applied:
+D6–D19 (explicit-declaration override of the walk-up; D4 as floor; retired marker; two-tier
+stamp/source-commit rule; Forge re-distill around the changed proof object + chapter banners;
+Sella L7 dated note; guide chapter staleness inheritance; one witness rule and one delivery
+sentence in germline README; one return header grammar incl. programs; germline-bound criterion;
+Oraculum = two seats sharing a name after 286085d — Majkee's call; pins/recalibration seat).
+Mech remainder is one bundle: one GO, one stamp re-roll, one re-witness under TEST-INSTALL §3.
+Home-facing: home migration stays separate operational work (MIGRATE §2 order; pull reposoma
+→ nablarva → ia-sync; the fork must NOT be stripped before home migrates); the "Known window"
+comfort no longer applies (fork diverged). Nothing for home to do until Majkee schedules it.
+
+Majkee GO after v4/Janus/Houston review: source-only composition family at
+`zsh/termbrana/`, thin zsh entry + stdlib Python, independently PASS. The qualified
+standalone command uses `python3 -I -S -B`; 27 unit methods, 62 byte comparisons,
+38 twice-run CLI cases and 33 independent probes pass. Fixed office performance
+budgets pass; corpus p95 92.968602 ms <=100 ms. Earlier failures remain recorded.
+Central governance: Nablarva flag L17 and Termbrana README. Exact exit evidence:
+`~/unikuklatrix/nablarva/.dev/session/composer-01-parse/evidence/phase0.exit.cartan.2026-10-21.md`.
+Configurable controller/roster/germline/vendor/SPECIAL sources remain future work.
+No commit, push, deploy, installer or shell startup wiring was performed by this
+sitting. Both hosts' live configuration stays untouched; home is unverified.
+Initial fetched origin/main matched local 286085d; Flight independently advanced
+G05 to 55e6157 during verification. Composer hashes stayed unchanged. Foreign
+G04/G06 work is preserved; no pull, rebase or stash was performed here.
+
 ## OFFICE — 2026-10-20 · Oraculum caller contract broadened
 
 `codex/agents/oraculum.toml` now accepts bounded, explicitly authorized consultations from

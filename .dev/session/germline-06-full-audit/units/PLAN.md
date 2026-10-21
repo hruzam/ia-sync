@@ -1,0 +1,12 @@
+# G06 unit plan (Flight-owned; source = Oraculum return, saved verbatim at ../_bus/oraculum.unit-plan.return.md)
+
+Accepted order: U1 intent lineage → U2 Houston load path → U3 programs → U4 deploy/drift → U5 project layer → U6 GUIDE layering → U7 BUS/STATUS return shapes → U8 vendor seam → U9 retention/recovery. (Oraculum's own deps: U2←U1; U3←U1,U2; U4←U1; U5←U2,U3; U6←U1,U4; U7←U2,U3; U8←U2; U9←U2,U7,U8.) Per unit: Field (full relevant content) → Oraculum assess → Flight verifies → units/RESULT.U<n>.md. Decisions → decisions/DEC.<n>.md + /gavel-loop line.
+
+## Flight checks of Oraculum's plan (2026-10-21)
+- CONFIRMED by Flight: all newly named retrieval paths exist (RECONCILIATION, GAVELS, G04 CLOSE, .majkee/AGENTS.md, engine/README.md, germline.deployed); `diff -rq ia-sync/germline reposoma/.germline` = exactly 6 differing files (README, identity, binding.claude, binding.codex, cards/consult, tunnel.preamble); sizes (identity 10,179 · binding.claude 5,688 · binding.codex 7,054 · nablarva 11,261 B); fork identity stamp 0be9958a vs live 99ae988e.
+- **CORRECTION to my own findings.g06 friction (5):** I wrote "caller must supply the correct stamp". CONTROLLER (journal-continuity :48-55) shows the expected stamp is PINNED IN THE TABLE; the agent verifies file stamp == table stamp. Friction (5) is retracted as stated; the real question (who updates the table when an fn file is edited; table↔file drift) goes to U3. Plan note on U3 (a) is right.
+- Accepted risks: audit-only = legibility not behaviour (every "agent-consumable" verdict says so); U1 ladder verified by Flight before U2; U4/U5 may run on Flight's own checked reads (small evidence) — Field still used for full-content rule.
+- Not-read list from Oraculum is carried as coverage limits.
+
+## Accounting 2026-10-21 (Flight)
+U1 ✔ RESULT.U1 (+ RECONCILE.G01 corrections) · U2 ✔ RESULT.U2 (+ corrections) · U3 ✔ RESULT.U3 (§9 operator/myShell addendum, §10 Epoch grammar survey) · U4 ✔ RESULT.U4 (D3 prerequisites) · U5 ✔ RESULT.U5 + DEC.02 · U6 ✔ RESULT.U6 + DEC.03 · U7 ✔ RESULT.U7 + DEC.04 · U8 ✔ RESULT.U8 + DEC.05 · U9 ✔ RESULT.U9 + QUESTIONS.C2.compaction.md (no DEC). Integration: INTEGRATED.recommendations.md. Oraculum's U2 §5 hypothesis "functions table ≈ G5" withdrawn at U3; walk-up-as-G4-violation closed by category at U3/U5. Plan dependencies honoured in order; U3 Field retrieval and U4 dispatch overlapped no assessment.
