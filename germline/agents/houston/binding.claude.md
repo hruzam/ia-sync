@@ -5,8 +5,8 @@ runtime: Claude Code — thin global wrapper ~/.claude/agents/houston.md (author
 scope: mechanics only — how the identity is loaded, selected, permitted and proven on this runtime; grants no authority the identity, the card or the project addendum does not already name
 authority: identity.md beside this file · nablarva flag L16.14 (capabilities read · grep · glob · write · spawn, bounded by card)
 state: CANDIDATE — final fold 2026-10-10 (majkee gavel); X0 evidence (verified block, witness rounds, B4 placement history) archived, pre-fold copy at nablarva .dev/session/nablarva-X1-architecture/raw/archive.x0-renders/binding.claude.md (commit-pin at majkee's commit)
-updated: 2026-10-15
-stamp: cf14943f
+updated: 2026-10-21
+stamp: 6181ad36
 ---
 # houston · Claude binding
 
@@ -31,12 +31,20 @@ audit-as-probe that states its limits); main session → ask the operator to sel
 session is allowed (a quick grounding question asked directly; it still writes nothing).
 Unknown card → `out of card:`.
 
+**Sitting on a child — explicit operator assignment only.** A child may run `card: sitting` only
+when (a) the assignment's first line is `card: sitting`, (b) it names the bed and states that the
+operator (majkee) assigned it, and (c) the invoking head is the session's main. On that route the
+child writes only new files in the named bed's `raw/`; never spawns (the head runs readers and
+crawlers and passes their output in); and returns the arc, alternatives and drafts to the head,
+which relays the operator's picks **verbatim** — only those relayed picks count as picks. A child
+sitting without (a)–(c) → `out of card:`. Omission rules are unchanged (child + no card → consult).
+
 | | **child** (returns bounded work) | **main session** (leads a bounded invocation) |
 |---|---|---|
-| **cards** | consult · audit-as-probe | consult (explicit line only) · audit (full) · sitting |
+| **cards** | consult · audit-as-probe · sitting (explicit operator assignment only — see below) | consult (explicit line only) · audit (full) · sitting |
 | **entry** | `Agent` tool from a head's or the operator's session | `claude --agent houston`, started in the project root; interactive, never `-p` |
 | **permissions** | the wrapper's `tools:`; a child inherits the parent's effective permissions **and can spawn** — the card is the only fence | the wrapper's `tools:`; writes bounded per card |
-| **delegation** | consult: at most one bounded reader; never an executor (`delta`, `trajectory`, `vector`), never `atlas-*`, never Houston → Houston | bounded readers (`field`, `zenith`, `eagle`) and one verifier (`assay`); same bans |
+| **delegation** | consult: at most one bounded reader; never an executor (`delta`, `trajectory`, `vector`), never `atlas-*`, never Houston → Houston; a child sitting never spawns | bounded readers (`field`, `zenith`, `eagle`) and one verifier (`assay`); same bans |
 | **return** | the spawner's context | the landing path the project addendum names; a sitting writes only in its own bed |
 
 - **Placement:** a project-scope `<project>/.claude/agents/houston.md` overrides this global
@@ -68,5 +76,6 @@ route-limited finding opens with `unqualified for the complete card: <missing ca
 - **A route counts as proven** only after a dated fresh-session witness on that exact route
   (not by Houston, not by the wrapper's author): a sentence unique to the identity is located;
   `card: consult` → consult shape (on a child and, by explicit line, on main); no card line → consult on a child, asks on main; audit asked under consult →
-  `out of card:`; consult writes nothing; audit writes only its assigned two files; spawn stays
-  within the delegation row. Witness records live in the project bed, never here.
+  `out of card:`; consult writes nothing; audit writes only its assigned two files; a child
+  `card: sitting` without (a)–(c) → `out of card:`, with them it writes only new files in the named
+  bed's `raw/` and does not spawn; spawn stays within the delegation row. Witness records live in the project bed, never here.

@@ -22,12 +22,12 @@ grep -H '^stamp:' ~/.germline/agents/houston/*.md ~/.germline/agents/houston/car
 
 | absolute path | stamp |
 |---|---|
-| `/home/hruzam/.germline/agents/houston/identity.md` | `99ae988e` (was `6abf41fe`; C-def fix 2026-10-15 — consult write line) |
-| `/home/hruzam/.germline/agents/houston/binding.claude.md` | `cf14943f` (was `9a3f17c0`; C-def fix 2026-10-15) |
-| `/home/hruzam/.germline/agents/houston/binding.codex.md` | `0c812f6c` (was `c4218b5f`; 2026-10-17 — `sandbox_mode` removed from child keys, witnessed inert; earlier `5d08b2e7`) |
+| `/home/hruzam/.germline/agents/houston/identity.md` | `3702b18f` (was `99ae988e`; 2026-10-21 — sitting row notes child route; earlier `6abf41fe`) |
+| `/home/hruzam/.germline/agents/houston/binding.claude.md` | `6181ad36` (was `cf14943f`; 2026-10-21 — child sitting under explicit operator assignment; earlier `9a3f17c0`) |
+| `/home/hruzam/.germline/agents/houston/binding.codex.md` | `437e8193` (was `0c812f6c`; 2026-10-21 — child sitting under explicit operator assignment; earlier `c4218b5f`; 2026-10-17 — `sandbox_mode` removed from child keys, witnessed inert; earlier `5d08b2e7`) |
 | `/home/hruzam/.germline/agents/houston/cards/consult.md` | `5435b1c7` (was `46dcd163`; C-def fix 2026-10-15 — `## What I do not do` chapter, landing rule) |
 | `/home/hruzam/.germline/agents/houston/cards/audit.md` | `e517cc86` |
-| `/home/hruzam/.germline/agents/houston/cards/sitting.md` | `effacaf6` |
+| `/home/hruzam/.germline/agents/houston/cards/sitting.md` | `630f58c3` (was `effacaf6`; 2026-10-21 — Route line, child route under binding rule) |
 | `/home/hruzam/unikuklatrix/nablarva/.germline/agents/houston/nablarva.md` | `d9ee9067` (was `a6498a47`; wrapper move 2026-10-17) |
 
 **Wrapper canaries (cartan cycle 11; the first line of the entry proof must echo the Route line verbatim):**
@@ -37,6 +37,8 @@ grep -H '^stamp:' ~/.germline/agents/houston/*.md ~/.germline/agents/houston/car
 | `~/ia-sync/codex/profiles/houston.config.toml` (main profile) | `Route: main session via --profile houston (canary: hp-7c3e91a4).` |
 | `~/ia-sync/codex/agents/houston.toml` (child) | `Route: spawned child (canary: hc-9b3f0521).` (was `hc-849d3980`; re-rolled 2026-10-17 — inert `sandbox_mode` key removed; earlier `hc-b52f08d6`) |
 | `~/ia-sync/claude/agents/houston.md` | `Route: spawned by a parent agent → child; otherwise main session (canary: cl-e1a94c37).` |
+
+2026-10-21: wrapper bodies unchanged by the child-sitting gavel (loader text does not enumerate child cards in a contradicting way) — canaries `hp-7c3e91a4` · `hc-9b3f0521` · `cl-e1a94c37` NOT re-rolled.
 
 A canary is re-rolled whenever its wrapper's body changes. The §3 stamp rows above predate the canary and expect no Route line; for rows re-run after the canary deploy, expect it as line 1.
 

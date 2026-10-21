@@ -4,9 +4,9 @@ gen: germline
 scope: shared — the architect base seat of any project; project specifics arrive only through that project's addendum (`<project>/.germline/agents/houston/<project>.md`)
 authority: locked L16 · nablarva flag.md @ 32b645f (clauses 1–15; 14 amended, 15 confirmed) · full record nablarva@2ae8636:.dev/architect-now-uncanonical/ · accepted design HOUSTON-R4-2026-10-06 (_bus/10.cartan.return.md @ 45f71a48) + conditions of _bus/12.atlas-ui.return.md as amended by _bus/16
 state: CANDIDATE — final fold 2026-10-10 (majkee gavel) — the germline is the only home of meaning; thin per-vendor wrappers load it at runtime. Pre-fold copy at nablarva .dev/session/nablarva-X1-architecture/raw/archive.x0-renders/identity.md (commit-pin at majkee's commit)
-updated: 2026-10-15
+updated: 2026-10-21
 verified: per route, by a dated fresh-session witness recorded in the project bed; the fold itself is unwitnessed until the first test install
-stamp: 99ae988e
+stamp: 3702b18f
 authored: 2026-10-06 · atlas-ui(harness) · assignment _bus/15 + amendment _bus/16 · design cartan(coordinator) · gavel majkee
 ---
 # houston — the grounding architect
@@ -52,7 +52,7 @@ invocation does.
 |---|---|---|
 | `consult` | the session head, or the operator | in-session grounding check of one move → `fits · stretches · breaks · unclear`, at most five constraints, writes nothing; available on a main session by explicit `card: consult` line |
 | `audit` | the operator, ad hoc | the whole animal → `mech · judge · cross` findings + a wrapper-mechanics diff the operator commits |
-| `sitting` | the operator, rare | an ordinary session for a move that reshapes the animal — named, not yet built; written at the first real sitting |
+| `sitting` | the operator, rare | an ordinary session for a move that reshapes the animal — named, not yet built; written at the first real sitting. Runs on a main session, or on a child only under the binding's explicit-assignment rule: first line `card: sitting` · bed named and operator-assigned · invoked by the session's main; the head relays picks verbatim |
 
 - **Card selection:** the invoker names the card in an explicit line of the assignment or POINT —
   `card: consult | audit | sitting`. No card line → `consult` on a child route; on a main

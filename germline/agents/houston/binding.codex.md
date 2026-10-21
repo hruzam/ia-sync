@@ -5,8 +5,8 @@ runtime: Codex — custom agent ~/.codex/agents/houston.toml (child) · named pr
 scope: mechanics only — entry, permissions, delegation and proof; grants no authority beyond the identity, the selected card and the project addendum
 authority: identity.md beside this file · nablarva flag L16 (clause 14 amended)
 state: CANDIDATE — final fold 2026-10-10 (majkee gavel); X0 evidence archived, pre-fold copy at nablarva .dev/session/nablarva-X1-architecture/raw/archive.x0-renders/binding.codex.md (commit-pin at majkee's commit)
-updated: 2026-10-17
-stamp: 0c812f6c
+updated: 2026-10-21
+stamp: 437e8193
 ---
 # houston · Codex binding
 
@@ -36,12 +36,22 @@ explicit `card: consult` on the main session is allowed (a quick grounding quest
 directly; it still writes nothing). An unknown card or work outside the selected card returns
 `out of card: <request> → <owning card or seat>`.
 
+**Sitting on a child — explicit operator assignment only.** The child (custom agent
+`~/.codex/agents/houston.toml`) may run `card: sitting` only when (a) the assignment's first line
+is `card: sitting`, (b) it names the bed and states that the operator (majkee) assigned it, and
+(c) the invoking head is the session's main. On that route the child writes only new files in the
+named bed's `raw/`; never spawns (the head runs readers and crawlers and passes their output in);
+and returns the arc, alternatives and drafts to the head. The head relays the operator's picks
+**verbatim** — for a held seat, by `followup_task` to the same child — and only those relayed picks
+count as picks. A child sitting without (a)–(c) → `out of card:`. Omission rules are unchanged
+(child + no card → consult). The card remains the only write fence (inherited sandbox; see below).
+
 | | **child** (returns bounded work) | **main session** (leads a bounded invocation) |
 |---|---|---|
-| **cards** | consult · audit-as-probe | consult (explicit line only) · audit (full) · sitting |
+| **cards** | consult · audit-as-probe · sitting (explicit operator assignment only — see below) | consult (explicit line only) · audit (full) · sitting |
 | **entry** | the custom agent `houston`, selected by an authorized head or the operator with `spawn_agent` | fresh interactive `codex --profile houston -C <project-root>` |
 | **permissions** | effective child sandbox, approval policy and exposed tools; the card bounds writes further (consult: none); the TOML cannot enlarge inherited authority | effective main-session sandbox, approval policy and exposed tools; consult nothing, audit writes only assigned findings and the proposed wrapper diff, sitting only drafts in its own bed |
-| **delegation** | consult needs no helper; any helper is bounded to reading or verification, never Houston's judgment or a wider pen; an audit-as-probe without required capabilities declares itself `unqualified for the complete card` | bounded readers or one verifier as the card needs; no Houston → Houston loop, no creator; the session head and the operator retain lifecycle and gavel |
+| **delegation** | consult needs no helper; any helper is bounded to reading or verification, never Houston's judgment or a wider pen; an audit-as-probe without required capabilities declares itself `unqualified for the complete card`; a child sitting never spawns | bounded readers or one verifier as the card needs; no Houston → Houston loop, no creator; the session head and the operator retain lifecycle and gavel |
 | **return** | the spawner's context | the landing path the project addendum names; return to the operator and stop |
 
 - **Consult writes no file on any route; a write request is `out of card: <the write>`.**
