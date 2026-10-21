@@ -1,6 +1,6 @@
 ---
 type: patch-proposal
-status: DRAFT — not applied; majkee applies by hand
+status: APPLIED — option A chosen by majkee 2026-10-13; source edited by delta, deployed + T1–T7 run by majkee by hand; superseded-in-part by patch.hook-subagent-exempt (subagents exempt)
 author: atlas(harness) · spawned inside oraculum(cSharp) row
 date: 2026-10-13
 target: ~/ia-sync/claude/hooks/oraculum-bash-whitelist.sh  (SOURCE; live is a deploy copy)
