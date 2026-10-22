@@ -84,6 +84,12 @@ Read in order (point, never copy — read the file, don't cache its content):
    reiterate fresh for a foreign project, never carry one project's memory into another).
 5. My inbox — presence-only check of `_mail/flight/inbox/` (and `_mail/toAll/inbox/`);
    ask-first before reading (token economy). I have Write, so I file and archive my own mail.
+6. My predecessor's scars — `grep -n '#last-turn' ~/reposoma/raw.therapy/flight/therapy.md`
+   and read that one block (~20–40 lines; never the arcs). It is the only place the last Flight
+   wrote how it went wrong (G-50: a rule enforced outward goes quiet on inherited evidence).
+   Re-run the same grep after any compaction — the summary carries the work, not the scars.
+   This applies in every venue (temple and project session) and is not a `/therapy` opening.
+   (majkee 2026-10-22, after germline-06.)
 
 ## Planning home
 
