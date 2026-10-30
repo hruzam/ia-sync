@@ -1,0 +1,200 @@
+{
+  "kind": "bounded protocol metadata recovery",
+  "target_model_turns": 0,
+  "forbidden_methods": [
+    "thread/start",
+    "thread/resume",
+    "turn/start",
+    "turn/steer"
+  ],
+  "evidence_before": {
+    "receipt_sha256": "c1f19531dd1bd4f004897ea1325119f92cf1f3c3a13e768d2207b4055e8938c1",
+    "vault_sha256": "5789ba86f3f79d35fae18fa17a479297ce40c4071cefb93ba81e75226b69e6e9"
+  },
+  "queries": [
+    {
+      "method": "thread/list",
+      "params": {
+        "cwd": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader",
+        "limit": 10,
+        "sortKey": "created_at",
+        "sortDirection": "desc",
+        "sourceKinds": [
+          "cli",
+          "vscode",
+          "exec",
+          "appServer",
+          "subAgent",
+          "subAgentReview",
+          "subAgentCompact",
+          "subAgentThreadSpawn",
+          "subAgentOther",
+          "unknown"
+        ],
+        "useStateDbOnly": true,
+        "archived": false,
+        "searchTerm": "G09.R1"
+      },
+      "elapsed_seconds": 0.016,
+      "returned_count": 1,
+      "next_cursor_present": false,
+      "accepted_ids": [
+        "01a176f7-532b-7722-9324-0ecb92694073"
+      ]
+    }
+  ],
+  "candidates": [
+    {
+      "id": "01a176f7-532b-7722-9324-0ecb92694073",
+      "createdAt": 1792997282,
+      "updatedAt": 1792997402,
+      "cwd": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader",
+      "source": "vscode",
+      "status": {
+        "type": "notLoaded"
+      },
+      "modelProvider": "openai",
+      "preview_has_expected_marker": true
+    }
+  ],
+  "reads": [
+    {
+      "method": "thread/read",
+      "thread_id": "01a176f7-532b-7722-9324-0ecb92694073",
+      "thread_status": {
+        "type": "notLoaded"
+      },
+      "turn_count": 1,
+      "turns": [
+        {
+          "id": "01a176f7-53a6-7b83-b203-b86b08ec15ac",
+          "status": "interrupted",
+          "item_types": {
+            "userMessage": 1,
+            "agentMessage": 3,
+            "commandExecution": 12,
+            "reasoning": 5,
+            "webSearch": 4
+          },
+          "exact_prompt_match": true,
+          "user_text_hashes": [
+            "3abfe0add260404ba9daae8e3204edd61975951bb06288a3eaad7f128f442d4d"
+          ],
+          "expected_prompt_sha256": "3abfe0add260404ba9daae8e3204edd61975951bb06288a3eaad7f128f442d4d",
+          "error": null,
+          "command_metadata": [
+            {
+              "status": "completed",
+              "exitCode": 0,
+              "durationMs": 0,
+              "command_sha256": "803b38aaa6de3fe4e9b023206ca73613e9deec7a20faaf34c2ef856a2dffc3f5"
+            },
+            {
+              "status": "completed",
+              "exitCode": 0,
+              "durationMs": 21,
+              "command_sha256": "5fb3de2f4f9ebb33491e09430b206f83936f04a283b95e24c197ea8fdf2964fe"
+            },
+            {
+              "status": "completed",
+              "exitCode": 0,
+              "durationMs": 26,
+              "command_sha256": "1ea20ae27c8ba630dcc0e9e7bbac3c3e797ce5f5376515269e0a901374d7f44e"
+            },
+            {
+              "status": "failed",
+              "exitCode": 1,
+              "durationMs": 24,
+              "command_sha256": "f7835770a56446f975aded069220b374a98485a40ae602852292b67837da0e72"
+            },
+            {
+              "status": "completed",
+              "exitCode": 0,
+              "durationMs": 34,
+              "command_sha256": "2a7f1385c5c3d9d8b49fea7e8ed215460c7b69f1c77ff233f9a683bfae290f91"
+            },
+            {
+              "status": "completed",
+              "exitCode": 0,
+              "durationMs": 49,
+              "command_sha256": "454322c53cdd25e2c89f4b7686864e97627488691346293fa825e35d464e3225"
+            },
+            {
+              "status": "completed",
+              "exitCode": 0,
+              "durationMs": 89,
+              "command_sha256": "2284bf2a5f2d507cc5880a2bb1bf3f00e37414938ef622f1fb57640cdfb52119"
+            },
+            {
+              "status": "completed",
+              "exitCode": 0,
+              "durationMs": 117,
+              "command_sha256": "5408723328541cb61eb242a6e8ce3351f32d36724a0d64506c388417c6fb9510"
+            },
+            {
+              "status": "completed",
+              "exitCode": 0,
+              "durationMs": 146,
+              "command_sha256": "8458a648b08255e487eb79d2494a56446d5d92d8fe27c902243eeb212e346d2a"
+            },
+            {
+              "status": "completed",
+              "exitCode": 0,
+              "durationMs": 10,
+              "command_sha256": "b4777503e37c9f31b4d1ea491b9bcb9761a272f170e3047506e4525a26bb2a10"
+            },
+            {
+              "status": "completed",
+              "exitCode": 0,
+              "durationMs": 78,
+              "command_sha256": "0e271929a4acdbf84c8dc48e16f37b2d26ae8ca3ed8cac24fa6a7a1bd85ab576"
+            },
+            {
+              "status": "completed",
+              "exitCode": 0,
+              "durationMs": 33,
+              "command_sha256": "fbd8339cbf2887692d4da79d9d0ccc77a9984309aa2ef9faca5a87e473a7b1a7"
+            }
+          ],
+          "agent_messages": [
+            {
+              "phase": "commentary",
+              "bytes": 175,
+              "sha256": "f92c40e24cdb94cec7924a8205371d3fed86f8b7fef61a0eeace93d4911e4de3",
+              "has_expected_marker": true
+            },
+            {
+              "phase": "commentary",
+              "bytes": 187,
+              "sha256": "05327ae58c54a7231cf2ac9c0f57ef84ad29a4305022df3be4ee81c0631ea87c",
+              "has_expected_marker": false
+            },
+            {
+              "phase": "commentary",
+              "bytes": 311,
+              "sha256": "4fe3cb89b15bc144156d611cc0eba76d068c92e7dc3add6d00bb6159655985f7",
+              "has_expected_marker": false
+            }
+          ],
+          "marker_bearing_commentary": "G09.R1\nI\u2019ll read the researcher contract and brief, catalog the named roots, then inspect relevant reader behavior and official skills documentation within the stated scope.",
+          "marker_bearing_commentary_bytes": 175,
+          "completed_final_response_present": false
+        }
+      ],
+      "read_response_canonical_json_sha256": "25234c37c752a0bffeb2b17abb7a6cf28bd02f9320c3f550300623aef6b9540c"
+    }
+  ],
+  "evidence_after": {
+    "receipt_sha256": "c1f19531dd1bd4f004897ea1325119f92cf1f3c3a13e768d2207b4055e8938c1",
+    "vault_sha256": "5789ba86f3f79d35fae18fa17a479297ce40c4071cefb93ba81e75226b69e6e9"
+  },
+  "original_evidence_unchanged": true,
+  "exact_prompt_matches": [
+    [
+      "01a176f7-532b-7722-9324-0ecb92694073",
+      "01a176f7-53a6-7b83-b203-b86b08ec15ac",
+      "interrupted"
+    ]
+  ],
+  "selection_note": "The marker-bearing assistant message is commentary; it is not a completed final answer. No R1 completion is accepted."
+}

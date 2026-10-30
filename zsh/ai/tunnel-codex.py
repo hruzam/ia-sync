@@ -146,6 +146,10 @@ class ProtocolError(TunnelError):
         super().__init__(EXIT_PROTOCOL_ERROR, message)
 
 
+class TransportTimeout(ProtocolError):
+    """The stdout queue was quiet until the caller's bounded wait elapsed."""
+
+
 class TurnError(TunnelError):
     def __init__(self, message):
         super().__init__(EXIT_TURN_ERROR, message)
@@ -355,8 +359,8 @@ class AppServerTransport:
         try:
             line = self._out_q.get(timeout=timeout)
         except queue.Empty:
-            raise ProtocolError(
-                f"timed out after {timeout}s waiting for app-server output; "
+            raise TransportTimeout(
+                f"app-server output queue remained quiet for {timeout:.3f}s; "
                 f"stderr tail: {self._stderr_tail()}"
             )
         if line is None:
@@ -391,13 +395,29 @@ class Session:
         self.t = transport
         self.timeout = timeout
 
-    def _await_response(self, request_id):
-        deadline = time.time() + self.timeout
+    @staticmethod
+    def _timeout_detail(phase, started, last_event, budget, known_ids):
+        now = time.monotonic()
+        ids = " ".join(f"{key}={value}" for key, value in sorted((known_ids or {}).items())
+                          if value is not None)
+        return (
+            f"timeout phase={phase} elapsed={now - started:.3f}s configured_budget={budget:.3f}s "
+            f"last_event_age={now - last_event:.3f}s"
+            f"{(' ' + ids) if ids else ''}"
+        )
+
+    def _await_response(self, request_id, phase="response", known_ids=None):
+        started = last_event = time.monotonic()
+        deadline = started + self.timeout
         while True:
-            remaining = deadline - time.time()
+            remaining = deadline - time.monotonic()
             if remaining <= 0:
-                raise ProtocolError(f"timed out waiting for response id={request_id}")
-            msg = self.t.next_message(remaining)
+                raise ProtocolError(self._timeout_detail(phase, started, last_event, self.timeout, known_ids))
+            try:
+                msg = self.t.next_message(remaining)
+            except TransportTimeout as exc:
+                raise ProtocolError(self._timeout_detail(phase, started, last_event, self.timeout, known_ids)) from exc
+            last_event = time.monotonic()
             if "id" in msg and msg.get("id") == request_id and ("result" in msg or "error" in msg):
                 if "error" in msg:
                     raise ProtocolError(f"app-server returned a JSON-RPC error for id={request_id}: {msg['error']}")
@@ -418,17 +438,17 @@ class Session:
 
     def initialize(self):
         rid = self.t.request("initialize", {"clientInfo": CLIENT_INFO})
-        result = self._await_response(rid)
+        result = self._await_response(rid, phase="initialize response")
         self.t.notify("initialized")
         return result
 
     def account_read(self):
         rid = self.t.request("account/read", {"refreshToken": False})
-        return self._await_response(rid)
+        return self._await_response(rid, phase="account/read response")
 
     def model_list(self):
         rid = self.t.request("model/list", {})
-        return self._await_response(rid)
+        return self._await_response(rid, phase="model/list response")
 
     def thread_start(self, model=None, sandbox="read-only", cwd=None):
         params = {"sandbox": sandbox, "approvalPolicy": "never"}
@@ -439,17 +459,17 @@ class Session:
             # a bound/existing thread keeps the cwd it was born with.
             params["cwd"] = cwd
         rid = self.t.request("thread/start", params)
-        return self._await_response(rid)
+        return self._await_response(rid, phase="thread/start response")
 
     def thread_resume(self, thread_id):
         rid = self.t.request("thread/resume", {"threadId": thread_id})
-        return self._await_response(rid)
+        return self._await_response(rid, phase="thread/resume response", known_ids={"threadId": thread_id})
 
     def thread_read(self, thread_id, include_turns=True):
         rid = self.t.request("thread/read", {"threadId": thread_id, "includeTurns": include_turns})
-        return self._await_response(rid)
+        return self._await_response(rid, phase="thread/read response", known_ids={"threadId": thread_id})
 
-    def drive_turn(self, thread_id, text, expected_turn_id=None, overrides=None):
+    def drive_turn(self, thread_id, text, expected_turn_id=None, overrides=None, checkpoint=None):
         """turn/start (expected_turn_id is None) or turn/steer (expected_turn_id given
         — the ID of the turn this same shim already recorded), then consume streamed
         notifications until turn/completed for this thread. Returns
@@ -473,22 +493,39 @@ class Session:
                 "turn/steer",
                 {"threadId": thread_id, "expectedTurnId": expected_turn_id, "input": user_input},
             )
-        start_result = self._await_response(rid)
+        start_result = self._await_response(
+            rid,
+            phase="turn/start response" if expected_turn_id is None else "turn/steer response",
+            known_ids={"threadId": thread_id, "expectedTurnId": expected_turn_id},
+        )
         turn = start_result.get("turn", {})
         turn_id = turn.get("id")
         if not turn_id:
             raise TurnError(f"app-server did not return a turn id: {start_result}")
+        if checkpoint:
+            checkpoint(turn_id)
 
         agent_texts = []
         completed_turn = None
         token_usage = None
-        deadline = time.time() + self.timeout
+        started = last_event = time.monotonic()
+        deadline = started + self.timeout
 
         while completed_turn is None:
-            remaining = deadline - time.time()
+            remaining = deadline - time.monotonic()
             if remaining <= 0:
-                raise ProtocolError(f"timed out waiting for turn/completed on turn {turn_id}")
-            msg = self.t.next_message(remaining)
+                raise ProtocolError(self._timeout_detail(
+                    "turn/completed", started, last_event, self.timeout,
+                    {"threadId": thread_id, "turnId": turn_id},
+                ))
+            try:
+                msg = self.t.next_message(remaining)
+            except TransportTimeout as exc:
+                raise ProtocolError(self._timeout_detail(
+                    "turn/completed", started, last_event, self.timeout,
+                    {"threadId": thread_id, "turnId": turn_id},
+                )) from exc
+            last_event = time.monotonic()
 
             if "id" in msg and "method" in msg:
                 self._auto_decline(msg)
@@ -611,6 +648,8 @@ def save_state(path, state):
     with open(tmp, "w", encoding="utf-8") as f:
         json.dump(state, f, indent=2, sort_keys=True)
         f.write("\n")
+        f.flush()
+        os.fsync(f.fileno())
     os.replace(tmp, path)
 
 
@@ -866,6 +905,19 @@ def _birth_or_resume(session, state):
     return state["threadId"]
 
 
+def _checkpoint_turn_start(state_path, state, turn_id):
+    # An acknowledged turn is useful recovery evidence but not a completed turn.  Keep it
+    # separate from lastTurnId so a timeout can never be presented as completion.
+    state["inFlightTurnId"] = turn_id
+    save_state(state_path, state)
+
+
+def _checkpoint_turn_complete(state_path, state, turn_id):
+    state["lastTurnId"] = turn_id
+    state.pop("inFlightTurnId", None)
+    save_state(state_path, state)
+
+
 def cmd_send(args):
     state = _require_state(args)
     text_out = _apply_preamble(state, args.text)
@@ -877,12 +929,17 @@ def cmd_send(args):
             session = Session(transport)
             session.initialize()
             thread_id = _birth_or_resume(session, state)
-            turn_id, turn, text, usage = session.drive_turn(thread_id, text_out, overrides=state.get("turnOverrides"))
+            # Persist birth/resume identity before dispatch.  A later failure is recoverable
+            # by read/resume without falsely claiming a completed turn.
+            save_state(args.state, state)
+            turn_id, turn, text, usage = session.drive_turn(
+                thread_id, text_out, overrides=state.get("turnOverrides"),
+                checkpoint=lambda value: _checkpoint_turn_start(args.state, state, value),
+            )
             session.reconcile(thread_id, turn_id)
         finally:
             transport.close()
-        state["lastTurnId"] = turn_id
-        save_state(args.state, state)
+        _checkpoint_turn_complete(args.state, state, turn_id)
     finally:
         _release_turn_lock(lock)
     print(text)
@@ -944,12 +1001,16 @@ def cmd_ask(args):
             session = Session(transport)
             session.initialize()
             thread_id = _birth_or_resume(session, state)
-            turn_id, turn, streamed_text, usage = session.drive_turn(thread_id, text_out, overrides=state.get("turnOverrides"))
+            # See cmd_send: durable identity precedes every possible target dispatch.
+            save_state(args.state, state)
+            turn_id, turn, streamed_text, usage = session.drive_turn(
+                thread_id, text_out, overrides=state.get("turnOverrides"),
+                checkpoint=lambda value: _checkpoint_turn_start(args.state, state, value),
+            )
             read_result = session.reconcile(thread_id, turn_id)
         finally:
             transport.close()
-        state["lastTurnId"] = turn_id
-        save_state(args.state, state)
+        _checkpoint_turn_complete(args.state, state, turn_id)
     finally:
         _release_turn_lock(lock)
 

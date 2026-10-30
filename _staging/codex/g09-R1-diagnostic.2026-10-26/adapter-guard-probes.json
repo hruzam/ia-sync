@@ -1,0 +1,11 @@
+{
+  "kind": "offline adapter integration guards",
+  "target_model_turns": 0,
+  "structured_readonly_state_rejected": "vault profile mismatch; refusing invocation",
+  "identity_only_read_resume_guard_rejected": "vault lacks completed first turn; refusing invocation",
+  "dispatch_stub_reached_without_pin_release_recheck": true,
+  "calls_observed": [
+    "invoke-stub"
+  ],
+  "scope": "Pure functions and stubbed invocation only; actual G09 files untouched."
+}

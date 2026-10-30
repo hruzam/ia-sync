@@ -235,10 +235,9 @@ deploy_codex() {
     copy_file "$REPO/codex/AGENTS.md" "$HOME/.codex/AGENTS.md" "Codex AGENTS.md"
   fi
 
-  # Houston main-session profile — ALLOWLISTED single file (no wildcard over
-  # codex/profiles/). Neutral name on purpose: a project profile would collide with
-  # a hand-written one. Loads from ~/.germline, see deploy_germline.
-  for f in houston.config.toml; do
+  # Main-session profiles — explicit global allowlist (no wildcard over codex/profiles/).
+  # Each is a thin germline loader; project profiles remain host-local.
+  for f in houston.config.toml oraculum.config.toml; do
     if [ -f "$REPO/codex/profiles/$f" ]; then
       copy_file "$REPO/codex/profiles/$f" "$HOME/.codex/$f" "Codex profile $f"
     fi

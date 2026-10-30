@@ -1,0 +1,55 @@
+{
+  "kind": "paired sandbox PID-namespace observation",
+  "initial_native_tool_result": {
+    "chunk_id": "ca573a",
+    "wall_time_seconds": 1.001329053,
+    "session_id": 36854,
+    "original_token_count": 0,
+    "output": ""
+  },
+  "checks": [
+    {
+      "mode": "default",
+      "exit": 0,
+      "observation": {
+        "observed_unix": 1793000918.93119,
+        "checker_pid": 2,
+        "checker_pid_namespace_inode": 4026533211,
+        "record": {
+          "pid": 1394569,
+          "start": "296639241",
+          "pid_namespace_inode": 4026531836,
+          "started_unix": 1793000909.445155,
+          "stage": "pending"
+        },
+        "pid_present": false,
+        "start_matches": false
+      }
+    },
+    {
+      "mode": "escalated",
+      "exit": 0,
+      "observation": {
+        "observed_unix": 1793000920.683361,
+        "checker_pid": 1394821,
+        "checker_pid_namespace_inode": 4026531836,
+        "record": {
+          "pid": 1394569,
+          "start": "296639241",
+          "pid_namespace_inode": 4026531836,
+          "started_unix": 1793000909.445155,
+          "stage": "pending"
+        },
+        "pid_present": true,
+        "start_matches": true
+      }
+    }
+  ],
+  "completion": {
+    "chunk_id": "9832e5",
+    "wall_time_seconds": 0.000038975,
+    "exit_code": 0,
+    "original_token_count": 7,
+    "output": "buffered probe completed\n"
+  }
+}

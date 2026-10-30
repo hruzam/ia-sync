@@ -4,7 +4,7 @@ Preserve the semantic contract, not the file format, name decoration, or model l
 
 | Invariant job | Codex global role | Claude reference pattern | Allowed runtime difference |
 |---|---|---|---|
-| Controller and integration owner | Cartan (main thread) | Flight/other task-appropriate controller | Controller identity follows repository and runtime frame; one owner integrates |
+| Controller and integration owner | Cartan by default; explicitly assigned main entry where selected | Flight/other task-appropriate controller | Controller identity follows repository and runtime frame; one owner integrates |
 | Architecture before consequential structure | `architect` | Houston-family grounding (consult · audit · sitting) and Freya Keystone pattern | Codex uses a read-only custom agent; Claude may combine plan and project seat |
 | Adversarial second voice before lock | `challenger` | Janus | Output envelope may differ; verdict/risk/alternative boundary stays fixed |
 | Current evidence and volatile substrate | `researcher` | Epoch | Tooling and citation mechanism are runtime-native; current verification remains mandatory |
@@ -25,8 +25,10 @@ of disguising them as parity.
 
 ## Session operating protocols
 
-Cartan remains the single Codex controller identity. The operator may select one of three
-protocol skills without creating another global persona:
+Cartan is the default Codex controller. An explicitly selected main profile, such as
+Oraculum, keeps its own identity and only its operator-assigned scope; it does not
+inherit Cartan's protocols or pen. The three protocol skills below retain their
+Cartan contracts and do not create another global persona:
 
 | Protocol | Codex rendering | Authority edge |
 |---|---|---|

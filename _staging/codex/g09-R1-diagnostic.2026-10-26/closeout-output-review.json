@@ -1,0 +1,86 @@
+{
+  "observed_at": "2026-10-26T16:44:32.847732+01:00",
+  "data_integrity": "PASS",
+  "closeout_completeness": "FAIL",
+  "original_count": 62,
+  "unchanged_originals": 61,
+  "allowed_retired_originals": [
+    "raw/caretaker/tunnel.researcher.state.json"
+  ],
+  "unauthorized_original_changes": [],
+  "foreign_hash_mismatches": [],
+  "snapshots": [
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/closeout/snapshots/RUNBOOK.run-01.original.md",
+      "hash_matches": true
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/closeout/snapshots/RELEASE.run-01.pre-close.json",
+      "hash_matches": true
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/closeout/snapshots/STATUS.run-01.pre-close.md",
+      "hash_matches": true
+    }
+  ],
+  "ignored_vault_snapshots": [
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/closeout/snapshots/tunnel.researcher.snapshot-receipt.state.json",
+      "ignored": true
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/closeout/snapshots/tunnel.researcher.state.json",
+      "ignored": true
+    }
+  ],
+  "resource_effects": {
+    "03.archive-R1": {
+      "exit": 0,
+      "output_hashes_match": true
+    },
+    "06.close-vault": {
+      "exit": 0,
+      "output_hashes_match": true
+    }
+  },
+  "partial_final_verification": {
+    "status": "failed",
+    "error": "PermissionError(13, 'Permission denied')",
+    "archived_match_count": 1,
+    "active_match_count": 0,
+    "owned_appserver_exit": 0,
+    "owned_appserver_wait_verified": true,
+    "cleanup_hold_field_present": false
+  },
+  "release_authorized": false,
+  "missing_deliverables": [
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/closeout/SELFREPORT.run-01.2026-10-26.md",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/_bus/06.caretaker.return.md",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/_bus/06.cartan.verdict.md"
+  ],
+  "recorded_STATUS_in_flight": "Caretaker /root/caretaker is assigned cleanup-only cycle 06; archive/close outcomes pending.",
+  "native_worker_release": "unverified",
+  "focused_permission_probe": {
+    "frame": "escalated host context",
+    "self_pid_namespace": "pid:[4026531836]",
+    "proc_1_namespace": "PermissionError errno13"
+  },
+  "main_measurement": {
+    "specified_initial_packet_words": 707,
+    "recorded_extra_task_reads": [
+      "SCHEDULE.md",
+      "ACCEPTANCE.md",
+      "raw/briefs/caretaker.md",
+      "raw/briefs/astrobley.md",
+      "raw/control/RELEASE.json",
+      "raw/control/validation.json",
+      "raw/control/BASELINE.json",
+      "raw/control/CONTRACT.template.json",
+      "raw/input/SOURCE-MAP.md"
+    ],
+    "actual_native_context_tokens": "unavailable"
+  },
+  "independent_review": "DATA INTEGRITY PASS / CLOSEOUT COMPLETENESS FAIL",
+  "G09_files_modified_by_this_review": false,
+  "model_or_retirement_calls_by_this_review": 0
+}

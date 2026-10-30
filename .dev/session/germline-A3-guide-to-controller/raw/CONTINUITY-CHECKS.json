@@ -1,0 +1,51 @@
+{
+  "checked_at": "2026-10-29T14:53:36.620781+01:00",
+  "scope": "Static continuity repair verification; no fresh successor uptake witness",
+  "checks": {
+    "yaml_gate_equal": true,
+    "cold_start_frontmatter_and_all_pointers": true,
+    "html_local_links_checked": 65,
+    "html_ids_unique": true,
+    "continuity_markdown_links": true,
+    "eleven_scopes_still_unchecked": true,
+    "phase_and_unfinished_custody_explicit": true,
+    "S00_intake_acknowledgement_required": true,
+    "original_handoff_snapshot_retained_as_history": true
+  },
+  "sources": [
+    {
+      "path": "/home/hruzam/ia-sync/_staging/codex/germline-whole-design.2026-10-29/CONTINUITY.md",
+      "sha256": "5382a568f09bc48b7a7eb1b63b7d2e864a978ac1e8e64ff9fa58723f0f2662cd"
+    },
+    {
+      "path": "/home/hruzam/ia-sync/_staging/codex/germline-whole-design.2026-10-29/index.html",
+      "sha256": "9140294a19119560fddd4d7593d4dfff4683fca7cc15be4d5dc6b69cdef70529"
+    },
+    {
+      "path": "/home/hruzam/ia-sync/_staging/codex/germline-whole-design.2026-10-29/EVIDENCE.md",
+      "sha256": "f8ecd6ed1754c3c37b39f68c6f0479d8a592fe5b539d92a22db334af2d32ec21"
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-A3-guide-to-controller/RUNBOOK.md",
+      "sha256": "ea13f0150dcac18b250005d63f4073b14150bf5e0d84ac25ba6a4a10d6cbf151"
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-A3-guide-to-controller/STATUS.md",
+      "sha256": "2a10ba33f6178f99ca040164d773e8a4147b3736e0ca0668cb2b41140c1d5128"
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-A3-guide-to-controller/CHECKLIST.md",
+      "sha256": "edf91f256bb6b3e4102331e9ec26f8e434f2fa4df57d428cfce064e9a19c5584"
+    },
+    {
+      "path": "/home/hruzam/reposoma/_cold-start/card/CS.germline-A3-continuity.2026-10-29.md",
+      "sha256": "b9a853b1c13ca1592a7b5a29baf19ff4d18fbd0b3d26005ba69c5c4c28812b51"
+    }
+  ],
+  "pending": [
+    "Fresh successor S00 intake and verification of inherited context",
+    "Durable promotion and orphan-disposition checks before closure/pruning",
+    "Authorized preservation/transport in ia-sync and reposoma; destination receipt"
+  ],
+  "limits": "No global guide policy change, source implementation, model trial, commit, push, deployment or pruning. This author checked its handoff mechanics; independent behavioral inheritance is unverified."
+}

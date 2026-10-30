@@ -1,0 +1,50 @@
+{
+  "date": "2026-10-29T15:57:23.977452+01:00",
+  "checks": {
+    "local_markdown_links_resolve": 16,
+    "card_yaml_and_pointers": true,
+    "runbook_status_yaml_and_gate_match": true,
+    "S00_receipt_and_S10_reuse_obligation_present": true,
+    "eleven_scopes_unchecked_no_receiver_receipt_fabricated": true
+  },
+  "files": [
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-A3-guide-to-controller/raw/reader-design/README.md",
+      "sha256": "cf0a084ff69ce1483266865747884e39a5a7fdfaf20155ed88ea9d47e36812d2"
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-A3-guide-to-controller/raw/reader-design/REVIEW.md",
+      "sha256": "6b14215994fe0f1a714839a435fc4716cde34bb71f0300d639e9ff0a2697609c"
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-A3-guide-to-controller/raw/reader-design/continuity-receipt.template.md",
+      "sha256": "52bdfa943a68008b5727e505db1dd18739d93b6d5bfb08d0184a66c8de26ea41"
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-A3-guide-to-controller/raw/reader-design/controller.md",
+      "sha256": "ee9207ef37a9d1f6463714f17e6fc81a7387c65b2185f624957dcd78ce5fd4dc"
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-A3-guide-to-controller/raw/reader-design/crawl-bots.md",
+      "sha256": "b832539b13e4a587a6b63a0608eb9167cd1044c200d0c230f54427ac6d5dcdbf"
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-A3-guide-to-controller/RUNBOOK.md",
+      "sha256": "a13c62490baf78eafbe712926aed036b6ff980a1d6f5815decd503411eba8a08"
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-A3-guide-to-controller/STATUS.md",
+      "sha256": "f5b53efe061e32718cf097371763596198ec772cc70a9927c5eccdd10ab3e9d6"
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-A3-guide-to-controller/CHECKLIST.md",
+      "sha256": "998d34d1ba1b9e66b4d13279c9e672e2bd78b4392eef9a4caa1e8de31e15e91e"
+    },
+    {
+      "path": "/home/hruzam/reposoma/_cold-start/card/CS.germline-A3-continuity.2026-10-29.md",
+      "sha256": "6238c81d94b65407e5884e4f2b1c342928f0aa63011d9fca270590c7ba107101"
+    }
+  ],
+  "review": "Astrobley contributor review covered the initial reader-design documents. Receipt-template wiring received parent static checks only.",
+  "limitations": "No receiver trial, globally installed convention, economy claim, commit or transport."
+}

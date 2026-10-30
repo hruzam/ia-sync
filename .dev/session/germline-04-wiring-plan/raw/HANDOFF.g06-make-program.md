@@ -1,11 +1,16 @@
 ---
 title: Future Germline-06 handoff — make-program
-status: future-only · not a RUNBOOK or launch authorization
+status: superseded future proposal · not a RUNBOOK or launch authorization
 owner: Cartan, proposed future head and sole STATUS owner, subject to G06 opening gavel
 gavel_owner: majkee
 ---
 
 # Germline-06 — make-program
+
+> **Superseded by Majkee's 2026-10-20 continuation request.** G06 is now the fuller audit at
+> `/home/hruzam/ia-sync/.dev/session/germline-06-full-audit/RUNBOOK.md`. The original proposal
+> below is retained as preparation history; it does not authorize program making. Writing and
+> implementation remain later, with no next session number assigned by this handoff.
 
 ## Gate
 

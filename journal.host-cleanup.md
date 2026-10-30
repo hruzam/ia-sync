@@ -10,6 +10,165 @@
 
 ---
 
+## OFFICE — 2026-10-29 · Cartan · A2 post-trial local fold and closure
+
+Majkee accepted lab Oraculum's performance and supplied her final self-report and
+therapy fold. Cartan finished the local setup refinements: all-seat publication
+entrance/shift attribution, scope/read-depth coverage before drafting/closure,
+helper receipts with decisive checks, and durable publication render/check tools.
+The tools now require explicit render selection and preserve unchanged figure bytes;
+verification writes only to an explicit new output. All 21 existing publication
+checks passed, scratch full rendering preserved all figures, and 158 other lab
+files stayed byte-identical. The first scratch link-check failure and corrected
+fixture are recorded. Backups and exact evidence: A2 raw/CLOSE.office.2026-10-29.md
+and FOLLOWTHROUGH.*.2026-10-29.json. Shared identity/bindings/loaders and historical
+research/pulse/flag/therapy were unchanged. No model turn, commit or push occurred.
+A2 setup is closed and removed from the active pulse router. Track 2's outstanding
+external-source/three-source synthesis remains separate, awaiting its own bounded
+delegation or explicit disposition; closing setup does not close that research.
+
+Majkee subsequently parked the remaining global Oraculum behavior comparison in A1:
+RUNBOOK has one open checkbox and raw/CS.oraculum-vi-behavior.2026-10-29.md is the
+rich local handoff. A1 STATUS is parked and routed from pulse; A2 remains closed.
+His repeated satisfactory Codex child experience is retained. Six current shared/
+native pairs match, including the Claude wrapper; fresh Claude main/child behavior
+is still deferred. Only handoff/state records were written; no new model turn,
+source change, deployment or cross-vendor behavioral PASS is implied.
+
+Houston's later documentation-discovery consult was integrated as A0 task 005.
+The existing A3 RUNBOOK/CHECKLIST already cover its five constraints; A3 owns the
+unfinished dependency chain, Houston pointer candidate and later fresh discovery
+witness. A1 keeps the supplied consult as evidence custody and now points to A3.
+A3 files/checks, Houston source/cards and A2 were preserved; no source promotion,
+deployment or model test ran. Evidence: A0 raw/005.houston-discovery-integration.2026-10-29.md.
+
+Majkee then explicitly released the narrow Houston documentation-route fold and
+one fresh child. The ia-sync addendum is now stamp 0c9da1ff; normal loading exposes
+germline/operative sources, shared guides and stale Forge, continuity/issue vault,
+and pulse/task-state architecture status. Fresh no-history Codex child discovery
+passed with parent-inspected loader/body/tool evidence; consult verdict stretches
+retains stale-source, authority and office-local limits. Shared Houston cards,
+bindings and wrappers were unchanged. Evidence: A0 raw/005.houston-doc-fold.result.2026-10-29.md
+and child-witness JSON. A3 received a new external RETURN for source reconciliation;
+its STATUS/checklist were not rewritten. Main testing remains for Majkee later;
+Claude/home/compaction/full-card qualification and broader A3 work remain separate.
+No global deployment, commit or push occurred.
+
+## OFFICE — 2026-10-27 · Cartan · A2 nabla-lab Oraculum-main preparation
+
+Majkee requested lab AGENTS and a native delegation ladder for explicitly profiled
+Oraculum, with Oraculum/Astrobley thinking and tracked Luna/Terra crawlers. A2 owns
+this preparation; the user starts the later Q1-feedback trial. Existing lab entry,
+session/ topology and historical locks are inputs, not permission to restart queues.
+A2 preparation is installed: lab AGENTS/project addendum/native routing guide and
+correct decision locators, plus the main-only assigned research/synthesis extension
+and matching shared summaries. Both scoped deploy legs passed; five existing live
+portable content files match source, and 87 other captured lab files stayed identical.
+Task backups are host-local; RESULT.office.md and INSTALL.office.json in A2/raw hold
+the receipt. Oraculum/Astrobley thinking, five tracked crawlers and source review
+separated methods from hooks/memory/relays, corrected crawler/locator errors and
+preserved old lab gavels as unresolved/inactive for the trial. Child nondelegation
+stayed intact; root dispatched preprocessing. No lab model turn, domain work, gavel,
+Claude turn, commit or push occurred. Majkee owns fresh Q1 and returns replies to
+Cartan; source/installed-byte checks do not qualify lab behavior. Home is unverified.
+
+## OFFICE — 2026-10-26 · Cartan · A1 vi-agents Oraculum source fold
+
+Majkee selected Oraculum's vendor-invariant personality, thin native wrappers and
+missing direct Codex profile, under `.dev/session/germline-A1-vi-agents/`. He also
+requested the Astrobley comparison. Source composition is complete: one neutral
+Oraculum identity, two bindings, three native loaders including the direct Codex
+profile, and its exact deploy allowlist entry. Child authority stays analysis-only;
+main planning writes/session ownership require explicit operator assignment.
+Eight source checks and full deploy dry-run pass. The preview also includes the
+pre-existing G09 tunnel change, which is outside this task's deployment authority.
+Astrobley is a declared Claude tombstone/transfer and active Codex implementer;
+both pairs matched source/live and remain unchanged. Majkee subsequently released
+scoped office germline/Codex installation and bounded Codex main/child checks.
+Backup-first installation passed: six affected pairs match source, and Claude,
+Astrobley, Houston, user configuration and zsh stayed at their captured hashes.
+Fresh Astra/high main-profile CLI and native child checks passed scoped operational
+behavior: allowed one-document planning, refused code/child writes, actual shared
+loads and distinct entry authority. Main's initial Route/progress commentary preceded
+reads; full stamped proof came before planning work. Strict full first-message proof
+is not claimed. CLI exec proves the profile layer, not interactive TUI behavior.
+Evidence: `.dev/session/germline-A1-vi-agents/raw/RESULT.office.md` and RUNTIME.office.json.
+A1's released slice is closed. Claude installation/runtime, home and compaction remain
+deferred/unverified; no independent promotion, commit, push or unrelated deployment
+occurred. Existing A0/Houston, G03/G04/G07/G08/G09 and Jev work are preserved.
+
+## OFFICE — 2026-10-26 · Cartan · A0 Houston project layer
+
+Majkee released A0 task 002 to adapt Houston for ia-sync. The source scope is a
+repository-local `.germline/agents/houston/ia-sync.md` addendum and an `AGENTS.md`
+route, with the A0 task journal recording exact completion. Card meanings and
+permissions come from the existing shared source. Source composition is complete:
+eight source checks pass, nine shared office source/live pairs match, and the scoped
+global germline dry-run passes without itemized changes or ghosts. The initial
+whitespace check included inherited Markdown hard-break spaces; its failure and
+check-scope correction are retained. Source/behavior boundaries remain explicit.
+
+Evidence: `.dev/session/germline-A0-agent-project-line/raw/002.houston-result.2026-10-26.md`.
+Majkee then authorized one native Codex consult and deferred Claude. The office
+child returned fits and refused a canary write; its actual injected loader, ordered
+full-file reads before its first answer, high effort, stamp/route return and absent
+canary were parent-verified. Filtered proof and the returned finding sit beside the
+source result. This qualifies that child-consult route only: inherited parent
+history and workspace-write runtime are explicit limits. Main entry, audit/sitting,
+home and compaction remain unverified. No global source/card/wrapper edit,
+deployment, commit or push occurred.
+
+Home-facing: this project layer travels with the ia-sync checkout; it is separate
+from the global `germline/` → `~/.germline/` deploy leg. Home use remains unverified.
+Existing G03/G04/G07/G08/G09 work and the G09 transport repair are outside this task.
+
+## OFFICE — 2026-10-26 · Cartan · G09 run-02 source-only repair preparation
+
+Majkee authorized bounded transport/adapter repair and preparation in
+`.dev/session/germline-09-source-reader/`; target/product execution remains gated by fresh GO.
+Terra High repaired source `zsh/ai/tunnel-codex.py`: persist thread and acknowledged in-flight
+turn identities before failure, preserve completion-only lastTurnId, and report monotonic phase
+budgets/elapsed/event-age/IDs. No wrapper, global role or deployed surface changed.
+
+Distinct `raw/run-02/` instructions/adapter enforce current release and immutable pins, named
+input hashes, cold/warm profile and bootstrap checks, conservative concurrent attempt reservation,
+conditional A3 proof and identity-only recovery. Sol High independently found and retained unsafe
+acceptance cases, including frozen09's missing readback thread ID; narrow18 correction passed
+independent19 verification.27 adapter cases pass, with unchanged transport and guard evidence
+reused by exact hash. Final offline readiness passes with release false.
+
+Native Luna High rehearsed eight isolated receipt cases safely. Her zsh capture used the reserved
+status variable; expected versus observed exit was disclosed, original evidence preserved, and
+27's direct tool capture resolved it. This witnesses offline preparation, not live caretaker or
+product correctness. Run-01 receipts/snapshots and its one consumed attempt remain intact; archived
+R1 was not resumed. Run-02 has zero target attempts/vaults. Contract proposes a fresh five-attempt
+cap and explicit1800s per-phase timeout; both releases remain false pending actual operator GO.
+
+All work remains source-only: no target model/profile/open, product execution, deployment,
+auth/global-role change, staging, commit or push. Home has no deployment action from this sitting.
+Ready-for-GO handoff and selected evidence: session `raw/run-02/HANDOFF.md`; current position stays
+in its STATUS.md. Existing journal bytes and other foreign work are preserved.
+
+## OFFICE — 2026-10-23 · Cartan · volatile personal CMD aliases
+
+At Majkee's request, `zsh/config.office.zsh` now loads
+`~/reposoma/.majkee/helpers/cmd/CMD.zsh` in interactive shells. The hook skips a missing
+file and checks syntax with `zsh -fn` before sourcing; malformed edits are skipped with
+a diagnostic. This is personal scratch: aliases remain uncanonical until explicit
+promotion approval. The existing `c-houston` alias moved from `CMD.md` into its sibling
+`CMD.zsh`; Markdown points to the editable file and shows how to reload an open shell.
+Keep the sourced file to definitions; syntax checking does not isolate runtime effects.
+
+Verified valid, missing, malformed and non-interactive cases; a fresh interactive PTY
+shell reports office, resolves `fo`, and loads `c-houston`. A stub checked argument
+forwarding, including spaces, without launching Codex. Full deploy dry-run passed;
+it also exposed an unrelated settings update, so only the reviewed office config was
+deployed, with dated backups of that config and `CMD.md`. Source/live config match.
+
+Home-facing: `config.home.zsh` remains home-owned and has no CMD loader. Its seat can
+add the equivalent interactive hook when wanted, after the personal CMD files arrive
+through reposoma. No commit or push: unrelated germline edits were already in progress.
+
 ## OFFICE — 2026-10-21 · Flight · germline-06-full-audit CLOSED — accepted by Majkee
 
 Audit-only session, bed `.dev/session/germline-06-full-audit/` (uncommitted; nothing outside it

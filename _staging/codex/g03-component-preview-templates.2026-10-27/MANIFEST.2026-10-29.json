@@ -1,0 +1,85 @@
+{
+  "kind": "parked-design-integrity-manifest",
+  "recorded_at": "2026-10-29T00:44:46.776678+01:00",
+  "project": "ia-sync",
+  "packet": "~/ia-sync/_staging/codex/g03-component-preview-templates.2026-10-27/",
+  "repository_head_at_capture": "5c26d80aa3c90de6cafc1c47a7d199fdbcc7466d",
+  "branch": "main",
+  "preservation_commit": null,
+  "git_state_at_capture": "untracked local office worktree files; no git publication performed",
+  "authority": "draft evidence only; no adoption, implementation, session closure or pruning",
+  "covers": "original12 packet files plus dated handoff; excludes this manifest itself",
+  "files": [
+    {
+      "path": "00.before-reading.md",
+      "bytes": 1451,
+      "sha256": "9da21889c3d1553e5d7df66fb1677f404243952d85670e3da8e3c4d766a40443"
+    },
+    {
+      "path": "01.skill-style.template.md",
+      "bytes": 1014,
+      "sha256": "200efd5d116c21479086b1b2cfb8994a375ab9db792538bdc2e15f006ca094d0"
+    },
+    {
+      "path": "02.controller.template.md",
+      "bytes": 1692,
+      "sha256": "99a274fa75cdaf0a288cb1c6d534ab3a61a599bcbefdf6f27f46c2cebf20e3fb"
+    },
+    {
+      "path": "03.function.template.md",
+      "bytes": 1452,
+      "sha256": "e6c526c5d93ddd2ea4166fa91a848ca32866cd32fe010657f7ddb3d1f6b2c382"
+    },
+    {
+      "path": "04.card.template.md",
+      "bytes": 1477,
+      "sha256": "ba0fa7fc74e2fed97a0fe09c33c27756445cbb15266138ccc1baf8ae4250e0db"
+    },
+    {
+      "path": "05.legacy-mapping.example.yaml",
+      "bytes": 2029,
+      "sha256": "1e61e18842e751da980bd6990d5ed372487efa1a4bca50117b39fffd5305a898"
+    },
+    {
+      "path": "06.collections.example.yaml",
+      "bytes": 1818,
+      "sha256": "306fd63127388e120a5f9ab7ed3bc6e060f6fd4c701dfab9262f1b4e6dd5ae9b"
+    },
+    {
+      "path": "07.oraculum-consultation.md",
+      "bytes": 14106,
+      "sha256": "c112fe42b12bdef2cdb7bf173fbd5a93be82bb4d1f05d405f6c3d5f7010509aa"
+    },
+    {
+      "path": "08.thin-B.shell-first.proposal.md",
+      "bytes": 8283,
+      "sha256": "08a9662701868f0236c50224cce35a1e26a20642f85152adeb86372c7123a5a1"
+    },
+    {
+      "path": "09.read-recommendations.proposal.2026-10-28.md",
+      "bytes": 3814,
+      "sha256": "668a5e4d94a037569c8ad530b14cc563bd59dc53b71e73776cf4ea37a88d1e3b"
+    },
+    {
+      "path": "10.metadata-placement-and-cache.proposal.2026-10-28.md",
+      "bytes": 10546,
+      "sha256": "d7106566b6c2945603e3e7f59a082926e2b3d638cb7bc113e095d86e1eac58c6"
+    },
+    {
+      "path": "HANDOFF.2026-10-29.md",
+      "bytes": 5725,
+      "sha256": "e6347be3a4f59d90324ad05ee85633b9a46b628a5dbd35df77854f66853bc20b"
+    },
+    {
+      "path": "README.md",
+      "bytes": 7735,
+      "sha256": "7e8f4475ccf759f080a444351d69b0b14de2999d7aa92d49854109398141649a"
+    }
+  ],
+  "readme_pointer_change": {
+    "sha256_before": "92ccf14f72bdc2ea2e2f2a88bd6867817cbf1311cd1586e0f5f1363389780e74",
+    "inserted_block": "> Re-entry pointer added 2026-10-29: read [the dated handoff](HANDOFF.2026-10-29.md) for the\n> packet map, revised recommendation and preservation record. The initial comparison below\n> is retained; later proposals 08–10 carry the developed design.\n\n",
+    "original_bytes_reconstructed": true
+  },
+  "source_of_truth": "Current G03 formal audit position remains in its STATUS; dated handoff is proposal context, not a second live position."
+}

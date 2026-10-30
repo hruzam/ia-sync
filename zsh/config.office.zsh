@@ -209,3 +209,13 @@ _dash_header 2>/dev/null  # startup dashboard — @majkee's editable notes (syst
 # Bare `fact` = keyboard once live. Card / authority:
 #   /home/hruzam/www/elements-factory/applications-in-common/.dev/zsh/README.md
 # =============================================================================
+
+# Personal scratch aliases — volatile, uncanonical; edit CMD.zsh beside CMD.md.
+# Keep this interactive-only; a missing or syntactically broken file is skipped.
+if [[ -o interactive && -r "$HOME/reposoma/.majkee/helpers/cmd/CMD.zsh" ]]; then
+    if zsh -fn "$HOME/reposoma/.majkee/helpers/cmd/CMD.zsh"; then
+        source "$HOME/reposoma/.majkee/helpers/cmd/CMD.zsh"
+    else
+        print -u2 -- '[cmd] CMD.zsh has a syntax error; skipped'
+    fi
+fi

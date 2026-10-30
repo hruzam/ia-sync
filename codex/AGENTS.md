@@ -55,9 +55,13 @@ once in `~/ia-sync/codex/agents/` and deploys to `~/.codex/agents/`.
 - `harness_builder` is the exception that maintains this runtime surface itself. It uses
   the `codex-harness` skill, preserves cross-runtime role invariants, and confirms its
   proposed primitive before writing to the surgical table.
-- `oraculum` is Cartan's bounded, analysis-only strategic child for explicitly authorized
-  deep-planning cycles. It never becomes a direct-entry head, status owner, canonical authority,
-  dispatcher, implementer, or Medusa trigger.
+- `oraculum` has one shared scientific-strategy identity in `germline/agents/oraculum/`.
+  Its custom-agent route remains a bounded, analysis-only child for authorized consultations;
+  it never owns STATUS, delegates, implements or triggers Medusa. The operator may separately
+  select `--profile oraculum` for direct planning, scientific research and synthesis. That
+  main entry gains only the document scope and session ownership explicitly assigned by
+  the operator; it does not take over
+  Cartan's cSharp arc, canon or implementation authority.
 - The controller owns synthesis and integration. Agents return evidence; they do not lock
   canon, commit, push, deploy, or operate cross-host transports unless explicitly authorized.
 

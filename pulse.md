@@ -3,11 +3,38 @@
 `bounded router (raw.guides/runbook/GUIDE.md): active slug · gate · exact STATUS path. No next`
 `action, no narrative — STATUS.md is the sole doing-state for its gate.`
 
-- `jev-implementation-00-build` · gate: Majkee records GO on a Flight-witnessed pilot that
-  completes an individually approved mixed-type OpenRouter request, preserves its structured
-  reply in recoverable session JSONL, supports local show/file-reference and use/skip/reconsider
-  dispositions from both CLI consumers, and demonstrates per-send confirmation and no execution
-  from a verdict · `/home/hruzam/ia-sync/.dev/session/jev-implementation-00-build/STATUS.md`
+- `germline-A3-guide-to-controller` · gate: Majkee accepts the independently reviewed guide-to-program fold package, with every whole-design roadmap item accounted for, reading and continuity contracts demonstrated on paper, and explicit destinations and release conditions for documentation, agent routing and later implementation. ·
+  `/home/hruzam/ia-sync/.dev/session/germline-A3-guide-to-controller/STATUS.md`
+
+- `germline-A1-vi-agents` · gate: Majkee accepts the source-accounted Oraculum fold, direct Codex profile and preserved child authority, with the Astrobley relationship comparison and explicit limits on untested deployment and runtime behavior. ·
+  `/home/hruzam/ia-sync/.dev/session/germline-A1-vi-agents/STATUS.md`
+
+- `runbook-tool-02-understanding` · gate: Majkee decides GO, AMEND or STOP on an evidence-backed
+  design for shared session understanding, after a bounded scenario shows how a newcomer enters,
+  a change reaches affected participants, and work based on an earlier understanding is reconciled. ·
+  `/home/hruzam/ia-sync/.dev/session/runbook-tool-02-understanding/STATUS.md`
+
+- `germline-09-source-reader` · gate: Majkee accepts the independently checked read-only
+  source-reader artifact and a separately evidenced disposition of the main's consultation
+  burden, with no activation, deployment or germline architecture promotion implied ·
+  `/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/STATUS.md`
+
+- `germline-08-caretaker-receipts` · gate: Majkee accepts a verified disposition of receipt-first
+  recovery and two fresh low-effort tasks, including result quality, effective runtime, target
+  usage and comparison limits, without promotion or transport-source changes ·
+  `/home/hruzam/ia-sync/.dev/session/germline-08-caretaker-receipts/STATUS.md`
+
+- `germline-07-make-program` · gate: Majkee accepts an evidence-backed experiment_1 disposition
+  covering recipient isolation, verified results, explicit-ID resumption, caretaker reuse,
+  operational failures, and the limits of the context/usage comparison, with no promotion or
+  transport-source change · `/home/hruzam/ia-sync/.dev/session/germline-07-make-program/STATUS.md`
+
+- `jev-01-codex-pilot` · gate: Majkee records GO on an independently Codex-verified Jev pilot
+  that completes an individually approved mixed-type OpenRouter request, preserves its structured
+  reply in recoverable session records, demonstrates explicit per-engagement settings/channel
+  binding and USD-cap admission, supports local show/file-reference and use/skip/reconsider from
+  Codex and an operator shell, and demonstrates fresh per-send confirmation with no execution
+  from advice · `/home/hruzam/ia-sync/.dev/session/jev-01-codex-pilot/STATUS.md`
 
 - `germline-00-home` · gate: after commit + deploy, a fresh Claude session and a fresh Codex session
   each resolve buffering-cycle from ~/reposoma/.germline/skills/ via chatbot-port (update-ask → no;

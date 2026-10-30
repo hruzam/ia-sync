@@ -1,0 +1,60 @@
+{
+  "roots": [
+    {
+      "id": "codex-fixture",
+      "kind": "skill",
+      "vendor_if_any": "codex",
+      "origin": "authored",
+      "absolute_path": "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/codex",
+      "layout": "skills"
+    },
+    {
+      "id": "claude-fixture",
+      "kind": "skill",
+      "vendor_if_any": "claude",
+      "origin": "installed-personal",
+      "absolute_path": "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/claude",
+      "layout": "skills"
+    },
+    {
+      "id": "guide-fixture",
+      "kind": "guide",
+      "vendor_if_any": null,
+      "origin": "temple",
+      "absolute_path": "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/guides",
+      "layout": "guides"
+    },
+    {
+      "id": "germline-fixture",
+      "kind": "germline",
+      "vendor_if_any": null,
+      "origin": "authored",
+      "absolute_path": "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/germline",
+      "layout": "germline"
+    },
+    {
+      "id": "sync-fixture",
+      "kind": "skill",
+      "vendor_if_any": "claude",
+      "origin": "account-sync; publisher unknown",
+      "absolute_path": "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/synced",
+      "layout": "synced-skills"
+    },
+    {
+      "id": "empty-fixture",
+      "kind": "skill",
+      "vendor_if_any": "codex",
+      "origin": "candidate",
+      "absolute_path": "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/empty",
+      "layout": "skills"
+    },
+    {
+      "id": "missing-fixture",
+      "kind": "skill",
+      "vendor_if_any": "claude",
+      "origin": "candidate",
+      "absolute_path": "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/missing",
+      "layout": "skills"
+    }
+  ]
+}

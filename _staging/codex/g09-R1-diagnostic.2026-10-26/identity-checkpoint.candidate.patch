@@ -1,0 +1,22 @@
+--- a/zsh/ai/tunnel-codex.py
++++ b/zsh/ai/tunnel-codex.py
+@@ -877,6 +877,9 @@
+             session = Session(transport)
+             session.initialize()
+             thread_id = _birth_or_resume(session, state)
++            # Preserve birth identity for read-only recovery if the first turn fails.
++            # lastTurnId remains unchanged until successful completion/reconciliation.
++            save_state(args.state, state)
+             turn_id, turn, text, usage = session.drive_turn(thread_id, text_out, overrides=state.get("turnOverrides"))
+             session.reconcile(thread_id, turn_id)
+         finally:
+@@ -944,6 +947,9 @@
+             session = Session(transport)
+             session.initialize()
+             thread_id = _birth_or_resume(session, state)
++            # Preserve birth identity for read-only recovery if the first turn fails.
++            # lastTurnId remains unchanged until successful completion/reconciliation.
++            save_state(args.state, state)
+             turn_id, turn, streamed_text, usage = session.drive_turn(thread_id, text_out, overrides=state.get("turnOverrides"))
+             read_result = session.reconcile(thread_id, turn_id)
+         finally:

@@ -18,6 +18,7 @@ bash deploy.sh --codex-only
 |---|---|---|
 | `codex/AGENTS.md` | `~/.codex/AGENTS.md` | Global Cartan identity and working contract |
 | `codex/agents/` | `~/.codex/agents/` | Personal Codex custom agents, additive when present |
+| `codex/profiles/{houston,oraculum}.config.toml` | `~/.codex/<name>.config.toml` | Explicitly allowlisted main-session profiles |
 | `codex/skills/` | `~/.agents/skills/` | Personal Codex skills, additive when present |
 
 ## Global subagent team
@@ -33,13 +34,18 @@ bash deploy.sh --codex-only
 | `implementer` | scoped changes and tests | Terra/high, workspace-write |
 | `verifier` | independent acceptance gate | Sol/high, workspace-write for test artifacts only |
 | `harness_builder` | interactive Codex primitive design and authoring | Sol/xhigh, confirm-before-write |
-| `oraculum` | substrate-first strategic analysis under Cartan | Astra/high, analysis-only |
+| `oraculum` | shared scientific strategist; bounded child or explicit `--profile oraculum` main research/planning entry | Astra/high; child analysis-only, main scope assigned by operator |
 | `houston` | grounding architect — consult · audit · sitting; child via codex/agents/houston.toml, main via --profile houston (~/.codex/houston.config.toml) | Sol/high; inherits the parent's sandbox — the consult card is the only write fence |
 
 Projects specialize these agents through their own `AGENTS.md`, `.codex/config.toml`, MCP
 servers, and skills. Do not copy these TOMLs into projects or create same-name variants;
 add a project-only agent only when its job is genuinely not expressible as a global role
 plus local guidance.
+
+Oraculum's personality and authority live in `germline/agents/oraculum/identity.md`;
+its vendor bindings declare native mechanics. The child TOML and standalone main
+profile are loaders. After reviewed deployment, use `codex --profile oraculum -C <project-root>`
+for operator-assigned planning, scientific research and synthesis. The profile does not create a persistent child or change a running session.
 
 `harness_builder` is paired with the `codex-harness` skill. The agent owns judgment and
 interaction; the skill owns volatile source routing, primitive selection, and the explicit

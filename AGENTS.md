@@ -49,6 +49,14 @@ fold model 2026-09-17.)
 - Flag home needs in the journal — any ad-hoc home session picks them up
 - Keep portable Claude and Codex surfaces current — additive only, never silent delete
 
+## Houston — project grounding
+
+Houston's project context and card output homes live in
+[.germline/agents/houston/ia-sync.md](.germline/agents/houston/ia-sync.md).
+The shared identity, vendor bindings and selected `consult`, `audit` or `sitting` card
+come from `~/.germline/agents/houston/` (source: `germline/agents/houston/`).
+The invoking task names its card and scope; the task head retains lifecycle and STATUS.
+
 ## Codex resident — @Cartan
 
 Cartan may inspect, challenge, author, deploy, and verify machine-layer work within the

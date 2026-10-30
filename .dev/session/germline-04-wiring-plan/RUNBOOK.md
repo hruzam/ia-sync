@@ -1,9 +1,13 @@
 # RUNBOOK: germline-04-wiring-plan
 
+> **Preparation delivered; no G04 execution remains.** The operator-requested disposition is
+> recorded in `raw/CLOSE.g04-preparation.2026-10-20.md` and this bed's STATUS. G05 is closed;
+> fresh Flight starts in G06. The planning prompt below is historical, not a wake instruction.
+
 ```yaml
 goal: >-
   Park two unambiguous future handoffs: Germline-05 for Sella ↔ germline ↔
-  controller/program audit only, and Germline-06 for separately gaveled program making.
+  controller/program assessment, and Germline-06 for the fuller audit requested after G05.
 gate: >-
   The G05 and G06 handoff substrates each name their owners, one gate, boundaries, promotion
   conditions, and G05's opening-gavel checklist without opening either future session.
@@ -21,10 +25,13 @@ handoff chain, then parks. It does not investigate the sources or operate either
 
 ## Execution successor
 
-The executable audit launcher is
-`/home/hruzam/ia-sync/.dev/session/germline-05-sella-germline-audit/RUNBOOK.md` with its own
-STATUS. Flight executes that launcher, not this G04 planning RUNBOOK. G04's STATUS records
-the promotion edge; the future-only raw handoff remains preparation lineage.
+The continuation launcher is
+`/home/hruzam/ia-sync/.dev/session/germline-06-full-audit/RUNBOOK.md` with its own STATUS.
+G05 is the accepted/preserved assessment at ia-sync commit
+`55e615766143062fe018d29f3e914f9c785fffb5`. A fresh Flight executes G06, not this completed
+planning RUNBOOK or the closed G05 session. The original future make-program proposal in
+`raw/HANDOFF.g06-make-program.md` is superseded; writing/building remains later and unnumbered.
+G04's fixed preparation gate is unchanged; its STATUS carries the completed preparation edge.
 
 ## Operator-approved handoff revision — 2026-10-20
 
@@ -41,6 +48,10 @@ handoff carries assignments, sources and prompts; this RUNBOOK does not duplicat
 This explicit revision supersedes the earlier handoff's Cartan-head, fixed Sella-only first
 source, per-source gavel and standing Atlas-route assumptions. It does not rewrite G03's
 historical substrate, resolve G03 F1, or open G05. Writing and program construction remain later.
+
+Majkee's subsequent continuation request, after G05 acceptance, selects a fuller audit for G06.
+It supersedes only the future make-program assignment; G06's prepared launcher owns that audit's
+scope. No G03 or G05 gate is reopened, and this G04 revision launches no head or worker.
 
 ## Fixed facts
 
@@ -78,23 +89,24 @@ deploy, or wake an executor. When both handoffs satisfy this gate, return OCTOPU
   not acceptance, an audit finding, or permission to operate another session.
 - G04 itself prepares handoffs, not audit execution. A separately promoted G05 has its own
   RUNBOOK/STATUS; G06 remains behind its later opening boundary.
-- G06 cannot compose or implement until its own later gavel and RUNBOOK exist.
+- G06's continuation is audit-only. Writing, program construction and implementation require
+  later exact scope/authorization; the old make-program proposal is not an execution launcher.
 
 ## Acceptance evidence
 
 - `raw/HANDOFF.g05-sella-germline-audit.md` names the G05 gate, owners, boundaries, promotion
   condition, and opening-gavel checklist.
-- `raw/HANDOFF.g06-make-program.md` names the G06 gate, owners, boundaries, and promotion
-  condition.
+- G06's promoted `/home/hruzam/ia-sync/.dev/session/germline-06-full-audit/RUNBOOK.md` names
+  the fuller-audit gate, owner, scope and boundaries. The old make-program handoff is marked
+  superseded so a fresh reader cannot mistake it for authorization to build.
 - `STATUS.md` has no in-flight action and distinguishes supplied references from the remaining
   separate G05-opening decision.
 
 ## Recommended later wake
 
-After a separate G05 opening instruction, wake Flight interactively as working head with the
-prepared launcher and the G05 handoff's prompt-0. Flight owns its spawns and may consult the
-separately prepared Cartan contrahead on demand. G04 wakes neither seat, invokes no head protocol
-and establishes no tunnel.
+Wake a fresh Flight interactively with prompt-0 from
+`/home/hruzam/ia-sync/.dev/session/germline-06-full-audit/RUNBOOK.md`. Flight owns G06 and its
+spawns, with Cartan on demand. G04 performs no audit execution and establishes no tunnel.
 
 ## References
 
@@ -109,6 +121,9 @@ and establishes no tunnel.
   — supplied reference case and owner-return boundary.
 - `/home/hruzam/ia-sync/.dev/session/germline-04-wiring-plan/raw/HANDOFF.g05-sella-germline-audit.md`
   — future audit assignment, source map and prompts.
+- `/home/hruzam/ia-sync/.dev/session/germline-06-full-audit/RUNBOOK.md` and
+  `/home/hruzam/ia-sync/.dev/session/germline-06-full-audit/raw/SCOPE.md`
+  — fuller-audit continuation prepared after accepted G05.
 
 ## What this session deliberately does not do
 

@@ -36,6 +36,7 @@
 #
 # Format: <id/file> — plugged <date> — <origin> — <what it probes> — <status>
 #
+#   source-reader — plugged 2026-10-29 — G09 D1 — lazy read-only source browser — EXPERIMENTAL ONLY (not approved)
 #   ox-alpha              — plugged 2026-09-22 — promoted from ai/experimental/
 #                           — OpenRouter stealth/ox-alpha reasoning-model probe;
 #                             reference runner brick — EXPERIMENTAL ONLY (not approved)

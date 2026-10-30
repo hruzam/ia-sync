@@ -1,0 +1,34 @@
+schema: germline-preview-collections/draft-01
+status: illustrative-not-implemented
+input: normalized-single-source-record
+collections:
+  catalog:
+    include: []
+    fields: [kind, name, description, source.path]
+  select:
+    include: [catalog]
+    fields: [id, scope, use_when, maturity]
+  inspect:
+    include: [select]
+    fields: [loads, outputs, authority, context, stamp, source.sha256]
+  revision:
+    include: [catalog]
+    fields: [stamp, source.sha256]
+composition:
+  expansion: Included collections first, then this collection's fields, in declaration order.
+  deduplication: Keep each field path's first occurrence.
+  missing: Emit a null value with an explicit missing marker and source provenance.
+  unknown_fields: Retain at the source; disclose only through an explicitly requested field or collection.
+  invalid: Reject duplicate YAML keys, unknown included collections and include cycles.
+  nested_values: Preserve each selected value's structure and list order.
+  cross_file: Return separate source records; expose conflicts instead of overriding facts.
+source_envelope:
+  path: Observed exact source path, supplied by the reader
+  sha256: Observed SHA256 of that source revision, supplied by the reader
+  field_origins: Source field or section, adapter operation, or explicit missing marker
+load_boundary:
+  metadata_only: All collections above project fields; none reads referenced files or loads the contract body.
+  body: A separate explicit read of the selected source's instruction body.
+  dependencies: A separate load plan under the governing loader and task authority.
+  cache: Track exact source revision within the actual context; missing context requires reconciliation.
+  limits: A metadata stamp or hash identifies a revision; it does not prove understanding, retention or execution.

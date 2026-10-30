@@ -1,0 +1,4 @@
+---
+stamp: 12345678
+---
+GERMLINE_IDENTITY_BODY

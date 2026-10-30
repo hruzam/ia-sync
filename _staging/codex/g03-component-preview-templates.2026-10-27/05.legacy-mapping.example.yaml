@@ -1,0 +1,55 @@
+schema: germline-preview-adapters/draft-01
+status: illustrative-not-implemented
+base: /home/hruzam/ia-sync
+rules:
+  - One output record refers to one exact source file.
+  - Every mapped value retains its origin.
+  - An absent description stays null.
+  - Helper-computed identities are labelled as computed, not source-declared.
+  - Read paths and hashes are observed by the helper, not copied from stale metadata.
+  - These mappings expose metadata and text; they execute no source instructions.
+adapters:
+  houston-card:
+    source_example: germline/agents/houston/cards/consult.md
+    classification:
+      kind: card
+      origin: explicit-adapter
+    identity:
+      fields: [frontmatter.agent, frontmatter.card]
+      join_with: "."
+      origin: helper-computed-from-explicit-fields
+    fields:
+      name: frontmatter.card
+      description: null
+      scope: frontmatter.scope
+      authority: frontmatter.authority
+      stamp: frontmatter.stamp
+    preview_note: Scope can be displayed as scope; it is not silently renamed to an authored description.
+  g09-controller:
+    source_example: .dev/session/germline-09-source-reader/raw/run-02/hold-line/controller.md
+    classification:
+      kind: controller
+      origin: explicit-adapter
+    fields:
+      name: markdown.first-heading
+      description: null
+      scope: null
+      loads: null
+      authority: null
+      stamp: null
+    text_sections:
+      routing: first-markdown-table
+    preview_note: The function table is source text; it does not authorize operations or synthesize dependency fields.
+  g09-function:
+    source_example: .dev/session/germline-09-source-reader/raw/run-02/hold-line/functions/reconcile.md
+    classification:
+      kind: function
+      origin: explicit-adapter
+    fields:
+      name: markdown.first-heading
+      description: null
+      scope: null
+      loads: null
+      authority: null
+      stamp: null
+    preview_note: An optional bounded opening-text excerpt must be labelled excerpt, with its source range and truncation.
