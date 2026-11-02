@@ -26,6 +26,9 @@ Stdlib only. Exit codes: 0 ok · 1 refused/error · 2 usage.
 from __future__ import annotations
 
 import argparse
+import hashlib
+import re
+import secrets
 import json
 import os
 import shlex
@@ -406,7 +409,7 @@ def build_bed(slug: str, spec: list[str] | None = None, root: str | None = None)
     return len(ops)
 
 
-def close_idle_tab(slug: str, ref: str) -> dict:
+def close_idle_tab(slug: str, ref: str, *, verify=None) -> dict:
     """Close ONE idle tab (○). Refuses a busy tab (law L-c) and the last tab (it would end
     the bed and every view — that is ov-down's job). Busy is re-read at close time."""
     A, _ = servers()
@@ -423,6 +426,8 @@ def close_idle_tab(slug: str, ref: str) -> dict:
                           f"use: ov-down {slug} --idle")
         t = now.get(w["id"])
         if t is None or not t["busy"]:
+            if verify is not None:
+                verify()                      # exact generation + idle guard, immediately before close
             A.run("kill-window", "-t", w["id"], check=True)
             return w
         time.sleep(CLOSE_GAP)                 # even a fg program may be a startup blip
@@ -783,6 +788,149 @@ def _prompt(scr, label: str) -> str:
     return raw.decode("utf-8", "replace").strip()
 
 
+# --------------------------------------------------------------------------- exact phone views (owner-review candidate)
+
+def _process_start(pid: int) -> str:
+    try:
+        raw = Path(f"/proc/{pid}/stat").read_text()
+        return raw[raw.rindex(")") + 2:].split()[19]
+    except (OSError, ValueError, IndexError):
+        raise OvError("target process disappeared; refresh targets")
+
+
+def exact_targets(slug: str) -> dict:
+    """Additive machine API; bed_report()/ls --json remain byte-shape compatible."""
+    A, _ = servers()
+    if not any(s['name'] == slug and s['group'] in ('', slug) for s in sessions(A)):
+        raise OvError(f"base '{slug}' missing; a view never replaces base ownership")
+    header = A.run("display-message", "-p", "-t", f"={slug}:",
+                   "#{socket_path}\t#{pid}\t#{session_id}", check=True).stdout.strip()
+    path, server_pid, session_id = header.split("\t")
+    info = Path(path).stat()
+    server = {"host": os.uname().nodename, "socket": A.sock, "path": path, "device": info.st_dev,
+              "inode": info.st_ino, "pid": int(server_pid),
+              "start": _process_start(int(server_pid)), "sessionId": session_id}
+    server_generation = hashlib.sha256(json.dumps(server, sort_keys=True).encode()).hexdigest()
+    children = children_map()
+    result = []
+    fmt = ("#{window_id}\t#{window_name}\t#{pane_id}\t#{pane_pid}\t"
+           "#{pane_current_command}\t#{pane_dead}\t#{window_panes}")
+    for line in A.lines("list-panes", "-s", "-t", f"={slug}", "-F", fmt):
+        wid, name, pane_id, pid, cmd, dead, pane_count = line.split("\t")
+        identity = [server_generation, wid, pane_id, pid,
+                    _process_start(int(pid)) if dead != '1' else None]
+        result.append({"bed": slug, "windowId": wid, "name": name,
+            "paneId": pane_id, "panePid": int(pid), "paneStart": identity[-1],
+            "paneCount": int(pane_count), "command": cmd, "dead": dead == "1",
+            "busy": dead != "1" and pane_busy(cmd, int(pid), children),
+            "generation": hashlib.sha256(json.dumps(identity).encode()).hexdigest()})
+    return {"schema": 1, "server": server, "serverGeneration": server_generation,
+            "targets": result}
+
+
+def _exact(slug: str, window: str, pane: str, generation: str, *, idle=False) -> dict:
+    if not re.fullmatch(r"@[0-9]+", window) or not re.fullmatch(r"%[0-9]+", pane):
+        raise OvError("exact window/pane IDs required")
+    row = next((t for t in exact_targets(slug)["targets"]
+                if t["windowId"] == window and t["paneId"] == pane), None)
+    if row is None or row["generation"] != generation:
+        raise OvError("stale target; refresh and explicitly select again")
+    if row["paneCount"] != 1:
+        raise OvError("independent multi-pane selection is not implemented")
+    if row['dead']:
+        raise OvError("selected process has exited")
+    if idle and (row["busy"] or row["dead"]):
+        raise OvError("selected target is busy/dead; end its process explicitly first")
+    return row
+
+
+def _phone_view(slug: str, view: str, token: str, server_generation: str) -> dict:
+    if not re.fullmatch(re.escape(slug) + r"--phone-[0-9a-f]{16}", view):
+        raise OvError("exact generated phone view NAME required")
+    report = exact_targets(slug)
+    if report["serverGeneration"] != server_generation:
+        raise OvError("server/base generation changed; refresh")
+    A, _ = servers()
+    fields = A.run("display-message", "-p", "-t", "=" + view + ":",
+        "#{session_name}\t#{@ov-phone-base}\t#{@ov-phone-token}", check=True).stdout.strip().split("\t")
+    if (len(fields) != 3 or fields[0] != view or
+            fields[1] != report["server"]["sessionId"] or
+            not secrets.compare_digest(fields[2], token)):
+        raise OvError("not this owner's phone view; refusing")
+    if not any(s["name"] == fields[0] and s["group"] == slug for s in sessions(A)):
+        raise OvError("phone view no longer belongs to the base group")
+    return report
+
+
+def _phone_target(slug, name, token, server_generation, row):
+    _phone_view(slug, name, token, server_generation)
+    A, _ = servers()
+    active = A.run("display-message", "-p", "-t", "=" + name + ":",
+                   "#{window_id}.#{pane_id}", check=True).stdout.strip()
+    if active != row["windowId"] + "." + row["paneId"]:
+        raise OvError("phone view changed target; explicitly select again")
+    _exact(slug, row["windowId"], row["paneId"], row["generation"])
+
+
+def cmd_targets(a) -> int:
+    print(json.dumps(exact_targets(a.slug), indent=2))
+    return 0
+
+
+def cmd_phone_view(a) -> int:
+    A, _ = servers()
+    if a.action == "create":
+        row = _exact(a.slug, a.window, a.pane, a.generation)
+        report = exact_targets(a.slug)
+        token = secrets.token_hex(16)
+        name = a.slug + "--phone-" + secrets.token_hex(8)
+        view = A.run("new-session", "-d", "-P", "-F", "#{session_id}",
+                     "-s", name, "-t", f"={a.slug}", check=True).stdout.strip()
+        try:
+            for key, value in (("@ov-phone-base", report["server"]["sessionId"]),
+                               ("@ov-phone-token", token), ("prefix", "None"),
+                               ("prefix2", "None"), ("status", "off"), ("mouse", "on")):
+                A.run("set-option", "-t", "=" + name + ":", key, value, check=True)
+            _phone_view(a.slug, name, token, report["serverGeneration"])
+            A.run("select-window", "-t", "=" + name + ":" + row["windowId"], check=True)
+            _phone_target(a.slug, name, token, report["serverGeneration"], row)
+        except Exception:
+            # A restart, incomplete marker or missing base means PRESERVE, never $ID cleanup.
+            try:
+                _phone_view(a.slug, name, token, report["serverGeneration"])
+            except OvError:
+                pass
+            else:
+                A.run("kill-session", "-t", "=" + name)
+            raise
+        print(json.dumps({"viewId": view, "name": name, "token": token,
+            "serverGeneration": report["serverGeneration"], "target": row,
+            "attachArgv": A.argv("attach-session", "-t", "=" + name)}))
+        return 0
+    _phone_view(a.slug, a.view, a.token, a.server_generation)
+    if a.action == "detach":
+        A.run("kill-session", "-t", "=" + a.view, check=True)
+        print(json.dumps({"detached": True}))
+    else:
+        row = _exact(a.slug, a.window, a.pane, a.generation)
+        _phone_view(a.slug, a.view, a.token, a.server_generation)
+        A.run("select-window", "-t", "=" + a.view + ":" + row["windowId"], check=True)
+        _phone_target(a.slug, a.view, a.token, a.server_generation, row)
+        print(json.dumps({"name": a.view, "target": row}))
+    return 0
+
+
+def cmd_close_tab(a) -> int:
+    if not a.confirm:
+        raise OvError("explicit --confirm required; not an agent termination command")
+    def verify():
+        _exact(a.slug, a.window, a.pane, a.generation, idle=True)
+    _exact(a.slug, a.window, a.pane, a.generation)  # identity only; owner loop handles busy patience
+    closed = close_idle_tab(a.slug, a.window, verify=verify)
+    print(json.dumps({"closed": closed["id"]}))
+    return 0
+
+
 # --------------------------------------------------------------------------- selftest
 
 def selftest() -> int:
@@ -1068,6 +1216,27 @@ def main(argv=None) -> int:
     c = sub.add_parser("console", help="curses view of a bed's tabs")
     c.add_argument("slug", nargs="?")
 
+    e = sub.add_parser("targets", help="exact target metadata (additive JSON API)")
+    e.add_argument("slug")
+    p = sub.add_parser("phone-view", help="independent guarded phone views; never --left")
+    pv = p.add_subparsers(dest="action", required=True)
+    for action in ("create", "select", "detach"):
+        v = pv.add_parser(action)
+        v.add_argument("slug")
+        if action != "create":
+            v.add_argument("--view", required=True)
+            v.add_argument("--token", required=True)
+            v.add_argument("--server-generation", required=True)
+        if action != "detach":
+            v.add_argument("--window", required=True)
+            v.add_argument("--pane", required=True)
+            v.add_argument("--generation", required=True)
+    x = sub.add_parser("close-tab", help="close one exact idle tab; never terminates an agent")
+    x.add_argument("slug")
+    for arg in ("window", "pane", "generation"):
+        x.add_argument("--" + arg, required=True)
+    x.add_argument("--confirm", action="store_true")
+
     sub.add_parser("selftest", help="isolated servers, PASS/FAIL, zero side effects")
 
     a = ap.parse_args(argv)
@@ -1079,7 +1248,9 @@ def main(argv=None) -> int:
         ap.error("tab takes [slug] tab")
     try:
         return {"up": cmd_up, "tab": cmd_tab, "ls": cmd_ls, "down": cmd_down,
-                "console": cmd_console, "selftest": lambda _a: selftest()}[a.cmd](a)
+                "console": cmd_console, "targets": cmd_targets,
+                "phone-view": cmd_phone_view, "close-tab": cmd_close_tab,
+                "selftest": lambda _a: selftest()}[a.cmd](a)
     except OvError as e:
         print(f"ovitmugen: {e}", file=sys.stderr)
         return 1

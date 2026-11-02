@@ -10,6 +10,77 @@
 
 ---
 
+## OFFICE — 2026-10-30 · Cartan · A3 clarification and continuous A1 production
+
+At Majkee's request, added the main-session docs-discovery correction to A3 S04:
+verify bounded source/directory evidence, distinguish absent paths from discovery
+defects, name existing documents with their authority, and retain the proposed
+architecture home's promotion boundary. No pointer to nonexistent docs was added.
+Existing team/owner edits, A3 STATUS and unchecked completion ledger were preserved.
+This was a RUNBOOK clarification only; no model test, deployment or source fold ran.
+
+Majkee then selected one session per next agent build and an external shared A1
+CACHE for continuous experience. Prepared A6 harness-builder, A7 Shuttle full
+execution and A8 Epoch researcher RUNBOOK/STATUS/scope ledgers and stream caches.
+A0 tasks 006–008 and three cold-start cards route them; no successor or role fold
+started. A1 CACHE holds checkable common steps and lessons, with one selected writer
+and no competing task state. Atlas/Cartan transcript anchors, Shuttle v1.2 lineage
+and old-card supersession cautions are in A6/raw. Raw histories and private vault
+pointers were not imported. Existing native roles remain the first reuse targets;
+full Shuttle execution is distinct from the old temporary BUS. No new global
+agent, runtime profile, source activation, model turn, deploy or commit/push ran.
+
+Majkee clarified the production model and approved its fold: one sitting need not
+create another bed. A1 now holds one standing five-phase workflow and grouped
+schedule/result journal, one STATUS for the selected group/phase/owner, and one
+shared CACHE for checked experience. Builder, Shuttle and Epoch scopes are groups
+002–004; accepted Oraculum work and its parked comparison remain group 001. Earlier
+A6–A8 controls are superseded redirects, not completed builds. Their original
+preparation and A1 controls are byte-preserved in A1/raw/archive; useful lineage
+lives in A1/raw/build-line. The three unused cards are replaced by one A1 program
+entry, with originals archived unchanged. Astrobley reviewed the control fold;
+source and sibling preservation checks are recorded in A1/raw/PRODUCTION-CONSOLIDATION.2026-10-30.*.
+A0 retains broader intake/history; A3–A5 keep separate framework ownership. No role
+build, runtime test, deployment, canon promotion or commit/push ran during this fold.
+Current STATUS selects builder intake for a later operator-selected sitting; a new
+conversation continues the same line. These local files still need normal authorized
+commit/transport for cross-host visibility.
+
+Majkee then released the bounded Oraculum identity/delegation repair (A1 group 005).
+A fresh unchanged main reproduced profile developer instructions reaching a
+no-history Luna worker, which wrongly claimed Oraculum. The main loader now
+dispatches by actual native entry. Shared main authority permits explicitly
+authorized bounded execution delegation while retaining its own execution ban;
+the genuine consultation child still cannot write or delegate. Its caller table
+now includes explicitly authorized Oraculum main. Four portable sources changed;
+Astrobley reviewed both source revisions. Scoped office installation kept backups
+and host-local TUI settings. Fresh actual Astra main, Luna worker local commit/push
+and genuine-child refusal witnesses pass 16 checks. The unrelated fixture files
+and all other captured source/sibling files were preserved. Git's destination
+update succeeded despite a denied local tracking-ref update; actual destination
+was inspected rather than blindly retried. Evidence: A1/raw/005-oraculum-routing/RESULT.md.
+Claude semantics were assessed; real Claude/home/compaction remain unverified.
+No real project commit/push occurred. A1 returns to builder intake with group 001's
+broader comparison still parked. Source changes remain uncommitted.
+
+### Phone console owner interface — Cartan, 2026-10-30
+
+Majkee explicitly authorized Cartan to make the reviewed ovitmugen change and finish
+live-session selection/Attach in Nablarva's phone-console pilot. Applied the bounded
+additive targets/phone-view/close-tab API in zsh/session/ovitmugen.py, preserving
+existing ls JSON and desktop selection. Source hash cb3bf0d9b44133159f2c194c646dbb968d32d340d64cb8a2c9c1d46dfb957f40;
+installed ~/.config/zsh/session/ovitmugen.py remains the97dba115 baseline.
+Nine applied-owner isolated checks pass, independently repeated. First transient
+fixture failure and its stable-child correction are retained; no production guard
+was relaxed. Consumer integration passes26 app tests independently; the pilot is
+active through the explicit source path. Existing office Codex attach/output/detach
+preserves desktop selection and panePID; geometry restores after phone detach.
+Physical phone interaction remains for Majkee to witness.
+Exact evidence/authority: nablarva/.dev/session/phone-console-01-browser/raw/live-adapter/.
+The pilot will use the explicitly configured reviewed source path; no global deploy,
+commit, push, home change or basement STATUS takeover. Home remains unqualified.
+
+
 ## OFFICE — 2026-10-29 · Cartan · A2 post-trial local fold and closure
 
 Majkee accepted lab Oraculum's performance and supplied her final self-report and

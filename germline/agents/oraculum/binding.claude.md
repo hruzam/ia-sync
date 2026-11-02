@@ -2,8 +2,8 @@
 binding: oraculum
 vendor: claude
 scope: native entry, loading, permissions and proof only; authority remains in identity.md
-updated: 2026-10-27
-stamp: 4879d4b4
+updated: 2026-10-30
+stamp: 2f9b4e83
 verified: source/envelope checks only; fresh Claude runtime witnesses deferred
 ---
 # oraculum · Claude binding
@@ -29,7 +29,13 @@ prove a child is read-only and must not be used to launder a refused operation.
 Its suggestion to spawn an executor grants no authority: the selected shared entry
 scope and operator assignment still decide. No child consultation invokes a helper.
 The hook itself is not changed by this fold. Native read tools support both routes;
-Write and any permitted reader delegation remain bounded by the main planning/research/synthesis grant.
+Oraculum's own Write remains bounded by the main planning/research/synthesis grant.
+The shared identity now permits an explicitly authorized main to delegate bounded
+execution as well as reading/research. The selected worker uses its own native role,
+tools and project rules; its brief must carry the exact allowed effects, paths and
+publication destination. The hook exemption supplies no such authority and a genuine
+Oraculum child still neither writes nor delegates. No Claude loader, tools or hook
+were widened; fresh Claude behavior remains deferred, not simulated by Codex.
 
 Static frontmatter, hook-path and loader checks can establish source compatibility,
 not Claude behavior. A real witness must check actual entry, loaded sources before

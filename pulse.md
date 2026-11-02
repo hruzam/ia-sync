@@ -3,10 +3,19 @@
 `bounded router (raw.guides/runbook/GUIDE.md): active slug · gate · exact STATUS path. No next`
 `action, no narrative — STATUS.md is the sole doing-state for its gate.`
 
+- `germline-A9-reader-economy` · gate: Majkee accepts an evidence-backed disposition of the six-run reader-economy pilot, including frozen matched cases, citation-grounded scores, complete delivery accounting, protocol qualifications and a bounded design return to A3. ·
+  `/home/hruzam/ia-sync/.dev/session/germline-A9-reader-economy/STATUS.md`
+
+- `germline-A5-reader-navigation` · gate: Majkee accepts an evidence-backed disposition of the four-subject navigation experiment, including fixture equivalence, retrieval transcripts, semantic scores, harness limits and a concrete return to A3's reading-design question. ·
+  `/home/hruzam/ia-sync/.dev/session/germline-A5-reader-navigation/STATUS.md`
+
+- `germline-A4-reader-shapes` · gate: Majkee accepts the four-subject reader-shape pilot disposition, with frozen equivalent facts, checked per-item scores, preserved returns, and explicit limits on familiarity, model and economy claims. ·
+  `/home/hruzam/ia-sync/.dev/session/germline-A4-reader-shapes/STATUS.md`
+
 - `germline-A3-guide-to-controller` · gate: Majkee accepts the independently reviewed guide-to-program fold package, with every whole-design roadmap item accounted for, reading and continuity contracts demonstrated on paper, and explicit destinations and release conditions for documentation, agent routing and later implementation. ·
   `/home/hruzam/ia-sync/.dev/session/germline-A3-guide-to-controller/STATUS.md`
 
-- `germline-A1-vi-agents` · gate: Majkee accepts the source-accounted Oraculum fold, direct Codex profile and preserved child authority, with the Astrobley relationship comparison and explicit limits on untested deployment and runtime behavior. ·
+- `germline-A1-vi-agents` · gate: For each selected agent or related group, Majkee accepts its scoped build disposition and evidence under the shared five-phase workflow; continuation selects another group within this production line. ·
   `/home/hruzam/ia-sync/.dev/session/germline-A1-vi-agents/STATUS.md`
 
 - `runbook-tool-02-understanding` · gate: Majkee decides GO, AMEND or STOP on an evidence-backed
