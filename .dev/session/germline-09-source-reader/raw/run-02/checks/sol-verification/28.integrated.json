@@ -1,0 +1,92 @@
+{
+  "verdict": "PASS",
+  "source_hashes": {
+    "adapter": "bfa6a3fc7c09591881575c87fb8ad5bde066188cc42f814028dbeffff4d77b50",
+    "test": "d81a8e51340b2069c50c4fc10dcf4a099946374dc5fd50dbb28503b2e2063023",
+    "contract": "84be154eb074088af75f003cd760b0ccb904061afb46851135e8ad4203f1d214",
+    "pins": "d72e6b552f7e05e2e5c5657631526b989dea28d2cc3a372919845a1c86ad51db"
+  },
+  "handoff_sha256": "d214ed3857c1a3aa9bcea3dd418418cb1121a9cf99493ff27146107127e2dcc9",
+  "pins": 35,
+  "source_tests_reused": "cycle19 exact hashes; no broad reruns",
+  "releases_authorized": {
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/control/RELEASE.json": false,
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/control/RELEASE.json": false
+  },
+  "technical_holds": [],
+  "role_vaults": 0,
+  "asks": {
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/caretaker/operations": [
+      "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/caretaker/operations/R1.ask.operation.json"
+    ],
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/operations": []
+  },
+  "protected_old_files": 97,
+  "other_foreign_files": 8,
+  "journal_reconstruction_sha256": "db9148eba1574c7a9b7f6bfd0eefb5009afa6f8f7b295031b2649f3046a232f5",
+  "journal_final_sha256": "0486524bfc452d51434fef25a5faf592e86930471be62da782cc5fe960c287dc",
+  "caretaker_fixture_decisions": [
+    {
+      "case": "interrupted",
+      "fixture_sha256": "4a525394aa9f623a9acdf2422197fa475ff90aa4b49b3cc82448c2f9a4111d11",
+      "state": "UNKNOWN",
+      "next_action": "RECONCILE_EXACT_KNOWN_ID",
+      "safe_no_replay": true
+    },
+    {
+      "case": "missing-identity",
+      "fixture_sha256": "56cb94424eb25dcf98670d591a35dbc6017f52ba7cc6aca20c3ed943df7cd9ae",
+      "state": "UNKNOWN",
+      "next_action": "ESCALATE_MISSING_ID",
+      "safe_no_replay": true
+    },
+    {
+      "case": "changed-pins",
+      "fixture_sha256": "8e0228e065415cbaf3acd772bd20a4611511aec246fd5b24cae15dc2bea9a8a2",
+      "state": "HOLD",
+      "next_action": "ESCALATE_PIN_DRIFT",
+      "safe_no_replay": true
+    },
+    {
+      "case": "revoked-release",
+      "fixture_sha256": "31c341b83c7503252c01f57b5f47f4333c51347d1c7bf248e904c4f5f79f07b2",
+      "state": "HOLD",
+      "next_action": "WAIT_FRESH_GO",
+      "safe_no_replay": true
+    },
+    {
+      "case": "active-hold",
+      "fixture_sha256": "63d90431ac8aac75efdee0ef363b80fc83c51747021af4f0517782cf6848b182",
+      "state": "HOLD",
+      "next_action": "REPORT_HOLD",
+      "safe_no_replay": true
+    },
+    {
+      "case": "exhausted-budget",
+      "fixture_sha256": "f49352b2dcaeeb873c002a53a8b8cc0880878ed5113994ce5ce56e1757bc534a",
+      "state": "HOLD",
+      "next_action": "REPORT_BUDGET_EXHAUSTED",
+      "safe_no_replay": true
+    },
+    {
+      "case": "empty-running-output",
+      "fixture_sha256": "d6fa02853d2a697a22112ac5cb2985410b9ef24dc05ad5a3a126874c8fae8c48",
+      "state": "RUNNING",
+      "next_action": "POLL_RETURNED_SESSION",
+      "safe_no_replay": true
+    },
+    {
+      "case": "inaccessible-process",
+      "fixture_sha256": "1203d3cd4581af878c293c54a0ef28b47c14e951654c0d3239a72ee8fa7625c8",
+      "state": "UNKNOWN",
+      "next_action": "REPORT_VISIBILITY_UNKNOWN",
+      "safe_no_replay": true
+    }
+  ],
+  "loaded_hashes_match": true,
+  "capture26": "expected exit2 only; wrapper failure preserved",
+  "capture27": "observed exit2 with combined output",
+  "parent_final_readiness": "observed exit0/release false",
+  "target_model_turns": 0,
+  "limits": "Offline artifact/simulated decision gate only; actual GO, live availability, product, retention and High-versus-Medium performance not established."
+}

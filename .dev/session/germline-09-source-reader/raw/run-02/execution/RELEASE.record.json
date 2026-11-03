@@ -1,0 +1,11 @@
+{
+  "observed_at": "2026-10-26T22:28:22.035148+01:00",
+  "actual_GO": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/execution/GO.actual.md",
+  "release": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/control/RELEASE.json",
+  "release_sha256": "fc40638d0adc2a2b3fe2aa1e9a74bec9228520fc6260160fdd393e31cfb63529",
+  "contract_sha256": "84be154eb074088af75f003cd760b0ccb904061afb46851135e8ad4203f1d214",
+  "pins_sha256": "d72e6b552f7e05e2e5c5657631526b989dea28d2cc3a372919845a1c86ad51db",
+  "current_preservation_pass": true,
+  "run01_release_false": true,
+  "source_scope_unchanged": true
+}

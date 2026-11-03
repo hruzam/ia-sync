@@ -1,0 +1,73 @@
+{
+  "verdict": "PASS",
+  "approved_four": {
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/run_operations.py": "4a9458a834e6825c8bfad44ec345bdcbd2f8d90483e9e93bdbcbcd1081042ae5",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/repair/test_adapter.py": "01a7a41da29181da64139d69b68afa763d79573c196b1fafede130b767c9e74d",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/CONTRACT.json": "d85068a29acae319710237594822230f1e761bf5df0656a208da14cc10d0216f",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/hold-line/sources.json": "ed61680ac03074e3f77b66a9fa6db474d6363d48ff8374ac1a713530e7f8bbbf"
+  },
+  "pin_count": 35,
+  "rotated_pin_entries": [
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/CONTRACT.json",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/run_operations.py",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/repair/test_adapter.py"
+  ],
+  "caretaker_before_snapshot_count": 66,
+  "unchanged_historical_caretaker_files": 66,
+  "historical_caretaker_mismatches": [],
+  "approved_adapter_transition_separately_verified": true,
+  "c1_plan_sha256": "d60bc70f1f31a6a6d4769050370e27eede2276c9fff4ea7e9ef345fc4d1a3fba",
+  "receipts_verified": 14,
+  "asks": [
+    {
+      "key": "run02.A1.ask",
+      "attempt_number": 2
+    },
+    {
+      "key": "run02.R1.ask",
+      "attempt_number": 1
+    }
+  ],
+  "run02_used": 2,
+  "run02_remaining": 3,
+  "run01_used": 1,
+  "cumulative_used": 3,
+  "cumulative_ceiling": 6,
+  "enables_consumed_per_role": [
+    "auditor",
+    "researcher"
+  ],
+  "identities": {
+    "researcher": {
+      "threadId": "01a17a86-873c-72b0-8787-932736a0f7d9",
+      "lastTurnId": "01a17a86-87b6-76a3-a848-d93cf4a4d040"
+    },
+    "auditor": {
+      "threadId": "01a17a89-cc0a-7053-b9b2-e5bdac784fe4",
+      "lastTurnId": "01a17a89-cca1-71c0-8cea-0abe10024bcd"
+    }
+  },
+  "run01_release": false,
+  "run02_release": true,
+  "active_hold_enforced": true,
+  "future_plan_packets_absent": true,
+  "before_files": 397,
+  "unchanged_before_files": 395,
+  "concurrent_head_owned_changes": [
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/STATUS.md",
+      "before_sha256": "2711e086619016c17b50cf09ff1e7f2536009bbcbea1afdf73f331fc56abf02c",
+      "current_sha256": "8b93ed2c14c5c9270040afcc749de69df2dc43b4b030f8a2ae69a5f75dda3d64",
+      "owner": "main; ownership confirmed in43 verifier message"
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/execution/main-intake.json",
+      "before_sha256": "1fafdf81a50109fd3b9b518f1c483e19309908fcc3a359820a0489c07ffb1a85",
+      "current_sha256": "9f782869cf16b64b8c2722503048557f705daef50b40ce4ac3add50eebeb31ad",
+      "owner": "main; ownership confirmed in43 verifier message"
+    }
+  ],
+  "journal_reconstructed_sha256": "db9148eba1574c7a9b7f6bfd0eefb5009afa6f8f7b295031b2649f3046a232f5",
+  "pulse_reconstructed_sha256": "8ba84bfb437c96e4e5cf36d767fff0a1c3e34032d2d0e907af16091aedb873f3",
+  "target_model_turns": 0
+}

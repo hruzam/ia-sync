@@ -1,0 +1,18 @@
+{
+  "schema": "g09-offline-caretaker-case/v1",
+  "case": "empty-running-output",
+  "simulated": true,
+  "target_turns": 0,
+  "evidence": {
+    "exec_result": {
+      "session_id": "SIMULATED-SESSION-ID",
+      "output": "",
+      "exit_code": null
+    },
+    "receipt": {
+      "status": "pending",
+      "runner_identity_match": true
+    },
+    "note": "Session id is simulated; do not call a tool against it."
+  }
+}

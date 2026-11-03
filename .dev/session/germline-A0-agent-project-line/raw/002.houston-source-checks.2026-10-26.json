@@ -1,0 +1,144 @@
+{
+  "created": "2026-10-26T21:11:23.831730+01:00",
+  "host": "office / hruzam-120922",
+  "head": "5c26d80aa3c90de6cafc1c47a7d199fdbcc7466d",
+  "mode": "source checks only; no fresh model/session invoked",
+  "checks": [
+    {
+      "check": "YAML and current stamp",
+      "result": "PASS",
+      "details": {
+        "stamp": "568c84b4",
+        "sha256": "24b32d910b39227e4cb3bb9ebdf49bdc6c676d19494d236e74d8b6cfd0ad1483"
+      }
+    },
+    {
+      "check": "Local source map and entry pointer",
+      "result": "PASS",
+      "details": [
+        "AGENTS.md",
+        "CLAUDE.md",
+        "SYNC_DISCIPLINE.md",
+        "machines.json",
+        "journal.host-cleanup.md",
+        "pulse.md",
+        ".dev/session",
+        "germline",
+        "claude",
+        "codex",
+        "gemini",
+        "zsh",
+        "deploy.sh",
+        "install-pkgs/README.md",
+        "HANDSHAKE.md"
+      ]
+    },
+    {
+      "check": "Static wrapper inspection and walk-up simulation",
+      "result": "PASS",
+      "details": {
+        "ia_sync": {
+          "/home/hruzam/ia-sync": "/home/hruzam/ia-sync/.germline/agents/houston/ia-sync.md",
+          "/home/hruzam/ia-sync/.dev/session/germline-A0-agent-project-line/raw": "/home/hruzam/ia-sync/.germline/agents/houston/ia-sync.md"
+        },
+        "nablarva": "unchanged",
+        "limitation": "model behavior not witnessed"
+      }
+    },
+    {
+      "check": "No same-name project vendor wrapper",
+      "result": "PASS",
+      "details": "Only the shared project addendum was added"
+    },
+    {
+      "check": "Before/after preservation",
+      "result": "PASS",
+      "details": "Global source topology/bytes and named foreign runtime edits match before-state"
+    },
+    {
+      "check": "Office shared Houston source/live equality",
+      "result": "PASS",
+      "details": [
+        {
+          "source": "germline/agents/houston/identity.md",
+          "live": "/home/hruzam/.germline/agents/houston/identity.md",
+          "sha256": "d7c8837a0a6fdbece78f0500107deb684b36ec0135bd7a0e6462158ef7be94e6"
+        },
+        {
+          "source": "germline/agents/houston/binding.claude.md",
+          "live": "/home/hruzam/.germline/agents/houston/binding.claude.md",
+          "sha256": "2e8bc57ca97d5d8dd7b1b2f147ee78c147a23503ae8e5dc9915ac3b4124568e0"
+        },
+        {
+          "source": "germline/agents/houston/binding.codex.md",
+          "live": "/home/hruzam/.germline/agents/houston/binding.codex.md",
+          "sha256": "f171589645e42d93fac515e70240296f54d7d9fe6c4a390e273489ebd1491915"
+        },
+        {
+          "source": "germline/agents/houston/cards/sitting.md",
+          "live": "/home/hruzam/.germline/agents/houston/cards/sitting.md",
+          "sha256": "34fe2073bb8022e0750d4f41c4e8abbe7bb954dd4ae400d1664e1749569978b3"
+        },
+        {
+          "source": "germline/agents/houston/cards/audit.md",
+          "live": "/home/hruzam/.germline/agents/houston/cards/audit.md",
+          "sha256": "6f8c092909e471bb2a95e37f3b698fa03aae2b07b083a2286b0fc3810cba2c1f"
+        },
+        {
+          "source": "germline/agents/houston/cards/consult.md",
+          "live": "/home/hruzam/.germline/agents/houston/cards/consult.md",
+          "sha256": "9b0aa73106497ccda4b92605bea4972e6df2ebed75765d3b9bdf14ac82dd117c"
+        },
+        {
+          "source": "codex/agents/houston.toml",
+          "live": "/home/hruzam/.codex/agents/houston.toml",
+          "sha256": "4d965e4212f1ddbc9d653294d3591300a8aa3762a33adf372598384b7d949b7e"
+        },
+        {
+          "source": "codex/profiles/houston.config.toml",
+          "live": "/home/hruzam/.codex/houston.config.toml",
+          "sha256": "15f8bbee15213031f75d71a1937e9dcba80022fa0ce59d371ebc81ebb77feb49"
+        },
+        {
+          "source": "claude/agents/houston.md",
+          "live": "/home/hruzam/.claude/agents/houston.md",
+          "sha256": "553dfe4f4a52165ebe39300508298d7771f271618bb4dcf632a60126a785094c"
+        }
+      ]
+    },
+    {
+      "check": "Local stamp distinct from shared chain",
+      "result": "PASS",
+      "details": {
+        "local": "568c84b4",
+        "shared": {
+          "/home/hruzam/ia-sync/germline/agents/houston/identity.md": "3702b18f",
+          "/home/hruzam/ia-sync/germline/agents/houston/binding.claude.md": "6181ad36",
+          "/home/hruzam/ia-sync/germline/agents/houston/binding.codex.md": "437e8193",
+          "/home/hruzam/ia-sync/germline/agents/houston/cards/sitting.md": "630f58c3",
+          "/home/hruzam/ia-sync/germline/agents/houston/cards/audit.md": "e517cc86",
+          "/home/hruzam/ia-sync/germline/agents/houston/cards/consult.md": "5435b1c7"
+        }
+      }
+    },
+    {
+      "check": "Changed-line whitespace",
+      "result": "PASS",
+      "details": "New AGENTS section and addendum clean; git diff --check PASS; initial over-broad check corrected without source change"
+    }
+  ],
+  "initial_failure": "002.houston-source-checks.initial-failure.2026-10-26.json",
+  "deploy_dry_run": {
+    "command": "bash deploy.sh --germline-only --dry-run",
+    "observed_exit": 0,
+    "observed_scope": "global germline only",
+    "observed_itemized_changes": 0,
+    "observed_ghosts": 0,
+    "local_layer": "repository-local; outside global deploy source"
+  },
+  "remaining": [
+    "fresh Claude and Codex entry/read/card-boundary witnesses",
+    "home-host use unverified"
+  ],
+  "source_result": "PASS; behavioral qualification pending"
+}

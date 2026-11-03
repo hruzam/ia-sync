@@ -1,0 +1,25 @@
+{
+  "target_ask_attempts_recorded": 1,
+  "validated_target_completions": 0,
+  "unattempted": [
+    "A1",
+    "R2",
+    "A2"
+  ],
+  "conditional_A3": "not reached",
+  "ask_attempt_ceiling": 5,
+  "further_dispatch_allowed_under_current_hold": false,
+  "thread_ids": {
+    "researcher": null,
+    "auditor": null
+  },
+  "target_tokens": null,
+  "native_main_tokens": null,
+  "native_caretaker_tokens": null,
+  "dollars": null,
+  "unknown_submission_may_have_consumed_remote_work": true,
+  "evidence": [
+    "raw/caretaker/operations/R1.ask.operation.json",
+    "raw/control/HOLD.verification.json"
+  ]
+}

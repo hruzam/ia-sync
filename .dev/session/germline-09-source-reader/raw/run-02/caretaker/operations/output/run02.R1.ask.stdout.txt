@@ -1,0 +1,33 @@
+G09.run-02.R1
+BOOTSTRAP {"run_id":"run-02","role":"researcher","scope":"G09-source-reader-read-only","sources":["/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/briefs/researcher.md","/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/ACCEPTANCE.md","/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/input/SOURCE-MAP.md"]}
+
+Researcher, read-only scope acknowledged; consumed all three pointers and run-02 CONTRACT. No files written, models launched, or STATUS ownership assumed. Necessary overrun preserves root inventory and contract conflict.
+
+**OBSERVED:** Metadata-first inventory; `~` means `/home/hruzam`. All listed roots exist as real directories.
+
+| Roots | Origin/kind; available entries |
+|---|---|
+| `~/ia-sync/germline/`, `~/.germline/` | Authored/deployed; each 10 identities, bindings, cards and methods |
+| `~/reposoma/raw.guides/` | Temple knowledge; 26 `GUIDE.md` entries |
+| `~/ia-sync/{codex,claude}/skills/` | Authored vendor skills; 12/35 |
+| `~/.agents/skills/`, `~/.claude/skills/` | Installed personal skills; 12/35 direct skills |
+| `~/ia-sync/{.agents,.claude}/skills/` | Project skills; one `multihost` each |
+| `~/.codex/skills/.system/` | Runtime-identified system root; five skills |
+| `~/.claude/skills/synced/<observed-bucket>/` | Account-sync root; 11 skill files; individual publisher unverified |
+
+`/etc/codex/skills`, `/etc/claude-code/.claude/skills`, and intermediate project skill roots are absent. No plugin/bundled-Claude physical root was identified.
+
+The `guide` authored/installed pairs hash-identically within each vendor, but differ across vendors.
+
+**SOURCE:** Reuse terminal/stdout separation from [command-palette.zsh:129](/home/hruzam/ia-sync/zsh/ai/command-palette.zsh:129), Markdown rendering patterns from [runbook.py:334](/home/hruzam/ia-sync/zsh/session/runbook.py:334), and the [lazy runner contract:43](/home/hruzam/ia-sync/zsh/experimental/README.md:43). Runbook itself saves UI state; wholesale reuse would exceed read-only scope.
+
+Freshly opened [Codex documentation](https://learn.chatgpt.com/docs/build-skills) distinguishes metadata discovery, explicit/implicit invocation, full-body loading and disabling; same-name skills remain distinct. [Claude documentation](https://code.claude.com/docs/en/skills) has different precedence, namespaces and invocation controls. Filesystem presence proves neither visibility nor activation.
+
+**Strongest contrary evidence:** The named [Codex guide contract:21](/home/hruzam/ia-sync/codex/skills/guide/SKILL.md:21) forbids fallback outside `GUIDE.md`/`res/`; its [Claude twin:19](/home/hruzam/ia-sync/claude/skills/guide/SKILL.md:19) permits recursive legacy fallback. Real ambiguity: `cold-start-card card` matches `cold-start-card.md` and `issue-card.md`; resolve neither.
+
+**INFERENCE:** Smallest honest contract: ephemeral metadata catalog keyed by family, origin and exact path; preserve duplicates and symlink targets; show selected bytes as data; report absent roots, missing metadata and unknown enablement; provide noninteractive catalog/show and plain-list fallback.
+
+**Gaps:** Actual vendor enablement and unidentified plugin roots remain unverified. Four guides lack YAML frontmatter.
+
+**Smallest main decision:** Freeze the explicitly named Codex guide resolver for this browser, retaining the Claude fallback disagreement as visible evidence.
+[usage: {"total":{"totalTokens":629872,"inputTokens":624076,"cachedInputTokens":546816,"cacheWriteInputTokens":0,"outputTokens":5796,"reasoningOutputTokens":1167},"last":{"totalTokens":88423,"inputTokens":87565,"cachedInputTokens":87296,"cacheWriteInputTokens":0,"outputTokens":858,"reasoningOutputTokens":0},"modelContextWindow":475000}]

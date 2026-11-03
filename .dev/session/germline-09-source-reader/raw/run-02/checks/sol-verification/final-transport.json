@@ -1,0 +1,407 @@
+{
+  "source_sha256": "e72b072103d3d32e2c26cc11770834bfa331daa84ecc3e0add7b1d56cc2cdf65",
+  "target_model_turns": 0,
+  "checks": 16,
+  "rows": [
+    {
+      "verb": "send",
+      "resumed": false,
+      "stage": "before-ack",
+      "state": {
+        "enabled": true,
+        "lastTurnId": null,
+        "model": "gpt-6.1-sol",
+        "runtime": {
+          "model": "gpt-6.1-sol",
+          "observedAt": "2026-10-26T18:28:57Z",
+          "sandbox": {
+            "networkAccess": false,
+            "type": "readOnly"
+          }
+        },
+        "sandbox": {
+          "networkAccess": false,
+          "type": "readOnly"
+        },
+        "threadId": "T-sol"
+      },
+      "failure": "timeout phase=turn/start response elapsed=1800.000s configured_budget=1800.000s last_event_age=1800.000s threadId=T-sol",
+      "closed": true,
+      "clock": 1810.0
+    },
+    {
+      "verb": "send",
+      "resumed": false,
+      "stage": "after-ack",
+      "state": {
+        "enabled": true,
+        "inFlightTurnId": "U-sol",
+        "lastTurnId": null,
+        "model": "gpt-6.1-sol",
+        "runtime": {
+          "model": "gpt-6.1-sol",
+          "observedAt": "2026-10-26T18:28:57Z",
+          "sandbox": {
+            "networkAccess": false,
+            "type": "readOnly"
+          }
+        },
+        "sandbox": {
+          "networkAccess": false,
+          "type": "readOnly"
+        },
+        "threadId": "T-sol"
+      },
+      "failure": "timeout phase=turn/completed elapsed=1800.000s configured_budget=1800.000s last_event_age=1798.000s threadId=T-sol turnId=U-sol",
+      "closed": true,
+      "clock": 1815.0
+    },
+    {
+      "verb": "send",
+      "resumed": false,
+      "stage": "reconcile-failure",
+      "state": {
+        "enabled": true,
+        "inFlightTurnId": "U-sol",
+        "lastTurnId": null,
+        "model": "gpt-6.1-sol",
+        "runtime": {
+          "model": "gpt-6.1-sol",
+          "observedAt": "2026-10-26T18:28:57Z",
+          "sandbox": {
+            "networkAccess": false,
+            "type": "readOnly"
+          }
+        },
+        "sandbox": {
+          "networkAccess": false,
+          "type": "readOnly"
+        },
+        "threadId": "T-sol"
+      },
+      "failure": "thread/read(includeTurns=true) for T-sol does not contain turn U-sol",
+      "closed": true,
+      "clock": 25
+    },
+    {
+      "verb": "send",
+      "resumed": false,
+      "stage": "success",
+      "state": {
+        "enabled": true,
+        "lastTurnId": "U-sol",
+        "model": "gpt-6.1-sol",
+        "runtime": {
+          "model": "gpt-6.1-sol",
+          "observedAt": "2026-10-26T18:28:57Z",
+          "sandbox": {
+            "networkAccess": false,
+            "type": "readOnly"
+          }
+        },
+        "sandbox": {
+          "networkAccess": false,
+          "type": "readOnly"
+        },
+        "threadId": "T-sol"
+      },
+      "failure": null,
+      "closed": true,
+      "clock": 25
+    },
+    {
+      "verb": "send",
+      "resumed": true,
+      "stage": "before-ack",
+      "state": {
+        "enabled": true,
+        "lastTurnId": null,
+        "model": "gpt-6.1-sol",
+        "runtime": {
+          "model": "gpt-6.1-sol",
+          "observedAt": "2026-10-26T18:28:57Z",
+          "sandbox": {
+            "networkAccess": false,
+            "type": "readOnly"
+          }
+        },
+        "sandbox": "read-only",
+        "threadId": "T-sol"
+      },
+      "failure": "timeout phase=turn/start response elapsed=1800.000s configured_budget=1800.000s last_event_age=1800.000s threadId=T-sol",
+      "closed": true,
+      "clock": 1810.0
+    },
+    {
+      "verb": "send",
+      "resumed": true,
+      "stage": "after-ack",
+      "state": {
+        "enabled": true,
+        "inFlightTurnId": "U-sol",
+        "lastTurnId": null,
+        "model": "gpt-6.1-sol",
+        "runtime": {
+          "model": "gpt-6.1-sol",
+          "observedAt": "2026-10-26T18:28:57Z",
+          "sandbox": {
+            "networkAccess": false,
+            "type": "readOnly"
+          }
+        },
+        "sandbox": "read-only",
+        "threadId": "T-sol"
+      },
+      "failure": "timeout phase=turn/completed elapsed=1800.000s configured_budget=1800.000s last_event_age=1798.000s threadId=T-sol turnId=U-sol",
+      "closed": true,
+      "clock": 1815.0
+    },
+    {
+      "verb": "send",
+      "resumed": true,
+      "stage": "reconcile-failure",
+      "state": {
+        "enabled": true,
+        "inFlightTurnId": "U-sol",
+        "lastTurnId": null,
+        "model": "gpt-6.1-sol",
+        "runtime": {
+          "model": "gpt-6.1-sol",
+          "observedAt": "2026-10-26T18:28:57Z",
+          "sandbox": {
+            "networkAccess": false,
+            "type": "readOnly"
+          }
+        },
+        "sandbox": "read-only",
+        "threadId": "T-sol"
+      },
+      "failure": "thread/read(includeTurns=true) for T-sol does not contain turn U-sol",
+      "closed": true,
+      "clock": 25
+    },
+    {
+      "verb": "send",
+      "resumed": true,
+      "stage": "success",
+      "state": {
+        "enabled": true,
+        "lastTurnId": "U-sol",
+        "model": "gpt-6.1-sol",
+        "runtime": {
+          "model": "gpt-6.1-sol",
+          "observedAt": "2026-10-26T18:28:57Z",
+          "sandbox": {
+            "networkAccess": false,
+            "type": "readOnly"
+          }
+        },
+        "sandbox": "read-only",
+        "threadId": "T-sol"
+      },
+      "failure": null,
+      "closed": true,
+      "clock": 25
+    },
+    {
+      "verb": "ask",
+      "resumed": false,
+      "stage": "before-ack",
+      "state": {
+        "enabled": true,
+        "lastTurnId": null,
+        "model": "gpt-6.1-sol",
+        "runtime": {
+          "model": "gpt-6.1-sol",
+          "observedAt": "2026-10-26T18:28:57Z",
+          "sandbox": {
+            "networkAccess": false,
+            "type": "readOnly"
+          }
+        },
+        "sandbox": {
+          "networkAccess": false,
+          "type": "readOnly"
+        },
+        "threadId": "T-sol"
+      },
+      "failure": "timeout phase=turn/start response elapsed=1800.000s configured_budget=1800.000s last_event_age=1800.000s threadId=T-sol",
+      "closed": true,
+      "clock": 1810.0
+    },
+    {
+      "verb": "ask",
+      "resumed": false,
+      "stage": "after-ack",
+      "state": {
+        "enabled": true,
+        "inFlightTurnId": "U-sol",
+        "lastTurnId": null,
+        "model": "gpt-6.1-sol",
+        "runtime": {
+          "model": "gpt-6.1-sol",
+          "observedAt": "2026-10-26T18:28:57Z",
+          "sandbox": {
+            "networkAccess": false,
+            "type": "readOnly"
+          }
+        },
+        "sandbox": {
+          "networkAccess": false,
+          "type": "readOnly"
+        },
+        "threadId": "T-sol"
+      },
+      "failure": "timeout phase=turn/completed elapsed=1800.000s configured_budget=1800.000s last_event_age=1798.000s threadId=T-sol turnId=U-sol",
+      "closed": true,
+      "clock": 1815.0
+    },
+    {
+      "verb": "ask",
+      "resumed": false,
+      "stage": "reconcile-failure",
+      "state": {
+        "enabled": true,
+        "inFlightTurnId": "U-sol",
+        "lastTurnId": null,
+        "model": "gpt-6.1-sol",
+        "runtime": {
+          "model": "gpt-6.1-sol",
+          "observedAt": "2026-10-26T18:28:57Z",
+          "sandbox": {
+            "networkAccess": false,
+            "type": "readOnly"
+          }
+        },
+        "sandbox": {
+          "networkAccess": false,
+          "type": "readOnly"
+        },
+        "threadId": "T-sol"
+      },
+      "failure": "thread/read(includeTurns=true) for T-sol does not contain turn U-sol",
+      "closed": true,
+      "clock": 25
+    },
+    {
+      "verb": "ask",
+      "resumed": false,
+      "stage": "success",
+      "state": {
+        "enabled": true,
+        "lastTurnId": "U-sol",
+        "model": "gpt-6.1-sol",
+        "runtime": {
+          "model": "gpt-6.1-sol",
+          "observedAt": "2026-10-26T18:28:57Z",
+          "sandbox": {
+            "networkAccess": false,
+            "type": "readOnly"
+          }
+        },
+        "sandbox": {
+          "networkAccess": false,
+          "type": "readOnly"
+        },
+        "threadId": "T-sol"
+      },
+      "failure": null,
+      "closed": true,
+      "clock": 25
+    },
+    {
+      "verb": "ask",
+      "resumed": true,
+      "stage": "before-ack",
+      "state": {
+        "enabled": true,
+        "lastTurnId": null,
+        "model": "gpt-6.1-sol",
+        "runtime": {
+          "model": "gpt-6.1-sol",
+          "observedAt": "2026-10-26T18:28:57Z",
+          "sandbox": {
+            "networkAccess": false,
+            "type": "readOnly"
+          }
+        },
+        "sandbox": "read-only",
+        "threadId": "T-sol"
+      },
+      "failure": "timeout phase=turn/start response elapsed=1800.000s configured_budget=1800.000s last_event_age=1800.000s threadId=T-sol",
+      "closed": true,
+      "clock": 1810.0
+    },
+    {
+      "verb": "ask",
+      "resumed": true,
+      "stage": "after-ack",
+      "state": {
+        "enabled": true,
+        "inFlightTurnId": "U-sol",
+        "lastTurnId": null,
+        "model": "gpt-6.1-sol",
+        "runtime": {
+          "model": "gpt-6.1-sol",
+          "observedAt": "2026-10-26T18:28:57Z",
+          "sandbox": {
+            "networkAccess": false,
+            "type": "readOnly"
+          }
+        },
+        "sandbox": "read-only",
+        "threadId": "T-sol"
+      },
+      "failure": "timeout phase=turn/completed elapsed=1800.000s configured_budget=1800.000s last_event_age=1798.000s threadId=T-sol turnId=U-sol",
+      "closed": true,
+      "clock": 1815.0
+    },
+    {
+      "verb": "ask",
+      "resumed": true,
+      "stage": "reconcile-failure",
+      "state": {
+        "enabled": true,
+        "inFlightTurnId": "U-sol",
+        "lastTurnId": null,
+        "model": "gpt-6.1-sol",
+        "runtime": {
+          "model": "gpt-6.1-sol",
+          "observedAt": "2026-10-26T18:28:57Z",
+          "sandbox": {
+            "networkAccess": false,
+            "type": "readOnly"
+          }
+        },
+        "sandbox": "read-only",
+        "threadId": "T-sol"
+      },
+      "failure": "thread/read(includeTurns=true) for T-sol does not contain turn U-sol",
+      "closed": true,
+      "clock": 25
+    },
+    {
+      "verb": "ask",
+      "resumed": true,
+      "stage": "success",
+      "state": {
+        "enabled": true,
+        "lastTurnId": "U-sol",
+        "model": "gpt-6.1-sol",
+        "runtime": {
+          "model": "gpt-6.1-sol",
+          "observedAt": "2026-10-26T18:28:57Z",
+          "sandbox": {
+            "networkAccess": false,
+            "type": "readOnly"
+          }
+        },
+        "sandbox": "read-only",
+        "threadId": "T-sol"
+      },
+      "failure": null,
+      "closed": true,
+      "clock": 25
+    }
+  ]
+}

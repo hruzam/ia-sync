@@ -1,0 +1,13 @@
+import hashlib,importlib.util,json,pathlib
+b=pathlib.Path('/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02');m=json.loads((b/'implementation/I1/MANIFEST.json').read_text());sha=lambda p:hashlib.sha256(pathlib.Path(p).read_bytes()).hexdigest()
+assert all(sha(p)==d for p,d in m['audited_files'].items())
+assert (b/'implementation/I1/MANIFEST.json').read_bytes()==(b/'implementation/I1/manifest.json').read_bytes()
+script=b/'caretaker/run_operations.py';spec=importlib.util.spec_from_file_location('runops_a2_preflight',script);mod=importlib.util.module_from_spec(spec);spec.loader.exec_module(mod);c=mod.contract();it=mod.rounds(c)['A2'];f=mod.current_packet(c,it)
+assert f['path'].endswith('/A2.prompt.txt') and len(f['named_inputs'])==30
+for cycle,role,tid,turn in [('R2','researcher','01a17a86-873c-72b0-8787-932736a0f7d9','01a184ef-6e70-7f11-907b-3ac8af6fe2d1'),('A2','auditor','01a17a89-cc0a-7053-b9b2-e5bdac784fe4','01a17a89-cca1-71c0-8cea-0abe10024bcd')]:
+ resume=json.loads((b/f'caretaker/operations/run02.{cycle}.resume.operation.json').read_text());s=resume['state_after'];assert s['threadId']==tid and s['lastTurnId']==turn and s['runtime']['reasoningEffort']=='high' and s['runtime']['sandbox']=={'type':'readOnly','networkAccess':False}
+assert (b/'caretaker/operations/run02.A2.ask.operation.json').exists() is False
+assert sum(json.loads(p.read_text()).get('kind')=='ask' for p in (b/'caretaker/operations').glob('*.operation.json'))==3
+print('I1 audited hashes 24/24 PASS; manifest alias byte-identical')
+print('A2 current_packet PASS; input count 30; packet',f['path'],'sha256',f['sha256'])
+print('R2/A2 pre-C2 resume identities/runtime verified; R2 readback turn exact; A2 ask key unused; asks consumed 3; preserved product ready')

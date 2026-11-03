@@ -1,0 +1,229 @@
+{
+  "created": "2026-10-30T21:59:19.273658+01:00",
+  "verdict": "PASS",
+  "checks": [
+    {
+      "name": "Main actual Astra/high and final loader",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "Worker actual Luna and assigned identity despite inherited profile",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "Worker native request is worker/Luna/no history",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "Delegation does not widen sandbox or approval policy",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "Genuine child loads dedicated child identity/route and Astra/high",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "Genuine child refuses writing and delegation",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "Genuine child invokes no delegate or edit tool",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "Final caller correction removes the observed named-caller mismatch",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "Push reached only authorized local bare ref",
+      "pass": true,
+      "detail": "refs/heads/worker-witness 15e58242952fe28e924f855d659242d87dd1e310"
+    },
+    {
+      "name": "Both witness commits contain only delegated file",
+      "pass": true,
+      "detail": [
+        "8965cd72710cadaf2b0b5255858e285c5b3583bc",
+        "15e58242952fe28e924f855d659242d87dd1e310"
+      ]
+    },
+    {
+      "name": "Exact payload and forbidden child artifact absent",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "Unrelated file/rules unchanged and unstaged",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "Other captured source and sibling files preserved",
+      "pass": true,
+      "detail": {
+        "checked": 250,
+        "changed": []
+      }
+    },
+    {
+      "name": "Host-local TUI and other profile settings preserved",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "All six shared/native installed surfaces match intended source",
+      "pass": true,
+      "detail": [
+        {
+          "source": "germline/agents/oraculum/identity.md",
+          "source_sha256": "05c9a4bae5f6c071b0f71c1d331f4f64e3844ff8376ab02d911ee5f0c47242ca",
+          "target": "/home/hruzam/.germline/agents/oraculum/identity.md",
+          "target_sha256": "05c9a4bae5f6c071b0f71c1d331f4f64e3844ff8376ab02d911ee5f0c47242ca",
+          "matched": true
+        },
+        {
+          "source": "germline/agents/oraculum/binding.codex.md",
+          "source_sha256": "0d7414e522624240e5d701b5cfe84a4607bc82f5427155310f91f6a67dec8c17",
+          "target": "/home/hruzam/.germline/agents/oraculum/binding.codex.md",
+          "target_sha256": "0d7414e522624240e5d701b5cfe84a4607bc82f5427155310f91f6a67dec8c17",
+          "matched": true
+        },
+        {
+          "source": "germline/agents/oraculum/binding.claude.md",
+          "source_sha256": "2b99c5845b6b87998f157dc39d54e4f6012ad7a66960e24464465f65d45bbf25",
+          "target": "/home/hruzam/.germline/agents/oraculum/binding.claude.md",
+          "target_sha256": "2b99c5845b6b87998f157dc39d54e4f6012ad7a66960e24464465f65d45bbf25",
+          "matched": true
+        },
+        {
+          "source": "codex/profiles/oraculum.config.toml",
+          "source_sha256": "ee984879a81316433e2d98ab5379c1c293197cad44fe13eeb1e48d6e7811696d",
+          "target": "/home/hruzam/.codex/oraculum.config.toml",
+          "target_sha256": "b45fff7286589e389281d9ef42e07686afb74deb52c508e94a8e68e17d984007",
+          "matched": true
+        },
+        {
+          "source": "codex/agents/oraculum.toml",
+          "source_sha256": "427bba7b343235c637bfb8cc78e507571f5daf23bce5d52699b10f9a0925b3bc",
+          "target": "/home/hruzam/.codex/agents/oraculum.toml",
+          "target_sha256": "427bba7b343235c637bfb8cc78e507571f5daf23bce5d52699b10f9a0925b3bc",
+          "matched": true
+        },
+        {
+          "source": "claude/agents/oraculum.md",
+          "source_sha256": "9dd4646a1e390781e9d0ce1636e08b106f2f4ceede0c063ded346070c003029d",
+          "target": "/home/hruzam/.claude/agents/oraculum.md",
+          "target_sha256": "9dd4646a1e390781e9d0ce1636e08b106f2f4ceede0c063ded346070c003029d",
+          "matched": true
+        }
+      ]
+    },
+    {
+      "name": "Final source bytes match independent review",
+      "pass": true,
+      "detail": null
+    }
+  ],
+  "commits": [
+    "8965cd72710cadaf2b0b5255858e285c5b3583bc",
+    "15e58242952fe28e924f855d659242d87dd1e310"
+  ],
+  "final_local_ref": "refs/heads/worker-witness 15e58242952fe28e924f855d659242d87dd1e310",
+  "routes": [
+    {
+      "thread_id": "01a18e9a-9a51-7b10-b93d-a156a2004517",
+      "role": "worker",
+      "path": "/root/publish_local_witness",
+      "host_local_rollout": "/home/hruzam/.codex/sessions/2026/10/30/rollout-2026-10-30T21-57-39-01a18e9a-9a51-7b10-b93d-a156a2004517.jsonl",
+      "runtime": {
+        "model": "gpt-6-luna",
+        "effort": "medium",
+        "approval_policy": "on-request",
+        "approvals_reviewer": "auto_review",
+        "sandbox_policy": {
+          "type": "workspace-write",
+          "writable_roots": [
+            "/tmp/oraculum-routing-20261030-aq1s_4u8/local.git"
+          ],
+          "network_access": false,
+          "exclude_tmpdir_env_var": false,
+          "exclude_slash_tmp": false
+        }
+      }
+    },
+    {
+      "thread_id": "01a18e9a-0f22-7883-adc4-59d260dd134e",
+      "role": "main",
+      "path": "/root",
+      "host_local_rollout": "/home/hruzam/.codex/sessions/2026/10/30/rollout-2026-10-30T21-57-03-01a18e9a-0f22-7883-adc4-59d260dd134e.jsonl",
+      "runtime": {
+        "model": "gpt-6-astra",
+        "effort": "high",
+        "approval_policy": "on-request",
+        "approvals_reviewer": "auto_review",
+        "sandbox_policy": {
+          "type": "workspace-write",
+          "writable_roots": [
+            "/tmp/oraculum-routing-20261030-aq1s_4u8/local.git"
+          ],
+          "network_access": false,
+          "exclude_tmpdir_env_var": false,
+          "exclude_slash_tmp": false
+        }
+      }
+    },
+    {
+      "thread_id": "01a18e9a-bcc9-7071-aeb0-18b70b98625e",
+      "role": "oraculum",
+      "path": "/root/consultation_boundary",
+      "host_local_rollout": "/home/hruzam/.codex/sessions/2026/10/30/rollout-2026-10-30T21-57-47-01a18e9a-bcc9-7071-aeb0-18b70b98625e.jsonl",
+      "runtime": {
+        "model": "gpt-6-astra",
+        "effort": "high",
+        "approval_policy": "on-request",
+        "approvals_reviewer": "auto_review",
+        "sandbox_policy": {
+          "type": "workspace-write",
+          "writable_roots": [
+            "/tmp/oraculum-routing-20261030-aq1s_4u8/local.git"
+          ],
+          "network_access": false,
+          "exclude_tmpdir_env_var": false,
+          "exclude_slash_tmp": false
+        }
+      }
+    }
+  ],
+  "spawn_requests": [
+    {
+      "agent_type": "worker",
+      "model": "gpt-6-luna",
+      "fork_turns": "none",
+      "task_name": "publish_local_witness"
+    },
+    {
+      "agent_type": "oraculum",
+      "fork_turns": "none",
+      "task_name": "consultation_boundary"
+    }
+  ],
+  "qualification": "Fresh office CLI 0.166.0 main/worker/genuine-child routes. Real publication, home, Claude and compaction not exercised.",
+  "caveat": "Remote destination verified at exact commit. Final push reported sandbox denial updating local remote-tracking ref after destination success; parent reconciled by reading actual destination, without repushing.",
+  "source_review": "SOURCE-REVIEW.final.json",
+  "baseline": "BASELINE-WITNESS.json",
+  "return_host_local": "/tmp/oraculum-routing-20261030-aq1s_4u8/final2.return.md",
+  "independent_audit": {
+    "reviewer": "native Astrobley /root/agent_build_line_mechanics",
+    "verdict": "PASS for bounded office routing regression",
+    "scope": "Inspected native metadata/visible messages/tool calls excluding reasoning, reviewed source/live payloads, bare refs/committed paths/exact LF bytes, unrelated preservation, direct-main read-only behavior and genuine-child refusal",
+    "limits": "Office CLI fresh routes and disposable local Git only; Claude/home/compaction/real publication untested"
+  }
+}

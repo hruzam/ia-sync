@@ -1,0 +1,41 @@
+{
+  "kind": "late-reconciliation",
+  "observed_at": "2026-10-26T07:53:10+01:00",
+  "operation": {
+    "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/caretaker/operations/R1.ask.operation.json",
+    "sha256": "c1f19531dd1bd4f004897ea1325119f92cf1f3c3a13e768d2207b4055e8938c1",
+    "status": "failed",
+    "exit": 30,
+    "started_unix": 1792997282.0612652,
+    "ended_unix": 1792997402.8724332,
+    "elapsed_seconds": 120.811,
+    "attempt_number": 1
+  },
+  "outputs": {
+    "stdout": {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/caretaker/operations/output/R1.ask.stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "stderr": {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/caretaker/operations/output/R1.ask.stderr.txt",
+      "sha256": "21447740b37c91fdf1503e7c6b89d9e719e5fe8868010d864679b438fe0d00e2",
+      "bytes": 153,
+      "selected_cause": "tunnel-codex.py timed out after 4.124068260192871s waiting for app-server output"
+    }
+  },
+  "vault": {
+    "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/caretaker/tunnel.researcher.state.json",
+    "sha256": "5789ba86f3f79d35fae18fa17a479297ce40c4071cefb93ba81e75226b69e6e9",
+    "thread_id": null,
+    "last_turn_id": null,
+    "preamble": null,
+    "known_thread_identity_recoverable": false
+  },
+  "runner": {
+    "pid": 1319728,
+    "start": "296276499",
+    "present_at_reconciliation": false
+  },
+  "disposition": "R1 remains consumed and failed; no resend, dispatch, preamble operation, close, or zero-turn thread recovery was performed. The receipt elapsed duration and its shorter app-server wait diagnostic are both preserved without reconciliation inference."
+}

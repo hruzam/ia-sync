@@ -1,0 +1,37 @@
+{
+  "adapter": {
+    "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/caretaker/run_operations.py",
+    "sha256": "5795c074aeab62dd21ab7cbe2d08b2198e1043d5254ad37184716a6c4d47d572"
+  },
+  "ask_cap": 5,
+  "compiled": {
+    "A1": {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/caretaker/packets/A1.prompt.txt",
+      "sha256": "475c00733deca0937ce638f69383553649bf2641d336065d7a29834faeca921a",
+      "template": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/packets/A1.md",
+      "template_sha256": "2b8495e6d9e17048575b7c6c30dbb00307074982e9bc8b704990b3600bcb2f19"
+    },
+    "R1": {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/caretaker/packets/R1.prompt.txt",
+      "sha256": "3abfe0add260404ba9daae8e3204edd61975951bb06288a3eaad7f128f442d4d",
+      "template": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/packets/R1.md",
+      "template_sha256": "af273fa7f6a606e450b5b900f7369b994a758325afa790cf559504eb130a98d0"
+    }
+  },
+  "pins": {
+    "all_pinned_files_match": true,
+    "mismatches": [],
+    "release_ok": true
+  },
+  "planned_asks": [
+    "R1",
+    "A1"
+  ],
+  "preamble": {
+    "deployed": "/home/hruzam/.germline/tunnel/tunnel.preamble.md",
+    "match": true,
+    "sha256": "f84e51ebe25022802319595e5f8cc3f48d362310af4a77a30e54e68067832ca3",
+    "source": "/home/hruzam/ia-sync/germline/tunnel/tunnel.preamble.md"
+  },
+  "stage": "C1"
+}

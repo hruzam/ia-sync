@@ -1,0 +1,35 @@
+{
+  "schema": "g09-operator-release/v2",
+  "run_id": "run-02",
+  "authorized": true,
+  "operator": "Majkee",
+  "observed_operator_message": "to-cartan(germline-09) from-majkee ---\n\nStart as a fresh execution head on office in /home/hruzam/ia-sync.\n\nRead:\n1. /home/hruzam/ia-sync/.dev/session/germline-09-source-reader/RUNBOOK.md\n2. /home/hruzam/ia-sync/.dev/session/germline-09-source-reader/STATUS.md\n3. /home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/HANDOFF.md\n\nFirst reconcile the current journal-preservation mismatch.\nA newer 722-byte A0 Houston insertion shifted G09\u2019s 2030-byte insertion.\nRemoving both additions in memory reproduces the original journal SHA256:\ndb9148eba1574c7a9b7f6bfd0eefb5009afa6f8f7b295031b2649f3046a232f5\n\nPreserve both entries and original evidence. Record the reconciliation and\nrequire current preservation checks to pass before dispatch.\n\nGO G09 run-02 under:\n\n\nCONTRACT SHA256:\n84be154eb074088af75f003cd760b0ccb904061afb46851135e8ad4203f1d214\nInput-pins SHA256:\nd72e6b552f7e05e2e5c5657631526b989dea28d2cc3a372919845a1c86ad51db\n\nRecheck these identities. Changed scope or frozen hashes requires my ruling.\n\nAuthorize five NEW target ask attempts:\nR1/A1/R2/A2, plus conditional A3 under the frozen contract.\nPreserve run-01\u2019s consumed attempt: cumulative ceiling is six.\nNo retries or profile substitutions. Timeout1800s per phase;\nnative polling <=30s. One declared zero-turn enable preflight per role.\n\nDelegate both named open --enable operations to native Luna High caretaker:\n/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/\ntunnel.researcher.state.json\n/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/tunnel.auditor.state.json\n\nCreate fresh native children in this root:\n- caretaker: default, gpt-6-luna/high, fork_turns:none;\n- builder: existing agent_type astrobley, defined by astrobley.toml.\n\nYou own architecture, POINT/VERDICT and STATUS.\nCaretaker owns tunnel mechanics; researcher and independent auditor use\nseparate tunnel lines. Astrobley owns implementation.\n\nExecute the real read-only zsh source-reader task through SCHEDULE.md:\nC1 \u2192 D1 \u2192 I1 \u2192 C2 \u2192 I2 \u2192 conditional C3.\n\nAfter freezing D1, authorize Astrobley\u2019s declared source-reader writes\nand only its new base.zsh maintainer row.\n\nRecord this actual GO in run-02 RELEASE after the prerequisite checks.\nKeep run-01 RELEASE false and its archived R1 retired.\nCount all main intake; retain preparation costs separately.\nStop on holds or uncertain submissions.\n\nPreserve foreign work. No Claude programmatic calls, auth changes,\nactivation, deployment, commit/push, global role changes,\ndestructive recovery or Nablarva reads.\n\n---",
+  "contract_sha256": "d85068a29acae319710237594822230f1e761bf5df0656a208da14cc10d0216f",
+  "maximum_target_ask_attempts": 5,
+  "timeout_seconds": 1800,
+  "named_vaults": {
+    "researcher": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/tunnel.researcher.state.json",
+    "auditor": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/tunnel.auditor.state.json"
+  },
+  "delegated_enable_vaults": [
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/tunnel.researcher.state.json",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/tunnel.auditor.state.json"
+  ],
+  "reason": "Original trial GO plus actual subsequent approval of the staged four-file A1 race repair and future-plan transition; same scope/budget/profiles. Technical HOLD retained pending independent applied-state verification.",
+  "source_manifest_sha256": "ed61680ac03074e3f77b66a9fa6db474d6363d48ff8374ac1a713530e7f8bbbf",
+  "recorded_at": "2026-10-26T22:28:22.035148+01:00",
+  "message_reference": "Actual current user message to-cartan(germline-09) from-majkee; preserved verbatim at /home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/execution/GO.actual.md",
+  "cumulative_target_ask_ceiling": 6,
+  "run01_consumed_attempts": 1,
+  "recorded_by": "Cartan \u00b7 office execution head",
+  "operator_message_reference": "Actual current user message to-cartan(germline-09) from-majkee; preserved verbatim at /home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/execution/GO.actual.md; actual subsequent exact repair ruling: /home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/execution/resume-02/RULING.actual.json",
+  "original_GO_snapshot": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/execution/resume-02/before-application/RELEASE.json",
+  "operator_rulings": [
+    {
+      "message": "go",
+      "reference": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/execution/resume-02/RULING.actual.json",
+      "approved_proposal": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/execution/A1-race-review/proposal/PROPOSAL.json",
+      "recorded_at": "2026-10-28T23:39:40.185492+00:00"
+    }
+  ]
+}

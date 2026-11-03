@@ -1,0 +1,2 @@
+tunnel-codex.py: preamble /home/hruzam/.germline/tunnel/tunnel.preamble.md (787 chars) prepended
+tunnel-codex.py: turn overrides {"effort": "high"} sent

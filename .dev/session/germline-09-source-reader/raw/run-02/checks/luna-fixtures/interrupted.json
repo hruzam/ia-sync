@@ -1,0 +1,28 @@
+{
+  "schema": "g09-offline-caretaker-case/v1",
+  "case": "interrupted",
+  "simulated": true,
+  "target_turns": 0,
+  "evidence": {
+    "receipt": {
+      "kind": "ask",
+      "status": "failed",
+      "exit": 13,
+      "remote_outcome": "unknown",
+      "attempt_number": 1
+    },
+    "vault": {
+      "threadId": "SIMULATED-RUN02-RESEARCHER",
+      "lastTurnId": null,
+      "inFlightTurnId": "SIMULATED-INTERRUPTED-TURN",
+      "sandbox": {
+        "type": "readOnly",
+        "networkAccess": false
+      }
+    },
+    "readback": {
+      "status": "interrupted"
+    },
+    "vault_path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/tunnel.researcher.state.json"
+  }
+}

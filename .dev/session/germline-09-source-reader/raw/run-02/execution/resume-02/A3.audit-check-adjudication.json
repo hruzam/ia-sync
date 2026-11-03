@@ -1,0 +1,16 @@
+{
+  "A3_turn": "01a18502-15d8-7d92-bfbd-b17aba481c0c",
+  "P7_outputs_verified": 32,
+  "records_without_optional_bytes": [
+    {
+      "check": "deploy-dry-run",
+      "stream": "stdout"
+    },
+    {
+      "check": "deploy-dry-run",
+      "stream": "stderr"
+    }
+  ],
+  "finding": "Audit helper assumed optional bytes on blocked-preview evidence; KeyError occurred after reader calls. Subsequent evidence-only correction is within target read-only audit authority, not caretaker/controller repair or target retry. No new safety hold; P7 remainsUNVERIFIED.",
+  "full_readback_sha256": "dcd5932189d27dd8a3e856c5ee53e66c1c221a587da9b42ac4b1b6bca634fa56"
+}

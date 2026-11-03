@@ -1,0 +1,14 @@
+{
+  "stage": "C1",
+  "offline_checks": {"passed": 11, "total": 11, "target_turns": 0},
+  "target_ask_attempts_recorded": 1,
+  "completed_target_asks": 0,
+  "capsule_words": 92,
+  "outcome": "HOLD-UNKNOWN-SUBMISSION",
+  "evidence": [
+    "checks/self-check.json",
+    "checks/profile-reconciliation.json",
+    "plan.C1.json",
+    "operations/R1.ask.operation.json"
+  ]
+}

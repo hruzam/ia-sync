@@ -1,0 +1,31 @@
+{
+  "schema": "g09-caretaker-load-receipt/v1",
+  "selected_revision_only": true,
+  "native_handle": {
+    "observed_task_handle": "/root/g09_caretaker",
+    "provider_thread_id": null,
+    "note": "The agent task handle is visible; no native provider thread identifier is exposed to this caretaker. No replacement root or remote handle was created."
+  },
+  "loaded_programs": [
+    {"path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/_bus/26.cartan.point.md", "sha256": "809f91b37ec30b96006bf05ec0d6c33a852bf7e66a724b8af5ac166feec43e88"},
+    {"path": "/home/hruzam/ia-sync/codex/agents/implementer.toml", "sha256": "bb431c1c0bc5fda7e385c62a2e371df39c75155a9e21f476b6ed5c3fdd2792c7"},
+    {"path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/briefs/caretaker.md", "sha256": "2a3da02b743d353602d2c217ba63e23b74f213e15788adc32ed045f70a9174ed"},
+    {"path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/hold-line/controller.md", "sha256": "98a42758f046528d2e8f23441bd7e5fbfccd889d3cbeb6d85a46e3e87184c64b"},
+    {"path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/hold-line/functions/prepare.md", "sha256": "394edd17b3f020062b2c53b5719114956d4893699c9aa869f0e286a356dc1274"},
+    {"path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/CONTRACT.json", "sha256": "84be154eb074088af75f003cd760b0ccb904061afb46851135e8ad4203f1d214"},
+    {"path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/TUNNEL.md", "sha256": "a4a9a7bbdc45cb10c21b7f174915b15f9b87aa84a46c66255bfb982446a8b4ab"},
+    {"path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/hold-line/sources.json", "sha256": "d72e6b552f7e05e2e5c5657631526b989dea28d2cc3a372919845a1c86ad51db"},
+    {"path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/checks/luna-fixtures/INDEX.json", "sha256": "41f9f43da3a0a69034a09af0ec6d7c1915f1ba94fc9a076ba8170e2f27f992dd"},
+    {"path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/checks/luna-fixtures/interrupted.json", "sha256": "4a525394aa9f623a9acdf2422197fa475ff90aa4b49b3cc82448c2f9a4111d11"},
+    {"path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/checks/luna-fixtures/missing-identity.json", "sha256": "56cb94424eb25dcf98670d591a35dbc6017f52ba7cc6aca20c3ed943df7cd9ae"},
+    {"path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/checks/luna-fixtures/changed-pins.json", "sha256": "8e0228e065415cbaf3acd772bd20a4611511aec246fd5b24cae15dc2bea9a8a2"},
+    {"path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/checks/luna-fixtures/revoked-release.json", "sha256": "31c341b83c7503252c01f57b5f47f4333c51347d1c7bf248e904c4f5f79f07b2"},
+    {"path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/checks/luna-fixtures/active-hold.json", "sha256": "63d90431ac8aac75efdee0ef363b80fc83c51747021af4f0517782cf6848b182"},
+    {"path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/checks/luna-fixtures/exhausted-budget.json", "sha256": "f49352b2dcaeeb873c002a53a8b8cc0880878ed5113994ce5ce56e1757bc534a"},
+    {"path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/checks/luna-fixtures/empty-running-output.json", "sha256": "d6fa02853d2a697a22112ac5cb2985410b9ef24dc05ad5a3a126874c8fae8c48"},
+    {"path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/checks/luna-fixtures/inaccessible-process.json", "sha256": "1203d3cd4581af878c293c54a0ef28b47c14e951654c0d3239a72ee8fa7625c8"},
+    {"path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/run_operations.py", "sha256": "bfa6a3fc7c09591881575c87fb8ad5bde066188cc42f814028dbeffff4d77b50"}
+  ],
+  "pin_verification": "The readiness command returned the documented pending/invalid HOLD result; pin acceptance was not independently established by that result.",
+  "target_attempts_initiated": 0
+}

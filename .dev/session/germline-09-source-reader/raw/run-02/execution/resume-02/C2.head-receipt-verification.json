@@ -1,0 +1,23 @@
+{
+  "rounds": [
+    {
+      "cycle": "R2",
+      "thread": "01a17a86-873c-72b0-8787-932736a0f7d9",
+      "turn": "01a184ef-6e70-7f11-907b-3ac8af6fe2d1",
+      "ask_attempt": 3,
+      "elapsed_seconds": 87.799,
+      "receipts_and_outputs_validated": true
+    },
+    {
+      "cycle": "A2",
+      "thread": "01a17a89-cc0a-7053-b9b2-e5bdac784fe4",
+      "turn": "01a184f1-dc3d-7dd0-98b7-37644753ecf5",
+      "ask_attempt": 4,
+      "elapsed_seconds": 209.815,
+      "receipts_and_outputs_validated": true
+    }
+  ],
+  "I1_current_product_hashes_validated": 24,
+  "A2_overall": "UNVERIFIED; P7 independent dispatcher/dry-run not executed",
+  "technical_hold_retained": true
+}

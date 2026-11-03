@@ -1,0 +1,24 @@
+{
+  "schema": "g09-final-preparation-state/v1",
+  "observed_at": "2026-10-26T19:52:15.632161+01:00",
+  "pins_count": 35,
+  "pin_mismatches": [],
+  "preservation": {
+    "protected_old_count": 97,
+    "old_mismatches": [],
+    "foreign_count": 9,
+    "foreign_mismatches": [],
+    "releases_false": {
+      "raw/control/RELEASE.json": true,
+      "raw/run-02/control/RELEASE.json": true
+    },
+    "ok": true
+  },
+  "technical_holds": [],
+  "run01_ask_receipts": 1,
+  "run02_ask_receipts": 0,
+  "run02_vaults": [],
+  "presence_exact_owned_record_absent": true,
+  "stray_fake_residue_archived": true,
+  "source_contract_unchanged_since_Sol28": true
+}

@@ -1,0 +1,42 @@
+{
+  "schema": "g09-current-journal-reconciliation/v1",
+  "observed_at": "2026-10-29T00:39:14.464032+01:00",
+  "authority": "Operator resume blessing under recorded G09 GO; preserve newer foreign entries",
+  "journal": "/home/hruzam/ia-sync/journal.host-cleanup.md",
+  "journal_sha256": "09e24db41885998d665c7ccea244ee68c4a9d800a05a4c2d723ad74d0baa87f6",
+  "original_evidence_unchanged": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/checks/JOURNAL.preservation.json",
+  "original_sha256": "db9148eba1574c7a9b7f6bfd0eefb5009afa6f8f7b295031b2649f3046a232f5",
+  "additions": [
+    {
+      "name": "## OFFICE — 2026-10-27 · Cartan · A2 nabla-lab Oraculum-main preparation",
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/execution/resume-02/preservation/journal-addition-A2.md",
+      "offset": 790,
+      "bytes": 1333,
+      "sha256": "b7ebb2727d5eae4b1262d817741bb93d065cffbd47f05bfa979e6ec20c30dd66"
+    },
+    {
+      "name": "## OFFICE — 2026-10-26 · Cartan · A1 vi-agents Oraculum source fold",
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/execution/resume-01/journal-addition-1.md",
+      "offset": 2123,
+      "bytes": 1885,
+      "sha256": "4396cfaefb43b25d133607e5eb068093bff010ca9d69dfeb9a336a9a167016cb"
+    },
+    {
+      "name": "## OFFICE — 2026-10-26 · Cartan · A0 Houston project layer",
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/execution/resume-01/journal-addition-2.md",
+      "offset": 4008,
+      "bytes": 1671,
+      "sha256": "a345fb2c1b2cbfae16fb7362d27d12d53366f665c7469f09cad3d7d5a2223004"
+    },
+    {
+      "name": "## OFFICE — 2026-10-26 · Cartan · G09 run-02 source-only repair preparation",
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/execution/resume-01/journal-addition-3.md",
+      "offset": 5679,
+      "bytes": 2030,
+      "sha256": "4125ea80d09daeb86aaccd66675700d1def1341653e059c678d5773888a05881"
+    }
+  ],
+  "reconstruction_matches_original": true,
+  "prior_reconciliation": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/execution/resume-02/preservation/prior.JOURNAL.reconciliation.json",
+  "mode": "Remove only exact captured additions in memory; any further current mutation remains a hold."
+}

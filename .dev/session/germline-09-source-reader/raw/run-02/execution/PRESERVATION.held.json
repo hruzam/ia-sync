@@ -1,0 +1,21 @@
+{
+  "protected_old_count": 97,
+  "old_mismatches": [],
+  "foreign_count": 9,
+  "foreign_mismatches": [
+    "/home/hruzam/ia-sync/journal.host-cleanup.md",
+    "/home/hruzam/ia-sync/pulse.md"
+  ],
+  "journal_reconciliation": {
+    "reconciliation": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/execution/prerequisites/JOURNAL.reconciliation.json",
+    "reconstructed_sha256": "462e7a760209b259086ec2e4e5ce4ee831e76d51da4788217ff25721b493b49b",
+    "ok": false
+  },
+  "release_mode": "run02-authorized",
+  "releases_authorized": {
+    "raw/control/RELEASE.json": false,
+    "raw/run-02/control/RELEASE.json": true
+  },
+  "release_state_matches": true,
+  "ok": false
+}

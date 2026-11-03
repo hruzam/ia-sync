@@ -1,0 +1,582 @@
+{
+  "schema": "g09-main-intake/v1",
+  "scope": "Main preparation intake reconstructed from this root tool calls; subsequent events appended explicitly. Every requested evidence read counted including repeated/truncated requests; metadata/hash-only or authoring transformations without source content exposure excluded.",
+  "events": [
+    {
+      "event": 1,
+      "phase": "preparation",
+      "label": "initial launcher selected by operator",
+      "kind": "full-request",
+      "paths": [
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/RUNBOOK.md",
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/STATUS.md"
+      ],
+      "read_count": 2,
+      "output_truncated": false,
+      "note": "Prior to baseline; combined tool output reported approx1779 tokens. Not a measured context occupancy."
+    },
+    {
+      "event": 2,
+      "phase": "preparation",
+      "label": "repo orientation",
+      "kind": "head80/full",
+      "paths": [
+        "/home/hruzam/ia-sync/journal.host-cleanup.md",
+        "/home/hruzam/ia-sync/SYNC_DISCIPLINE.md"
+      ],
+      "read_count": 2,
+      "output_truncated": false,
+      "note": null
+    },
+    {
+      "event": 3,
+      "phase": "preparation",
+      "label": "first skill batch",
+      "kind": "full-request",
+      "paths": [
+        "/home/hruzam/.agents/skills/codex-harness/SKILL.md",
+        "/home/hruzam/.agents/skills/reposoma-surgical-coding/SKILL.md",
+        "/home/hruzam/ia-sync/.agents/skills/multihost/SKILL.md",
+        "/home/hruzam/.codex/skills/.system/openai-docs/SKILL.md"
+      ],
+      "read_count": 4,
+      "output_truncated": true,
+      "note": "Global exec output truncated. Attempted reads are counted even when bodies were not visible in full."
+    },
+    {
+      "event": 4,
+      "phase": "preparation",
+      "label": "STATUS selected evidence",
+      "kind": "full-request",
+      "paths": [
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/closeout/SELFREPORT.run-01.2026-10-26.md",
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/closeout/SANITATION.final.json",
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/_bus/07.cartan.verdict.md"
+      ],
+      "read_count": 3,
+      "output_truncated": true,
+      "note": null
+    },
+    {
+      "event": 5,
+      "phase": "preparation",
+      "label": "protocol helper",
+      "kind": "full-request",
+      "paths": [
+        "/home/hruzam/ia-sync/protocole/colors/PROTOCOLE.md"
+      ],
+      "read_count": 1,
+      "output_truncated": false,
+      "note": null
+    },
+    {
+      "event": 6,
+      "phase": "preparation",
+      "label": "skill reread after truncation",
+      "kind": "full-request",
+      "paths": [
+        "/home/hruzam/.agents/skills/codex-harness/SKILL.md",
+        "/home/hruzam/.agents/skills/reposoma-surgical-coding/SKILL.md",
+        "/home/hruzam/ia-sync/.agents/skills/multihost/SKILL.md",
+        "/home/hruzam/.codex/skills/.system/openai-docs/SKILL.md"
+      ],
+      "read_count": 4,
+      "output_truncated": true,
+      "note": null
+    },
+    {
+      "event": 7,
+      "phase": "preparation",
+      "label": "shared session law",
+      "kind": "full-request",
+      "paths": [
+        "/home/hruzam/reposoma/raw.guides/runbook/GUIDE.md",
+        "/home/hruzam/reposoma/raw.guides/status/GUIDE.md",
+        "/home/hruzam/reposoma/raw.guides/bus/GUIDE.md",
+        "/home/hruzam/reposoma/raw.guides/runbook/res/presence-board.md"
+      ],
+      "read_count": 4,
+      "output_truncated": true,
+      "note": null
+    },
+    {
+      "event": 8,
+      "phase": "preparation",
+      "label": "targeted skill/source-map reread",
+      "kind": "full-request",
+      "paths": [
+        "/home/hruzam/.codex/skills/.system/openai-docs/SKILL.md",
+        "/home/hruzam/.agents/skills/codex-harness/references/source-map.md"
+      ],
+      "read_count": 2,
+      "output_truncated": false,
+      "note": null
+    },
+    {
+      "event": 9,
+      "phase": "preparation",
+      "label": "presence board content",
+      "kind": "full-request",
+      "paths": [
+        "/home/hruzam/reposoma/_active/presence.51186ea00ab15521b7ce140bdfc3e401.md",
+        "/home/hruzam/reposoma/_active/presence.521382142d9efcc10fb1e72d70ba84ef.md",
+        "/home/hruzam/reposoma/_active/presence.6216b5b6f62207de689452cdd1e44c74.md",
+        "/home/hruzam/reposoma/_active/presence.62d1d51766581b6e9f1ff46829f343bb.md",
+        "/home/hruzam/reposoma/_active/presence.631fd920c8b2c6a5a3dab7e5ea6838ed.md",
+        "/home/hruzam/reposoma/_active/presence.8befcce7693b8da61f9aa93083502223.md",
+        "/home/hruzam/reposoma/_active/presence.c2d719522770d033e72053485c685588.md",
+        "/home/hruzam/reposoma/_active/presence.c7a8b194647642a56a2cb9de7204230d.md",
+        "/home/hruzam/reposoma/_active/presence.f08176ed63bcec89a115c6989cd86d09.md",
+        "/home/hruzam/reposoma/_active/presence.fca0ec2f09fa723097027f5526a792fd.md",
+        "/home/hruzam/reposoma/_active/presence.fd9c22a04da7bc1644b2193c831c1a2e.md"
+      ],
+      "read_count": 11,
+      "output_truncated": false,
+      "note": null
+    },
+    {
+      "event": 10,
+      "phase": "preparation",
+      "label": "old execution/control and native role contracts",
+      "kind": "full-request",
+      "paths": [
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/hold-line/ENTRY.md",
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/hold-line/controller.md",
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/control/RELEASE.json",
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/control/ROUND-MAP.json",
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/SCHEDULE.md",
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/briefs/caretaker.md",
+        "/home/hruzam/ia-sync/codex/agents/implementer.toml",
+        "/home/hruzam/ia-sync/codex/agents/verifier.toml"
+      ],
+      "read_count": 8,
+      "output_truncated": true,
+      "note": null
+    },
+    {
+      "event": 11,
+      "phase": "preparation",
+      "label": "diagnosis anchors",
+      "kind": "rg-excerpts",
+      "paths": [
+        "/home/hruzam/ia-sync/_staging/codex/cartan.observation.g09-R1-transport.2026-10-26.md",
+        "/home/hruzam/ia-sync/_staging/codex/cartan.observation.g09-run-01-closeout-review.2026-10-26.md"
+      ],
+      "read_count": 2,
+      "output_truncated": false,
+      "note": null
+    },
+    {
+      "event": 12,
+      "phase": "preparation",
+      "label": "old contract/pin control reads",
+      "kind": "full-request",
+      "paths": [
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/hold-line/task.json",
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/hold-line/sources.json",
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/control/RELEASE.json",
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/control/ROUND-MAP.json",
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/hold-line/controller.md"
+      ],
+      "read_count": 5,
+      "output_truncated": true,
+      "note": null
+    },
+    {
+      "event": 13,
+      "phase": "preparation",
+      "label": "selected correction recommendations",
+      "kind": "lines100-140",
+      "paths": [
+        "/home/hruzam/ia-sync/_staging/codex/cartan.observation.g09-R1-transport.2026-10-26.md"
+      ],
+      "read_count": 1,
+      "output_truncated": true,
+      "note": null
+    },
+    {
+      "event": 14,
+      "phase": "preparation",
+      "label": "adapter function/guard anchors",
+      "kind": "rg-excerpts",
+      "paths": [
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/caretaker/run_operations.py"
+      ],
+      "read_count": 1,
+      "output_truncated": false,
+      "note": null
+    },
+    {
+      "event": 15,
+      "phase": "preparation",
+      "label": "portable Codex instructions",
+      "kind": "full-request",
+      "paths": [
+        "/home/hruzam/ia-sync/codex/AGENTS.md"
+      ],
+      "read_count": 1,
+      "output_truncated": false,
+      "note": null
+    },
+    {
+      "event": 16,
+      "phase": "preparation",
+      "label": "closeout/controller recovery reread",
+      "kind": "full-request",
+      "paths": [
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/closeout/SELFREPORT.run-01.2026-10-26.md",
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/hold-line/controller.md"
+      ],
+      "read_count": 2,
+      "output_truncated": false,
+      "note": null
+    },
+    {
+      "event": 17,
+      "phase": "preparation",
+      "label": "schedule/tunnel selected sections",
+      "kind": "lines1-45/1-105",
+      "paths": [
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/SCHEDULE.md",
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/TUNNEL.md"
+      ],
+      "read_count": 2,
+      "output_truncated": false,
+      "note": null
+    },
+    {
+      "event": 18,
+      "phase": "preparation",
+      "label": "transport identity and deadline locations",
+      "kind": "rg-excerpts",
+      "paths": [
+        "/home/hruzam/ia-sync/zsh/ai/tunnel-codex.py"
+      ],
+      "read_count": 1,
+      "output_truncated": false,
+      "note": null
+    },
+    {
+      "event": 19,
+      "phase": "preparation",
+      "label": "adapter helper source",
+      "kind": "lines1-115",
+      "paths": [
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/caretaker/run_operations.py"
+      ],
+      "read_count": 1,
+      "output_truncated": true,
+      "note": null
+    },
+    {
+      "event": 20,
+      "phase": "preparation",
+      "label": "round/acceptance/session-law reads",
+      "kind": "full-request",
+      "paths": [
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/control/ROUND-MAP.json",
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/ACCEPTANCE.md",
+        "/home/hruzam/reposoma/raw.guides/runbook/GUIDE.md"
+      ],
+      "read_count": 3,
+      "output_truncated": true,
+      "note": null
+    },
+    {
+      "event": 21,
+      "phase": "preparation",
+      "label": "accepted role and cold packet content",
+      "kind": "full-request",
+      "paths": [
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/ACCEPTANCE.md",
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/briefs/astrobley.md",
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/briefs/researcher.md",
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/briefs/auditor.md",
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/packets/R1.md",
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/packets/A1.md"
+      ],
+      "read_count": 6,
+      "output_truncated": false,
+      "note": null
+    },
+    {
+      "event": 22,
+      "phase": "preparation",
+      "label": "adapter dispatch source",
+      "kind": "lines122-220",
+      "paths": [
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/caretaker/run_operations.py"
+      ],
+      "read_count": 1,
+      "output_truncated": false,
+      "note": null
+    },
+    {
+      "event": 23,
+      "phase": "preparation",
+      "label": "warm placeholder scan",
+      "kind": "placeholder-lines-only",
+      "paths": [
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/packets/R2.md",
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/packets/A2.md",
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/packets/A3.md"
+      ],
+      "read_count": 3,
+      "output_truncated": false,
+      "note": null
+    },
+    {
+      "event": 24,
+      "phase": "preparation",
+      "label": "Check rewritten builder brief",
+      "kind": "full-request",
+      "paths": [
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/briefs/astrobley.md"
+      ],
+      "read_count": 1,
+      "output_truncated": false
+    },
+    {
+      "event": 25,
+      "phase": "preparation",
+      "label": "Inspect pending adapter interface and test-name scan",
+      "kind": "rg-excerpts",
+      "paths": [
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/run_operations.py",
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/repair/test_adapter.py",
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/repair/test_tunnel_checkpoints.py"
+      ],
+      "read_count": 3,
+      "output_truncated": false,
+      "note": "Test-name pattern had no matches; read requests still counted."
+    },
+    {
+      "event": 26,
+      "phase": "preparation",
+      "label": "Parent selected independent failure/preservation evidence",
+      "kind": "full-request",
+      "paths": [
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/checks/sol-verification/pre-freeze-guards.json",
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/checks/sol-verification/pre-freeze-preservation.json"
+      ],
+      "read_count": 2,
+      "output_truncated": false
+    },
+    {
+      "event": 27,
+      "phase": "preparation",
+      "label": "Parent repair evidence and transport diff",
+      "kind": "full-request/diff",
+      "paths": [
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/_bus/08.repairer.return.md",
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/repair/CHECKS.08.json",
+        "/home/hruzam/ia-sync/zsh/ai/tunnel-codex.py"
+      ],
+      "read_count": 3,
+      "output_truncated": false
+    },
+    {
+      "event": 28,
+      "phase": "preparation",
+      "label": "Parent frozen failure and report correction",
+      "kind": "full-request",
+      "paths": [
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/checks/sol-verification/frozen-missing-thread.json",
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/_bus/16.repairer.return.md"
+      ],
+      "read_count": 2,
+      "output_truncated": false
+    },
+    {
+      "event": 29,
+      "phase": "preparation",
+      "label": "Parent independent09 report/result",
+      "kind": "full-request",
+      "paths": [
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/_bus/09.verifier.return.md",
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/checks/sol-verification/RESULT.09.json"
+      ],
+      "read_count": 2,
+      "output_truncated": false
+    },
+    {
+      "event": 30,
+      "phase": "preparation",
+      "label": "Parent18 repair report/checks",
+      "kind": "full-request",
+      "paths": [
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/_bus/18.repairer.return.md",
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/repair/CHECKS.18.json"
+      ],
+      "read_count": 2,
+      "output_truncated": false
+    },
+    {
+      "event": 31,
+      "phase": "preparation",
+      "label": "Parent final independent19 verification",
+      "kind": "full-request",
+      "paths": [
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/_bus/19.verifier.return.md",
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/checks/sol-verification/19.delta.json",
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/checks/sol-verification/19.snapshot.json"
+      ],
+      "read_count": 3,
+      "output_truncated": false
+    },
+    {
+      "event": 32,
+      "phase": "preparation",
+      "label": "Parent Luna26 decisions/load/RETURN",
+      "kind": "full-request",
+      "paths": [
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/_bus/26.caretaker.return.md",
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/rehearsal/DECISIONS.json",
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/rehearsal/LOAD.json"
+      ],
+      "read_count": 3,
+      "output_truncated": false
+    },
+    {
+      "event": 33,
+      "phase": "preparation",
+      "label": "Parent Luna command capture limitation",
+      "kind": "full-request",
+      "paths": [
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/rehearsal/COMMANDS.json",
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/rehearsal/readiness.stderr.txt"
+      ],
+      "read_count": 2,
+      "output_truncated": false
+    },
+    {
+      "event": 34,
+      "phase": "preparation",
+      "label": "Parent Luna27 observed capture",
+      "kind": "full-request",
+      "paths": [
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/rehearsal-27/COMMAND.json",
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/_bus/27.caretaker.return.md"
+      ],
+      "read_count": 2,
+      "output_truncated": false
+    },
+    {
+      "event": 35,
+      "phase": "preparation",
+      "label": "Parent final integrated independent28 report/evidence",
+      "kind": "full-request",
+      "paths": [
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/_bus/28.verifier.return.md",
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/checks/sol-verification/28.integrated.json"
+      ],
+      "read_count": 2,
+      "output_truncated": false
+    },
+    {
+      "event": 36,
+      "phase": "preparation",
+      "label": "Final stray artifact provenance and current fake helper scan",
+      "kind": "file-prefix-and-rg-excerpts",
+      "paths": [
+        "/home/hruzam/ia-sync/effort=high",
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/repair/test_adapter.py",
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/checks/sol-verification/probe_adapter_boundaries.py"
+      ],
+      "read_count": 3,
+      "output_truncated": false
+    },
+    {
+      "event": 37,
+      "phase": "preparation",
+      "label": "Current fake --state binding line check",
+      "kind": "lines82-94",
+      "paths": [
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/repair/test_adapter.py"
+      ],
+      "read_count": 1,
+      "output_truncated": false
+    }
+  ],
+  "evidence_read_requests": 101,
+  "initial_packet_read_requests": 2,
+  "subsequent_read_requests": 99,
+  "web_intake": [
+    {
+      "kind": "official search",
+      "query": "Codex app-server turn thread notifications resume",
+      "results": "6 displayed search results"
+    },
+    {
+      "kind": "official page open",
+      "url": "https://learn.chatgpt.com/docs/app-server",
+      "note": "Short tool extract dominated by navigation; not proof of local runtime behavior."
+    }
+  ],
+  "truncation_policy": "Count requested file read despite truncation; do not pretend all bytes reached model. Rereads count again.",
+  "separate_nonintake_operations": [
+    "99-file preservation hashing",
+    "foreign hashes",
+    "git log/status/fetch",
+    "empty office inbox listing",
+    "parent AGENTS existence checks (none found)",
+    "rg file paths",
+    "authoring/copy transformations",
+    "word count/JSON schema checks"
+  ],
+  "known_limits": [
+    "No measured model tokens or actual context occupancy",
+    "Preparation already required substantial extra intake; no clean-head benefit claimed",
+    "Approx tool output tokens are not native billing tokens"
+  ],
+  "native_messages": [
+    {
+      "handle": "/root/g09_repairer",
+      "kind": "bounded progress/contract coordination",
+      "note": "All incoming messages add main intake; exact text remains in native transcript, no token estimate."
+    },
+    {
+      "handle": "/root/g09_verifier",
+      "kind": "independent verification requested",
+      "note": "All child messages/returns count as additional main intake, no native token estimate."
+    },
+    {
+      "handle": "/root/g09_verifier",
+      "kind": "pre-freeze findings and evidence pointers",
+      "note": "Named-input/A3/bootstrap acceptance reproduced; concurrency/cold/warm guard review findings routed to repairer. Child report treated as claims pending parent selected artifact check and final verifier rerun."
+    },
+    {
+      "handle": "/root/g09_repairer",
+      "kind": "report16 + narrow repair18 correction and final report",
+      "note": "Additional main intake; original failed source/report preserved."
+    },
+    {
+      "handle": "/root/g09_verifier",
+      "kind": "09 FAIL then19 PASS and intermediate guard findings",
+      "note": "Additional main recovery/verification intake."
+    },
+    {
+      "handle": "/root/g09_caretaker",
+      "kind": "native Luna rehearsal requested",
+      "note": "Only fake/inspection preparation; no target dispatch."
+    },
+    {
+      "handle": "/root/g09_caretaker",
+      "kind": "26 return with disclosed zsh capture uncertainty,27 direct capture correction",
+      "note": "These operational exception/repair reads count as main intake; no small-entry-only context benefit claimed."
+    },
+    {
+      "handle": "/root/g09_repairer",
+      "kind": "read-only provenance assessment for stray early fake artifact",
+      "note": "Additional recovery/hygiene intake; high-confidence attribution with historical-process limit retained."
+    }
+  ],
+  "main_operations": {
+    "live_target_tunnel_commands": 0,
+    "offline_adapter_readiness_commands": 2,
+    "metadata_observation_intake": "Git, listing, word-count, hash/preservation/freeze and command-result outputs are additional main intake, alongside file reads. No exact context-token or efficiency inference is made.",
+    "native_messages": "All progress findings, correction coordination and final capsules from Terra/Sol/Luna are main intake; no hidden exclusion of recovery messages.",
+    "offline_adapter_readiness_reason": "First confirms pending technical hold; second is direct head verification after independently passed repair and observed caretaker rehearsal discharge. Both are additional preparation intake; neither calls a target."
+  },
+  "disposition": "Preparation measured honestly; substantial intake, no efficiency/clean-head/germline-necessity claim. Future trial is distinct and must count its own main intake without erasing this preparation."
+}

@@ -1,0 +1,78 @@
+{
+  "argv": [
+    "/home/hruzam/ia-sync/zsh/ai/tunnel-codex.zsh",
+    "open",
+    "--state",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/tunnel.auditor.state.json",
+    "--enable",
+    "--sandbox",
+    "read-only",
+    "--cwd",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader",
+    "--preamble",
+    "none",
+    "--model",
+    "gpt-6.1-sol",
+    "--override",
+    "effort=high"
+  ],
+  "cycle": "A1",
+  "elapsed_seconds": 0.911,
+  "ended_monotonic": 3022689.691086818,
+  "ended_unix": 1793057206.5506423,
+  "exit": 0,
+  "key": "run02.A1.open",
+  "kind": "open",
+  "outputs": {
+    "stderr": {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/operations/output/run02.A1.open.stderr.txt",
+      "sha256": "d04cf6339cdca333d8f11439e6b68cd7786f272040fc1edc81001b6c6256434b"
+    },
+    "stdout": {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/operations/output/run02.A1.open.stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "pins": {
+    "pins": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/hold-line/sources.json",
+    "sha256": "d72e6b552f7e05e2e5c5657631526b989dea28d2cc3a372919845a1c86ad51db"
+  },
+  "release": {
+    "contract_sha256": "84be154eb074088af75f003cd760b0ccb904061afb46851135e8ad4203f1d214",
+    "release": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/control/RELEASE.json"
+  },
+  "remote_outcome": "reported-success",
+  "role": "auditor",
+  "runner": {
+    "pid": 2549323,
+    "start": "302268856"
+  },
+  "schema": "g09-run02-receipt/v1",
+  "started_monotonic": 3022688.780089647,
+  "started_unix": 1793057205.6396453,
+  "state_after": {
+    "cwd": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader",
+    "enabled": true,
+    "inFlightTurnId": null,
+    "lastTurnId": null,
+    "model": "gpt-6.1-sol",
+    "preamble": null,
+    "runtime": null,
+    "sandbox": "read-only",
+    "threadId": null,
+    "turnOverrides": {
+      "effort": "high"
+    }
+  },
+  "state_before": null,
+  "status": "completed",
+  "timeout_environment": {
+    "TUNNEL_CODEX_TIMEOUT": "1800",
+    "failure": "Preserve receipt and known IDs; mark remote outcome unknown until zero-turn evidence resolves it. Timeout may interrupt target during owned transport cleanup. Stop all substantive dispatch; no retry, resend, steer, continuation, new role, profile substitution or deletion.",
+    "last_event_reporting": "phase + monotonic elapsed/configured + last-event age + known thread/turn IDs",
+    "meaning": "per RPC/turn-completion phase; NOT an end-to-end deadline",
+    "native_exec_yield_ms": 1000,
+    "native_poll_seconds": 30,
+    "outer_subprocess_timeout": null
+  }
+}

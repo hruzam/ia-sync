@@ -1,0 +1,16 @@
+{
+  "schema": "g09-offline-caretaker-case/v1",
+  "case": "changed-pins",
+  "simulated": true,
+  "target_turns": 0,
+  "evidence": {
+    "pin_check": {
+      "matches": false,
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/hold-line/controller.md",
+      "expected": "SIMULATED-PIN-A",
+      "actual": "SIMULATED-PIN-B"
+    },
+    "receipt": null,
+    "release_authorized": true
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "schema": "g09-offline-caretaker-case/v1",
+  "case": "inaccessible-process",
+  "simulated": true,
+  "target_turns": 0,
+  "evidence": {
+    "proc_observation": {
+      "errno": "EACCES",
+      "namespace": "unverified"
+    },
+    "receipt": {
+      "status": "pending"
+    },
+    "note": "No proof the exact runner is dead."
+  }
+}

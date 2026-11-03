@@ -1,0 +1,28 @@
+{
+  "started": "2026-10-26T23:08:41.260333+01:00",
+  "route": "fresh CLI exec main profile",
+  "command": [
+    "/home/hruzam/.local/bin/codex",
+    "--no-daemon",
+    "exec",
+    "--profile",
+    "oraculum",
+    "--sandbox",
+    "workspace-write",
+    "--json",
+    "--color",
+    "never",
+    "-C",
+    "/home/hruzam/ia-sync",
+    "-o",
+    "/home/hruzam/ia-sync/.dev/session/germline-A1-vi-agents/raw/MAIN.return.md",
+    "-"
+  ],
+  "stdout_host_local": "/home/hruzam/.local/state/ia-sync/germline-A1-vi-agents/20261026T230642+0100-9974749c/runtime/main.events.jsonl",
+  "stderr_host_local": "/home/hruzam/.local/state/ia-sync/germline-A1-vi-agents/20261026T230642+0100-9974749c/runtime/main.stderr.txt",
+  "state": "completed",
+  "finished": "2026-10-26T23:09:29.244316+01:00",
+  "exit_code": 0,
+  "thread_id": "01a17a42-3527-72d0-832d-33eb9e8d0c3c",
+  "host_local_transcript": "/home/hruzam/.codex/sessions/2026/10/26/rollout-2026-10-26T23-08-41-01a17a42-3527-72d0-832d-33eb9e8d0c3c.jsonl"
+}

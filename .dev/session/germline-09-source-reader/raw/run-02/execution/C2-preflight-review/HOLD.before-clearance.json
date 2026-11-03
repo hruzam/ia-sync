@@ -1,0 +1,8 @@
+{
+  "schema": "g09-hold/v1",
+  "run_id": "run-02",
+  "holds": [
+    "C2-caretaker-local-assertion-failure-awaits-Terra-check"
+  ],
+  "note": "Caretaker reported stale resume/new-turn assertion failure before A2; preserve error and prohibit self-debug/retry. R2 completed consumed3; metadata below must determine whether A2 was already submitted."
+}

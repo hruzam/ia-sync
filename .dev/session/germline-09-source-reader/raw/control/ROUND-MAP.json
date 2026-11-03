@@ -1,0 +1,61 @@
+{
+  "schema": "g09-round-map/v1",
+  "maximum_ask_attempts": 5,
+  "rounds": [
+    {
+      "cycle": "R1",
+      "role": "researcher",
+      "native_bus_cycle": "01",
+      "mode": "cold",
+      "packet_template": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/packets/R1.md",
+      "compiled_packet": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/caretaker/packets/R1.prompt.txt",
+      "result": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/caretaker/results/R1.result.md",
+      "operation_key": "R1.ask",
+      "vault": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/caretaker/tunnel.researcher.state.json"
+    },
+    {
+      "cycle": "A1",
+      "role": "auditor",
+      "native_bus_cycle": "01",
+      "mode": "cold",
+      "packet_template": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/packets/A1.md",
+      "compiled_packet": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/caretaker/packets/A1.prompt.txt",
+      "result": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/caretaker/results/A1.result.md",
+      "operation_key": "A1.ask",
+      "vault": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/caretaker/tunnel.auditor.state.json"
+    },
+    {
+      "cycle": "R2",
+      "role": "researcher",
+      "native_bus_cycle": "03",
+      "mode": "warm",
+      "packet_template": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/packets/R2.md",
+      "compiled_packet": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/caretaker/packets/R2.prompt.txt",
+      "result": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/caretaker/results/R2.result.md",
+      "operation_key": "R2.ask",
+      "vault": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/caretaker/tunnel.researcher.state.json"
+    },
+    {
+      "cycle": "A2",
+      "role": "auditor",
+      "native_bus_cycle": "03",
+      "mode": "warm",
+      "packet_template": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/packets/A2.md",
+      "compiled_packet": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/caretaker/packets/A2.prompt.txt",
+      "result": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/caretaker/results/A2.result.md",
+      "operation_key": "A2.ask",
+      "vault": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/caretaker/tunnel.auditor.state.json"
+    },
+    {
+      "cycle": "A3",
+      "role": "auditor",
+      "native_bus_cycle": "05",
+      "mode": "warm-conditional",
+      "packet_template": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/packets/A3.md",
+      "compiled_packet": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/caretaker/packets/A3.prompt.txt",
+      "result": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/caretaker/results/A3.result.md",
+      "operation_key": "A3.ask",
+      "vault": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/caretaker/tunnel.auditor.state.json"
+    }
+  ]
+}

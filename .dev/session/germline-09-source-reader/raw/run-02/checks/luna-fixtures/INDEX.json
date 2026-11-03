@@ -1,0 +1,14 @@
+{
+  "schema": "g09-offline-caretaker-cases/v1",
+  "simulation_boundary": "All records are isolated hypothetical receipt/state examples for controller decision rehearsal, not real G09 operations. No simulated handle/id is actionable. Live paths may be read only by the two explicit offline commands in POINT26.",
+  "cases": [
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/checks/luna-fixtures/interrupted.json",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/checks/luna-fixtures/missing-identity.json",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/checks/luna-fixtures/changed-pins.json",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/checks/luna-fixtures/revoked-release.json",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/checks/luna-fixtures/active-hold.json",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/checks/luna-fixtures/exhausted-budget.json",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/checks/luna-fixtures/empty-running-output.json",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/checks/luna-fixtures/inaccessible-process.json"
+  ]
+}

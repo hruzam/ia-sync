@@ -1,0 +1,18 @@
+{
+  "created": "2026-10-30T21:54:09.065481+01:00",
+  "reviewer": "native Astrobley /root/agent_build_line_mechanics",
+  "verdict": "PASS for scoped deployment and planned fresh witness",
+  "source_sha256": {
+    "codex/profiles/oraculum.config.toml": "ee984879a81316433e2d98ab5379c1c293197cad44fe13eeb1e48d6e7811696d",
+    "germline/agents/oraculum/identity.md": "a79bbf711f095581b7787dbc70b59a7fdc0a3285009e71a4c399bbf2b887ef72",
+    "germline/agents/oraculum/binding.codex.md": "0d7414e522624240e5d701b5cfe84a4607bc82f5427155310f91f6a67dec8c17",
+    "germline/agents/oraculum/binding.claude.md": "2b99c5845b6b87998f157dc39d54e4f6012ad7a66960e24464465f65d45bbf25"
+  },
+  "findings": [
+    "Main dispatch uses actual native entry; inherited profile does not assign a worker the strategic identity.",
+    "Explicit bounded execution delegation changes shared main authority while preserving direct-main execution ban and genuine child restrictions.",
+    "Codex custom-child and Claude wrapper unchanged. Claude receives shared semantic change; real behavior remains deferred.",
+    "Instruction-level dispatch, not OS isolation; runtime metadata and bounded local-Git witness remain decisive.",
+    "Preserve host-local profile TUI settings during installation."
+  ]
+}

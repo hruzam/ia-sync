@@ -1,0 +1,8 @@
+{
+  "schema": "g09-hold/v1",
+  "run_id": "run-02",
+  "holds": [
+    "A1-auditor-substantive-dispatch-HOLD:uncertainty-reservation-race-awaits-offline-reproduction-and-frozen-repair-ruling"
+  ],
+  "note": "R1/A1 completed,2new asks/cumulative3. No further target/product dispatch while actual safety claim is examined. No frozen code/pin change authorized."
+}

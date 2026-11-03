@@ -1,0 +1,61 @@
+{
+  "schema": "g09-run02-held-disposition/v1",
+  "observed_at": "2026-10-26T22:38:50.809376+01:00",
+  "state": "HOLD",
+  "stage": "C1 before first profile RPC",
+  "failure": "RELEASE message_reference vs pinned adapter operator_message_reference",
+  "head_correction": "Required alias added only to unfrozen release; original bad release and no-subprocess before/after validation preserved; no profile retry.",
+  "actual_GO_recorded": true,
+  "run01_release_authorized": false,
+  "run02_release_authorized": true,
+  "holds": [
+    "C1-stopped-release-provenance-mismatch;unfrozen-field-correction-prepared-awaiting-operator-resume",
+    "new-concurrent-journal-pulse-drift-after-C1;current-preservation-refresh-required"
+  ],
+  "run01_attempts": 1,
+  "run02_attempts": 0,
+  "cumulative_attempts": 1,
+  "cumulative_ceiling": 6,
+  "profile_RPCs": 0,
+  "enable_preflights": 0,
+  "role_vaults": 0,
+  "D1_frozen": false,
+  "builder_created": false,
+  "product": "UNVERIFIED; not started",
+  "contract_sha256": "84be154eb074088af75f003cd760b0ccb904061afb46851135e8ad4203f1d214",
+  "pins_sha256": "d72e6b552f7e05e2e5c5657631526b989dea28d2cc3a372919845a1c86ad51db",
+  "all35_pins_match": true,
+  "preservation_passed_before_dispatch": true,
+  "current_preservation": {
+    "protected_old_count": 97,
+    "old_mismatches": [],
+    "foreign_count": 9,
+    "foreign_mismatches": [
+      "/home/hruzam/ia-sync/journal.host-cleanup.md",
+      "/home/hruzam/ia-sync/pulse.md"
+    ],
+    "journal_reconciliation": {
+      "reconciliation": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/execution/prerequisites/JOURNAL.reconciliation.json",
+      "reconstructed_sha256": "462e7a760209b259086ec2e4e5ce4ee831e76d51da4788217ff25721b493b49b",
+      "ok": false
+    },
+    "release_mode": "run02-authorized",
+    "releases_authorized": {
+      "raw/control/RELEASE.json": false,
+      "raw/run-02/control/RELEASE.json": true
+    },
+    "release_state_matches": true,
+    "ok": false
+  },
+  "foreign_observation": {
+    "observed_at": "2026-10-26T22:37:35.227819+01:00",
+    "current_journal_sha256": "f8283f5048f9ea94c0c5dd56e89d85bd8ba5eb67aed50dc634d82dea9be51ea0",
+    "current_pulse_sha256": "160015b371e965e6dd9478352eddb6530b79f214f8e40ca81986eff88198cc9d",
+    "exact_G09_entry_occurrences": 1,
+    "exact_observed_A0_entry_occurrences": 1,
+    "note": "Additional foreign journal/pulse changes after the successful pre-effect reconciliation; no write to either file by this execution. Current preservation gate now fails and must be reconciled before any future effect."
+  },
+  "resume_boundary": "Operator resume instruction plus fresh POINT/current preservation; GO already recorded. No changed scope/frozen hash proposed; do not repeat any submitted task.",
+  "native_caretaker": "/root/g09_run02_caretaker",
+  "presence": "fb326a245602bd654d2e6314ca4e0fe2 detached; exact record absent"
+}

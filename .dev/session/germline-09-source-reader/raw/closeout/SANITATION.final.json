@@ -1,0 +1,72 @@
+{
+  "kind": "operator-authorized G09 run-01 sanitation handback",
+  "observed_at": "2026-10-26T16:58:20.430851+01:00",
+  "controller": "Cartan current cleanup root",
+  "native_cleanup_worker": "/root/g09_sanitation",
+  "cycle": "07",
+  "scope_disposition": "bounded sanitation complete; independent verification PASS",
+  "protected_originals_unchanged": 61,
+  "allowed_removed_originals": [
+    "raw/caretaker/tunnel.researcher.state.json"
+  ],
+  "foreign_hash_checks": {
+    ".dev/session/germline-03-foundation-audit/STATUS.md": true,
+    ".dev/session/germline-03-foundation-audit/raw/CRITERION.cartan.g03-first-split-01.md": true,
+    ".dev/session/germline-03-foundation-audit/raw/MANIFEST.cartan.g03-first-split-01.md": true,
+    ".dev/session/germline-04-wiring-plan/RUNBOOK.md": true,
+    ".dev/session/germline-04-wiring-plan/STATUS.md": true,
+    ".dev/session/germline-04-wiring-plan/raw/HANDOFF.g06-make-program.md": true,
+    "journal.host-cleanup.md": true,
+    "pulse.md": true,
+    "zsh/config.office.zsh": true
+  },
+  "new_receipts": [
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/closeout/sanitation/07.selected-verification.json",
+      "sha256": "18b2db21193c62afe07f99d20ee718d1c97950fa648ccbcd37c6386ab9b6acc4"
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/closeout/sanitation/08.r1-metadata-elevated.json",
+      "sha256": "4b619a7ad3c98f23769986bf557adec26694cebde745d5b6682bec5b91d271f1"
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/closeout/sanitation/09.processes-elevated.json",
+      "sha256": "485420a9cf49a945fb289c8480e627341ce6be84c21998a9411bbb779ef1f9e7"
+    }
+  ],
+  "release_authorized": false,
+  "known_R1_thread": "01a176f7-532b-7722-9324-0ecb92694073",
+  "known_thread_current_state": "archived-only, notLoaded, sole turn interrupted",
+  "live_role_vaults": [],
+  "signals_sent": [],
+  "repeated_retirement": false,
+  "new_target_turns": 0,
+  "repair_or_restart": false,
+  "old_native_root_termination": "operator-reported; no independent cross-root native inspection",
+  "selfreport_kind": "reconstructed by replacement cleanup integrator",
+  "selfreport": {
+    "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/closeout/SELFREPORT.run-01.2026-10-26.md",
+    "sha256": "d7ab10f9a64364c74fd9f670cb0f4dede21037ea18b079445cae256be993f3c9",
+    "words": 684
+  },
+  "old_cycle06_records": "RETURN and VERDICT remain absent; not forged",
+  "STATUS_in_flight": "none",
+  "gate_met": false,
+  "independent_review": {
+    "verdict": "PASS",
+    "agent": "/root/g09_sanitation_verifier",
+    "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/closeout/SANITATION.review.md",
+    "sha256": "85999975eaa22109d5833a44a06206e4bd293de1a1d10f001a31da843c2a5caa"
+  },
+  "controller_observations": {
+    "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/closeout/SANITATION.controller-observations.json",
+    "sha256": "358756c84d552beed7eb3fdd5c536c83e9d5e388e2153b290154686da15c91dd"
+  },
+  "controller_cleanup_attachment": {
+    "id": "e91f402523715d5fecce9f580c55d55f",
+    "state": "detached; exact record absent; all other records unchanged",
+    "receipt": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/closeout/SANITATION.presence-detach.json",
+    "receipt_sha256": "4358f84c46c428648637e7a38bc4ca5f11b7d4afe13e142fde457907bd5f0043"
+  },
+  "native_cleanup_team_state": "worker and independent verifier completed"
+}

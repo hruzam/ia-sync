@@ -1,0 +1,19 @@
+{
+  "attempt_number": 3,
+  "cycle": "R2",
+  "effort": "high",
+  "elapsed_seconds": 87.799,
+  "key": "run02.R2.ask",
+  "model": "gpt-6.1-sol",
+  "preamble": "/home/hruzam/.germline/tunnel/tunnel.preamble.md",
+  "receipt": ".dev/session/germline-09-source-reader/raw/run-02/caretaker/operations/run02.R2.ask.operation.json",
+  "receipt_sha256": "1f1e7f6a6fdbac0afc86bd678bfc41e71ec59627c8d5150d6a7ea5455f1837d7",
+  "sandbox": {
+    "networkAccess": false,
+    "type": "readOnly"
+  },
+  "schema": "g09-c2-turn-ack/v1",
+  "state": "completed; no in-flight turn",
+  "thread_id": "01a17a86-873c-72b0-8787-932736a0f7d9",
+  "turn_id": "01a184ef-6e70-7f11-907b-3ac8af6fe2d1"
+}

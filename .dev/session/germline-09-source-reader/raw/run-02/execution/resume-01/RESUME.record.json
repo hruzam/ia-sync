@@ -1,0 +1,14 @@
+{
+  "observed_at": "2026-10-27T00:16:18.910434+01:00",
+  "actual_resume": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/execution/resume-01/operator-resume.txt",
+  "recorded_GO": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/execution/GO.actual.md",
+  "contract_sha256": "84be154eb074088af75f003cd760b0ccb904061afb46851135e8ad4203f1d214",
+  "pins_sha256": "d72e6b552f7e05e2e5c5657631526b989dea28d2cc3a372919845a1c86ad51db",
+  "current_preservation_pass": true,
+  "technical_holds_cleared": true,
+  "profile_RPCs_before_resume": 0,
+  "run02_asks_before_resume": 0,
+  "run01_consumed": 1,
+  "new_ask_cap": 5,
+  "cumulative_ceiling": 6
+}

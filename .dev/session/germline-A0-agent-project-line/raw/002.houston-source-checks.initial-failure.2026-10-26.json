@@ -1,0 +1,11 @@
+{
+  "check": "whole-file whitespace assertion on AGENTS.md",
+  "observed": "AssertionError: /home/hruzam/ia-sync/AGENTS.md",
+  "source_change_required": false,
+  "cause": "The check included pre-existing Markdown trailing spaces. git diff --check had passed.",
+  "before_state_lines_with_trailing_spaces": [
+    24,
+    25
+  ],
+  "correction": "Check the added AGENTS section and the new addendum, and retain git diff --check for changed tracked lines."
+}

@@ -1,0 +1,17 @@
+{
+  "result": "PASS",
+  "scope": "packet structure and captured prior-file preservation only",
+  "changed_prior_files": [
+    ".dev/session/jev-01-codex-pilot/STATUS.md"
+  ],
+  "old_gavel_sha256": "fbfeab674c39e26d226cb3c6f0cc3f0b69f32fc9c932cf3b4667386934d04ad6",
+  "artifact_sha256": {
+    "raw/design-packet.2026-10-27.md": "2bf8f43a81aa355b5ab643f5777792a6b3382ca65fae8386278eaddeb7eaa41e",
+    "raw/decision-01.engagement.md": "390d9f69146eb0c4ef594d34a366c2d9e37cdbf4e02a6fe1b05117d54ce0e7b8",
+    "raw/oraculum-consult.2026-10-27.md": "6b85eff2d579b124a6281e9a1b35ac09d14d2bfa61677c602a0f90394e56aa5d",
+    "_bus/01.cartan.point.md": "0458127071c08a065c526e4bf67e3f9ee4ed59a051ce84dbad5beb27a3ef0c5a",
+    "_bus/01.verifier.return.md": "5b19eeec2b6dcf2b2fc86e45451c1aab0839427483ee10e1868ce3afebb77f43",
+    "_bus/01.cartan.verdict.md": "98eeba4d524a273b4098490774f9255e50b4f753151a4b93b518852049443cf5"
+  },
+  "implementation_and_runtime_store": "absent"
+}

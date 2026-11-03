@@ -1,0 +1,72 @@
+{
+  "schema": "g09-c1-live-metrics/v1",
+  "cycle": "41",
+  "run_id": "run-02",
+  "dispatch_hold": "A1 HOLD remains active; these IDs are evidence only and must not be operated while held.",
+  "ask_accounting": {
+    "new_completed_asks": 2,
+    "run02_attempts": 2,
+    "run01_consumed_retired": 1,
+    "cumulative_consumed": 3,
+    "cumulative_ceiling": 6
+  },
+  "usage": {
+    "status": "unknown; receipts contain no structured usage fields and ask stderr contains only the effort override notice",
+    "observed_stderr_text": "tunnel-codex.py: turn overrides {\"effort\": \"high\"} sent\n",
+    "input_tokens": null,
+    "output_tokens": null,
+    "total_tokens": null,
+    "last_tokens": null,
+    "modelContextWindow": null,
+    "dollars": null,
+    "not_inferred": true
+  },
+  "timing_seconds": {
+    "source": "actual adapter ask receipts; elapsed_seconds",
+    "R1_actual": 140.453,
+    "A1_actual": 133.655,
+    "earlier_native_checkpoint_estimates": {
+      "R1": 97,
+      "A1": 124,
+      "source": "cycle37 progress messages to Cartan; checkpoint estimates, not receipt measurements"
+    }
+  },
+  "roles": {
+    "researcher": {
+      "threadId": "01a17a86-873c-72b0-8787-932736a0f7d9",
+      "lastTurnId": "01a17a86-87b6-76a3-a848-d93cf4a4d040",
+      "model": "gpt-6.1-sol",
+      "effort": "high",
+      "sandbox": "readOnly",
+      "networkAccess": false,
+      "profile_supports_high": true,
+      "preamble": "/home/hruzam/.germline/tunnel/tunnel.preamble.md"
+    },
+    "auditor": {
+      "threadId": "01a17a89-cc0a-7053-b9b2-e5bdac784fe4",
+      "lastTurnId": "01a17a89-cca1-71c0-8cea-0abe10024bcd",
+      "model": "gpt-6.1-sol",
+      "effort": "high",
+      "sandbox": "readOnly",
+      "networkAccess": false,
+      "profile_supports_high": true,
+      "preamble": "/home/hruzam/.germline/tunnel/tunnel.preamble.md"
+    }
+  },
+  "sources": [
+    {"path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/operations/run02.R1.ask.operation.json", "sha256": "636876aef5d1c3dbb7ec6c53e590d3c0537259f15820130387c00389f5b0468e", "used_for": "R1 attempt, exact elapsed, IDs/runtime, stdout/stderr metadata"},
+    {"path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/operations/run02.A1.ask.operation.json", "sha256": "826aa5032a55568d6af4a914f9c1bf9dc0c4fd1da6952baae5e9d58ca67e1afb", "used_for": "A1 attempt, exact elapsed, IDs/runtime, stdout/stderr metadata"},
+    {"path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/operations/output/run02.R1.ask.stdout.txt", "sha256": "8c7cd77bdb3aee07d838184328ac5e17287e9c451ac54fad4af3718ec4c85050", "used_for": "stdout identity only; body not read"},
+    {"path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/operations/output/run02.R1.ask.stderr.txt", "sha256": "6a0802c591f2ab2223c68b6163eaba6bc51b70276c7f3948c9903741b8b902db", "used_for": "existing usage stderr; only effort override line, no usage data"},
+    {"path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/operations/output/run02.A1.ask.stdout.txt", "sha256": "450ca6246d8efbbe52ba380efb1ebc32e48f579b2297e7ecbe42d20b9c1347d8", "used_for": "stdout identity only; body not read"},
+    {"path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/operations/output/run02.A1.ask.stderr.txt", "sha256": "6a0802c591f2ab2223c68b6163eaba6bc51b70276c7f3948c9903741b8b902db", "used_for": "existing usage stderr; only effort override line, no usage data"},
+    {"path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/operations/run02.researcher.profile.operation.json", "sha256": "c629c3ac2ba1c5624d6bf2d25d38e4c8aed676a11b77acf58f41432ee646bf33", "used_for": "selected model supports high"},
+    {"path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/operations/run02.auditor.profile.operation.json", "sha256": "fde3b67c9eb3f884d7db0b3728a725be69b1145a79c5e1f3648a8cdeb1ec0778", "used_for": "selected model supports high"},
+    {"path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/operations/run02.researcher.bootstrap.operation.json", "sha256": "6639036214a44f7b1eecccd860a44e3efd1cd3b106a5605db6a4d78d9375d6a9", "used_for": "verified exact researcher marker, ACK, thread/turn"},
+    {"path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/operations/run02.auditor.bootstrap.operation.json", "sha256": "71aef110e9d4486fca642141cc44673883010a5c1681db3677ea6fde872676e9", "used_for": "verified exact auditor marker, ACK, thread/turn"},
+    {"path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/operations/run02.R1.preamble.operation.json", "sha256": "6d4b04823cd010ab92ac65b71d678a96322e52b2d8cb5ff362df3eb4305116f9", "used_for": "pinned preamble armed after R1 bootstrap"},
+    {"path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/operations/run02.A1.preamble.operation.json", "sha256": "a0f836f151485a5dd7293829e58528c11d24aa6ed67be3ee39ba74dd10fe8cd2", "used_for": "pinned preamble armed after A1 bootstrap"},
+    {"path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/tunnel.researcher.state.json", "sha256": "6ddd9444e353242c25cb3f7184bfe773f17a98b301a382bc910212425dabf93d", "used_for": "current local researcher selected IDs/runtime/preamble"},
+    {"path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/tunnel.auditor.state.json", "sha256": "a6d55c39842e42c7a54ea457104ffb89578292e33fd2e9a02c2721d9150e9590", "used_for": "current local auditor selected IDs/runtime/preamble"}
+  ]
+}

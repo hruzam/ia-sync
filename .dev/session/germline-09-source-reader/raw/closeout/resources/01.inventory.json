@@ -1,0 +1,28 @@
+{
+  "argv": [
+    "scoped-files-and-known-pid-observation"
+  ],
+  "elapsed_seconds": 0.002,
+  "ended_unix": 1793026153.5065649,
+  "kind": "g09-run-01-resource-retirement",
+  "operation": "01.inventory",
+  "outcome": {
+    "known_r1_runner": {
+      "checker_pid_namespace": "pid:[4026533211]",
+      "pid": 1319728,
+      "present": false
+    },
+    "known_thread": "01a176f7-532b-7722-9324-0ecb92694073",
+    "native_worker": "same requested /root/caretaker; no separately discoverable OS PID asserted",
+    "owned_cleanup_processes_before": [
+      3
+    ],
+    "vaults": [
+      "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/caretaker/tunnel.researcher.state.json"
+    ]
+  },
+  "pid": 3,
+  "pid_namespace": "pid:[4026533211]",
+  "started_unix": 1793026153.5043776,
+  "status": "completed"
+}

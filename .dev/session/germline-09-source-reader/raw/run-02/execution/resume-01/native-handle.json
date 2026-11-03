@@ -1,0 +1,11 @@
+{
+  "observed_at": "2026-10-27T00:24:53.803960+01:00",
+  "caretaker": "/root/g09_run02_caretaker",
+  "availability": "followup37 accepted in current tree",
+  "R1_exec_session": 16798,
+  "R1_state": "running; caretaker polls exact returned session",
+  "run01_attempts": 1,
+  "run02_attempts": 1,
+  "source": "native checkpoint; durable reconciliation follows completion",
+  "limits": "No retained-understanding or cross-root persistence claim."
+}

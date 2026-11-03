@@ -1,0 +1,72 @@
+{
+  "actions_beyond_read_only": [],
+  "app_server_closed": true,
+  "app_server_exit": 1,
+  "current_pid_namespace": "pid:[4026533322]",
+  "preservation": {
+    "allowed_removed": [
+      "raw/caretaker/tunnel.researcher.state.json"
+    ],
+    "manifest_entries": 62,
+    "protected_changed": [],
+    "protected_missing": [],
+    "protected_unchanged_count": 61,
+    "release_authorized": false,
+    "snapshots": {
+      "RUNBOOK.run-01.original.md": {
+        "expected_sha256": "de9ae7cc1fddc54a019c3bfc7ecb6739918112420d7e3c67f8cbbed8aafa4fdf",
+        "present": true,
+        "sha256": "de9ae7cc1fddc54a019c3bfc7ecb6739918112420d7e3c67f8cbbed8aafa4fdf"
+      },
+      "STATUS.run-01.pre-close.md": {
+        "expected_sha256": "bbc0e2dcf14b3a7d74ac02dce553d365a70463e6294f33042be120b187edf200",
+        "present": true,
+        "sha256": "bbc0e2dcf14b3a7d74ac02dce553d365a70463e6294f33042be120b187edf200"
+      },
+      "tunnel.researcher.state.json": {
+        "expected_sha256": "5789ba86f3f79d35fae18fa17a479297ce40c4071cefb93ba81e75226b69e6e9",
+        "present": true,
+        "sha256": "5789ba86f3f79d35fae18fa17a479297ce40c4071cefb93ba81e75226b69e6e9"
+      }
+    },
+    "vault_absent": true,
+    "vault_lock_absent": true
+  },
+  "processes": [
+    {
+      "expected_comm": null,
+      "expected_start_ticks": "296276499",
+      "identity_matches_historical": false,
+      "pid": 1319728,
+      "present": false,
+      "role": "R1-runner"
+    },
+    {
+      "expected_comm": "python3",
+      "expected_start_ticks": "299269158",
+      "identity_matches_historical": false,
+      "pid": 1923120,
+      "present": false,
+      "role": "old-verification-checker"
+    },
+    {
+      "expected_comm": "codex",
+      "expected_start_ticks": "299269177",
+      "identity_matches_historical": false,
+      "pid": 1923121,
+      "present": false,
+      "role": "old-verification-app-server"
+    }
+  ],
+  "r1_metadata": {
+    "allowed_methods": [
+      "initialize",
+      "thread/list",
+      "thread/read"
+    ],
+    "error": "ProtocolError('app-server closed stdout (EOF); stderr tail: WARNING: proceeding, even though we could not create PATH aliases: Read-only file system (os error 30)\\nError: failed to initialize sqlite state runtime under /home/hruzam/.codex: failed to initialize state runtime at /home/hruzam/.codex')"
+  },
+  "recorded_at": "2026-10-26T16:53:02+0100",
+  "schema": "g09-sanitation-cycle07/v1",
+  "scope": "read-only preservation, exact R1 metadata, and receipt-linked PID checks"
+}

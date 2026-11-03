@@ -1,0 +1,13 @@
+{
+  "schema": "g09-concurrent-foreign-pulse-reconciliation/v1",
+  "path": "/home/hruzam/ia-sync/pulse.md",
+  "current_sha256": "2c89ac036bce7a0fa9d7f22afdd721a6294eeb4df1bfee52ec31bbfa654659a2",
+  "original_sha256": "8ba84bfb437c96e4e5cf36d767fff0a1c3e34032d2d0e907af16091aedb873f3",
+  "old_block": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/execution/resume-01/PULSE.old-jev-router.md",
+  "new_block": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/execution/resume-01/PULSE.current-jev-router.md",
+  "old_block_sha256": "f6c9a2e09fe5c5c2ed9adbb28f4fb1851af58f333dca9e6c1616fd3c87264537",
+  "new_block_sha256": "8374c64d2401b2643599040d3ddce40fb6d0eaf77b56ee6817da0356a4aea647",
+  "reconstructed_sha256": "8ba84bfb437c96e4e5cf36d767fff0a1c3e34032d2d0e907af16091aedb873f3",
+  "current_foreign_content_preserved": true,
+  "observed": "Current Jev router transformed only in memory reproduces original G09 pulse baseline; no live pulse write."
+}

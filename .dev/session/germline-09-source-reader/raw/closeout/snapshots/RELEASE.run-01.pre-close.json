@@ -1,0 +1,61 @@
+{
+  "schema": "g09-operator-release/v1",
+  "authorized": true,
+  "operator": "Majkee",
+  "observed_operator_message": "to-cartan from-majkee ---\n\n GO G09 within its fixed RUNBOOK bounds. Start as a fresh execution head on office.\n\n Work in /home/hruzam/ia-sync.\n\n Read:\n 1. /home/hruzam/ia-sync/.dev/session/germline-09-source-reader/RUNBOOK.md\n 2. /home/hruzam/ia-sync/.dev/session/germline-09-source-reader/STATUS.md\n 3. /home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/hold-line/ENTRY.md\n\n Own architecture and STATUS. Delegate tunnel mechanics to the caretaker and implementation to native Astrobley.\n\n I authorize the declared implementation writes, two named Codex consultation lines, and at most five target\n ask attempts: R1/A1/R2/A2 plus conditional A3.\n\n Follow the cold-bootstrap/warm-preamble policy. Preserve unrelated work. No Claude programmatic calls, auth\n changes, activation, deployment, commit/push, destructive recovery or Nablarva reads.\n\n Record this GO, then begin C1. Stop on the recorded holds.",
+  "recorded_by": "Cartan · codex · fresh execution root",
+  "host": "office / hruzam-120922",
+  "main_status_owner": "Cartan",
+  "native_caretaker": {
+    "role": "implementer",
+    "configured_model": "gpt-5.6-terra",
+    "configured_effort": "high"
+  },
+  "native_builder": {
+    "role": "astrobley",
+    "configured_model": "gpt-6.1-sol",
+    "configured_effort": "high"
+  },
+  "target_profile": {
+    "model": "gpt-6.1-sol",
+    "effort": "high",
+    "sandbox": "read-only",
+    "codex_binary": "/home/hruzam/.local/bin/codex"
+  },
+  "planned_target_cycles": [
+    "R1",
+    "A1",
+    "R2",
+    "A2"
+  ],
+  "conditional_target_cycle": "A3 iff I2 changes an audited product file",
+  "maximum_target_ask_attempts": 5,
+  "preflight_attempts_per_role_maximum": 2,
+  "named_vaults": {
+    "researcher": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/caretaker/tunnel.researcher.state.json",
+    "auditor": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/caretaker/tunnel.auditor.state.json"
+  },
+  "enable_authority": "Only a fresh actual operator GO delegates these named open --enable calls to caretaker",
+  "preamble": "/home/hruzam/.germline/tunnel/tunnel.preamble.md",
+  "product_write_scope": [
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/",
+    "Only the new source-reader maintainer-log row in /home/hruzam/ia-sync/zsh/experimental/base.zsh"
+  ],
+  "caretaker_write_scope": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/caretaker/ and its assigned RETURN files",
+  "prohibited": [
+    "uncertain ask retry",
+    "profile substitution",
+    "Claude programmatic calls",
+    "new auth/provider",
+    "input-source edits",
+    "global primitive",
+    "activation",
+    "deployment",
+    "commit/push",
+    "destructive recovery",
+    "Nablarva reads"
+  ],
+  "recorded_at": "2026-10-26T07:38:11+01:00",
+  "operator_message_reference": "Live user message in this fresh execution root on 2026-10-26: to-cartan from-majkee — GO G09",
+  "presence_attachment_id": "924a1acb18117b5aff8cfdf1f1ae60c6"
+}

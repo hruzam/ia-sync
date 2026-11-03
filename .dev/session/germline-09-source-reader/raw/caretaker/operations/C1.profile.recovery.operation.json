@@ -1,0 +1,68 @@
+{
+  "argv": [
+    "/home/hruzam/.local/bin/codex",
+    "app-server",
+    "model/list (zero-turn JSON-RPC)"
+  ],
+  "elapsed_seconds": 0.625,
+  "ended_unix": 1792997189.7063193,
+  "exit": 11,
+  "key": "C1.profile.recovery",
+  "kind": "profile",
+  "outputs": {
+    "stderr": {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/caretaker/operations/output/C1.profile.recovery.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/caretaker/operations/output/C1.profile.recovery.stdout.txt",
+      "sha256": "64d55fa56c400e83ac532aca5ed4b05509ecea87fbf6e3efd12801e36f4f2eb3"
+    }
+  },
+  "profile": {
+    "binary": "/home/hruzam/.local/bin/codex",
+    "selected": [
+      {
+        "defaultReasoningEffort": "low",
+        "id": "gpt-6.1-sol",
+        "model": "gpt-6.1-sol",
+        "supportedReasoningEfforts": [
+          {
+            "description": "Fast responses with lighter reasoning",
+            "reasoningEffort": "low"
+          },
+          {
+            "description": "Balances speed and reasoning depth for everyday tasks",
+            "reasoningEffort": "medium"
+          },
+          {
+            "description": "Greater reasoning depth for complex problems",
+            "reasoningEffort": "high"
+          },
+          {
+            "description": "Extra high reasoning depth for complex problems",
+            "reasoningEffort": "xhigh"
+          },
+          {
+            "description": "Maximum reasoning depth for the hardest problems",
+            "reasoningEffort": "max"
+          },
+          {
+            "description": "Maximum reasoning with automatic task delegation",
+            "reasoningEffort": "ultra"
+          }
+        ]
+      }
+    ],
+    "target_turns": 0,
+    "version": "codex-cli 0.164.0"
+  },
+  "profile_supports_requested": false,
+  "runner": {
+    "pid": 1317693,
+    "start": "296267199"
+  },
+  "schema": "g09-receipt/v1",
+  "started_unix": 1792997189.0808654,
+  "status": "failed"
+}

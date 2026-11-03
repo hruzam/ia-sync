@@ -1,0 +1,9 @@
+{
+  "schema": "g09-hold/v1",
+  "run_id": "run-02",
+  "holds": [
+    "C1-stopped-release-provenance-mismatch;unfrozen-field-correction-prepared-awaiting-operator-resume",
+    "new-concurrent-journal-pulse-drift-after-C1;current-preservation-refresh-required"
+  ],
+  "note": "Operator instructed stop on holds. No live retry or further target effect; actual GO retained. Caretaker stopped before RPC/receipt reservation."
+}

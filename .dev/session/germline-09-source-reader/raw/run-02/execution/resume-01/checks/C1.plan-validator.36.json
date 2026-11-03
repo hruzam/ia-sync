@@ -1,0 +1,36 @@
+{
+  "schema": "g09-run02-c1-pure-validation-evidence/v1",
+  "cycle": "36",
+  "command": {
+    "cwd": "/home/hruzam/ia-sync",
+    "actual": "python3 -B .dev/session/germline-09-source-reader/raw/run-02/execution/resume-01/checks/validate_c1_plan.py",
+    "absolute_reproduction": "/usr/bin/python3 -B /home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/execution/resume-01/checks/validate_c1_plan.py"
+  },
+  "result": "pass",
+  "subprocess_blocked": true,
+  "target_model_turns": 0,
+  "hashes": {
+    "validator": "c9da07a32ac041436f819dcbfa7ca1976796a46fe28bf64f7b7206655f55eb71",
+    "adapter": "bfa6a3fc7c09591881575c87fb8ad5bde066188cc42f814028dbeffff4d77b50",
+    "contract": "84be154eb074088af75f003cd760b0ccb904061afb46851135e8ad4203f1d214",
+    "pins": "d72e6b552f7e05e2e5c5657631526b989dea28d2cc3a372919845a1c86ad51db",
+    "plan": "d60bc70f1f31a6a6d4769050370e27eede2276c9fff4ea7e9ef345fc4d1a3fba"
+  },
+  "validated": {
+    "R1": {
+      "compiled_sha256": "a55cebb382da72e5daabeeb3ea62c5ac81f590609c82e6391ccb2df38832ee07",
+      "template_sha256": "a55cebb382da72e5daabeeb3ea62c5ac81f590609c82e6391ccb2df38832ee07",
+      "named_inputs": 0
+    },
+    "A1": {
+      "compiled_sha256": "abcc807c22bf767fc60e3dfcdaf4a0e00d417e150f5da12ba4e69186ee32b589",
+      "template_sha256": "e710655d75eb3026f788197527f33ce1633fbe90ba80729fd0eb001f468a8700",
+      "named_inputs": 5
+    }
+  },
+  "resource_observation": {
+    "operation_receipts": 0,
+    "vault_state_files": 0
+  },
+  "limit": "The validator calls only adapter.contract, rounds, verify_pins, sha, load, and current_packet; subprocess.run and subprocess.Popen are replaced with raising sentinels."
+}

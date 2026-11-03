@@ -1,0 +1,34 @@
+{
+  "captured_at": "2026-10-30T16:56:13.457063+01:00",
+  "head": "d4b07455a9b7882feee49c99eefcc524d14075aa",
+  "purpose": "Next-role session preparation only; existing deployable sources and sibling task state stay unchanged",
+  "sources": {
+    "codex/agents/harness_builder.toml": "adddc6c2609231165c9e9a023e4867bbdc697782ac3ef15a522b369e510da0fc",
+    "codex/agents/researcher.toml": "b25ca97fd1c7484635277fe96e4b57f7dc4218a63e767be678f981eb62c16dd8",
+    "codex/agents/implementer.toml": "bb431c1c0bc5fda7e385c62a2e371df39c75155a9e21f476b6ed5c3fdd2792c7",
+    "codex/agents/astrobley.toml": "c49f7d32465d324ac478668b1ba63a88df2f383fafb9b639cd88c37ce4474467",
+    "codex/agents/verifier.toml": "7d3294ad8c6d0f572170f22229248767f197a7ce084e7ec90f1729cd1e3b0d30",
+    "claude/agents/atlas-ui.md": "8b406c6e8eb8372eaad785c4408d7f347cec441b899bc08eb685fe0f8098f148",
+    "claude/agents/atlas-auto.md": "00ade513da419d4f9c4a42c48589cefc1e485a480dfa3d4931ee1da720e2c543",
+    "claude/agents/flight.md": "9042459ddf03f9acf9fd8ac06f2774a084a133ac97878a80f86511c5f9b84426",
+    "claude/agents/epoch.md": "8178b64c41fdfbc5540c90977642e8799164698ed1d611ea94b80de3b8d70780",
+    "codex/skills/codex-harness/SKILL.md": "9ffc84515873e5be202ad6f5ab3a06c50a0c265759a809dbddefe0fa0eb66e12",
+    "codex/skills/medusa/SKILL.md": "b1f6604b1bdfd2226a6eaebda4ed6dffd2f921dd0f959eed9ed36270cb686cc2",
+    "codex/skills/reposoma-surgical-coding/SKILL.md": "bec8fd38bc673e2fd95c57123a30feb8612092176efad20e264804649f57b677",
+    "germline/README.md": "0b2aabb66223a34f10697d1dad7ea9a6b01d8be5a537580e66db46d2cecce4fe",
+    ".dev/session/tunnel-02-programmatic-scaling/raw/atlas-ui/README.md": "4376ddb6821595dcdcd6b09070ccb370dd316eb120c4de5dc00eb7903dfc9833",
+    ".dev/session/tunnel-02-programmatic-scaling/raw/atlas-ui/germline/agents/shuttle/identity.md": "58704087ccae1e1d180f81eb109e2ab8ce7a00b852ab2ce601675365801448f5",
+    ".dev/session/tunnel-02-programmatic-scaling/raw/atlas-ui/render/claude/shuttle.md": "e3565c0069e45e2b68b0d181fb77ee8d1a1c4d43983c0b3d297439e4da0adba4",
+    ".dev/session/germline-A1-vi-agents/raw/RESULT.office.md": "1c5f710f415d646a3acd70091cfe84598ebb1784317e09389a089e6c290805c8",
+    ".dev/session/germline-A2-nabla-lab/raw/CLOSE.office.2026-10-29.md": "dc83a9133a3e4e8a2c97645722c77d119d44fd873909401c97d2782a9f782022",
+    ".dev/session/germline-A3-guide-to-controller/STATUS.md": "6eb30d0de8c5c5005d7f62fa4d44265c3a4cfd51241b427fe8221deed8e563c8",
+    ".dev/session/germline-A4-reader-shapes/STATUS.md": "e202e0c46cdba2cbea52db4ec6b3e2a9871d3e606c01fa30eb1e8956ecaaab8d",
+    ".dev/session/germline-A5-reader-navigation/STATUS.md": "383da4404a4c7a9cb0f0327f7b5039b2ee4fa4e36f4ae8cc1a8e691d7a5eb6b0"
+  },
+  "observations_directory": ".dev/observations absent at preparation; no predecessor observation files available there",
+  "external_experience_pointer": {
+    "path": "/home/hruzam/reposoma/raw.guides/germline-forge/raw/observations.atlas-ui.2026-10-07.md",
+    "sha256": "c6928cf0f9fa8da2020c0e54e4151bab65c58ffc151971b36883cdc824cb26c0",
+    "read_depth": "existence/hash only; body not reviewed"
+  }
+}

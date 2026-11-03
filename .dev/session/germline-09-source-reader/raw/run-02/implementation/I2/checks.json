@@ -1,0 +1,165 @@
+[
+  {
+    "name": "syntax-source-reader.py",
+    "passed": true,
+    "in_process": "ast.parse(Path.read_text(), filename=path)",
+    "path": "/home/hruzam/ia-sync/zsh/experimental/source-reader/source-reader.py"
+  },
+  {
+    "name": "syntax-test_source_reader.py",
+    "passed": true,
+    "in_process": "ast.parse(Path.read_text(), filename=path)",
+    "path": "/home/hruzam/ia-sync/zsh/experimental/source-reader/test_source_reader.py"
+  },
+  {
+    "name": "syntax-runner",
+    "argv": [
+      "zsh",
+      "-n",
+      "/home/hruzam/ia-sync/zsh/experimental/source-reader/runner.zsh"
+    ],
+    "exit_code": 0,
+    "passed": true,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "fixture-catalog-json",
+    "argv": [
+      "zsh",
+      "-f",
+      "/home/hruzam/ia-sync/zsh/experimental/source-reader/runner.zsh",
+      "--roots",
+      "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/roots.json",
+      "catalog",
+      "--json"
+    ],
+    "exit_code": 0,
+    "passed": true,
+    "stdout_sha256": "5ecf59a60c0cce5e3676c5ee79e76cbf1bcd4d55cab415a8fefb8c117b4f1a2a",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "unchanged_I1_catalog_metadata": true
+  },
+  {
+    "name": "fixture-terminal-catalog",
+    "argv": [
+      "zsh",
+      "-f",
+      "/home/hruzam/ia-sync/zsh/experimental/source-reader/runner.zsh",
+      "--roots",
+      "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/roots.json",
+      "catalog"
+    ],
+    "exit_code": 0,
+    "passed": true,
+    "stdout_sha256": "22fe6e9fb4adade5abe9186dc90c8c831d3f009cfa506f9ff1a4489cf5ea1a35",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "linked_label": "44dbb62960f58a966849c47e4b37c1dae3c1fb0ac3c73a09c4b265f29b7b6333\tskill/native SKILL.md\tcodex\tauthored\t/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/codex/linked/SKILL.md \u2192 /home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/claude/guide/SKILL.md"
+  },
+  {
+    "name": "fixture-terminal-browse",
+    "argv": [
+      "zsh",
+      "-f",
+      "/home/hruzam/ia-sync/zsh/experimental/source-reader/runner.zsh",
+      "--roots",
+      "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/roots.json",
+      "browse",
+      "--plain"
+    ],
+    "exit_code": 0,
+    "passed": true,
+    "stdout_sha256": "22fe6e9fb4adade5abe9186dc90c8c831d3f009cfa506f9ff1a4489cf5ea1a35",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "linked_label": "44dbb62960f58a966849c47e4b37c1dae3c1fb0ac3c73a09c4b265f29b7b6333\tskill/native SKILL.md\tcodex\tauthored\t/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/codex/linked/SKILL.md \u2192 /home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/claude/guide/SKILL.md"
+  },
+  {
+    "name": "fixture-linked-show-path",
+    "argv": [
+      "zsh",
+      "-f",
+      "/home/hruzam/ia-sync/zsh/experimental/source-reader/runner.zsh",
+      "--roots",
+      "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/roots.json",
+      "show",
+      "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/codex/linked/SKILL.md"
+    ],
+    "exit_code": 0,
+    "passed": true,
+    "stdout_sha256": "964479129ca76d58793408455f2a51ae97d6b0889cfd281b98ab031bb241bcce",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "exact_selected_bytes": true
+  },
+  {
+    "name": "fixture-linked-show-id",
+    "argv": [
+      "zsh",
+      "-f",
+      "/home/hruzam/ia-sync/zsh/experimental/source-reader/runner.zsh",
+      "--roots",
+      "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/roots.json",
+      "show",
+      "44dbb62960f58a966849c47e4b37c1dae3c1fb0ac3c73a09c4b265f29b7b6333"
+    ],
+    "exit_code": 0,
+    "passed": true,
+    "stdout_sha256": "964479129ca76d58793408455f2a51ae97d6b0889cfd281b98ab031bb241bcce",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "exact_selected_bytes": true
+  },
+  {
+    "name": "dispatcher-help",
+    "argv": [
+      "zsh",
+      "-f",
+      "-c",
+      "_EXPERIMENTAL_ROOT=/home/hruzam/ia-sync/zsh/experimental; source /home/hruzam/ia-sync/zsh/experimental/dispatcher.zsh; _exp_run source-reader --help"
+    ],
+    "exit_code": 0,
+    "passed": true,
+    "stdout_sha256": "9a9d484ac31f9c2e355861d38fb20740eeb7263170a15a3413930bd091ed1510",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "builder_only_P7_evidence": true
+  },
+  {
+    "name": "dispatcher-catalog",
+    "argv": [
+      "zsh",
+      "-f",
+      "-c",
+      "_EXPERIMENTAL_ROOT=/home/hruzam/ia-sync/zsh/experimental; source /home/hruzam/ia-sync/zsh/experimental/dispatcher.zsh; _exp_run source-reader --roots /home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/roots.json catalog"
+    ],
+    "exit_code": 0,
+    "passed": true,
+    "stdout_sha256": "22fe6e9fb4adade5abe9186dc90c8c831d3f009cfa506f9ff1a4489cf5ea1a35",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "builder_only_P7_evidence": true
+  },
+  {
+    "name": "dispatcher-show",
+    "argv": [
+      "zsh",
+      "-f",
+      "-c",
+      "_EXPERIMENTAL_ROOT=/home/hruzam/ia-sync/zsh/experimental; source /home/hruzam/ia-sync/zsh/experimental/dispatcher.zsh; _exp_run source-reader --roots /home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/roots.json show /home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/codex/linked/SKILL.md"
+    ],
+    "exit_code": 0,
+    "passed": true,
+    "stdout_sha256": "964479129ca76d58793408455f2a51ae97d6b0889cfd281b98ab031bb241bcce",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "builder_only_P7_evidence": true
+  },
+  {
+    "name": "I1-snapshots-and22-unchanged-product-files",
+    "passed": true,
+    "snapshots": 24,
+    "changed_files": 2,
+    "base_unchanged": true,
+    "fixture_files_unchanged": 19
+  },
+  {
+    "name": "I1-evidence-byte-preservation",
+    "passed": true,
+    "files": 81
+  }
+]

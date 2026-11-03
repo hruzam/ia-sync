@@ -1,0 +1,33 @@
+{
+  "argv": [
+    "app-server",
+    "thread/read",
+    "01a176f7-532b-7722-9324-0ecb92694073",
+    "includeTurns=true"
+  ],
+  "elapsed_seconds": 0.763,
+  "ended_unix": 1793027111.0412495,
+  "kind": "g09-run-01-resource-retirement",
+  "operation": "02.read-before-archive",
+  "outcome": {
+    "response_sha256": "25234c37c752a0bffeb2b17abb7a6cf28bd02f9320c3f550300623aef6b9540c",
+    "target_model_turns": 0,
+    "thread": {
+      "cwd": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader",
+      "id": "01a176f7-532b-7722-9324-0ecb92694073",
+      "status": {
+        "type": "notLoaded"
+      },
+      "turns": [
+        {
+          "id": "01a176f7-53a6-7b83-b203-b86b08ec15ac",
+          "status": "interrupted"
+        }
+      ]
+    }
+  },
+  "pid": 1920999,
+  "pid_namespace": "pid:[4026531836]",
+  "started_unix": 1793027110.278271,
+  "status": "completed"
+}

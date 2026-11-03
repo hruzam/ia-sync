@@ -1,0 +1,10 @@
+test_terminal_labels_show_resolved_target (__main__.ReaderAcceptance.test_terminal_labels_show_resolved_target) ... ok
+test_catalog_metadata_not_bodies (__main__.ReaderAcceptance.test_catalog_metadata_not_bodies) ... ok
+test_duplicates_ids_paths_and_bytes (__main__.ReaderAcceptance.test_duplicates_ids_paths_and_bytes) ... ok
+test_noninteractive_browse_plain_and_roots_option (__main__.ReaderAcceptance.test_noninteractive_browse_plain_and_roots_option) ... ok
+test_plain_terminal_selection_keeps_stdout_exact (__main__.ReaderAcceptance.test_plain_terminal_selection_keeps_stdout_exact) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 1.386s
+
+OK

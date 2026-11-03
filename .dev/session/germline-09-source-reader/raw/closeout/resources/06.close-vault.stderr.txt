@@ -1,0 +1,1 @@
+close: tunnel.state.json removed — Law 2.4 re-arms; next 'open' requires --enable again

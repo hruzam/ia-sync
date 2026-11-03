@@ -1,0 +1,61 @@
+{
+  "acknowledgement": {
+    "role": "auditor",
+    "run_id": "run-02",
+    "scope": "G09-source-reader-read-only",
+    "sources": [
+      "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/briefs/auditor.md",
+      "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/ACCEPTANCE.md",
+      "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/input/SOURCE-MAP.md"
+    ]
+  },
+  "cycle": "A1",
+  "elapsed_seconds": 0.0,
+  "ended_monotonic": 3022851.169298331,
+  "ended_unix": 1793057368.0288548,
+  "evidence": {
+    "ask_receipt": {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/operations/run02.A1.ask.operation.json",
+      "sha256": "826aa5032a55568d6af4a914f9c1bf9dc0c4fd1da6952baae5e9d58ca67e1afb"
+    },
+    "read_receipt": {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/operations/run02.A1.read.operation.json",
+      "sha256": "e452cd61850d0e73342db285722331d1d1b7bb360a7ddbeaa52e2bd4388f3458"
+    },
+    "read_stdout": {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/operations/output/run02.A1.read.stdout.txt",
+      "sha256": "e833cd19c504fef9ef5b0fb60f8541fff9928749cb68901a61c890f3525c41c9"
+    }
+  },
+  "exit": 0,
+  "key": "run02.auditor.bootstrap",
+  "kind": "bootstrap",
+  "marker": "G09.run-02.A1",
+  "outputs": {
+    "stderr": {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/operations/output/run02.auditor.bootstrap.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/operations/output/run02.auditor.bootstrap.stdout.txt",
+      "sha256": "3ea28c66f7b35e89f3c85b11a9442b9f136e7f123b917c5e57bd9e5ff4b3075a"
+    }
+  },
+  "pins": {
+    "pins": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/hold-line/sources.json",
+    "sha256": "d72e6b552f7e05e2e5c5657631526b989dea28d2cc3a372919845a1c86ad51db"
+  },
+  "remote_outcome": "readback-validated",
+  "role": "auditor",
+  "runner": {
+    "pid": 2,
+    "start": "302285095"
+  },
+  "schema": "g09-run02-bootstrap/v1",
+  "started_monotonic": 3022851.168918769,
+  "started_unix": 1793057368.0284746,
+  "status": "completed",
+  "threadId": "01a17a89-cc0a-7053-b9b2-e5bdac784fe4",
+  "turnId": "01a17a89-cca1-71c0-8cea-0abe10024bcd",
+  "verified": true
+}

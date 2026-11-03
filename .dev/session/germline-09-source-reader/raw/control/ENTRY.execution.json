@@ -1,0 +1,63 @@
+{
+  "recorded_at": "2026-10-26T07:38:11+01:00",
+  "host_fingerprints": {
+    "hostname": "hruzam-120922",
+    "php74": true,
+    "valet": "/home/hruzam/.config/composer/vendor/bin/valet",
+    "ram_host": "office"
+  },
+  "git_status": [
+    " M .dev/session/germline-03-foundation-audit/STATUS.md",
+    " M .dev/session/germline-03-foundation-audit/raw/CRITERION.cartan.g03-first-split-01.md",
+    " M .dev/session/germline-03-foundation-audit/raw/MANIFEST.cartan.g03-first-split-01.md",
+    " M .dev/session/germline-04-wiring-plan/RUNBOOK.md",
+    " M .dev/session/germline-04-wiring-plan/STATUS.md",
+    " M .dev/session/germline-04-wiring-plan/raw/HANDOFF.g06-make-program.md",
+    " M journal.host-cleanup.md",
+    " M pulse.md",
+    " M zsh/config.office.zsh",
+    "?? .dev/session/germline-03-foundation-audit/_bus/",
+    "?? .dev/session/germline-03-foundation-audit/raw/HANDOFF.cartan.g03-g06-exit-context.2026-10-22.md",
+    "?? .dev/session/germline-03-foundation-audit/raw/HANDOFF.oraculum.x1-carried-items.2026-10-23.md",
+    "?? .dev/session/germline-03-foundation-audit/raw/HANDOFF.oraculum.x3-sitting-card.2026-10-23.md",
+    "?? .dev/session/germline-03-foundation-audit/raw/OBS.myShell.atlas-review-scope.2026-10-22.md",
+    "?? .dev/session/germline-03-foundation-audit/raw/UNDERSTANDING.cartan.tunnel-access.before-fold.2026-10-23.md",
+    "?? .dev/session/germline-04-wiring-plan/raw/CLOSE.g04-preparation.2026-10-20.md",
+    "?? .dev/session/germline-07-make-program/RUNBOOK.md",
+    "?? .dev/session/germline-07-make-program/STATUS.md",
+    "?? .dev/session/germline-07-make-program/_bus/",
+    "?? .dev/session/germline-07-make-program/raw/experiment_1/",
+    "?? .dev/session/germline-08-caretaker-receipts/",
+    "?? .dev/session/germline-09-source-reader/",
+    "?? _staging/codex/cartan.candidate.source-reader-pilot.2026-10-26.md"
+  ],
+  "foreign_modified_file_sha256": {
+    ".dev/session/germline-03-foundation-audit/STATUS.md": "4a07fae71ea1f91f0c34a61eac46bdc3969d07b83d07a1f6cbe23020ae41957d",
+    ".dev/session/germline-03-foundation-audit/raw/CRITERION.cartan.g03-first-split-01.md": "654fe773b8d8e39221bf4c36fea0cb40749c03c3004a0a6d40334977af103253",
+    ".dev/session/germline-03-foundation-audit/raw/MANIFEST.cartan.g03-first-split-01.md": "7c3b4aaf3c044dd11d0f42e23a6261521b833f617fb3ab8eee0d3641ee7a6ef7",
+    ".dev/session/germline-04-wiring-plan/RUNBOOK.md": "46a82681265f14f1a2aeb7f8bea62d7af44a498d03c305c9bab832bd4ea39fcf",
+    ".dev/session/germline-04-wiring-plan/STATUS.md": "a9690769a346b9dea3ccc4c3eed676fe3085536d66c2676725c9216db7de0ae4",
+    ".dev/session/germline-04-wiring-plan/raw/HANDOFF.g06-make-program.md": "9a9b5d8c104cd5b81a0259aaf1a5178d12de71f8838e5daac54724d5122453c8",
+    "journal.host-cleanup.md": "db9148eba1574c7a9b7f6bfd0eefb5009afa6f8f7b295031b2649f3046a232f5",
+    "pulse.md": "8ba84bfb437c96e4e5cf36d767fff0a1c3e34032d2d0e907af16091aedb873f3",
+    "zsh/config.office.zsh": "2831771aa007ccd673d995a9164d8821a78b147f163ce258ee8bf07987921275"
+  },
+  "presence_attachment_id": "924a1acb18117b5aff8cfdf1f1ae60c6",
+  "initial_packet_static_words": 707,
+  "main_routine_tunnel_operations": 0,
+  "native_handles": {
+    "caretaker": {
+      "handle": "/root/caretaker",
+      "role": "implementer",
+      "created_for": "C1",
+      "continuation": "same native handle for C2 and conditional C3"
+    }
+  },
+  "baseline_notes": [
+    "Office inbox empty.",
+    "Multihost marker absent; last 20 commits have no MACHINE<>MACHINE prompt. No pull/push or marker write.",
+    "Known dirt is acknowledged by user handoff and preserved.",
+    "Shared guide and skill reads are baseline/task overhead separate from 707-word initial packet.",
+    "No Nablarva files read; presence board contains remote project pointers only."
+  ]
+}

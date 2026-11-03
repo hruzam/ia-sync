@@ -1,0 +1,14 @@
+{
+  "captured_at": "2026-10-29T14:37:43.034164+01:00",
+  "purpose": "A0 task-line intake only; source/candidate/live trials remain with A3",
+  "preserved": {
+    ".dev/session/germline-A1-vi-agents/raw/HOUSTON.documentation-discovery.2026-10-29.md": "61ddef5a84e3d1b932afd3ecd0480d62217e40ba37adfb7f38885437a14a4ecc",
+    ".dev/session/germline-A3-guide-to-controller/RUNBOOK.md": "b4c72b995f34952bcf6d56484e5436aa50b927304471ff5ac53abc523dc86a0c",
+    ".dev/session/germline-A3-guide-to-controller/STATUS.md": "e50044adaf0e9006805b84ed77d0b9d30de6ba6ef91871cce919bcbbea3a6204",
+    ".dev/session/germline-A3-guide-to-controller/CHECKLIST.md": "6f5570e1d0cbd6355eacda640b13719d2e9f7f3e20a09eadac58ae711990c44e",
+    ".germline/agents/houston/ia-sync.md": "24b32d910b39227e4cb3bb9ebdf49bdc6c676d19494d236e74d8b6cfd0ad1483",
+    "germline/agents/houston/identity.md": "d7c8837a0a6fdbece78f0500107deb684b36ec0135bd7a0e6462158ef7be94e6",
+    "germline/agents/houston/binding.codex.md": "f171589645e42d93fac515e70240296f54d7d9fe6c4a390e273489ebd1491915",
+    ".dev/session/germline-A2-nabla-lab/STATUS.md": "43a78358ca82ff7a9ecf7f3fcf610eeb3fd66ba984bb3c825cf43bd4504a0228"
+  }
+}

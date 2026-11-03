@@ -1,0 +1,27 @@
+{
+  "argv": [
+    "/home/hruzam/.local/bin/codex",
+    "archive",
+    "01a176f7-532b-7722-9324-0ecb92694073"
+  ],
+  "elapsed_seconds": 0.334,
+  "ended_unix": 1793027126.8926754,
+  "kind": "g09-run-01-resource-retirement",
+  "operation": "03.archive-R1",
+  "outcome": {
+    "exit": 0,
+    "stderr": {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/closeout/resources/03.archive-R1.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "stdout": {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/closeout/resources/03.archive-R1.stdout.txt",
+      "sha256": "1d9cf764c24fe2a6cd865631bda50547270b9cc9f4657ab2182f7711966683e2"
+    },
+    "supported_operation": "codex archive"
+  },
+  "pid": 1921407,
+  "pid_namespace": "pid:[4026531836]",
+  "started_unix": 1793027126.5589025,
+  "status": "completed"
+}

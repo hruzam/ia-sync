@@ -1,0 +1,174 @@
+{
+  "historical_C1_sha256": {
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/operations/output/run02.A1.ask.stderr.txt": "6a0802c591f2ab2223c68b6163eaba6bc51b70276c7f3948c9903741b8b902db",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/operations/output/run02.A1.ask.stdout.txt": "450ca6246d8efbbe52ba380efb1ebc32e48f579b2297e7ecbe42d20b9c1347d8",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/operations/output/run02.A1.open.stderr.txt": "d04cf6339cdca333d8f11439e6b68cd7786f272040fc1edc81001b6c6256434b",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/operations/output/run02.A1.open.stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/operations/output/run02.A1.preamble.stderr.txt": "497209c841b4204e9042c4355503a378706d3d7b6b5476ed39588a46ffc4f476",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/operations/output/run02.A1.preamble.stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/operations/output/run02.A1.read.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/operations/output/run02.A1.read.stdout.txt": "e833cd19c504fef9ef5b0fb60f8541fff9928749cb68901a61c890f3525c41c9",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/operations/output/run02.A1.resume.stderr.txt": "4a2cc143f079861f02caad866802134b5dc92d0b7775cec5ff4ac800a7123aba",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/operations/output/run02.A1.resume.stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/operations/output/run02.R1.ask.stderr.txt": "6a0802c591f2ab2223c68b6163eaba6bc51b70276c7f3948c9903741b8b902db",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/operations/output/run02.R1.ask.stdout.txt": "8c7cd77bdb3aee07d838184328ac5e17287e9c451ac54fad4af3718ec4c85050",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/operations/output/run02.R1.open.stderr.txt": "d04cf6339cdca333d8f11439e6b68cd7786f272040fc1edc81001b6c6256434b",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/operations/output/run02.R1.open.stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/operations/output/run02.R1.preamble.stderr.txt": "44abccbba6aa1971d3d57457a5e8be88056a258a684c53d53fc24677aaaaee22",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/operations/output/run02.R1.preamble.stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/operations/output/run02.R1.read.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/operations/output/run02.R1.read.stdout.txt": "0b4c31531c1bbeaa6e1073e3df2362a7ef9632fac876f5d55a46c9aa1e8d1780",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/operations/output/run02.R1.resume.stderr.txt": "8529750f69745b066d39cd75f0e1f771f691047751db4dc06ec6df23b6a0bd14",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/operations/output/run02.R1.resume.stdout.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/operations/output/run02.auditor.bootstrap.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/operations/output/run02.auditor.bootstrap.stdout.txt": "3ea28c66f7b35e89f3c85b11a9442b9f136e7f123b917c5e57bd9e5ff4b3075a",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/operations/output/run02.auditor.profile.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/operations/output/run02.auditor.profile.stdout.txt": "6b9e14369e35ac588118e54719d2ebccda5e32ae3091ae2f026d74b0e0c6a71a",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/operations/output/run02.researcher.bootstrap.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/operations/output/run02.researcher.bootstrap.stdout.txt": "1bd80c73cf77cef28545a1cf7f9d0ef91e3d42e44fc2796e0fc0b2d9ce1766cd",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/operations/output/run02.researcher.profile.stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/operations/output/run02.researcher.profile.stdout.txt": "6b9e14369e35ac588118e54719d2ebccda5e32ae3091ae2f026d74b0e0c6a71a",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/operations/run02.A1.ask.operation.json": "826aa5032a55568d6af4a914f9c1bf9dc0c4fd1da6952baae5e9d58ca67e1afb",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/operations/run02.A1.open.operation.json": "7f292eb6f16792bc5650030401af89c2d2c3ece9c55fad6bf33dcee41546ba46",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/operations/run02.A1.preamble.operation.json": "a0f836f151485a5dd7293829e58528c11d24aa6ed67be3ee39ba74dd10fe8cd2",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/operations/run02.A1.read.operation.json": "e452cd61850d0e73342db285722331d1d1b7bb360a7ddbeaa52e2bd4388f3458",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/operations/run02.A1.resume.operation.json": "e34a695a22ed76d8a7fd43581046716af51d3ceedf1bb6397caa2e37da1548ca",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/operations/run02.R1.ask.operation.json": "636876aef5d1c3dbb7ec6c53e590d3c0537259f15820130387c00389f5b0468e",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/operations/run02.R1.open.operation.json": "9a292c392628e8e2444cc2a7e2f67b2580d722a5f7b2f0f54564d275c0e35f6b",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/operations/run02.R1.preamble.operation.json": "6d4b04823cd010ab92ac65b71d678a96322e52b2d8cb5ff362df3eb4305116f9",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/operations/run02.R1.read.operation.json": "274656a9990ab898579812ed5103b4b43b18acca2b4ea45a29b7f7c007585e5c",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/operations/run02.R1.resume.operation.json": "35fd6b7bba151eac7056876e5bf73612b9aa96a8c2b3fe3cda61d25f6a63afc6",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/operations/run02.auditor.bootstrap.operation.json": "71aef110e9d4486fca642141cc44673883010a5c1681db3677ea6fde872676e9",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/operations/run02.auditor.profile.operation.json": "fde3b67c9eb3f884d7db0b3728a725be69b1145a79c5e1f3648a8cdeb1ec0778",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/operations/run02.researcher.bootstrap.operation.json": "6639036214a44f7b1eecccd860a44e3efd1cd3b106a5605db6a4d78d9375d6a9",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/operations/run02.researcher.profile.operation.json": "c629c3ac2ba1c5624d6bf2d25d38e4c8aed676a11b77acf58f41432ee646bf33",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/packets/A1.prompt.txt": "abcc807c22bf767fc60e3dfcdaf4a0e00d417e150f5da12ba4e69186ee32b589",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/packets/R1.prompt.txt": "a55cebb382da72e5daabeeb3ea62c5ac81f590609c82e6391ccb2df38832ee07",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/plan.C1.json": "d60bc70f1f31a6a6d4769050370e27eede2276c9fff4ea7e9ef345fc4d1a3fba",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/packets/A1.md": "e710655d75eb3026f788197527f33ce1633fbe90ba80729fd0eb001f468a8700",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/packets/R1.md": "a55cebb382da72e5daabeeb3ea62c5ac81f590609c82e6391ccb2df38832ee07"
+  },
+  "inputs": [
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/control/DECISION.01.md",
+      "sha256": "9e08d5e3fd1dab9e58d48d2567517f7636a7141db964340406feab62b1e52f71"
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/control/CONTRACT.01.json",
+      "sha256": "f0db2059aaa288ec0b54c10ca39eca6a28574a93319f7bb07a94fcf9881e506e"
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I1/MANIFEST.json",
+      "sha256": "12b1f1c452518af6533eea2999979ce7a3645fdfcc52fbcd5f91853ad6cb3f85"
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I1/manifest.json",
+      "sha256": "12b1f1c452518af6533eea2999979ce7a3645fdfcc52fbcd5f91853ad6cb3f85"
+    },
+    {
+      "path": "/home/hruzam/ia-sync/zsh/experimental/base.zsh",
+      "sha256": "724fdaa044862a56b5775c9f7b07857d1b452b2fb0bb6c1068ea5480f792e6ee"
+    },
+    {
+      "path": "/home/hruzam/ia-sync/zsh/experimental/source-reader/README.md",
+      "sha256": "052e62017d3977dfc126ce4a6e4128f4073308c55f53468849de3dc43f8e45a3"
+    },
+    {
+      "path": "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/claude/guide/SKILL.md",
+      "sha256": "964479129ca76d58793408455f2a51ae97d6b0889cfd281b98ab031bb241bcce"
+    },
+    {
+      "path": "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/codex/canary/SKILL.md",
+      "sha256": "09e32b4c560fffe50e97f91cc284cda6826e9c2d64db24e8089e285e512a4871"
+    },
+    {
+      "path": "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/codex/deep/hidden/SKILL.md",
+      "sha256": "a4f90108cce7592f76c336371e1cd2b9c911227159d469e97b6a4f503eb33072"
+    },
+    {
+      "path": "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/codex/guide/SKILL.md",
+      "sha256": "e71c5aee9b1142abbcc737f110c57ecac5255f2dff2fa13bcbc94b3edc007238"
+    },
+    {
+      "path": "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/codex/linked/SKILL.md",
+      "sha256": "964479129ca76d58793408455f2a51ae97d6b0889cfd281b98ab031bb241bcce"
+    },
+    {
+      "path": "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/empty/.keep",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/germline/agents/example/binding.codex.md",
+      "sha256": "f74b2b0b4c921ea1c778900cf90a2c8fcd04d6c1ec1f9b6ff185592ecbae1fcd"
+    },
+    {
+      "path": "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/germline/agents/example/cards/consult.md",
+      "sha256": "5843675940637349ccfacfb213396e6379a5d40a0651293ffd0a057eec55483e"
+    },
+    {
+      "path": "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/germline/agents/example/identity.md",
+      "sha256": "9fadcbeb4791d145db4f765fc2bc9aed22097d3e16accc94bc0c28e63a35fe28"
+    },
+    {
+      "path": "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/germline/agents/example/methods/observe.md",
+      "sha256": "eb54d12b78bf903baf2c1621ffb6debb583c5728957c2c218a550197e8c1ad4b"
+    },
+    {
+      "path": "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/germline/skills/skill.example.md",
+      "sha256": "05b6b224c3b6879975df91a160556adbecc5f22cfdccb742b7b47bc37e640af3"
+    },
+    {
+      "path": "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/germline/tunnel/NEVER.md",
+      "sha256": "1644d96128330e7735c6648d6042c4ccbda88b9be54f365ec68f3c5ffbf71436"
+    },
+    {
+      "path": "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/guides/topic/GUIDE.md",
+      "sha256": "303e43e626676393ad6e7428b1057d3bf102d546f7e80dfc9eb847316641f857"
+    },
+    {
+      "path": "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/guides/topic/raw/side.md",
+      "sha256": "1e08e5888a4b5e2b08243ce71f7db1adc35702ad14c0b147ef264a69d268d56c"
+    },
+    {
+      "path": "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/guides/topic/res/fanout-turns.md",
+      "sha256": "d21caf3b2618f2c8908858b4a8321666c659a7c7d7141e12f80ce043f4b00396"
+    },
+    {
+      "path": "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/guides/topic/res/turns-recovery.md",
+      "sha256": "aa4a6237d53e5c93794761f8e6eb426bb9c2637701dda71de8c3e8a548c00517"
+    },
+    {
+      "path": "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/guides/topic/res/unique.md",
+      "sha256": "04810139e7b122074de235969d250aff5e1cf26fd3550e8db5d76f089d322fb1"
+    },
+    {
+      "path": "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/roots.json",
+      "sha256": "c4263f3a217eb98ac38a3999c7305ef6edde55bad31ffb90fd34251990d909a3"
+    },
+    {
+      "path": "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/synced/account-bucket/guide/SKILL.md",
+      "sha256": "5e5fa703f4608030b2d5861c46ae944831b91a169b89cdf3cd182c15cb91e943"
+    },
+    {
+      "path": "/home/hruzam/ia-sync/zsh/experimental/source-reader/runner.zsh",
+      "sha256": "e3196616b034a00ba18335b48c085a4c54aff514d7c9cc1b203c9fa2b7f9a761"
+    },
+    {
+      "path": "/home/hruzam/ia-sync/zsh/experimental/source-reader/source-reader.py",
+      "sha256": "87b5bb7aeb6842531a54caaa30ea47e4cc5e8368a1bfd1d24357cab4e695af32"
+    },
+    {
+      "path": "/home/hruzam/ia-sync/zsh/experimental/source-reader/test_source_reader.py",
+      "sha256": "d494bb134628e73759ab53bb7538b9df4739cfe24aa7672ba375f03f14702307"
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/run_operations.py",
+      "sha256": "4a9458a834e6825c8bfad44ec345bdcbd2f8d90483e9e93bdbcbcd1081042ae5"
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/execution/resume-02/verification/43.applied.json",
+      "sha256": "a81c6fbf7d1b79d6d2997f6a8a1a611f13b18c817e6e9ab6b38a2290344399be"
+    }
+  ],
+  "schema": "g09-c2-precompile-snapshot/v1"
+}

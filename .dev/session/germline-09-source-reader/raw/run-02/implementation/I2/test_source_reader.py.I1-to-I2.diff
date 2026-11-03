@@ -1,0 +1,24 @@
+--- I1/zsh/experimental/source-reader/test_source_reader.py
++++ I2/zsh/experimental/source-reader/test_source_reader.py
+@@ -135,6 +135,21 @@
+             self.assertEqual(result.returncode, 2)
+             self.assertEqual(result.stdout, b"")
+ 
++    def test_terminal_labels_show_resolved_target(self):
++        linked = next(e for e in self.data["entries"] if "/linked/" in e["absolute_path"])
++        suffix = f"{linked['absolute_path']} → {linked['resolved_path']}"
++        self.assertTrue(READER.label(linked).endswith(suffix))
++        for args in (("catalog",), ("browse", "--plain")):
++            result = self.cli(*args)
++            self.assertEqual(result.returncode, 0, result.stderr)
++            row = next(line for line in result.stdout.decode().splitlines() if line.startswith(linked["id"] + "\t"))
++            fields = row.split("\t")
++            self.assertEqual(fields[2:4], ["codex", "authored"])
++            self.assertEqual(fields[4], suffix)
++        regular = next(e for e in self.data["entries"] if e["resolved_path"] == e["absolute_path"])
++        self.assertTrue(READER.label(regular).endswith(regular["absolute_path"]))
++        self.assertNotIn(" → ", READER.label(regular))
++
+     def test_canary_is_inert_data(self):
+         path = FIXTURES / "codex/canary/SKILL.md"
+         result = self.cli("show", str(path))

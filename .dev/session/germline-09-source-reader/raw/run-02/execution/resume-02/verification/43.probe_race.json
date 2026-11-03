@@ -1,0 +1,67 @@
+{
+  "original": {
+    "source_sha256": "bfa6a3fc7c09591881575c87fb8ad5bde066188cc42f814028dbeffff4d77b50",
+    "fake_ask_starts": 2,
+    "second_receipt_created": true,
+    "errors": {},
+    "receipt_statuses": {
+      "run02.A1.ask.operation.json": "completed",
+      "run02.R1.ask.operation.json": "failed"
+    },
+    "ask_count": 2,
+    "identity_only_recovery_with_failed_prior_and_revoked_release": [
+      "read",
+      "resume"
+    ],
+    "fake_process_events": [
+      {
+        "verb": "ask",
+        "vault": "/tmp/g09-sol39-race-hxcu65bu/raw/run-02/caretaker/tunnel.researcher.state.json"
+      },
+      {
+        "verb": "ask",
+        "vault": "/tmp/g09-sol39-race-hxcu65bu/raw/run-02/caretaker/tunnel.auditor.state.json"
+      },
+      {
+        "verb": "read",
+        "vault": "/tmp/g09-sol39-race-hxcu65bu/raw/run-02/caretaker/tunnel.researcher.state.json"
+      },
+      {
+        "verb": "resume",
+        "vault": "/tmp/g09-sol39-race-hxcu65bu/raw/run-02/caretaker/tunnel.researcher.state.json"
+      }
+    ]
+  },
+  "applied": {
+    "source_sha256": "4a9458a834e6825c8bfad44ec345bdcbd2f8d90483e9e93bdbcbcd1081042ae5",
+    "fake_ask_starts": 1,
+    "second_receipt_created": false,
+    "errors": {
+      "A1": "RuntimeError('earlier submission requires head disposition: run02.R1.ask.operation.json (command-failed-or-remote-outcome-unknown)')"
+    },
+    "receipt_statuses": {
+      "run02.R1.ask.operation.json": "failed"
+    },
+    "ask_count": 1,
+    "identity_only_recovery_with_failed_prior_and_revoked_release": [
+      "read",
+      "resume"
+    ],
+    "fake_process_events": [
+      {
+        "verb": "ask",
+        "vault": "/tmp/g09-sol39-race-rcg0zofn/raw/run-02/caretaker/tunnel.researcher.state.json"
+      },
+      {
+        "verb": "read",
+        "vault": "/tmp/g09-sol39-race-rcg0zofn/raw/run-02/caretaker/tunnel.researcher.state.json"
+      },
+      {
+        "verb": "resume",
+        "vault": "/tmp/g09-sol39-race-rcg0zofn/raw/run-02/caretaker/tunnel.researcher.state.json"
+      }
+    ]
+  },
+  "target_model_turns": 0,
+  "verdict": "PASS"
+}

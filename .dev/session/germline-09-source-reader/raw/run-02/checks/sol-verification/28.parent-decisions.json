@@ -1,0 +1,59 @@
+{
+  "schema": "g09-caretaker-decision-verification/v1",
+  "case_results": [
+    {
+      "case": "interrupted",
+      "ok": true,
+      "state": "UNKNOWN",
+      "next_action": "RECONCILE_EXACT_KNOWN_ID"
+    },
+    {
+      "case": "missing-identity",
+      "ok": true,
+      "state": "UNKNOWN",
+      "next_action": "ESCALATE_MISSING_ID"
+    },
+    {
+      "case": "changed-pins",
+      "ok": true,
+      "state": "HOLD",
+      "next_action": "ESCALATE_PIN_DRIFT"
+    },
+    {
+      "case": "revoked-release",
+      "ok": true,
+      "state": "HOLD",
+      "next_action": "WAIT_FRESH_GO"
+    },
+    {
+      "case": "active-hold",
+      "ok": true,
+      "state": "HOLD",
+      "next_action": "REPORT_HOLD"
+    },
+    {
+      "case": "exhausted-budget",
+      "ok": true,
+      "state": "HOLD",
+      "next_action": "REPORT_BUDGET_EXHAUSTED"
+    },
+    {
+      "case": "empty-running-output",
+      "ok": true,
+      "state": "RUNNING",
+      "next_action": "POLL_RETURNED_SESSION"
+    },
+    {
+      "case": "inaccessible-process",
+      "ok": true,
+      "state": "UNKNOWN",
+      "next_action": "REPORT_VISIBILITY_UNKNOWN"
+    }
+  ],
+  "case_count": 8,
+  "all_cases": true,
+  "all_loaded_hashes_match": true,
+  "hash_mismatches": [],
+  "ok": true,
+  "limits": "Simulated receipt decision correctness only. Conservative UNKNOWN/HOLD knowledge labels are accepted when exact safe next action is preserved; no actual target/runtime/retention correctness inferred."
+}

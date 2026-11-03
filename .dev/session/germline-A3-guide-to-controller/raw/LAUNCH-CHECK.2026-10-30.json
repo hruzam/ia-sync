@@ -1,0 +1,33 @@
+{
+  "checked": "2026-10-30T04:50:36.614689+01:00",
+  "scope": "Local static readiness for operator-selected Oraculum A3 entry",
+  "checks": {
+    "card_and_session_yaml_parse": true,
+    "gate_equal": true,
+    "owner_roster_and_launch_route_agree": true,
+    "requested_head_carriage": "gpt-6-astra / max",
+    "all_card_pointers_exist": 8,
+    "operator_S04_clarification_preserved": true,
+    "no_S00_receipt_and_11_scopes_unchecked": true,
+    "live_profile_present": true
+  },
+  "files": [
+    {
+      "path": "/home/hruzam/reposoma/_cold-start/card/CS.germline-A3-continuity.2026-10-29.md",
+      "sha256": "7b905c66f29f958fc6e280f43c57347b3e69806e8906948fe3d9dae516cdaa06"
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-A3-guide-to-controller/RUNBOOK.md",
+      "sha256": "7b5e15d955548601f40ef837509a0ccb057aeacc6a985cf5060b28034e65b0f7"
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-A3-guide-to-controller/STATUS.md",
+      "sha256": "6eb30d0de8c5c5005d7f62fa4d44265c3a4cfd51241b427fe8221deed8e563c8"
+    }
+  ],
+  "limits": [
+    "CLI options checked against installed codex --help; no successor model call or effective-carriage witness",
+    "Helper roster expresses requested participants/settings; actual routes and availability checked at invocation",
+    "Current launch repairs and central card uncommitted; cross-host receipt unverified"
+  ]
+}

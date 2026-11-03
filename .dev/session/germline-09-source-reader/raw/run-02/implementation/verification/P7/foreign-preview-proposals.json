@@ -1,0 +1,10 @@
+{
+  "applied": false,
+  "foreign": [],
+  "product": [],
+  "raw_preview": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/verification/P7/deploy-dry-run.stdout",
+  "raw_preview_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "executed": false,
+  "proposal_inventory_status": "UNVERIFIED: required full preview blocked before execution; empty arrays mean unobserved, not no proposals",
+  "reason": "No existing experimental subtree dry-run option; full zsh rsync would traverse protected Nablarva mirror."
+}

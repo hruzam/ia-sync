@@ -1,0 +1,38 @@
+{
+  "schema": "g09-offline-caretaker-case/v1",
+  "case": "exhausted-budget",
+  "simulated": true,
+  "target_turns": 0,
+  "evidence": {
+    "maximum_target_ask_attempts": 5,
+    "receipts": [
+      {
+        "kind": "ask",
+        "status": "completed",
+        "attempt_number": 1
+      },
+      {
+        "kind": "ask",
+        "status": "completed",
+        "attempt_number": 2
+      },
+      {
+        "kind": "ask",
+        "status": "completed",
+        "attempt_number": 3
+      },
+      {
+        "kind": "ask",
+        "status": "completed",
+        "attempt_number": 4
+      },
+      {
+        "kind": "ask",
+        "status": "failed",
+        "attempt_number": 5
+      }
+    ],
+    "requested": "A3",
+    "a3_conditional_proof": "valid simulated proof"
+  }
+}

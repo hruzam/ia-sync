@@ -1,0 +1,8 @@
+{
+  "schema": "g09-hold/v1",
+  "run_id": "run-02",
+  "holds": [
+    "A1-approved-repair-awaits-independent-applied-state-verification"
+  ],
+  "note": "Exact approved4 files applied. No target/product operation before independent verification and head clearance."
+}

@@ -1,0 +1,23 @@
+{
+  "schema": "g09-c2-result/v1",
+  "cycle": "A2",
+  "attempt_number": 4,
+  "thread_id": "01a17a89-cc0a-7053-b9b2-e5bdac784fe4",
+  "turn_id": "01a184f1-dc3d-7dd0-98b7-37644753ecf5",
+  "ask_receipt": "operations/run02.A2.ask.operation.json",
+  "ask_receipt_sha256": "b8a8e80c8026e0de1592a880e52e5c9481ba16adc2bf56a33bb72758a3d0f03b",
+  "ask_elapsed_seconds": 209.815,
+  "read_receipt": "operations/run02.A2.read.operation.json",
+  "read_receipt_sha256": "a2fed389a6c98f329c341cc288a15de7c2bd09347e81f6bc2a4745adbcee740f",
+  "read_elapsed_seconds": 0.866,
+  "read_stdout": "operations/output/run02.A2.read.stdout.txt",
+  "read_stdout_sha256": "f08e5878b9aab42e100fb49663201f5b1841fbca0ca79e3ebf35e8cb1e9e9707",
+  "verdict": "UNVERIFIED overall; P1-P6/P8 PASS; P7 partially verified",
+  "reported_manifest_sha256": "12b1f1c452518af6533eea2999979ce7a3645fdfcc52fbcd5f91853ad6cb3f85",
+  "reported_audited_hashes": "24/24 matched before and after auditor calls; exact hash map is frozen I1 MANIFEST.json; response does not enumerate it",
+  "reported_commands": "all 20 manifest read_only_audit_argv plus independent Python -B catalog/show/guide/browse; exact argv list not enumerated in response",
+  "p7_gaps": ["Independent dispatcher exercise not run", "Deploy dry-run not run by auditor"],
+  "product_defect_reproduced": false,
+  "usage": {"tokens": null, "context": null, "dollars": null},
+  "hold": "C2-caretaker-local-assertion-failure-awaits-Terra-check remains active; no hold clearance"
+}

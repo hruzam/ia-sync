@@ -1,0 +1,21 @@
+G09.run-02.A3
+VERDICT: UNVERIFIED overall — affected I2 behavior PASS; P7’s full deploy preview remains UNVERIFIED.
+
+Conditional trigger verified: the grant matches the exact I1/I2 manifests and their two changed files. Hash reconstruction confirms only `label()` and its regression test changed. Both manifest aliases remain byte-identical; all 24 final product hashes match.
+
+Final anchors:
+
+- [I2 MANIFEST.json](/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I2/MANIFEST.json): `b760f1a3d3cf5833adea9e696abadf0efa88e06698fb3d1e0bba43d011ff5ade`
+- Engine: `63a25f7b3e36fe8da646bb1ee84ef46a68e3c2184bc0aecd3096bbe7bda8fe8a`
+- Tests: `0b25f665becaf46d6670a205446dfdb646cf948cb9577bcf19226deee8bf5f81`
+
+The earlier failure was reproducible through plain catalog/browse: I1 omitted the linked fixture’s resolved Claude path. I2 displays `lexical path → resolved path`, retains `codex/authored`, and preserves exact ID/path-selected bytes.
+
+Independently exercised Python `-B` fixture calls: `catalog`, `catalog --json`, `browse --plain`, five skill entries through both ID/path `show`, `guide topic TURNS`, and `guide topic side`. Also executed all three exact dispatcher argv in I2’s `read_only_audit_argv`; help/catalog/show passed.
+
+A1’s ambiguity still lists both chapters without bodies; side queries return Manifest only. Activation remains unknown, JSON catalog unchanged, hashes preserved and canary absent. No remaining reader failure reproduced.
+
+Verified all 32 supplied P7 output hashes. Dispatcher coverage is now independently exercised. Declined `bash /home/hruzam/ia-sync/deploy.sh --dry-run`: [A3.DELTA.md](/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/control/A3.DELTA.md) preserves the no-Nablarva boundary; the preview would traverse that mirror. Its receipt correctly records `executed:false`, `exit:null`.
+
+One audit-script byte-count assumption failed; corrected evidence-only checks passed. No writes, network, model calls or automatic follow-up.
+[usage: {"total":{"totalTokens":2712220,"inputTokens":2692707,"cachedInputTokens":2463744,"cacheWriteInputTokens":0,"outputTokens":19513,"reasoningOutputTokens":8239},"last":{"totalTokens":185375,"inputTokens":184379,"cachedInputTokens":183680,"cacheWriteInputTokens":0,"outputTokens":996,"reasoningOutputTokens":456},"modelContextWindow":475000}]

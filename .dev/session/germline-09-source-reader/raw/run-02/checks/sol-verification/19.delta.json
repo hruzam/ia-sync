@@ -1,0 +1,153 @@
+{
+  "verdict": "PASS",
+  "source_hashes": {
+    "adapter": "bfa6a3fc7c09591881575c87fb8ad5bde066188cc42f814028dbeffff4d77b50",
+    "test": "d81a8e51340b2069c50c4fc10dcf4a099946374dc5fd50dbb28503b2e2063023",
+    "contract": "84be154eb074088af75f003cd760b0ccb904061afb46851135e8ad4203f1d214",
+    "pins": "d72e6b552f7e05e2e5c5657631526b989dea28d2cc3a372919845a1c86ad51db"
+  },
+  "source_delta": "exactly one comparison: missing thread.id now refused",
+  "independent_cases": [
+    {
+      "case": "missing",
+      "accepted": false,
+      "result": "bootstrap readback thread identity changed"
+    },
+    {
+      "case": "wrong",
+      "accepted": false,
+      "result": "bootstrap readback thread identity changed"
+    },
+    {
+      "case": "exact",
+      "accepted": true,
+      "result": {
+        "classification": "completed-and-validated"
+      }
+    }
+  ],
+  "declared_test": {
+    "target_model_turns": 0,
+    "checks": [
+      [
+        "changed-frozen-prompt-refused",
+        true
+      ],
+      [
+        "changed-named-input-refused",
+        true
+      ],
+      [
+        "profile-requires-release-before-model-list",
+        true
+      ],
+      [
+        "open-profile-prerequisite-refused",
+        true
+      ],
+      [
+        "cold-open-and-ask-real-invoke-boundary",
+        true
+      ],
+      [
+        "cold-replay-refused",
+        true
+      ],
+      [
+        "identity-only-read-with-structured-readonly",
+        true
+      ],
+      [
+        "missing-bootstrap-readback-thread-refused",
+        true
+      ],
+      [
+        "wrong-bootstrap-readback-thread-refused",
+        true
+      ],
+      [
+        "exact-bootstrap-ack-and-readback-validated",
+        true
+      ],
+      [
+        "tampered-bootstrap-anchor-refused",
+        true
+      ],
+      [
+        "changed-bootstrap-vault-thread-refused",
+        true
+      ],
+      [
+        "missing-identity-recovery-refused",
+        true
+      ],
+      [
+        "cross-role-identity-refused",
+        true
+      ],
+      [
+        "changed-role-identity-refused",
+        true
+      ],
+      [
+        "warm-requires-completed-bootstrap",
+        true
+      ],
+      [
+        "warm-requires-observed-runtime",
+        true
+      ],
+      [
+        "active-hold-refused-before-effect",
+        true
+      ],
+      [
+        "revoked-release-refused-before-effect",
+        true
+      ],
+      [
+        "changed-pin-refused",
+        true
+      ],
+      [
+        "exhausted-cap-refused",
+        true
+      ],
+      [
+        "corrupt-receipt-count-refused",
+        true
+      ],
+      [
+        "conditional-a3-grant-proof",
+        true
+      ],
+      [
+        "conditional-a3-unchanged-refused",
+        true
+      ],
+      [
+        "concurrent-reservation-never-exceeds-cap",
+        true
+      ],
+      [
+        "concurrent-duplicate-key-never-overwrites",
+        true
+      ],
+      [
+        "nonzero-command-is-remote-unknown",
+        true
+      ]
+    ]
+  },
+  "declared_stderr": "",
+  "unchanged_tunnel_sha256": "e72b072103d3d32e2c26cc11770834bfa331daa84ecc3e0add7b1d56cc2cdf65",
+  "reuse": "Cycle09 transport/boundary/profile/A3 evidence retained. Adapter bytes outside exact verified equality change unchanged.",
+  "trial_cycles": {
+    "C1": "30",
+    "I1": "31",
+    "C2": "32",
+    "I2": "33",
+    "C3": "34"
+  },
+  "target_model_turns": 0
+}

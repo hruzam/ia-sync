@@ -1,0 +1,26 @@
+{
+  "old_baseline_count": 99,
+  "protected_count": 97,
+  "protected_mismatch": [],
+  "foreign_count": 9,
+  "foreign_mismatch": [],
+  "pins_count": 35,
+  "pins_mismatch": [],
+  "hashes": {
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/CONTRACT.json": "84be154eb074088af75f003cd760b0ccb904061afb46851135e8ad4203f1d214",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/hold-line/sources.json": "d72e6b552f7e05e2e5c5657631526b989dea28d2cc3a372919845a1c86ad51db",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/run_operations.py": "bfa6a3fc7c09591881575c87fb8ad5bde066188cc42f814028dbeffff4d77b50",
+    "/home/hruzam/ia-sync/zsh/ai/tunnel-codex.py": "e72b072103d3d32e2c26cc11770834bfa331daa84ecc3e0add7b1d56cc2cdf65"
+  },
+  "release_authorized": {
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/control/RELEASE.json": false,
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/control/RELEASE.json": false
+  },
+  "asks": {
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/caretaker/operations": [
+      "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/caretaker/operations/R1.ask.operation.json"
+    ],
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/operations": []
+  },
+  "ok": true
+}

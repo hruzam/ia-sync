@@ -1,0 +1,31 @@
+{
+  "argv": [
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/caretaker/tunnel.researcher.state.json",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/closeout/snapshots/tunnel.researcher.state.json"
+  ],
+  "elapsed_seconds": 0.006,
+  "ended_unix": 1793027259.1056275,
+  "kind": "g09-run-01-resource-retirement",
+  "operation": "05.snapshot-vault",
+  "outcome": {
+    "exact_bytes": true,
+    "snapshot": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/closeout/snapshots/tunnel.researcher.state.json",
+    "snapshot_sha256": "5789ba86f3f79d35fae18fa17a479297ce40c4071cefb93ba81e75226b69e6e9",
+    "source": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/caretaker/tunnel.researcher.state.json",
+    "source_sha256": "5789ba86f3f79d35fae18fa17a479297ce40c4071cefb93ba81e75226b69e6e9",
+    "selected_identifiers": {
+      "threadId_in_original_vault": null,
+      "lastTurnId_in_original_vault": null,
+      "recovered_threadId": "01a176f7-532b-7722-9324-0ecb92694073",
+      "recovered_turnId": "01a176f7-53a6-7b83-b203-b86b08ec15ac"
+    },
+    "raw_receipt_ignored_copy": {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/closeout/snapshots/tunnel.researcher.snapshot-receipt.state.json",
+      "sha256": "c3344d406f3798df6c4287185f3fdf529850c884077258ca0f91949d68ad915d"
+    }
+  },
+  "pid": 3,
+  "pid_namespace": "pid:[4026533211]",
+  "started_unix": 1793027259.0994143,
+  "status": "completed"
+}

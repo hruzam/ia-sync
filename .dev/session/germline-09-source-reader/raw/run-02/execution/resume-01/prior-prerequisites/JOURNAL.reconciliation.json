@@ -1,0 +1,30 @@
+{
+  "schema": "g09-current-journal-reconciliation/v1",
+  "observed_at": "2026-10-26T22:25:01.732611+01:00",
+  "authority": "Majkee current execution GO: preserve both entries and reconcile current journal before dispatch",
+  "journal": "/home/hruzam/ia-sync/journal.host-cleanup.md",
+  "journal_sha256": "5e8cffd217c4fa73bcc4568751b46913b49e8b08a5473487e6db384265e5407b",
+  "operator_reported_A0_bytes": 722,
+  "observed_A0_bytes": 1671,
+  "difference": "A0 was expanded after the earlier722-byte observation; current exact entry is preserved",
+  "original_evidence_unchanged": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/checks/JOURNAL.preservation.json",
+  "original_sha256": "db9148eba1574c7a9b7f6bfd0eefb5009afa6f8f7b295031b2649f3046a232f5",
+  "additions": [
+    {
+      "name": "A0 Houston observed entry",
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/execution/prerequisites/A0.journal-entry.observed.md",
+      "offset": 790,
+      "bytes": 1671,
+      "sha256": "a345fb2c1b2cbfae16fb7362d27d12d53366f665c7469f09cad3d7d5a2223004"
+    },
+    {
+      "name": "G09 preparation entry",
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/control/journal-entry.md",
+      "offset": 2461,
+      "bytes": 2030,
+      "sha256": "4125ea80d09daeb86aaccd66675700d1def1341653e059c678d5773888a05881"
+    }
+  ],
+  "reconstruction_matches_original": true,
+  "mode": "Remove only exact recorded byte ranges in memory; do not modify journal or old evidence. Any new journal edit invalidates current check until explicitly reconciled."
+}

@@ -1,0 +1,13 @@
+{
+  "verified_at": "2026-10-26T08:32:38+01:00",
+  "control_and_result_json_parsed": 11,
+  "STATUS_gate_matches_RUNBOOK": true,
+  "verdict": "STOP",
+  "late_receipt_hash_stable": true,
+  "foreign_modified_hashes_unchanged": true,
+  "owned_text_trailing_whitespace_check": "PASS",
+  "presence_detached_exact_id": "924a1acb18117b5aff8cfdf1f1ae60c6",
+  "product_acceptance": "UNVERIFIED",
+  "native_caretaker": "/root/caretaker",
+  "native_builder_started": false
+}

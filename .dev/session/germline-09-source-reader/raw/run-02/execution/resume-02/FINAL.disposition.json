@@ -1,0 +1,130 @@
+{
+  "at": "2026-10-29T00:30:59.862836+00:00",
+  "PRODUCT": "UNVERIFIED",
+  "reader_functional_checks": "PASS",
+  "P7": "independent full deploy preview blocked by no-Nablarva boundary",
+  "DELEGATION": "REVISE",
+  "GERMLINE_CONTRIBUTION": "INDETERMINATE",
+  "repair": "approved exact four-file repair independently43PASS; local checkpoint correction independently46PASS",
+  "pins_verified": 35,
+  "product_hashes_verified": 24,
+  "manifest_sha256": "b760f1a3d3cf5833adea9e696abadf0efa88e06698fb3d1e0bba43d011ff5ade",
+  "rounds": [
+    {
+      "cycle": "R1",
+      "attempt": 1,
+      "threadId": "01a17a86-873c-72b0-8787-932736a0f7d9",
+      "turnId": "01a17a86-87b6-76a3-a848-d93cf4a4d040",
+      "elapsed_seconds": 140.453,
+      "completed": true
+    },
+    {
+      "cycle": "A1",
+      "attempt": 2,
+      "threadId": "01a17a89-cc0a-7053-b9b2-e5bdac784fe4",
+      "turnId": "01a17a89-cca1-71c0-8cea-0abe10024bcd",
+      "elapsed_seconds": 133.655,
+      "completed": true
+    },
+    {
+      "cycle": "R2",
+      "attempt": 3,
+      "threadId": "01a17a86-873c-72b0-8787-932736a0f7d9",
+      "turnId": "01a184ef-6e70-7f11-907b-3ac8af6fe2d1",
+      "elapsed_seconds": 87.799,
+      "completed": true
+    },
+    {
+      "cycle": "A2",
+      "attempt": 4,
+      "threadId": "01a17a89-cc0a-7053-b9b2-e5bdac784fe4",
+      "turnId": "01a184f1-dc3d-7dd0-98b7-37644753ecf5",
+      "elapsed_seconds": 209.815,
+      "completed": true
+    },
+    {
+      "cycle": "A3",
+      "attempt": 5,
+      "threadId": "01a17a89-cc0a-7053-b9b2-e5bdac784fe4",
+      "turnId": "01a18502-15d8-7d92-bfbd-b17aba481c0c",
+      "elapsed_seconds": 167.819,
+      "completed": true
+    }
+  ],
+  "final_identities": {
+    "researcher": {
+      "threadId": "01a17a86-873c-72b0-8787-932736a0f7d9",
+      "lastTurnId": "01a184ef-6e70-7f11-907b-3ac8af6fe2d1",
+      "inFlightTurnId": null,
+      "model": "gpt-6.1-sol",
+      "preamble": "/home/hruzam/.germline/tunnel/tunnel.preamble.md",
+      "runtime": {
+        "approvalPolicy": "never",
+        "cwd": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader",
+        "instructionSources": [
+          "/home/hruzam/.codex/AGENTS.md",
+          "/home/hruzam/ia-sync/AGENTS.md"
+        ],
+        "model": "gpt-6.1-sol",
+        "observedAt": "2026-10-28T23:54:06Z",
+        "reasoningEffort": "high",
+        "sandbox": {
+          "networkAccess": false,
+          "type": "readOnly"
+        }
+      }
+    },
+    "auditor": {
+      "threadId": "01a17a89-cc0a-7053-b9b2-e5bdac784fe4",
+      "lastTurnId": "01a18502-15d8-7d92-bfbd-b17aba481c0c",
+      "inFlightTurnId": null,
+      "model": "gpt-6.1-sol",
+      "preamble": "/home/hruzam/.germline/tunnel/tunnel.preamble.md",
+      "runtime": {
+        "approvalPolicy": "never",
+        "cwd": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader",
+        "instructionSources": [
+          "/home/hruzam/.codex/AGENTS.md",
+          "/home/hruzam/ia-sync/AGENTS.md"
+        ],
+        "model": "gpt-6.1-sol",
+        "observedAt": "2026-10-29T00:14:28Z",
+        "reasoningEffort": "high",
+        "sandbox": {
+          "networkAccess": false,
+          "type": "readOnly"
+        }
+      }
+    }
+  },
+  "attempts": {
+    "run01": 1,
+    "run02": 5,
+    "cumulative": 6,
+    "ceiling": 6,
+    "remaining": 0
+  },
+  "C1_historical_mismatches_except_expected_live_vault_updates": [],
+  "C2_old_packet_entries_unchanged": true,
+  "preservation": {
+    "protected_old_count": 97,
+    "old_mismatches": [],
+    "foreign_count": 9,
+    "foreign_mismatches": [],
+    "journal_reconciliation": {
+      "reconciliation": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/execution/prerequisites/JOURNAL.reconciliation.json",
+      "reconstructed_sha256": "db9148eba1574c7a9b7f6bfd0eefb5009afa6f8f7b295031b2649f3046a232f5",
+      "ok": true
+    },
+    "release_mode": "run02-authorized",
+    "releases_authorized": {
+      "raw/control/RELEASE.json": false,
+      "raw/run-02/control/RELEASE.json": true
+    },
+    "release_state_matches": true,
+    "ok": true
+  },
+  "vaults_retained": true,
+  "deployment": false,
+  "commit_push": false
+}

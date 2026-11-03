@@ -1,0 +1,60 @@
+{
+  "schema": "g09-a1-race-transition-proposal/v1",
+  "observed_at": "2026-10-27T00:53:08.830886+01:00",
+  "applied": false,
+  "requires": "Majkee ruling because approved frozen identities would change",
+  "files": [
+    {
+      "actual": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/run_operations.py",
+      "candidate": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/execution/A1-race-review/candidate/run_operations.py",
+      "old_sha256": "bfa6a3fc7c09591881575c87fb8ad5bde066188cc42f814028dbeffff4d77b50",
+      "new_sha256": "4a9458a834e6825c8bfad44ec345bdcbd2f8d90483e9e93bdbcbcd1081042ae5",
+      "meaning": "one prior_uncertainty recheck inside existing ask reservation lock"
+    },
+    {
+      "actual": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/repair/test_adapter.py",
+      "candidate": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/execution/A1-race-review/candidate/test_adapter.py",
+      "old_sha256": "d81a8e51340b2069c50c4fc10dcf4a099946374dc5fd50dbb28503b2e2063023",
+      "new_sha256": "01a7a41da29181da64139d69b68afa763d79573c196b1fafede130b767c9e74d",
+      "meaning": "valid-kind cap fixture plus sequential5/6 and future C1-history/C2-plan proof"
+    },
+    {
+      "actual": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/CONTRACT.json",
+      "candidate": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/execution/A1-race-review/proposal/CONTRACT.proposed.json",
+      "old_sha256": "84be154eb074088af75f003cd760b0ccb904061afb46851135e8ad4203f1d214",
+      "new_sha256": "d85068a29acae319710237594822230f1e761bf5df0656a208da14cc10d0216f",
+      "meaning": "only files.frozen_plan moves to caretaker/plan.C2.json"
+    },
+    {
+      "actual": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/hold-line/sources.json",
+      "candidate": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/execution/A1-race-review/proposal/sources.proposed.json",
+      "old_sha256": "d72e6b552f7e05e2e5c5657631526b989dea28d2cc3a372919845a1c86ad51db",
+      "new_sha256": "ed61680ac03074e3f77b66a9fa6db474d6363d48ff8374ac1a713530e7f8bbbf",
+      "meaning": "same35 inputs; only those3 hashes/byte counts rotate"
+    }
+  ],
+  "patch": {
+    "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/execution/A1-race-review/candidate/candidate.patch",
+    "sha256": "1bb56479e08c18f76fe39f96faf4c9c7e5deabb7c6653a50673b0caec73289d4"
+  },
+  "pending_release": {
+    "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/execution/A1-race-review/proposal/RELEASE.pending-ruling.json",
+    "sha256": "6bed533b0e3b3b6bfff2b00a8f72493c0bf2b9eca2485222ddb4ce06680e5c52",
+    "authorized": false
+  },
+  "preservation": {
+    "C1_plan_sha256": "d60bc70f1f31a6a6d4769050370e27eede2276c9fff4ea7e9ef345fc4d1a3fba",
+    "C1_plan_overwritten": false,
+    "role_threads": {
+      "researcher": "01a17a86-873c-72b0-8787-932736a0f7d9",
+      "auditor": "01a17a89-cc0a-7053-b9b2-e5bdac784fe4"
+    },
+    "run01_attempts": 1,
+    "run02_attempts": 2,
+    "run02_remaining": 3,
+    "cumulative_used": 3,
+    "cumulative_ceiling": 6,
+    "enable_preflights_used_per_role": 1
+  },
+  "next_after_approval": "Apply only exact4 files after before-hash/preservation check; record actual ruling in RELEASE; keep C1 history and OPS counter; independent actual-source check; then D1/I1. Future R2/A2 uses a new plan compiled only after I1. Never rerun R1/A1/profile/enable or old C1 validator under new contract."
+}

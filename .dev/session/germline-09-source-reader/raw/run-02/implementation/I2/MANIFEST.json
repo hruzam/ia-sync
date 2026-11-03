@@ -1,0 +1,618 @@
+{
+  "schema": "g09-product-manifest/v1",
+  "run_id": "run-02",
+  "stage": "I2",
+  "frozen_at": "2026-10-29T00:07:00.591383+00:00",
+  "position": "R2 identifies a presentation-only provenance defect. Append differing resolved_path through shared label(); preserve root/vendor/origin, metadata discovery and exact show. No architecture/scope change.",
+  "product_directory": "/home/hruzam/ia-sync/zsh/experimental/source-reader",
+  "audited_files": {
+    "/home/hruzam/ia-sync/zsh/experimental/base.zsh": "724fdaa044862a56b5775c9f7b07857d1b452b2fb0bb6c1068ea5480f792e6ee",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/README.md": "052e62017d3977dfc126ce4a6e4128f4073308c55f53468849de3dc43f8e45a3",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/claude/guide/SKILL.md": "964479129ca76d58793408455f2a51ae97d6b0889cfd281b98ab031bb241bcce",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/codex/canary/SKILL.md": "09e32b4c560fffe50e97f91cc284cda6826e9c2d64db24e8089e285e512a4871",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/codex/deep/hidden/SKILL.md": "a4f90108cce7592f76c336371e1cd2b9c911227159d469e97b6a4f503eb33072",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/codex/guide/SKILL.md": "e71c5aee9b1142abbcc737f110c57ecac5255f2dff2fa13bcbc94b3edc007238",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/codex/linked/SKILL.md": "964479129ca76d58793408455f2a51ae97d6b0889cfd281b98ab031bb241bcce",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/empty/.keep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/germline/agents/example/binding.codex.md": "f74b2b0b4c921ea1c778900cf90a2c8fcd04d6c1ec1f9b6ff185592ecbae1fcd",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/germline/agents/example/cards/consult.md": "5843675940637349ccfacfb213396e6379a5d40a0651293ffd0a057eec55483e",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/germline/agents/example/identity.md": "9fadcbeb4791d145db4f765fc2bc9aed22097d3e16accc94bc0c28e63a35fe28",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/germline/agents/example/methods/observe.md": "eb54d12b78bf903baf2c1621ffb6debb583c5728957c2c218a550197e8c1ad4b",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/germline/skills/skill.example.md": "05b6b224c3b6879975df91a160556adbecc5f22cfdccb742b7b47bc37e640af3",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/germline/tunnel/NEVER.md": "1644d96128330e7735c6648d6042c4ccbda88b9be54f365ec68f3c5ffbf71436",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/guides/topic/GUIDE.md": "303e43e626676393ad6e7428b1057d3bf102d546f7e80dfc9eb847316641f857",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/guides/topic/raw/side.md": "1e08e5888a4b5e2b08243ce71f7db1adc35702ad14c0b147ef264a69d268d56c",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/guides/topic/res/fanout-turns.md": "d21caf3b2618f2c8908858b4a8321666c659a7c7d7141e12f80ce043f4b00396",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/guides/topic/res/turns-recovery.md": "aa4a6237d53e5c93794761f8e6eb426bb9c2637701dda71de8c3e8a548c00517",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/guides/topic/res/unique.md": "04810139e7b122074de235969d250aff5e1cf26fd3550e8db5d76f089d322fb1",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/roots.json": "c4263f3a217eb98ac38a3999c7305ef6edde55bad31ffb90fd34251990d909a3",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/synced/account-bucket/guide/SKILL.md": "5e5fa703f4608030b2d5861c46ae944831b91a169b89cdf3cd182c15cb91e943",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/runner.zsh": "e3196616b034a00ba18335b48c085a4c54aff514d7c9cc1b203c9fa2b7f9a761",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/source-reader.py": "63a25f7b3e36fe8da646bb1ee84ef46a68e3c2184bc0aecd3096bbe7bda8fe8a",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/test_source_reader.py": "0b25f665becaf46d6670a205446dfdb646cf948cb9577bcf19226deee8bf5f81"
+  },
+  "audited_symlinks": {
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/codex/linked/SKILL.md": "../../claude/guide/SKILL.md"
+  },
+  "product_modes": {
+    "/home/hruzam/ia-sync/zsh/experimental/base.zsh": "0o644",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/README.md": "0o644",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/claude/guide/SKILL.md": "0o644",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/codex/canary/SKILL.md": "0o644",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/codex/deep/hidden/SKILL.md": "0o644",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/codex/guide/SKILL.md": "0o644",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/codex/linked/SKILL.md": "0o644",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/empty/.keep": "0o644",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/germline/agents/example/binding.codex.md": "0o644",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/germline/agents/example/cards/consult.md": "0o644",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/germline/agents/example/identity.md": "0o644",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/germline/agents/example/methods/observe.md": "0o644",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/germline/skills/skill.example.md": "0o644",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/germline/tunnel/NEVER.md": "0o644",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/guides/topic/GUIDE.md": "0o644",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/guides/topic/raw/side.md": "0o644",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/guides/topic/res/fanout-turns.md": "0o644",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/guides/topic/res/turns-recovery.md": "0o644",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/guides/topic/res/unique.md": "0o644",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/roots.json": "0o644",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/synced/account-bucket/guide/SKILL.md": "0o644",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/runner.zsh": "0o755",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/source-reader.py": "0o644",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/test_source_reader.py": "0o644"
+  },
+  "product_contract": {
+    "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/control/CONTRACT.01.json",
+    "sha256": "f0db2059aaa288ec0b54c10ca39eca6a28574a93319f7bb07a94fcf9881e506e"
+  },
+  "i1_manifest": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I1/MANIFEST.json",
+  "i1_manifest_sha256": "12b1f1c452518af6533eea2999979ce7a3645fdfcc52fbcd5f91853ad6cb3f85",
+  "i1_hashes": {
+    "/home/hruzam/ia-sync/zsh/experimental/base.zsh": "724fdaa044862a56b5775c9f7b07857d1b452b2fb0bb6c1068ea5480f792e6ee",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/README.md": "052e62017d3977dfc126ce4a6e4128f4073308c55f53468849de3dc43f8e45a3",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/claude/guide/SKILL.md": "964479129ca76d58793408455f2a51ae97d6b0889cfd281b98ab031bb241bcce",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/codex/canary/SKILL.md": "09e32b4c560fffe50e97f91cc284cda6826e9c2d64db24e8089e285e512a4871",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/codex/deep/hidden/SKILL.md": "a4f90108cce7592f76c336371e1cd2b9c911227159d469e97b6a4f503eb33072",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/codex/guide/SKILL.md": "e71c5aee9b1142abbcc737f110c57ecac5255f2dff2fa13bcbc94b3edc007238",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/codex/linked/SKILL.md": "964479129ca76d58793408455f2a51ae97d6b0889cfd281b98ab031bb241bcce",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/empty/.keep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/germline/agents/example/binding.codex.md": "f74b2b0b4c921ea1c778900cf90a2c8fcd04d6c1ec1f9b6ff185592ecbae1fcd",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/germline/agents/example/cards/consult.md": "5843675940637349ccfacfb213396e6379a5d40a0651293ffd0a057eec55483e",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/germline/agents/example/identity.md": "9fadcbeb4791d145db4f765fc2bc9aed22097d3e16accc94bc0c28e63a35fe28",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/germline/agents/example/methods/observe.md": "eb54d12b78bf903baf2c1621ffb6debb583c5728957c2c218a550197e8c1ad4b",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/germline/skills/skill.example.md": "05b6b224c3b6879975df91a160556adbecc5f22cfdccb742b7b47bc37e640af3",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/germline/tunnel/NEVER.md": "1644d96128330e7735c6648d6042c4ccbda88b9be54f365ec68f3c5ffbf71436",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/guides/topic/GUIDE.md": "303e43e626676393ad6e7428b1057d3bf102d546f7e80dfc9eb847316641f857",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/guides/topic/raw/side.md": "1e08e5888a4b5e2b08243ce71f7db1adc35702ad14c0b147ef264a69d268d56c",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/guides/topic/res/fanout-turns.md": "d21caf3b2618f2c8908858b4a8321666c659a7c7d7141e12f80ce043f4b00396",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/guides/topic/res/turns-recovery.md": "aa4a6237d53e5c93794761f8e6eb426bb9c2637701dda71de8c3e8a548c00517",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/guides/topic/res/unique.md": "04810139e7b122074de235969d250aff5e1cf26fd3550e8db5d76f089d322fb1",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/roots.json": "c4263f3a217eb98ac38a3999c7305ef6edde55bad31ffb90fd34251990d909a3",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/synced/account-bucket/guide/SKILL.md": "5e5fa703f4608030b2d5861c46ae944831b91a169b89cdf3cd182c15cb91e943",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/runner.zsh": "e3196616b034a00ba18335b48c085a4c54aff514d7c9cc1b203c9fa2b7f9a761",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/source-reader.py": "87b5bb7aeb6842531a54caaa30ea47e4cc5e8368a1bfd1d24357cab4e695af32",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/test_source_reader.py": "d494bb134628e73759ab53bb7538b9df4739cfe24aa7672ba375f03f14702307"
+  },
+  "before_i2": {
+    "mapping": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I2/BEFORE-I2.json",
+    "mapping_sha256": "db6c5f3790d46c4831ac544cc065147156373d764f27fec3ebecf7c5a14d4023",
+    "directory": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I2/before-I2",
+    "files_preserved": 24,
+    "symlinks_and_original_bytes_preserved": true
+  },
+  "audited_changed_paths": [
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/source-reader.py",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/test_source_reader.py"
+  ],
+  "change_map": {
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/source-reader.py": {
+      "before_sha256": "87b5bb7aeb6842531a54caaa30ea47e4cc5e8368a1bfd1d24357cab4e695af32",
+      "after_sha256": "63a25f7b3e36fe8da646bb1ee84ef46a68e3c2184bc0aecd3096bbe7bda8fe8a",
+      "before_snapshot": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I2/before-I2/zsh/experimental/source-reader/source-reader.py",
+      "diff": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I2/source-reader.py.I1-to-I2.diff",
+      "diff_sha256": "83fd74646d6ca7b477ed5788196849d63351c5993f53bf3c5daadddb6a675e88"
+    },
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/test_source_reader.py": {
+      "before_sha256": "d494bb134628e73759ab53bb7538b9df4739cfe24aa7672ba375f03f14702307",
+      "after_sha256": "0b25f665becaf46d6670a205446dfdb646cf948cb9577bcf19226deee8bf5f81",
+      "before_snapshot": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I2/before-I2/zsh/experimental/source-reader/test_source_reader.py",
+      "diff": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I2/test_source_reader.py.I1-to-I2.diff",
+      "diff_sha256": "b34870d4770f872d9cd435d9c24279075a63a73dada904ecc2576613978bd555"
+    }
+  },
+  "base_row": {
+    "before_snapshot": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I1/base.before.zsh",
+    "before_sha256": "fb37336a18857159cd874b02237c6153f54d0dbc8634842eea842f5b9b8f2de3",
+    "owned_row_diff": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I1/base.owned-row.diff",
+    "owned_row_diff_sha256": "2389a5aa16ea489eb9bed2a9999a8c66ba20d50487ea9e82f85426aac739e78c",
+    "after_snapshot": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I1/base.after.zsh",
+    "after_sha256": "724fdaa044862a56b5775c9f7b07857d1b452b2fb0bb6c1068ea5480f792e6ee",
+    "invariant": "final bytes minus exactly one owned comment row equal immutable before snapshot",
+    "unchanged_from_I1": true
+  },
+  "fixture_roots_json": "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/roots.json",
+  "fixtures": {
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/claude/guide/SKILL.md": "964479129ca76d58793408455f2a51ae97d6b0889cfd281b98ab031bb241bcce",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/codex/canary/SKILL.md": "09e32b4c560fffe50e97f91cc284cda6826e9c2d64db24e8089e285e512a4871",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/codex/deep/hidden/SKILL.md": "a4f90108cce7592f76c336371e1cd2b9c911227159d469e97b6a4f503eb33072",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/codex/guide/SKILL.md": "e71c5aee9b1142abbcc737f110c57ecac5255f2dff2fa13bcbc94b3edc007238",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/codex/linked/SKILL.md": "964479129ca76d58793408455f2a51ae97d6b0889cfd281b98ab031bb241bcce",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/empty/.keep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/germline/agents/example/binding.codex.md": "f74b2b0b4c921ea1c778900cf90a2c8fcd04d6c1ec1f9b6ff185592ecbae1fcd",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/germline/agents/example/cards/consult.md": "5843675940637349ccfacfb213396e6379a5d40a0651293ffd0a057eec55483e",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/germline/agents/example/identity.md": "9fadcbeb4791d145db4f765fc2bc9aed22097d3e16accc94bc0c28e63a35fe28",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/germline/agents/example/methods/observe.md": "eb54d12b78bf903baf2c1621ffb6debb583c5728957c2c218a550197e8c1ad4b",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/germline/skills/skill.example.md": "05b6b224c3b6879975df91a160556adbecc5f22cfdccb742b7b47bc37e640af3",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/germline/tunnel/NEVER.md": "1644d96128330e7735c6648d6042c4ccbda88b9be54f365ec68f3c5ffbf71436",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/guides/topic/GUIDE.md": "303e43e626676393ad6e7428b1057d3bf102d546f7e80dfc9eb847316641f857",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/guides/topic/raw/side.md": "1e08e5888a4b5e2b08243ce71f7db1adc35702ad14c0b147ef264a69d268d56c",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/guides/topic/res/fanout-turns.md": "d21caf3b2618f2c8908858b4a8321666c659a7c7d7141e12f80ce043f4b00396",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/guides/topic/res/turns-recovery.md": "aa4a6237d53e5c93794761f8e6eb426bb9c2637701dda71de8c3e8a548c00517",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/guides/topic/res/unique.md": "04810139e7b122074de235969d250aff5e1cf26fd3550e8db5d76f089d322fb1",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/roots.json": "c4263f3a217eb98ac38a3999c7305ef6edde55bad31ffb90fd34251990d909a3",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/synced/account-bucket/guide/SKILL.md": "5e5fa703f4608030b2d5861c46ae944831b91a169b89cdf3cd182c15cb91e943"
+  },
+  "fixture_policy": "Immutable checked-in data for independent read-only audit; do not execute test harness or source body in target auditor.",
+  "read_only_audit_argv": [
+    [
+      "zsh",
+      "-f",
+      "/home/hruzam/ia-sync/zsh/experimental/source-reader/runner.zsh",
+      "--help"
+    ],
+    [
+      "zsh",
+      "-f",
+      "/home/hruzam/ia-sync/zsh/experimental/source-reader/runner.zsh",
+      "catalog",
+      "--json"
+    ],
+    [
+      "zsh",
+      "-f",
+      "/home/hruzam/ia-sync/zsh/experimental/source-reader/runner.zsh",
+      "--roots",
+      "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/roots.json",
+      "catalog",
+      "--json"
+    ],
+    [
+      "zsh",
+      "-f",
+      "/home/hruzam/ia-sync/zsh/experimental/source-reader/runner.zsh",
+      "--roots",
+      "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/roots.json",
+      "browse",
+      "--plain"
+    ],
+    [
+      "zsh",
+      "-f",
+      "/home/hruzam/ia-sync/zsh/experimental/source-reader/runner.zsh",
+      "--roots",
+      "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/roots.json",
+      "show",
+      "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/codex/guide/SKILL.md"
+    ],
+    [
+      "zsh",
+      "-f",
+      "/home/hruzam/ia-sync/zsh/experimental/source-reader/runner.zsh",
+      "--roots",
+      "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/roots.json",
+      "show",
+      "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/claude/guide/SKILL.md"
+    ],
+    [
+      "zsh",
+      "-f",
+      "/home/hruzam/ia-sync/zsh/experimental/source-reader/runner.zsh",
+      "--roots",
+      "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/roots.json",
+      "show",
+      "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/codex/canary/SKILL.md"
+    ],
+    [
+      "zsh",
+      "-f",
+      "/home/hruzam/ia-sync/zsh/experimental/source-reader/runner.zsh",
+      "--roots",
+      "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/roots.json",
+      "guide",
+      "topic"
+    ],
+    [
+      "zsh",
+      "-f",
+      "/home/hruzam/ia-sync/zsh/experimental/source-reader/runner.zsh",
+      "--roots",
+      "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/roots.json",
+      "guide",
+      "topic",
+      "UNIQUE"
+    ],
+    [
+      "zsh",
+      "-f",
+      "/home/hruzam/ia-sync/zsh/experimental/source-reader/runner.zsh",
+      "--roots",
+      "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/roots.json",
+      "guide",
+      "topic",
+      "TURNS"
+    ],
+    [
+      "zsh",
+      "-f",
+      "/home/hruzam/ia-sync/zsh/experimental/source-reader/runner.zsh",
+      "--roots",
+      "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/roots.json",
+      "guide",
+      "topic",
+      "side"
+    ],
+    [
+      "zsh",
+      "-f",
+      "/home/hruzam/ia-sync/zsh/experimental/source-reader/runner.zsh",
+      "guide",
+      "cold-start-card",
+      "card"
+    ],
+    [
+      "zsh",
+      "-f",
+      "/home/hruzam/ia-sync/zsh/experimental/source-reader/runner.zsh",
+      "show",
+      "cd5c84443097a882b2b62e60c15ade69b9cb3a4d97e88954b06ae3ceebf30ae6"
+    ],
+    [
+      "zsh",
+      "-f",
+      "/home/hruzam/ia-sync/zsh/experimental/source-reader/runner.zsh",
+      "show",
+      "/home/hruzam/ia-sync/codex/skills/guide/SKILL.md"
+    ],
+    [
+      "zsh",
+      "-f",
+      "/home/hruzam/ia-sync/zsh/experimental/source-reader/runner.zsh",
+      "show",
+      "bd93a7ba6e48c66029555fea71cf11c80e02da0488ac8f3da6a577f715a08ccc"
+    ],
+    [
+      "zsh",
+      "-f",
+      "/home/hruzam/ia-sync/zsh/experimental/source-reader/runner.zsh",
+      "show",
+      "/home/hruzam/ia-sync/claude/skills/guide/SKILL.md"
+    ],
+    [
+      "zsh",
+      "-f",
+      "/home/hruzam/ia-sync/zsh/experimental/source-reader/runner.zsh",
+      "show",
+      "b725f47973f6d0fecdb9ce189bc79895f145e85482eaba3f0dd4cbab48b8387a"
+    ],
+    [
+      "zsh",
+      "-f",
+      "/home/hruzam/ia-sync/zsh/experimental/source-reader/runner.zsh",
+      "show",
+      "/home/hruzam/.agents/skills/guide/SKILL.md"
+    ],
+    [
+      "zsh",
+      "-f",
+      "/home/hruzam/ia-sync/zsh/experimental/source-reader/runner.zsh",
+      "show",
+      "28cd7142c3f9a52e5bb9f757769be1e98519783aba71b300641c7dff3d062f7b"
+    ],
+    [
+      "zsh",
+      "-f",
+      "/home/hruzam/ia-sync/zsh/experimental/source-reader/runner.zsh",
+      "show",
+      "/home/hruzam/.claude/skills/guide/SKILL.md"
+    ],
+    [
+      "zsh",
+      "-f",
+      "/home/hruzam/ia-sync/zsh/experimental/source-reader/runner.zsh",
+      "--roots",
+      "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/roots.json",
+      "catalog"
+    ],
+    [
+      "zsh",
+      "-f",
+      "-c",
+      "_EXPERIMENTAL_ROOT=/home/hruzam/ia-sync/zsh/experimental; source /home/hruzam/ia-sync/zsh/experimental/dispatcher.zsh; _exp_run source-reader --help"
+    ],
+    [
+      "zsh",
+      "-f",
+      "-c",
+      "_EXPERIMENTAL_ROOT=/home/hruzam/ia-sync/zsh/experimental; source /home/hruzam/ia-sync/zsh/experimental/dispatcher.zsh; _exp_run source-reader --roots /home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/roots.json catalog"
+    ],
+    [
+      "zsh",
+      "-f",
+      "-c",
+      "_EXPERIMENTAL_ROOT=/home/hruzam/ia-sync/zsh/experimental; source /home/hruzam/ia-sync/zsh/experimental/dispatcher.zsh; _exp_run source-reader --roots /home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/roots.json show /home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/codex/linked/SKILL.md"
+    ]
+  ],
+  "checks": [
+    {
+      "name": "syntax-source-reader.py",
+      "passed": true,
+      "in_process": "ast.parse(Path.read_text(), filename=path)",
+      "path": "/home/hruzam/ia-sync/zsh/experimental/source-reader/source-reader.py"
+    },
+    {
+      "name": "syntax-test_source_reader.py",
+      "passed": true,
+      "in_process": "ast.parse(Path.read_text(), filename=path)",
+      "path": "/home/hruzam/ia-sync/zsh/experimental/source-reader/test_source_reader.py"
+    },
+    {
+      "name": "syntax-runner",
+      "argv": [
+        "zsh",
+        "-n",
+        "/home/hruzam/ia-sync/zsh/experimental/source-reader/runner.zsh"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "fixture-catalog-json",
+      "argv": [
+        "zsh",
+        "-f",
+        "/home/hruzam/ia-sync/zsh/experimental/source-reader/runner.zsh",
+        "--roots",
+        "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/roots.json",
+        "catalog",
+        "--json"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "stdout_sha256": "5ecf59a60c0cce5e3676c5ee79e76cbf1bcd4d55cab415a8fefb8c117b4f1a2a",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "unchanged_I1_catalog_metadata": true
+    },
+    {
+      "name": "fixture-terminal-catalog",
+      "argv": [
+        "zsh",
+        "-f",
+        "/home/hruzam/ia-sync/zsh/experimental/source-reader/runner.zsh",
+        "--roots",
+        "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/roots.json",
+        "catalog"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "stdout_sha256": "22fe6e9fb4adade5abe9186dc90c8c831d3f009cfa506f9ff1a4489cf5ea1a35",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "linked_label": "44dbb62960f58a966849c47e4b37c1dae3c1fb0ac3c73a09c4b265f29b7b6333\tskill/native SKILL.md\tcodex\tauthored\t/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/codex/linked/SKILL.md \u2192 /home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/claude/guide/SKILL.md"
+    },
+    {
+      "name": "fixture-terminal-browse",
+      "argv": [
+        "zsh",
+        "-f",
+        "/home/hruzam/ia-sync/zsh/experimental/source-reader/runner.zsh",
+        "--roots",
+        "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/roots.json",
+        "browse",
+        "--plain"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "stdout_sha256": "22fe6e9fb4adade5abe9186dc90c8c831d3f009cfa506f9ff1a4489cf5ea1a35",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "linked_label": "44dbb62960f58a966849c47e4b37c1dae3c1fb0ac3c73a09c4b265f29b7b6333\tskill/native SKILL.md\tcodex\tauthored\t/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/codex/linked/SKILL.md \u2192 /home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/claude/guide/SKILL.md"
+    },
+    {
+      "name": "fixture-linked-show-path",
+      "argv": [
+        "zsh",
+        "-f",
+        "/home/hruzam/ia-sync/zsh/experimental/source-reader/runner.zsh",
+        "--roots",
+        "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/roots.json",
+        "show",
+        "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/codex/linked/SKILL.md"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "stdout_sha256": "964479129ca76d58793408455f2a51ae97d6b0889cfd281b98ab031bb241bcce",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exact_selected_bytes": true
+    },
+    {
+      "name": "fixture-linked-show-id",
+      "argv": [
+        "zsh",
+        "-f",
+        "/home/hruzam/ia-sync/zsh/experimental/source-reader/runner.zsh",
+        "--roots",
+        "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/roots.json",
+        "show",
+        "44dbb62960f58a966849c47e4b37c1dae3c1fb0ac3c73a09c4b265f29b7b6333"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "stdout_sha256": "964479129ca76d58793408455f2a51ae97d6b0889cfd281b98ab031bb241bcce",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "exact_selected_bytes": true
+    },
+    {
+      "name": "dispatcher-help",
+      "argv": [
+        "zsh",
+        "-f",
+        "-c",
+        "_EXPERIMENTAL_ROOT=/home/hruzam/ia-sync/zsh/experimental; source /home/hruzam/ia-sync/zsh/experimental/dispatcher.zsh; _exp_run source-reader --help"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "stdout_sha256": "9a9d484ac31f9c2e355861d38fb20740eeb7263170a15a3413930bd091ed1510",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "builder_only_P7_evidence": true
+    },
+    {
+      "name": "dispatcher-catalog",
+      "argv": [
+        "zsh",
+        "-f",
+        "-c",
+        "_EXPERIMENTAL_ROOT=/home/hruzam/ia-sync/zsh/experimental; source /home/hruzam/ia-sync/zsh/experimental/dispatcher.zsh; _exp_run source-reader --roots /home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/roots.json catalog"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "stdout_sha256": "22fe6e9fb4adade5abe9186dc90c8c831d3f009cfa506f9ff1a4489cf5ea1a35",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "builder_only_P7_evidence": true
+    },
+    {
+      "name": "dispatcher-show",
+      "argv": [
+        "zsh",
+        "-f",
+        "-c",
+        "_EXPERIMENTAL_ROOT=/home/hruzam/ia-sync/zsh/experimental; source /home/hruzam/ia-sync/zsh/experimental/dispatcher.zsh; _exp_run source-reader --roots /home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/roots.json show /home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/codex/linked/SKILL.md"
+      ],
+      "exit_code": 0,
+      "passed": true,
+      "stdout_sha256": "964479129ca76d58793408455f2a51ae97d6b0889cfd281b98ab031bb241bcce",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "builder_only_P7_evidence": true
+    },
+    {
+      "name": "I1-snapshots-and22-unchanged-product-files",
+      "passed": true,
+      "snapshots": 24,
+      "changed_files": 2,
+      "base_unchanged": true,
+      "fixture_files_unchanged": 19
+    },
+    {
+      "name": "I1-evidence-byte-preservation",
+      "passed": true,
+      "files": 81
+    }
+  ],
+  "affected_tests": {
+    "argv": [
+      "python3",
+      "-B",
+      "/home/hruzam/ia-sync/zsh/experimental/source-reader/test_source_reader.py",
+      "ReaderAcceptance.test_terminal_labels_show_resolved_target",
+      "ReaderAcceptance.test_catalog_metadata_not_bodies",
+      "ReaderAcceptance.test_duplicates_ids_paths_and_bytes",
+      "ReaderAcceptance.test_noninteractive_browse_plain_and_roots_option",
+      "ReaderAcceptance.test_plain_terminal_selection_keeps_stdout_exact"
+    ],
+    "exit_code": 0,
+    "tests": 5,
+    "passed": true,
+    "raw_output": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I2/affected-tests.final.txt"
+  },
+  "regression_before_fix": {
+    "argv": [
+      "python3",
+      "-B",
+      "/home/hruzam/ia-sync/zsh/experimental/source-reader/test_source_reader.py",
+      "ReaderAcceptance.test_terminal_labels_show_resolved_target"
+    ],
+    "exit_code": 1,
+    "expected_failure": true,
+    "raw_output": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I2/regression.before-fix.txt",
+    "finding": "Existing linked fixture label omitted differing resolved target before engine fix."
+  },
+  "evidence": {
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I2/regression.before-fix.txt": "c8efcd1f14b1e400186a7bca5ef282d37a4b9efae0f1850d35f78492b4e37d3d",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I2/checks.run01.txt": "9ca671b0c925faadfb02aab7b5a82ba05c95158fcf3fc5469eea9f042f270a52",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I2/check_i2.py": "23c4c78acee467e14878c1833c6a2093c6b832d95b68ff549f1393b454ec68cb",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I2/affected-tests.final.txt": "b6ad3fdb26060eb766925cf0362b3ff0a8e3dd780b069a8c45b0030d46f99b34",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I2/checks.json": "0654f491c3f30987223c0c5047427b02710c3fe48bcbcbbd4bb35828164e4529",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I2/I1.evidence.after.json": "ac5a6e1b89be139af509a3fec652f8742eb6a1b2742df0a16d5a715d0aa3acc9",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I2/I1.evidence.before.json": "ac5a6e1b89be139af509a3fec652f8742eb6a1b2742df0a16d5a715d0aa3acc9",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I2/source-reader.py.I1-to-I2.diff": "83fd74646d6ca7b477ed5788196849d63351c5993f53bf3c5daadddb6a675e88",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I2/BEFORE-I2.json": "db6c5f3790d46c4831ac544cc065147156373d764f27fec3ebecf7c5a14d4023",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I2/test_source_reader.py.I1-to-I2.diff": "b34870d4770f872d9cd435d9c24279075a63a73dada904ecc2576613978bd555",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I2/CHANGE-MAP.json": "d426da02843b0884f88a0283e9224c5126d5a348b331aeb5002cb8387318f3ea",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I2/output/fixture-linked-show-id.stdout": "964479129ca76d58793408455f2a51ae97d6b0889cfd281b98ab031bb241bcce",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I2/output/fixture-linked-show-id.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I2/output/dispatcher-catalog.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I2/output/syntax-runner.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I2/output/dispatcher-show.stdout": "964479129ca76d58793408455f2a51ae97d6b0889cfd281b98ab031bb241bcce",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I2/output/dispatcher-show.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I2/output/fixture-terminal-browse.stdout": "22fe6e9fb4adade5abe9186dc90c8c831d3f009cfa506f9ff1a4489cf5ea1a35",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I2/output/syntax-runner.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I2/output/fixture-terminal-catalog.stdout": "22fe6e9fb4adade5abe9186dc90c8c831d3f009cfa506f9ff1a4489cf5ea1a35",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I2/output/fixture-terminal-catalog.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I2/output/fixture-catalog-json.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I2/output/fixture-linked-show-path.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I2/output/dispatcher-help.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I2/output/dispatcher-catalog.stdout": "22fe6e9fb4adade5abe9186dc90c8c831d3f009cfa506f9ff1a4489cf5ea1a35",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I2/output/fixture-linked-show-path.stdout": "964479129ca76d58793408455f2a51ae97d6b0889cfd281b98ab031bb241bcce",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I2/output/fixture-terminal-browse.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I2/output/fixture-catalog-json.stdout": "5ecf59a60c0cce5e3676c5ee79e76cbf1bcd4d55cab415a8fefb8c117b4f1a2a",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I2/output/dispatcher-help.stdout": "9a9d484ac31f9c2e355861d38fb20740eeb7263170a15a3413930bd091ed1510",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I2/before-I2/zsh/experimental/base.zsh": "724fdaa044862a56b5775c9f7b07857d1b452b2fb0bb6c1068ea5480f792e6ee",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I2/before-I2/zsh/experimental/source-reader/runner.zsh": "e3196616b034a00ba18335b48c085a4c54aff514d7c9cc1b203c9fa2b7f9a761",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I2/before-I2/zsh/experimental/source-reader/README.md": "052e62017d3977dfc126ce4a6e4128f4073308c55f53468849de3dc43f8e45a3",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I2/before-I2/zsh/experimental/source-reader/test_source_reader.py": "d494bb134628e73759ab53bb7538b9df4739cfe24aa7672ba375f03f14702307",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I2/before-I2/zsh/experimental/source-reader/source-reader.py": "87b5bb7aeb6842531a54caaa30ea47e4cc5e8368a1bfd1d24357cab4e695af32",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I2/before-I2/zsh/experimental/source-reader/fixtures/roots.json": "c4263f3a217eb98ac38a3999c7305ef6edde55bad31ffb90fd34251990d909a3",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I2/before-I2/zsh/experimental/source-reader/fixtures/empty/.keep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I2/before-I2/zsh/experimental/source-reader/fixtures/guides/topic/GUIDE.md": "303e43e626676393ad6e7428b1057d3bf102d546f7e80dfc9eb847316641f857",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I2/before-I2/zsh/experimental/source-reader/fixtures/guides/topic/res/turns-recovery.md": "aa4a6237d53e5c93794761f8e6eb426bb9c2637701dda71de8c3e8a548c00517",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I2/before-I2/zsh/experimental/source-reader/fixtures/guides/topic/res/fanout-turns.md": "d21caf3b2618f2c8908858b4a8321666c659a7c7d7141e12f80ce043f4b00396",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I2/before-I2/zsh/experimental/source-reader/fixtures/guides/topic/res/unique.md": "04810139e7b122074de235969d250aff5e1cf26fd3550e8db5d76f089d322fb1",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I2/before-I2/zsh/experimental/source-reader/fixtures/guides/topic/raw/side.md": "1e08e5888a4b5e2b08243ce71f7db1adc35702ad14c0b147ef264a69d268d56c",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I2/before-I2/zsh/experimental/source-reader/fixtures/germline/tunnel/NEVER.md": "1644d96128330e7735c6648d6042c4ccbda88b9be54f365ec68f3c5ffbf71436",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I2/before-I2/zsh/experimental/source-reader/fixtures/germline/skills/skill.example.md": "05b6b224c3b6879975df91a160556adbecc5f22cfdccb742b7b47bc37e640af3",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I2/before-I2/zsh/experimental/source-reader/fixtures/germline/agents/example/identity.md": "9fadcbeb4791d145db4f765fc2bc9aed22097d3e16accc94bc0c28e63a35fe28",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I2/before-I2/zsh/experimental/source-reader/fixtures/germline/agents/example/binding.codex.md": "f74b2b0b4c921ea1c778900cf90a2c8fcd04d6c1ec1f9b6ff185592ecbae1fcd",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I2/before-I2/zsh/experimental/source-reader/fixtures/germline/agents/example/methods/observe.md": "eb54d12b78bf903baf2c1621ffb6debb583c5728957c2c218a550197e8c1ad4b",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I2/before-I2/zsh/experimental/source-reader/fixtures/germline/agents/example/cards/consult.md": "5843675940637349ccfacfb213396e6379a5d40a0651293ffd0a057eec55483e",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I2/before-I2/zsh/experimental/source-reader/fixtures/synced/account-bucket/guide/SKILL.md": "5e5fa703f4608030b2d5861c46ae944831b91a169b89cdf3cd182c15cb91e943",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I2/before-I2/zsh/experimental/source-reader/fixtures/claude/guide/SKILL.md": "964479129ca76d58793408455f2a51ae97d6b0889cfd281b98ab031bb241bcce",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I2/before-I2/zsh/experimental/source-reader/fixtures/codex/linked/SKILL.md": "964479129ca76d58793408455f2a51ae97d6b0889cfd281b98ab031bb241bcce",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I2/before-I2/zsh/experimental/source-reader/fixtures/codex/canary/SKILL.md": "09e32b4c560fffe50e97f91cc284cda6826e9c2d64db24e8089e285e512a4871",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I2/before-I2/zsh/experimental/source-reader/fixtures/codex/guide/SKILL.md": "e71c5aee9b1142abbcc737f110c57ecac5255f2dff2fa13bcbc94b3edc007238",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I2/before-I2/zsh/experimental/source-reader/fixtures/codex/deep/hidden/SKILL.md": "a4f90108cce7592f76c336371e1cd2b9c911227159d469e97b6a4f503eb33072"
+  },
+  "primary_inputs": {
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/_bus/33.cartan.point.md": "7144cd2cf26912059546e8d34a68efef25bef844bb9914d0a648ecbb449d1d5a",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/_bus/32.cartan.verdict.md": "a87d2666de18ac4273c2a5102cc7bf769e3b527b93b22fa8198264077478f44d",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/control/CONTRACT.01.json": "f0db2059aaa288ec0b54c10ca39eca6a28574a93319f7bb07a94fcf9881e506e",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/control/DECISION.01.md": "9e08d5e3fd1dab9e58d48d2567517f7636a7141db964340406feab62b1e52f71",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/capsules/R2.md": "419a5a4d980bce66b4795e50eb0c185023ac82cbee787407ed552c4998b890da",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/capsules/A2.md": "ac69390d280b8886b92fc8e8e575e02562765edceabba31a86642c7a1da9ab09"
+  },
+  "input_preservation": {
+    "unchanged_product_files": 22,
+    "fixture_files": 19,
+    "base_unchanged": true,
+    "I1_evidence_unchanged": true,
+    "I1_evidence_files": 81,
+    "catalog_metadata_equal_to_I1": true,
+    "selected_linked_bytes_equal": true
+  },
+  "limits": [
+    "Independent final A3 and missing independent P7 proof remain pending.",
+    "No I2 deployment or deploy dry-run; I1 builder preview remains historical, separate independent P7 expected after freeze.",
+    "Optional real fzf interaction remains unexercised; it consumes corrected shared label().",
+    "Only5 affected tests rerun; I1 full13-test report and A2 P1-P6/P8 findings remain separately preserved."
+  ],
+  "write_freeze": "All product writes frozen at33 RETURN for independent final audit. No further edits without new head instruction.",
+  "manifest_authority": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I2/MANIFEST.json",
+  "byte_identical_template_alias": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I2/manifest.json"
+}

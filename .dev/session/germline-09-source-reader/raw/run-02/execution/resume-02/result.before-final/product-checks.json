@@ -1,0 +1,16 @@
+{
+  "PRODUCT": "UNVERIFIED",
+  "stage": "C1 complete; A1 adapter safetyHOLD",
+  "criteria": {
+    "P1": "not reached: product not implemented",
+    "P2": "not reached: product not implemented",
+    "P3": "not reached: product not implemented",
+    "P4": "not reached: product not implemented",
+    "P5": "not reached: product not implemented",
+    "P6": "not reached: product not implemented",
+    "P7": "not reached: product not implemented",
+    "P8": "not reached: product not implemented"
+  },
+  "A1_counterexamples": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/execution/A1-race-review/proposal/D1.pending-notes.md",
+  "product_execution": false
+}

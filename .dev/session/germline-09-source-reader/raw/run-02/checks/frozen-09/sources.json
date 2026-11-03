@@ -1,0 +1,193 @@
+{
+  "schema": "g09-run02-pins/v1",
+  "run_id": "run-02",
+  "files": [
+    {
+      "path": "/home/hruzam/.germline/tunnel/tunnel.preamble.md",
+      "sha256": "f84e51ebe25022802319595e5f8cc3f48d362310af4a77a30e54e68067832ca3",
+      "bytes": 793
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/ACCEPTANCE.md",
+      "sha256": "9d1198dde298aa324d3e92aba4f71e4db259139508f6f1d08aa01a116574b9c5",
+      "bytes": 4515
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/RUNBOOK.md",
+      "sha256": "2fc854df1b97f562a1363a7ee107b916317e01b13e044acd1a2d274c459e8438",
+      "bytes": 3997
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/input/SOURCE-MAP.md",
+      "sha256": "b9b606ad05254cb9023eff463d53ca6563daa0e26ba5b5fa11d22e664b90689e",
+      "bytes": 3520
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/CONTRACT.json",
+      "sha256": "6b754b7fd595f5f1e7c321c9dfc53493778238e41229ece845a26f9c8e575671",
+      "bytes": 11925
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/RECONCILIATION.md",
+      "sha256": "a90a03f0073b52ebde28a607453b46c0afac0bb9043414a20dde24d92a9bc0df",
+      "bytes": 2211
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/SCHEDULE.md",
+      "sha256": "b7d4558fd95a55bdcb63d272909995124ad18369a8d2a86769d3be5309f85b51",
+      "bytes": 3047
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/TUNNEL.md",
+      "sha256": "a4a9a7bbdc45cb10c21b7f174915b15f9b87aa84a46c66255bfb982446a8b4ab",
+      "bytes": 5676
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/briefs/astrobley.md",
+      "sha256": "918de7e859469789399a844582ab14dac51d29df80e3a853f046381bd71fb6da",
+      "bytes": 3341
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/briefs/auditor.md",
+      "sha256": "32aa68b75da5f6eef15b339f5756f79a398a1d821e1c200a85540cefbe9f3422",
+      "bytes": 2056
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/briefs/caretaker.md",
+      "sha256": "2a3da02b743d353602d2c217ba63e23b74f213e15788adc32ed045f70a9174ed",
+      "bytes": 1197
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/briefs/researcher.md",
+      "sha256": "3635ef22070a721ea07f820f6e20969554d2778d355b71992e32efe4d7323522",
+      "bytes": 2030
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/run_operations.py",
+      "sha256": "f041b93fa0690554c81f0a6d3d20781597ac89f956257e3d426a11fc3bde4e6e",
+      "bytes": 33048
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/control/CONTRACT.template.json",
+      "sha256": "039d89140fed8ab3b0e7e8da4a0abbc7988a06aef066a54cbd28f7145663417f",
+      "bytes": 1120
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/control/ROUND-MAP.json",
+      "sha256": "4dd19a9547ff97bc8f4943fae0cb28fe48e82ed6d78dcb45b4ab97c715cb5fc2",
+      "bytes": 3333
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/control/freeze_pins.py",
+      "sha256": "afeeb62b1e5093a0bcdf590dd2dea17bbb002b35e33ae7cc8c35a50e23b5e3c2",
+      "bytes": 1972
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/hold-line/ENTRY.md",
+      "sha256": "adfc0cc0f07e3fdc1709746d69c6fcee71b6fcda6490edc93c543a304443b9c2",
+      "bytes": 1205
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/hold-line/controller.md",
+      "sha256": "98a42758f046528d2e8f23441bd7e5fbfccd889d3cbeb6d85a46e3e87184c64b",
+      "bytes": 1687
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/hold-line/functions/consult.md",
+      "sha256": "284adb1318b369d61e3a7b26c7f1e677c78e3b73d618ee64dabf8e6be2a25b88",
+      "bytes": 1315
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/hold-line/functions/prepare.md",
+      "sha256": "394edd17b3f020062b2c53b5719114956d4893699c9aa869f0e286a356dc1274",
+      "bytes": 927
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/hold-line/functions/reconcile.md",
+      "sha256": "9abe910517bceb0efe287c15b9f32c9a72c709e60c6fce3ac2e4f2907916be1d",
+      "bytes": 1150
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/packets/A1.md",
+      "sha256": "e710655d75eb3026f788197527f33ce1633fbe90ba80729fd0eb001f468a8700",
+      "bytes": 2066
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/packets/A2.md",
+      "sha256": "a9658e51aa16b72ab4bdb05b23d6a19cdcfa3dde3633bd9cc834cb72669a8dfe",
+      "bytes": 1649
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/packets/A3.md",
+      "sha256": "8d22fe49720718ad9628cde524557cea734085e684f0d316d9fbf9472e2685f6",
+      "bytes": 1323
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/packets/R1.md",
+      "sha256": "a55cebb382da72e5daabeeb3ea62c5ac81f590609c82e6391ccb2df38832ee07",
+      "bytes": 2415
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/packets/R2.md",
+      "sha256": "c9a6e5e73eff50c23abffdd5e4b7f9dc870332759ba3ec3b8099b05e9779c810",
+      "bytes": 1409
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/repair/test_adapter.py",
+      "sha256": "15e9449c4c608d1ca4ebab44f70b98b079b48b2ce3004d3e5ddf2109a84dcead",
+      "bytes": 17031
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/repair/test_tunnel_checkpoints.py",
+      "sha256": "89affaddb0eed2c9509db6c2f537d5257195a033be8b452974ecd9a6211c3c9a",
+      "bytes": 2615
+    },
+    {
+      "path": "/home/hruzam/ia-sync/codex/agents/astrobley.toml",
+      "sha256": "c49f7d32465d324ac478668b1ba63a88df2f383fafb9b639cd88c37ce4474467",
+      "bytes": 2690
+    },
+    {
+      "path": "/home/hruzam/ia-sync/codex/agents/implementer.toml",
+      "sha256": "bb431c1c0bc5fda7e385c62a2e371df39c75155a9e21f476b6ed5c3fdd2792c7",
+      "bytes": 1463
+    },
+    {
+      "path": "/home/hruzam/ia-sync/codex/agents/verifier.toml",
+      "sha256": "7d3294ad8c6d0f572170f22229248767f197a7ce084e7ec90f1729cd1e3b0d30",
+      "bytes": 1479
+    },
+    {
+      "path": "/home/hruzam/ia-sync/germline/tunnel/tunnel.preamble.md",
+      "sha256": "f84e51ebe25022802319595e5f8cc3f48d362310af4a77a30e54e68067832ca3",
+      "bytes": 793
+    },
+    {
+      "path": "/home/hruzam/ia-sync/zsh/ai/tunnel-codex.py",
+      "sha256": "e72b072103d3d32e2c26cc11770834bfa331daa84ecc3e0add7b1d56cc2cdf65",
+      "bytes": 52906
+    },
+    {
+      "path": "/home/hruzam/ia-sync/zsh/ai/tunnel-codex.zsh",
+      "sha256": "ae7803d804b54fd59145550807286a030d9efc6c2f13c6a0e17584dffe768f4e",
+      "bytes": 19812
+    },
+    {
+      "path": "/home/hruzam/reposoma/raw.guides/tunnel/GUIDE.md",
+      "sha256": "1dc0f9c41d0004744b4820c302cb7be78330528ebaf55732c34ddf78c93f75a4",
+      "bytes": 9489
+    }
+  ],
+  "preamble": {
+    "source": "/home/hruzam/ia-sync/germline/tunnel/tunnel.preamble.md",
+    "deployed": "/home/hruzam/.germline/tunnel/tunnel.preamble.md"
+  },
+  "mutable_authority_checked_each_effect": [
+    "STATUS.md",
+    "control/RELEASE.json",
+    "control/HOLD.json",
+    "caretaker/plan.*.json",
+    "control/A3.GRANT.json"
+  ],
+  "authority": "Hashes identify exact inputs. Actual fresh GO and release checks alone authorize dispatch. No retention/correctness claim."
+}

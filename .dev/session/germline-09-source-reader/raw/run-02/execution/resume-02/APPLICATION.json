@@ -1,0 +1,38 @@
+{
+  "schema": "g09-approved-application/v1",
+  "at": "2026-10-28T23:39:40.186855+00:00",
+  "files": [
+    {
+      "actual": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/run_operations.py",
+      "candidate": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/execution/A1-race-review/candidate/run_operations.py",
+      "old_sha256": "bfa6a3fc7c09591881575c87fb8ad5bde066188cc42f814028dbeffff4d77b50",
+      "new_sha256": "4a9458a834e6825c8bfad44ec345bdcbd2f8d90483e9e93bdbcbcd1081042ae5",
+      "meaning": "one prior_uncertainty recheck inside existing ask reservation lock"
+    },
+    {
+      "actual": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/repair/test_adapter.py",
+      "candidate": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/execution/A1-race-review/candidate/test_adapter.py",
+      "old_sha256": "d81a8e51340b2069c50c4fc10dcf4a099946374dc5fd50dbb28503b2e2063023",
+      "new_sha256": "01a7a41da29181da64139d69b68afa763d79573c196b1fafede130b767c9e74d",
+      "meaning": "valid-kind cap fixture plus sequential5/6 and future C1-history/C2-plan proof"
+    },
+    {
+      "actual": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/CONTRACT.json",
+      "candidate": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/execution/A1-race-review/proposal/CONTRACT.proposed.json",
+      "old_sha256": "84be154eb074088af75f003cd760b0ccb904061afb46851135e8ad4203f1d214",
+      "new_sha256": "d85068a29acae319710237594822230f1e761bf5df0656a208da14cc10d0216f",
+      "meaning": "only files.frozen_plan moves to caretaker/plan.C2.json"
+    },
+    {
+      "actual": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/hold-line/sources.json",
+      "candidate": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/execution/A1-race-review/proposal/sources.proposed.json",
+      "old_sha256": "d72e6b552f7e05e2e5c5657631526b989dea28d2cc3a372919845a1c86ad51db",
+      "new_sha256": "ed61680ac03074e3f77b66a9fa6db474d6363d48ff8374ac1a713530e7f8bbbf",
+      "meaning": "same35 inputs; only those3 hashes/byte counts rotate"
+    }
+  ],
+  "before": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/execution/resume-02/before-application",
+  "authorized_by": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/execution/resume-02/RULING.actual.json",
+  "caretaker_historical_count": 66,
+  "hold_retained": true
+}

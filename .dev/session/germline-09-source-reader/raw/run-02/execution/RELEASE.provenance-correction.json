@@ -1,0 +1,25 @@
+{
+  "schema": "g09-release-provenance-correction/v1",
+  "observed_at": "2026-10-26T22:33:01.679705+01:00",
+  "before": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/execution/RELEASE.before-provenance-correction.json",
+  "before_sha256": "fc40638d0adc2a2b3fe2aa1e9a74bec9228520fc6260160fdd393e31cfb63529",
+  "after_sha256": "735e66200925824e50a106c223b166f9eeb11256e328c26c491e173ca90b03c5",
+  "changed_field": "Added operator_message_reference equal to existing message_reference; actual GO and existing fields preserved.",
+  "original_failure_reproduced_offline": "release lacks fresh operator message provenance",
+  "after_pure_require_release_checks": {
+    "researcher": {
+      "release": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/control/RELEASE.json",
+      "contract_sha256": "84be154eb074088af75f003cd760b0ccb904061afb46851135e8ad4203f1d214"
+    },
+    "auditor": {
+      "release": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/control/RELEASE.json",
+      "contract_sha256": "84be154eb074088af75f003cd760b0ccb904061afb46851135e8ad4203f1d214"
+    }
+  },
+  "subprocess_calls": 0,
+  "no_profile_retry": true,
+  "hold_retained": true,
+  "frozen_contract_sha256": "84be154eb074088af75f003cd760b0ccb904061afb46851135e8ad4203f1d214",
+  "frozen_pins_sha256": "d72e6b552f7e05e2e5c5657631526b989dea28d2cc3a372919845a1c86ad51db",
+  "authority": "Head correcting its own unfrozen GO serialization within the actual GO; no scope/pinned/source/model/attempt change. Execution remains stopped per operator hold rule."
+}

@@ -1,0 +1,33 @@
+{
+  "verdict": "PASS",
+  "proposal_hashes": {
+    "adapter": "4a9458a834e6825c8bfad44ec345bdcbd2f8d90483e9e93bdbcbcd1081042ae5",
+    "test": "01a7a41da29181da64139d69b68afa763d79573c196b1fafede130b767c9e74d",
+    "contract": "d85068a29acae319710237594822230f1e761bf5df0656a208da14cc10d0216f",
+    "pins": "ed61680ac03074e3f77b66a9fa6db474d6363d48ff8374ac1a713530e7f8bbbf"
+  },
+  "source_manifest_changed_paths": [
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/CONTRACT.json",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/run_operations.py",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/repair/test_adapter.py"
+  ],
+  "contract_changed_fields": [
+    "files.frozen_plan"
+  ],
+  "pending_release_authorized": false,
+  "migration": {
+    "c1_plan_sha256": "d60bc70f1f31a6a6d4769050370e27eede2276c9fff4ea7e9ef345fc4d1a3fba",
+    "existing_caretaker_files_preserved": 67,
+    "new_plan_rounds": [
+      "A2",
+      "R2"
+    ],
+    "new_plan_binds_rotated_overlay_pins": true,
+    "asks_before": 2,
+    "asks_after": 2,
+    "old_cold_packet_regeneration_refused": true,
+    "new_profile_enable_ask_calls": 0,
+    "overlay_note": "Only temp path relocation and matching overlay hashes differ from exact staged metadata; actual35-entry proposal verified separately above."
+  },
+  "target_model_turns": 0
+}

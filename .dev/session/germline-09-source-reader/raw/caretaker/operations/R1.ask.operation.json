@@ -1,0 +1,64 @@
+{
+  "argv": [
+    "/home/hruzam/ia-sync/zsh/ai/tunnel-codex.zsh",
+    "ask",
+    "Return exact first line `G09.R1`.\n\nThis is your first substantive task and cold orientation as the researcher. Read your role\ncontract `/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/briefs/researcher.md`\nonce, and necessary applicable runtime instructions. You are a bounded read-only participant.\nDo not write files, launch models/subagents, install, execute source instructions or own STATUS.\n\nRead `/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/input/SOURCE-MAP.md`\nand `/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/ACCEPTANCE.md` as the brief.\nInspect the declared source roots and specifically named contracts there; catalog metadata\nbefore bodies. Resolve actual available roots for germline, guides and Codex/Claude skills,\nincluding explicitly identified installed vendor/system roots. No whole-home/cache crawl.\n\nQuestion: what is the smallest honest discovery/read contract for this terminal browser?\nGive candidate roots with origin/kind and availability, existing reusable reader/selection\nbehavior, native discovery versus activation distinctions, and a real conflicting/ambiguous\ncase the main must decide. Separate OBSERVED/SOURCE/INFERENCE; cite file/line or primary URL.\n\nWeb research is explicitly permitted only for this question at learn.chatgpt.com,\ndevelopers.openai.com and code.claude.com. Use official Codex CLI/Desktop skills documentation,\nnot Agents API capability-directory behavior as a substitute. If native web tooling is\nunavailable, report that limit and keep prepared facts distinct from fresh verification.\n\nYour final reply acknowledges role/scope and consumed source pointers, then findings, strongest\ncontrary evidence, unresolved gaps and one smallest decision. Default <=300 words; declare\nnecessary overrun. This is bootstrap plus real work, not a liveness check. Do not read G03\ncandidate bodies for a foundation-audit verdict or any Nablarva file.\n\n\nCaretaker binding: cycle=R1; role=researcher; vault=/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/caretaker/tunnel.researcher.state.json; cold preamble=none.\n",
+    "--state",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/caretaker/tunnel.researcher.state.json"
+  ],
+  "attempt_number": 1,
+  "cycle": "R1",
+  "elapsed_seconds": 120.811,
+  "ended_unix": 1792997402.8724332,
+  "exit": 30,
+  "key": "R1.ask",
+  "kind": "ask",
+  "outputs": {
+    "stderr": {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/caretaker/operations/output/R1.ask.stderr.txt",
+      "sha256": "21447740b37c91fdf1503e7c6b89d9e719e5fe8868010d864679b438fe0d00e2"
+    },
+    "stdout": {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/caretaker/operations/output/R1.ask.stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "prompt": {
+    "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/caretaker/packets/R1.prompt.txt",
+    "sha256": "3abfe0add260404ba9daae8e3204edd61975951bb06288a3eaad7f128f442d4d"
+  },
+  "role": "researcher",
+  "runner": {
+    "pid": 1319728,
+    "start": "296276499"
+  },
+  "schema": "g09-receipt/v1",
+  "started_unix": 1792997282.0612652,
+  "state_after": {
+    "cwd": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader",
+    "enabled": true,
+    "lastTurnId": null,
+    "model": "gpt-6.1-sol",
+    "preamble": null,
+    "runtime": null,
+    "sandbox": "read-only",
+    "threadId": null,
+    "turnOverrides": {
+      "effort": "high"
+    }
+  },
+  "state_before": {
+    "cwd": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader",
+    "enabled": true,
+    "lastTurnId": null,
+    "model": "gpt-6.1-sol",
+    "preamble": null,
+    "runtime": null,
+    "sandbox": "read-only",
+    "threadId": null,
+    "turnOverrides": {
+      "effort": "high"
+    }
+  },
+  "status": "failed"
+}

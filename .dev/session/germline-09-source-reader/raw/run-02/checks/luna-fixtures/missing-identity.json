@@ -1,0 +1,19 @@
+{
+  "schema": "g09-offline-caretaker-case/v1",
+  "case": "missing-identity",
+  "simulated": true,
+  "target_turns": 0,
+  "evidence": {
+    "receipt": {
+      "kind": "ask",
+      "status": "pending",
+      "attempt_number": 1,
+      "runner_visibility": "permission-denied"
+    },
+    "vault": {
+      "threadId": null,
+      "lastTurnId": null
+    },
+    "vault_path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/tunnel.researcher.state.json"
+  }
+}

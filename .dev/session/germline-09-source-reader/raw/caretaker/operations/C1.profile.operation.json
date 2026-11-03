@@ -1,0 +1,20 @@
+{
+  "argv": [
+    "/home/hruzam/.local/bin/codex",
+    "app-server",
+    "model/list (zero-turn JSON-RPC)"
+  ],
+  "elapsed_seconds": 0.522,
+  "ended_unix": 1792997124.0442944,
+  "exception": "ProtocolError('app-server closed stdout (EOF); stderr tail: WARNING: proceeding, even though we could not create PATH aliases: Read-only file system (os error 30)\\nError: Read-only file system (os error 30)')",
+  "key": "C1.profile",
+  "kind": "profile",
+  "remote_outcome": "unknown",
+  "runner": {
+    "pid": 6,
+    "start": "296260660"
+  },
+  "schema": "g09-receipt/v1",
+  "started_unix": 1792997123.5223053,
+  "status": "failed"
+}

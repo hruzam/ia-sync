@@ -1,0 +1,47 @@
+{
+  "disposition": "INDETERMINATE",
+  "phase": "C1 hold; gate open",
+  "M1": {
+    "preregistered_initial_packet_words": 707,
+    "limit": 800,
+    "evidence": "raw/control/validation.json (pre-GO static check)",
+    "additional_main_reads_and_baseline": "raw/control/main-events.json",
+    "native_token_counts_known": false
+  },
+  "M2": {
+    "main_routine_tunnel_cli_operations": 0,
+    "exception": "Main opened TUNNEL.md and selected operation/vault receipts to verify mandatory STOP; this is real intake overhead, not a transport command."
+  },
+  "M3": {
+    "capsules_received": 1,
+    "body_words": 71,
+    "file_bytes": 559,
+    "within_300_words": true,
+    "measurement_note": "Native progress said 74 words; persisted metrics say 92; this body count is computed from the actual capsule."
+  },
+  "M4": {
+    "status": "UNVERIFIED",
+    "reason": "A1 never dispatched; no consequential counterexample received."
+  },
+  "M5": {
+    "status": "INCOMPLETE",
+    "caretaker": [
+      "C1 plus late-evidence reconciliation"
+    ],
+    "astrobley": [],
+    "researcher": [
+      "R1 attempted; remote outcome unknown"
+    ],
+    "auditor": [],
+    "caretaker_handle": "/root/caretaker",
+    "astrobley_handle": null
+  },
+  "M6": {
+    "whole_route_efficiency_claim": false,
+    "target_usage": null,
+    "main_native_usage": null,
+    "conversion_to_dollars": null
+  },
+  "germline_contribution": "indeterminate",
+  "ordinary_role_alternative": "Existing native implementer/researcher/verifier roles plus bounded source-reader/guide instructions remain a simpler untested alternative; no germline necessity follows."
+}

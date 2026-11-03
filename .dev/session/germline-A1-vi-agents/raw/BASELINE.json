@@ -1,0 +1,45 @@
+{
+  "created": "2026-10-26T22:34:55.807373+01:00",
+  "host": "office / hruzam-120922",
+  "head": "5c26d80aa3c90de6cafc1c47a7d199fdbcc7466d",
+  "owned_before": {
+    "codex/agents/oraculum.toml": "1d47d1c497718e374b367631636c723523f6f8f8e55ecc24406b2f890aa8f36b",
+    "claude/agents/oraculum.md": "f17fa720625375973b3131d30b38d31e4afe1966ec1e093ed20da4db666ef30e",
+    "codex/AGENTS.md": "370c9fc47d9331b2a320fa91a0218311e9fc436d24e1e74a7a96958396fd6914",
+    "codex/README.md": "a55603c3f26d28cf2ca39eaae67c6b11507a16ed4001ccb1d941b814288e7b84",
+    "deploy.sh": "3a1c9ce02986d70a3f16af5c58cf305d58eca14809f842e4b105483648886f62"
+  },
+  "protected_before": {
+    "claude/agents/astrobley.md": "91b894bb3b777061dd618ac45fe3d1a8efb0ae90b0de5356a320c8deb89239fa",
+    "codex/agents/astrobley.toml": "c49f7d32465d324ac478668b1ba63a88df2f383fafb9b639cd88c37ce4474467",
+    "claude/hooks/oraculum-bash-whitelist.sh": "25fe065d716fbaaf6942cea4c47a3069371ad68e71a47b777c9f10a24b54dd5e",
+    "codex/profiles/houston.config.toml": "15f8bbee15213031f75d71a1937e9dcba80022fa0ce59d371ebc81ebb77feb49",
+    "codex/agents/houston.toml": "4d965e4212f1ddbc9d653294d3591300a8aa3762a33adf372598384b7d949b7e",
+    "claude/agents/houston.md": "553dfe4f4a52165ebe39300508298d7771f271618bb4dcf632a60126a785094c",
+    ".germline/agents/houston/ia-sync.md": "24b32d910b39227e4cb3bb9ebdf49bdc6c676d19494d236e74d8b6cfd0ad1483",
+    "germline/CHATBOT.md": "388467d66aeebee34c0b5adcc3e543e9dc714aea228cef6e3caaeba045dee76f",
+    "germline/README.md": "0b2aabb66223a34f10697d1dad7ea9a6b01d8be5a537580e66db46d2cecce4fe",
+    "germline/tunnel/tunnel.preamble.md": "f84e51ebe25022802319595e5f8cc3f48d362310af4a77a30e54e68067832ca3",
+    "germline/skills/skill.buffering-cycle.md": "e3a2e697fe12b6bf9c5a81e76e404c3fb3c98918927dfe9b720c6e17200e2511",
+    "germline/agents/houston/identity.md": "d7c8837a0a6fdbece78f0500107deb684b36ec0135bd7a0e6462158ef7be94e6",
+    "germline/agents/houston/binding.claude.md": "2e8bc57ca97d5d8dd7b1b2f147ee78c147a23503ae8e5dc9915ac3b4124568e0",
+    "germline/agents/houston/binding.codex.md": "f171589645e42d93fac515e70240296f54d7d9fe6c4a390e273489ebd1491915",
+    "germline/agents/houston/cards/sitting.md": "34fe2073bb8022e0750d4f41c4e8abbe7bb954dd4ae400d1664e1749569978b3",
+    "germline/agents/houston/cards/audit.md": "6f8c092909e471bb2a95e37f3b698fa03aae2b07b083a2286b0fc3810cba2c1f",
+    "germline/agents/houston/cards/consult.md": "9b0aa73106497ccda4b92605bea4972e6df2ebed75765d3b9bdf14ac82dd117c"
+  },
+  "live_before": {
+    ".claude/agents/oraculum.md": "f17fa720625375973b3131d30b38d31e4afe1966ec1e093ed20da4db666ef30e",
+    ".codex/agents/oraculum.toml": "1d47d1c497718e374b367631636c723523f6f8f8e55ecc24406b2f890aa8f36b",
+    ".claude/agents/astrobley.md": "91b894bb3b777061dd618ac45fe3d1a8efb0ae90b0de5356a320c8deb89239fa",
+    ".codex/agents/astrobley.toml": "c49f7d32465d324ac478668b1ba63a88df2f383fafb9b639cd88c37ce4474467"
+  },
+  "new_destinations": [
+    "germline/agents/oraculum/identity.md",
+    "germline/agents/oraculum/binding.codex.md",
+    "germline/agents/oraculum/binding.claude.md",
+    "codex/profiles/oraculum.config.toml"
+  ],
+  "source_state": "existing Oraculum and Astrobley source/live pairs match; no shared Oraculum source or main profile exists",
+  "runtime_version": "codex-cli 0.164.0"
+}

@@ -1,0 +1,2 @@
+open: turn overrides now {"effort": "high"} (sent on every send/ask; they persist in the thread once sent)
+open: enabled (model=gpt-6.1-sol, sandbox=read-only, cwd=/home/hruzam/ia-sync/.dev/session/germline-09-source-reader); no thread yet — thread will be born on first send

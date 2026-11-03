@@ -1,0 +1,102 @@
+{
+  "at": "2026-10-26T23:06:42.629169+01:00",
+  "host": "office / hruzam-120922",
+  "backup_directory": "/home/hruzam/.local/state/ia-sync/germline-A1-vi-agents/20261026T230642+0100-9974749c",
+  "backup_manifest": [
+    {
+      "source": "/home/hruzam/ia-sync/germline/agents/oraculum/identity.md",
+      "target": "/home/hruzam/.germline/agents/oraculum/identity.md",
+      "existed": false
+    },
+    {
+      "source": "/home/hruzam/ia-sync/germline/agents/oraculum/binding.claude.md",
+      "target": "/home/hruzam/.germline/agents/oraculum/binding.claude.md",
+      "existed": false
+    },
+    {
+      "source": "/home/hruzam/ia-sync/germline/agents/oraculum/binding.codex.md",
+      "target": "/home/hruzam/.germline/agents/oraculum/binding.codex.md",
+      "existed": false
+    },
+    {
+      "source": "/home/hruzam/ia-sync/codex/AGENTS.md",
+      "target": "/home/hruzam/.codex/AGENTS.md",
+      "existed": true,
+      "before_sha256": "370c9fc47d9331b2a320fa91a0218311e9fc436d24e1e74a7a96958396fd6914",
+      "backup": "/home/hruzam/.local/state/ia-sync/germline-A1-vi-agents/20261026T230642+0100-9974749c/.codex/AGENTS.md"
+    },
+    {
+      "source": "/home/hruzam/ia-sync/codex/agents/oraculum.toml",
+      "target": "/home/hruzam/.codex/agents/oraculum.toml",
+      "existed": true,
+      "before_sha256": "1d47d1c497718e374b367631636c723523f6f8f8e55ecc24406b2f890aa8f36b",
+      "backup": "/home/hruzam/.local/state/ia-sync/germline-A1-vi-agents/20261026T230642+0100-9974749c/.codex/agents/oraculum.toml"
+    },
+    {
+      "source": "/home/hruzam/ia-sync/codex/profiles/oraculum.config.toml",
+      "target": "/home/hruzam/.codex/oraculum.config.toml",
+      "existed": false
+    }
+  ],
+  "commands": [
+    {
+      "command": "bash deploy.sh --germline-only",
+      "exit_code": 0,
+      "log": "/home/hruzam/ia-sync/.dev/session/germline-A1-vi-agents/raw/INSTALL.germline.txt"
+    },
+    {
+      "command": "bash deploy.sh --codex-only",
+      "exit_code": 0,
+      "log": "/home/hruzam/ia-sync/.dev/session/germline-A1-vi-agents/raw/INSTALL.codex.txt"
+    }
+  ],
+  "installed": [
+    {
+      "source": "/home/hruzam/ia-sync/germline/agents/oraculum/identity.md",
+      "target": "/home/hruzam/.germline/agents/oraculum/identity.md",
+      "sha256": "ac8e8348b24544a7aabbf75c5797ee0156769efa796a8767d4bf4f61e26ba49c"
+    },
+    {
+      "source": "/home/hruzam/ia-sync/germline/agents/oraculum/binding.claude.md",
+      "target": "/home/hruzam/.germline/agents/oraculum/binding.claude.md",
+      "sha256": "c883f058ed0a5f4a26e730eec2ac9bc4e3de48fe64203bad602ce3f04667d2d5"
+    },
+    {
+      "source": "/home/hruzam/ia-sync/germline/agents/oraculum/binding.codex.md",
+      "target": "/home/hruzam/.germline/agents/oraculum/binding.codex.md",
+      "sha256": "a2cdde5e815ac2260b3b2ab666cc192250492adcfbc32c526ab954a380d2f97f"
+    },
+    {
+      "source": "/home/hruzam/ia-sync/codex/AGENTS.md",
+      "target": "/home/hruzam/.codex/AGENTS.md",
+      "sha256": "bd3c92741d6b3f07ff0037017fd6f693184feae63966e8a2062d4659cefd4533"
+    },
+    {
+      "source": "/home/hruzam/ia-sync/codex/agents/oraculum.toml",
+      "target": "/home/hruzam/.codex/agents/oraculum.toml",
+      "sha256": "427bba7b343235c637bfb8cc78e507571f5daf23bce5d52699b10f9a0925b3bc"
+    },
+    {
+      "source": "/home/hruzam/ia-sync/codex/profiles/oraculum.config.toml",
+      "target": "/home/hruzam/.codex/oraculum.config.toml",
+      "sha256": "5120835f451fd6bd2f253df9e8036e57d69eb9c3be902e8f44759251c4f7ea99"
+    }
+  ],
+  "protected_live_sha256": {
+    "/home/hruzam/.claude/agents/oraculum.md": "f17fa720625375973b3131d30b38d31e4afe1966ec1e093ed20da4db666ef30e",
+    "/home/hruzam/.claude/agents/astrobley.md": "91b894bb3b777061dd618ac45fe3d1a8efb0ae90b0de5356a320c8deb89239fa",
+    "/home/hruzam/.codex/agents/astrobley.toml": "c49f7d32465d324ac478668b1ba63a88df2f383fafb9b639cd88c37ce4474467",
+    "/home/hruzam/.codex/agents/houston.toml": "4d965e4212f1ddbc9d653294d3591300a8aa3762a33adf372598384b7d949b7e",
+    "/home/hruzam/.codex/houston.config.toml": "15f8bbee15213031f75d71a1937e9dcba80022fa0ce59d371ebc81ebb77feb49",
+    "/home/hruzam/.codex/config.toml": "12e866b8828cf14ec5e482933a98e904b4b3774e9be6ff518f8553d9cce5fedf",
+    "/home/hruzam/.config/zsh/ai/tunnel-codex.py": "8ca70c3044a9756265b42bc94d4a58b1d2c512ecd6b2e25becbd781ca2259052",
+    "/home/hruzam/.config/zsh/config.zsh": "2831771aa007ccd673d995a9164d8821a78b147f163ce258ee8bf07987921275"
+  },
+  "result": "PASS: backup-first scoped installation and six source/live pairs",
+  "limits": [
+    "Claude source wrapper not installed",
+    "runtime checks not yet run",
+    "home not deployed",
+    "no commit or push"
+  ]
+}

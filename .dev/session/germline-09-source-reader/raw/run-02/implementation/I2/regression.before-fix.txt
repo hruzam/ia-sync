@@ -1,0 +1,15 @@
+test_terminal_labels_show_resolved_target (__main__.ReaderAcceptance.test_terminal_labels_show_resolved_target) ... FAIL
+
+======================================================================
+FAIL: test_terminal_labels_show_resolved_target (__main__.ReaderAcceptance.test_terminal_labels_show_resolved_target)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/hruzam/ia-sync/zsh/experimental/source-reader/test_source_reader.py", line 141, in test_terminal_labels_show_resolved_target
+    self.assertTrue(READER.label(linked).endswith(suffix))
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: False is not true
+
+----------------------------------------------------------------------
+Ran 1 test in 0.007s
+
+FAILED (failures=1)

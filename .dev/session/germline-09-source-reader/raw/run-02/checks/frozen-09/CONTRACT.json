@@ -1,0 +1,223 @@
+{
+  "schema": "g09-run02-contract/v1",
+  "run_id": "run-02",
+  "stage": "PREPARED-HOLD",
+  "status_owner": "Cartan",
+  "host": "office",
+  "cwd": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader",
+  "target_profile": {
+    "model": "gpt-6.1-sol",
+    "effort": "high",
+    "sandbox": "read-only",
+    "networkAccess": false,
+    "codex_binary": "/home/hruzam/.local/bin/codex"
+  },
+  "native_caretaker": {
+    "agent_type": "default",
+    "model": "gpt-6-luna",
+    "reasoning_effort": "high",
+    "fork_turns": "none",
+    "role_contract": "/home/hruzam/ia-sync/codex/agents/implementer.toml"
+  },
+  "native_builder": {
+    "agent_type": "astrobley",
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "repairer": {
+    "agent_type": "implementer",
+    "model": "gpt-5.6-terra",
+    "effort": "high"
+  },
+  "verifier": {
+    "agent_type": "default",
+    "model": "gpt-6.1-sol",
+    "effort": "high",
+    "role_contract": "/home/hruzam/ia-sync/codex/agents/verifier.toml"
+  },
+  "attempt_budget": {
+    "maximum_target_ask_attempts": 5,
+    "planned": [
+      "R1",
+      "A1",
+      "R2",
+      "A2"
+    ],
+    "conditional": "A3",
+    "run01_consumed": 1,
+    "run01_thread": "01a176f7-532b-7722-9324-0ecb92694073",
+    "run01_turn": "01a176f7-53a6-7b83-b203-b86b08ec15ac",
+    "run01_retired": true,
+    "run02_consumed_at_preparation": 0,
+    "count_rule": "Reserve before invocation under exclusive lock; attempted, interrupted, failed, pending or unknown each consumes one. Never reset or refund; no retries/profile substitution. A3 requires changed audited I1/I2 hashes plus head grant.",
+    "preflight_attempts_per_role_maximum": 1,
+    "preflight_rule": "One declared new open --enable per role, zero model turns; any local preflight failure holds. No retry/open with a new key during this grant."
+  },
+  "timeout_policy": {
+    "TUNNEL_CODEX_TIMEOUT": "1800",
+    "meaning": "per RPC/turn-completion phase; NOT an end-to-end deadline",
+    "native_poll_seconds": 30,
+    "native_exec_yield_ms": 1000,
+    "outer_subprocess_timeout": null,
+    "last_event_reporting": "phase + monotonic elapsed/configured + last-event age + known thread/turn IDs",
+    "failure": "Preserve receipt and known IDs; mark remote outcome unknown until zero-turn evidence resolves it. Timeout may interrupt target during owned transport cleanup. Stop all substantive dispatch; no retry, resend, steer, continuation, new role, profile substitution or deletion."
+  },
+  "files": {
+    "release": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/control/RELEASE.json",
+    "holds": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/control/HOLD.json",
+    "pins": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/hold-line/sources.json",
+    "round_map": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/control/ROUND-MAP.json",
+    "operations": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/operations",
+    "adapter": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/run_operations.py",
+    "frozen_plan": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/plan.C1.json",
+    "decision": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/control/DECISION.01.md",
+    "product_contract": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/control/CONTRACT.01.json",
+    "a3_grant": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/control/A3.GRANT.json",
+    "i1_manifest": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I1/MANIFEST.json",
+    "i2_manifest": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I2/MANIFEST.json"
+  },
+  "named_vaults": {
+    "researcher": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/tunnel.researcher.state.json",
+    "auditor": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/tunnel.auditor.state.json"
+  },
+  "preamble": {
+    "cold": null,
+    "warm": "/home/hruzam/.germline/tunnel/tunnel.preamble.md",
+    "source": "/home/hruzam/ia-sync/germline/tunnel/tunnel.preamble.md",
+    "arm_only_after": "completed substantive cold answer plus matching thread/turn readback and explicit role/scope/source acknowledgement"
+  },
+  "identity_checkpoints": [
+    "Atomic vault save immediately after birth/resume, before turn submission",
+    "Record acknowledged turn ID before completion wait; do not claim completed lastTurnId",
+    "Receipt state_before/state_after; freeze per-role expected thread identity as soon as observed",
+    "Missing acknowledgement is unknown identity; bounded named metadata reads only under new head POINT; no new thread or ask"
+  ],
+  "dispatch_checks": [
+    "actual fresh operator GO for run-02, exact contract hash, authorized true, two named enable delegations, budget and timeout match",
+    "current sources pin hashes, source/deployed preamble match",
+    "HOLD list empty; earlier pending/failed/unknown submission reconciled and disposition authorized",
+    "operation key unused, exact role/cycle/vault binding, distinct new thread IDs; archived R1 forbidden",
+    "current frozen prompt + template + named source hashes; no unresolved packet placeholders",
+    "completed cold bootstrap and exact pinned warm preamble before warm ask",
+    "attempt reserved durably under serialized cap; A3 conditional proof/grant",
+    "Rehash every frozen named input, not only static source pins; cold vault preamble null + intended effort high; warm actual runtime profile high"
+  ],
+  "recovery": {
+    "allowed_zero_turn": [
+      "inspect durable exact receipt/output hashes",
+      "read explicit known role vault/thread with lastTurnId null",
+      "resume explicit run-02 known identity only when necessary; no model turn"
+    ],
+    "while_revoked": "inspect and identity-only read/resume may reconcile existing run-02 identities; never enables/asks/preamble arms",
+    "unknown_identity": "HOLD; head authorizes bounded filtered metadata probe separately. No run-01 thread access.",
+    "native_restart": "New actual root means new handle; reconstruct from STATUS, pinned entry and selected receipt. Record intervention. Reconcile before asks; replacement never clears uncertainty.",
+    "pid_visibility": "ENOENT proves selected PID absent; EPERM/EACCES or namespace mismatch is UNKNOWN; never a kill/replay warrant.",
+    "cleanup": "Only head-scoped zero-turn local close at explicit end after snapshots; no thread deletion, archived R1 resume or lock removal."
+  },
+  "source_scope": {
+    "source_map": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/input/SOURCE-MAP.md",
+    "acceptance": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/ACCEPTANCE.md",
+    "product_writes_after_GO": [
+      "/home/hruzam/ia-sync/zsh/experimental/source-reader/",
+      "Only source-reader maintainer-log row in /home/hruzam/ia-sync/zsh/experimental/base.zsh"
+    ],
+    "forbidden": [
+      "Nablarva reads",
+      "source instruction execution",
+      "Claude programmatic calls",
+      "auth changes",
+      "activation",
+      "deployment",
+      "commit/push",
+      "global role changes",
+      "uncertain resend"
+    ],
+    "product_paths": {
+      "directory": "/home/hruzam/ia-sync/zsh/experimental/source-reader/",
+      "maintainer_file": "/home/hruzam/ia-sync/zsh/experimental/base.zsh",
+      "maintainer_write_scope": "Only new source-reader maintainer-log row; baseline+owned-row diff and whole hash required in product manifest"
+    }
+  },
+  "trial_bus_cycles": {
+    "C1": "20",
+    "I1": "21",
+    "C2": "22",
+    "I2": "23",
+    "C3": "24"
+  },
+  "measurement": {
+    "main_intake": "Count every subsequent source/evidence read, tool excerpts, rereads, truncated reads and recovery reads; separate preparation from future trial, no starter-only savings claim",
+    "main_routine_tunnel_cli_target": 0,
+    "capsule_limit_words": 300,
+    "unknown": [
+      "native/main tokens",
+      "actual context occupancy",
+      "dollars",
+      "retained understanding"
+    ]
+  },
+  "GO_requirements": [
+    "fresh actual Majkee message releases run-02",
+    "exact CONTRACT.json SHA256 approved",
+    "five ask attempts and conditional A3, no retries/substitution",
+    "1800s per-phase timeout and 30s native polling",
+    "explicit delegation of BOTH named open --enable operations to Luna caretaker",
+    "declared source/product scope and no-deploy/no-commit bounds"
+  ],
+  "a3_grant_schema": {
+    "schema": "g09-a3-grant/v1",
+    "run_id": "run-02",
+    "authority": "Cartan",
+    "authorized": true,
+    "i1_manifest": "exact CONTRACT files.i1_manifest path",
+    "i1_manifest_sha256": "must match frozen A2 packet named-input hash for I1 manifest",
+    "i2_manifest": "exact CONTRACT files.i2_manifest path",
+    "i2_manifest_sha256": "current immutable I2 manifest hash",
+    "i1_hashes": "must equal I1 manifest audited_files map",
+    "i2_hashes": "must equal I2 manifest audited_files map",
+    "audited_changed_paths": "exact nonempty difference across both audited maps, restricted to declared product paths; maps cannot invent proof"
+  },
+  "product_manifest_schema": {
+    "schema": "g09-product-manifest/v1",
+    "run_id": "run-02",
+    "stage": "I1 or I2",
+    "audited_files": "object mapping every absolute audited product/fixture/test/README path to SHA256; includes base.zsh whole hash and owned-row diff evidence separately",
+    "authority": "Frozen I1 manifest must be a named hashed input to A2; I2 manifest must be frozen before head A3 grant."
+  },
+  "bootstrap_ack": {
+    "syntax": "Second reply line is BOOTSTRAP followed by one JSON object on the same line. It records reported consumption, not understanding or proof of file reads.",
+    "required": {
+      "run_id": "run-02",
+      "scope": "G09-source-reader-read-only"
+    },
+    "role": "researcher or auditor matching round",
+    "sources": {
+      "researcher": [
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/briefs/researcher.md",
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/ACCEPTANCE.md",
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/input/SOURCE-MAP.md"
+      ],
+      "auditor": [
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/briefs/auditor.md",
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/ACCEPTANCE.md",
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/input/SOURCE-MAP.md"
+      ]
+    },
+    "verification": "verify-bootstrap local command requires matching completed ask and zero-turn readback receipts, exact role/thread/turn and marker/ACK, preserves input/output receipt hashes; preamble arm requires this receipt. Warm dispatch revalidates original bootstrap receipt and current effective model/high/readOnly/networkAccess false."
+  },
+  "release_evidence": {
+    "required": [
+      "operator exactly Majkee",
+      "run_id exactly run-02",
+      "authorized is true",
+      "nonempty observed_operator_message",
+      "nonempty message_reference identifying actual fresh operator/native message",
+      "recorded_at with timezone",
+      "contract_sha256",
+      "source_manifest_sha256",
+      "both named enable delegations",
+      "matching five-attempt cap and1800s timeout"
+    ],
+    "authority_boundary": "Executable checks verify completeness, scope and immutable hashes. They cannot authenticate a human message. Cartan records these fields only after an actual fresh operator GO observed in the current interaction; copied text or a file alone never grants authority. Preparation never fills message evidence or sets true."
+  }
+}

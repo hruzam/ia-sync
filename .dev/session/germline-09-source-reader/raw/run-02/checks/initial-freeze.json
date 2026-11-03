@@ -1,0 +1,8 @@
+{
+  "checks": "35 input pin hashes before TUNNEL interface wording correction",
+  "mismatches": [
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/TUNNEL.md"
+  ],
+  "expected_readiness": "exit2: technical holds pending",
+  "target_turns": 0
+}

@@ -1,0 +1,30 @@
+{
+  "run01_target_attempts": 1,
+  "run02_target_attempts": 2,
+  "run02_remaining": 3,
+  "cumulative_attempts": 3,
+  "ceiling": 6,
+  "actual_C1_metrics": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/metrics/C1.live.json",
+  "usage": {
+    "status": "unknown; receipts contain no structured usage fields and ask stderr contains only the effort override notice",
+    "observed_stderr_text": "tunnel-codex.py: turn overrides {\"effort\": \"high\"} sent\n",
+    "input_tokens": null,
+    "output_tokens": null,
+    "total_tokens": null,
+    "last_tokens": null,
+    "modelContextWindow": null,
+    "dollars": null,
+    "not_inferred": true
+  },
+  "timing_seconds": {
+    "source": "actual adapter ask receipts; elapsed_seconds",
+    "R1_actual": 140.453,
+    "A1_actual": 133.655,
+    "earlier_native_checkpoint_estimates": {
+      "R1": 97,
+      "A1": 124,
+      "source": "cycle37 progress messages to Cartan; checkpoint estimates, not receipt measurements"
+    }
+  },
+  "native_main_tokens": "unknown"
+}

@@ -1,0 +1,13 @@
+{
+  "schema": "g09-fake-test-residue-archive/v1",
+  "observed_at": "2026-10-26T19:51:14.692966+01:00",
+  "original_path": "/home/hruzam/ia-sync/effort=high",
+  "archive_path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/checks/residue/effort-high.fake-vault.json",
+  "sha256": "2e2c639aeb51ad0e19722b0b48945f78c570c39e111fbb67cdbd56806b1f8df5",
+  "bytes": 161,
+  "original_absent": true,
+  "bytes_preserved": true,
+  "attribution": "High confidence early Terra fake open harness residue: argv[-1] selected final effort=high override instead of --state; author acknowledges likely origin, fields/creation time match early harness. Direct historical process attribution unavailable.",
+  "current_source": "Frozen test_adapter.py line89 resolves argv[argv.index(\"--state\")+1]; current fake state includes intended high override. No source change required or made.",
+  "authority_limit": "This is simulated preflight data with null identities, not an actual role vault/target attempt. Reversible archival preserves bytes; no model process or remote resource touched."
+}

@@ -1,0 +1,5 @@
+Traceback (most recent call last):
+  File "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I1/check_i1.py", line 98, in <module>
+    assert b'card-template.md' in actual_cold and b'issue-card.md' in actual_cold
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError

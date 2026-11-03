@@ -1,0 +1,47 @@
+{
+  "created": "2026-10-30T21:54:11.661445+01:00",
+  "scope": "Only three shared Oraculum files and main-profile developer_instructions; host TUI retained",
+  "review": "Astrobley reviewed source before installation; see SOURCE-REVIEW.md",
+  "dry_runs": [
+    "bash deploy.sh --codex-only --dry-run",
+    "bash deploy.sh --germline-only --dry-run"
+  ],
+  "records": [
+    {
+      "source": "germline/agents/oraculum/identity.md",
+      "source_sha256": "a79bbf711f095581b7787dbc70b59a7fdc0a3285009e71a4c399bbf2b887ef72",
+      "target": "/home/hruzam/.germline/agents/oraculum/identity.md",
+      "installed_sha256": "a79bbf711f095581b7787dbc70b59a7fdc0a3285009e71a4c399bbf2b887ef72",
+      "backup": "/home/hruzam/.local/state/ia-sync/germline-A1-vi-agents/routing-20261030T215411/germline/agents/oraculum/identity.md",
+      "backup_sha256": "12df35006f33407be8e93198807af918fc0a7063e3bd462c8002b90c27df838d",
+      "preserved_host_tui": false
+    },
+    {
+      "source": "germline/agents/oraculum/binding.codex.md",
+      "source_sha256": "0d7414e522624240e5d701b5cfe84a4607bc82f5427155310f91f6a67dec8c17",
+      "target": "/home/hruzam/.germline/agents/oraculum/binding.codex.md",
+      "installed_sha256": "0d7414e522624240e5d701b5cfe84a4607bc82f5427155310f91f6a67dec8c17",
+      "backup": "/home/hruzam/.local/state/ia-sync/germline-A1-vi-agents/routing-20261030T215411/germline/agents/oraculum/binding.codex.md",
+      "backup_sha256": "06ffe9302a9b78daeb5a1c91941ff8c16babc11de70955f6094338217b8948fe",
+      "preserved_host_tui": false
+    },
+    {
+      "source": "germline/agents/oraculum/binding.claude.md",
+      "source_sha256": "2b99c5845b6b87998f157dc39d54e4f6012ad7a66960e24464465f65d45bbf25",
+      "target": "/home/hruzam/.germline/agents/oraculum/binding.claude.md",
+      "installed_sha256": "2b99c5845b6b87998f157dc39d54e4f6012ad7a66960e24464465f65d45bbf25",
+      "backup": "/home/hruzam/.local/state/ia-sync/germline-A1-vi-agents/routing-20261030T215411/germline/agents/oraculum/binding.claude.md",
+      "backup_sha256": "13b95148d748064a530508c44d763355de79a20a0aee568255efbc04fd37f780",
+      "preserved_host_tui": false
+    },
+    {
+      "source": "codex/profiles/oraculum.config.toml",
+      "source_sha256": "ee984879a81316433e2d98ab5379c1c293197cad44fe13eeb1e48d6e7811696d",
+      "target": "/home/hruzam/.codex/oraculum.config.toml",
+      "installed_sha256": "b45fff7286589e389281d9ef42e07686afb74deb52c508e94a8e68e17d984007",
+      "backup": "/home/hruzam/.local/state/ia-sync/germline-A1-vi-agents/routing-20261030T215411/codex/profiles/oraculum.config.toml",
+      "backup_sha256": "391d275f6208b6d1425a257d35666969997c0b445e2554496fb57a821f22dd4e",
+      "preserved_host_tui": true
+    }
+  ]
+}

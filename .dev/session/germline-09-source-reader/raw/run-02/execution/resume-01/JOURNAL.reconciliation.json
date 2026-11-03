@@ -1,0 +1,35 @@
+{
+  "schema": "g09-current-journal-reconciliation/v1",
+  "observed_at": "2026-10-27T00:16:18.910434+01:00",
+  "authority": "Operator resume blessing under recorded G09 GO; preserve newer foreign entries",
+  "journal": "/home/hruzam/ia-sync/journal.host-cleanup.md",
+  "journal_sha256": "dfb5304efdd35f27ef33191cf0e73776f4de184196755d551c20c1c790a07167",
+  "original_evidence_unchanged": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/checks/JOURNAL.preservation.json",
+  "original_sha256": "db9148eba1574c7a9b7f6bfd0eefb5009afa6f8f7b295031b2649f3046a232f5",
+  "additions": [
+    {
+      "name": "## OFFICE \u2014 2026-10-26 \u00b7 Cartan \u00b7 A1 vi-agents Oraculum source fold",
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/execution/resume-01/journal-addition-1.md",
+      "offset": 790,
+      "bytes": 1885,
+      "sha256": "4396cfaefb43b25d133607e5eb068093bff010ca9d69dfeb9a336a9a167016cb"
+    },
+    {
+      "name": "## OFFICE \u2014 2026-10-26 \u00b7 Cartan \u00b7 A0 Houston project layer",
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/execution/resume-01/journal-addition-2.md",
+      "offset": 2675,
+      "bytes": 1671,
+      "sha256": "a345fb2c1b2cbfae16fb7362d27d12d53366f665c7469f09cad3d7d5a2223004"
+    },
+    {
+      "name": "## OFFICE \u2014 2026-10-26 \u00b7 Cartan \u00b7 G09 run-02 source-only repair preparation",
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/execution/resume-01/journal-addition-3.md",
+      "offset": 4346,
+      "bytes": 2030,
+      "sha256": "4125ea80d09daeb86aaccd66675700d1def1341653e059c678d5773888a05881"
+    }
+  ],
+  "reconstruction_matches_original": true,
+  "prior_reconciliation": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/execution/resume-01/prior-prerequisites/JOURNAL.reconciliation.json",
+  "mode": "Remove only exact known additions in memory; any further current mutation remains a hold."
+}

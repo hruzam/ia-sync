@@ -1,0 +1,22 @@
+{
+  "PRODUCT": "UNVERIFIED",
+  "stage": "C1\u2192D1\u2192I1\u2192C2\u2192I2\u2192C3 completed",
+  "criteria": {
+    "P1": "PASS; independentA2 plus finalA3 affected checks and exact final hash map",
+    "P2": "PASS; independentA2 plus finalA3 affected checks and exact final hash map",
+    "P3": "PASS; independentA2 plus finalA3 affected checks and exact final hash map",
+    "P4": "PASS; independentA2 plus finalA3 affected checks and exact final hash map",
+    "P5": "PASS; independentA2 plus finalA3 affected checks and exact final hash map",
+    "P6": "PASS; independentA2 plus finalA3 affected checks and exact final hash map",
+    "P8": "PASS; independentA2 plus finalA3 affected checks and exact final hash map",
+    "P7": "PARTIAL: independent dispatcher/syntax/base-row PASS; full independent deploy preview not executed under no-Nablarva boundary"
+  },
+  "final_manifest": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I2/MANIFEST.json",
+  "final_manifest_sha256": "b760f1a3d3cf5833adea9e696abadf0efa88e06698fb3d1e0bba43d011ff5ade",
+  "product_execution": true,
+  "deployment": false,
+  "remaining_gate": "Operator ruling on full-preview/no-Nablarva scope, then final acceptance; no extra target asks",
+  "A1_counterexample_chain": "D1 CE1\u2013CE5 \u2192 I1 fixtures/exact-byte twins/TURNS \u2192 A2 actual independent calls \u2192 A3 final unchanged ambiguity and exact-byte proof",
+  "R2_correction": "differing resolved target now shown in shared terminal label; meaningful regression failed before fix; A3 independently passed",
+  "A3_audit_helper_error": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/execution/resume-02/A3.audit-check-adjudication.json"
+}

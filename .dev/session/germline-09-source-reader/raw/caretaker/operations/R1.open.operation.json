@@ -1,0 +1,63 @@
+{
+  "argv": [
+    "/home/hruzam/ia-sync/zsh/ai/tunnel-codex.zsh",
+    "open",
+    "--state",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/caretaker/tunnel.researcher.state.json",
+    "--enable",
+    "--sandbox",
+    "read-only",
+    "--cwd",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader",
+    "--preamble",
+    "none",
+    "--model",
+    "gpt-6.1-sol",
+    "--override",
+    "effort=high"
+  ],
+  "cycle": "R1",
+  "elapsed_seconds": 0.82,
+  "ended_unix": 1792997274.1969779,
+  "exit": 0,
+  "expected": {
+    "model": "gpt-6.1-sol",
+    "preamble": null,
+    "sandbox": "read-only",
+    "threadId": null
+  },
+  "key": "R1.open",
+  "kind": "open",
+  "outputs": {
+    "stderr": {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/caretaker/operations/output/R1.open.stderr.txt",
+      "sha256": "d04cf6339cdca333d8f11439e6b68cd7786f272040fc1edc81001b6c6256434b"
+    },
+    "stdout": {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/caretaker/operations/output/R1.open.stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "role": "researcher",
+  "runner": {
+    "pid": 1319472,
+    "start": "296275632"
+  },
+  "schema": "g09-receipt/v1",
+  "started_unix": 1792997273.3767686,
+  "state_after": {
+    "cwd": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader",
+    "enabled": true,
+    "lastTurnId": null,
+    "model": "gpt-6.1-sol",
+    "preamble": null,
+    "runtime": null,
+    "sandbox": "read-only",
+    "threadId": null,
+    "turnOverrides": {
+      "effort": "high"
+    }
+  },
+  "state_before": null,
+  "status": "completed"
+}

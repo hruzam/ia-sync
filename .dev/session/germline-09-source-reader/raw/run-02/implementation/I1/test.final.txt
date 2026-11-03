@@ -1,0 +1,18 @@
+test_canary_is_inert_data (__main__.ReaderAcceptance.test_canary_is_inert_data) ... ok
+test_catalog_metadata_not_bodies (__main__.ReaderAcceptance.test_catalog_metadata_not_bodies) ... ok
+test_discovery_bounds_and_gaps (__main__.ReaderAcceptance.test_discovery_bounds_and_gaps) ... ok
+test_duplicates_ids_paths_and_bytes (__main__.ReaderAcceptance.test_duplicates_ids_paths_and_bytes) ... ok
+test_guide_ambiguity_no_bodies (__main__.ReaderAcceptance.test_guide_ambiguity_no_bodies) ... ok
+test_guide_catalog_and_unknown_slug (__main__.ReaderAcceptance.test_guide_catalog_and_unknown_slug) ... ok
+test_guide_slug_and_unique_chapter (__main__.ReaderAcceptance.test_guide_slug_and_unique_chapter) ... ok
+test_guide_zero_match_manifest_only_no_side_resolution (__main__.ReaderAcceptance.test_guide_zero_match_manifest_only_no_side_resolution) ... ok
+test_noninteractive_browse_plain_and_roots_option (__main__.ReaderAcceptance.test_noninteractive_browse_plain_and_roots_option) ... ok
+test_offline_help_never_discovers (__main__.ReaderAcceptance.test_offline_help_never_discovers) ... ok
+test_plain_terminal_selection_keeps_stdout_exact (__main__.ReaderAcceptance.test_plain_terminal_selection_keeps_stdout_exact) ... ok
+test_show_rejects_name_and_uncataloged_path (__main__.ReaderAcceptance.test_show_rejects_name_and_uncataloged_path) ... ok
+test_unreadable_root_disclosed (__main__.ReaderAcceptance.test_unreadable_root_disclosed) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 2.214s
+
+OK

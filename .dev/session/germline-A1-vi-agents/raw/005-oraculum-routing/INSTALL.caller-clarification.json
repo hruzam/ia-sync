@@ -1,0 +1,10 @@
+{
+  "created": "2026-10-30T21:57:01.547897+01:00",
+  "scope": "Identity caller-table clarification only; child operational restrictions unchanged",
+  "review": "Astrobley PASS on exact two-line delta; source review final in SOURCE-REVIEW.final.json",
+  "source": "germline/agents/oraculum/identity.md",
+  "sha256": "05c9a4bae5f6c071b0f71c1d331f4f64e3844ff8376ab02d911ee5f0c47242ca",
+  "target": "/home/hruzam/.germline/agents/oraculum/identity.md",
+  "backup": "/home/hruzam/.local/state/ia-sync/germline-A1-vi-agents/routing-20261030T215411/germline/agents/oraculum/identity.before-caller-clarification.md",
+  "backup_sha256": "a79bbf711f095581b7787dbc70b59a7fdc0a3285009e71a4c399bbf2b887ef72"
+}

@@ -1,0 +1,397 @@
+{
+  "recorded_at": "2026-10-26T15:47:48+01:00",
+  "kind": "pre-retirement preservation baseline; historical evidence only",
+  "G09_original_files": [
+    {
+      "path": "ACCEPTANCE.md",
+      "sha256": "9d1198dde298aa324d3e92aba4f71e4db259139508f6f1d08aa01a116574b9c5",
+      "bytes": 4515,
+      "retirement_allowed": false
+    },
+    {
+      "path": "HANDOFF.myShell.md",
+      "sha256": "8740b7754926a8cc732dafad6ced33fea35c8268843d9a5ab49dbd99a04bc94a",
+      "bytes": 1569,
+      "retirement_allowed": false
+    },
+    {
+      "path": "LAUNCH.md",
+      "sha256": "2bcd45b4177d391a272181a6eeae448f1719c3c235d18582983ca844c22ca739",
+      "bytes": 1438,
+      "retirement_allowed": false
+    },
+    {
+      "path": "README.md",
+      "sha256": "0068aaf2dcaf272db8568c880e54eacac173127968cd160dd47566176062894a",
+      "bytes": 1323,
+      "retirement_allowed": false
+    },
+    {
+      "path": "RUNBOOK.md",
+      "sha256": "de9ae7cc1fddc54a019c3bfc7ecb6739918112420d7e3c67f8cbbed8aafa4fdf",
+      "bytes": 3268,
+      "retirement_allowed": false
+    },
+    {
+      "path": "SCHEDULE.md",
+      "sha256": "40d70fc646ef8ee48874cced0886b65da557a0c8c67380754b7f244d1eecdefd",
+      "bytes": 8183,
+      "retirement_allowed": false
+    },
+    {
+      "path": "TUNNEL.md",
+      "sha256": "b70eafe387a52d32dc598b59edd6af7d3d38a5164b7fcb3fde1f8266f2ad0218",
+      "bytes": 11383,
+      "retirement_allowed": false
+    },
+    {
+      "path": "_bus/01.caretaker.return.md",
+      "sha256": "5fbe0608ef923d213ffc7fe5e587528b498cd2260e6def2bc43272965abef114",
+      "bytes": 2288,
+      "retirement_allowed": false
+    },
+    {
+      "path": "_bus/01.cartan.point.md",
+      "sha256": "d8f6dff579c730059a0efb5d93361ab6f43bd537333deb0a438aa52bee50e2be",
+      "bytes": 1903,
+      "retirement_allowed": false
+    },
+    {
+      "path": "_bus/01.cartan.verdict.md",
+      "sha256": "3dd6a2e8a55e067611661c3d943c9d404e704d28772c48f12628e3c486aef09d",
+      "bytes": 2926,
+      "retirement_allowed": false
+    },
+    {
+      "path": "raw/briefs/astrobley.md",
+      "sha256": "0392e3af955a7fd6fbe9de674711b8f804148d13e58f8297ed2ccc452f595dc2",
+      "bytes": 2950,
+      "retirement_allowed": false
+    },
+    {
+      "path": "raw/briefs/auditor.md",
+      "sha256": "4f8d7b37a162b1f255f35d3b10bcd8de2f402e325f4c5b21702e16830f2a9746",
+      "bytes": 1867,
+      "retirement_allowed": false
+    },
+    {
+      "path": "raw/briefs/caretaker.md",
+      "sha256": "3b8b8baaa499b7a4f051313c260550aaa09231dfc90140ef991430aa939c797c",
+      "bytes": 2169,
+      "retirement_allowed": false
+    },
+    {
+      "path": "raw/briefs/researcher.md",
+      "sha256": "f20704c6cf8638be030e80cb8c142ec247741887adebffa6e9da9e6d4e0fb292",
+      "bytes": 1841,
+      "retirement_allowed": false
+    },
+    {
+      "path": "raw/caretaker/capsules/C1.md",
+      "sha256": "093a161c5962673ba378d9f23de8d970edef1dc810ae8e31c553f09831315721",
+      "bytes": 559,
+      "retirement_allowed": false
+    },
+    {
+      "path": "raw/caretaker/checks/C1.late-reconciliation.json",
+      "sha256": "964db8c024b5d74ecc4275716af65baf1f336c5ba983efb496e189707db3ef30",
+      "bytes": 1822,
+      "retirement_allowed": false
+    },
+    {
+      "path": "raw/caretaker/checks/profile-reconciliation.json",
+      "sha256": "100c817b9088137553a70240570a8ffed04721c7b1fd82af91627dad06e05dce",
+      "bytes": 859,
+      "retirement_allowed": false
+    },
+    {
+      "path": "raw/caretaker/checks/self-check.json",
+      "sha256": "247be31812227a670f04b37f26cf64e43344b08a8645c21d3ed6c108b97cbd2c",
+      "bytes": 871,
+      "retirement_allowed": false
+    },
+    {
+      "path": "raw/caretaker/metrics/C1.json",
+      "sha256": "818c9474edb7922924318f0b7d6e1743ac30723161e9009f14fc1afed07ec97e",
+      "bytes": 370,
+      "retirement_allowed": false
+    },
+    {
+      "path": "raw/caretaker/operations/C1.profile.operation.json",
+      "sha256": "99772b585f2500475b3567f6ffcf0fa46b8cbb0465878ce3b3e08cae36f4622d",
+      "bytes": 628,
+      "retirement_allowed": false
+    },
+    {
+      "path": "raw/caretaker/operations/C1.profile.recovery.operation.json",
+      "sha256": "332340f47ee6747539e9586af1a08f16f9f9d50f68861cd453cf02fe93cce1e0",
+      "bytes": 2107,
+      "retirement_allowed": false
+    },
+    {
+      "path": "raw/caretaker/operations/R1.ask.operation.json",
+      "sha256": "c1f19531dd1bd4f004897ea1325119f92cf1f3c3a13e768d2207b4055e8938c1",
+      "bytes": 4029,
+      "retirement_allowed": false
+    },
+    {
+      "path": "raw/caretaker/operations/R1.open.operation.json",
+      "sha256": "9ff8310d00069b408ad11c024c04e608d87e9e1df6e4d308f4ebd19575ae436f",
+      "bytes": 1698,
+      "retirement_allowed": false
+    },
+    {
+      "path": "raw/caretaker/operations/output/C1.profile.recovery.stderr.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "retirement_allowed": false
+    },
+    {
+      "path": "raw/caretaker/operations/output/C1.profile.recovery.stdout.txt",
+      "sha256": "64d55fa56c400e83ac532aca5ed4b05509ecea87fbf6e3efd12801e36f4f2eb3",
+      "bytes": 1071,
+      "retirement_allowed": false
+    },
+    {
+      "path": "raw/caretaker/operations/output/R1.ask.stderr.txt",
+      "sha256": "21447740b37c91fdf1503e7c6b89d9e719e5fe8868010d864679b438fe0d00e2",
+      "bytes": 153,
+      "retirement_allowed": false
+    },
+    {
+      "path": "raw/caretaker/operations/output/R1.ask.stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "retirement_allowed": false
+    },
+    {
+      "path": "raw/caretaker/operations/output/R1.open.stderr.txt",
+      "sha256": "d04cf6339cdca333d8f11439e6b68cd7786f272040fc1edc81001b6c6256434b",
+      "bytes": 278,
+      "retirement_allowed": false
+    },
+    {
+      "path": "raw/caretaker/operations/output/R1.open.stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "retirement_allowed": false
+    },
+    {
+      "path": "raw/caretaker/packets/A1.prompt.txt",
+      "sha256": "475c00733deca0937ce638f69383553649bf2641d336065d7a29834faeca921a",
+      "bytes": 2180,
+      "retirement_allowed": false
+    },
+    {
+      "path": "raw/caretaker/packets/R1.prompt.txt",
+      "sha256": "3abfe0add260404ba9daae8e3204edd61975951bb06288a3eaad7f128f442d4d",
+      "bytes": 2121,
+      "retirement_allowed": false
+    },
+    {
+      "path": "raw/caretaker/plan.C1.json",
+      "sha256": "2b52e7dd5318909aedbf1485c98eb7ed2ba09fafae0b12b4b3f98f32e9677fae",
+      "bytes": 1482,
+      "retirement_allowed": false
+    },
+    {
+      "path": "raw/caretaker/run_operations.py",
+      "sha256": "5795c074aeab62dd21ab7cbe2d08b2198e1043d5254ad37184716a6c4d47d572",
+      "bytes": 14986,
+      "retirement_allowed": false
+    },
+    {
+      "path": "raw/caretaker/tunnel.researcher.state.json",
+      "sha256": "5789ba86f3f79d35fae18fa17a479297ce40c4071cefb93ba81e75226b69e6e9",
+      "bytes": 272,
+      "retirement_allowed": true
+    },
+    {
+      "path": "raw/control/BASELINE.json",
+      "sha256": "5e8dac61b38324acf748a0e5761d416fc3d68826c9ad843777b45dbed2432b49",
+      "bytes": 2063,
+      "retirement_allowed": false
+    },
+    {
+      "path": "raw/control/CONTRACT.template.json",
+      "sha256": "3455bd3219cee6780b44b03cb309a10beac5146e9a3c6c5e390ae8cb2f29c437",
+      "bytes": 1113,
+      "retirement_allowed": false
+    },
+    {
+      "path": "raw/control/ENTRY.execution.json",
+      "sha256": "54706b0ab03d472a9fe39ce8a4217b20e6f1bb2097c35bee8558906918fe4f30",
+      "bytes": 3789,
+      "retirement_allowed": false
+    },
+    {
+      "path": "raw/control/FINAL.validation.json",
+      "sha256": "312fec7350caf29c14c5a99629423d39eb843892671c62d2527930be2b6c23e0",
+      "bytes": 462,
+      "retirement_allowed": false
+    },
+    {
+      "path": "raw/control/HOLD.verification.json",
+      "sha256": "2bf6578d5901173ef089e2561835ee046675823e30da3c3403c61c17d9835121",
+      "bytes": 2662,
+      "retirement_allowed": false
+    },
+    {
+      "path": "raw/control/PACKAGE-REVIEW.md",
+      "sha256": "cc435429160990e78b976f87b1795e2629872a724a9ce7726c46d3b97ee3063b",
+      "bytes": 2565,
+      "retirement_allowed": false
+    },
+    {
+      "path": "raw/control/ROUND-MAP.json",
+      "sha256": "8716dbb9d267bf5e00bfc526bfbe474bafe12207c965ab8ef8a2b2088f9fc4dd",
+      "bytes": 3141,
+      "retirement_allowed": false
+    },
+    {
+      "path": "raw/control/main-events.json",
+      "sha256": "9221fab5b0826c652f5f4f621706a42665287c85b49cdaac1aa9e0839aa9922d",
+      "bytes": 3907,
+      "retirement_allowed": false
+    },
+    {
+      "path": "raw/control/validation.json",
+      "sha256": "ea99a09cb26f66b9b42066555bc1b681bb7d6e5cf9d0125a8a99ef5198b009e7",
+      "bytes": 643,
+      "retirement_allowed": false
+    },
+    {
+      "path": "raw/hold-line/ENTRY.md",
+      "sha256": "7f5edd31d5363e4a164007f42410aa6771230d4a0ec54399752fa0df1a1854bb",
+      "bytes": 1281,
+      "retirement_allowed": false
+    },
+    {
+      "path": "raw/hold-line/controller.md",
+      "sha256": "c83a4f11c43154a032d338fcf7a33308372003067b1507a9603a9b8ca1302fa5",
+      "bytes": 3995,
+      "retirement_allowed": false
+    },
+    {
+      "path": "raw/hold-line/functions/consult.md",
+      "sha256": "59634a6e871c89a7a4845bca481e2ed65515a26c8aa46dc40227dc326cea987a",
+      "bytes": 3025,
+      "retirement_allowed": false
+    },
+    {
+      "path": "raw/hold-line/functions/prepare.md",
+      "sha256": "58501cd9fd328cbce04be4999eec0eb022fd366f76d6c4e5c683b476543f29be",
+      "bytes": 3459,
+      "retirement_allowed": false
+    },
+    {
+      "path": "raw/hold-line/functions/reconcile.md",
+      "sha256": "88afa338bd1aa3234d468cfc63a75fa3a5b5cc6af0925232ce276f434652d92b",
+      "bytes": 2451,
+      "retirement_allowed": false
+    },
+    {
+      "path": "raw/hold-line/history/sources.pre-runbook.2026-10-26.json",
+      "sha256": "ac692f76e4a487c4d8b3f7fdb4ab5b9018e697c3b2dd2f72f6d5bb9719aeaa80",
+      "bytes": 3824,
+      "retirement_allowed": false
+    },
+    {
+      "path": "raw/hold-line/sources.json",
+      "sha256": "b31cf131f12611350871b1d23fce4c7be19af30e18da109045045470af50ad29",
+      "bytes": 7602,
+      "retirement_allowed": false
+    },
+    {
+      "path": "raw/hold-line/task.json",
+      "sha256": "6c6af093d6f659843d3e584e44aa10b3340eeaf17b5faaa22d0830ea26dfc478",
+      "bytes": 1905,
+      "retirement_allowed": false
+    },
+    {
+      "path": "raw/hold-line/validation.json",
+      "sha256": "96fa4e48789dbb66362f0e5740efcea238e6baa96e64c0af06ac4fd573ebf084",
+      "bytes": 465,
+      "retirement_allowed": false
+    },
+    {
+      "path": "raw/input/SOURCE-MAP.md",
+      "sha256": "b9b606ad05254cb9023eff463d53ca6563daa0e26ba5b5fa11d22e664b90689e",
+      "bytes": 3520,
+      "retirement_allowed": false
+    },
+    {
+      "path": "raw/packets/A1.md",
+      "sha256": "2b8495e6d9e17048575b7c6c30dbb00307074982e9bc8b704990b3600bcb2f19",
+      "bytes": 1600,
+      "retirement_allowed": false
+    },
+    {
+      "path": "raw/packets/A2.md",
+      "sha256": "e3c920df1fe2b20e719a811ce7eab6c395116aabd4477fabd3970b4d249f88cf",
+      "bytes": 1621,
+      "retirement_allowed": false
+    },
+    {
+      "path": "raw/packets/A3.md",
+      "sha256": "a443cca0c6266584f6949b8353d651edffb155c97f33ee038a9ad035ff45a522",
+      "bytes": 1295,
+      "retirement_allowed": false
+    },
+    {
+      "path": "raw/packets/R1.md",
+      "sha256": "af273fa7f6a606e450b5b900f7369b994a758325afa790cf559504eb130a98d0",
+      "bytes": 1943,
+      "retirement_allowed": false
+    },
+    {
+      "path": "raw/packets/R2.md",
+      "sha256": "5d5d4ec5e47907287e3fe9049d21875913d072c2756effaf3a1fc420cfc58987",
+      "bytes": 1381,
+      "retirement_allowed": false
+    },
+    {
+      "path": "raw/result/RESULT.md",
+      "sha256": "0db0ea61c967a3c49edac4e7878b69d37cb735e9b8d4c6dc83b48f52a3bc63a6",
+      "bytes": 2921,
+      "retirement_allowed": false
+    },
+    {
+      "path": "raw/result/main-context.json",
+      "sha256": "b85f6f88667874228c888f5eb1a5bbc374f04cdc121a6e01e84a73bfa8a8271f",
+      "bytes": 1623,
+      "retirement_allowed": false
+    },
+    {
+      "path": "raw/result/product-checks.json",
+      "sha256": "01ec723c4fd0309fee7bd2ca2943f954b325f74c5c9cc7e91690c13fe7d8be2d",
+      "bytes": 1419,
+      "retirement_allowed": false
+    },
+    {
+      "path": "raw/result/usage.json",
+      "sha256": "963983ba8a166cef2cb73eaf47e8a378e1d7da2c50fc48030a26aa4399dbfb64",
+      "bytes": 601,
+      "retirement_allowed": false
+    }
+  ],
+  "foreign_modified_before_cleanup": {
+    ".dev/session/germline-03-foundation-audit/STATUS.md": "4a07fae71ea1f91f0c34a61eac46bdc3969d07b83d07a1f6cbe23020ae41957d",
+    ".dev/session/germline-03-foundation-audit/raw/CRITERION.cartan.g03-first-split-01.md": "654fe773b8d8e39221bf4c36fea0cb40749c03c3004a0a6d40334977af103253",
+    ".dev/session/germline-03-foundation-audit/raw/MANIFEST.cartan.g03-first-split-01.md": "7c3b4aaf3c044dd11d0f42e23a6261521b833f617fb3ab8eee0d3641ee7a6ef7",
+    ".dev/session/germline-04-wiring-plan/RUNBOOK.md": "46a82681265f14f1a2aeb7f8bea62d7af44a498d03c305c9bab832bd4ea39fcf",
+    ".dev/session/germline-04-wiring-plan/STATUS.md": "a9690769a346b9dea3ccc4c3eed676fe3085536d66c2676725c9216db7de0ae4",
+    ".dev/session/germline-04-wiring-plan/raw/HANDOFF.g06-make-program.md": "9a9b5d8c104cd5b81a0259aaf1a5178d12de71f8838e5daac54724d5122453c8",
+    "journal.host-cleanup.md": "db9148eba1574c7a9b7f6bfd0eefb5009afa6f8f7b295031b2649f3046a232f5",
+    "pulse.md": "8ba84bfb437c96e4e5cf36d767fff0a1c3e34032d2d0e907af16091aedb873f3",
+    "zsh/config.office.zsh": "2831771aa007ccd673d995a9164d8821a78b147f163ce258ee8bf07987921275"
+  },
+  "allowed_changes": [
+    "G09 STATUS.md",
+    "G09 raw/control/RELEASE.json",
+    "new cycle06 and raw/closeout documents/resources",
+    "owned vault removal after exact ignored snapshot",
+    "supported R1 stored-thread archival"
+  ],
+  "original_RUNBOOK_sha256": "de9ae7cc1fddc54a019c3bfc7ecb6739918112420d7e3c67f8cbbed8aafa4fdf"
+}

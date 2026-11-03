@@ -1,8 +1,48 @@
-# Reader continuity — candidate 01
+# Reader continuity — candidate 02
 
 Oraculum · Codex · 2026-10-29. Operator-requested design, with Astrobley consultation.
 Plain-language document specimen for A3 S02/S07/S10; no installed skill, automatic
 loader, new registry or runtime test. [A3 STATUS](../../STATUS.md) owns live position.
+
+2026-11-03 refinement: Majkee endorsed the crawler usage philosophy and asked whether
+it belongs in a germline program. This revision expresses that candidate direction;
+global placement, activation and acceptance remain with A3. REVIEW.md and CHECKS.json
+describe candidate 01 and are historical evidence, not verification of these new bytes.
+
+Operator decision, 2026-11-03: crawlers are one of the possible germline programs.
+This admits the option into the design; it does not make delegation mandatory or
+approve global placement/activation. Further feedback was announced for “03/raw”;
+its exact filenames and contents are pending and have not been incorporated.
+
+## Germline program candidate: bounded source inquiry
+
+Use this procedure when a decision needs evidence whose location, implications or
+coverage are unclear. A head can run a small inquiry directly or assign its bounded
+reading portion to an ordinary suitable worker. No dedicated crawler identity is
+required by the design. The reusable object is the procedure and its contracts.
+
+| Layer | Responsibility | Candidate body |
+|---|---|---|
+| Guide | Why/when inquiry helps; evidence, uncertainty and authority principles | This entry and its consumer promise; later shared-guide placement is undecided |
+| Controller | Name the decision; choose direct reading or a bounded helper; inspect decisive evidence; stop or expand | [controller.md](controller.md) |
+| Selected functions | Map sources; compare a claim/revision; explore an unexplained tail | Mode-specific assignments in [crawl-bots.md](crawl-bots.md) |
+| Runtime adapter | Supply the selected body, assignment and permitted tools to a native reader | Future explicit implementation; no adapter installed by this draft |
+
+Expected payoff: a bounded evidence search and a report that helps the head choose
+what to inspect, potentially keeping broad exploration out of the main context.
+Cost: assignment/setup, helper reads, report intake, decisive-source verification and
+correction. Lower total computation or money is not an inherited benefit.
+
+[A4/A5/A9 evaluation](../../../../../_staging/codex/germline-reader-experiments.2026-11-03/EVALUATION.md)
+supports ordinary readable forms and preserves mixed economy evidence. It does not
+validate this whole program or autonomous exploration. The
+[CACHE review receipt](../../../../../_staging/codex/germline-whole-design.2026-10-29/raw/CACHE-REVIEW.2026-11-03.md)
+is one observed bounded inquiry and head correction, not a controlled program trial.
+
+The head retains the result's decision, effect authority and custody. A helper's
+answer can identify evidence and gaps; consequential choices still require checking
+the decisive sources. Further inquiry needs a named information gain. Do not make
+delegation the default merely to claim economy.
 
 ## The consumer promise
 

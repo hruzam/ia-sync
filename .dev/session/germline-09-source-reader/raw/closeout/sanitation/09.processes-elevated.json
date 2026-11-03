@@ -1,0 +1,81 @@
+{
+  "current_pid_namespace": "pid:[4026531836]",
+  "current_uid": 1000,
+  "exact_observations": [
+    {
+      "expected_comm": null,
+      "expected_start_ticks": "296276499",
+      "identity_matches_historical": false,
+      "pid": 1319728,
+      "present": false,
+      "role": "R1-runner"
+    },
+    {
+      "expected_comm": "python3",
+      "expected_start_ticks": "299269158",
+      "identity_matches_historical": false,
+      "pid": 1923120,
+      "present": false,
+      "role": "old-verification-checker"
+    },
+    {
+      "expected_comm": "codex",
+      "expected_start_ticks": "299269177",
+      "identity_matches_historical": false,
+      "pid": 1923121,
+      "present": false,
+      "role": "old-verification-app-server"
+    }
+  ],
+  "historical_receipt_processes": [
+    {
+      "pid": 3,
+      "pid_namespace": "pid:[4026533211]",
+      "receipt": "01.inventory.json",
+      "status": "completed"
+    },
+    {
+      "pid": 1920999,
+      "pid_namespace": "pid:[4026531836]",
+      "receipt": "02.read-before-archive.json",
+      "status": "completed"
+    },
+    {
+      "pid": 1921407,
+      "pid_namespace": "pid:[4026531836]",
+      "receipt": "03.archive-R1.json",
+      "status": "completed"
+    },
+    {
+      "pid": 3,
+      "pid_namespace": "pid:[4026533211]",
+      "receipt": "05.snapshot-vault.json",
+      "status": "completed"
+    },
+    {
+      "pid": 5,
+      "pid_namespace": "pid:[4026533212]",
+      "receipt": "06.close-vault.json",
+      "status": "completed"
+    },
+    {
+      "pid": 1923120,
+      "pid_namespace": "pid:[4026531836]",
+      "receipt": "07.archival-and-process-verification.json/checker",
+      "start_ticks": "299269158",
+      "status": "failed"
+    },
+    {
+      "pid": 1923121,
+      "pid_namespace": "pid:[4026531836]",
+      "receipt": "07.archival-and-process-verification.json/owned_app_server",
+      "start_ticks": "299269177",
+      "status": "failed"
+    }
+  ],
+  "outcome": "No currently visible exact PID matched its recorded ownership identity; no leftover leaf was proven and no signal was sent.",
+  "recorded_at": "2026-10-26T16:53:39+0100",
+  "residual_limit": "Operator-reported old native root termination is not independently addressable from this root; no /proc/1 namespace gate or broad process scan was used.",
+  "schema": "g09-sanitation-cycle07-processes/v1",
+  "signals_sent": []
+}

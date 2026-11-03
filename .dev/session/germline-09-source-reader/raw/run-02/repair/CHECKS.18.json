@@ -1,0 +1,30 @@
+{
+  "schema": "g09-run02-repair-checks/v1",
+  "cycle": "18",
+  "target_model_turns": 0,
+  "sources": {
+    "adapter": "bfa6a3fc7c09591881575c87fb8ad5bde066188cc42f814028dbeffff4d77b50",
+    "adapter_test": "d81a8e51340b2069c50c4fc10dcf4a099946374dc5fd50dbb28503b2e2063023"
+  },
+  "commands": [
+    {
+      "cwd": "/home/hruzam/ia-sync",
+      "command": "python3 -B .dev/session/germline-09-source-reader/raw/run-02/repair/test_adapter.py",
+      "result": "pass; 27 fake/temp checks"
+    },
+    {
+      "cwd": "/home/hruzam/ia-sync",
+      "command": "git diff --check",
+      "result": "pass"
+    }
+  ],
+  "bootstrap_readback_thread_cases": {
+    "missing": "refused",
+    "wrong": "refused",
+    "exact": "accepted"
+  },
+  "limits": [
+    "No target, product, model-list, open, deployment, or commit operation occurred.",
+    "Sol cycle19 independently verifies the newly frozen source."
+  ]
+}

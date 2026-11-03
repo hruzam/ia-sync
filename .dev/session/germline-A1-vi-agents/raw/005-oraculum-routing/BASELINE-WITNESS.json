@@ -1,0 +1,43 @@
+{
+  "created": "2026-10-30T21:54:41.775696+01:00",
+  "verdict": "REPRODUCED",
+  "scope": "Fresh unchanged deployed main + authorized read-only worker observer; no Git requested in baseline",
+  "routes": [
+    {
+      "thread_id": "01a18e94-3518-7bf3-a4ef-ee59e40a42c3",
+      "host_local_rollout": "/home/hruzam/.codex/sessions/2026/10/30/rollout-2026-10-30T21-50-40-01a18e94-3518-7bf3-a4ef-ee59e40a42c3.jsonl",
+      "agent_role": "main",
+      "agent_path": "/root",
+      "models_observed": [
+        "gpt-6-astra"
+      ],
+      "old_main_canary_in_developer_body": true,
+      "spawn_requests": [
+        {
+          "agent_type": "worker",
+          "model": "gpt-6-luna",
+          "fork_turns": "none",
+          "task_name": "identity_observer"
+        }
+      ],
+      "old_main_loader_embedded_verbatim_in_developer_message": true
+    },
+    {
+      "thread_id": "01a18e94-9a85-7870-83b7-2f629afdd16d",
+      "host_local_rollout": "/home/hruzam/.codex/sessions/2026/10/30/rollout-2026-10-30T21-51-06-01a18e94-9a85-7870-83b7-2f629afdd16d.jsonl",
+      "agent_role": "worker",
+      "agent_path": "/root/identity_observer",
+      "models_observed": [
+        "gpt-6-luna"
+      ],
+      "old_main_canary_in_developer_body": true,
+      "spawn_requests": [],
+      "old_main_loader_embedded_verbatim_in_developer_message": true
+    }
+  ],
+  "observed": "Requested worker/Luna/fork none was natively labelled worker but received the exact main developer loader and reported Oraculum child identity with the main canary. No stale shared/developer body explains it.",
+  "return_host_local": "/tmp/oraculum-routing-20261030-aq1s_4u8/baseline.return.md",
+  "return_sha256": "47ee26ddedfe3fe1a73c8954d8f8bb18e7415ded2a43ca4fc56e5774a7b04ddb",
+  "official_mechanics": "https://learn.chatgpt.com/docs/agent-configuration/subagents",
+  "qualification_limit": "The inheritance is locally observed on codex-cli 0.166.0, not inferred solely from documentation."
+}

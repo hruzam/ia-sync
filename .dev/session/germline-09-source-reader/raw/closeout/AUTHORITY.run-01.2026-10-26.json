@@ -1,0 +1,41 @@
+{
+  "schema": "g09-run-closeout-authority/v1",
+  "run": "run-01",
+  "operator": "Majkee",
+  "recorded_at": "2026-10-26T15:46:35+01:00",
+  "observed_operator_message": "to-cartan(germline-09) from-majkee ---\n\nClose out G09 run-01 so we can prepare a fresh run in the same bed.\n\nThis authorizes G09-only resource retirement and closeout documentation. No new tunnel target turns,\nrepairs, implementation, deployment or commit/push.\n\n1. Quiesce and retire owned resources\n\nInventory what G09 actually created. Distinguish stored threads, local vaults, native workers and running\nprocesses.\n\nKnown R1 thread:\n01a176f7-532b-7722-9324-0ecb92694073\n\nUse the existing caretaker for bounded cleanup if available. Verify quiescence through supported zero-turn\noperations and correctly scoped process/session observations. Do not infer death from cross-namespace PID\nabsence.\n\nArchive the known stored thread through a supported operation; do not permanently delete it. Close G09-\nowned local vaults only after preserving their exact contents and identifiers. Keep vault snapshots\ngitignored.\n\nStop/release only native workers or active operations demonstrably owned by G09. If ownership is unclear,\nreport a cleanup hold. Never delete Codex writer locks or kill unrelated clients.\n\n2. Preserve evidence and write the self-report\n\nLeave existing evidence in place. Preserve the original RUNBOOK, release and pre-close STATUS before\nchanging closeout state. Do not overwrite handed-off records.\n\nWrite:\n/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/closeout/SELFREPORT.run-01.2026-10-26.md\n\nInclude:\n- Original goal and expected versus observed results.\n- Actual actors, resource identifiers and retirement outcomes.\n- Sequence of events, consumed attempts and validated completions.\n- Verified findings versus remaining uncertainty.\n- Program/function consumption and what operational material reached the main; mark unavailable\nmeasurements honestly.\n- Exact evidence paths/hashes, modified files, remaining repairs and recommendations for the next\ncaretaker/controller.\n\nAim for <=800 words plus evidence tables. Distinguish reported loading from observed behavior.\n\n3. Hand back the bed\n\nPreserve the old release, then revoke further dispatch in RELEASE.json. Record the separate cleanup\nauthority and outcomes.\n\nUpdate STATUS with the unchanged acceptance gate: run-01 stopped, gate unmet, resource disposition, no\noutstanding work except explicitly reported holds, and handback for replanning.\n\nDo not rewrite RUNBOOK, prune the bed, reset attempt accounting or start run-02.\n\nReturn the self-report’s absolute path and a short cleanup summary, then make no further edits.",
+  "scope": "G09-owned retirement and closeout only; zero target turns",
+  "known_R1_thread": "01a176f7-532b-7722-9324-0ecb92694073",
+  "prohibited": [
+    "new target turns",
+    "repairs",
+    "implementation",
+    "deployment",
+    "commit/push",
+    "permanent thread deletion",
+    "writer-lock deletion",
+    "unrelated client termination",
+    "run-02"
+  ],
+  "preserved_before_mutation": [
+    {
+      "source": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/RUNBOOK.md",
+      "snapshot": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/closeout/snapshots/RUNBOOK.run-01.original.md",
+      "sha256": "de9ae7cc1fddc54a019c3bfc7ecb6739918112420d7e3c67f8cbbed8aafa4fdf",
+      "bytes": 3268
+    },
+    {
+      "source": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/control/RELEASE.json",
+      "snapshot": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/closeout/snapshots/RELEASE.run-01.pre-close.json",
+      "sha256": "4269af991af7526bcba5abf34d78399cdf713044f3082b294e52f3cf0d3e49a4",
+      "bytes": 3127
+    },
+    {
+      "source": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/STATUS.md",
+      "snapshot": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/closeout/snapshots/STATUS.run-01.pre-close.md",
+      "sha256": "bbc0e2dcf14b3a7d74ac02dce553d365a70463e6294f33042be120b187edf200",
+      "bytes": 2626
+    }
+  ],
+  "presence_attachment_id": "0eb2477c980739d8179ff6a38daa9bbe"
+}

@@ -1,0 +1,19 @@
+Found on disk; runtime visibility/activation unknown.
+GAP empty-fixture: empty
+GAP missing-fixture: missing
+Plugin/bundled roots not declared here are unknown.
+Account-sync publisher unknown.
+01a7a0aff577d31c2466e4ced3784b6c94f2d90eb79ea45c7c69c3d39c772714	skill/native SKILL.md	codex	authored	/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/codex/canary/SKILL.md
+dd3c5c3a480042e49b073109abc852030a0cbd2f9386b930edb5e3b2f789d43d	skill/native SKILL.md	codex	authored	/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/codex/guide/SKILL.md
+44dbb62960f58a966849c47e4b37c1dae3c1fb0ac3c73a09c4b265f29b7b6333	skill/native SKILL.md	codex	authored	/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/codex/linked/SKILL.md → /home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/claude/guide/SKILL.md
+36ca54c896ee763f76c1bdb75c27d1d80c77638585115265d5d458836b87ac3e	skill/native SKILL.md	claude	installed-personal	/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/claude/guide/SKILL.md
+d9ee3b6626ae2dcce86dd17fe727aa5242bdee2c87ec831d92674e5a8a3d2469	guide/GUIDE	-	temple	/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/guides/topic/GUIDE.md
+3d5c2760ad8ebd3108067e8b181cb5bd6947d333191435d1fb46befe5074e22b	guide/guide chapter	-	temple	/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/guides/topic/res/fanout-turns.md
+caf09aa9d5f07effd35ec1f6042e3810154532eecf6bf05cecba4dc0e0d1b721	guide/guide chapter	-	temple	/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/guides/topic/res/turns-recovery.md
+2c5505d31b78b66ef3385c1ba695979dff369b76895ff56bcbf7e129188d5009	guide/guide chapter	-	temple	/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/guides/topic/res/unique.md
+fdaba4fe9e03fed156955d2a3790966c8a45ce3a2b297572e2d56c488f59f7fe	germline/germline binding	-	authored	/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/germline/agents/example/binding.codex.md
+808cebc202909fa4c7f0f60987f29e7844cda6babc491cb157a6880399accd7c	germline/germline card	-	authored	/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/germline/agents/example/cards/consult.md
+637e8116cbc9f2aebd18477d63a355bbfc077344651f022f0a2cbe707654699a	germline/germline identity	-	authored	/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/germline/agents/example/identity.md
+3ec60dcfe6d619d974c7c037316d00b77a979fb202c717e0b1465c7ea4e429f4	germline/germline method	-	authored	/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/germline/agents/example/methods/observe.md
+b8f1777f01ae4ccbfd945f06481184d295c2e4de401eb63b4093b3f975a6d29c	germline/germline skill	-	authored	/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/germline/skills/skill.example.md
+1d5adb7e3b8a8e9fef3dc5fcde0bb46abe8b8ed3db98075eb0ac793034308bee	skill/native SKILL.md	claude	account-sync; publisher unknown	/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/synced/account-bucket/guide/SKILL.md

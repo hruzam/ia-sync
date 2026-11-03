@@ -1,0 +1,247 @@
+{
+  "schema": "g09-product-contract/v1",
+  "template_only": false,
+  "run_id": "run-02",
+  "operator_release_reference": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/control/RELEASE.json",
+  "head_decision": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/control/DECISION.01.md",
+  "source_roots": [
+    {
+      "id": "germline-authored",
+      "kind": "germline",
+      "vendor_if_any": null,
+      "origin": "authored",
+      "absolute_path": "/home/hruzam/ia-sync/germline",
+      "layout": "germline",
+      "availability": "present",
+      "provenance_evidence": "C1 R1 actual completed answer, SOURCE-MAP.md; current head bounded existence check; naming does not imply runtime use"
+    },
+    {
+      "id": "germline-deployed",
+      "kind": "germline",
+      "vendor_if_any": null,
+      "origin": "deployed",
+      "absolute_path": "/home/hruzam/.germline",
+      "layout": "germline",
+      "availability": "present",
+      "provenance_evidence": "C1 R1 actual completed answer, SOURCE-MAP.md; current head bounded existence check; naming does not imply runtime use"
+    },
+    {
+      "id": "temple-guides",
+      "kind": "guide",
+      "vendor_if_any": null,
+      "origin": "temple",
+      "absolute_path": "/home/hruzam/reposoma/raw.guides",
+      "layout": "guides",
+      "availability": "present",
+      "provenance_evidence": "C1 R1 actual completed answer, SOURCE-MAP.md; current head bounded existence check; naming does not imply runtime use"
+    },
+    {
+      "id": "codex-authored",
+      "kind": "skill",
+      "vendor_if_any": "codex",
+      "origin": "authored",
+      "absolute_path": "/home/hruzam/ia-sync/codex/skills",
+      "layout": "skills",
+      "availability": "present",
+      "provenance_evidence": "C1 R1 actual completed answer, SOURCE-MAP.md; current head bounded existence check; naming does not imply runtime use"
+    },
+    {
+      "id": "claude-authored",
+      "kind": "skill",
+      "vendor_if_any": "claude",
+      "origin": "authored",
+      "absolute_path": "/home/hruzam/ia-sync/claude/skills",
+      "layout": "skills",
+      "availability": "present",
+      "provenance_evidence": "C1 R1 actual completed answer, SOURCE-MAP.md; current head bounded existence check; naming does not imply runtime use"
+    },
+    {
+      "id": "codex-personal",
+      "kind": "skill",
+      "vendor_if_any": "codex",
+      "origin": "installed-personal",
+      "absolute_path": "/home/hruzam/.agents/skills",
+      "layout": "skills",
+      "availability": "present",
+      "provenance_evidence": "C1 R1 actual completed answer, SOURCE-MAP.md; current head bounded existence check; naming does not imply runtime use"
+    },
+    {
+      "id": "claude-personal",
+      "kind": "skill",
+      "vendor_if_any": "claude",
+      "origin": "installed-personal",
+      "absolute_path": "/home/hruzam/.claude/skills",
+      "layout": "skills",
+      "availability": "present",
+      "provenance_evidence": "C1 R1 actual completed answer, SOURCE-MAP.md; current head bounded existence check; naming does not imply runtime use"
+    },
+    {
+      "id": "codex-project",
+      "kind": "skill",
+      "vendor_if_any": "codex",
+      "origin": "project",
+      "absolute_path": "/home/hruzam/ia-sync/.agents/skills",
+      "layout": "skills",
+      "availability": "present",
+      "provenance_evidence": "C1 R1 actual completed answer, SOURCE-MAP.md; current head bounded existence check; naming does not imply runtime use"
+    },
+    {
+      "id": "claude-project",
+      "kind": "skill",
+      "vendor_if_any": "claude",
+      "origin": "project",
+      "absolute_path": "/home/hruzam/ia-sync/.claude/skills",
+      "layout": "skills",
+      "availability": "present",
+      "provenance_evidence": "C1 R1 actual completed answer, SOURCE-MAP.md; current head bounded existence check; naming does not imply runtime use"
+    },
+    {
+      "id": "codex-system",
+      "kind": "skill",
+      "vendor_if_any": "codex",
+      "origin": "runtime-identified-system",
+      "absolute_path": "/home/hruzam/.codex/skills/.system",
+      "layout": "skills",
+      "availability": "present",
+      "provenance_evidence": "C1 R1 actual completed answer, SOURCE-MAP.md; current head bounded existence check; naming does not imply runtime use"
+    },
+    {
+      "id": "claude-account-sync",
+      "kind": "skill",
+      "vendor_if_any": "claude",
+      "origin": "account-sync; individual publisher unknown",
+      "absolute_path": "/home/hruzam/.claude/skills/synced",
+      "layout": "synced-skills",
+      "availability": "present",
+      "provenance_evidence": "C1 R1 actual completed answer, SOURCE-MAP.md; current head bounded existence check; naming does not imply runtime use"
+    },
+    {
+      "id": "codex-admin",
+      "kind": "skill",
+      "vendor_if_any": "codex",
+      "origin": "admin candidate",
+      "absolute_path": "/etc/codex/skills",
+      "layout": "skills",
+      "availability": "missing",
+      "provenance_evidence": "C1 R1 actual completed answer, SOURCE-MAP.md; current head bounded existence check; naming does not imply runtime use"
+    },
+    {
+      "id": "claude-admin",
+      "kind": "skill",
+      "vendor_if_any": "claude",
+      "origin": "admin candidate",
+      "absolute_path": "/etc/claude-code/.claude/skills",
+      "layout": "skills",
+      "availability": "missing",
+      "provenance_evidence": "C1 R1 actual completed answer, SOURCE-MAP.md; current head bounded existence check; naming does not imply runtime use"
+    }
+  ],
+  "root_entry_fields": [
+    "kind",
+    "vendor_if_any",
+    "origin",
+    "absolute_path",
+    "availability",
+    "provenance_evidence"
+  ],
+  "source_file_kinds": [
+    "germline identity/binding/card/method",
+    "germline skill",
+    "GUIDE",
+    "guide chapter",
+    "native SKILL.md"
+  ],
+  "reader_interface": {
+    "runner": "/home/hruzam/ia-sync/zsh/experimental/source-reader/runner.zsh",
+    "help_argv": [
+      "--help"
+    ],
+    "catalog_argv": [
+      "catalog",
+      "--json"
+    ],
+    "show_argv": [
+      "show",
+      "<exact catalog ID or exact catalog lexical path>"
+    ],
+    "guide_argv": [
+      "guide",
+      "[slug]",
+      "[chapter]"
+    ],
+    "browse_argv": [
+      "browse",
+      "[--plain]"
+    ],
+    "roots_override": [
+      "--roots",
+      "<JSON path>"
+    ],
+    "roots_override_schema": {
+      "roots": "array of objects with id,kind,vendor_if_any,origin,absolute_path,layout fields using the same bounded layouts as source_roots"
+    },
+    "plain_list_fallback": "NonTTY browse yields a plain metadata list without blocking. --plain disables optional picker and supports plain terminal selection; UI/diagnostics use terminal/stderr, selected show bytes alone stdout."
+  },
+  "catalog_policy": "Ephemeral metadata-only; keep lexical absolute path, resolved target/provenance, family, root ID, vendor, name and available frontmatter; no durable index or source body loads. Entries have unique stable ID by root/origin/lexical path, retaining all duplicates. Missing/empty/unreadable roots are disclosed gaps. Explicit found on disk; runtime visibility/activation unknown.",
+  "discovery_bounds": {
+    "skills": "one immediate child directory/SKILL.md per declared root; no recursive cache/home/plugin crawling",
+    "synced-skills": "only explicitly declared synced root, one observed account bucket and its immediate child SKILL.md entries; publisher unknown; no scan outside this root",
+    "guides": "only */GUIDE.md and owning immediate res/*.md; no raw/src/ast/cod or side-directory resolution",
+    "germline": "only agents and skills subtrees, bounded known identity/binding/card/method and skill Markdown layouts; metadata discovery only; do not load tunnel mechanisms or execute file bodies"
+  },
+  "same_name_policy": "No merge/precedence. Distinct root/origin/vendor/lexical path entries; preserve symlink target separately. show validates exact selection is cataloged and returns current selected bytes byte-exactly.",
+  "guide_resolution_contract": "/home/hruzam/ia-sync/codex/skills/guide/SKILL.md",
+  "guide_rules": {
+    "none": "metadata catalog from GUIDE frontmatter and res chapter basenames; no guide bodies",
+    "slug": "exact known slug GUIDE.md; unknown slug yields guide catalog/no resolution",
+    "chapter": "case-insensitive basename substring over that slug immediate res/*.md only; unique reads exact file; ambiguity lists all matches and no body; zero match prints only GUIDE ## Manifest section and resolves nothing",
+    "warnings": "staleness/mirror and manifest metadata warnings may use stderr; show remains byte-exact. No side-directory recursion or executing manifest instructions.",
+    "vendor_conflict": "Claude guide recursive legacy fallback is observed dissent, not adopted; no shared skill modification."
+  },
+  "counterexamples": [
+    {
+      "id": "CE1",
+      "check": "Codex/Claude authored and installed guide copies with same name remain separate; exact selected lexical path, computed SHA256 and bytes roundtrip independently."
+    },
+    {
+      "id": "CE2",
+      "check": "Fixture chapter query TURNS matches fanout-turns.md and turns-recovery.md, lists both and returns no body; cold-start-card card actual ambiguity preserved where present."
+    },
+    {
+      "id": "CE3",
+      "check": "Zero chapter match yields owning GUIDE Manifest only; undeclared side directories are never auto-resolved."
+    },
+    {
+      "id": "CE4",
+      "check": "A source containing imperative code/canary is data only; no mutation/execution. Before/after fixture/input hashes match."
+    },
+    {
+      "id": "CE5",
+      "check": "Every catalog/browse explains found on disk; activation unknown. No availability implies loaded/active."
+    }
+  ],
+  "acceptance": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/ACCEPTANCE.md",
+  "write_authority": [
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader",
+    "/home/hruzam/ia-sync/zsh/experimental/base.zsh ONLY new maintainer row",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I1",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I2"
+  ],
+  "manifest_contract": {
+    "schema": "g09-product-manifest/v1",
+    "run_id": "run-02",
+    "stage": "I1 or I2",
+    "audited_files": "absolute product path -> SHA256, include runner/engine/docs/product fixtures/tests and whole base.zsh",
+    "uppercase_authority": "MANIFEST.json per runtime CONTRACT",
+    "lowercase_template_alias": "manifest.json byte-identical evidence snapshot required because frozen R2/A2/A3 templates name lowercase. Pin both; do not alter frozen templates or omit either.",
+    "base_row_proof": "before snapshot/hash, exact single owned new-row diff, final whole hash; no unrelated base change"
+  },
+  "no_scope_expansion": [
+    "No Slint/install/build/runtime activation",
+    "No source rewrites or body execution",
+    "No global index/auth/network/model calls from product",
+    "No live deployment/commit/push/global role changes/Nablarva reads"
+  ],
+  "unresolved_decisions": [],
+  "safety_repair": "A1 race repaired via exact approved four-file transition; A2 rechecks named adapter lock boundary plus43 independent evidence, without another race-related target ask."
+}

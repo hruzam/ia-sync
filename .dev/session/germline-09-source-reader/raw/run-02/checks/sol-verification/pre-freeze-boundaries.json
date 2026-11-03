@@ -1,0 +1,111 @@
+{
+  "source_sha256": "f041b93fa0690554c81f0a6d3d20781597ac89f956257e3d426a11fc3bde4e6e",
+  "target_model_turns": 0,
+  "checks": 18,
+  "rows": [
+    {
+      "check": "release-authorized",
+      "result": "refused",
+      "reason": "fresh run-02 release is not authorized"
+    },
+    {
+      "check": "release-observed_operator_message",
+      "result": "refused",
+      "reason": "release lacks fresh operator message provenance"
+    },
+    {
+      "check": "release-contract_sha256",
+      "result": "refused",
+      "reason": "release contract hash mismatch"
+    },
+    {
+      "check": "release-source_manifest_sha256",
+      "result": "refused",
+      "reason": "release source-manifest hash mismatch"
+    },
+    {
+      "check": "active-hold-before-effect",
+      "result": "refused",
+      "reason": "unresolved or invalid run-02 HOLD.json"
+    },
+    {
+      "check": "duplicate-pending",
+      "result": "refused",
+      "reason": "duplicate or corrupt receipt exists: /tmp/g09-sol-boundaries-jwj_ujfp/raw/run-02/caretaker/operations/run02.duplicate.operation.json"
+    },
+    {
+      "check": "prior-pending",
+      "result": "refused",
+      "reason": "earlier submission requires head disposition: run02.duplicate.operation.json (pending-submission)"
+    },
+    {
+      "check": "duplicate-failed",
+      "result": "refused",
+      "reason": "duplicate or corrupt receipt exists: /tmp/g09-sol-boundaries-jwj_ujfp/raw/run-02/caretaker/operations/run02.duplicate.operation.json"
+    },
+    {
+      "check": "prior-failed",
+      "result": "refused",
+      "reason": "earlier submission requires head disposition: run02.duplicate.operation.json (command-failed-or-remote-outcome-unknown)"
+    },
+    {
+      "check": "duplicate-malformed",
+      "result": "refused",
+      "reason": "duplicate or corrupt receipt exists: /tmp/g09-sol-boundaries-jwj_ujfp/raw/run-02/caretaker/operations/run02.duplicate.operation.json"
+    },
+    {
+      "check": "prior-malformed",
+      "result": "refused",
+      "reason": "earlier submission requires head disposition: run02.duplicate.operation.json (missing-or-malformed-receipt)"
+    },
+    {
+      "check": "revoked-known-interrupted-read",
+      "result": "zero-turn-fake-only"
+    },
+    {
+      "check": "revoked-known-interrupted-resume",
+      "result": "zero-turn-fake-only"
+    },
+    {
+      "check": "changed-known-role-id",
+      "result": "refused",
+      "reason": "vault identity does not match frozen role identity"
+    },
+    {
+      "check": "missing-role-id",
+      "result": "refused",
+      "reason": "missing known thread identity; refusing invocation"
+    },
+    {
+      "check": "same-key-concurrency-read",
+      "result": [
+        "reserved",
+        "refused",
+        "refused",
+        "refused",
+        "refused",
+        "refused",
+        "refused",
+        "refused"
+      ]
+    },
+    {
+      "check": "same-key-concurrency-ask",
+      "result": [
+        "refused",
+        "refused",
+        "refused",
+        "refused",
+        "refused",
+        "refused",
+        "refused",
+        "reserved"
+      ]
+    },
+    {
+      "check": "sixth-conservative-attempt",
+      "result": "refused",
+      "reason": "target ask cap exhausted"
+    }
+  ]
+}

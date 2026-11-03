@@ -1,0 +1,18 @@
+usage: source-reader.py [-h] [--roots JSON] {catalog,show,guide,browse} ...
+
+Lazy read-only source browser. Found on disk; runtime visibility/activation
+unknown.
+
+positional arguments:
+  {catalog,show,guide,browse}
+    catalog             metadata only; no source bodies
+    show                exact selected file bytes
+    guide               GUIDE.md or immediate res chapter
+    browse              terminal selection; nonTTY lists metadata
+
+options:
+  -h, --help            show this help message and exit
+  --roots JSON          declared bounded roots override
+
+No install, model, network, index or source execution. --roots may precede or
+follow the command.

@@ -1,0 +1,25 @@
+{
+  "created": "2026-10-30T19:21:43.331535+01:00",
+  "purpose": "Operator-approved single A1 production entry; supersede own unused cards",
+  "new_card": "/home/hruzam/reposoma/_cold-start/card/CS.germline-A1-agent-production.2026-10-30.md",
+  "sha256": "93dd792b6a38e9780ff784827783c4144d209e3ba6fc228fbd32bc41f46421b4",
+  "archived_unchanged": [
+    {
+      "from": "/home/hruzam/reposoma/_cold-start/card/CS.germline-A6-harness-builder.2026-10-30.md",
+      "to": "/home/hruzam/reposoma/_cold-start/archive/CS.germline-A6-harness-builder.2026-10-30.md",
+      "sha256": "e91f8e3ff7f47b7c92fad0c71e81eee41d11dfacb1f148a135d0fcbb08ae94fc"
+    },
+    {
+      "from": "/home/hruzam/reposoma/_cold-start/card/CS.germline-A7-shuttle-execution.2026-10-30.md",
+      "to": "/home/hruzam/reposoma/_cold-start/archive/CS.germline-A7-shuttle-execution.2026-10-30.md",
+      "sha256": "854668f3651ebcf3b3c442a0ca3205b989d7a3b3e3683177d79c81765b6156ea"
+    },
+    {
+      "from": "/home/hruzam/reposoma/_cold-start/card/CS.germline-A8-epoch-researcher.2026-10-30.md",
+      "to": "/home/hruzam/reposoma/_cold-start/archive/CS.germline-A8-epoch-researcher.2026-10-30.md",
+      "sha256": "d92de8e16a701ab3cdb5381b6d59f05242664b3b4d32d73f30a3312ecab07869"
+    }
+  ],
+  "unrelated_cards_changed": [],
+  "committed": false
+}

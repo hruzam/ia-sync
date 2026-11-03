@@ -1,0 +1,76 @@
+[
+  {
+    "key": "run02.R2.resume",
+    "status": "completed",
+    "exit": 0,
+    "state_after": {
+      "cwd": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader",
+      "enabled": true,
+      "inFlightTurnId": null,
+      "lastTurnId": "01a17a86-87b6-76a3-a848-d93cf4a4d040",
+      "model": "gpt-6.1-sol",
+      "preamble": "/home/hruzam/.germline/tunnel/tunnel.preamble.md",
+      "runtime": {
+        "approvalPolicy": "never",
+        "cwd": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader",
+        "instructionSources": [
+          "/home/hruzam/.codex/AGENTS.md",
+          "/home/hruzam/ia-sync/AGENTS.md"
+        ],
+        "model": "gpt-6.1-sol",
+        "observedAt": "2026-10-28T23:44:43Z",
+        "reasoningEffort": "high",
+        "sandbox": {
+          "networkAccess": false,
+          "type": "readOnly"
+        }
+      },
+      "sandbox": {
+        "networkAccess": false,
+        "type": "readOnly"
+      },
+      "threadId": "01a17a86-873c-72b0-8787-932736a0f7d9",
+      "turnOverrides": {
+        "effort": "high"
+      }
+    },
+    "elapsed_seconds": 1.763
+  },
+  {
+    "key": "run02.A2.resume",
+    "status": "completed",
+    "exit": 0,
+    "state_after": {
+      "cwd": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader",
+      "enabled": true,
+      "inFlightTurnId": null,
+      "lastTurnId": "01a17a89-cca1-71c0-8cea-0abe10024bcd",
+      "model": "gpt-6.1-sol",
+      "preamble": "/home/hruzam/.germline/tunnel/tunnel.preamble.md",
+      "runtime": {
+        "approvalPolicy": "never",
+        "cwd": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader",
+        "instructionSources": [
+          "/home/hruzam/.codex/AGENTS.md",
+          "/home/hruzam/ia-sync/AGENTS.md"
+        ],
+        "model": "gpt-6.1-sol",
+        "observedAt": "2026-10-28T23:44:55Z",
+        "reasoningEffort": "high",
+        "sandbox": {
+          "networkAccess": false,
+          "type": "readOnly"
+        }
+      },
+      "sandbox": {
+        "networkAccess": false,
+        "type": "readOnly"
+      },
+      "threadId": "01a17a89-cc0a-7053-b9b2-e5bdac784fe4",
+      "turnOverrides": {
+        "effort": "high"
+      }
+    },
+    "elapsed_seconds": 1.312
+  }
+]

@@ -1,0 +1,58 @@
+{
+  "verdict": "PASS",
+  "checker_sha256": "09ec3f47fe871d58ad8b61f7006c1b671e44497d5ec1f276d617ade6813cf4e7",
+  "approved_four_match": true,
+  "pins_match": 35,
+  "original_preflight_copies_match": [
+    {
+      "name": "32.local-preflight-failed.py.txt",
+      "sha256": "c742a2449e93cd8379f09b3b07f8ca4950c49a60194caefc3ff7dfbeaa3f26b2"
+    },
+    {
+      "name": "32.local-preflight-failed.output.txt",
+      "sha256": "96b48fd9afac18c11c335b3d0908854461b42016ad051ac6899e798c705c0d10"
+    },
+    {
+      "name": "32.local-preflight-corrected.py.txt",
+      "sha256": "b4f7eb5638e0c46850a1d1a637b1d75d30f7f9dd50d500a3c9a86437af0f31ed"
+    },
+    {
+      "name": "32.local-preflight-corrected.output.txt",
+      "sha256": "9ef255d2ca09521335b3a5a5d5521b2c1ff87d5611799eccf4faf722b2d14a83"
+    }
+  ],
+  "before_count": 556,
+  "unchanged_before_count": 555,
+  "concurrent_expected_changes": [
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/execution/main-intake.json",
+      "before_sha256": "f1bf9eddf8fa0728e744135e0b8d5af4d2170c3abb4d7bed9f08d5d066facad1",
+      "current_sha256": "0ede180b85afe1988f03b63eadc73b0c7b775ad658981689261e4584005f517e"
+    }
+  ],
+  "active_hold": [
+    "C2-caretaker-local-assertion-failure-awaits-Terra-check"
+  ],
+  "asks": [
+    {
+      "key": "run02.R1.ask",
+      "attempt": 1
+    },
+    {
+      "key": "run02.A1.ask",
+      "attempt": 2
+    },
+    {
+      "key": "run02.R2.ask",
+      "attempt": 3
+    },
+    {
+      "key": "run02.A2.ask",
+      "attempt": 4
+    }
+  ],
+  "run02_used": 4,
+  "cumulative_used": 5,
+  "cumulative_ceiling": 6,
+  "verification_production_writes": 0
+}

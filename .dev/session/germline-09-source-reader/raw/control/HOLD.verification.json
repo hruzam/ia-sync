@@ -1,0 +1,62 @@
+{
+  "verified_at": "2026-10-26T07:55:47+01:00",
+  "classification": "main selected evidence verification; zero transport invocations",
+  "ask_status": "failed",
+  "ask_exit": 30,
+  "attempts_recorded": 1,
+  "completed_ask_receipts": 0,
+  "receipt_matches_late_reconciliation": true,
+  "vault_matches_late_reconciliation": true,
+  "threadId": null,
+  "lastTurnId": null,
+  "preamble": null,
+  "recorded_runner": {
+    "pid": 1319728,
+    "start": "296276499"
+  },
+  "recorded_pid_currently_present": false,
+  "output_verification": {
+    "stderr": {
+      "sha256_matches": true,
+      "bytes": 153
+    },
+    "stdout": {
+      "sha256_matches": true,
+      "bytes": 0
+    }
+  },
+  "elapsed_seconds": 120.811,
+  "selected_stderr": "tunnel-codex.py: turn overrides {\"effort\": \"high\"} sent\ntunnel-codex.py: timed out after 4.124068260192871s waiting for app-server output; stderr tail: \n",
+  "frozen_artifact_hash_matches": {
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/caretaker/run_operations.py": true,
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/caretaker/packets/A1.prompt.txt": true,
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/caretaker/packets/R1.prompt.txt": true
+  },
+  "foreign_modified_hashes_unchanged": {
+    ".dev/session/germline-03-foundation-audit/STATUS.md": true,
+    ".dev/session/germline-03-foundation-audit/raw/CRITERION.cartan.g03-first-split-01.md": true,
+    ".dev/session/germline-03-foundation-audit/raw/MANIFEST.cartan.g03-first-split-01.md": true,
+    ".dev/session/germline-04-wiring-plan/RUNBOOK.md": true,
+    ".dev/session/germline-04-wiring-plan/STATUS.md": true,
+    ".dev/session/germline-04-wiring-plan/raw/HANDOFF.g06-make-program.md": true,
+    "journal.host-cleanup.md": true,
+    "pulse.md": true,
+    "zsh/config.office.zsh": true
+  },
+  "experimental_base_unchanged": true,
+  "product_directory_exists": false,
+  "auditor_vault_exists": false,
+  "A1_operation_exists": false,
+  "offline_check_receipt": {
+    "pass_recorded": true,
+    "count": 11,
+    "rerun_by_main": false
+  },
+  "selected_profile_payload_hash_matches": true,
+  "selected_profile_contains_model_and_high": true,
+  "capsule_body_words": 71,
+  "capsule_file_bytes": 559,
+  "format_limit": "RETURN has six noncanonical section names and omits exact verification commands. Primary artifact checks support STOP, not successful C1 completion.",
+  "researcher_lock_exists_final": false,
+  "lock_observation": "Lock existed in the caretaker pending snapshot; absent at final verification after failed receipt completion. No agent deleted it. Cause not independently probed."
+}

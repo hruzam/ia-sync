@@ -1,0 +1,16 @@
+{
+  "schema": "g09-product-contract/v1",
+  "template_only": true,
+  "operator_release_reference": null,
+  "head_decision": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/control/DECISION.01.md",
+  "source_roots": [],
+  "root_entry_fields": ["kind", "vendor_if_any", "origin", "absolute_path", "availability", "provenance_evidence"],
+  "source_file_kinds": ["germline identity/binding/card", "germline skill", "GUIDE", "guide chapter", "native SKILL.md"],
+  "reader_interface": {"help_argv": [], "catalog_argv": [], "show_argv": [], "plain_list_fallback": null},
+  "same_name_policy": "Keep distinct origin/path entries; do not impose one vendor's precedence on another",
+  "guide_resolution_contract": "/home/hruzam/ia-sync/codex/skills/guide/SKILL.md",
+  "counterexamples": [],
+  "unresolved_decisions": [],
+  "acceptance": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/ACCEPTANCE.md",
+  "required_before_I1": "Cartan writes CONTRACT.01.json with template_only false, actual roots/interface and dispositions from R1/A1; do not pass this empty template as a completed contract"
+}

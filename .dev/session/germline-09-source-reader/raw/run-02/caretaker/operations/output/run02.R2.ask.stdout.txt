@@ -1,0 +1,16 @@
+G09.run-02.R2
+
+Same researcher; retained orientation. Consumed D1, CONTRACT.01 and I1 manifests plus named product deltas. No writes, source-instruction execution or subagents.
+
+**OBSERVED:** D1, contract, both manifest aliases and all manifest-listed product hashes match their pins; product hashes remained unchanged after bounded fixture catalog/show/guide calls.
+
+One provenance presentation gap: JSON preserves `resolved_path` and `symlink_target` ([engine:164](/home/hruzam/ia-sync/zsh/experimental/source-reader/source-reader.py:164)), but plain catalog and interactive selection omit both ([engine:187](/home/hruzam/ia-sync/zsh/experimental/source-reader/source-reader.py:187)). The actual linked fixture displays Codex/`authored`, while its resolved file contains the Claude twin ([fixture:3](/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/codex/linked/SKILL.md:3)).
+
+**INFERENCE:** Those labels correctly describe the declared root, but without the target, terminal users can mistake root provenance for content authorship. This weakens R1’s useful-provenance contract.
+
+**Contrary evidence:** JSON exposes the distinction correctly; linked `show` returned byte-identical Claude fixture content. All 13 frozen root specifications are represented ([engine:31](/home/hruzam/ia-sync/zsh/experimental/source-reader/source-reader.py:31)). Account-sync publisher remains unknown. Fixture catalog explicitly reported empty/missing roots and activation unknown. `TURNS` returned both candidates with exit 2; `side` returned only Manifest. No vendor resolver parity assumption was found: D1 explicitly selects Codex behavior ([D1:20](/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/control/DECISION.01.md:20)).
+
+**Remaining gaps:** I independently exercised fixtures, not the default live-root catalog. The manifest’s 180-entry live count remains builder-reported. Undeclared plugin/bundled coverage is expressly unknown ([README:29](/home/hruzam/ia-sync/zsh/experimental/source-reader/README.md:29)); no completeness or activation claim follows.
+
+**Narrowest correction:** Append `→ resolved_path` to plain/picker labels whenever it differs from the lexical path. Keep the frozen roots and resolver unchanged.
+[usage: {"total":{"totalTokens":1104484,"inputTokens":1095307,"cachedInputTokens":892672,"cacheWriteInputTokens":0,"outputTokens":9177,"reasoningOutputTokens":2774},"last":{"totalTokens":128216,"inputTokens":127357,"cachedInputTokens":126336,"cacheWriteInputTokens":0,"outputTokens":859,"reasoningOutputTokens":354},"modelContextWindow":475000}]

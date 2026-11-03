@@ -1,0 +1,22 @@
+{
+  "schema": "g09-preparation-disposition/v1",
+  "disposition": "READY-FOR-GO",
+  "observed_at": "2026-10-26T19:52:15.632161+01:00",
+  "repair": "PASS: Terra18 + independent Sol19; final integrated Sol28 PASS",
+  "caretaker": "Native Luna High:8 safe simulated receipt decisions; original26capture uncertainty preserved and27direct observed capture resolves it",
+  "release_authorized": false,
+  "technical_holds": [],
+  "run01_consumed_attempts": 1,
+  "run02_consumed_attempts": 0,
+  "run02_role_vaults": 0,
+  "source_reader_product": "UNVERIFIED; not executed or built here",
+  "fresh_operator_GO_required": true,
+  "handoff": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/HANDOFF.md",
+  "contract_sha256": "84be154eb074088af75f003cd760b0ccb904061afb46851135e8ad4203f1d214",
+  "pins_sha256": "d72e6b552f7e05e2e5c5657631526b989dea28d2cc3a372919845a1c86ad51db",
+  "main_evidence_read_requests": 101,
+  "intake_limit": "File-request count is not context occupancy. All tool observations/native messages additionally count as intake without invented token/dollar totals.",
+  "no_target_product_deploy_commit_global_role_changes": true,
+  "presence_attachment": "63ff03fd6eb774e6b7d97efd05b0cc31 detached; exact record absent",
+  "final_hygiene": "Early fake-vault residue reversibly archived with unchanged bytes; checks/RESIDUE.archive.json; source/contract/pins unchanged."
+}

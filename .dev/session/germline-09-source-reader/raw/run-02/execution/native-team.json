@@ -1,0 +1,17 @@
+{
+  "observed_at": "2026-10-26T22:29:04.061367+01:00",
+  "execution_root": "current /root tree",
+  "caretaker": {
+    "handle": "/root/g09_run02_caretaker",
+    "agent_type": "default",
+    "requested_model": "gpt-6-luna",
+    "effort": "high",
+    "fork_turns": "none",
+    "state": "C1 STOP completed; no remote effects;30 RETURN verified"
+  },
+  "builder": {
+    "state": "not created: C1 held before D1"
+  },
+  "old_preparation_handles": "retired from use; earlier NATIVE-TEAM.json is historical preparation evidence",
+  "scope": "Head-only native handle observation; no persistence/retention guarantee."
+}

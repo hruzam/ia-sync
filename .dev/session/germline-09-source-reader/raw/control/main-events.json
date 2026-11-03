@@ -1,0 +1,96 @@
+[
+  {
+    "event": "fresh_entry",
+    "time": "2026-10-26T07:39:12+01:00",
+    "classification": "baseline orientation plus fixed task handoff",
+    "initial_packet_files": [
+      "RUNBOOK.md",
+      "STATUS.md (pre-GO contents)",
+      "raw/hold-line/ENTRY.md"
+    ],
+    "preregistered_packet_words": 707,
+    "packet_count_source": "raw/control/validation.json before release; no native token count available",
+    "additional_task_reads": [
+      "SCHEDULE.md",
+      "ACCEPTANCE.md",
+      "raw/briefs/caretaker.md",
+      "raw/briefs/astrobley.md",
+      "raw/control/RELEASE.json",
+      "raw/control/validation.json",
+      "raw/control/BASELINE.json",
+      "raw/control/CONTRACT.template.json",
+      "raw/input/SOURCE-MAP.md"
+    ],
+    "baseline_reads": [
+      "journal.host-cleanup.md first 80 lines",
+      "SYNC_DISCIPLINE.md",
+      "presence-board records",
+      "protocole/colors/PROTOCOLE.md",
+      "shared runbook/status/bus/tunnel guides",
+      "guide/surgical-coding skill instructions",
+      "medusa/multihost skill instructions inspected; neither applied to override fixed GO"
+    ],
+    "source_contract_body_opens_by_main": 0,
+    "routine_tunnel_cli_operations": 0,
+    "operational_rescues": 0,
+    "operator_decision_requests": 0,
+    "permission_boundary_events": [
+      {
+        "action": "presence mark",
+        "reason": "required write outside writable roots",
+        "result": "tool escalation approved; exact ID 924a1acb18117b5aff8cfdf1f1ae60c6"
+      }
+    ],
+    "native_delegation": "/root/caretaker on 01.cartan.point.md",
+    "notes": [
+      "Initial batched tool output was truncated; full status/bus and runbook/tunnel guide output was re-read. This is real main intake overhead, not target telemetry.",
+      "No extra architectural decision requested; fixed GO already authorizes scope."
+    ]
+  },
+  {
+    "event": "late_R1_receipt_transition",
+    "time": "2026-10-26T07:53:24+01:00",
+    "observation": "Initial main snapshot was pending; subsequent assertion detected failed/exit30 with output records before any result artifacts were written. Vault still null.",
+    "action": "same caretaker limited read-only late-output reconciliation; no additional target calls",
+    "main_routine_tunnel_cli_operations": 0,
+    "main_safe_local_inspection": "Known recorded PID existence and frozen product/foreign hash comparison only."
+  },
+  {
+    "event": "C1_STOP_verified",
+    "time": "2026-10-26T07:55:47+01:00",
+    "main_routine_tunnel_cli_operations": 0,
+    "operational_intake_exception": "TUNNEL.md and selected C1 receipt/vault/plan/check/late-output evidence opened to verify stop; no transport invocation or repair.",
+    "known_pid_checked": 1319728,
+    "foreign_hashes_preserved": true,
+    "frozen_hashes_match": true,
+    "native_builder_started": false,
+    "outcome": "STOP; PRODUCT UNVERIFIED; DELEGATION INDETERMINATE"
+  },
+  {
+    "event": "hold_handoff_checks",
+    "time": "2026-10-26T08:32:38+01:00",
+    "checks": {
+      "verified_at": "2026-10-26T08:32:38+01:00",
+      "control_and_result_json_parsed": 11,
+      "STATUS_gate_matches_RUNBOOK": true,
+      "verdict": "STOP",
+      "late_receipt_hash_stable": true,
+      "foreign_modified_hashes_unchanged": true,
+      "owned_text_trailing_whitespace_check": "PASS",
+      "presence_detached_exact_id": "924a1acb18117b5aff8cfdf1f1ae60c6",
+      "product_acceptance": "UNVERIFIED",
+      "native_caretaker": "/root/caretaker",
+      "native_builder_started": false
+    },
+    "permission_boundary_events": [
+      {
+        "action": "exact presence detach",
+        "result": "approved and detached only owned attachment"
+      }
+    ],
+    "shared_law_applied": [
+      "/home/hruzam/reposoma/raw.guides/status/GUIDE.md — 03:00 standard and crash-safe update",
+      "/home/hruzam/reposoma/raw.guides/bus/GUIDE.md — Verifying a RETURN and Curvature rule"
+    ]
+  }
+]

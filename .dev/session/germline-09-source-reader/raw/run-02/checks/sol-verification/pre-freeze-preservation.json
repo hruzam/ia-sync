@@ -1,0 +1,11 @@
+{
+  "protected_old_count": 97,
+  "old_mismatches": [],
+  "foreign_count": 9,
+  "foreign_mismatches": [],
+  "releases_false": {
+    "raw/control/RELEASE.json": true,
+    "raw/run-02/control/RELEASE.json": true
+  },
+  "ok": true
+}

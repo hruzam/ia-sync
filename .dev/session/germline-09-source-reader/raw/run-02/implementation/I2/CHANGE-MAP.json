@@ -1,0 +1,16 @@
+{
+  "/home/hruzam/ia-sync/zsh/experimental/source-reader/source-reader.py": {
+    "before_sha256": "87b5bb7aeb6842531a54caaa30ea47e4cc5e8368a1bfd1d24357cab4e695af32",
+    "after_sha256": "63a25f7b3e36fe8da646bb1ee84ef46a68e3c2184bc0aecd3096bbe7bda8fe8a",
+    "before_snapshot": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I2/before-I2/zsh/experimental/source-reader/source-reader.py",
+    "diff": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I2/source-reader.py.I1-to-I2.diff",
+    "diff_sha256": "83fd74646d6ca7b477ed5788196849d63351c5993f53bf3c5daadddb6a675e88"
+  },
+  "/home/hruzam/ia-sync/zsh/experimental/source-reader/test_source_reader.py": {
+    "before_sha256": "d494bb134628e73759ab53bb7538b9df4739cfe24aa7672ba375f03f14702307",
+    "after_sha256": "0b25f665becaf46d6670a205446dfdb646cf948cb9577bcf19226deee8bf5f81",
+    "before_snapshot": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I2/before-I2/zsh/experimental/source-reader/test_source_reader.py",
+    "diff": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I2/test_source_reader.py.I1-to-I2.diff",
+    "diff_sha256": "b34870d4770f872d9cd435d9c24279075a63a73dada904ecc2576613978bd555"
+  }
+}

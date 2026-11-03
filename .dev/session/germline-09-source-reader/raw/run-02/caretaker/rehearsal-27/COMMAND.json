@@ -1,0 +1,9 @@
+{
+  "schema": "g09-caretaker-readiness-capture/v1",
+  "command": "/usr/bin/python3 -B /home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/run_operations.py readiness",
+  "exit_code": 2,
+  "observed": true,
+  "output_combined": "unresolved or invalid run-02 HOLD.json\n",
+  "expected_exit_code": 2,
+  "target_attempts_initiated": 0
+}

@@ -1,0 +1,98 @@
+{
+  "schema": "g09-a1-reviewed-hold-disposition/v1",
+  "observed_at": "2026-10-27T01:01:36.008979+01:00",
+  "state": "HOLD-awaiting-Majkee-frozen-hash-ruling",
+  "C1": "R1/A1 completed; distinct high/readOnly/networkfalse identities/bootstrap/preambles checked",
+  "actual_source_unchanged": true,
+  "staged_candidate_independent_verdict": "PASS39",
+  "proposal": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/execution/A1-race-review/proposal/RULING.md",
+  "new_contract_sha256": "d85068a29acae319710237594822230f1e761bf5df0656a208da14cc10d0216f",
+  "new_pins_sha256": "ed61680ac03074e3f77b66a9fa6db474d6363d48ff8374ac1a713530e7f8bbbf",
+  "run01_consumed": 1,
+  "run02_consumed": 2,
+  "run02_remaining": 3,
+  "cumulative_used": 3,
+  "cumulative_ceiling": 6,
+  "identities": {
+    "researcher": {
+      "threadId": "01a17a86-873c-72b0-8787-932736a0f7d9",
+      "lastTurnId": "01a17a86-87b6-76a3-a848-d93cf4a4d040",
+      "turnOverrides": {
+        "effort": "high"
+      },
+      "runtime": {
+        "approvalPolicy": "never",
+        "cwd": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader",
+        "instructionSources": [
+          "/home/hruzam/.codex/AGENTS.md",
+          "/home/hruzam/ia-sync/AGENTS.md"
+        ],
+        "model": "gpt-6.1-sol",
+        "observedAt": "2026-10-26T23:26:08Z",
+        "reasoningEffort": "high",
+        "sandbox": {
+          "networkAccess": false,
+          "type": "readOnly"
+        }
+      },
+      "sandbox": {
+        "networkAccess": false,
+        "type": "readOnly"
+      },
+      "preamble": "/home/hruzam/.germline/tunnel/tunnel.preamble.md"
+    },
+    "auditor": {
+      "threadId": "01a17a89-cc0a-7053-b9b2-e5bdac784fe4",
+      "lastTurnId": "01a17a89-cca1-71c0-8cea-0abe10024bcd",
+      "turnOverrides": {
+        "effort": "high"
+      },
+      "runtime": {
+        "approvalPolicy": "never",
+        "cwd": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader",
+        "instructionSources": [
+          "/home/hruzam/.codex/AGENTS.md",
+          "/home/hruzam/ia-sync/AGENTS.md"
+        ],
+        "model": "gpt-6.1-sol",
+        "observedAt": "2026-10-26T23:29:34Z",
+        "reasoningEffort": "high",
+        "sandbox": {
+          "networkAccess": false,
+          "type": "readOnly"
+        }
+      },
+      "sandbox": {
+        "networkAccess": false,
+        "type": "readOnly"
+      },
+      "preamble": "/home/hruzam/.germline/tunnel/tunnel.preamble.md"
+    }
+  },
+  "current_preservation": {
+    "protected_old_count": 97,
+    "old_mismatches": [],
+    "foreign_count": 9,
+    "foreign_mismatches": [],
+    "journal_reconciliation": {
+      "reconciliation": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/execution/prerequisites/JOURNAL.reconciliation.json",
+      "reconstructed_sha256": "db9148eba1574c7a9b7f6bfd0eefb5009afa6f8f7b295031b2649f3046a232f5",
+      "ok": true
+    },
+    "release_mode": "run02-authorized",
+    "releases_authorized": {
+      "raw/control/RELEASE.json": false,
+      "raw/run-02/control/RELEASE.json": true
+    },
+    "release_state_matches": true,
+    "ok": true
+  },
+  "current35_pins_match": true,
+  "D1_frozen": false,
+  "builder_created": false,
+  "product": "UNVERIFIED; not built/executed",
+  "resume_after_approval": "Snapshot/apply exact4 files, record actual ruling in RELEASE, independently check applied code/pins/C1, then clearHOLD\u2192D1\u2192I1. No repeat profile/enable/R1/A1.",
+  "main_execution_file_reads": 58,
+  "preparation_file_reads_retained_separately": 101,
+  "presence": "e29e17f9a3d5cfa5cddf03060884c11d detached; exact record absent"
+}

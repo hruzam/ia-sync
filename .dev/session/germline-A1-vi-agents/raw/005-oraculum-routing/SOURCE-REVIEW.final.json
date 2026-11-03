@@ -1,0 +1,19 @@
+{
+  "created": "2026-10-30T21:57:01.547897+01:00",
+  "reviewer": "native Astrobley /root/agent_build_line_mechanics",
+  "verdict": "PASS for scoped deployment and planned fresh witness",
+  "source_sha256": {
+    "codex/profiles/oraculum.config.toml": "ee984879a81316433e2d98ab5379c1c293197cad44fe13eeb1e48d6e7811696d",
+    "germline/agents/oraculum/identity.md": "05c9a4bae5f6c071b0f71c1d331f4f64e3844ff8376ab02d911ee5f0c47242ca",
+    "germline/agents/oraculum/binding.codex.md": "0d7414e522624240e5d701b5cfe84a4607bc82f5427155310f91f6a67dec8c17",
+    "germline/agents/oraculum/binding.claude.md": "2b99c5845b6b87998f157dc39d54e4f6012ad7a66960e24464465f65d45bbf25"
+  },
+  "findings": [
+    "Main dispatch uses actual native entry; inherited profile does not assign a worker the strategic identity.",
+    "Explicit bounded execution delegation changes shared main authority while preserving direct-main execution ban and genuine child restrictions.",
+    "Codex custom-child and Claude wrapper unchanged. Claude receives shared semantic change; real behavior remains deferred.",
+    "Instruction-level dispatch, not OS isolation; runtime metadata and bounded local-Git witness remain decisive.",
+    "Preserve host-local profile TUI settings during installation."
+  ],
+  "caller_clarification": "Astrobley PASS; direct-main Oraculum is explicitly authorized caller; child operational restrictions byte-identical."
+}

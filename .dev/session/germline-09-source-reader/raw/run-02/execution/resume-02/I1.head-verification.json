@@ -1,0 +1,16 @@
+{
+  "manifest_sha256": "12b1f1c452518af6533eea2999979ce7a3645fdfcc52fbcd5f91853ad6cb3f85",
+  "audited_files_verified": 24,
+  "evidence_hashes_verified": 11,
+  "base_exact_one_comment_row": [
+    "#   source-reader \u2014 plugged 2026-10-29 \u2014 G09 D1 \u2014 lazy read-only source browser \u2014 EXPERIMENTAL ONLY (not approved)\n"
+  ],
+  "removed_lines": [],
+  "source_input_preservation": {
+    "selected_real_sources": 15,
+    "fixture_files": 19,
+    "before_after_equal": true,
+    "canary_executed": false
+  },
+  "independent_product_audit": "pending A2"
+}

@@ -1,0 +1,9 @@
+--- a/raw/run-02/caretaker/run_operations.py
++++ b/raw/run-02/caretaker/run_operations.py
+@@ -447,6 +447,7 @@ def reserve(c, key, kind, receipt):
+             raise RuntimeError('ask reservation is already in progress') from exc
+         try:
++            prior_uncertainty(c)
+             if destination.exists():
+                 raise RuntimeError(f'duplicate or corrupt receipt exists: {destination}')
+             if ask_count(c) >= c['attempt_budget']['maximum_target_ask_attempts']:

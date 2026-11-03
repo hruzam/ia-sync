@@ -1,0 +1,38 @@
+{
+  "binary": "/home/hruzam/.local/bin/codex",
+  "selected": [
+    {
+      "defaultReasoningEffort": "low",
+      "id": "gpt-6.1-sol",
+      "model": "gpt-6.1-sol",
+      "supportedReasoningEfforts": [
+        {
+          "description": "Fast responses with lighter reasoning",
+          "reasoningEffort": "low"
+        },
+        {
+          "description": "Balances speed and reasoning depth for everyday tasks",
+          "reasoningEffort": "medium"
+        },
+        {
+          "description": "Greater reasoning depth for complex problems",
+          "reasoningEffort": "high"
+        },
+        {
+          "description": "Extra high reasoning depth for complex problems",
+          "reasoningEffort": "xhigh"
+        },
+        {
+          "description": "Maximum reasoning depth for the hardest problems",
+          "reasoningEffort": "max"
+        },
+        {
+          "description": "Maximum reasoning with automatic task delegation",
+          "reasoningEffort": "ultra"
+        }
+      ]
+    }
+  ],
+  "target_turns": 0,
+  "version": "codex-cli 0.164.0"
+}

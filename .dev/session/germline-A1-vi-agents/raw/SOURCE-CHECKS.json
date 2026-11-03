@@ -1,0 +1,72 @@
+{
+  "created": "2026-10-26T22:39:57.659236+01:00",
+  "mode": "source-only; no runtime model invocation or deployment",
+  "checks": [
+    {
+      "check": "Native configuration preservation",
+      "result": "PASS",
+      "details": "Child pin/features and Claude name/model/effort/tools/color/hooks preserved; standalone main profile uses top-level keys and the same Codex pin"
+    },
+    {
+      "check": "Shared identity and scope preservation",
+      "result": "PASS",
+      "details": {
+        "stamps": {
+          "germline/agents/oraculum/identity.md": "6c9e0851",
+          "germline/agents/oraculum/binding.claude.md": "1090dbda",
+          "germline/agents/oraculum/binding.codex.md": "1a68351a"
+        },
+        "neutrality": "no vendor/model/native tool mechanics in personality source",
+        "authority": "explicit child/direct-planning split; old child caller and return fields preserved"
+      }
+    },
+    {
+      "check": "Thin loaders and declared chains",
+      "result": "PASS",
+      "details": "All three native entries load shared identity, correct binding and optional project addendum; each carries only route/loading/proof mechanics"
+    },
+    {
+      "check": "Global placement",
+      "result": "PASS",
+      "details": "No same-name project wrapper; no project addendum fabricated for this neutral build"
+    },
+    {
+      "check": "Deploy syntax and exact allowlist",
+      "result": "PASS",
+      "details": "Only the Oraculum filename is added beside Houston; no profile wildcard or user config edit"
+    },
+    {
+      "check": "Protected and live before-state",
+      "result": "PASS",
+      "details": "Astrobley/Houston/hook source and all recorded live role files unchanged; new role/profile not installed"
+    },
+    {
+      "check": "Session control",
+      "result": "PASS",
+      "details": "RUNBOOK/STATUS YAML parses, one matching gate and Cartan owner, pulse router present"
+    },
+    {
+      "check": "Diff checks",
+      "result": "PASS",
+      "details": "Tracked diff and new shared/profile whitespace clean"
+    }
+  ],
+  "source_after": {
+    "codex/agents/oraculum.toml": "427bba7b343235c637bfb8cc78e507571f5daf23bce5d52699b10f9a0925b3bc",
+    "claude/agents/oraculum.md": "9dd4646a1e390781e9d0ce1636e08b106f2f4ceede0c063ded346070c003029d",
+    "codex/AGENTS.md": "bd3c92741d6b3f07ff0037017fd6f693184feae63966e8a2062d4659cefd4533",
+    "codex/README.md": "829f4a46290cd98492a03d5702a058c29b133c91cb1430b4156697ea04297d09",
+    "deploy.sh": "ba64a2215ba9842d026129d5f23e39295773e315ef7a2970540ae9e5d7f70356",
+    "germline/agents/oraculum/identity.md": "ac8e8348b24544a7aabbf75c5797ee0156769efa796a8767d4bf4f61e26ba49c",
+    "germline/agents/oraculum/binding.codex.md": "a2cdde5e815ac2260b3b2ab666cc192250492adcfbc32c526ab954a380d2f97f",
+    "germline/agents/oraculum/binding.claude.md": "c883f058ed0a5f4a26e730eec2ac9bc4e3de48fe64203bad602ce3f04667d2d5",
+    "codex/profiles/oraculum.config.toml": "5120835f451fd6bd2f253df9e8036e57d69eb9c3be902e8f44759251c4f7ea99"
+  },
+  "remaining": [
+    "operator source acceptance",
+    "authorized deployment",
+    "fresh independent main/child behavior witnesses",
+    "Claude runtime deferred",
+    "home and compaction unverified"
+  ]
+}

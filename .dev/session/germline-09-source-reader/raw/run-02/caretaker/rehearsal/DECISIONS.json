@@ -1,0 +1,66 @@
+[
+  {
+    "case": "interrupted",
+    "state": "UNKNOWN",
+    "evidence": ["/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/checks/luna-fixtures/interrupted.json"],
+    "blocker": "Simulated ask failed with remote outcome unknown; known simulated researcher thread has an in-flight turn and interrupted readback.",
+    "next_action": "RECONCILE_EXACT_KNOWN_ID",
+    "new_target_attempts": 0
+  },
+  {
+    "case": "missing-identity",
+    "state": "UNKNOWN",
+    "evidence": ["/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/checks/luna-fixtures/missing-identity.json"],
+    "blocker": "Pending simulated ask has no thread identity and runner visibility is permission-denied; no exact identity can be reconciled here.",
+    "next_action": "ESCALATE_MISSING_ID",
+    "new_target_attempts": 0
+  },
+  {
+    "case": "changed-pins",
+    "state": "HOLD",
+    "evidence": ["/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/checks/luna-fixtures/changed-pins.json"],
+    "blocker": "Simulated pin mismatch invalidates the release evidence even though that fixture says authorized; no effects may proceed under drift.",
+    "next_action": "ESCALATE_PIN_DRIFT",
+    "new_target_attempts": 0
+  },
+  {
+    "case": "revoked-release",
+    "state": "HOLD",
+    "evidence": ["/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/checks/luna-fixtures/revoked-release.json"],
+    "blocker": "Simulated release is revoked. A completed known receipt does not grant authority for further effects.",
+    "next_action": "WAIT_FRESH_GO",
+    "new_target_attempts": 0
+  },
+  {
+    "case": "active-hold",
+    "state": "HOLD",
+    "evidence": ["/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/checks/luna-fixtures/active-hold.json"],
+    "blocker": "Simulated unresolved identity hold remains active despite the authorized release flag.",
+    "next_action": "REPORT_HOLD",
+    "new_target_attempts": 0
+  },
+  {
+    "case": "exhausted-budget",
+    "state": "HOLD",
+    "evidence": ["/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/checks/luna-fixtures/exhausted-budget.json"],
+    "blocker": "All five simulated ask attempts are consumed; a conditional A3 proof does not create another attempt.",
+    "next_action": "REPORT_BUDGET_EXHAUSTED",
+    "new_target_attempts": 0
+  },
+  {
+    "case": "empty-running-output",
+    "state": "RUNNING",
+    "evidence": ["/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/checks/luna-fixtures/empty-running-output.json"],
+    "blocker": "Simulated returned session is still running with empty output and no exit code; its ID is fixture-only and cannot be polled in this rehearsal.",
+    "next_action": "POLL_RETURNED_SESSION",
+    "new_target_attempts": 0
+  },
+  {
+    "case": "inaccessible-process",
+    "state": "UNKNOWN",
+    "evidence": ["/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/checks/luna-fixtures/inaccessible-process.json"],
+    "blocker": "Simulated EACCES and unverified namespace do not establish whether the exact runner is alive.",
+    "next_action": "REPORT_VISIBILITY_UNKNOWN",
+    "new_target_attempts": 0
+  }
+]

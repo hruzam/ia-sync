@@ -1,0 +1,29 @@
+{
+  "ledger": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/execution/main-intake.json",
+  "execution_file_read_requests": 58,
+  "preparation_file_read_requests": 101,
+  "main_routine_tunnel_CLI_operations": 0,
+  "native_capsules": [
+    {
+      "handle": "/root/g09_run02_caretaker",
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/capsules/C1-HOLD.md",
+      "words": 182,
+      "bytes": 1987
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/capsules/R1.md",
+      "words": 208,
+      "bytes": 2107
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/capsules/A1.md",
+      "words": 219,
+      "bytes": 1939
+    }
+  ],
+  "M1": "fresh model-context reset unverified; prior conversation exists; actual operator startup included HANDOFF",
+  "M3": "compact capsules measured; R1 final answer declared necessary overrun",
+  "M4": "A1 product counterexamples preserved; implementation/A2 chain not yet reached",
+  "M5": "two substantive assignments per role not reached",
+  "M6": "no efficiency/monetary inference; main/native/context occupancy unknown"
+}

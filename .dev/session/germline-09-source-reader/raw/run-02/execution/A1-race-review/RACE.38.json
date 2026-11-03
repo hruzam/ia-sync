@@ -1,0 +1,33 @@
+{
+  "schema": "g09-run02-a1-race-review/v1",
+  "target_model_turns": 0,
+  "command": {
+    "cwd": "/home/hruzam/ia-sync",
+    "actual": "python3 -B .dev/session/germline-09-source-reader/raw/run-02/execution/A1-race-review/test_reservation_race.py",
+    "absolute_reproduction": "/usr/bin/python3 -B /home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/execution/A1-race-review/test_reservation_race.py"
+  },
+  "sources": {
+    "frozen_adapter": "bfa6a3fc7c09591881575c87fb8ad5bde066188cc42f814028dbeffff4d77b50",
+    "frozen_test": "d81a8e51340b2069c50c4fc10dcf4a099946374dc5fd50dbb28503b2e2063023",
+    "candidate_patch": "33186610b466e1790e6eabc8382721d916ab1184a1cde747bba090789515cb8f",
+    "race_test": "02e3698008c106b5dee5cc97fe6ccd870c780622c377222bcaabe8a2ee975ad8"
+  },
+  "original": {
+    "second_fake_ask_started_after_first_failed": true,
+    "a1_receipt_created": true
+  },
+  "candidate": {
+    "second_fake_ask_started": false,
+    "a1_receipt_created": false,
+    "refusal": "earlier submission requires head disposition: run02.R1.ask.operation.json (command-failed-or-remote-outcome-unknown)"
+  },
+  "cap": {
+    "sequential_valid_kind_ask_reservations": 5,
+    "sixth_refused": "target ask cap exhausted",
+    "concurrent_at_four": "one valid kind:ask reservation and one lock refusal; exactly five ask receipts remain"
+  },
+  "limits": [
+    "All adapter states, receipts, vaults, and subprocess results were temporary/fake.",
+    "No actual run-02 receipt, vault, plan, packet, pin, release, or source was edited."
+  ]
+}

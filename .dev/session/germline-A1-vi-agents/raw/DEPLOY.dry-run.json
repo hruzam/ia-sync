@@ -1,0 +1,6 @@
+{
+  "command": "bash deploy.sh --dry-run",
+  "exit_code": 0,
+  "output_sha256": "7174f95e57ec233efc391c471a42c16a9eb050ab6051c59c707ba97f4759b082",
+  "scope": "full preview only; includes pre-existing unrelated source changes; no deployment performed"
+}

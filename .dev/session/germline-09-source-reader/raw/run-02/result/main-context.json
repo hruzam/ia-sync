@@ -1,0 +1,14 @@
+{
+  "ledger": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/execution/main-intake.json",
+  "execution_file_read_requests": 170,
+  "preparation_file_read_requests": 101,
+  "main_routine_tunnel_CLI_operations": 0,
+  "M1": "Fresh main reset not established; prior conversation/preparation and recovery present; no clean-head claim.",
+  "M2": "PASS: zero main routine tunnel CLI operations; main performed architecture/evidence/hash checks and extensive coordination.",
+  "M3": "Capsules and actual words/bytes retained in ledger; primary contrary evidence/overruns preserved.",
+  "M4": "PASS: concrete A1 duplicate/ambiguity checks carried through D1/I1/A2/A3; R2 discovered additional terminal provenance omission corrected inI2.",
+  "M5": "Researcher R1/R2; auditor A1/A2/A3; same native builder I1/I2. Caretaker role worked C1/C2/C3 but native replacement recorded; no native handle persistence claim.",
+  "M6": "Main/native/target tokens, context occupancy and dollars unknown; no efficiency or germline necessity claim.",
+  "DELEGATION": "REVISE: useful independent findings; caretaker local check failures and unreviewed self-correction required main/Terra/Sol interventions.",
+  "GERMLINE_CONTRIBUTION": "INDETERMINATE: same tunnel IDs and role/preamble behavior observed; no controlled comparison establishes necessity. Ordinary scoped roles, a task brief and executable checks remain the simpler alternative."
+}

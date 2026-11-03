@@ -1,0 +1,43 @@
+{
+  "selected_real_sources": {
+    "/home/hruzam/.agents/skills/buffering/SKILL.md": "bac87c0bbc340e98ba7ead7ba10f548cbc1a1e40e5ea56fca946c6be72314931",
+    "/home/hruzam/.agents/skills/guide/SKILL.md": "d31ec392b80cf9565fb1374fd1860274d43ed0dd8bcd3e70f98562f53c87b2ce",
+    "/home/hruzam/.claude/skills/agol-brief/SKILL.md": "0b37ea3efad25ade9511620acd99f8aa4ade38e6a42606cb2bec2f49681e413f",
+    "/home/hruzam/.claude/skills/guide/SKILL.md": "87d5a796554c33631d463619f721c00cf398d2344c49a885e427f241f7a6c1bb",
+    "/home/hruzam/.claude/skills/synced/6572dd27-d467-4e66-818d-07d6996a0771_b6594d59-ce55-4467-b6b8-e69c8a3b9c81/docs/SKILL.md": "98e4fb5934042152d57bc9cb8c0736d5d8e31c6c0122b13ff5836f4c2411fa3e",
+    "/home/hruzam/.codex/skills/.system/imagegen/SKILL.md": "681ddb4ad6d06a2acc78a3535b583f8d0c1ea800ecda3d56370d3310fd2cd4ba",
+    "/home/hruzam/.germline/agents/houston/binding.claude.md": "2e8bc57ca97d5d8dd7b1b2f147ee78c147a23503ae8e5dc9915ac3b4124568e0",
+    "/home/hruzam/ia-sync/.agents/skills/multihost/SKILL.md": "05b9df7bf53600deaf36e14647ef0e4c72c6d92ef439cd5e2897fcbdf4b9584d",
+    "/home/hruzam/ia-sync/.claude/skills/multihost/SKILL.md": "baf0d38044e9895ce33f7e6db4916885936f6dbab84689830a64b42b2522ad8a",
+    "/home/hruzam/ia-sync/claude/skills/agol-brief/SKILL.md": "0b37ea3efad25ade9511620acd99f8aa4ade38e6a42606cb2bec2f49681e413f",
+    "/home/hruzam/ia-sync/claude/skills/guide/SKILL.md": "87d5a796554c33631d463619f721c00cf398d2344c49a885e427f241f7a6c1bb",
+    "/home/hruzam/ia-sync/codex/skills/buffering/SKILL.md": "bac87c0bbc340e98ba7ead7ba10f548cbc1a1e40e5ea56fca946c6be72314931",
+    "/home/hruzam/ia-sync/codex/skills/guide/SKILL.md": "d31ec392b80cf9565fb1374fd1860274d43ed0dd8bcd3e70f98562f53c87b2ce",
+    "/home/hruzam/ia-sync/germline/agents/houston/binding.claude.md": "2e8bc57ca97d5d8dd7b1b2f147ee78c147a23503ae8e5dc9915ac3b4124568e0",
+    "/home/hruzam/reposoma/raw.guides/PAD/GUIDE.md": "7d25f9d7710f07676c219fc7f6db9a0f59d88862d066b0b7ab07dd4df3283c08"
+  },
+  "fixture_inputs": {
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/claude/guide/SKILL.md": "964479129ca76d58793408455f2a51ae97d6b0889cfd281b98ab031bb241bcce",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/codex/canary/SKILL.md": "09e32b4c560fffe50e97f91cc284cda6826e9c2d64db24e8089e285e512a4871",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/codex/deep/hidden/SKILL.md": "a4f90108cce7592f76c336371e1cd2b9c911227159d469e97b6a4f503eb33072",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/codex/guide/SKILL.md": "e71c5aee9b1142abbcc737f110c57ecac5255f2dff2fa13bcbc94b3edc007238",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/codex/linked/SKILL.md": "964479129ca76d58793408455f2a51ae97d6b0889cfd281b98ab031bb241bcce",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/empty/.keep": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/germline/agents/example/binding.codex.md": "f74b2b0b4c921ea1c778900cf90a2c8fcd04d6c1ec1f9b6ff185592ecbae1fcd",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/germline/agents/example/cards/consult.md": "5843675940637349ccfacfb213396e6379a5d40a0651293ffd0a057eec55483e",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/germline/agents/example/identity.md": "9fadcbeb4791d145db4f765fc2bc9aed22097d3e16accc94bc0c28e63a35fe28",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/germline/agents/example/methods/observe.md": "eb54d12b78bf903baf2c1621ffb6debb583c5728957c2c218a550197e8c1ad4b",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/germline/skills/skill.example.md": "05b6b224c3b6879975df91a160556adbecc5f22cfdccb742b7b47bc37e640af3",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/germline/tunnel/NEVER.md": "1644d96128330e7735c6648d6042c4ccbda88b9be54f365ec68f3c5ffbf71436",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/guides/topic/GUIDE.md": "303e43e626676393ad6e7428b1057d3bf102d546f7e80dfc9eb847316641f857",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/guides/topic/raw/side.md": "1e08e5888a4b5e2b08243ce71f7db1adc35702ad14c0b147ef264a69d268d56c",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/guides/topic/res/fanout-turns.md": "d21caf3b2618f2c8908858b4a8321666c659a7c7d7141e12f80ce043f4b00396",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/guides/topic/res/turns-recovery.md": "aa4a6237d53e5c93794761f8e6eb426bb9c2637701dda71de8c3e8a548c00517",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/guides/topic/res/unique.md": "04810139e7b122074de235969d250aff5e1cf26fd3550e8db5d76f089d322fb1",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/roots.json": "c4263f3a217eb98ac38a3999c7305ef6edde55bad31ffb90fd34251990d909a3",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/synced/account-bucket/guide/SKILL.md": "5e5fa703f4608030b2d5861c46ae944831b91a169b89cdf3cd182c15cb91e943"
+  },
+  "fixture_symlinks": {
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/codex/linked/SKILL.md": "../../claude/guide/SKILL.md"
+  }
+}

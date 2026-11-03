@@ -1,0 +1,19 @@
+{
+  "kind": "session-control static validation",
+  "yaml_blocks_parsed": 2,
+  "STATUS_fields": 11,
+  "gate_matches": true,
+  "main_initial_packet_words": 707,
+  "maximum_packet_words": 800,
+  "pinned_files": 28,
+  "all_pins_match": true,
+  "target_ask_attempt_ceiling": 5,
+  "target_roles": 2,
+  "round_packets": 5,
+  "release_authorized": false,
+  "runtime_execution": "not launched",
+  "independent_package_review": "PASS; raw/control/PACKAGE-REVIEW.md",
+  "static_verdict": "PASS",
+  "final_source_correction": "Existing-vault preamble arming also resumes the thread; no target turn",
+  "validated_at": "2026-10-26T06:49:42.796170+01:00"
+}

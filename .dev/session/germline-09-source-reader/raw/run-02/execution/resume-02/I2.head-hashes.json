@@ -1,0 +1,9 @@
+{
+  "i2_manifest_sha256": "b760f1a3d3cf5833adea9e696abadf0efa88e06698fb3d1e0bba43d011ff5ade",
+  "changed_audited_paths": [
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/source-reader.py",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/test_source_reader.py"
+  ],
+  "current_product_hashes_verified": 24,
+  "independent_P7_A3": "pending"
+}

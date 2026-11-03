@@ -1,0 +1,50 @@
+{
+  "schema": "g09-sanitation-authority/v1",
+  "recorded_at": "2026-10-26T16:51:41.873272+01:00",
+  "operator": "Majkee",
+  "observed_operator_message": "i had to kill loacl cSharp (session just failed|stucked in error). So can youi send any 'sanitary' team or subagents, who make cleanup. pls. Thx.",
+  "seat_transfer": "Old execution head terminated by operator; Cartan in current root owns cleanup integration and STATUS pen only. No old native handle is assumed transferred.",
+  "scope": "Finish G09 run-01 sanitation and factual handback; zero tunnel target turns; preserve failed-run evidence.",
+  "allowed": [
+    "Read/verify exact known archived R1 metadata without starting or resuming model work",
+    "Verify current known vaults/locks and hashes; no repeated completed archive/close",
+    "Inspect exact evidence-linked process identities with namespace/start/UID qualification",
+    "Stop only demonstrably G09-owned leftover leaf processes; no unrelated/shared parent, session-wide or pattern kills",
+    "Remove exact stale old G09 presence record 0eb2477c980739d8179ff6a38daa9bbe after verifying ownership",
+    "Write new cycle07 cleanup records, reconstructed run-01 closeout report, final STATUS and independent verification"
+  ],
+  "write_ownership": {
+    "Cartan": [
+      "STATUS.md",
+      "_bus/07.cartan.point.md",
+      "_bus/07.cartan.verdict.md",
+      "raw/closeout/SANITATION.authority.2026-10-26.json",
+      "raw/closeout/SELFREPORT.run-01.2026-10-26.md",
+      "raw/closeout/snapshots/STATUS.run-01.pre-sanitation.md",
+      "raw/closeout/SANITATION.final.json"
+    ],
+    "replacement_caretaker": [
+      "raw/closeout/sanitation/",
+      "_bus/07.caretaker.return.md"
+    ],
+    "verifier": "read-only; returns findings to controller"
+  },
+  "known_R1_thread": "01a176f7-532b-7722-9324-0ecb92694073",
+  "known_R1_turn": "01a176f7-53a6-7b83-b203-b86b08ec15ac",
+  "operator_reported_old_root_termination": true,
+  "old_native_child_lifecycle": "Not independently addressable from this root; do not claim the old native handle was inspected or destroyed. Retire it from future use.",
+  "prohibited": [
+    "new target turn/start/steer",
+    "source or adapter repair",
+    "rebind/resume old model work",
+    "permanent thread deletion",
+    "Codex writer-lock deletion",
+    "unrelated kills",
+    "raw rollout/history/auth inspection",
+    "prune/reset",
+    "run-02",
+    "deploy",
+    "commit/push",
+    "Nablarva reads"
+  ]
+}

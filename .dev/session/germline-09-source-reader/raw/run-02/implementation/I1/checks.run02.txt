@@ -1,0 +1,7 @@
+{
+  "passed": true,
+  "checks": 38,
+  "actual_catalog_entries": 180,
+  "selected_sources": 15,
+  "input_hashes_preserved": true
+}

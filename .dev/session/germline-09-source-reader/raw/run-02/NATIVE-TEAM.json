@@ -1,0 +1,32 @@
+{
+  "schema": "g09-native-team-observation/v1",
+  "root": "/root",
+  "observed_at": "2026-10-26T19:48:52.820022+01:00",
+  "controller": "Cartan",
+  "handles": [
+    {
+      "handle": "/root/g09_repairer",
+      "role": "implementer",
+      "configured_model": "gpt-5.6-terra",
+      "effort": "high",
+      "state": "18 completed; source frozen"
+    },
+    {
+      "handle": "/root/g09_verifier",
+      "role": "default applying verifier contract",
+      "requested_model": "gpt-6.1-sol",
+      "effort": "high",
+      "fork_turns": "none",
+      "state": "28 integrated PASS completed; source19 PASS and frozen09 FAIL preserved"
+    },
+    {
+      "handle": "/root/g09_caretaker",
+      "role": "default applying implementer contract",
+      "requested_model": "gpt-6-luna",
+      "effort": "high",
+      "fork_turns": "none",
+      "state": "26/27 preparation completed; same-root handle only if actually available; no target identity/vault"
+    }
+  ],
+  "limits": "These are actual returned native handles in this root and configured spawn requests, not a promise of cross-root persistence, backend token accounting or retained understanding. Future root reconstructs one caretaker under pinned instructions, records intervention, reconciles any actual identities before asks. Old run-01 root handle is retired."
+}

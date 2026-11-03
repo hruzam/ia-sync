@@ -1,0 +1,37 @@
+{
+  "prepared_at": "2026-10-26T06:45:27.717001+01:00",
+  "host": "office / hruzam-120922",
+  "HEAD": "5c26d80aa3c90de6cafc1c47a7d199fdbcc7466d",
+  "dirty_paths": [
+    " M .dev/session/germline-03-foundation-audit/STATUS.md",
+    " M .dev/session/germline-03-foundation-audit/raw/CRITERION.cartan.g03-first-split-01.md",
+    " M .dev/session/germline-03-foundation-audit/raw/MANIFEST.cartan.g03-first-split-01.md",
+    " M .dev/session/germline-04-wiring-plan/RUNBOOK.md",
+    " M .dev/session/germline-04-wiring-plan/STATUS.md",
+    " M .dev/session/germline-04-wiring-plan/raw/HANDOFF.g06-make-program.md",
+    " M journal.host-cleanup.md",
+    " M pulse.md",
+    " M zsh/config.office.zsh",
+    "?? .dev/session/germline-03-foundation-audit/_bus/",
+    "?? .dev/session/germline-03-foundation-audit/raw/HANDOFF.cartan.g03-g06-exit-context.2026-10-22.md",
+    "?? .dev/session/germline-03-foundation-audit/raw/HANDOFF.oraculum.x1-carried-items.2026-10-23.md",
+    "?? .dev/session/germline-03-foundation-audit/raw/HANDOFF.oraculum.x3-sitting-card.2026-10-23.md",
+    "?? .dev/session/germline-03-foundation-audit/raw/OBS.myShell.atlas-review-scope.2026-10-22.md",
+    "?? .dev/session/germline-03-foundation-audit/raw/UNDERSTANDING.cartan.tunnel-access.before-fold.2026-10-23.md",
+    "?? .dev/session/germline-04-wiring-plan/raw/CLOSE.g04-preparation.2026-10-20.md",
+    "?? .dev/session/germline-07-make-program/RUNBOOK.md",
+    "?? .dev/session/germline-07-make-program/STATUS.md",
+    "?? .dev/session/germline-07-make-program/_bus/",
+    "?? .dev/session/germline-07-make-program/raw/experiment_1/",
+    "?? .dev/session/germline-08-caretaker-receipts/",
+    "?? .dev/session/germline-09-source-reader/",
+    "?? _staging/codex/cartan.candidate.source-reader-pilot.2026-10-26.md"
+  ],
+  "source_reader_exists": false,
+  "experimental_base": {
+    "path": "/home/hruzam/ia-sync/zsh/experimental/base.zsh",
+    "sha256": "fb37336a18857159cd874b02237c6153f54d0dbc8634842eea842f5b9b8f2de3"
+  },
+  "target_threads_created": false,
+  "operator_release": false
+}

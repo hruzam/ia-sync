@@ -1,0 +1,51 @@
+{
+  "checks": [
+    {
+      "name": "validated-completion",
+      "pass": true
+    },
+    {
+      "name": "living-pending",
+      "pass": true
+    },
+    {
+      "name": "dead-pending-unknown",
+      "pass": true
+    },
+    {
+      "name": "corrupt-receipt-unknown",
+      "pass": true
+    },
+    {
+      "name": "changed-output-unknown",
+      "pass": true
+    },
+    {
+      "name": "duplicate-refusal-without-invocation",
+      "pass": true
+    },
+    {
+      "name": "allowlist-role-binding",
+      "pass": true
+    },
+    {
+      "name": "cold-no-preamble",
+      "pass": true
+    },
+    {
+      "name": "warm-preamble-policy",
+      "pass": true
+    },
+    {
+      "name": "ask-cap-five",
+      "pass": true
+    },
+    {
+      "name": "model-effort-object-shape",
+      "pass": true
+    }
+  ],
+  "kind": "pure-helper-offline",
+  "pass": true,
+  "target_turns": 0
+}

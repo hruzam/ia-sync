@@ -9,10 +9,13 @@ gate: >-
   with every whole-design roadmap item accounted for, reading and continuity
   contracts demonstrated on paper, and explicit destinations and release conditions
   for documentation, agent routing and later implementation.
-participant_1: [germline-fold-head, {brand: codex, model: operator-selected, effort: operator-selected}, {host: resolved-at-entry, role: Cartan integration and sole session pen}]
+participant_1: [oraculum, {brand: codex, model: GPT-6-Astra, effort: max}, {host: office, role: Oraculum planning integration and sole session pen}]
 participant_2: [majkee, {brand: human}, {host: operator, role: scope and architectural acceptance}]
-participant_3: [fold-reviewer, {brand: operator-selected, model: operator-selected}, {host: resolved-at-invocation, role: independent bounded review and evidence return}]
-status_owner: germline-fold-head
+participant_3: [astrobley, {brand: codex, model: GPT-6.1-Sol}, {host: resolved-at-invocation, role: senior developer consultation and pragmatic design challenge, requested_entry: custom-subagent}]
+participant_4: [implementer, {brand: codex, model: GPT-5.6-Terra}, {host: resolved-at-invocation, role: implementation reserved for a separate released execution scope, requested_entry: natural-subagent}]
+participant_5: [houston, {brand: codex, model: GPT-6.1-Sol}, {host: resolved-at-invocation, role: architectural consultation or explicitly selected audit}]
+participant_6: [fold-reviewer, {brand: codex, model: GPT-6.1-Terra}, {host: resolved-at-invocation, role: independent bounded review and evidence return}]
+status_owner: oraculum
 observations_read: none exist
 ```
 
@@ -41,11 +44,15 @@ no additional chronological session journal.
 
 ## Entry and ownership
 
-Recommended successor: a fresh Cartan main on Sol-grade carriage for the remaining
-design integration. This recommendation does not select or attest a runtime model.
-After the design is accepted, Medusa/Terra is a possible implementation handoff;
-it is not started by this RUNBOOK. A bounded senior implementation problem may instead
-justify Astrobley. Majkee chooses the actual next runtime.
+Operator-selected successor, reconciled 2026-10-30: a fresh Oraculum direct main,
+requested GPT-6-Astra / max, owning this planning and candidate-document scope.
+The roster records requested carriage, not proof of executed settings. The installed
+Oraculum profile currently defaults to high effort; the card requests max explicitly.
+Resolve actual native routes and available models before using the selected helpers;
+no helper starts from appearing in this roster. The implementer row preserves the
+operator's intended execution participant for a separately released scope. This gate
+retains Oraculum's planning/synthesis boundaries and does not authorize code work.
+After design acceptance, Majkee assigns the implementation head and release.
 
 The head owns this bed, integrates returns and writes STATUS/CHECKLIST. Bounded
 readers may return evidence when delegated within the operator's release. They do
@@ -56,7 +63,7 @@ selected card; Houston is not the implementation verifier.
 ## prompt-0 — wake or resume the head
 
 ```text
-Work as Cartan, logical seat germline-fold-head, in /home/hruzam/ia-sync.
+Work as Oraculum, logical seat oraculum (the germline-fold-head role), in /home/hruzam/ia-sync.
 Read applicable AGENTS.md instructions and resolve host, worktree and concurrent work.
 Read /home/hruzam/ia-sync/.dev/session/germline-A3-guide-to-controller/STATUS.md,
 then /home/hruzam/ia-sync/.dev/session/germline-A3-guide-to-controller/RUNBOOK.md
@@ -83,7 +90,7 @@ action, actual in-flight state and a content-based recovery probe in STATUS.
 ## prompt-1 — independent review, after the head names the candidate
 
 ```text
-Review the candidate package named by germline-fold-head in
+Review the candidate package named by Oraculum in
 /home/hruzam/ia-sync/.dev/session/germline-A3-guide-to-controller/raw/FINAL.md.
 Read /home/hruzam/ia-sync/.dev/session/germline-A3-guide-to-controller/RUNBOOK.md
 and /home/hruzam/ia-sync/.dev/session/germline-A3-guide-to-controller/CHECKLIST.md.
@@ -226,6 +233,28 @@ Prepare a short entry proposal and `raw/docs/ARCHITECTURE.candidate.md`, separat
 germline product relationships from operative source wording and Forge explanation.
 The potential final home `docs/germline/ARCHITECTURE.md` is a proposal, not an existing
 or adopted route. Check source-only versus deployed availability explicitly.
+
+Operator clarification, 2026-10-30: validate the actual documentation homes with a
+bounded directory/pointer check before describing a map as complete. At that check,
+`docs/`, `docs/ARCHITECTURE.md` and `docs/germline/ARCHITECTURE.md` did not exist in
+ia-sync. Omitting a nonexistent directory is not itself a discovery defect. Recheck
+on entry; add a pointer only when its target exists and its authority is established.
+
+For an architecture-navigation request, name the existing governing entries
+(`AGENTS.md`, `SYNC_DISCIPLINE.md`, `germline/README.md` and selected operative
+contracts), explanatory shared guides, candidate design material and current task
+state with their distinct authority. State explicitly when no approved project-wide
+architecture entrance exists. Do not substitute a staged preview for accepted
+architecture or change the shared Houston identity merely to force a `docs/` answer.
+Creating/placing enduring documentation remains the assigned A3 work, with its
+review and promotion boundary. Ask for a different absolute home only if the
+operator intended an external location still unresolved after that bounded check.
+
+The prior child discovery slice is input at
+`raw/RETURN.cartan.houston-doc-discovery.2026-10-29.md`; it does not complete S04.
+Retain the later main-session feedback as operator-reported navigation evidence,
+separate from a parent-inspected runtime trace. No new model turn follows from this
+clarification.
 
 Output: `raw/RESULT.S04.md`, documentation candidates and a concrete Cartan change
 brief. The latter names exact proposed entry/addendum files, pointer changes,

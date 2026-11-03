@@ -1,0 +1,20 @@
+{
+  "kind": "zero-turn-profile-reconciliation",
+  "note": "selected model/effort evidenced by durable profile payload; earlier receipt status may reflect adapter parsing, not an unsupported profile",
+  "profile_supported": true,
+  "receipts": [
+    {
+      "exit": null,
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/caretaker/operations/C1.profile.operation.json",
+      "profile_supports_requested": null,
+      "status": "failed"
+    },
+    {
+      "exit": 11,
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/caretaker/operations/C1.profile.recovery.operation.json",
+      "profile_supports_requested": false,
+      "status": "failed"
+    }
+  ],
+  "selected_receipt": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/caretaker/operations/C1.profile.recovery.operation.json"
+}

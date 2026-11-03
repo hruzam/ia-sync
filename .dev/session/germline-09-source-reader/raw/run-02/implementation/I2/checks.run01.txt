@@ -1,0 +1,11 @@
+{
+  "passed": true,
+  "checks": 13,
+  "changed_files": [
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/source-reader.py",
+    "/home/hruzam/ia-sync/zsh/experimental/source-reader/test_source_reader.py"
+  ],
+  "snapshots_verified": 24,
+  "I1_evidence_preserved": true,
+  "base_unchanged": true
+}

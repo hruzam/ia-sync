@@ -1,0 +1,50 @@
+{
+  "phase": "C1 interrupted; no product acceptance attempted",
+  "disposition": "UNVERIFIED",
+  "checks": [
+    {
+      "id": "P1",
+      "status": "UNVERIFIED",
+      "reason": "Unknown R1 remote outcome stopped C1 before D1/CONTRACT and I1."
+    },
+    {
+      "id": "P2",
+      "status": "UNVERIFIED",
+      "reason": "Unknown R1 remote outcome stopped C1 before D1/CONTRACT and I1."
+    },
+    {
+      "id": "P3",
+      "status": "UNVERIFIED",
+      "reason": "Unknown R1 remote outcome stopped C1 before D1/CONTRACT and I1."
+    },
+    {
+      "id": "P4",
+      "status": "UNVERIFIED",
+      "reason": "Unknown R1 remote outcome stopped C1 before D1/CONTRACT and I1."
+    },
+    {
+      "id": "P5",
+      "status": "UNVERIFIED",
+      "reason": "Unknown R1 remote outcome stopped C1 before D1/CONTRACT and I1."
+    },
+    {
+      "id": "P6",
+      "status": "UNVERIFIED",
+      "reason": "Unknown R1 remote outcome stopped C1 before D1/CONTRACT and I1."
+    },
+    {
+      "id": "P7",
+      "status": "UNVERIFIED",
+      "reason": "Unknown R1 remote outcome stopped C1 before D1/CONTRACT and I1."
+    },
+    {
+      "id": "P8",
+      "status": "UNVERIFIED",
+      "reason": "Unknown R1 remote outcome stopped C1 before D1/CONTRACT and I1."
+    }
+  ],
+  "product_sources_created": false,
+  "foreign_work_preserved": true,
+  "experimental_base_unchanged": true,
+  "evidence": "raw/control/HOLD.verification.json"
+}

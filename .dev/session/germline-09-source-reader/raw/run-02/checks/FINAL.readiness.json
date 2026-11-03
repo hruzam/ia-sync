@@ -1,0 +1,15 @@
+{
+  "schema": "g09-final-offline-readiness/v1",
+  "command": [
+    "/usr/bin/python3",
+    "-B",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/run_operations.py",
+    "readiness"
+  ],
+  "observed_at": "2026-10-26T19:43:24.562824+01:00",
+  "exit_code": 0,
+  "stdout": "{\"kind\": \"offline-readiness\", \"pins\": {\"pins\": \"/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/hold-line/sources.json\", \"sha256\": \"d72e6b552f7e05e2e5c5657631526b989dea28d2cc3a372919845a1c86ad51db\"}, \"release_authorized\": false, \"rounds\": [\"A1\", \"A2\", \"A3\", \"R1\", \"R2\"], \"run_id\": \"run-02\", \"target_model_turns\": 0}\n",
+  "stderr": "",
+  "release_authorized": false,
+  "target_attempts": 0
+}

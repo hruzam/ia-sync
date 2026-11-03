@@ -1,0 +1,14 @@
+--- I1/zsh/experimental/source-reader/source-reader.py
++++ I2/zsh/experimental/source-reader/source-reader.py
+@@ -185,7 +185,10 @@
+ 
+ 
+ def label(entry):
+-    return f"{entry['id']}\t{entry['family']}/{entry['source_file_kind']}\t{entry['vendor_if_any'] or '-'}\t{entry['origin']}\t{entry['absolute_path']}"
++    path = entry["absolute_path"]
++    if entry["resolved_path"] != path:
++        path += f" → {entry['resolved_path']}"
++    return f"{entry['id']}\t{entry['family']}/{entry['source_file_kind']}\t{entry['vendor_if_any'] or '-'}\t{entry['origin']}\t{path}"
+ 
+ 
+ def plain(data, entries=None, stream=None):

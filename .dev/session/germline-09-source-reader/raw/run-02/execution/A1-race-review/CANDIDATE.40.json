@@ -1,0 +1,41 @@
+{
+  "schema": "g09-a1-race-candidate-evidence/v1",
+  "cycle": "40",
+  "target_model_turns": 0,
+  "frozen": {
+    "adapter": {
+      "path": "raw/run-02/caretaker/run_operations.py",
+      "sha256": "bfa6a3fc7c09591881575c87fb8ad5bde066188cc42f814028dbeffff4d77b50"
+    },
+    "test": {
+      "path": "raw/run-02/repair/test_adapter.py",
+      "sha256": "d81a8e51340b2069c50c4fc10dcf4a099946374dc5fd50dbb28503b2e2063023"
+    }
+  },
+  "candidate": {
+    "adapter": {
+      "path": "raw/run-02/execution/A1-race-review/candidate/run_operations.py",
+      "sha256": "4a9458a834e6825c8bfad44ec345bdcbd2f8d90483e9e93bdbcbcd1081042ae5"
+    },
+    "test": {
+      "path": "raw/run-02/execution/A1-race-review/candidate/test_adapter.py",
+      "sha256": "01a7a41da29181da64139d69b68afa763d79573c196b1fafede130b767c9e74d"
+    },
+    "diff": {
+      "path": "raw/run-02/execution/A1-race-review/candidate/candidate.patch",
+      "sha256": "1bb56479e08c18f76fe39f96faf4c9c7e5deabb7c6653a50673b0caec73289d4"
+    }
+  },
+  "checks": {
+    "candidate_suite": "passed: retained 27 checks plus staged C2 transition",
+    "sequential_cap": "four valid completed asks plus a newly reserved-and-completed fifth; sixth refused at cap",
+    "concurrent_cap": "one reservation and one lock refusal; all five counted receipts declare kind ask",
+    "race": "original starts R1 and A1; candidate starts R1 only and refuses A1 after R1 failed receipt",
+    "future_plan": "temporary CONTRACT points only to plan.C2; rotated temporary pins bind C2; R2/A2 current_packet validate; C1 and two completed ask receipt bytes remain unchanged"
+  },
+  "proposal_contract": {
+    "path": "raw/run-02/execution/A1-race-review/proposal/CONTRACT.proposed.json",
+    "sha256": "d85068a29acae319710237594822230f1e761bf5df0656a208da14cc10d0216f",
+    "frozen_plan": "raw/run-02/caretaker/plan.C2.json"
+  }
+}

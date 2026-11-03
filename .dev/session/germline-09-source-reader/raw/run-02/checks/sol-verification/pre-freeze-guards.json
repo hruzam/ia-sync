@@ -1,0 +1,21 @@
+{
+  "source_sha256": "459f3f9c765aa07b47f8e462522142571920565ee9e7bf3c3cbee5ea32d4c3be",
+  "target_model_turns": 0,
+  "results": [
+    {
+      "check": "changed-named-input-refused",
+      "guarded": false,
+      "detail": false
+    },
+    {
+      "check": "unanchored-a3-proof-refused",
+      "guarded": false,
+      "detail": false
+    },
+    {
+      "check": "unacknowledged-bootstrap-preamble-refused",
+      "guarded": false,
+      "detail": false
+    }
+  ]
+}

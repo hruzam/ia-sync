@@ -1,0 +1,19 @@
+{
+  "schema": "g09-operator-release/v2",
+  "run_id": "run-02",
+  "authorized": false,
+  "operator": "Majkee",
+  "observed_operator_message": null,
+  "contract_sha256": null,
+  "maximum_target_ask_attempts": 5,
+  "timeout_seconds": 1800,
+  "named_vaults": {
+    "researcher": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/tunnel.researcher.state.json",
+    "auditor": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/tunnel.auditor.state.json"
+  },
+  "delegated_enable_vaults": [],
+  "reason": "Preparation only; fresh run-02 GO required; old run-01 GO cannot be reused.",
+  "source_manifest_sha256": null,
+  "recorded_at": null,
+  "message_reference": null
+}

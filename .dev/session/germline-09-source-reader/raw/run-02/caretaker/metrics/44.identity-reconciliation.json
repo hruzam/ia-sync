@@ -1,0 +1,58 @@
+{
+  "schema": "g09-caretaker-identity-reconciliation/v1",
+  "run_id": "run-02",
+  "cycle": "44",
+  "point": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/_bus/44.cartan.point.md",
+  "status": "PASS",
+  "offline_checks": {
+    "preservation_command": "python raw/run-02/control/check_preservation.py --release-mode run02-authorized",
+    "preservation_exit": 0,
+    "preservation_result": "97 protected old files and 9 foreign files passed; journal reconstructed SHA256 db9148eba1574c7a9b7f6bfd0eefb5009afa6f8f7b295031b2649f3046a232f5",
+    "adapter_readiness_exit": 0,
+    "pins_sha256": "ed61680ac03074e3f77b66a9fa6db474d6363d48ff8374ac1a713530e7f8bbbf",
+    "contract_sha256": "d85068a29acae319710237594822230f1e761bf5df0656a208da14cc10d0216f",
+    "release_authorized": true,
+    "holds": [],
+    "c1_asks_consumed": 2,
+    "cumulative_asks": 3,
+    "c1_ask_bootstrap_preamble_receipts": "completed; outputs hash-validated; expected role IDs/runtime/pinned preamble/bootstrap matched",
+    "resume_keys_unused_before_effect": ["run02.R2.resume", "run02.A2.resume"]
+  },
+  "resumes": [
+    {
+      "key": "run02.R2.resume",
+      "exit": 0,
+      "elapsed_seconds": 1.763,
+      "receipt_sha256": "da5945f032b1c76f68e7cb7f1fcb667663c27e4d7c23387e52e3cd814bb5c3d7",
+      "thread_id": "01a17a86-873c-72b0-8787-932736a0f7d9",
+      "last_turn_id": "01a17a86-87b6-76a3-a848-d93cf4a4d040",
+      "model": "gpt-6.1-sol",
+      "effort": "high",
+      "sandbox": "readOnly",
+      "network_access": false,
+      "preamble": "/home/hruzam/.germline/tunnel/tunnel.preamble.md"
+    },
+    {
+      "key": "run02.A2.resume",
+      "exit": 0,
+      "elapsed_seconds": 1.312,
+      "receipt_sha256": "667bc117f4a324a136ccbbf57940f7dd30bd2c7a5e7aee1853fc8cce864acd91",
+      "thread_id": "01a17a89-cc0a-7053-b9b2-e5bdac784fe4",
+      "last_turn_id": "01a17a89-cca1-71c0-8cea-0abe10024bcd",
+      "model": "gpt-6.1-sol",
+      "effort": "high",
+      "sandbox": "readOnly",
+      "network_access": false,
+      "preamble": "/home/hruzam/.germline/tunnel/tunnel.preamble.md"
+    }
+  ],
+  "preservation": {
+    "identities_sha256_before_after": "d5c149a15cf75bef3862da51e4e0174dab24ddeaea81db33a3d1c7c32c0f090e",
+    "known_c1_receipts_verified_unchanged": 8,
+    "new_resume_receipts": 2,
+    "operation_receipt_count_after": 16,
+    "ask_count_after": 2,
+    "vault_runtime_observed_at_updated_by_resume": true
+  },
+  "next": "Wait for actual I1 and a new Cartan POINT before any C2 compile or target ask."
+}

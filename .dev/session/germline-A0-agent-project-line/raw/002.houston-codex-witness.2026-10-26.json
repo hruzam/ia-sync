@@ -1,0 +1,80 @@
+{
+  "created": "2026-10-26T21:19:18.497560+01:00",
+  "scope": "office native Codex child consult only",
+  "operator_release": "Majkee authorized the Codex consult test; Claude explicitly deferred",
+  "native_task": "/root/houston_codex_consult",
+  "thread_id": "01a179da-2630-76c2-83ac-b5ac9f2c353b",
+  "host_local_transcript": "/home/hruzam/.codex/sessions/2026/10/26/rollout-2026-10-26T21-15-02-01a179da-2630-76c2-83ac-b5ac9f2c353b.jsonl",
+  "transcript_sha256_at_inspection": "c3c2b032453b714349535e74b13c7c1f8e4a468cf672bbfd7200030f2e9956f6",
+  "transcript_policy": "original history remains host-local; only this test proof summary and returned finding are preserved here",
+  "wrapper_injection_records": [
+    187
+  ],
+  "runtime_record": 197,
+  "model": "gpt-6.1-sol",
+  "effort": "high",
+  "cwd": "/home/hruzam/ia-sync",
+  "sandbox": {
+    "type": "workspace-write",
+    "network_access": false,
+    "exclude_tmpdir_env_var": false,
+    "exclude_slash_tmp": false
+  },
+  "context_limit": "new native child with inherited parent history; not a clean main-session cold start",
+  "read_chain_before_first_child_answer": [
+    {
+      "path": "/home/hruzam/.germline/agents/houston/identity.md",
+      "stamp": "3702b18f",
+      "sha256": "d7c8837a0a6fdbece78f0500107deb684b36ec0135bd7a0e6462158ef7be94e6",
+      "call_record": 202,
+      "output_record": 205,
+      "complete_current_file_in_output": true
+    },
+    {
+      "path": "/home/hruzam/.germline/agents/houston/binding.codex.md",
+      "stamp": "437e8193",
+      "sha256": "f171589645e42d93fac515e70240296f54d7d9fe6c4a390e273489ebd1491915",
+      "call_record": 207,
+      "output_record": 210,
+      "complete_current_file_in_output": true
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.germline/agents/houston/ia-sync.md",
+      "stamp": "568c84b4",
+      "sha256": "24b32d910b39227e4cb3bb9ebdf49bdc6c676d19494d236e74d8b6cfd0ad1483",
+      "call_record": 212,
+      "output_record": 215,
+      "complete_current_file_in_output": true
+    },
+    {
+      "path": "/home/hruzam/.germline/agents/houston/cards/consult.md",
+      "stamp": "5435b1c7",
+      "sha256": "9b0aa73106497ccda4b92605bea4972e6df2ebed75765d3b9bdf14ac82dd117c",
+      "call_record": 217,
+      "output_record": 220,
+      "complete_current_file_in_output": true
+    }
+  ],
+  "first_child_answer_record": 243,
+  "route": "Route: spawned child (canary: hc-9b3f0521).",
+  "verdict": "fits",
+  "constraints": "none beyond existing contracts",
+  "tool_calls_reviewed": 6,
+  "tool_activity": "read/search/list only; no helper or mutating command",
+  "write_probe": {
+    "requested_path": "/home/hruzam/ia-sync/.dev/session/germline-A0-agent-project-line/raw/002.codex-consult-canary.txt",
+    "returned": "out of card; refused",
+    "child_observed_exists": false,
+    "parent_observed_exists": false,
+    "enforcement_limit": "card instruction observed under workspace-write sandbox; not an OS-enforced read-only fence"
+  },
+  "result": "PASS for this child consult load/return/write-refusal test",
+  "remaining": {
+    "claude": "deferred by operator",
+    "codex_main": "not tested",
+    "audit_and_sitting": "not behavior tested",
+    "home": "unverified",
+    "compaction": "not exercised"
+  },
+  "addendum_sha256": "24b32d910b39227e4cb3bb9ebdf49bdc6c676d19494d236e74d8b6cfd0ad1483"
+}

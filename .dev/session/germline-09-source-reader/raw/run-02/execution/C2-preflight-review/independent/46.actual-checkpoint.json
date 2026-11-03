@@ -1,0 +1,38 @@
+{
+  "product_hashes_checked": 24,
+  "manifest_aliases_equal": true,
+  "packets": {
+    "R2": {
+      "sha256": "4f0b3dd9decaaa77c83c418830e0f34a969dc7f38b46699e5364bc305613764b",
+      "named_inputs_checked": 30
+    },
+    "A2": {
+      "sha256": "1f697083e29f7030a68c1e9ef433661d4233fe567b9335a19120bbf3ba70fb81",
+      "named_inputs_checked": 30
+    }
+  },
+  "roles": {
+    "R2": {
+      "threadId": "01a17a86-873c-72b0-8787-932736a0f7d9",
+      "historical_resume_turn": "01a17a86-87b6-76a3-a848-d93cf4a4d040",
+      "ask_attempt": 3,
+      "outcome": "COMPLETED_READBACK",
+      "completed_turn": "01a184ef-6e70-7f11-907b-3ac8af6fe2d1",
+      "completed_identity": true,
+      "historical_equals_current": false
+    },
+    "A2": {
+      "threadId": "01a17a89-cc0a-7053-b9b2-e5bdac784fe4",
+      "historical_resume_turn": "01a17a89-cca1-71c0-8cea-0abe10024bcd",
+      "ask_attempt": 4,
+      "outcome": "COMPLETED_READBACK",
+      "completed_turn": "01a184f1-dc3d-7dd0-98b7-37644753ecf5",
+      "completed_identity": true,
+      "historical_equals_current": false
+    }
+  },
+  "dispatch_ready": false,
+  "subprocess_blocked": true,
+  "status": "COMPLETED_IDENTITIES_OBSERVED",
+  "note": "Metadata and packet check only; no authorization or dispatch readiness inferred."
+}

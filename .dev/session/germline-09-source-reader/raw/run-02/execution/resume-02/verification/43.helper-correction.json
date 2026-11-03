@@ -1,0 +1,10 @@
+{
+  "first_check_exit": 1,
+  "first_failed_assertion": "expected caretaker historical hash snapshot to include adapter source",
+  "observed": "snapshot contains66 historical files and no .py sources; all66 already unchanged",
+  "correction": "only verifier helper now asserts no mismatches; old adapter separately backed up and checked against approved old_sha256",
+  "source_changes": false,
+  "second_check_exit": 1,
+  "second_failed_assertion": "whole-session no-change assertion observed two main-owned live surfaces",
+  "second_correction": "main explicitly confirmed STATUS and main-intake ownership; excluded only these two from no-test-mutation comparison, retained exact hashes"
+}

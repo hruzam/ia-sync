@@ -1,0 +1,2 @@
+tunnel-codex.py: turn overrides {"effort": "high"} sent
+tunnel-codex.py: timed out after 4.124068260192871s waiting for app-server output; stderr tail: 

@@ -1,0 +1,15 @@
+{
+  "schema": "g09-operator-ruling/v1",
+  "operator": "Majkee",
+  "observed_message": "go",
+  "observed_at": "2026-10-28T23:39:25.598548+00:00",
+  "context": "Direct approval of the immediately preceding exact staged four-file A1 repair/new hashes question linked to proposal/RULING.md",
+  "approved_proposal": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/execution/A1-race-review/proposal/PROPOSAL.json",
+  "proposal_sha256": "6071a4b8f886ad47985d88fbad1f32e05db17cb6ef262d310b45fa55be4a71f7",
+  "scope_budget_profiles_timeouts_unchanged": true,
+  "run02_asks_used": 2,
+  "run01_asks_used": 1,
+  "maximum_new_asks": 5,
+  "cumulative_ceiling": 6,
+  "presence_id": "07746b8225e13e4dd7c19333982e655e"
+}

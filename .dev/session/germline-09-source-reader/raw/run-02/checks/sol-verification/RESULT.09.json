@@ -1,0 +1,33 @@
+{
+  "verdict": "FAIL",
+  "task": "cycle09 independent run-02 repair/contract/preservation verification",
+  "working_directory": "/home/hruzam/ia-sync",
+  "source_hashes": {
+    "adapter": "f041b93fa0690554c81f0a6d3d20781597ac89f956257e3d426a11fc3bde4e6e",
+    "tunnel": "e72b072103d3d32e2c26cc11770834bfa331daa84ecc3e0add7b1d56cc2cdf65",
+    "contract": "6b754b7fd595f5f1e7c321c9dfc53493778238e41229ece845a26f9c8e575671",
+    "pins": "d55386627df789ad0e709069e8e508c6ce851f7221e16ce630702102167c34fb"
+  },
+  "checks": {
+    "final-declared.json": "PASS: 25 adapter and 2 tunnel cases with real subprocess creation disabled",
+    "final-transport.json": "PASS: 16 independent real-command fake-clock cases; birth/resume and pre-ack/post-ack/reconciliation/success; 1800s separate phases; cleanup",
+    "final-boundaries.json": "PASS: 18 independent release/hold/receipt/identity/concurrency/cap cases",
+    "final-guards.json": "PASS: all 3 pre-freeze defects now refused",
+    "final-bootstrap-profile.json": "PASS: 10 independent ACK/profile/warm/A3 cases with fake transport/subprocess",
+    "frozen-missing-thread.json": "FAIL: malformed readback with no thread.id is accepted as completed-and-validated",
+    "final-snapshot-refreshed.json": "PASS: all 35 pins, 97 protected old files and 9 foreign files; releases false; run01 ask1/run02 ask0",
+    "final-readiness.stderr.txt": "EXPECTED HOLD: actual offline readiness exits2; technical holds remain",
+    "git diff --check": "PASS",
+    "git diff --name-only -- zsh/ai/tunnel-codex.zsh codex germline deploy.sh": "PASS: empty output"
+  },
+  "failure": {
+    "artifact": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/run_operations.py:290",
+    "criterion": "CONTRACT.bootstrap_ack.verification requires exact role/thread/turn",
+    "observed": "thread.id absent is accepted by `not in (None, thread_id)`",
+    "smallest_correction": "Require explicit thread.id equality and add missing-identity refusal regression; new owner POINT and independent delta verification"
+  },
+  "authorized_metadata_delta": "Parent superseded original point cycles11-15: Luna17 and trial20-24; source hashes unchanged. Refreshed final snapshot applies.",
+  "reporting_curvature": "Cycle08 report shape correction16 still uses noncanonical headings3/4/5; parent notified separately, source failure does not depend on this reporting issue.",
+  "scope": "Verifier wrote evidence and09 RETURN only. No source fixes, STATUS/control/pins edits, target/model operations, product execution, archived thread access, deploy, commit, push or delegation.",
+  "remaining_uncertainty": "All executable evidence is offline/fake. Live model availability, source-reader product, target behavior, context retention and efficiency remain unverified. Existing preparation holds and release=false retained."
+}

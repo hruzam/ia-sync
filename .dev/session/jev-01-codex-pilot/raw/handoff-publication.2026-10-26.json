@@ -1,0 +1,16 @@
+{
+  "published_at": "2026-10-26T22:57:48.364677+01:00",
+  "journal": "/home/hruzam/reposoma/.majkee/journal/2026-10-26.md",
+  "chapter": 3,
+  "prefix_bytes": 3121,
+  "prefix_sha256": "140a9b9468bef37f3a358917602ee2c19cbdbc88c46d113910223cadf97f60cd",
+  "append_sha256": "82003635893b31f64fd68fa9d9d5b388c1e537fe89566b6041979b0f4d7263d9",
+  "journal_after_sha256": "d779e0b0ce4b502fe322a112bce1f4621e363f578ef74266b6ccc421106389e9",
+  "card": "/home/hruzam/reposoma/_cold-start/card/CS.jev-01-codex-pilot.cartan-astra.2026-10-26.md",
+  "card_sha256": "a5e1c21b9ea0aaa789eda8f043f49fe095d4ba468526c50fb205b8d318a60965",
+  "commit": "none",
+  "implementation_started": false,
+  "presence_mark_exit": 0,
+  "presence_id": "91bc07a5d638bb3ac7b92803f29acac4",
+  "old_presence_unmark_exit": 0
+}

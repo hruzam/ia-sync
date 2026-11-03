@@ -1,0 +1,162 @@
+{
+  "kind": "selected-local-runtime-carriage-evidence",
+  "date": "2026-11-03",
+  "parent": {
+    "uuid": "01a19f1f-54f8-79f0-bff8-c1604b078982",
+    "host_local_rollout": "/home/hruzam/.codex/sessions/2026/11/03/rollout-2026-11-03T02-56-33-01a19f1f-54f8-79f0-bff8-c1604b078982.jsonl",
+    "turn_contexts": [
+      {
+        "line": 10,
+        "timestamp": "2026-11-03T01:59:52.646Z",
+        "model": "gpt-6.1-terra",
+        "effort": "high"
+      },
+      {
+        "line": 24,
+        "timestamp": "2026-11-03T02:03:19.800Z",
+        "model": "gpt-6.1-terra",
+        "effort": "high"
+      },
+      {
+        "line": 39,
+        "timestamp": "2026-11-03T02:06:06.242Z",
+        "model": "gpt-6-astra",
+        "effort": "high"
+      },
+      {
+        "line": 50,
+        "timestamp": "2026-11-03T02:13:58.296Z",
+        "model": "gpt-6-astra",
+        "effort": "high"
+      },
+      {
+        "line": 221,
+        "timestamp": "2026-11-03T02:25:46.835Z",
+        "model": "gpt-6-astra",
+        "effort": "high"
+      },
+      {
+        "line": 289,
+        "timestamp": "2026-11-03T02:55:02.487Z",
+        "model": "gpt-6-astra",
+        "effort": "high"
+      }
+    ]
+  },
+  "children": [
+    {
+      "task_path": "/root/crawl_early",
+      "role": "explorer",
+      "native_uuid": "01a19f2f-dcdc-71d2-8cbd-e9ab1a66be5b",
+      "parent_uuid": "01a19f1f-54f8-79f0-bff8-c1604b078982",
+      "cwd": "/home/hruzam/reposoma/.majkee",
+      "host_local_rollout": "/home/hruzam/.codex/sessions/2026/11/03/rollout-2026-11-03T03-14-36-01a19f2f-dcdc-71d2-8cbd-e9ab1a66be5b.jsonl",
+      "first_session_meta_line": 1,
+      "copied_parent_metadata_present": true,
+      "own_last_turn_context": {
+        "line": 58,
+        "timestamp": "2026-11-03T02:14:37.512Z",
+        "model": "gpt-6-astra",
+        "effort": "high"
+      },
+      "final_return": {
+        "line": 108,
+        "phase": "final_answer",
+        "sha256": "82452a21a1fa9c59096f8cbd6d9391730719aec7e56b838160da950993b8e5c2",
+        "characters": 6760
+      },
+      "request": {
+        "fork": "all (default)",
+        "model_override": null,
+        "effort_override": null
+      }
+    },
+    {
+      "task_path": "/root/crawl_agents",
+      "role": "explorer",
+      "native_uuid": "01a19f30-013f-7f91-8b87-056284899da2",
+      "parent_uuid": "01a19f1f-54f8-79f0-bff8-c1604b078982",
+      "cwd": "/home/hruzam/reposoma/.majkee",
+      "host_local_rollout": "/home/hruzam/.codex/sessions/2026/11/03/rollout-2026-11-03T03-14-45-01a19f30-013f-7f91-8b87-056284899da2.jsonl",
+      "first_session_meta_line": 1,
+      "copied_parent_metadata_present": true,
+      "own_last_turn_context": {
+        "line": 61,
+        "timestamp": "2026-11-03T02:14:46.745Z",
+        "model": "gpt-6-astra",
+        "effort": "high"
+      },
+      "final_return": {
+        "line": 113,
+        "phase": "final_answer",
+        "sha256": "523d144b4ee8549c3ecc9c65fd4c6bf3a66a1222733dd5be39c9860821f597fe",
+        "characters": 5022
+      },
+      "request": {
+        "fork": "all (default)",
+        "model_override": null,
+        "effort_override": null
+      }
+    },
+    {
+      "task_path": "/root/crawl_reader",
+      "role": "explorer",
+      "native_uuid": "01a19f30-2462-72b3-9de7-6871fb1c0012",
+      "parent_uuid": "01a19f1f-54f8-79f0-bff8-c1604b078982",
+      "cwd": "/home/hruzam/reposoma/.majkee",
+      "host_local_rollout": "/home/hruzam/.codex/sessions/2026/11/03/rollout-2026-11-03T03-14-54-01a19f30-2462-72b3-9de7-6871fb1c0012.jsonl",
+      "first_session_meta_line": 1,
+      "copied_parent_metadata_present": true,
+      "own_last_turn_context": {
+        "line": 64,
+        "timestamp": "2026-11-03T02:14:55.810Z",
+        "model": "gpt-6-astra",
+        "effort": "high"
+      },
+      "final_return": {
+        "line": 107,
+        "phase": "final_answer",
+        "sha256": "5f084317d9865347ed12220acca007557d29603db9bbcf483bfde608687c7883",
+        "characters": 6231
+      },
+      "request": {
+        "fork": "all (default)",
+        "model_override": null,
+        "effort_override": null
+      }
+    },
+    {
+      "task_path": "/root/houston_cleanup_consult",
+      "role": "houston",
+      "native_uuid": "01a19f3a-db70-7591-98e4-b9250d52e2ea",
+      "parent_uuid": "01a19f1f-54f8-79f0-bff8-c1604b078982",
+      "cwd": "/home/hruzam/reposoma/.majkee",
+      "host_local_rollout": "/home/hruzam/.codex/sessions/2026/11/03/rollout-2026-11-03T03-26-37-01a19f3a-db70-7591-98e4-b9250d52e2ea.jsonl",
+      "first_session_meta_line": 1,
+      "copied_parent_metadata_present": true,
+      "own_last_turn_context": {
+        "line": 126,
+        "timestamp": "2026-11-03T02:26:38.032Z",
+        "model": "gpt-6.1-sol",
+        "effort": "high"
+      },
+      "final_return": {
+        "line": 162,
+        "phase": "final_answer",
+        "sha256": "668ea2b97335c84c75cb2455617d61d7b12aa77abce46a6c95662721d5604b72",
+        "characters": 4347
+      },
+      "request": {
+        "fork": "all (explicit)",
+        "model_override": null,
+        "effort_override": null
+      }
+    }
+  ],
+  "limits": [
+    "Recorded turn_context is local runtime evidence, not independent backend instrumentation.",
+    "Earlier contexts in each child file were copied from the parent; own last context used here.",
+    "No raw runtime history, auth payload or complete transcript is exported.",
+    "No token billing, cost, speedup or independent model comparison was measured."
+  ]
+}

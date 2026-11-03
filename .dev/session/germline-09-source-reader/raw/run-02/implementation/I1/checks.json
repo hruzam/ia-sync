@@ -1,0 +1,654 @@
+[
+  {
+    "name": "ast-source-reader.py",
+    "passed": true,
+    "path": "/home/hruzam/ia-sync/zsh/experimental/source-reader/source-reader.py",
+    "in_process": "ast.parse(Path.read_text(), filename=path)",
+    "invoked_by": [
+      "python3",
+      "-B",
+      "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I1/check_i1.py"
+    ]
+  },
+  {
+    "name": "ast-test_source_reader.py",
+    "passed": true,
+    "path": "/home/hruzam/ia-sync/zsh/experimental/source-reader/test_source_reader.py",
+    "in_process": "ast.parse(Path.read_text(), filename=path)",
+    "invoked_by": [
+      "python3",
+      "-B",
+      "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I1/check_i1.py"
+    ]
+  },
+  {
+    "name": "syntax-runner",
+    "argv": [
+      "zsh",
+      "-n",
+      "/home/hruzam/ia-sync/zsh/experimental/source-reader/runner.zsh"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "passed": true,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "syntax-base",
+    "argv": [
+      "zsh",
+      "-n",
+      "/home/hruzam/ia-sync/zsh/experimental/base.zsh"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "passed": true,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "offline-help-missing-roots",
+    "argv": [
+      "zsh",
+      "-f",
+      "/home/hruzam/ia-sync/zsh/experimental/source-reader/runner.zsh",
+      "--roots",
+      "/does/not/exist.json",
+      "--help"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "passed": true,
+    "stdout_sha256": "9a9d484ac31f9c2e355861d38fb20740eeb7263170a15a3413930bd091ed1510",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "real-germline-authored",
+    "argv": [
+      "zsh",
+      "-f",
+      "/home/hruzam/ia-sync/zsh/experimental/source-reader/runner.zsh",
+      "show",
+      "/home/hruzam/ia-sync/germline/agents/houston/binding.claude.md"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "passed": true,
+    "stdout_sha256": "2e8bc57ca97d5d8dd7b1b2f147ee78c147a23503ae8e5dc9915ac3b4124568e0",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "exact_bytes": true,
+    "lexical_path": "/home/hruzam/ia-sync/germline/agents/houston/binding.claude.md",
+    "root_id": "germline-authored",
+    "selected_id": "570f5f0a044492adbac380f07df6947fd87addbc7a07b37458f9b1b88bea44dd",
+    "selected_sha256": "2e8bc57ca97d5d8dd7b1b2f147ee78c147a23503ae8e5dc9915ac3b4124568e0"
+  },
+  {
+    "name": "real-germline-deployed",
+    "argv": [
+      "zsh",
+      "-f",
+      "/home/hruzam/ia-sync/zsh/experimental/source-reader/runner.zsh",
+      "show",
+      "/home/hruzam/.germline/agents/houston/binding.claude.md"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "passed": true,
+    "stdout_sha256": "2e8bc57ca97d5d8dd7b1b2f147ee78c147a23503ae8e5dc9915ac3b4124568e0",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "exact_bytes": true,
+    "lexical_path": "/home/hruzam/.germline/agents/houston/binding.claude.md",
+    "root_id": "germline-deployed",
+    "selected_id": "cc5cc935f93b5a6cf867e2ce54cce3f1ad4cb33a7645060b00b676676ba141da",
+    "selected_sha256": "2e8bc57ca97d5d8dd7b1b2f147ee78c147a23503ae8e5dc9915ac3b4124568e0"
+  },
+  {
+    "name": "real-temple-guides",
+    "argv": [
+      "zsh",
+      "-f",
+      "/home/hruzam/ia-sync/zsh/experimental/source-reader/runner.zsh",
+      "show",
+      "/home/hruzam/reposoma/raw.guides/PAD/GUIDE.md"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "passed": true,
+    "stdout_sha256": "7d25f9d7710f07676c219fc7f6db9a0f59d88862d066b0b7ab07dd4df3283c08",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "exact_bytes": true,
+    "lexical_path": "/home/hruzam/reposoma/raw.guides/PAD/GUIDE.md",
+    "root_id": "temple-guides",
+    "selected_id": "bfa3858d565304f89b733bf3d09b1ec153e88bc652806eab53091fb4208d90e3",
+    "selected_sha256": "7d25f9d7710f07676c219fc7f6db9a0f59d88862d066b0b7ab07dd4df3283c08"
+  },
+  {
+    "name": "real-codex-authored",
+    "argv": [
+      "zsh",
+      "-f",
+      "/home/hruzam/ia-sync/zsh/experimental/source-reader/runner.zsh",
+      "show",
+      "/home/hruzam/ia-sync/codex/skills/buffering/SKILL.md"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "passed": true,
+    "stdout_sha256": "bac87c0bbc340e98ba7ead7ba10f548cbc1a1e40e5ea56fca946c6be72314931",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "exact_bytes": true,
+    "lexical_path": "/home/hruzam/ia-sync/codex/skills/buffering/SKILL.md",
+    "root_id": "codex-authored",
+    "selected_id": "8c955ce74946cb7d3c7cd521cddd2c1061d68ec566e940d00d805eba330d6a08",
+    "selected_sha256": "bac87c0bbc340e98ba7ead7ba10f548cbc1a1e40e5ea56fca946c6be72314931"
+  },
+  {
+    "name": "real-claude-authored",
+    "argv": [
+      "zsh",
+      "-f",
+      "/home/hruzam/ia-sync/zsh/experimental/source-reader/runner.zsh",
+      "show",
+      "/home/hruzam/ia-sync/claude/skills/agol-brief/SKILL.md"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "passed": true,
+    "stdout_sha256": "0b37ea3efad25ade9511620acd99f8aa4ade38e6a42606cb2bec2f49681e413f",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "exact_bytes": true,
+    "lexical_path": "/home/hruzam/ia-sync/claude/skills/agol-brief/SKILL.md",
+    "root_id": "claude-authored",
+    "selected_id": "30b3f612004b29c8afda37402f29232ee204cd9292ed60d4f8c93e44cfd847b9",
+    "selected_sha256": "0b37ea3efad25ade9511620acd99f8aa4ade38e6a42606cb2bec2f49681e413f"
+  },
+  {
+    "name": "real-codex-personal",
+    "argv": [
+      "zsh",
+      "-f",
+      "/home/hruzam/ia-sync/zsh/experimental/source-reader/runner.zsh",
+      "show",
+      "/home/hruzam/.agents/skills/buffering/SKILL.md"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "passed": true,
+    "stdout_sha256": "bac87c0bbc340e98ba7ead7ba10f548cbc1a1e40e5ea56fca946c6be72314931",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "exact_bytes": true,
+    "lexical_path": "/home/hruzam/.agents/skills/buffering/SKILL.md",
+    "root_id": "codex-personal",
+    "selected_id": "2e773f62c7409e5c62dac999dae2971d9ab47e115e034090ef1558feee0e5ea3",
+    "selected_sha256": "bac87c0bbc340e98ba7ead7ba10f548cbc1a1e40e5ea56fca946c6be72314931"
+  },
+  {
+    "name": "real-claude-personal",
+    "argv": [
+      "zsh",
+      "-f",
+      "/home/hruzam/ia-sync/zsh/experimental/source-reader/runner.zsh",
+      "show",
+      "/home/hruzam/.claude/skills/agol-brief/SKILL.md"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "passed": true,
+    "stdout_sha256": "0b37ea3efad25ade9511620acd99f8aa4ade38e6a42606cb2bec2f49681e413f",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "exact_bytes": true,
+    "lexical_path": "/home/hruzam/.claude/skills/agol-brief/SKILL.md",
+    "root_id": "claude-personal",
+    "selected_id": "d3e11a7682b0ffa17fe1af3151c96209e86452b888580b976c4a3246200c75d4",
+    "selected_sha256": "0b37ea3efad25ade9511620acd99f8aa4ade38e6a42606cb2bec2f49681e413f"
+  },
+  {
+    "name": "real-codex-project",
+    "argv": [
+      "zsh",
+      "-f",
+      "/home/hruzam/ia-sync/zsh/experimental/source-reader/runner.zsh",
+      "show",
+      "/home/hruzam/ia-sync/.agents/skills/multihost/SKILL.md"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "passed": true,
+    "stdout_sha256": "05b9df7bf53600deaf36e14647ef0e4c72c6d92ef439cd5e2897fcbdf4b9584d",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "exact_bytes": true,
+    "lexical_path": "/home/hruzam/ia-sync/.agents/skills/multihost/SKILL.md",
+    "root_id": "codex-project",
+    "selected_id": "1819a3cb2260a3131fd8b70cbd5a18860c9810e2ca4796c87806c573bcf8e560",
+    "selected_sha256": "05b9df7bf53600deaf36e14647ef0e4c72c6d92ef439cd5e2897fcbdf4b9584d"
+  },
+  {
+    "name": "real-claude-project",
+    "argv": [
+      "zsh",
+      "-f",
+      "/home/hruzam/ia-sync/zsh/experimental/source-reader/runner.zsh",
+      "show",
+      "/home/hruzam/ia-sync/.claude/skills/multihost/SKILL.md"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "passed": true,
+    "stdout_sha256": "baf0d38044e9895ce33f7e6db4916885936f6dbab84689830a64b42b2522ad8a",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "exact_bytes": true,
+    "lexical_path": "/home/hruzam/ia-sync/.claude/skills/multihost/SKILL.md",
+    "root_id": "claude-project",
+    "selected_id": "398a676eec865c74a78dc73c8b9891006c28711065cd68661a1be222b61f49cd",
+    "selected_sha256": "baf0d38044e9895ce33f7e6db4916885936f6dbab84689830a64b42b2522ad8a"
+  },
+  {
+    "name": "real-codex-system",
+    "argv": [
+      "zsh",
+      "-f",
+      "/home/hruzam/ia-sync/zsh/experimental/source-reader/runner.zsh",
+      "show",
+      "/home/hruzam/.codex/skills/.system/imagegen/SKILL.md"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "passed": true,
+    "stdout_sha256": "681ddb4ad6d06a2acc78a3535b583f8d0c1ea800ecda3d56370d3310fd2cd4ba",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "exact_bytes": true,
+    "lexical_path": "/home/hruzam/.codex/skills/.system/imagegen/SKILL.md",
+    "root_id": "codex-system",
+    "selected_id": "4c03f204600e219b15336e6fa9a3936116f96ec700fc7bffb99e5659233f3c10",
+    "selected_sha256": "681ddb4ad6d06a2acc78a3535b583f8d0c1ea800ecda3d56370d3310fd2cd4ba"
+  },
+  {
+    "name": "real-claude-account-sync",
+    "argv": [
+      "zsh",
+      "-f",
+      "/home/hruzam/ia-sync/zsh/experimental/source-reader/runner.zsh",
+      "show",
+      "/home/hruzam/.claude/skills/synced/6572dd27-d467-4e66-818d-07d6996a0771_b6594d59-ce55-4467-b6b8-e69c8a3b9c81/docs/SKILL.md"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "passed": true,
+    "stdout_sha256": "98e4fb5934042152d57bc9cb8c0736d5d8e31c6c0122b13ff5836f4c2411fa3e",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "exact_bytes": true,
+    "lexical_path": "/home/hruzam/.claude/skills/synced/6572dd27-d467-4e66-818d-07d6996a0771_b6594d59-ce55-4467-b6b8-e69c8a3b9c81/docs/SKILL.md",
+    "root_id": "claude-account-sync",
+    "selected_id": "1509d0451a59ef33337aece12720b3b2aacc42c229001604d57d780a25197c4e",
+    "selected_sha256": "98e4fb5934042152d57bc9cb8c0736d5d8e31c6c0122b13ff5836f4c2411fa3e"
+  },
+  {
+    "name": "twin-codex-authored-id",
+    "argv": [
+      "zsh",
+      "-f",
+      "/home/hruzam/ia-sync/zsh/experimental/source-reader/runner.zsh",
+      "show",
+      "cd5c84443097a882b2b62e60c15ade69b9cb3a4d97e88954b06ae3ceebf30ae6"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "passed": true,
+    "stdout_sha256": "d31ec392b80cf9565fb1374fd1860274d43ed0dd8bcd3e70f98562f53c87b2ce",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "exact_bytes": true,
+    "selected_id": "cd5c84443097a882b2b62e60c15ade69b9cb3a4d97e88954b06ae3ceebf30ae6",
+    "lexical_path": "/home/hruzam/ia-sync/codex/skills/guide/SKILL.md",
+    "selected_sha256": "d31ec392b80cf9565fb1374fd1860274d43ed0dd8bcd3e70f98562f53c87b2ce",
+    "vendor": "codex",
+    "origin": "authored"
+  },
+  {
+    "name": "twin-codex-authored-path",
+    "argv": [
+      "zsh",
+      "-f",
+      "/home/hruzam/ia-sync/zsh/experimental/source-reader/runner.zsh",
+      "show",
+      "/home/hruzam/ia-sync/codex/skills/guide/SKILL.md"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "passed": true,
+    "stdout_sha256": "d31ec392b80cf9565fb1374fd1860274d43ed0dd8bcd3e70f98562f53c87b2ce",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "exact_bytes": true,
+    "selected_id": "cd5c84443097a882b2b62e60c15ade69b9cb3a4d97e88954b06ae3ceebf30ae6",
+    "lexical_path": "/home/hruzam/ia-sync/codex/skills/guide/SKILL.md",
+    "selected_sha256": "d31ec392b80cf9565fb1374fd1860274d43ed0dd8bcd3e70f98562f53c87b2ce",
+    "vendor": "codex",
+    "origin": "authored"
+  },
+  {
+    "name": "twin-claude-authored-id",
+    "argv": [
+      "zsh",
+      "-f",
+      "/home/hruzam/ia-sync/zsh/experimental/source-reader/runner.zsh",
+      "show",
+      "bd93a7ba6e48c66029555fea71cf11c80e02da0488ac8f3da6a577f715a08ccc"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "passed": true,
+    "stdout_sha256": "87d5a796554c33631d463619f721c00cf398d2344c49a885e427f241f7a6c1bb",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "exact_bytes": true,
+    "selected_id": "bd93a7ba6e48c66029555fea71cf11c80e02da0488ac8f3da6a577f715a08ccc",
+    "lexical_path": "/home/hruzam/ia-sync/claude/skills/guide/SKILL.md",
+    "selected_sha256": "87d5a796554c33631d463619f721c00cf398d2344c49a885e427f241f7a6c1bb",
+    "vendor": "claude",
+    "origin": "authored"
+  },
+  {
+    "name": "twin-claude-authored-path",
+    "argv": [
+      "zsh",
+      "-f",
+      "/home/hruzam/ia-sync/zsh/experimental/source-reader/runner.zsh",
+      "show",
+      "/home/hruzam/ia-sync/claude/skills/guide/SKILL.md"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "passed": true,
+    "stdout_sha256": "87d5a796554c33631d463619f721c00cf398d2344c49a885e427f241f7a6c1bb",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "exact_bytes": true,
+    "selected_id": "bd93a7ba6e48c66029555fea71cf11c80e02da0488ac8f3da6a577f715a08ccc",
+    "lexical_path": "/home/hruzam/ia-sync/claude/skills/guide/SKILL.md",
+    "selected_sha256": "87d5a796554c33631d463619f721c00cf398d2344c49a885e427f241f7a6c1bb",
+    "vendor": "claude",
+    "origin": "authored"
+  },
+  {
+    "name": "twin-codex-personal-id",
+    "argv": [
+      "zsh",
+      "-f",
+      "/home/hruzam/ia-sync/zsh/experimental/source-reader/runner.zsh",
+      "show",
+      "b725f47973f6d0fecdb9ce189bc79895f145e85482eaba3f0dd4cbab48b8387a"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "passed": true,
+    "stdout_sha256": "d31ec392b80cf9565fb1374fd1860274d43ed0dd8bcd3e70f98562f53c87b2ce",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "exact_bytes": true,
+    "selected_id": "b725f47973f6d0fecdb9ce189bc79895f145e85482eaba3f0dd4cbab48b8387a",
+    "lexical_path": "/home/hruzam/.agents/skills/guide/SKILL.md",
+    "selected_sha256": "d31ec392b80cf9565fb1374fd1860274d43ed0dd8bcd3e70f98562f53c87b2ce",
+    "vendor": "codex",
+    "origin": "installed-personal"
+  },
+  {
+    "name": "twin-codex-personal-path",
+    "argv": [
+      "zsh",
+      "-f",
+      "/home/hruzam/ia-sync/zsh/experimental/source-reader/runner.zsh",
+      "show",
+      "/home/hruzam/.agents/skills/guide/SKILL.md"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "passed": true,
+    "stdout_sha256": "d31ec392b80cf9565fb1374fd1860274d43ed0dd8bcd3e70f98562f53c87b2ce",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "exact_bytes": true,
+    "selected_id": "b725f47973f6d0fecdb9ce189bc79895f145e85482eaba3f0dd4cbab48b8387a",
+    "lexical_path": "/home/hruzam/.agents/skills/guide/SKILL.md",
+    "selected_sha256": "d31ec392b80cf9565fb1374fd1860274d43ed0dd8bcd3e70f98562f53c87b2ce",
+    "vendor": "codex",
+    "origin": "installed-personal"
+  },
+  {
+    "name": "twin-claude-personal-id",
+    "argv": [
+      "zsh",
+      "-f",
+      "/home/hruzam/ia-sync/zsh/experimental/source-reader/runner.zsh",
+      "show",
+      "28cd7142c3f9a52e5bb9f757769be1e98519783aba71b300641c7dff3d062f7b"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "passed": true,
+    "stdout_sha256": "87d5a796554c33631d463619f721c00cf398d2344c49a885e427f241f7a6c1bb",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "exact_bytes": true,
+    "selected_id": "28cd7142c3f9a52e5bb9f757769be1e98519783aba71b300641c7dff3d062f7b",
+    "lexical_path": "/home/hruzam/.claude/skills/guide/SKILL.md",
+    "selected_sha256": "87d5a796554c33631d463619f721c00cf398d2344c49a885e427f241f7a6c1bb",
+    "vendor": "claude",
+    "origin": "installed-personal"
+  },
+  {
+    "name": "twin-claude-personal-path",
+    "argv": [
+      "zsh",
+      "-f",
+      "/home/hruzam/ia-sync/zsh/experimental/source-reader/runner.zsh",
+      "show",
+      "/home/hruzam/.claude/skills/guide/SKILL.md"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "passed": true,
+    "stdout_sha256": "87d5a796554c33631d463619f721c00cf398d2344c49a885e427f241f7a6c1bb",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "exact_bytes": true,
+    "selected_id": "28cd7142c3f9a52e5bb9f757769be1e98519783aba71b300641c7dff3d062f7b",
+    "lexical_path": "/home/hruzam/.claude/skills/guide/SKILL.md",
+    "selected_sha256": "87d5a796554c33631d463619f721c00cf398d2344c49a885e427f241f7a6c1bb",
+    "vendor": "claude",
+    "origin": "installed-personal"
+  },
+  {
+    "name": "fixture-catalog",
+    "argv": [
+      "zsh",
+      "-f",
+      "/home/hruzam/ia-sync/zsh/experimental/source-reader/runner.zsh",
+      "--roots",
+      "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/roots.json",
+      "catalog",
+      "--json"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "passed": true,
+    "stdout_sha256": "5ecf59a60c0cce5e3676c5ee79e76cbf1bcd4d55cab415a8fefb8c117b4f1a2a",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "fixture-browse-nontty",
+    "argv": [
+      "zsh",
+      "-f",
+      "/home/hruzam/ia-sync/zsh/experimental/source-reader/runner.zsh",
+      "--roots",
+      "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/roots.json",
+      "browse",
+      "--plain"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "passed": true,
+    "stdout_sha256": "d452670b1aca365acaca25fd033578c78af889f26321068f3c0b0379f68b921b",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "fixture-TURNS",
+    "argv": [
+      "zsh",
+      "-f",
+      "/home/hruzam/ia-sync/zsh/experimental/source-reader/runner.zsh",
+      "--roots",
+      "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/roots.json",
+      "guide",
+      "topic",
+      "TURNS"
+    ],
+    "exit_code": 2,
+    "expected_exit": 2,
+    "passed": true,
+    "stdout_sha256": "8776ac7bf401e6bb344db7a24e8d8bac540d5a9772fad583d31db27c82134854",
+    "stderr_sha256": "e005c4101cf1d10f7ba2bc4a89ffff0965f3162ac74d043cd6c5c5fd1a8c99c5"
+  },
+  {
+    "name": "fixture-zero-match",
+    "argv": [
+      "zsh",
+      "-f",
+      "/home/hruzam/ia-sync/zsh/experimental/source-reader/runner.zsh",
+      "--roots",
+      "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/roots.json",
+      "guide",
+      "topic",
+      "side"
+    ],
+    "exit_code": 2,
+    "expected_exit": 2,
+    "passed": true,
+    "stdout_sha256": "126210f1899cc89eb2d60cc89fef2d0844d60c794e301f802e5e1cd5fd90a8fd",
+    "stderr_sha256": "1e348d5fd781248fd1a1b4753fcd17a1d4a69cbc050d1fd1ac738d57c78e4555"
+  },
+  {
+    "name": "fixture-canary",
+    "argv": [
+      "zsh",
+      "-f",
+      "/home/hruzam/ia-sync/zsh/experimental/source-reader/runner.zsh",
+      "--roots",
+      "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/roots.json",
+      "show",
+      "/home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/codex/canary/SKILL.md"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "passed": true,
+    "stdout_sha256": "09e32b4c560fffe50e97f91cc284cda6826e9c2d64db24e8089e285e512a4871",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "dispatcher-help",
+    "argv": [
+      "zsh",
+      "-f",
+      "-c",
+      "_EXPERIMENTAL_ROOT=/home/hruzam/ia-sync/zsh/experimental; source /home/hruzam/ia-sync/zsh/experimental/dispatcher.zsh; _exp_run source-reader --help"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "passed": true,
+    "stdout_sha256": "9a9d484ac31f9c2e355861d38fb20740eeb7263170a15a3413930bd091ed1510",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "dispatcher-exact-show",
+    "argv": [
+      "zsh",
+      "-f",
+      "-c",
+      "_EXPERIMENTAL_ROOT=/home/hruzam/ia-sync/zsh/experimental; source /home/hruzam/ia-sync/zsh/experimental/dispatcher.zsh; _exp_run source-reader --roots /home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/roots.json show /home/hruzam/ia-sync/zsh/experimental/source-reader/fixtures/codex/canary/SKILL.md"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "passed": true,
+    "stdout_sha256": "09e32b4c560fffe50e97f91cc284cda6826e9c2d64db24e8089e285e512a4871",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "dispatcher-catalog",
+    "argv": [
+      "zsh",
+      "-f",
+      "-c",
+      "_EXPERIMENTAL_ROOT=/home/hruzam/ia-sync/zsh/experimental; source /home/hruzam/ia-sync/zsh/experimental/dispatcher.zsh; _exp_run source-reader catalog --json"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "passed": true,
+    "stdout_sha256": "78e833519abca347658aa23a5da94f63a84658712033dff05514e762c0dec32e",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "dispatcher-source-silent",
+    "argv": [
+      "zsh",
+      "-f",
+      "-c",
+      "_EXPERIMENTAL_ROOT=/home/hruzam/ia-sync/zsh/experimental; source /home/hruzam/ia-sync/zsh/experimental/dispatcher.zsh"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "passed": true,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "name": "real-cold-start-card-ambiguity",
+    "argv": [
+      "zsh",
+      "-f",
+      "/home/hruzam/ia-sync/zsh/experimental/source-reader/runner.zsh",
+      "guide",
+      "cold-start-card",
+      "card"
+    ],
+    "exit_code": 2,
+    "expected_exit": 2,
+    "passed": true,
+    "stdout_sha256": "a7c9c5148a3824b41270b4edbe5cfc8ab1169dd445084c25f9905a1cc1f615e8",
+    "stderr_sha256": "9a4e609c7493570cb2da8fad7eb38812c90dbe8d6b96e8cb1249884b211d731d"
+  },
+  {
+    "name": "selected-source-and-fixture-preservation",
+    "passed": true,
+    "real_sources": 15,
+    "fixture_files": 19,
+    "canary_executed": false
+  },
+  {
+    "name": "only-one-owned-base-row",
+    "passed": true,
+    "before_sha256": "fb37336a18857159cd874b02237c6153f54d0dbc8634842eea842f5b9b8f2de3",
+    "after_sha256": "724fdaa044862a56b5775c9f7b07857d1b452b2fb0bb6c1068ea5480f792e6ee",
+    "diff_sha256": "2389a5aa16ea489eb9bed2a9999a8c66ba20d50487ea9e82f85426aac739e78c"
+  },
+  {
+    "name": "deploy-dry-run",
+    "argv": [
+      "bash",
+      "/home/hruzam/ia-sync/deploy.sh",
+      "--dry-run"
+    ],
+    "exit_code": 0,
+    "expected_exit": 0,
+    "passed": true,
+    "stdout_sha256": "a0f1b03130bf557545c5a03ed2e6299865d67cd8dd9a34baf754cdebab1e0c4a",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "actual_deployment": false
+  },
+  {
+    "name": "offline-fixture-suite",
+    "argv": [
+      "python3",
+      "-B",
+      "/home/hruzam/ia-sync/zsh/experimental/source-reader/test_source_reader.py"
+    ],
+    "passed": true,
+    "tests": 13,
+    "output": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I1/test.final.txt",
+    "preserved_prior_failure": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I1/test.failure01.txt",
+    "note": "Previously executed suite; one test instrumentation error corrected; 13/13 final PASS."
+  }
+]

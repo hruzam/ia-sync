@@ -1,0 +1,36 @@
+{
+  "verdict": "PASS",
+  "approved_hashes": {
+    "adapter": "bfa6a3fc7c09591881575c87fb8ad5bde066188cc42f814028dbeffff4d77b50",
+    "test": "d81a8e51340b2069c50c4fc10dcf4a099946374dc5fd50dbb28503b2e2063023",
+    "contract": "84be154eb074088af75f003cd760b0ccb904061afb46851135e8ad4203f1d214",
+    "pins": "d72e6b552f7e05e2e5c5657631526b989dea28d2cc3a372919845a1c86ad51db"
+  },
+  "critical_files_unchanged": 54,
+  "pins_match": 35,
+  "asks": [
+    {
+      "key": "run02.A1.ask",
+      "attempt_number": 2
+    },
+    {
+      "key": "run02.R1.ask",
+      "attempt_number": 1
+    }
+  ],
+  "identities": {
+    "researcher": {
+      "threadId": "01a17a86-873c-72b0-8787-932736a0f7d9",
+      "lastTurnId": "01a17a86-87b6-76a3-a848-d93cf4a4d040"
+    },
+    "auditor": {
+      "threadId": "01a17a89-cc0a-7053-b9b2-e5bdac784fe4",
+      "lastTurnId": "01a17a89-cca1-71c0-8cea-0abe10024bcd"
+    }
+  },
+  "c1_plan_sha256": "d60bc70f1f31a6a6d4769050370e27eede2276c9fff4ea7e9ef345fc4d1a3fba",
+  "hold_active": true,
+  "actual_release_authorized": true,
+  "no_live_future_plan_or_packets": true,
+  "target_model_turns": 0
+}

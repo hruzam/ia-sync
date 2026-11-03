@@ -1,0 +1,160 @@
+{
+  "target_model_turns": 0,
+  "results": [
+    {
+      "test": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/repair/test_adapter.py",
+      "sha256": "15e9449c4c608d1ca4ebab44f70b98b079b48b2ce3004d3e5ddf2109a84dcead",
+      "stdout": {
+        "target_model_turns": 0,
+        "checks": [
+          [
+            "changed-frozen-prompt-refused",
+            true
+          ],
+          [
+            "changed-named-input-refused",
+            true
+          ],
+          [
+            "profile-requires-release-before-model-list",
+            true
+          ],
+          [
+            "open-profile-prerequisite-refused",
+            true
+          ],
+          [
+            "cold-open-and-ask-real-invoke-boundary",
+            true
+          ],
+          [
+            "cold-replay-refused",
+            true
+          ],
+          [
+            "identity-only-read-with-structured-readonly",
+            true
+          ],
+          [
+            "bootstrap-ack-and-readback-validated",
+            true
+          ],
+          [
+            "tampered-bootstrap-anchor-refused",
+            true
+          ],
+          [
+            "changed-bootstrap-vault-thread-refused",
+            true
+          ],
+          [
+            "missing-identity-recovery-refused",
+            true
+          ],
+          [
+            "cross-role-identity-refused",
+            true
+          ],
+          [
+            "changed-role-identity-refused",
+            true
+          ],
+          [
+            "warm-requires-completed-bootstrap",
+            true
+          ],
+          [
+            "warm-requires-observed-runtime",
+            true
+          ],
+          [
+            "active-hold-refused-before-effect",
+            true
+          ],
+          [
+            "revoked-release-refused-before-effect",
+            true
+          ],
+          [
+            "changed-pin-refused",
+            true
+          ],
+          [
+            "exhausted-cap-refused",
+            true
+          ],
+          [
+            "corrupt-receipt-count-refused",
+            true
+          ],
+          [
+            "conditional-a3-grant-proof",
+            true
+          ],
+          [
+            "conditional-a3-unchanged-refused",
+            true
+          ],
+          [
+            "concurrent-reservation-never-exceeds-cap",
+            true
+          ],
+          [
+            "concurrent-duplicate-key-never-overwrites",
+            true
+          ],
+          [
+            "nonzero-command-is-remote-unknown",
+            true
+          ]
+        ]
+      },
+      "stderr": ""
+    },
+    {
+      "test": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/repair/test_tunnel_checkpoints.py",
+      "sha256": "89affaddb0eed2c9509db6c2f537d5257195a033be8b452974ecd9a6211c3c9a",
+      "stdout": {
+        "target_model_turns": 0,
+        "checks": 2,
+        "rows": [
+          {
+            "verb": "send",
+            "state": {
+              "enabled": true,
+              "inFlightTurnId": "U-fake",
+              "lastTurnId": null,
+              "model": "gpt-6.1-sol",
+              "runtime": {
+                "model": "gpt-6.1-sol",
+                "observedAt": "2026-10-26T18:28:57Z",
+                "sandbox": "read-only"
+              },
+              "sandbox": "read-only",
+              "threadId": "T-fake"
+            },
+            "error": "timeout phase=turn/completed elapsed=0.000s configured_budget=120.000s last_event_age=0.000s threadId=T-fake turnId=U-fake"
+          },
+          {
+            "verb": "ask",
+            "state": {
+              "enabled": true,
+              "inFlightTurnId": "U-fake",
+              "lastTurnId": null,
+              "model": "gpt-6.1-sol",
+              "runtime": {
+                "model": "gpt-6.1-sol",
+                "observedAt": "2026-10-26T18:28:57Z",
+                "sandbox": "read-only"
+              },
+              "sandbox": "read-only",
+              "threadId": "T-fake"
+            },
+            "error": "timeout phase=turn/completed elapsed=0.000s configured_budget=120.000s last_event_age=0.000s threadId=T-fake turnId=U-fake"
+          }
+        ]
+      },
+      "stderr": ""
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "captured_at": "2026-10-29T15:33:12.545304+01:00",
+  "scope": "preservation and read-only source/live equality; no global deployment needed for a repository-local addendum",
+  "pairs": [
+    {
+      "source": "/home/hruzam/ia-sync/germline/agents/houston/binding.claude.md",
+      "target": "/home/hruzam/.germline/agents/houston/binding.claude.md",
+      "source_sha256": "2e8bc57ca97d5d8dd7b1b2f147ee78c147a23503ae8e5dc9915ac3b4124568e0",
+      "target_sha256": "2e8bc57ca97d5d8dd7b1b2f147ee78c147a23503ae8e5dc9915ac3b4124568e0",
+      "matches": true
+    },
+    {
+      "source": "/home/hruzam/ia-sync/germline/agents/houston/binding.codex.md",
+      "target": "/home/hruzam/.germline/agents/houston/binding.codex.md",
+      "source_sha256": "f171589645e42d93fac515e70240296f54d7d9fe6c4a390e273489ebd1491915",
+      "target_sha256": "f171589645e42d93fac515e70240296f54d7d9fe6c4a390e273489ebd1491915",
+      "matches": true
+    },
+    {
+      "source": "/home/hruzam/ia-sync/germline/agents/houston/cards/audit.md",
+      "target": "/home/hruzam/.germline/agents/houston/cards/audit.md",
+      "source_sha256": "6f8c092909e471bb2a95e37f3b698fa03aae2b07b083a2286b0fc3810cba2c1f",
+      "target_sha256": "6f8c092909e471bb2a95e37f3b698fa03aae2b07b083a2286b0fc3810cba2c1f",
+      "matches": true
+    },
+    {
+      "source": "/home/hruzam/ia-sync/germline/agents/houston/cards/consult.md",
+      "target": "/home/hruzam/.germline/agents/houston/cards/consult.md",
+      "source_sha256": "9b0aa73106497ccda4b92605bea4972e6df2ebed75765d3b9bdf14ac82dd117c",
+      "target_sha256": "9b0aa73106497ccda4b92605bea4972e6df2ebed75765d3b9bdf14ac82dd117c",
+      "matches": true
+    },
+    {
+      "source": "/home/hruzam/ia-sync/germline/agents/houston/cards/sitting.md",
+      "target": "/home/hruzam/.germline/agents/houston/cards/sitting.md",
+      "source_sha256": "34fe2073bb8022e0750d4f41c4e8abbe7bb954dd4ae400d1664e1749569978b3",
+      "target_sha256": "34fe2073bb8022e0750d4f41c4e8abbe7bb954dd4ae400d1664e1749569978b3",
+      "matches": true
+    },
+    {
+      "source": "/home/hruzam/ia-sync/germline/agents/houston/identity.md",
+      "target": "/home/hruzam/.germline/agents/houston/identity.md",
+      "source_sha256": "d7c8837a0a6fdbece78f0500107deb684b36ec0135bd7a0e6462158ef7be94e6",
+      "target_sha256": "d7c8837a0a6fdbece78f0500107deb684b36ec0135bd7a0e6462158ef7be94e6",
+      "matches": true
+    },
+    {
+      "source": "/home/hruzam/ia-sync/codex/agents/houston.toml",
+      "target": "/home/hruzam/.codex/agents/houston.toml",
+      "source_sha256": "4d965e4212f1ddbc9d653294d3591300a8aa3762a33adf372598384b7d949b7e",
+      "target_sha256": "4d965e4212f1ddbc9d653294d3591300a8aa3762a33adf372598384b7d949b7e",
+      "matches": true
+    },
+    {
+      "source": "/home/hruzam/ia-sync/codex/profiles/houston.config.toml",
+      "target": "/home/hruzam/.codex/houston.config.toml",
+      "source_sha256": "15f8bbee15213031f75d71a1937e9dcba80022fa0ce59d371ebc81ebb77feb49",
+      "target_sha256": "15f8bbee15213031f75d71a1937e9dcba80022fa0ce59d371ebc81ebb77feb49",
+      "matches": true
+    },
+    {
+      "source": "/home/hruzam/ia-sync/claude/agents/houston.md",
+      "target": "/home/hruzam/.claude/agents/houston.md",
+      "source_sha256": "553dfe4f4a52165ebe39300508298d7771f271618bb4dcf632a60126a785094c",
+      "target_sha256": "553dfe4f4a52165ebe39300508298d7771f271618bb4dcf632a60126a785094c",
+      "matches": true
+    }
+  ],
+  "local_addendum": {
+    "path": "/home/hruzam/ia-sync/.germline/agents/houston/ia-sync.md",
+    "sha256": "32cc1b852efc827517663db8b3effbcb5f2d098ae63c39fae2cea81a4b70e9b2",
+    "stamp": "0c9da1ff"
+  },
+  "fresh_child": "/root/houston_docs_discovery",
+  "main_session": "operator will try later"
+}

@@ -1,0 +1,121 @@
+{
+  "result": "PASS for fresh office Codex child loading/documentation-discovery/authority navigation only",
+  "consult_verdict": "stretches; stale-guide, proposal/authority and host-availability constraints retained",
+  "operator_release": "Majkee explicitly requested fold then a fresh subagent; main left for later",
+  "task": "/root/houston_docs_discovery",
+  "thread_id": "01a18812-f2b8-73b2-ab76-b4650c451884",
+  "fresh_context": "fork_turns none; no inherited parent conversation",
+  "host_local_trace": "/home/hruzam/.codex/sessions/2026/10/29/rollout-2026-10-29T15-31-45-01a18812-f2b8-73b2-ab76-b4650c451884.jsonl",
+  "trace_sha256_at_inspection": "e0daa5755c14d30af7f4784604f8f781e22c022bfc41394ad7fc31284212a7fa",
+  "history_policy": "Original history stays host-local; this filtered proof and returned finding alone are portable.",
+  "actual_runtime": {
+    "record": 10,
+    "model": "gpt-6.1-sol",
+    "effort": "high",
+    "cwd": "/home/hruzam/ia-sync",
+    "sandbox": {
+      "type": "workspace-write",
+      "network_access": false,
+      "exclude_tmpdir_env_var": false,
+      "exclude_slash_tmp": false
+    }
+  },
+  "wrapper_injection_records": [
+    5
+  ],
+  "first_reply_record": 29,
+  "first_reply_contains_four_current_stamps": true,
+  "read_evidence": [
+    {
+      "path": "/home/hruzam/.germline/agents/houston/identity.md",
+      "sha256": "d7c8837a0a6fdbece78f0500107deb684b36ec0135bd7a0e6462158ef7be94e6",
+      "complete_current_body_in_tool_output_records": [
+        17,
+        69
+      ],
+      "before_first_reply": true
+    },
+    {
+      "path": "/home/hruzam/.germline/agents/houston/binding.codex.md",
+      "sha256": "f171589645e42d93fac515e70240296f54d7d9fe6c4a390e273489ebd1491915",
+      "complete_current_body_in_tool_output_records": [
+        24,
+        69
+      ],
+      "before_first_reply": true
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.germline/agents/houston/ia-sync.md",
+      "sha256": "32cc1b852efc827517663db8b3effbcb5f2d098ae63c39fae2cea81a4b70e9b2",
+      "complete_current_body_in_tool_output_records": [
+        24
+      ],
+      "before_first_reply": true
+    },
+    {
+      "path": "/home/hruzam/.germline/agents/houston/cards/consult.md",
+      "sha256": "9b0aa73106497ccda4b92605bea4972e6df2ebed75765d3b9bdf14ac82dd117c",
+      "complete_current_body_in_tool_output_records": [
+        24
+      ],
+      "before_first_reply": true
+    },
+    {
+      "path": "/home/hruzam/ia-sync/germline/README.md",
+      "sha256": "0b2aabb66223a34f10697d1dad7ea9a6b01d8be5a537580e66db46d2cecce4fe",
+      "complete_current_body_in_tool_output_records": [
+        37
+      ],
+      "before_first_reply": false
+    },
+    {
+      "path": "/home/hruzam/reposoma/raw.guides/germline-forge/GUIDE.md",
+      "sha256": "2a97c2935fd38d923d3401e8d245aca552cf6f47f68919433c6808f3598f696b",
+      "complete_current_body_in_tool_output_records": [
+        47
+      ],
+      "before_first_reply": false
+    },
+    {
+      "path": "/home/hruzam/reposoma/_cold-start/README.md",
+      "sha256": "af262683889eb69a1b6aa938e438bc8d5503d7bda1067e51e147b9d20323d4c7",
+      "complete_current_body_in_tool_output_records": [
+        47
+      ],
+      "before_first_reply": false
+    },
+    {
+      "path": "/home/hruzam/reposoma/raw.guides/cold-start-card/GUIDE.md",
+      "sha256": "58f956e2df61912ce6938f5752b33fc3048faf28a726dd7910634fd13759ba27",
+      "complete_current_body_in_tool_output_records": [
+        60
+      ],
+      "before_first_reply": false
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-A3-guide-to-controller/STATUS.md",
+      "sha256": "b43a7b1991fa1f0119dc84c4d6b32ad551f3c31c16413b2ebebd0c14bd6517ee",
+      "complete_current_body_in_tool_output_records": [
+        47
+      ],
+      "before_first_reply": false
+    }
+  ],
+  "load_order": "identity first; binding, cwd walk/project layer and consult card awaited sequentially in second exec; all four complete bodies before first answer",
+  "tool_calls_inspected": 6,
+  "tool_activity": "read/search/list only; actual commands inspected; no write/helper/transport",
+  "return_sha256": "c25e23ca77a77f292ec410e99145ce672f0d9b31b73681159aabdfab986ade96",
+  "proof_extraction": "Decoded text and exact JSON-escaped full bodies in structured tool outputs checked. First parent extraction omitted escaped/nested JSON text; corrected without another model turn. One aggregate output clipped secondary RUNBOOK text; selected task STATUS and the nine bodies above are completely present.",
+  "findings": [
+    "Forge explicitly draft/partly stale; operative bodies/deploy code distinguish current mechanics.",
+    "No approved architecture entrance or planned candidate file at checked paths.",
+    "Vault README omits issues while its governing guide includes them.",
+    "README stamp-sufficiency claim conflicts with A3 evidence distinction.",
+    "Repository-local documentation does not establish home availability."
+  ],
+  "limits": [
+    "Not main/Claude/home/compaction/full audit/sitting or A3 acceptance.",
+    "Workspace-write runtime; no-write is observed card compliance, not an OS read-only guarantee.",
+    "A3 remains under its own head; no S00-S10 completion claim."
+  ]
+}

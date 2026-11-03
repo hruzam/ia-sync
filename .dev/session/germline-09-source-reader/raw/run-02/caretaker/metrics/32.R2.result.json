@@ -1,0 +1,23 @@
+{
+  "ask_elapsed_seconds": 87.799,
+  "ask_receipt": "operations/run02.R2.ask.operation.json",
+  "ask_receipt_sha256": "1f1e7f6a6fdbac0afc86bd678bfc41e71ec59627c8d5150d6a7ea5455f1837d7",
+  "attempt_number": 3,
+  "cycle": "R2",
+  "explicit_verdict_token": false,
+  "live_root_independently_checked": false,
+  "read_elapsed_seconds": 0.739,
+  "read_receipt": "operations/run02.R2.read.operation.json",
+  "read_receipt_sha256": "264435f964974a35f0ad24e81c95fabfe92945aabd6f1aea46134bab1f6fac88",
+  "read_stdout": "operations/output/run02.R2.read.stdout.txt",
+  "read_stdout_sha256": "137a355886051fd3a7e5481b586fe26d0650a6a43f970fd592dbc1ba08a7bd6f",
+  "reported_finding": "Plain catalog and picker omit resolved_path/symlink_target despite JSON retaining them; root provenance may be mistaken for content authorship.",
+  "schema": "g09-c2-result/v1",
+  "thread_id": "01a17a86-873c-72b0-8787-932736a0f7d9",
+  "turn_id": "01a184ef-6e70-7f11-907b-3ac8af6fe2d1",
+  "usage": {
+    "context": null,
+    "dollars": null,
+    "tokens": null
+  }
+}

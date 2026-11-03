@@ -1,0 +1,434 @@
+{
+  "schema": "g09-main-intake/execution-v1",
+  "execution_started_at": "2026-10-26T22:26:55.538837+01:00",
+  "preparation_costs_retained_at": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/MAIN-INTAKE.json",
+  "preparation_file_read_requests": 101,
+  "events": [
+    {
+      "n": 1,
+      "kind": "full",
+      "label": "Operator-selected startup",
+      "paths": [
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/RUNBOOK.md",
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/STATUS.md",
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/HANDOFF.md"
+      ],
+      "reads": 3
+    },
+    {
+      "n": 2,
+      "kind": "head80",
+      "label": "Current journal orientation",
+      "paths": [
+        "/home/hruzam/ia-sync/journal.host-cleanup.md"
+      ],
+      "reads": 1
+    },
+    {
+      "n": 3,
+      "kind": "full",
+      "label": "Selected execution schedule and journal check evidence",
+      "paths": [
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/hold-line/ENTRY.md",
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/SCHEDULE.md",
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/control/check_preservation.py",
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/checks/JOURNAL.preservation.json"
+      ],
+      "reads": 4
+    },
+    {
+      "n": 4,
+      "kind": "selected-json-fields",
+      "label": "Frozen scope and current release",
+      "paths": [
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/CONTRACT.json",
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/control/RELEASE.json"
+      ],
+      "reads": 2
+    },
+    {
+      "n": 5,
+      "kind": "full",
+      "label": "Current applicable repository instructions and discipline",
+      "paths": [
+        "/home/hruzam/ia-sync/AGENTS.md",
+        "/home/hruzam/ia-sync/SYNC_DISCIPLINE.md"
+      ],
+      "reads": 2
+    },
+    {
+      "n": 6,
+      "kind": "full/diff",
+      "label": "New concurrent foreign Jev router reconciliation",
+      "paths": [
+        "/home/hruzam/ia-sync/pulse.md",
+        "/home/hruzam/ia-sync/pulse.md"
+      ],
+      "reads": 2
+    },
+    {
+      "n": 7,
+      "kind": "full/guard-excerpt",
+      "label": "C1 HOLD primary RETURN/capsule plus exact release guard",
+      "paths": [
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/_bus/30.caretaker.return.md",
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/capsules/C1-HOLD.md",
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/run_operations.py"
+      ],
+      "reads": 3
+    },
+    {
+      "n": 8,
+      "kind": "profile-function excerpt",
+      "label": "Verify provenance guard precedes reservation and RPC",
+      "paths": [
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/run_operations.py"
+      ],
+      "reads": 1
+    },
+    {
+      "n": 9,
+      "kind": "full",
+      "label": "Architecture acceptance and product template",
+      "paths": [
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/ACCEPTANCE.md",
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/control/CONTRACT.template.json"
+      ],
+      "reads": 2
+    },
+    {
+      "n": 10,
+      "kind": "head80",
+      "label": "Resume current journal orientation",
+      "paths": [
+        "/home/hruzam/ia-sync/journal.host-cleanup.md"
+      ],
+      "reads": 1
+    },
+    {
+      "n": 11,
+      "kind": "full",
+      "label": "Resume STATUS/STOP disposition/HOLD",
+      "paths": [
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/STATUS.md",
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/_bus/30.cartan.verdict.md",
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/control/HOLD.json"
+      ],
+      "reads": 3
+    },
+    {
+      "n": 12,
+      "kind": "selected paragraph",
+      "label": "Resume current pulse Jev paragraph",
+      "paths": [
+        "/home/hruzam/ia-sync/pulse.md"
+      ],
+      "reads": 1
+    },
+    {
+      "n": 13,
+      "kind": "full",
+      "label": "Caretaker-local cycle35 script failure evidence",
+      "paths": [
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/_bus/35.caretaker.return.md",
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/capsules/C1-cycle35-HOLD.md"
+      ],
+      "reads": 2
+    },
+    {
+      "n": 14,
+      "kind": "full + failed filename request",
+      "label": "36 RETURN and evidence; requested validator filename wrong then corrected",
+      "paths": [
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/_bus/36.repairer.return.md",
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/execution/resume-01/checks/validate_c1_plan_36.py",
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/execution/resume-01/checks/C1.plan-validator.36.json"
+      ],
+      "reads": 3
+    },
+    {
+      "n": 15,
+      "kind": "full",
+      "label": "Actual exact named validator source",
+      "paths": [
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/execution/resume-01/checks/validate_c1_plan.py"
+      ],
+      "reads": 1
+    },
+    {
+      "n": 16,
+      "kind": "full capsule/result pointer",
+      "label": "R1 concise evidence",
+      "paths": [
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/capsules/R1.md",
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/results/R1.result.md"
+      ],
+      "reads": 2
+    },
+    {
+      "n": 17,
+      "kind": "selected final agent text",
+      "label": "R1 exact final answer; raw tool/history body not ingested",
+      "paths": [
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/operations/output/run02.R1.read.stdout.txt"
+      ],
+      "reads": 1
+    },
+    {
+      "n": 18,
+      "kind": "RETURN/capsule/selected final text",
+      "label": "A1 actual hold and counterexamples",
+      "paths": [
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/_bus/37.caretaker.return.md",
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/capsules/A1.md",
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/operations/output/run02.A1.read.stdout.txt"
+      ],
+      "reads": 3
+    },
+    {
+      "n": 19,
+      "kind": "selected receipt/vault metadata",
+      "label": "Head verifies C1 completed asks/bootstrap/preamble and distinct actual identities",
+      "paths": [
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/operations/run02.R1.ask.operation.json",
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/operations/run02.A1.ask.operation.json",
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/operations/run02.researcher.bootstrap.operation.json",
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/operations/run02.auditor.bootstrap.operation.json",
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/operations/run02.R1.preamble.operation.json",
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/operations/run02.A1.preamble.operation.json",
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/tunnel.researcher.state.json",
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/tunnel.auditor.state.json"
+      ],
+      "reads": 8
+    },
+    {
+      "n": 20,
+      "kind": "full or selected primary evidence; test fixture excerpt where noted",
+      "label": "Staged race38 claims/proof/pin transition",
+      "paths": [
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/_bus/38.repairer.return.md",
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/execution/A1-race-review/RACE.38.json",
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/execution/A1-race-review/PIN-TRANSITION.proposal.md"
+      ],
+      "reads": 3
+    },
+    {
+      "n": 21,
+      "kind": "full or selected primary evidence; test fixture excerpt where noted",
+      "label": "Initial patch and exact old cap fixture",
+      "paths": [
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/execution/A1-race-review/reserve-prior-uncertainty.patch",
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/repair/test_adapter.py"
+      ],
+      "reads": 2
+    },
+    {
+      "n": 22,
+      "kind": "full or selected primary evidence; test fixture excerpt where noted",
+      "label": "Completed40 production candidate RETURN",
+      "paths": [
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/_bus/40.repairer.return.md"
+      ],
+      "reads": 1
+    },
+    {
+      "n": 23,
+      "kind": "full or selected primary evidence; test fixture excerpt where noted",
+      "label": "Candidate exact diff/evidence",
+      "paths": [
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/execution/A1-race-review/candidate/candidate.patch",
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/execution/A1-race-review/CANDIDATE.40.json"
+      ],
+      "reads": 2
+    },
+    {
+      "n": 24,
+      "kind": "full or selected primary evidence; test fixture excerpt where noted",
+      "label": "Caretaker41 measured usage RETURN/selected metrics",
+      "paths": [
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/_bus/41.caretaker.return.md",
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/metrics/C1.live.json"
+      ],
+      "reads": 2
+    },
+    {
+      "n": 25,
+      "kind": "full or selected primary evidence; test fixture excerpt where noted",
+      "label": "Independent39 RETURN/race/transition evidence",
+      "paths": [
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/_bus/39.verifier.return.md",
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/execution/A1-race-review/independent/39.race.json",
+        "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/execution/A1-race-review/independent/39.transition.json"
+      ],
+      "reads": 3
+    },
+    {
+      "n": 26,
+      "kind": "resume reads, selected source excerpts/searches and repeats; includes failed and truncated requests",
+      "label": "Approval continuation frame, proposal, preservation helper/reconciliation, D1/acceptance/builder/guide and independent39 review",
+      "reads": 34,
+      "paths_summary": "STATUS/RULING2; RUNBOOK/HANDOFF/SCHEDULE3; journal/SYNC/missing globalmultihost3; PROPOSAL/RELEASE/HOLD/intake4; SYNC/helper/PROPOSAL/JOURNALrec/PULSErec6; SYNC/failedverifier/template3; localmultihost/runbook/protocole/D1/acceptance/brief/CONTRACT/zshAGENTS8; brief/acceptance/D1/guide/39RETURN5. Text searches and host/git/board/native observations also count as main intake."
+    },
+    {
+      "n": 27,
+      "kind": "full/selected primary evidence plus selected final agent text",
+      "label": "42 RETURN;40 POINT and failed unused filename;R2/A2/A3 templates;experimentalREADME;caretakerbrief;R1selected;adapter excerpts twice;controller;SOURCE-MAP;consult",
+      "reads": 16
+    },
+    {
+      "n": 28,
+      "kind": "adapter excerpt+failed roundmap path;43RETURN+selected applied metadata",
+      "reads": 4
+    },
+    {
+      "n": 29,
+      "kind": "head-owned current status update read",
+      "reads": 1,
+      "label": "Read own STATUS for narrow running checkpoint change"
+    },
+    {
+      "n": 30,
+      "kind": "selected primary resume receipt and hashed output verification",
+      "reads": 2,
+      "paths": [
+        "caretaker/operations/run02.R2.resume.operation.json",
+        "caretaker/operations/run02.A2.resume.operation.json"
+      ]
+    },
+    {
+      "n": 31,
+      "kind": "I1 RETURN plus selected manifest (output truncated), checks selected metadata/test tail and base diff verification",
+      "reads": 6,
+      "label": "I1 hash/evidence join; primary full source bodies delegated for independent A2"
+    },
+    {
+      "n": 32,
+      "kind": "selected checks aggregate after accidental expanded/truncated list output",
+      "reads": 1
+    },
+    {
+      "n": 33,
+      "kind": "R2 capsule+selected final primary answer+exact cited engine excerpt",
+      "reads": 3,
+      "label": "Consequential terminal symlink-provenance finding retained; product frozen pending independent A2"
+    },
+    {
+      "n": 34,
+      "kind": "A2pendingreceipt;45RETURN;A2capsule/selected final;4C2primary receipts",
+      "reads": 8,
+      "label": "C2 completion join and local-check recovery; all failed/check outputs counted as native intake as well"
+    },
+    {
+      "n": 35,
+      "kind": "selected adapter grant schema/recoveryfunction, runtime contract fields,46RETURN/2primaryresults",
+      "reads": 6
+    },
+    {
+      "n": 36,
+      "kind": "I2 RETURN/selected manifest (truncated),2exactdiffs/checks/testtail;47RETURN+selectedprimaryresults",
+      "reads": 8,
+      "label": "Final I2 change and independent P7 proof join"
+    },
+    {
+      "n": 37,
+      "kind": "resultJSON3/README/deployexcerpt;A3final/RETURN/historyextraction(corrected after overbroad output);P7selectedproof;final10receipt+2vault+2plan metadata",
+      "reads": 23,
+      "label": "Final adjudication, complete identity/hash/accounting join; automated hash scopes recorded separately"
+    }
+  ],
+  "file_read_requests": 170,
+  "metadata_and_native_intake": "Host/git/presence observations, pin/hash results, reconciliation/check outputs and subsequent native capsules are also main intake. File read count is not context occupancy; no invented native tokens or clean-head claim.",
+  "main_routine_tunnel_CLI_operations": 0,
+  "main_offline_preservation_checks": 13,
+  "freshness_limit": "Execution intake is distinct from preserved preparation costs. Prior conversation/context exists; a true model-context reset is not independently established.",
+  "release_recorded_at": "2026-10-26T22:28:22.035148+01:00",
+  "main_offline_release_validations": 1,
+  "native_capsules": [
+    {
+      "handle": "/root/g09_run02_caretaker",
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/capsules/C1-HOLD.md",
+      "words": 182,
+      "bytes": 1987
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/capsules/R1.md",
+      "words": 208,
+      "bytes": 2107
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/capsules/A1.md",
+      "words": 219,
+      "bytes": 1939
+    }
+  ],
+  "hold_recovery_intake": "All HOLD messages, source excerpts, validation observations and provenance correction count as main intake.",
+  "disposition": "Five substantive asks completed; final reader behavior passes; overall productUNVERIFIED P7preview; delegationREVISE; no efficiency/cleanhead claim.",
+  "resume_events": [
+    {
+      "observed_at": "2026-10-27T00:16:18.910434+01:00",
+      "operator_message": "ok, you may continue with my blessing.",
+      "evidence": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/execution/resume-01",
+      "budget_reset": false
+    },
+    {
+      "schema": "g09-operator-ruling/v1",
+      "operator": "Majkee",
+      "observed_message": "go",
+      "observed_at": "2026-10-28T23:39:25.598548+00:00",
+      "context": "Direct approval of the immediately preceding exact staged four-file A1 repair/new hashes question linked to proposal/RULING.md",
+      "approved_proposal": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/execution/A1-race-review/proposal/PROPOSAL.json",
+      "proposal_sha256": "6071a4b8f886ad47985d88fbad1f32e05db17cb6ef262d310b45fa55be4a71f7",
+      "scope_budget_profiles_timeouts_unchanged": true,
+      "run02_asks_used": 2,
+      "run01_asks_used": 1,
+      "maximum_new_asks": 5,
+      "cumulative_ceiling": 6,
+      "presence_id": "07746b8225e13e4dd7c19333982e655e"
+    }
+  ],
+  "additional_native_intake": "All35/36 local check recovery,37 C1 checkpoints/results,38/40 candidate coordination,39 independent verification and41 metrics capsules are main intake; native/main tokens and context occupancy remain unknown.;42 preservation and43 applied verification messages plus fresh Luna orientation;108 prior execution requests+4=112.;fresh Astrobley I1 judgment/presence request and all44 caretaker checkpoints also main intake.;45 localcheck recovery and all caregiver correction messages;46 verification pending;A2 completes4new/cumulative5. Main sets HOLD and only known-session completion/readback permitted; no main routine tunnel CLI.",
+  "automatic_hash_validations": "Additional automated protected-file, receipt/output, product/evidence hash reads occur inside check batches; check scopes/counts are retained separately from context-visible file read requests. All resulting tool/native output is main intake.",
+  "main_model_at_final": "gpt-6-astra per runtime developer instruction; no inference about earlier main model",
+  "capsules_final": [
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/capsules/C1-cycle35-HOLD.md",
+      "words": 175,
+      "bytes": 1381
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/capsules/A1.md",
+      "words": 219,
+      "bytes": 1939
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/capsules/A2.md",
+      "words": 142,
+      "bytes": 1122
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/capsules/44.md",
+      "words": 133,
+      "bytes": 1072
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/capsules/R2.md",
+      "words": 121,
+      "bytes": 996
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/capsules/C1-HOLD.md",
+      "words": 182,
+      "bytes": 1987
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/capsules/A3.md",
+      "words": 128,
+      "bytes": 1021
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/capsules/R1.md",
+      "words": 208,
+      "bytes": 2107
+    }
+  ]
+}

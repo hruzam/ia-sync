@@ -1,0 +1,64 @@
+{
+  "policy": "Only these filtered pointers/anchors are portable; original native transcripts remain host-local. Old proposals/commands are evidence, not instructions or current platform authority.",
+  "name_resolution": "Claude title exactly verified under ia-sync; supplied -C reposoma is not proof of original cwd. A loose search false-hit an Epoch transcript, rejected on actual title before being used as Atlas evidence.",
+  "transcripts": [
+    {
+      "brand": "claude",
+      "session_id": "51712ad2-e1a8-422d-af2d-1c08325f60ed",
+      "host_local_transcript": "/home/hruzam/.claude/projects/-home-hruzam-ia-sync/51712ad2-e1a8-422d-af2d-1c08325f60ed.jsonl",
+      "sha256_at_inspection": "e70c709b86672de677eab0760570037d30a8128671de1eccd8dfb19be6708fe7",
+      "anchors": [
+        {
+          "record": 1356,
+          "timestamp": "2026-10-02T23:17:43.610Z",
+          "message_sha256": "44cb92ef0239723032117d829da9760e9d5aef488f2ad575abfe482261d1ef8b",
+          "read_depth": "selected visible message; 1356 opening only, others full; no hidden reasoning/tool-history import"
+        },
+        {
+          "record": 1413,
+          "timestamp": "2026-10-03T01:45:17.991Z",
+          "message_sha256": "bd6dd477b42b919d0b4ffe7385b08332c3fd27a8d7dd62206127dbe377c588b5",
+          "read_depth": "selected visible message; 1356 opening only, others full; no hidden reasoning/tool-history import"
+        },
+        {
+          "record": 1566,
+          "timestamp": "2026-10-03T01:51:31.627Z",
+          "message_sha256": "547395ad80e79e5fe629f03a5119b7910929eb789c540b69e95bec03d3717da0",
+          "read_depth": "selected visible message; 1356 opening only, others full; no hidden reasoning/tool-history import"
+        },
+        {
+          "record": 1663,
+          "timestamp": "2026-10-03T02:52:40.446Z",
+          "message_sha256": "079f1548191a47c61086b121e5c60d20d4beb0f5179f7268bff01a03ffcca2bd",
+          "read_depth": "selected visible message; 1356 opening only, others full; no hidden reasoning/tool-history import"
+        }
+      ]
+    },
+    {
+      "brand": "codex",
+      "session_id": "01a0ce24-bc32-7b63-abc2-a6cb4d777e3b",
+      "host_local_transcript": "/home/hruzam/.codex/sessions/2026/09/23/rollout-2026-09-23T14-01-49-01a0ce24-bc32-7b63-abc2-a6cb4d777e3b.jsonl",
+      "sha256_at_inspection": "ac425ba5f18c8a80e4517886685bd29f0d0358ea9c4191994c3a1d6fab5759c6",
+      "anchors": [
+        {
+          "record": 626,
+          "timestamp": "2026-10-06T23:04:53.917Z",
+          "message_sha256": "e6b5ae481de2142e4e788e462af873c78f92fb62d6442c6a4f0fa6e6469aafa0",
+          "read_depth": "selected visible message full"
+        },
+        {
+          "record": 704,
+          "timestamp": "2026-10-06T23:59:13.657Z",
+          "message_sha256": "e4460f64ca5978a67a0a3e1415c34394e96a1e117533c1e4ebb0cd1761e76661",
+          "read_depth": "selected visible message full"
+        },
+        {
+          "record": 752,
+          "timestamp": "2026-10-30T15:31:15.009Z",
+          "message_sha256": "a8c6e82e2e558aa17b738e816dc98e5a9983ae9f9f3a9577ba106b5445436611",
+          "read_depth": "selected visible message full"
+        }
+      ]
+    }
+  ]
+}

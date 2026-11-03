@@ -1,0 +1,192 @@
+{
+  "schema": "codex-context-capture/v1",
+  "captured_at": "2026-10-26T22:11:43+01:00",
+  "host": {
+    "hostname": "hruzam-120922",
+    "logical": "office",
+    "platform": "Linux-7.1.3-1-MANJARO-x86_64-with-glibc2.44",
+    "shell": "/usr/bin/zsh"
+  },
+  "tools": {
+    "codex": {
+      "path": "/home/hruzam/.local/bin/codex",
+      "version": "codex-cli 0.164.0"
+    },
+    "git": {
+      "path": "/usr/bin/git",
+      "version": "git version 2.55.0"
+    },
+    "rg": {
+      "path": "/home/hruzam/.codex/packages/app-server-daemon/releases/0.164.0-x86_64-unknown-linux-musl/codex-path/rg",
+      "version": "ripgrep 15.2.0 (rev e89fff89ac)\n\nfeatures:+pcre2\nsimd(compile):+SSE2,-SSSE3,-AVX2\nsimd(runtime):+SSE2,+SSSE3,+AVX2\n\nPCRE2 10.45 is available (JIT is available)"
+    },
+    "python3": {
+      "path": "/usr/bin/python3",
+      "version": "Python 3.14.7"
+    },
+    "jq": {
+      "path": "/usr/bin/jq",
+      "version": "jq-1.8.2"
+    }
+  },
+  "cwd": "/home/hruzam/ia-sync",
+  "instructions": [
+    "/home/hruzam/.codex/AGENTS.md",
+    "/home/hruzam/ia-sync/AGENTS.md",
+    "/home/hruzam/ia-sync/CLAUDE.md"
+  ],
+  "repository": {
+    "root": "/home/hruzam/ia-sync",
+    "branch": "main",
+    "head": "5c26d80aa3c90de6cafc1c47a7d199fdbcc7466d",
+    "upstream": "origin/main",
+    "tracked_state": "dirty",
+    "status": [
+      "M .dev/session/germline-03-foundation-audit/STATUS.md",
+      " M .dev/session/germline-03-foundation-audit/raw/CRITERION.cartan.g03-first-split-01.md",
+      " M .dev/session/germline-03-foundation-audit/raw/MANIFEST.cartan.g03-first-split-01.md",
+      " M .dev/session/germline-04-wiring-plan/RUNBOOK.md",
+      " M .dev/session/germline-04-wiring-plan/STATUS.md",
+      " M .dev/session/germline-04-wiring-plan/raw/HANDOFF.g06-make-program.md",
+      " M AGENTS.md",
+      " M journal.host-cleanup.md",
+      " M pulse.md",
+      " M zsh/ai/tunnel-codex.py",
+      " M zsh/config.office.zsh",
+      "?? .dev/session/germline-03-foundation-audit/_bus/",
+      "?? .dev/session/germline-03-foundation-audit/raw/HANDOFF.cartan.g03-g06-exit-context.2026-10-22.md",
+      "?? .dev/session/germline-03-foundation-audit/raw/HANDOFF.oraculum.x1-carried-items.2026-10-23.md",
+      "?? .dev/session/germline-03-foundation-audit/raw/HANDOFF.oraculum.x3-sitting-card.2026-10-23.md",
+      "?? .dev/session/germline-03-foundation-audit/raw/OBS.myShell.atlas-review-scope.2026-10-22.md",
+      "?? .dev/session/germline-03-foundation-audit/raw/UNDERSTANDING.cartan.tunnel-access.before-fold.2026-10-23.md",
+      "?? .dev/session/germline-04-wiring-plan/raw/CLOSE.g04-preparation.2026-10-20.md",
+      "?? .dev/session/germline-07-make-program/RUNBOOK.md",
+      "?? .dev/session/germline-07-make-program/STATUS.md",
+      "?? .dev/session/germline-07-make-program/_bus/",
+      "?? .dev/session/germline-07-make-program/raw/experiment_1/",
+      "?? .dev/session/germline-08-caretaker-receipts/",
+      "?? .dev/session/germline-09-source-reader/",
+      "?? .dev/session/germline-A0-agent-project-line/",
+      "?? .germline/",
+      "?? _staging/codex/cartan.candidate.source-reader-pilot.2026-10-26.md",
+      "?? _staging/codex/cartan.observation.g09-R1-transport.2026-10-26.md",
+      "?? _staging/codex/cartan.observation.g09-run-01-closeout-review.2026-10-26.md",
+      "?? _staging/codex/g09-R1-diagnostic.2026-10-26/"
+    ],
+    "ignored_project_state": [
+      "M .dev/session/germline-03-foundation-audit/STATUS.md",
+      " M .dev/session/germline-03-foundation-audit/raw/CRITERION.cartan.g03-first-split-01.md",
+      " M .dev/session/germline-03-foundation-audit/raw/MANIFEST.cartan.g03-first-split-01.md",
+      " M .dev/session/germline-04-wiring-plan/RUNBOOK.md",
+      " M .dev/session/germline-04-wiring-plan/STATUS.md",
+      " M .dev/session/germline-04-wiring-plan/raw/HANDOFF.g06-make-program.md",
+      "?? .dev/session/germline-03-foundation-audit/_bus/",
+      "?? .dev/session/germline-03-foundation-audit/raw/HANDOFF.cartan.g03-g06-exit-context.2026-10-22.md",
+      "?? .dev/session/germline-03-foundation-audit/raw/HANDOFF.oraculum.x1-carried-items.2026-10-23.md",
+      "?? .dev/session/germline-03-foundation-audit/raw/HANDOFF.oraculum.x3-sitting-card.2026-10-23.md",
+      "?? .dev/session/germline-03-foundation-audit/raw/OBS.myShell.atlas-review-scope.2026-10-22.md",
+      "?? .dev/session/germline-03-foundation-audit/raw/UNDERSTANDING.cartan.tunnel-access.before-fold.2026-10-23.md",
+      "?? .dev/session/germline-04-wiring-plan/raw/CLOSE.g04-preparation.2026-10-20.md",
+      "?? .dev/session/germline-07-make-program/RUNBOOK.md",
+      "?? .dev/session/germline-07-make-program/STATUS.md",
+      "?? .dev/session/germline-07-make-program/_bus/",
+      "?? .dev/session/germline-07-make-program/raw/experiment_1/",
+      "?? .dev/session/germline-08-caretaker-receipts/",
+      "?? .dev/session/germline-09-source-reader/",
+      "?? .dev/session/germline-A0-agent-project-line/",
+      "!! .dev/session/germline-07-make-program/raw/experiment_1/caretaker/tunnel.peer-a.state.json",
+      "!! .dev/session/germline-07-make-program/raw/experiment_1/caretaker/tunnel.peer-b.state.json",
+      "!! .dev/session/germline-08-caretaker-receipts/raw/experiment_2/live/tunnel.peer-a.state.json",
+      "!! .dev/session/germline-08-caretaker-receipts/raw/experiment_2/live/tunnel.peer-b.state.json",
+      "!! .dev/session/germline-09-source-reader/raw/closeout/snapshots/tunnel.researcher.snapshot-receipt.state.json",
+      "!! .dev/session/germline-09-source-reader/raw/closeout/snapshots/tunnel.researcher.state.json",
+      "!! .dev/session/germline-09-source-reader/raw/hold-line/history/",
+      "!! .dev/session/jev-implementation-00-build/raw/jev-events.example.jsonl",
+      "!! .dev/session/jev-implementation-00-build/raw/majkee-photos.2026-10-03/p0.jev-implementation.creative-buffer-loop.jpg",
+      "!! .dev/session/jev-implementation-00-build/raw/majkee-photos.2026-10-03/p1.jev-implementation.protocol-1-shuttle.jpg",
+      "!! .dev/session/jev-implementation-00-build/raw/majkee-photos.2026-10-03/p2.jev-implementation.protocol-2-placement.jpg",
+      "!! .dev/session/jev-implementation-00-build/raw/majkee-photos.2026-10-03/p3.jev-implementation.harness-shape-challenger.jpg",
+      "!! .dev/session/jev-implementation-00-build/raw/majkee-photos.2026-10-03/p4.jev-implementation.math-conflict-judgement.jpg",
+      "!! .dev/session/jev-implementation-00-build/raw/majkee-photos.2026-10-03/p5.jev-implementation.cascade-schema-map.jpg",
+      "!! .dev/session/jev-implementation-00-build/raw/majkee-photos.2026-10-03/s1.study.advisor-agent-stack.jpg",
+      "!! .dev/session/jev-implementation-00-build/raw/majkee-photos.2026-10-03/s2.study.jev-as-a-judge.post-1.jpg",
+      "!! .dev/session/jev-implementation-00-build/raw/majkee-photos.2026-10-03/s3.study.jev-as-a-judge.post-2.jpg",
+      "!! .dev/session/jev-implementation-00-build/raw/majkee-photos.2026-10-03/s4.study.jev-engineering-coding-agents.jpg",
+      "!! .dev/session/jev-implementation-00-build/raw/majkee-photos.2026-10-03/t1.tunnel.protocol-1-two-hemispheres.jpg",
+      "!! .dev/session/jev-implementation-00-build/raw/majkee-photos.2026-10-03/t2.tunnel.protocol-2-claude-head-codex-workers.jpg",
+      "!! .dev/session/jev-implementation-00-build/raw/majkee-photos.2026-10-03/t3.tunnel.protocol-3-tester-hands-on.jpg",
+      "!! .dev/session/tunnel-02-programmatic-scaling/tunnel.state.json",
+      "!! .dev/session/tunnel-03-feedback-upgrade/tunnel.fork.state.json",
+      "!! .dev/session/tunnel-03-feedback-upgrade/tunnel.state.json",
+      "!! .dev/session/tunnel-upgrade-01-parametrization/raw/"
+    ],
+    "unstaged_stat": [
+      ".../session/germline-03-foundation-audit/STATUS.md |  68 +++++++-----",
+      " .../raw/CRITERION.cartan.g03-first-split-01.md     |  60 +++++++++--",
+      " .../raw/MANIFEST.cartan.g03-first-split-01.md      | 120 ++++++++++++++++++---",
+      " .dev/session/germline-04-wiring-plan/RUNBOOK.md    |  39 ++++---",
+      " .dev/session/germline-04-wiring-plan/STATUS.md     |  54 +++++-----",
+      " .../raw/HANDOFF.g06-make-program.md                |   7 +-",
+      " AGENTS.md                                          |   8 ++",
+      " journal.host-cleanup.md                            |  72 +++++++++++++",
+      " pulse.md                                           |  15 +++",
+      " zsh/ai/tunnel-codex.py                             | 111 ++++++++++++++-----",
+      " zsh/config.office.zsh                              |  12 ++-",
+      " 11 files changed, 453 insertions(+), 113 deletions(-)"
+    ],
+    "staged_stat": [],
+    "recent_commits": [
+      {
+        "sha": "5c26d80aa3c90de6cafc1c47a7d199fdbcc7466d",
+        "date": "2026-10-22T08:23:53+02:00",
+        "author": "hruzam",
+        "subject": "composer: preserve reusable contract-testing brief for G07"
+      },
+      {
+        "sha": "0aa2ec5408b3bf0a28041b8278f1052554eacecd",
+        "date": "2026-10-22T02:48:17+02:00",
+        "author": "hruzam",
+        "subject": "germline-07 shelf: SCARS.g06 from flight (project-facing scars from germline-06)"
+      },
+      {
+        "sha": "e290aeed8120a7a4bbeae250dba94e56860f5d52",
+        "date": "2026-10-22T02:43:21+02:00",
+        "author": "hruzam",
+        "subject": "2026-10-22 . flight update . termbrana push"
+      },
+      {
+        "sha": "9a198bac0f10b982b5270d77ce5f38746f0df4ea",
+        "date": "2026-10-22T00:46:02+02:00",
+        "author": "hruzam",
+        "subject": "2026-10-21 . germline-06-full-audit (flight)"
+      },
+      {
+        "sha": "91bfd5e413c8a953220dbd88a4fc59a1ef411eec",
+        "date": "2026-10-22T00:33:05+02:00",
+        "author": "hruzam",
+        "subject": "germline-01/06: record majkee decisions (hook option A applied; inert read-only keys left; home can wait; child sitting gavel)"
+      }
+    ]
+  },
+  "codex_session": {
+    "session_id": "01a0f5b9-b2ae-7392-af89-f434d5536d88",
+    "rollout": "/home/hruzam/.codex/sessions/2026/10/01/rollout-2026-10-01T06-29-43-01a0f5b9-b2ae-7392-af89-f434d5536d88.jsonl",
+    "started_at": "2026-10-01T04:29:43.027Z",
+    "originator": "codex-tui",
+    "cli_version_at_start": "0.159.3",
+    "source": "vscode",
+    "model_provider": "openai",
+    "model": "gpt-6.1-sol",
+    "effort": "high"
+  },
+  "transport_candidate": null,
+  "safety": {
+    "excluded": [
+      "environment values except MACHINE_NAME and SHELL",
+      "credentials and authentication state",
+      "remote URLs",
+      "session transcript content",
+      "database contents"
+    ]
+  }
+}

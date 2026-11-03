@@ -1,0 +1,57 @@
+=== ia-sync deploy started at Mon Oct 26 22:39:57 CET 2026 ===
+Machine: office
+*** DRY RUN — nothing will be written ***
+
+→ ~/.germline (global germline layer)
+.d..t...... agents/
+cd+++++++++ agents/oraculum/
+>f+++++++++ agents/oraculum/binding.claude.md
+>f+++++++++ agents/oraculum/binding.codex.md
+>f+++++++++ agents/oraculum/identity.md
+  germline/ [dry] would deploy (itemised above)
+  ghosts: none
+
+→ ~/.claude
+  skills/ [dry] would deploy (itemised above)
+>f.st...... oraculum.md
+  agents/ [dry] would deploy (itemised above)
+  commands/ [dry] would deploy (itemised above)
+  hooks/ [dry] would deploy (itemised above)
+  [dry] UPDATE  settings.json (backup would be taken)
+  [dry] same    CLAUDE.md
+
+→ ~/.codex + ~/.agents/skills
+  [dry] UPDATE  Codex AGENTS.md (backup would be taken)
+  [dry] same    Codex profile houston.config.toml
+  [dry] CREATE  Codex profile oraculum.config.toml
+>f.st...... oraculum.toml
+  Codex agents/ [dry] would deploy (itemised above)
+  Codex skills/ [dry] would deploy (itemised above)
+
+→ ~/.gemini
+  agents/ [dry] would deploy (itemised above)
+  [dry] same    state.json
+  [dry] same    GEMINI.md
+  [dry] same    config/mcp_config.json
+  config/projects/ [dry] would deploy (itemised above)
+  [dry] same    antigravity-cli/settings.json
+  [dry] same    antigravity-cli/keybindings.json
+
+→ ~/.majkee
+  ~/.majkee [dry] would deploy (itemised above) (additive; export/ is machine-local, untouched)
+
+→ ~/.nanorc
+  [dry] same    .nanorc
+
+→ ~/.config/zsh
+gen-temple-map: up to date
+.d..t...... ./
+>f.st...... ai/tunnel-codex.py
+.d..t...... ai/__pycache__/
+>f.st...... ai/__pycache__/tunnel-codex.cpython-314.pyc
+  [dry] same    config.office.zsh → config.zsh
+  [dry] same    zshrc.office → ~/.zshrc
+
+=== Deploy complete ===
+Next (out-of-repo installs deploy.sh can't do):
+  bash /home/hruzam/ia-sync/install-pkgs/run.sh update

@@ -1,0 +1,17 @@
+{
+  "schema": "g09-offline-caretaker-case/v1",
+  "case": "revoked-release",
+  "simulated": true,
+  "target_turns": 0,
+  "evidence": {
+    "release": {
+      "run_id": "run-02",
+      "authorized": false
+    },
+    "vault": {
+      "threadId": "SIMULATED-RUN02-RESEARCHER",
+      "lastTurnId": "SIMULATED-COMPLETED-TURN"
+    },
+    "vault_path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/tunnel.researcher.state.json"
+  }
+}

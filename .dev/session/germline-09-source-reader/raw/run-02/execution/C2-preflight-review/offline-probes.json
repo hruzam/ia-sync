@@ -1,0 +1,8 @@
+{
+  "stale_assertion": "AssertionError reproduced",
+  "historical_turn": "01a17a86-87b6-76a3-a848-d93cf4a4d040",
+  "new_ask_turn": "01a184ef-6e70-7f11-907b-3ac8af6fe2d1",
+  "read_turn": "01a184ef-6e70-7f11-907b-3ac8af6fe2d1",
+  "ask_read_match": true,
+  "subprocess_probe": "subprocess execution is blocked"
+}

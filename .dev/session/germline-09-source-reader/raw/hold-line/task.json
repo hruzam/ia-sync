@@ -1,0 +1,47 @@
+{
+  "task": "germline-09-source-reader",
+  "stage": "fixed-trial-contract",
+  "product_scope": "Browse/read existing germline, guides and Codex/Claude skill sources with provenance; no build/install/activation",
+  "status_owner": "Cartan",
+  "caretaker_role": "existing native implementer; same handle within the actual fresh-root run",
+  "implementation_role": "native astrobley",
+  "targets": {
+    "researcher": {
+      "planned_cycles": [
+        "R1",
+        "R2"
+      ],
+      "model": "gpt-6.1-sol",
+      "effort": "high"
+    },
+    "auditor": {
+      "planned_cycles": [
+        "A1",
+        "A2"
+      ],
+      "conditional_cycle": "A3 after changed audited behavior; requires grant",
+      "model": "gpt-6.1-sol",
+      "effort": "high"
+    }
+  },
+  "required_before_dispatch": [
+    "Head-authored live RUNBOOK, STATUS and numbered POINT",
+    "Explicit execution grant, profiles, source/read scope and target-turn budget",
+    "Disjoint write ownership including caretaker evidence/receipt adapter",
+    "Verified program/source pins and canonical deployed preamble",
+    "Explicit distinct vaults and role packets"
+  ],
+  "expected_status_path_after_release": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/STATUS.md",
+  "main_entry": "ENTRY.md",
+  "caretaker_entry": "controller.md",
+  "default_return_words": 300,
+  "main_routine_tunnel_command_target": 0,
+  "claude_programmatic_calls": "excluded",
+  "first_target_turn": "substantive bootstrap with preamble none",
+  "warm_target_turns": "global deployed preamble armed only after verified orientation",
+  "source_hash_manifest": "sources.json",
+  "operator_release_required": true,
+  "release_file": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/control/RELEASE.json",
+  "maximum_target_ask_attempts": 5,
+  "schedule_file": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/SCHEDULE.md"
+}

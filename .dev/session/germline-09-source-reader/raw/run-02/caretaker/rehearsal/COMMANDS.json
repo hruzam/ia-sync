@@ -1,0 +1,19 @@
+{
+  "schema": "g09-caretaker-preparation-commands/v1",
+  "readiness": {
+    "command": "/usr/bin/python3 -B /home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/run_operations.py readiness",
+    "stdout": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/rehearsal/readiness.stdout.txt",
+    "stderr": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/rehearsal/readiness.stderr.txt",
+    "exit_code": 2,
+    "exit_code_basis": "POINT26 and TUNNEL document 2 for pending hold; output was the expected unresolved/invalid HOLD diagnostic. Initial wrapper failed to persist rc because zsh's read-only status variable rejected assignment; code is therefore documented/expected, not independently captured. Command was not repeated."
+  },
+  "inspect": {
+    "command": "/usr/bin/python3 -B /home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/run_operations.py inspect PREPARATION.no-such-operation",
+    "stdout": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/rehearsal/inspect.stdout.txt",
+    "stderr": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/rehearsal/inspect.stderr.txt",
+    "exit_code": 0,
+    "observed": true,
+    "result": "{\"classification\": \"unknown\", \"reason\": \"missing-or-malformed-receipt\"}"
+  },
+  "target_attempts_initiated": 0
+}

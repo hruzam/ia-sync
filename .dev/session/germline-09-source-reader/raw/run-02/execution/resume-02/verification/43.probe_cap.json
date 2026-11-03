@@ -1,0 +1,27 @@
+{
+  "applied_sha256": "4a9458a834e6825c8bfad44ec345bdcbd2f8d90483e9e93bdbcbcd1081042ae5",
+  "checks": [
+    {
+      "case": "sequential-five-valid-completed-asks-sixth-cap-branch",
+      "ask_count": 5,
+      "refusal": "target ask cap exhausted"
+    },
+    {
+      "case": "concurrent-at-four",
+      "outcomes": [
+        {
+          "outcome": "refused",
+          "reason": "ask reservation is already in progress"
+        },
+        {
+          "outcome": "reserved"
+        }
+      ],
+      "ask_count": 5,
+      "all_receipts_kind_ask": true,
+      "note": "Concurrent refusal may be lock, prior pending uncertainty, or cap; sequential check separately proves cap branch."
+    }
+  ],
+  "target_model_turns": 0,
+  "verdict": "PASS"
+}

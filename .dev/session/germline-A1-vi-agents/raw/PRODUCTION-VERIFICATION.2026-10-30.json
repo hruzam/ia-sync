@@ -1,0 +1,159 @@
+{
+  "created": "2026-10-30T19:22:59.171846+01:00",
+  "scope": "Control-document consolidation and re-entry routing only; no role build/runtime qualification",
+  "verdict": "PASS",
+  "checks": [
+    {
+      "name": "single current production route and identical gate",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "selected head and unstarted builder intake",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "002-builder has exactly five unchecked phases",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "002-builder input pointers exist",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "002-builder current pointers use A1 lineage",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "003-shuttle has exactly five unchecked phases",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "003-shuttle input pointers exist",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "003-shuttle current pointers use A1 lineage",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "004-epoch has exactly five unchecked phases",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "004-epoch input pointers exist",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "004-epoch current pointers use A1 lineage",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "historical Oraculum acceptance and parked open comparison remain distinct",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "all original archive bytes match captured before-state",
+      "pass": true,
+      "detail": {
+        "checked": 21,
+        "mismatch": []
+      }
+    },
+    {
+      "name": "other original A1 evidence unchanged",
+      "pass": true,
+      "detail": {
+        "checked": 22,
+        "changed": []
+      }
+    },
+    {
+      "name": "all captured role source and A2-A5 sibling files unchanged",
+      "pass": true,
+      "detail": {
+        "checked": 254,
+        "changed": []
+      }
+    },
+    {
+      "name": "no new role source or sibling files",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "germline-A6-harness-builder has no independent executable control",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "germline-A7-shuttle-execution has no independent executable control",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "germline-A8-epoch-researcher has no independent executable control",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "current control Markdown links resolve",
+      "pass": true,
+      "detail": []
+    },
+    {
+      "name": "one new card follows shared schema and matches staged bytes",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "new card pointers are whole and resolve",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "three own superseded cards archived unchanged",
+      "pass": true,
+      "detail": null
+    },
+    {
+      "name": "all other captured live cards unchanged",
+      "pass": true,
+      "detail": {
+        "checked": 53,
+        "changed": []
+      }
+    },
+    {
+      "name": "new control documents have no trailing whitespace",
+      "pass": true,
+      "detail": []
+    }
+  ],
+  "independent_review": {
+    "route": "native astrobley /root/agent_build_line_mechanics",
+    "verdict": "PASS with limits",
+    "observed_scope": "Read-only current control/routing/parked-evidence review; 21 archived hashes checked",
+    "minor_findings_resolved": "Clarified two older A0/CACHE phrases; current group briefs now use A1 lineage pointers",
+    "limits": "No agent-source or runtime behavior qualification"
+  },
+  "current_control_hashes": {
+    ".dev/session/germline-A1-vi-agents/RUNBOOK.md": "09a3eba229882a9ed76ddec8a5680edd9e930df607f53571d199395be860a72f",
+    ".dev/session/germline-A1-vi-agents/STATUS.md": "8a68be26ad866829a7c3a1f767d98c133b042c7220a856f1003435f08a02e6ed",
+    ".dev/session/germline-A1-vi-agents/CACHE.md": "476877511cd7bc13939e19fffb5a0a046ba948f83793af2efb815941b3169e24",
+    ".dev/session/germline-A1-vi-agents/raw/003-shuttle/BRIEF.md": "5a02d9df04f5ac078f06a087862a966ef46aaa93088d7a9820d7b062a451d326",
+    ".dev/session/germline-A1-vi-agents/raw/004-epoch/BRIEF.md": "15b0f0b6693e11a1d30661d5439896a2136f245d0dd51ee115904d9f189f8457",
+    ".dev/session/germline-A1-vi-agents/raw/002-builder/BRIEF.md": "1d8f8300098ec4b5eeee88c273a1172737334b70e79ed76f44b65932c18fc2b1"
+  }
+}

@@ -1,0 +1,9 @@
+=== ia-sync deploy started at Mon Oct 26 23:06:42 CET 2026 ===
+Machine: office
+Scope: global germline (~/.germline) only
+
+→ ~/.germline (global germline layer)
+  germline/ deployed
+  ghosts: none
+
+=== Germline deploy complete ===

@@ -1,0 +1,110 @@
+{
+  "observations": [
+    {
+      "key": "run02.R1.ask",
+      "status": "completed",
+      "exit": 0,
+      "kind": "ask",
+      "attempt_number": 1,
+      "output_hash_mismatches": []
+    },
+    {
+      "key": "run02.A1.ask",
+      "status": "completed",
+      "exit": 0,
+      "kind": "ask",
+      "attempt_number": 2,
+      "output_hash_mismatches": []
+    },
+    {
+      "key": "run02.researcher.bootstrap",
+      "status": "completed",
+      "exit": 0,
+      "kind": "bootstrap",
+      "attempt_number": null,
+      "output_hash_mismatches": []
+    },
+    {
+      "key": "run02.auditor.bootstrap",
+      "status": "completed",
+      "exit": 0,
+      "kind": "bootstrap",
+      "attempt_number": null,
+      "output_hash_mismatches": []
+    },
+    {
+      "key": "run02.R1.preamble",
+      "status": "completed",
+      "exit": 0,
+      "kind": "preamble",
+      "attempt_number": null,
+      "output_hash_mismatches": []
+    },
+    {
+      "key": "run02.A1.preamble",
+      "status": "completed",
+      "exit": 0,
+      "kind": "preamble",
+      "attempt_number": null,
+      "output_hash_mismatches": []
+    }
+  ],
+  "identities": {
+    "researcher": {
+      "threadId": "01a17a86-873c-72b0-8787-932736a0f7d9",
+      "lastTurnId": "01a17a86-87b6-76a3-a848-d93cf4a4d040",
+      "turnOverrides": {
+        "effort": "high"
+      },
+      "runtime": {
+        "approvalPolicy": "never",
+        "cwd": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader",
+        "instructionSources": [
+          "/home/hruzam/.codex/AGENTS.md",
+          "/home/hruzam/ia-sync/AGENTS.md"
+        ],
+        "model": "gpt-6.1-sol",
+        "observedAt": "2026-10-26T23:26:08Z",
+        "reasoningEffort": "high",
+        "sandbox": {
+          "networkAccess": false,
+          "type": "readOnly"
+        }
+      },
+      "sandbox": {
+        "networkAccess": false,
+        "type": "readOnly"
+      },
+      "preamble": "/home/hruzam/.germline/tunnel/tunnel.preamble.md"
+    },
+    "auditor": {
+      "threadId": "01a17a89-cc0a-7053-b9b2-e5bdac784fe4",
+      "lastTurnId": "01a17a89-cca1-71c0-8cea-0abe10024bcd",
+      "turnOverrides": {
+        "effort": "high"
+      },
+      "runtime": {
+        "approvalPolicy": "never",
+        "cwd": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader",
+        "instructionSources": [
+          "/home/hruzam/.codex/AGENTS.md",
+          "/home/hruzam/ia-sync/AGENTS.md"
+        ],
+        "model": "gpt-6.1-sol",
+        "observedAt": "2026-10-26T23:29:34Z",
+        "reasoningEffort": "high",
+        "sandbox": {
+          "networkAccess": false,
+          "type": "readOnly"
+        }
+      },
+      "sandbox": {
+        "networkAccess": false,
+        "type": "readOnly"
+      },
+      "preamble": "/home/hruzam/.germline/tunnel/tunnel.preamble.md"
+    }
+  },
+  "distinct_threads": true,
+  "source": "local selected metadata only; no RPC"
+}

@@ -1,0 +1,16 @@
+{
+  "kind": "offline static and pure-helper validation",
+  "target_model_turns": 0,
+  "app_server_processes": 0,
+  "program_stamp_links": 3,
+  "unique_program_stamps": 4,
+  "pinned_files": 12,
+  "all_hashes_match": true,
+  "source_deployed_preamble_match": true,
+  "cold_packet_unchanged": true,
+  "warm_packet_exact_prefix": true,
+  "missing_preamble_refused": true,
+  "main_entry_words": 236,
+  "execution_grant": null,
+  "model_consumption_witness": "not run"
+}

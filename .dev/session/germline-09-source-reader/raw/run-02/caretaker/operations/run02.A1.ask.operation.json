@@ -1,0 +1,126 @@
+{
+  "argv": [
+    "/home/hruzam/ia-sync/zsh/ai/tunnel-codex.zsh",
+    "ask",
+    "Return exact first line `G09.run-02.A1`.\nSecond reply line must be exactly `BOOTSTRAP {\"run_id\":\"run-02\",\"role\":\"auditor\",\"scope\":\"G09-source-reader-read-only\",\"sources\":[\"/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/briefs/auditor.md\",\"/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/ACCEPTANCE.md\",\"/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/input/SOURCE-MAP.md\"]}`. This reports consumed pointers; it does not prove understanding.\n\nThis is your first substantive task and cold orientation as independent auditor. Read\n`/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/briefs/auditor.md` once and\nnecessary applicable runtime instructions. You are read-only and write no project files.\n\nRead `/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/ACCEPTANCE.md`,\n`/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/input/SOURCE-MAP.md`, and\nthe compiled explicit caretaker adapter/check paths below. Do not consume R1's conclusions.\nQuestion: can the proposed acceptance distinguish a correct source reader from a plausible\nbut misleading one, and does the adapter preserve the declared no-replay/budget boundary?\n\n- `/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/run_operations.py` (SHA256 bfa6a3fc7c09591881575c87fb8ad5bde066188cc42f814028dbeffff4d77b50)\n- `/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/repair/test_adapter.py` (SHA256 d81a8e51340b2069c50c4fc10dcf4a099946374dc5fd50dbb28503b2e2063023)\n- `/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/repair/test_tunnel_checkpoints.py` (SHA256 89affaddb0eed2c9509db6c2f537d5257195a033be8b452974ecd9a6211c3c9a)\n- `/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/checks/LUNA.verification.json` (SHA256 464b36c2c8b351450791b603cc4aab40420c3b5fd731ef64c4ab82008a5be978)\n- `/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/checks/FINAL.readiness.json` (SHA256 7cd4b4b901af25d4afbf3cbaa2416a013fe20edcafae88cba06c927fe0ba08dd)\n\nChallenge the criteria before the product exists. Give concrete counterexamples for same-name\nvendor/source copies, ambiguous guide chapters, or found-versus-active wording; explain which\ncriteria catch them and any missing decisive check. Inspect the adapter's ask allowlist,\nper-cycle exclusive records and max-five guard without running model commands. A material\nmechanic-safety defect must reach the main as a hold; do not smooth it into product advice.\n\nYour bootstrap acknowledgement names role/scope and consumed source pointers. Reply\nVERDICT: PASS | REVISE | UNVERIFIED for the criteria/adapter boundaries, with evidence,\ncounterexample and smallest required correction. No web required; no product/fixture writes,\nsubagents, model CLI or implementation. Default <=300 words with a declared material overrun.\n",
+    "--state",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/tunnel.auditor.state.json"
+  ],
+  "attempt_number": 2,
+  "cycle": "A1",
+  "elapsed_seconds": 133.655,
+  "ended_monotonic": 3022829.743165896,
+  "ended_unix": 1793057346.6027207,
+  "exit": 0,
+  "key": "run02.A1.ask",
+  "kind": "ask",
+  "outputs": {
+    "stderr": {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/operations/output/run02.A1.ask.stderr.txt",
+      "sha256": "6a0802c591f2ab2223c68b6163eaba6bc51b70276c7f3948c9903741b8b902db"
+    },
+    "stdout": {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/operations/output/run02.A1.ask.stdout.txt",
+      "sha256": "450ca6246d8efbbe52ba380efb1ebc32e48f579b2297e7ecbe42d20b9c1347d8"
+    }
+  },
+  "pins": {
+    "pins": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/hold-line/sources.json",
+    "sha256": "d72e6b552f7e05e2e5c5657631526b989dea28d2cc3a372919845a1c86ad51db"
+  },
+  "prompt": {
+    "named_inputs": [
+      {
+        "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/run_operations.py",
+        "sha256": "bfa6a3fc7c09591881575c87fb8ad5bde066188cc42f814028dbeffff4d77b50"
+      },
+      {
+        "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/repair/test_adapter.py",
+        "sha256": "d81a8e51340b2069c50c4fc10dcf4a099946374dc5fd50dbb28503b2e2063023"
+      },
+      {
+        "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/repair/test_tunnel_checkpoints.py",
+        "sha256": "89affaddb0eed2c9509db6c2f537d5257195a033be8b452974ecd9a6211c3c9a"
+      },
+      {
+        "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/checks/LUNA.verification.json",
+        "sha256": "464b36c2c8b351450791b603cc4aab40420c3b5fd731ef64c4ab82008a5be978"
+      },
+      {
+        "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/checks/FINAL.readiness.json",
+        "sha256": "7cd4b4b901af25d4afbf3cbaa2416a013fe20edcafae88cba06c927fe0ba08dd"
+      }
+    ],
+    "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/packets/A1.prompt.txt",
+    "sha256": "abcc807c22bf767fc60e3dfcdaf4a0e00d417e150f5da12ba4e69186ee32b589",
+    "template_sha256": "e710655d75eb3026f788197527f33ce1633fbe90ba80729fd0eb001f468a8700"
+  },
+  "release": {
+    "contract_sha256": "84be154eb074088af75f003cd760b0ccb904061afb46851135e8ad4203f1d214",
+    "release": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/control/RELEASE.json"
+  },
+  "remote_outcome": "reported-success",
+  "role": "auditor",
+  "runner": {
+    "pid": 2549552,
+    "start": "302269585"
+  },
+  "schema": "g09-run02-receipt/v1",
+  "started_monotonic": 3022696.087904693,
+  "started_unix": 1793057212.9474611,
+  "state_after": {
+    "cwd": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader",
+    "enabled": true,
+    "inFlightTurnId": null,
+    "lastTurnId": "01a17a89-cca1-71c0-8cea-0abe10024bcd",
+    "model": "gpt-6.1-sol",
+    "preamble": null,
+    "runtime": {
+      "approvalPolicy": "never",
+      "cwd": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader",
+      "instructionSources": [
+        "/home/hruzam/.codex/AGENTS.md",
+        "/home/hruzam/ia-sync/AGENTS.md"
+      ],
+      "model": "gpt-6.1-sol",
+      "observedAt": "2026-10-26T23:26:53Z",
+      "reasoningEffort": "high",
+      "sandbox": {
+        "networkAccess": false,
+        "type": "readOnly"
+      }
+    },
+    "sandbox": {
+      "networkAccess": false,
+      "type": "readOnly"
+    },
+    "threadId": "01a17a89-cc0a-7053-b9b2-e5bdac784fe4",
+    "turnOverrides": {
+      "effort": "high"
+    }
+  },
+  "state_before": {
+    "cwd": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader",
+    "enabled": true,
+    "inFlightTurnId": null,
+    "lastTurnId": null,
+    "model": "gpt-6.1-sol",
+    "preamble": null,
+    "runtime": null,
+    "sandbox": "read-only",
+    "threadId": null,
+    "turnOverrides": {
+      "effort": "high"
+    }
+  },
+  "status": "completed",
+  "timeout_environment": {
+    "TUNNEL_CODEX_TIMEOUT": "1800",
+    "failure": "Preserve receipt and known IDs; mark remote outcome unknown until zero-turn evidence resolves it. Timeout may interrupt target during owned transport cleanup. Stop all substantive dispatch; no retry, resend, steer, continuation, new role, profile substitution or deletion.",
+    "last_event_reporting": "phase + monotonic elapsed/configured + last-event age + known thread/turn IDs",
+    "meaning": "per RPC/turn-completion phase; NOT an end-to-end deadline",
+    "native_exec_yield_ms": 1000,
+    "native_poll_seconds": 30,
+    "outer_subprocess_timeout": null
+  }
+}

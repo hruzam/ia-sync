@@ -1,0 +1,14 @@
+{
+  "source": "/home/hruzam/ia-sync/.dev/session/jev-01-codex-pilot/raw/cartan.jev-reader-brief.2026-10-27.md",
+  "destination": "/home/hruzam/nabla-lab/_mail/oraculum/inbox/cartan.jev-reader-brief.2026-10-27.md",
+  "sha256": "7eb5d6b79e2bfc83fa015fea075ff29b14509e44eb34524da50d95773d20e351",
+  "bytes": 14483,
+  "local_reference_checks": 8,
+  "public_sources_checked": [
+    "https://docs.typesafe.ai/introduction",
+    "https://docs.typesafe.ai/introduction/coding-agents",
+    "https://openrouter.ai/docs/api/api-reference/alphadecisions/submit-a-decisions-request"
+  ],
+  "scope": "reader brief; not implementation, scientific finding or lab gate clearance",
+  "style": "requested scientific form; writing-style connector tools unavailable; no retrieved style match claimed"
+}

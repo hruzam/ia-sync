@@ -1,0 +1,13 @@
+{
+  "schema": "g09-offline-caretaker-case/v1",
+  "case": "active-hold",
+  "simulated": true,
+  "target_turns": 0,
+  "evidence": {
+    "holds": [
+      "SIMULATED-unresolved-identity"
+    ],
+    "release_authorized": true,
+    "attempt_count": 1
+  }
+}

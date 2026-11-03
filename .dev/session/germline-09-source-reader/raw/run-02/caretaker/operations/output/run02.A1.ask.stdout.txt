@@ -1,0 +1,23 @@
+G09.run-02.A1
+BOOTSTRAP {"run_id":"run-02","role":"auditor","scope":"G09-source-reader-read-only","sources":["/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/briefs/auditor.md","/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/ACCEPTANCE.md","/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/input/SOURCE-MAP.md"]}
+
+VERDICT: REVISE — criteria and adapter. **Main: HOLD substantive dispatch.**
+
+The adapter has a static, concrete race: R1 and A1 both pass `prior_uncertainty` at [line 569](/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/run_operations.py:569). A1 pauses; R1 reserves, invokes and fails. A1 then resumes. [Reservation](/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/run_operations.py:441) checks duplicate keys and budget, but never rechecks uncertainty, so A1 dispatches despite R1’s unresolved failure.
+
+Smallest correction: check uncertainty inside the exclusive reservation gate before creating an ask receipt. Add a deterministic interleaving test proving the second subprocess never starts.
+
+The five-cycle allowlist, exclusive per-cycle records and locked max-five counter otherwise constrain production asks. However, [test_adapter.py:206](/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/repair/test_adapter.py:206) creates cap-test receipts without `kind: "ask"`; they escape counting. Correct that fixture and test sequential reservations too.
+
+Acceptance needs decisive assertions:
+
+- **P2/P4:** Three same-name `guide` entries—Codex source, Claude source, installed copy—with different bytes could retain distinct labels while `show` always opens the first basename. Require each selection’s exact path/hash/content roundtrip.
+- **P3:** `TURNS` matching both `fanout-turns.md` and `turns-recovery.md` must list both and emit neither body. Explicitly test case-insensitive substring matching. For zero matches, require `## Manifest`, as the guide contract specifies; current “reports candidates” wording is inaccurate.
+- **P6:** An installed file labeled “available commands” can imply activation without saying “active.” Require explicit “found on disk; activation unknown” wording.
+
+All five supplied SHA256s match. LUNA simulations and FINAL offline readiness do not establish race safety.
+
+Commands included `nl -ba raw/run-02/repair/test_adapter.py` and `nl -ba raw/run-02/caretaker/run_operations.py | sed -n '441,660p'`.
+
+Product behavior remains UNVERIFIED. No writes, model commands, subagents or R1 conclusions consumed.
+[usage: {"total":{"totalTokens":381749,"inputTokens":377145,"cachedInputTokens":314112,"cacheWriteInputTokens":0,"outputTokens":4604,"reasoningOutputTokens":2507},"last":{"totalTokens":73794,"inputTokens":71541,"cachedInputTokens":69120,"cacheWriteInputTokens":0,"outputTokens":2253,"reasoningOutputTokens":1552},"modelContextWindow":475000}]

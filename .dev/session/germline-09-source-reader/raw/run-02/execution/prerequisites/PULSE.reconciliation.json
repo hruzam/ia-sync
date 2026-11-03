@@ -1,0 +1,14 @@
+{
+  "schema": "g09-concurrent-foreign-pulse-reconciliation/v1",
+  "path": "/home/hruzam/ia-sync/pulse.md",
+  "current_sha256": "108db41977abeec2e680511b540bdbb4d9c868d2bad15bfb027ea25c410e026e",
+  "original_sha256": "8ba84bfb437c96e4e5cf36d767fff0a1c3e34032d2d0e907af16091aedb873f3",
+  "old_block": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/execution/resume-02/preservation/PULSE.original-span.md",
+  "new_block": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/execution/resume-02/preservation/PULSE.current-span.md",
+  "old_block_sha256": "1dd433fcae91c64b36a784def7df82a4cb99c8b1877d2c9c282d8e2fe3ce10db",
+  "new_block_sha256": "96b657d7a87e39b1e784961ef68c6a6b479f4113e74e3cbbab4d4421d3a24a38",
+  "reconstructed_sha256": "8ba84bfb437c96e4e5cf36d767fff0a1c3e34032d2d0e907af16091aedb873f3",
+  "current_foreign_content_preserved": true,
+  "observed": "Wider exact current span includes two newer routers and prior Jev replacement; in-memory replacement reproduces baseline; no live pulse write.",
+  "prior_reconciliation": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/execution/resume-02/preservation/prior.PULSE.reconciliation.json"
+}

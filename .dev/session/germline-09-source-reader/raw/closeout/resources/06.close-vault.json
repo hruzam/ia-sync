@@ -1,0 +1,30 @@
+{
+  "argv": [
+    "/home/hruzam/ia-sync/zsh/ai/tunnel-codex.zsh",
+    "close",
+    "--state",
+    "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/caretaker/tunnel.researcher.state.json"
+  ],
+  "elapsed_seconds": 0.045,
+  "ended_unix": 1793027345.7668405,
+  "kind": "g09-run-01-resource-retirement",
+  "operation": "06.close-vault",
+  "outcome": {
+    "exit": 0,
+    "lock_exists_after": false,
+    "stderr": {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/closeout/resources/06.close-vault.stderr.txt",
+      "sha256": "328c6b4840e7e9f7438a1b6d1290b1f27f691082851539adfaa64054bf8125fd"
+    },
+    "stdout": {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/closeout/resources/06.close-vault.stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "supported_operation": "tunnel-codex close",
+    "vault_exists_after": false
+  },
+  "pid": 5,
+  "pid_namespace": "pid:[4026533212]",
+  "started_unix": 1793027345.7221923,
+  "status": "completed"
+}

@@ -1,0 +1,19 @@
+G09.run-02.A2
+VERDICT: UNVERIFIED overall — P1–P6/P8 PASS; P7 partially verified. No product defect reproduced.
+
+Tested [I1 MANIFEST.json](/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/implementation/I1/MANIFEST.json), SHA256 `12b1f1c452518af6533eea2999979ce7a3645fdfcc52fbcd5f91853ad6cb3f85`. Both aliases are byte-identical. All 24 audited hashes matched before and after testing.
+
+Executed all 20 manifest `read_only_audit_argv` commands, plus independent Python `-B` catalog/show/guide/browse checks:
+
+- **P1/P2:** Real catalog contains 180 entries across 11 present roots; two missing admin roots are disclosed. ID and lexical-path selections round-tripped exact bytes from every present root. Codex/Claude authored and installed `guide` copies retain distinct origins and selections.
+- **P3:** A1’s `TURNS` counterexample returns exit 2 and exactly `fanout-turns.md` plus `turns-recovery.md`, without bodies. UNIQUE succeeds; missing/side queries return Manifest only. Actual `cold-start-card card` ambiguity also remains unresolved.
+- **P4–P6:** Canary bytes remain inert; audited inputs are unchanged. Missing/empty gaps, offline help, noninteractive fallback and explicit activation-unknown wording pass.
+- **P7:** Runner/base syntax and the single owned-row reconstruction pass. Independent dispatcher exercise and deploy dry-run were not executed within the named reader-call allowance; builder reports do not close that gap.
+- **P8:** Tested bytes match the frozen manifest.
+
+The corrected [adapter reservation](/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/raw/run-02/caretaker/run_operations.py:448), SHA256 `4a9458a834e6825c8bfad44ec345bdcbd2f8d90483e9e93bdbcbcd1081042ae5`, checks uncertainty inside the exclusive ask lock. In-memory checks rejected pending/failed predecessors and an exhausted cap before receipt creation. The identified A1 race is corrected; no new mechanics HOLD found.
+
+Remaining evidence: independent P7 dispatcher/dry-run checks. No product correction established.
+
+Blocked command: `python3 -B - <<'PY'` required a shell temporary file; equivalent `-c` checks succeeded. No writes, model calls or network.
+[usage: {"total":{"totalTokens":1486484,"inputTokens":1473526,"cachedInputTokens":1283200,"cacheWriteInputTokens":0,"outputTokens":12958,"reasoningOutputTokens":5948},"last":{"totalTokens":141489,"inputTokens":140490,"cachedInputTokens":137984,"cacheWriteInputTokens":0,"outputTokens":999,"reasoningOutputTokens":450},"modelContextWindow":475000}]

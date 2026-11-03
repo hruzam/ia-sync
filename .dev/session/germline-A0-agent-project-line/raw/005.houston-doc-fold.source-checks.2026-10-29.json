@@ -1,0 +1,12 @@
+{
+  "result": "PASS \u2014 source/navigation checks only",
+  "changed_files": [
+    ".germline/agents/houston/ia-sync.md"
+  ],
+  "project_layer_stamp": "0c9da1ff",
+  "sha256": "32cc1b852efc827517663db8b3effbcb5f2d098ae63c39fae2cea81a4b70e9b2",
+  "checked_existing_navigation_entries": true,
+  "global_wrappers_shared_houston_and_A3_state_unchanged": true,
+  "fresh_child_discovery": "PASS \u2014 see 005.houston-doc-fold.child-witness.2026-10-29.json",
+  "main_claude_home": "not tested"
+}

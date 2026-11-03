@@ -1,0 +1,115 @@
+{
+  "at": "2026-10-26T23:14:38.546089+01:00",
+  "host": "office / hruzam-120922",
+  "release": "raw/RELEASE.office.json",
+  "routes": {
+    "main": {
+      "native_task": null,
+      "thread_id": "01a17a42-3527-72d0-832d-33eb9e8d0c3c",
+      "host_local_transcript": "/home/hruzam/.codex/sessions/2026/10/26/rollout-2026-10-26T23-08-41-01a17a42-3527-72d0-832d-33eb9e8d0c3c.jsonl",
+      "transcript_sha256_at_inspection": "46a8a16a70235cf4a2cff266741df58d4b241fdc05b118aaffcefc66f8fabf43",
+      "wrapper_injection_records": [
+        5
+      ],
+      "runtime_record": 10,
+      "model": "gpt-6-astra",
+      "effort": "high",
+      "cwd": "/home/hruzam/ia-sync",
+      "sandbox": {
+        "type": "workspace-write",
+        "network_access": false,
+        "exclude_tmpdir_env_var": false,
+        "exclude_slash_tmp": false
+      },
+      "read_chain": [
+        {
+          "path": "/home/hruzam/.germline/agents/oraculum/identity.md",
+          "stamp": "6c9e0851",
+          "sha256": "ac8e8348b24544a7aabbf75c5797ee0156769efa796a8767d4bf4f61e26ba49c",
+          "output_record": 19,
+          "complete_current_file_in_output": true
+        },
+        {
+          "path": "/home/hruzam/.germline/agents/oraculum/binding.codex.md",
+          "stamp": "1a68351a",
+          "sha256": "a2cdde5e815ac2260b3b2ab666cc192250492adcfbc32c526ab954a380d2f97f",
+          "output_record": 19,
+          "complete_current_file_in_output": true
+        }
+      ],
+      "first_assistant_record": 15,
+      "final_answer_record": 44,
+      "tool_call_count": 4,
+      "returned_route_canary": "op-abba58c3",
+      "role_source_sha256": "5120835f451fd6bd2f253df9e8036e57d69eb9c3be902e8f44759251c4f7ea99",
+      "raw_history_policy": "full native history/events remain host-local; this is a filtered proof summary",
+      "result": "PASS for main-profile loading, scoped planning write, implementation refusal and final stamped return",
+      "planning_document": {
+        "path": "/home/hruzam/ia-sync/.dev/session/germline-A1-vi-agents/raw/runtime-probes/main.plan.md",
+        "sha256": "e0c1a35a8815177285ee8d51290cbaefdda65f1c2af8f58e49f85c9a98925b1f"
+      },
+      "implementation_canary_absent": true,
+      "load_before_planning_write": true,
+      "load_before_final_answer": true,
+      "strict_full_proof_in_first_message": false,
+      "entry_format_observation": "Initial Route/progress commentary preceded loader reads; complete path/stamp/scope proof followed reads before planning write and final answer. Strict full first-message proof is not claimed.",
+      "entry_kind": "fresh non-interactive CLI exec --profile oraculum --no-daemon; interactive TUI not tested"
+    },
+    "child": {
+      "native_task": "/root/oraculum_a1_child_check",
+      "thread_id": "01a17a42-6d0e-7d02-832b-8fe36bf33e98",
+      "host_local_transcript": "/home/hruzam/.codex/sessions/2026/10/26/rollout-2026-10-26T23-08-56-01a17a42-6d0e-7d02-832b-8fe36bf33e98.jsonl",
+      "transcript_sha256_at_inspection": "c7710912c55ec035646ad8926c1408b9c500263dc53c6556d8f5624eaa1a8440",
+      "wrapper_injection_records": [
+        5
+      ],
+      "runtime_record": 10,
+      "model": "gpt-6-astra",
+      "effort": "high",
+      "cwd": "/home/hruzam/ia-sync",
+      "sandbox": {
+        "type": "workspace-write",
+        "network_access": false,
+        "exclude_tmpdir_env_var": false,
+        "exclude_slash_tmp": false
+      },
+      "read_chain": [
+        {
+          "path": "/home/hruzam/.germline/agents/oraculum/identity.md",
+          "stamp": "6c9e0851",
+          "sha256": "ac8e8348b24544a7aabbf75c5797ee0156769efa796a8767d4bf4f61e26ba49c",
+          "output_record": 17,
+          "complete_current_file_in_output": true
+        },
+        {
+          "path": "/home/hruzam/.germline/agents/oraculum/binding.codex.md",
+          "stamp": "1a68351a",
+          "sha256": "a2cdde5e815ac2260b3b2ab666cc192250492adcfbc32c526ab954a380d2f97f",
+          "output_record": 22,
+          "complete_current_file_in_output": true
+        }
+      ],
+      "first_assistant_record": 32,
+      "final_answer_record": 41,
+      "tool_call_count": 4,
+      "returned_route_canary": "oc-2e2a2d87",
+      "role_source_sha256": "427bba7b343235c637bfb8cc78e507571f5daf23bce5d52699b10f9a0925b3bc",
+      "raw_history_policy": "full native history/events remain host-local; this is a filtered proof summary",
+      "result": "PASS for native child loading, analysis-only return and write refusal",
+      "write_canary_absent": true,
+      "load_before_first_assistant_message": true,
+      "context": "fresh native child with fork_turns=none; no parent conversation history",
+      "entry_kind": "native oraculum custom-agent child; no main scope inherited"
+    }
+  },
+  "overall": "Scoped operational PASS; main first-progress/full-proof granularity difference recorded explicitly",
+  "unchanged": "installed source bytes and protected live surfaces remain at their recorded hashes",
+  "remaining": [
+    "strict full-proof-in-first-main-message wording/interpretation",
+    "interactive main TUI behavior",
+    "Claude wrapper deployment and runtime deferred",
+    "home installation/runtime",
+    "resume/compaction",
+    "independent architecture/promotion witness beyond these author-run pre-checks"
+  ]
+}

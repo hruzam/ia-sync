@@ -1,0 +1,80 @@
+{
+  "allowed_methods": [
+    "initialize",
+    "thread/list",
+    "thread/read"
+  ],
+  "app_server_closed": true,
+  "app_server_exit": 0,
+  "archival_queries": [
+    {
+      "matching_known_thread": [
+        {
+          "cwd": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader",
+          "id": "01a176f7-532b-7722-9324-0ecb92694073",
+          "status": {
+            "type": "notLoaded"
+          }
+        }
+      ],
+      "next_cursor_present": false,
+      "query": {
+        "archived": true,
+        "cwd": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader",
+        "sourceKinds": [
+          "cli",
+          "vscode",
+          "exec",
+          "appServer",
+          "subAgent",
+          "subAgentReview",
+          "subAgentCompact",
+          "subAgentThreadSpawn",
+          "subAgentOther",
+          "unknown"
+        ],
+        "title_search_term": "G09.R1",
+        "useStateDbOnly": true
+      }
+    },
+    {
+      "matching_known_thread": [],
+      "next_cursor_present": false,
+      "query": {
+        "archived": false,
+        "cwd": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader",
+        "sourceKinds": [
+          "cli",
+          "vscode",
+          "exec",
+          "appServer",
+          "subAgent",
+          "subAgentReview",
+          "subAgentCompact",
+          "subAgentThreadSpawn",
+          "subAgentOther",
+          "unknown"
+        ],
+        "title_search_term": "G09.R1",
+        "useStateDbOnly": true
+      }
+    }
+  ],
+  "current_pid_namespace": "pid:[4026531836]",
+  "expectations_met": true,
+  "recorded_at": "2026-10-26T16:53:21+0100",
+  "schema": "g09-sanitation-cycle07-r1-metadata/v1",
+  "stored_thread": {
+    "cwd": "/home/hruzam/ia-sync/.dev/session/germline-09-source-reader",
+    "id": "01a176f7-532b-7722-9324-0ecb92694073",
+    "status": {
+      "type": "notLoaded"
+    },
+    "turns": [
+      {
+        "id": "01a176f7-53a6-7b83-b203-b86b08ec15ac",
+        "status": "interrupted"
+      }
+    ]
+  }
+}

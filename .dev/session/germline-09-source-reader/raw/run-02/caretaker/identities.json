@@ -1,0 +1,7 @@
+{
+  "roles": {
+    "auditor": "01a17a89-cc0a-7053-b9b2-e5bdac784fe4",
+    "researcher": "01a17a86-873c-72b0-8787-932736a0f7d9"
+  },
+  "schema": "g09-run02-identities/v1"
+}

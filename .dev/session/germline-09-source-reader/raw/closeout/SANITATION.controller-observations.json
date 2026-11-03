@@ -1,0 +1,78 @@
+{
+  "kind": "Cartan direct sanitation observations",
+  "recorded_at": "2026-10-26 16:01:11 UTC",
+  "scope": "exact operator-linked stale presence and exact receipt-linked PID checks",
+  "provenance": "Captured tool outputs from this cleanup turn, persisted without repeating retirement or querying other native roots.",
+  "old_presence": {
+    "before": {
+      "id": "0eb2477c980739d8179ff6a38daa9bbe",
+      "record_present": true,
+      "record_sha256": "53b3d815044274eb3997aa4fa27f4c6b75719f287bd071f5e3583a098cf66f9b",
+      "record_before": "---\nschema: \"presence-board/v1\"\nattachment_id: \"0eb2477c980739d8179ff6a38daa9bbe\"\nseat: \"majkee\"\nhost: \"office\"\nworkspace: \"~/ia-sync\"\nbed: \"~/ia-sync/.dev/session/germline-09-source-reader\"\nattached_at: \"2026-10-26T15:45:48+01:00\"\nnote: \"G09 execution head — architecture and STATUS; Majkee GO\"\n---\n",
+      "board_names": [
+        "presence.0eb2477c980739d8179ff6a38daa9bbe.md",
+        "presence.51186ea00ab15521b7ce140bdfc3e401.md",
+        "presence.521382142d9efcc10fb1e72d70ba84ef.md",
+        "presence.6216b5b6f62207de689452cdd1e44c74.md",
+        "presence.62d1d51766581b6e9f1ff46829f343bb.md",
+        "presence.631fd920c8b2c6a5a3dab7e5ea6838ed.md",
+        "presence.8befcce7693b8da61f9aa93083502223.md",
+        "presence.c2d719522770d033e72053485c685588.md",
+        "presence.c7a8b194647642a56a2cb9de7204230d.md",
+        "presence.e91f402523715d5fecce9f580c55d55f.md",
+        "presence.f08176ed63bcec89a115c6989cd86d09.md",
+        "presence.fca0ec2f09fa723097027f5526a792fd.md",
+        "presence.fd9c22a04da7bc1644b2193c831c1a2e.md"
+      ]
+    },
+    "after": {
+      "board_names": [
+        "presence.51186ea00ab15521b7ce140bdfc3e401.md",
+        "presence.521382142d9efcc10fb1e72d70ba84ef.md",
+        "presence.6216b5b6f62207de689452cdd1e44c74.md",
+        "presence.62d1d51766581b6e9f1ff46829f343bb.md",
+        "presence.631fd920c8b2c6a5a3dab7e5ea6838ed.md",
+        "presence.8befcce7693b8da61f9aa93083502223.md",
+        "presence.c2d719522770d033e72053485c685588.md",
+        "presence.c7a8b194647642a56a2cb9de7204230d.md",
+        "presence.e91f402523715d5fecce9f580c55d55f.md",
+        "presence.f08176ed63bcec89a115c6989cd86d09.md",
+        "presence.fca0ec2f09fa723097027f5526a792fd.md",
+        "presence.fd9c22a04da7bc1644b2193c831c1a2e.md"
+      ]
+    },
+    "removed": [
+      "presence.0eb2477c980739d8179ff6a38daa9bbe.md"
+    ],
+    "other_missing": [],
+    "other_added": []
+  },
+  "pid_crosscheck": {
+    "namespace": "pid:[4026531836]",
+    "observations": [
+      {
+        "pid": 1319728,
+        "path_exists": false,
+        "reason": "ENOENT",
+        "errno": 2
+      },
+      {
+        "pid": 1923120,
+        "path_exists": false,
+        "reason": "ENOENT",
+        "errno": 2
+      },
+      {
+        "pid": 1923121,
+        "path_exists": false,
+        "reason": "ENOENT",
+        "errno": 2
+      }
+    ],
+    "method": "Independently elevated os.stat of exactly /proc/<pid> in the recorded namespace; FileNotFoundError errno2 distinguished from PermissionError; no signals."
+  },
+  "current_cleanup_attachment_id": "e91f402523715d5fecce9f580c55d55f",
+  "current_cleanup_attachment_state": "active pending final verification",
+  "old_native_root": "Operator-reported terminated; inaccessible cross-root handle retired from reuse; not independently inspected.",
+  "new_target_turns": 0
+}

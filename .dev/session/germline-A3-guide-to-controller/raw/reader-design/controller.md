@@ -1,4 +1,4 @@
-# Reader controller — candidate 01
+# Reader controller — candidate 02
 
 Purpose: expand inherited context only far enough to make the next bounded decision
 or action supportable. Read [README.md](README.md) for entry and knowledge roles.
@@ -41,8 +41,12 @@ result receipt in the session's already assigned evidence home. No separate live
    | Task merits search for unanticipated omissions | Assign a separately bounded frontier pass; do not imply exhaustive coverage |
    | Summary already answers the task but its decisive source is missing | Return the gap; do not promote a useful-sounding answer to authority |
 
-   Delegation must be expected to offset its setup/integration cost. A small direct
-   read is often cheaper. The choice does not confer new source or effect authority.
+   State the benefit expected from delegation: bounded search breadth, an isolated
+   comparison, anomaly coverage, or less exploratory material entering the head.
+   Compare that benefit with setup, helper reading, report intake, verification and
+   correction effort. When only a few decisive sources are known, start with direct
+   reading. A justified context-isolation benefit may involve more total work; do not
+   equate it with economic savings. The choice grants no new source or effect authority.
 
 5. **Issue a crawl assignment when appropriate.** Use [crawl-bots.md](crawl-bots.md).
    Name question, allowed roots, expected discriminator, actual budget, artifact

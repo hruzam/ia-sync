@@ -1,0 +1,8 @@
+{
+  "observed_at": "2026-10-26T22:37:35.227819+01:00",
+  "current_journal_sha256": "f8283f5048f9ea94c0c5dd56e89d85bd8ba5eb67aed50dc634d82dea9be51ea0",
+  "current_pulse_sha256": "160015b371e965e6dd9478352eddb6530b79f214f8e40ca81986eff88198cc9d",
+  "exact_G09_entry_occurrences": 1,
+  "exact_observed_A0_entry_occurrences": 1,
+  "note": "Additional foreign journal/pulse changes after the successful pre-effect reconciliation; no write to either file by this execution. Current preservation gate now fails and must be reconciled before any future effect."
+}

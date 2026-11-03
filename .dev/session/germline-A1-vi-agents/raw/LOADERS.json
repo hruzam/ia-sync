@@ -1,0 +1,13 @@
+{
+  "stamps": {
+    "identity": "6c9e0851",
+    "codex": "1a68351a",
+    "claude": "1090dbda"
+  },
+  "routes": {
+    "codex_child": "Route: spawned child (canary: oc-2e2a2d87).",
+    "codex_main": "Route: main session via --profile oraculum (canary: op-abba58c3).",
+    "claude": "Route: spawned by a parent agent \u2192 child; otherwise main session (canary: ol-65228195)."
+  },
+  "source_state": "composed; not deployed or runtime-witnessed"
+}
