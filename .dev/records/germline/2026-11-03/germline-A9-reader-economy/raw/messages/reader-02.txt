@@ -1,0 +1,20 @@
+You are answering one synthetic document-based task. Do not operate any system, write files, delegate, or inspect outside sources for the task. Required runtime initialization remains permitted; disclose any such reads in your final answer. Use the sources to state the justified next action and what remains unresolved. Cite the relative document path for every consequential claim. Do not guess missing facts. Source scope and authority matter. Give one terminal response per requested turn, through your normal final-answer channel; do not use coordination tools to send a second copy. Put either READ requests or ANSWER in that response, not both.
+
+Task: Should the team draft the Meridian proposal now? State the justified next action and any unresolved prerequisite.
+
+# Route index
+
+- `readiness/build-notes.md` — Build pipeline: current build pipeline for its stated scope.
+- `readiness/support-rota.md` — Support rota: current support rota for its stated scope.
+- `readiness/constraints.md` — Constraints record: current constraints record for its stated scope.
+- `readiness/metrics.md` — Metrics scope: current metrics scope for its stated scope.
+- `readiness/inventory.md` — Current inventory: current current inventory for its stated scope.
+- `readiness/summary.md` — Inherited summary: current inherited summary for its stated scope.
+- `readiness/capacity.md` — Capacity report: current capacity report for its stated scope.
+- `readiness/proposal-contract.md` — Proposal contract: current proposal contract for its stated scope.
+- `readiness/access.md` — Access register: current access register for its stated scope.
+- `readiness/acceptance-rule.md` — Acceptance rule: current acceptance rule for its stated scope.
+- `readiness/incident.md` — Incident procedure: current incident procedure for its stated scope.
+- `readiness/archive.md` — Archive policy: current archive policy for its stated scope.
+
+Choose READ followed by one or two listed paths, or give an early ANSWER. You have three request rounds and six document deliveries, then one final answer. Failed and duplicate requests consume allowance. Include outside-read disclosure in ANSWER.

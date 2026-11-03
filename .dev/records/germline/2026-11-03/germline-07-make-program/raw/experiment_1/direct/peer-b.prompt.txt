@@ -1,0 +1,13 @@
+Return the exact first line `experiment_1.peer-b.direct`.
+Read `/home/hruzam/ia-sync/zsh/ai/tunnel-codex.py` as the task source. Inspect only cmd_open,
+_birth_or_resume, cmd_ask/cmd_send, save_state, and directly needed helpers. Give exact line
+citations for what open preflights, when a thread starts, and when a new threadId is saved.
+Explain the first-turn timeout/reconciliation-failure uncertainty without claiming a runtime
+failure was observed. Do not run the code, open other source bodies, or implement a fix.
+
+Shared restrictions: You are a bounded read-only instrument, not the G03 head or investigator.
+Read only your named task source plus necessary applicable instructions, follow no document links,
+perform no network research, launch no model/agent/process, and edit nothing. Cap your response
+at 180 words.
+
+Clarification: read-only file-inspection commands such as rg, sed and cat are permitted for the named sources. Do not execute the inspected code/examples or launch any additional agent, model CLI, daemon, or service.

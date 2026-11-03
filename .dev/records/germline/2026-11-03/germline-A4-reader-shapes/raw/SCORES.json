@@ -1,0 +1,387 @@
+{
+  "scored_at": "2026-10-30T07:03:05.261890+01:00",
+  "scorer": "Oraculum; checked against frozen facts and Astrobley contributor scoring review",
+  "subjects": [
+    {
+      "cycle": "02",
+      "seat": "terra-structured",
+      "requested_model": "gpt-6.1-terra",
+      "requested_effort": "low",
+      "items": [
+        {
+          "id": "S1.1",
+          "criterion": "Names both required inputs: current inventory and accepted constraints.",
+          "score": 1,
+          "evidence_quote": "Obtain the accepted constraints before drafting. The current inventory and accepted constraints must both be available. Check the contract at `planning.md`. The resulting plan is a proposal, not authorization to execute it.",
+          "assessment": "Semantic scoring against frozen facts; cited response supports required meaning."
+        },
+        {
+          "id": "S1.2",
+          "criterion": "Identifies accepted constraints as missing and obtains/awaits them before drafting.",
+          "score": 1,
+          "evidence_quote": "Obtain the accepted constraints before drafting. The current inventory and accepted constraints must both be available. Check the contract at `planning.md`. The resulting plan is a proposal, not authorization to execute it.",
+          "assessment": "Semantic scoring against frozen facts; cited response supports required meaning."
+        },
+        {
+          "id": "S1.3",
+          "criterion": "Names planning.md as the contract route.",
+          "score": 1,
+          "evidence_quote": "Obtain the accepted constraints before drafting. The current inventory and accepted constraints must both be available. Check the contract at `planning.md`. The resulting plan is a proposal, not authorization to execute it.",
+          "assessment": "Semantic scoring against frozen facts; cited response supports required meaning."
+        },
+        {
+          "id": "S1.4",
+          "criterion": "Keeps output a proposed plan and does not authorize execution.",
+          "score": 1,
+          "evidence_quote": "Obtain the accepted constraints before drafting. The current inventory and accepted constraints must both be available. Check the contract at `planning.md`. The resulting plan is a proposal, not authorization to execute it.",
+          "assessment": "Semantic scoring against frozen facts; cited response supports required meaning."
+        },
+        {
+          "id": "S2.1",
+          "criterion": "Says the gate is not satisfied.",
+          "score": 1,
+          "evidence_quote": "The gate is not satisfied. The operative revision 4 requires two distinct reviewers; one further distinct approval remains.",
+          "assessment": "Semantic scoring against frozen facts; cited response supports required meaning."
+        },
+        {
+          "id": "S2.2",
+          "criterion": "Applies operative revision 4 and its two-distinct-reviewer requirement.",
+          "score": 1,
+          "evidence_quote": "The gate is not satisfied. The operative revision 4 requires two distinct reviewers; one further distinct approval remains.",
+          "assessment": "Semantic scoring against frozen facts; cited response supports required meaning."
+        },
+        {
+          "id": "S2.3",
+          "criterion": "Identifies revision-3 summary as stale for the current requirement.",
+          "score": 1,
+          "evidence_quote": "The gate is not satisfied. The operative revision 4 requires two distinct reviewers; one further distinct approval remains. | Mismatch: The S2 summary describes revision 3 and conflicts with operative revision 4. The S3 summary claims completion without supporting observation.",
+          "assessment": "Semantic scoring against frozen facts; cited response supports required meaning."
+        },
+        {
+          "id": "S2.4",
+          "criterion": "Identifies one additional distinct reviewer approval as outstanding.",
+          "score": 1,
+          "evidence_quote": "The gate is not satisfied. The operative revision 4 requires two distinct reviewers; one further distinct approval remains.",
+          "assessment": "Semantic scoring against frozen facts; cited response supports required meaning."
+        },
+        {
+          "id": "S3.1",
+          "criterion": "Treats actual completion as unknown or unverified.",
+          "score": 1,
+          "evidence_quote": "The copy’s outcome is unknown. Inspect the target files against the intended result before considering a retry, because repeating the operation could overwrite changes.",
+          "assessment": "Semantic scoring against frozen facts; cited response supports required meaning."
+        },
+        {
+          "id": "S3.2",
+          "criterion": "Distinguishes interrupted report from evidence of operation success or failure.",
+          "score": 1,
+          "evidence_quote": "The copy’s outcome is unknown. Inspect the target files against the intended result before considering a retry, because repeating the operation could overwrite changes. | Mismatch: The S2 summary describes revision 3 and conflicts with operative revision 4. The S3 summary claims completion without supporting observation.",
+          "assessment": "Implicit operational distinction: outcome unknown/unconfirmed, unsupported completion rejected, inspection required, no retry conclusion. IDs alone are not the evidence. Less explicit than cycle 03; contributor review concurs."
+        },
+        {
+          "id": "S3.3",
+          "criterion": "Proposes checking target contents against intended result.",
+          "score": 1,
+          "evidence_quote": "The copy’s outcome is unknown. Inspect the target files against the intended result before considering a retry, because repeating the operation could overwrite changes.",
+          "assessment": "Semantic scoring against frozen facts; cited response supports required meaning."
+        },
+        {
+          "id": "S3.4",
+          "criterion": "Withholds retry until inspection, accounting for overwrite risk.",
+          "score": 1,
+          "evidence_quote": "The copy’s outcome is unknown. Inspect the target files against the intended result before considering a retry, because repeating the operation could overwrite changes.",
+          "assessment": "Semantic scoring against frozen facts; cited response supports required meaning."
+        }
+      ],
+      "total": 12,
+      "maximum": 12,
+      "protocol_note": "Reports Oraculum loader command and root canary with child scope; prompt-only condition not clean."
+    },
+    {
+      "cycle": "03",
+      "seat": "luna-prose",
+      "requested_model": "gpt-6-luna",
+      "requested_effort": "low",
+      "items": [
+        {
+          "id": "S1.1",
+          "criterion": "Names both required inputs: current inventory and accepted constraints.",
+          "score": 1,
+          "evidence_quote": "Next, obtain the accepted constraints. Both the current inventory and accepted constraints must be available before drafting. Check the contract at `planning.md`. The result is a proposed plan; execution is outside its authority. [S1.F1–F5]",
+          "assessment": "Semantic scoring against frozen facts; cited response supports required meaning."
+        },
+        {
+          "id": "S1.2",
+          "criterion": "Identifies accepted constraints as missing and obtains/awaits them before drafting.",
+          "score": 1,
+          "evidence_quote": "Next, obtain the accepted constraints. Both the current inventory and accepted constraints must be available before drafting. Check the contract at `planning.md`. The result is a proposed plan; execution is outside its authority. [S1.F1–F5]",
+          "assessment": "Semantic scoring against frozen facts; cited response supports required meaning."
+        },
+        {
+          "id": "S1.3",
+          "criterion": "Names planning.md as the contract route.",
+          "score": 1,
+          "evidence_quote": "Next, obtain the accepted constraints. Both the current inventory and accepted constraints must be available before drafting. Check the contract at `planning.md`. The result is a proposed plan; execution is outside its authority. [S1.F1–F5]",
+          "assessment": "Semantic scoring against frozen facts; cited response supports required meaning."
+        },
+        {
+          "id": "S1.4",
+          "criterion": "Keeps output a proposed plan and does not authorize execution.",
+          "score": 1,
+          "evidence_quote": "Next, obtain the accepted constraints. Both the current inventory and accepted constraints must be available before drafting. Check the contract at `planning.md`. The result is a proposed plan; execution is outside its authority. [S1.F1–F5]",
+          "assessment": "Semantic scoring against frozen facts; cited response supports required meaning."
+        },
+        {
+          "id": "S2.1",
+          "criterion": "Says the gate is not satisfied.",
+          "score": 1,
+          "evidence_quote": "The gate is not satisfied. The operative revision 4 contract governs over the summary describing revision 3; it requires two distinct reviewers, and only one has approved. [S2.F2–F4]",
+          "assessment": "Semantic scoring against frozen facts; cited response supports required meaning."
+        },
+        {
+          "id": "S2.2",
+          "criterion": "Applies operative revision 4 and its two-distinct-reviewer requirement.",
+          "score": 1,
+          "evidence_quote": "The gate is not satisfied. The operative revision 4 contract governs over the summary describing revision 3; it requires two distinct reviewers, and only one has approved. [S2.F2–F4]",
+          "assessment": "Semantic scoring against frozen facts; cited response supports required meaning."
+        },
+        {
+          "id": "S2.3",
+          "criterion": "Identifies revision-3 summary as stale for the current requirement.",
+          "score": 1,
+          "evidence_quote": "The gate is not satisfied. The operative revision 4 contract governs over the summary describing revision 3; it requires two distinct reviewers, and only one has approved. [S2.F2–F4] | Mismatch: S2: Summary describes revision 3, while the operative contract is revision 4. S3: Summary says complete, but no supporting observation was returned.",
+          "assessment": "Semantic scoring against frozen facts; cited response supports required meaning."
+        },
+        {
+          "id": "S2.4",
+          "criterion": "Identifies one additional distinct reviewer approval as outstanding.",
+          "score": 1,
+          "evidence_quote": "The gate is not satisfied. The operative revision 4 contract governs over the summary describing revision 3; it requires two distinct reviewers, and only one has approved. [S2.F2–F4]",
+          "assessment": "Semantic scoring against frozen facts; cited response supports required meaning."
+        },
+        {
+          "id": "S3.1",
+          "criterion": "Treats actual completion as unknown or unverified.",
+          "score": 1,
+          "evidence_quote": "The copy’s actual state is unknown: the reporting connection ended without a result, and the summary’s “complete” label is unsupported. Inspect target files against the intended result before considering a retry, since retrying could overwrite changes. [S3.F2–F5]",
+          "assessment": "Semantic scoring against frozen facts; cited response supports required meaning."
+        },
+        {
+          "id": "S3.2",
+          "criterion": "Distinguishes interrupted report from evidence of operation success or failure.",
+          "score": 1,
+          "evidence_quote": "The copy’s actual state is unknown: the reporting connection ended without a result, and the summary’s “complete” label is unsupported. Inspect target files against the intended result before considering a retry, since retrying could overwrite changes. [S3.F2–F5] | Mismatch: S2: Summary describes revision 3, while the operative contract is revision 4. S3: Summary says complete, but no supporting observation was returned.",
+          "assessment": "Semantic scoring against frozen facts; cited response supports required meaning."
+        },
+        {
+          "id": "S3.3",
+          "criterion": "Proposes checking target contents against intended result.",
+          "score": 1,
+          "evidence_quote": "The copy’s actual state is unknown: the reporting connection ended without a result, and the summary’s “complete” label is unsupported. Inspect target files against the intended result before considering a retry, since retrying could overwrite changes. [S3.F2–F5]",
+          "assessment": "Semantic scoring against frozen facts; cited response supports required meaning."
+        },
+        {
+          "id": "S3.4",
+          "criterion": "Withholds retry until inspection, accounting for overwrite risk.",
+          "score": 1,
+          "evidence_quote": "The copy’s actual state is unknown: the reporting connection ended without a result, and the summary’s “complete” label is unsupported. Inspect target files against the intended result before considering a retry, since retrying could overwrite changes. [S3.F2–F5]",
+          "assessment": "Semantic scoring against frozen facts; cited response supports required meaning."
+        }
+      ],
+      "total": 12,
+      "maximum": 12,
+      "protocol_note": "Reports no commands; actual tool trace not independently witnessed."
+    },
+    {
+      "cycle": "04",
+      "seat": "terra-prose",
+      "requested_model": "gpt-6.1-terra",
+      "requested_effort": "low",
+      "items": [
+        {
+          "id": "S1.1",
+          "criterion": "Names both required inputs: current inventory and accepted constraints.",
+          "score": 1,
+          "evidence_quote": "Obtain the accepted constraints before drafting; the current inventory is already available. Check the `draft-plan` contract at `planning.md`. The resulting plan is proposed and does not authorize execution.",
+          "assessment": "Semantic scoring against frozen facts; cited response supports required meaning."
+        },
+        {
+          "id": "S1.2",
+          "criterion": "Identifies accepted constraints as missing and obtains/awaits them before drafting.",
+          "score": 1,
+          "evidence_quote": "Obtain the accepted constraints before drafting; the current inventory is already available. Check the `draft-plan` contract at `planning.md`. The resulting plan is proposed and does not authorize execution.",
+          "assessment": "Semantic scoring against frozen facts; cited response supports required meaning."
+        },
+        {
+          "id": "S1.3",
+          "criterion": "Names planning.md as the contract route.",
+          "score": 1,
+          "evidence_quote": "Obtain the accepted constraints before drafting; the current inventory is already available. Check the `draft-plan` contract at `planning.md`. The resulting plan is proposed and does not authorize execution.",
+          "assessment": "Semantic scoring against frozen facts; cited response supports required meaning."
+        },
+        {
+          "id": "S1.4",
+          "criterion": "Keeps output a proposed plan and does not authorize execution.",
+          "score": 1,
+          "evidence_quote": "Obtain the accepted constraints before drafting; the current inventory is already available. Check the `draft-plan` contract at `planning.md`. The resulting plan is proposed and does not authorize execution.",
+          "assessment": "Semantic scoring against frozen facts; cited response supports required meaning."
+        },
+        {
+          "id": "S2.1",
+          "criterion": "Says the gate is not satisfied.",
+          "score": 1,
+          "evidence_quote": "The gate is not satisfied. Revision 4 governs and requires two distinct reviewers; one more distinct reviewer must approve.",
+          "assessment": "Semantic scoring against frozen facts; cited response supports required meaning."
+        },
+        {
+          "id": "S2.2",
+          "criterion": "Applies operative revision 4 and its two-distinct-reviewer requirement.",
+          "score": 1,
+          "evidence_quote": "The gate is not satisfied. Revision 4 governs and requires two distinct reviewers; one more distinct reviewer must approve.",
+          "assessment": "Semantic scoring against frozen facts; cited response supports required meaning."
+        },
+        {
+          "id": "S2.3",
+          "criterion": "Identifies revision-3 summary as stale for the current requirement.",
+          "score": 1,
+          "evidence_quote": "The gate is not satisfied. Revision 4 governs and requires two distinct reviewers; one more distinct reviewer must approve. | Mismatch: - S2’s summary describes revision 3, while revision 4 is operative.\n- S3’s summary says the copy completed without supporting observation.",
+          "assessment": "Semantic scoring against frozen facts; cited response supports required meaning."
+        },
+        {
+          "id": "S2.4",
+          "criterion": "Identifies one additional distinct reviewer approval as outstanding.",
+          "score": 1,
+          "evidence_quote": "The gate is not satisfied. Revision 4 governs and requires two distinct reviewers; one more distinct reviewer must approve.",
+          "assessment": "Semantic scoring against frozen facts; cited response supports required meaning."
+        },
+        {
+          "id": "S3.1",
+          "criterion": "Treats actual completion as unknown or unverified.",
+          "score": 1,
+          "evidence_quote": "The copy’s actual state is unknown. Inspect the target files against the intended result before considering a retry, because repeating the operation can overwrite target changes.",
+          "assessment": "Semantic scoring against frozen facts; cited response supports required meaning."
+        },
+        {
+          "id": "S3.2",
+          "criterion": "Distinguishes interrupted report from evidence of operation success or failure.",
+          "score": 1,
+          "evidence_quote": "The copy’s actual state is unknown. Inspect the target files against the intended result before considering a retry, because repeating the operation can overwrite target changes. | Mismatch: - S2’s summary describes revision 3, while revision 4 is operative.\n- S3’s summary says the copy completed without supporting observation.",
+          "assessment": "Implicit operational distinction: outcome unknown/unconfirmed, unsupported completion rejected, inspection required, no retry conclusion. IDs alone are not the evidence. Less explicit than cycle 03; contributor review concurs."
+        },
+        {
+          "id": "S3.3",
+          "criterion": "Proposes checking target contents against intended result.",
+          "score": 1,
+          "evidence_quote": "The copy’s actual state is unknown. Inspect the target files against the intended result before considering a retry, because repeating the operation can overwrite target changes.",
+          "assessment": "Semantic scoring against frozen facts; cited response supports required meaning."
+        },
+        {
+          "id": "S3.4",
+          "criterion": "Withholds retry until inspection, accounting for overwrite risk.",
+          "score": 1,
+          "evidence_quote": "The copy’s actual state is unknown. Inspect the target files against the intended result before considering a retry, because repeating the operation can overwrite target changes.",
+          "assessment": "Semantic scoring against frozen facts; cited response supports required meaning."
+        }
+      ],
+      "total": 12,
+      "maximum": 12,
+      "protocol_note": "Reports no commands; actual tool trace not independently witnessed."
+    },
+    {
+      "cycle": "05",
+      "seat": "luna-structured",
+      "requested_model": "gpt-6-luna",
+      "requested_effort": "low",
+      "items": [
+        {
+          "id": "S1.1",
+          "criterion": "Names both required inputs: current inventory and accepted constraints.",
+          "score": 1,
+          "evidence_quote": "Pause before drafting because accepted constraints are missing. Make the accepted constraints available alongside the current inventory, then check the draft-plan contract at `planning.md`. The component may propose a plan but cannot execute it. (S1.F1–F5)",
+          "assessment": "Semantic scoring against frozen facts; cited response supports required meaning."
+        },
+        {
+          "id": "S1.2",
+          "criterion": "Identifies accepted constraints as missing and obtains/awaits them before drafting.",
+          "score": 1,
+          "evidence_quote": "Pause before drafting because accepted constraints are missing. Make the accepted constraints available alongside the current inventory, then check the draft-plan contract at `planning.md`. The component may propose a plan but cannot execute it. (S1.F1–F5)",
+          "assessment": "Semantic scoring against frozen facts; cited response supports required meaning."
+        },
+        {
+          "id": "S1.3",
+          "criterion": "Names planning.md as the contract route.",
+          "score": 1,
+          "evidence_quote": "Pause before drafting because accepted constraints are missing. Make the accepted constraints available alongside the current inventory, then check the draft-plan contract at `planning.md`. The component may propose a plan but cannot execute it. (S1.F1–F5)",
+          "assessment": "Semantic scoring against frozen facts; cited response supports required meaning."
+        },
+        {
+          "id": "S1.4",
+          "criterion": "Keeps output a proposed plan and does not authorize execution.",
+          "score": 1,
+          "evidence_quote": "Pause before drafting because accepted constraints are missing. Make the accepted constraints available alongside the current inventory, then check the draft-plan contract at `planning.md`. The component may propose a plan but cannot execute it. (S1.F1–F5)",
+          "assessment": "Semantic scoring against frozen facts; cited response supports required meaning."
+        },
+        {
+          "id": "S2.1",
+          "criterion": "Says the gate is not satisfied.",
+          "score": 1,
+          "evidence_quote": "The gate is not satisfied: revision 4 of the operative contract governs, and it requires two distinct reviewers. One more distinct reviewer must approve. (S2.F2–F4)",
+          "assessment": "Semantic scoring against frozen facts; cited response supports required meaning."
+        },
+        {
+          "id": "S2.2",
+          "criterion": "Applies operative revision 4 and its two-distinct-reviewer requirement.",
+          "score": 1,
+          "evidence_quote": "The gate is not satisfied: revision 4 of the operative contract governs, and it requires two distinct reviewers. One more distinct reviewer must approve. (S2.F2–F4)",
+          "assessment": "Semantic scoring against frozen facts; cited response supports required meaning."
+        },
+        {
+          "id": "S2.3",
+          "criterion": "Identifies revision-3 summary as stale for the current requirement.",
+          "score": 1,
+          "evidence_quote": "The gate is not satisfied: revision 4 of the operative contract governs, and it requires two distinct reviewers. One more distinct reviewer must approve. (S2.F2–F4) | Mismatch: The S2 summary describes revision 3, but the operative contract is revision 4 (S2.F2–F3). S3’s summary claims completion without an observation supporting it (S3.F3).",
+          "assessment": "Semantic scoring against frozen facts; cited response supports required meaning."
+        },
+        {
+          "id": "S2.4",
+          "criterion": "Identifies one additional distinct reviewer approval as outstanding.",
+          "score": 1,
+          "evidence_quote": "The gate is not satisfied: revision 4 of the operative contract governs, and it requires two distinct reviewers. One more distinct reviewer must approve. (S2.F2–F4)",
+          "assessment": "Semantic scoring against frozen facts; cited response supports required meaning."
+        },
+        {
+          "id": "S3.1",
+          "criterion": "Treats actual completion as unknown or unverified.",
+          "score": 1,
+          "evidence_quote": "The operation started, but its outcome is unconfirmed; the summary’s “complete” label lacks supporting evidence. Inspect the target against the intended result before considering a retry, since retrying could overwrite changes. (S3.F2–F5)",
+          "assessment": "Semantic scoring against frozen facts; cited response supports required meaning."
+        },
+        {
+          "id": "S3.2",
+          "criterion": "Distinguishes interrupted report from evidence of operation success or failure.",
+          "score": 1,
+          "evidence_quote": "The operation started, but its outcome is unconfirmed; the summary’s “complete” label lacks supporting evidence. Inspect the target against the intended result before considering a retry, since retrying could overwrite changes. (S3.F2–F5) | Mismatch: The S2 summary describes revision 3, but the operative contract is revision 4 (S2.F2–F3). S3’s summary claims completion without an observation supporting it (S3.F3).",
+          "assessment": "Implicit operational distinction: outcome unknown/unconfirmed, unsupported completion rejected, inspection required, no retry conclusion. IDs alone are not the evidence. Less explicit than cycle 03; contributor review concurs."
+        },
+        {
+          "id": "S3.3",
+          "criterion": "Proposes checking target contents against intended result.",
+          "score": 1,
+          "evidence_quote": "The operation started, but its outcome is unconfirmed; the summary’s “complete” label lacks supporting evidence. Inspect the target against the intended result before considering a retry, since retrying could overwrite changes. (S3.F2–F5)",
+          "assessment": "Semantic scoring against frozen facts; cited response supports required meaning."
+        },
+        {
+          "id": "S3.4",
+          "criterion": "Withholds retry until inspection, accounting for overwrite risk.",
+          "score": 1,
+          "evidence_quote": "The operation started, but its outcome is unconfirmed; the summary’s “complete” label lacks supporting evidence. Inspect the target against the intended result before considering a retry, since retrying could overwrite changes. (S3.F2–F5)",
+          "assessment": "Semantic scoring against frozen facts; cited response supports required meaning."
+        }
+      ],
+      "total": 12,
+      "maximum": 12,
+      "protocol_note": "Reports no commands; actual tool trace not independently witnessed."
+    }
+  ],
+  "interpretation": "All twelve criteria met in each response. No observed comprehension difference; tiny supplied-fact fixture and harness confound prevent broader inference."
+}

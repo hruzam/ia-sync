@@ -1,0 +1,7 @@
+{
+  "result": "FAIL \u2014 scratch fixture incomplete",
+  "script_result": "/tmp/germline-A2-scratch-check.json",
+  "reason": "Scratch collection omitted the linked Jev reader brief; the verifier correctly reported a missing local link.",
+  "correction": "Add an existence-only symlink for that actual brief to the scratch fixture; do not read or copy its body. Then rerun.",
+  "publication_changed": false
+}

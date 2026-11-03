@@ -1,0 +1,26 @@
+{
+  "result": "PASS \u2014 installed bytes and static route only",
+  "walk_up": [
+    {
+      "cwd": "/home/hruzam/nabla-lab",
+      "selected": "/home/hruzam/nabla-lab/.germline/agents/oraculum/nabla-lab.md"
+    },
+    {
+      "cwd": "/home/hruzam/nabla-lab/guides",
+      "selected": "/home/hruzam/nabla-lab/.germline/agents/oraculum/nabla-lab.md"
+    },
+    {
+      "cwd": "/home/hruzam/nabla-lab/session",
+      "selected": "/home/hruzam/nabla-lab/.germline/agents/oraculum/nabla-lab.md"
+    }
+  ],
+  "loaded_source_stamps": {
+    "/home/hruzam/.germline/agents/oraculum/identity.md": "aadaadc8",
+    "/home/hruzam/.germline/agents/oraculum/binding.codex.md": "f1bab274",
+    "/home/hruzam/nabla-lab/.germline/agents/oraculum/nabla-lab.md": "d387026f"
+  },
+  "actual_lab_model_behavior": "not exercised; operator Q1 pending",
+  "fresh_session_required": true,
+  "preservation": 87,
+  "native_source_checks": "YAML and TOML parsed; source/live SHA-256 matches"
+}

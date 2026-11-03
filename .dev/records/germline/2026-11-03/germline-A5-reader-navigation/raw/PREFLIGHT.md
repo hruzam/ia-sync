@@ -1,0 +1,13 @@
+# A5 preflight — 2026-10-30
+
+Cartan / Codex working head; Medusa explicitly activated by Majkee. No live ruling beyond the fixed experiment release is inferred (UNMANNED for consequential curvature). Sole STATUS owner: cartan. Initial STATUS reconciled: only RUNBOOK/STATUS existed; no fixture, admission, handle or subject response was present. No earlier A5 send is known in this native thread.
+
+Host: hruzam-120922; /usr/bin/php74 exists; hardware RAM class office. Worktree main d4b07455a9b7882feee49c99eefcc524d14075aa. Fetch succeeded after sandbox denied FETCH_HEAD; HEAD/origin divergence 0/0. Office inbox empty. A3 presence observed and preserved. Presence id fae9b8f0f54011713fc997c7aa7f55d1. PROJECT.yaml and ancestor/subtree AGENTS were absent; root AGENTS plus supplied Cartan instructions apply. Existing dirty paths were inspected; exact protected hashes in PROTECTED.json. No commit, deployment, journal or other session edits authorized here. Existing A5 pulse route already suffices.
+
+Observed parent instructions identify Codex/Cartan, with no Oraculum canary or loader. Local ~/.codex/config.toml requests gpt-6.1-sol/high; CODEX_PROFILE/CODEX_MODEL were unset. This is configuration evidence, not backend telemetry or an effective runtime attestation. Terra recommendation does not require a model change.
+
+Native collaboration.spawn_agent exposes default role, fork_turns none, model and reasoning_effort. Use default with no parent conversation history and explicit Terra/Luna low requests. No custom Oraculum role or profile is selected. The default role description is neutral; higher-priority developer/project instructions can still be inherited. The same prompt permits required initialization and requests disclosure; fixture access otherwise is message-mediated by instruction, without a technical filesystem sandbox claim. No global settings change or additional helper call is needed. Effective model/effort, internal reads, tokens and total cost remain unknown unless directly exposed.
+
+A4 RESULT and raw/DEVIATIONS read: four 12/12 supplied-fact answers; cycle 02 returned Oraculum startup canary despite fork_turns none. That is a real harness confound. Here the visible parent identity/default route has no such loader; subject disclosures and any observable tools will be retained. A5 does not promise instruction-free contexts or an autonomous filesystem-navigation test. An observed conflicting loader will qualify the attempted result rather than trigger substitution.
+
+Shared STATUS guide read completely before replacement; bus/runbook laws and A3 candidate receipt consulted. No architectural acceptance is inferred. The fixed four attempts are explicitly authorized by prompt-0; no helper/reviewer turns are included.

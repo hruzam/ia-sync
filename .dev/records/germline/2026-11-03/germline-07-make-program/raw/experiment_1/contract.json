@@ -1,0 +1,40 @@
+{
+  "experiment": "experiment_1",
+  "prepared": "2026-10-23T17:02:52+02:00",
+  "host": "office / hruzam-120922",
+  "codex_version": "0.163.0",
+  "claude_programmatic_calls": "excluded by Majkee",
+  "maximum_target_turns": 4,
+  "sources": [
+    {
+      "path": "/home/hruzam/reposoma/raw.guides/tunnel/GUIDE.md",
+      "sha256": "1dc0f9c41d0004744b4820c302cb7be78330528ebaf55732c34ddf78c93f75a4",
+      "bytes": 9489
+    },
+    {
+      "path": "/home/hruzam/ia-sync/zsh/ai/tunnel-codex.py",
+      "sha256": "8ca70c3044a9756265b42bc94d4a58b1d2c512ecd6b2e25becbd781ca2259052",
+      "bytes": 49872
+    },
+    {
+      "path": "/home/hruzam/ia-sync/zsh/ai/tunnel-codex.zsh",
+      "sha256": "ae7803d804b54fd59145550807286a030d9efc6c2f13c6a0e17584dffe768f4e",
+      "bytes": 19812
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-07-make-program/raw/experiment_1/program/CONTROLLER.md",
+      "sha256": "85360dc9c8d5045767e2b665f0ef5824eb5eaebd80bdd4a90e8febb1aeff1a0d",
+      "bytes": 1157
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-07-make-program/raw/experiment_1/program/fn/audit-tunnel-opening.md",
+      "sha256": "4fcf42600fa1bc7d1f94965a88b697732ffbf67ef9a062b35b18e5ddbcff60a0",
+      "bytes": 3253
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-07-make-program/_bus/01.cartan.point.md",
+      "sha256": "083af02f8c5e8c5f6be2bbf87a69ea2044ba822eb13126163bae31a1d222071e",
+      "bytes": 4211
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+=== ia-sync deploy started at Tue Oct 27 02:19:40 CET 2026 ===
+Machine: office
+Scope: Codex portable surface only
+
+→ ~/.codex + ~/.agents/skills
+  backup: AGENTS.md → AGENTS.md.bak-2026-10-27
+  Codex AGENTS.md deployed
+  backup: houston.config.toml → houston.config.toml.bak-2026-10-27
+  Codex profile houston.config.toml deployed
+  backup: oraculum.config.toml → oraculum.config.toml.bak-2026-10-27
+  Codex profile oraculum.config.toml deployed
+  Codex agents/ deployed
+  Codex skills/ deployed
+
+=== Codex deploy complete ===

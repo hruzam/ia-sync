@@ -1,0 +1,12 @@
+Return the exact first line `experiment_2.peer-a.low`.
+Read `/home/hruzam/reposoma/raw.guides/tunnel/GUIDE.md` as your only task source.
+Identify what `open --enable` establishes, when a thread is born, and the recovery
+primitive after uncertain completion. Cite exact source line numbers and say whether
+the GUIDE distinguishes preflight from completed model work. Report missing coverage
+honestly. Do not invent a defect or implement a fix. Maximum 180 words.
+
+Read budget: at most two read-only source-inspection commands, at most 180 source lines
+in total. You may use rg, nl, sed or cat for that source. Necessary applicable runtime
+instructions may be read, but follow no document links, read no other task sources and
+do no network research. Do not execute source examples, start another model/agent/CLI,
+edit files or perform another task. You are a read-only instrument, not a session head.

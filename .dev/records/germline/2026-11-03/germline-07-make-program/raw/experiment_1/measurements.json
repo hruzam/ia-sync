@@ -1,0 +1,151 @@
+{
+  "experiment": "experiment_1",
+  "rows": [
+    {
+      "phase": "caretaker",
+      "peer": "peer-a",
+      "elapsed_seconds": 30.37,
+      "exit": 0,
+      "thread_id": "01a1694a-7bdd-7d70-913d-d3dcef66c8ac",
+      "turn_id": "01a1694a-7c7d-7470-afce-f99b82ae10e1",
+      "model": "gpt-6.1-sol",
+      "effort": "xhigh",
+      "runtime_sandbox": {
+        "networkAccess": false,
+        "type": "readOnly"
+      },
+      "usage_delta": {
+        "totalTokens": 45230,
+        "inputTokens": 44326,
+        "cachedInputTokens": 20352,
+        "cacheWriteInputTokens": 0,
+        "outputTokens": 904,
+        "reasoningOutputTokens": 472
+      },
+      "usage_reported_total": {
+        "totalTokens": 45230,
+        "inputTokens": 44326,
+        "cachedInputTokens": 20352,
+        "cacheWriteInputTokens": 0,
+        "outputTokens": 904,
+        "reasoningOutputTokens": 472
+      },
+      "last_input_context": 23816,
+      "result_bytes": 1685,
+      "result_text_bytes": 1348,
+      "result_sha256": "f6118dd3558b8c2ec18d41113a5fdc74b3c91eb890758f7383d692850ce9a3ba"
+    },
+    {
+      "phase": "direct",
+      "peer": "peer-a",
+      "elapsed_seconds": 20.212,
+      "exit": 0,
+      "thread_id": "01a1694a-7bdd-7d70-913d-d3dcef66c8ac",
+      "turn_id": "01a16951-2359-7a00-93f2-429f3a70fe15",
+      "model": "gpt-6.1-sol",
+      "effort": "xhigh",
+      "runtime_sandbox": {
+        "networkAccess": false,
+        "type": "readOnly"
+      },
+      "usage_delta": {
+        "totalTokens": 65248,
+        "inputTokens": 64642,
+        "cachedInputTokens": 55040,
+        "cacheWriteInputTokens": 0,
+        "outputTokens": 606,
+        "reasoningOutputTokens": 149
+      },
+      "usage_reported_total": {
+        "totalTokens": 110478,
+        "inputTokens": 108968,
+        "cachedInputTokens": 75392,
+        "cacheWriteInputTokens": 0,
+        "outputTokens": 1510,
+        "reasoningOutputTokens": 621
+      },
+      "last_input_context": 33974,
+      "result_bytes": 1758,
+      "result_text_bytes": 1418,
+      "result_sha256": "c14175324295a945301b5bb3ee6e364e5843e18fb1686ab00b30b730ad5b029a"
+    },
+    {
+      "phase": "caretaker",
+      "peer": "peer-b",
+      "elapsed_seconds": 62.881,
+      "exit": 0,
+      "thread_id": "01a1694b-0c61-76f0-897c-fc3c66f665c0",
+      "turn_id": "01a1694b-0cdf-78e0-b1a8-00a371f32798",
+      "model": "gpt-6.1-sol",
+      "effort": "xhigh",
+      "runtime_sandbox": {
+        "networkAccess": false,
+        "type": "readOnly"
+      },
+      "usage_delta": {
+        "totalTokens": 161610,
+        "inputTokens": 159964,
+        "cachedInputTokens": 118144,
+        "cacheWriteInputTokens": 0,
+        "outputTokens": 1646,
+        "reasoningOutputTokens": 775
+      },
+      "usage_reported_total": {
+        "totalTokens": 161610,
+        "inputTokens": 159964,
+        "cachedInputTokens": 118144,
+        "cacheWriteInputTokens": 0,
+        "outputTokens": 1646,
+        "reasoningOutputTokens": 775
+      },
+      "last_input_context": 41708,
+      "result_bytes": 1914,
+      "result_text_bytes": 1573,
+      "result_sha256": "f497402a8975864cf5ffed487a42862766e2b21d306d0659e09a92ee68f8a315"
+    },
+    {
+      "phase": "direct",
+      "peer": "peer-b",
+      "elapsed_seconds": 25.732,
+      "exit": 0,
+      "thread_id": "01a1694b-0c61-76f0-897c-fc3c66f665c0",
+      "turn_id": "01a16951-2359-7d72-9e70-b9262e9df2f8",
+      "model": "gpt-6.1-sol",
+      "effort": "xhigh",
+      "runtime_sandbox": {
+        "networkAccess": false,
+        "type": "readOnly"
+      },
+      "usage_delta": {
+        "totalTokens": 101749,
+        "inputTokens": 100965,
+        "cachedInputTokens": 91136,
+        "cacheWriteInputTokens": 0,
+        "outputTokens": 784,
+        "reasoningOutputTokens": 163
+      },
+      "usage_reported_total": {
+        "totalTokens": 263359,
+        "inputTokens": 260929,
+        "cachedInputTokens": 209280,
+        "cacheWriteInputTokens": 0,
+        "outputTokens": 2430,
+        "reasoningOutputTokens": 938
+      },
+      "last_input_context": 52250,
+      "result_bytes": 1922,
+      "result_text_bytes": 1581,
+      "result_sha256": "7129924860b16cc0b0bf0783c2385c72989acf3e99fc719eca4be18316e32d10"
+    }
+  ],
+  "caretaker_model_usage": "not exposed by native collaboration return",
+  "total_billed_cost": "unverified",
+  "causal_comparison_limits": [
+    "same threads and accumulated history",
+    "caretaker first; direct later",
+    "initial sequential; direct concurrent",
+    "clarification only in direct prompts",
+    "no independent main/caretaker usage telemetry"
+  ],
+  "source_hashes_unchanged": true
+}

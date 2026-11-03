@@ -1,0 +1,16 @@
+{
+  "checked_at": "2026-10-30T07:05:43.291091+01:00",
+  "yaml_blocks_parsed": 14,
+  "freeze_files_unchanged": 8,
+  "subject_attempts": 4,
+  "responses_preserved_with_matching_hashes": 4,
+  "rubric_items_scored": 48,
+  "bus_cycles_complete": 6,
+  "gate_matches": true,
+  "result_links_resolve": true,
+  "A3_baseline_unchanged": true,
+  "preexisting_files_compared": 885,
+  "changed_preexisting_paths": [],
+  "pulse_only_A4_row_added": true,
+  "limitations": "Parent mechanics checks and contributor scoring review; no independent scientific acceptance, tool-trace audit or effective model/effort telemetry."
+}

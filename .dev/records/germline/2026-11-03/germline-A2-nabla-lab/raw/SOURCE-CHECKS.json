@@ -1,0 +1,26 @@
+{
+  "result": "PASS",
+  "scope": "source checks, not runtime qualification",
+  "lab_baseline_hashes_match": 6,
+  "protected_existing_lab_files": 89,
+  "yaml_toml_parse": "pass",
+  "preserved_child_fence": "pass",
+  "no_local_native_roster": "pass",
+  "documented_default_budget_bytes": 32768,
+  "global_plus_lab_instruction_bytes": 14206,
+  "candidate_files": {
+    "PROJECT.yaml": "9c487fb9c4c88bb93ebcd4dfa13b1f32c6f124a36d125cccd363d47cba2faa7b",
+    "AGENTS.md": "8412b60e3761b21c2d80a4530b3a93478c3da40def68688d2dcfea40c69ca883",
+    "guides/codex-lab.md": "f67ab14860b8aa024ce9ae4e0e88174e0bdbd7f6725f3a96e7593cd4e895cb63",
+    ".germline/agents/oraculum/nabla-lab.md": "0d6b3dc5fe8ff449ee33450bf12739e8d2f0a67194f8dcd90bb3bae6c4bbe3d3"
+  },
+  "shared_source_revision": {
+    "germline/agents/oraculum/identity.md": "12df35006f33407be8e93198807af918fc0a7063e3bd462c8002b90c27df838d",
+    "germline/agents/oraculum/binding.codex.md": "06ffe9302a9b78daeb5a1c91941ff8c16babc11de70955f6094338217b8948fe",
+    "germline/agents/oraculum/binding.claude.md": "13b95148d748064a530508c44d763355de79a20a0aee568255efbc04fd37f780",
+    "codex/AGENTS.md": "ca99cccc1ad4dbc8034e7f853d2edd9e0e1d4d53927b3e3e253fe4fda5deca4b",
+    "codex/README.md": "8f65119bef3157d74331e9a645b57b46e15496b88ccabb27081bc1971e669b70",
+    "codex/skills/codex-harness/references/cross-runtime-roles.md": "ce6da2001b70752039f0aaaa77fd0352419f5fb4b01c8a81f8587fa84cc7cb82"
+  },
+  "final_review": "C05 source-only follow-up; two wording issues corrected: cross-vendor scope and future report-write grant"
+}

@@ -1,0 +1,34 @@
+[
+  {
+    "subject": "reader-01",
+    "model": "gpt-6.1-terra",
+    "effort": "low",
+    "arm": "structured",
+    "role": "default",
+    "fork_turns": "none"
+  },
+  {
+    "subject": "reader-02",
+    "model": "gpt-6-luna",
+    "effort": "low",
+    "arm": "prose",
+    "role": "default",
+    "fork_turns": "none"
+  },
+  {
+    "subject": "reader-03",
+    "model": "gpt-6.1-terra",
+    "effort": "low",
+    "arm": "prose",
+    "role": "default",
+    "fork_turns": "none"
+  },
+  {
+    "subject": "reader-04",
+    "model": "gpt-6-luna",
+    "effort": "low",
+    "arm": "structured",
+    "role": "default",
+    "fork_turns": "none"
+  }
+]

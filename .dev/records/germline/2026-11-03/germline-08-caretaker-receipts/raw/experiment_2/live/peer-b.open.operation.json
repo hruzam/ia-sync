@@ -1,0 +1,63 @@
+{
+  "argv": [
+    "/home/hruzam/ia-sync/zsh/ai/tunnel-codex.zsh",
+    "open",
+    "--state",
+    "/home/hruzam/ia-sync/.dev/session/germline-08-caretaker-receipts/raw/experiment_2/live/tunnel.peer-b.state.json",
+    "--enable",
+    "--sandbox",
+    "read-only",
+    "--cwd",
+    "/home/hruzam/ia-sync/.dev/session/germline-08-caretaker-receipts",
+    "--preamble",
+    "none",
+    "--model",
+    "gpt-6.1-sol",
+    "--override",
+    "effort=low"
+  ],
+  "codex_binary": "/home/hruzam/.local/bin/codex",
+  "codex_version": {
+    "argv": [
+      "/home/hruzam/.local/bin/codex",
+      "--version"
+    ],
+    "exit": 0,
+    "stderr": "",
+    "stdout": "codex-cli 0.164.0"
+  },
+  "elapsed_seconds": 0.929,
+  "ended_unix": 1792980842.4728308,
+  "exit": 0,
+  "outputs": {
+    "stderr": {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-08-caretaker-receipts/raw/experiment_2/live/peer-b.open.stderr.txt",
+      "sha256": "0c2befa2e1e2cac0791a6e0c330d351740086561088d11afd0039fa19e27fc04"
+    },
+    "stdout": {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-08-caretaker-receipts/raw/experiment_2/live/peer-b.open.stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "peer": "peer-b",
+  "precondition": null,
+  "requested": {
+    "effort": "low",
+    "model": "gpt-6.1-sol"
+  },
+  "runner": {
+    "pid": 1000595,
+    "start": "294632456"
+  },
+  "started_unix": 1792980841.5433662,
+  "state_after": {
+    "lastTurnId": null,
+    "model": "gpt-6.1-sol",
+    "runtime": null,
+    "sandbox": "read-only",
+    "threadId": null
+  },
+  "state_before": null,
+  "status": "completed",
+  "verb": "open"
+}

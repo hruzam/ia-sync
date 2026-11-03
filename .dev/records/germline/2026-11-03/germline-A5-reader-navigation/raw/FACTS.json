@@ -1,0 +1,76 @@
+{
+  "routes": [
+    [
+      "components/plan.md",
+      "defines the draft-plan prerequisites, output and action boundary"
+    ],
+    [
+      "state/inputs.md",
+      "records the current input availability for draft-plan"
+    ],
+    [
+      "rules/review.md",
+      "defines the operative review rule"
+    ],
+    [
+      "contracts/copy.md",
+      "defines the copy recovery procedure and retry authority boundary"
+    ],
+    [
+      "operations/copy-17.md",
+      "records the durable receipt and reporting connection for copy-17"
+    ],
+    [
+      "state/target.md",
+      "records the current copy target and subsequent edits"
+    ],
+    [
+      "archive/notes.md",
+      "contains historical review notes and unrelated material; has no current authority"
+    ]
+  ],
+  "documents": [
+    {
+      "path": "components/plan.md",
+      "source": "PLAN",
+      "revision": "2",
+      "assertions": "draft-plan requires current inventory and accepted constraints. It produces a proposal and cannot execute that proposal."
+    },
+    {
+      "path": "state/inputs.md",
+      "source": "INPUTS",
+      "revision": "5",
+      "assertions": "Current inventory is available. Accepted constraints are missing."
+    },
+    {
+      "path": "rules/review.md",
+      "source": "REVIEW",
+      "revision": "4",
+      "assertions": "This is the operative review rule, revision 4. Approval requires two distinct reviewers."
+    },
+    {
+      "path": "contracts/copy.md",
+      "source": "COPY-CONTRACT",
+      "revision": "2",
+      "assertions": "Recovery checks the durable operation receipt and the current target. Retry can overwrite later changes and needs its own authority. Preserve later edits while reconciling the desired state; do not infer retry authority from a lost report."
+    },
+    {
+      "path": "operations/copy-17.md",
+      "source": "COPY-17",
+      "revision": "1",
+      "assertions": "The durable operation receipt records completion at 10:05 with output digest A0. The reporting connection was lost at 10:06."
+    },
+    {
+      "path": "state/target.md",
+      "source": "TARGET",
+      "revision": "6",
+      "assertions": "The current target digest is B1. A subsequent edit is recorded at 10:10. Preserve this edit while reconciling desired state."
+    },
+    {
+      "path": "archive/notes.md",
+      "source": "NOTES",
+      "revision": "3-historical",
+      "assertions": "These are historical review-revision-3 notes, with no current authority. Under revision 3 one reviewer sufficed. Unrelated material: the old office stationery order used blue folders."
+    }
+  ]
+}

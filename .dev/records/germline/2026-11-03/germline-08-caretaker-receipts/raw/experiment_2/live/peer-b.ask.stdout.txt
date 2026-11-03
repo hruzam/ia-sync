@@ -1,0 +1,14 @@
+experiment_2.peer-b.low
+
+Source findings in `/home/hruzam/ia-sync/zsh/ai/tunnel-codex.py`:
+
+- `open` performs preflight: starts transport, initializes, reads account and lists models (666–674). It initializes `threadId: None` (680) and saves state (703); it creates no thread. Explicit binding stores an existing ID (692–701).
+- `_birth_or_resume` creates a thread through `session.thread_start` (847–852), extracts and validates its ID (853–856), then assigns it to in-memory state (857).
+- The new ID reaches disk only after turn driving and reconciliation: `send` at 879–885; `ask` at 946–952. `save_state` writes a temporary JSON file and replaces the destination (609–614).
+
+If first-turn driving times out, or reconciliation raises, control skips that save. A server-side thread—and possibly a running or completed turn—may therefore exist while disk still records a null ID. A retry could create another thread; these windows cannot establish the server’s outcome.
+
+An `ask` text mismatch differs: it raises at 958–962, **after** persistence at 952.
+
+This is a source-derived failure possibility, not an observed runtime failure. No code was executed.
+[usage: {"total":{"totalTokens":44789,"inputTokens":44418,"cachedInputTokens":27648,"cacheWriteInputTokens":0,"outputTokens":371,"reasoningOutputTokens":0},"last":{"totalTokens":24111,"inputTokens":23834,"cachedInputTokens":20480,"cacheWriteInputTokens":0,"outputTokens":277,"reasoningOutputTokens":0},"modelContextWindow":475000}]

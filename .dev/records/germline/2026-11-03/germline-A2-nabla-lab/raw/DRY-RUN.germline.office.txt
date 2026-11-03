@@ -1,0 +1,13 @@
+=== ia-sync deploy started at Tue Oct 27 02:17:25 CET 2026 ===
+Machine: office
+*** DRY RUN — nothing will be written ***
+Scope: global germline (~/.germline) only
+
+→ ~/.germline (global germline layer)
+>f.st...... agents/oraculum/binding.claude.md
+>f.st...... agents/oraculum/binding.codex.md
+>f.st...... agents/oraculum/identity.md
+  germline/ [dry] would deploy (itemised above)
+  ghosts: none
+
+=== Germline deploy complete ===

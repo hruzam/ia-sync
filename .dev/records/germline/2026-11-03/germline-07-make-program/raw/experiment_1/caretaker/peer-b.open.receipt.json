@@ -1,0 +1,38 @@
+{
+  "argv": [
+    "/home/hruzam/ia-sync/zsh/ai/tunnel-codex.zsh",
+    "open",
+    "--state",
+    "/home/hruzam/ia-sync/.dev/session/germline-07-make-program/raw/experiment_1/caretaker/tunnel.peer-b.state.json",
+    "--enable",
+    "--sandbox",
+    "read-only",
+    "--cwd",
+    "/home/hruzam/ia-sync/.dev/session/germline-07-make-program",
+    "--preamble",
+    "none"
+  ],
+  "elapsed_seconds": 1.262,
+  "ended_unix": 1792767839.284042,
+  "exit": 0,
+  "prompt": null,
+  "started_unix": 1792767838.0223985,
+  "state": {
+    "created": "2026-10-23T15:03:59Z",
+    "cwd": "/home/hruzam/ia-sync/.dev/session/germline-07-make-program",
+    "enabled": true,
+    "lastTurnId": null,
+    "model": "gpt-6.1-sol",
+    "runtime": null,
+    "sandbox": "read-only",
+    "threadId": null
+  },
+  "stderr": {
+    "path": "/home/hruzam/ia-sync/.dev/session/germline-07-make-program/raw/experiment_1/caretaker/peer-b.open.stderr.txt",
+    "sha256": "be882b5f495bb875995bea86835b7b155b89044022b32d8023a61560ecf39385"
+  },
+  "stdout": {
+    "path": "/home/hruzam/ia-sync/.dev/session/germline-07-make-program/raw/experiment_1/caretaker/peer-b.open.stdout.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+}

@@ -1,0 +1,12 @@
+experiment_1.peer-b.direct
+
+`open` validates sandbox/cwd ([622–631](/home/hruzam/ia-sync/zsh/ai/tunnel-codex.py:622)). For a new vault, it preflights app-server startup, initialization, `account/read`, and `model/list` ([666–674](/home/hruzam/ia-sync/zsh/ai/tunnel-codex.py:666)), then saves `threadId:null` or a supplied existing ID without resuming it ([678–703](/home/hruzam/ia-sync/zsh/ai/tunnel-codex.py:678)). Reopening an unborn vault returns; an existing thread is initialized/resumed ([728–752](/home/hruzam/ia-sync/zsh/ai/tunnel-codex.py:728)).
+
+On first `send`/`ask`, `_birth_or_resume` calls `thread/start` when the ID is null, assigning the returned ID **in memory** ([847–857](/home/hruzam/ia-sync/zsh/ai/tunnel-codex.py:847)).
+
+Persistence follows successful turn completion and reconciliation ([879–885](/home/hruzam/ia-sync/zsh/ai/tunnel-codex.py:879), [946–952](/home/hruzam/ia-sync/zsh/ai/tunnel-codex.py:946)); `save_state` writes temporary JSON and replaces the state file ([609–614](/home/hruzam/ia-sync/zsh/ai/tunnel-codex.py:609)).
+
+A first-turn timeout ([485–491](/home/hruzam/ia-sync/zsh/ai/tunnel-codex.py:485)) or reconciliation exception ([521–534](/home/hruzam/ia-sync/zsh/ai/tunnel-codex.py:521)) can therefore leave the saved ID null despite server-side creation or processing. Null does not establish non-execution; retrying can create another thread. `ask`’s later text mismatch occurs **after saving** ([952–959](/home/hruzam/ia-sync/zsh/ai/tunnel-codex.py:952)).
+
+This is static analysis; no runtime failure was observed.
+[usage: {"total":{"totalTokens":263359,"inputTokens":260929,"cachedInputTokens":209280,"cacheWriteInputTokens":0,"outputTokens":2430,"reasoningOutputTokens":938},"last":{"totalTokens":52889,"inputTokens":52250,"cachedInputTokens":48640,"cacheWriteInputTokens":0,"outputTokens":639,"reasoningOutputTokens":163},"modelContextWindow":475000}]

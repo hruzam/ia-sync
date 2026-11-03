@@ -1,0 +1,12 @@
+PATH: readiness/acceptance-rule.md
+# Acceptance rule
+Revision: current
+
+The current operative constraints rule requires acceptance by the designated constraints owner. Author assent is useful evidence of drafting agreement but is not owner acceptance, even if the same record captures both events. This rule supersedes the contrary statement in the inherited summary for the present cycle. If acceptance is absent, obtain the designated owner’s decision before treating constraints as accepted.
+
+---
+PATH: readiness/constraints.md
+# Constraints record
+Revision: current
+
+The Meridian constraints document is a draft for the current cycle. Its author has assented to the draft, and the record identifies a designated owner for acceptance. The owner has not accepted it. A draft may be discussed and revised, but the record does not show the acceptance event required to change its status. An author’s assent is recorded separately from owner acceptance.

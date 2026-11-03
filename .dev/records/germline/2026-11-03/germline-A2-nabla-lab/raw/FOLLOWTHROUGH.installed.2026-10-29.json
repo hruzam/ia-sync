@@ -1,0 +1,26 @@
+{
+  "result": "PASS \u2014 local setup follow-through installed",
+  "created": "2026-10-29T04:56:50.629906+01:00",
+  "backup": "/home/hruzam/.local/state/ia-sync/germline-A2-nabla-lab/fold-20261029T045650+0100-12e91356",
+  "published_files": {
+    "AGENTS.md": "e626ead0637b1842a1d6e4046b774f9f1bba405e2b6bc398a42fa7147430ac51",
+    "guides/codex-lab.md": "8aadef3eada1a1baa6235b19c7621184b72d0676cf62a37d5381aaf0d95616a9",
+    "publications/inner-circle/tools/README.md": "9d4caa64414e2cbac3ebba0df307914c2afbe93a4bbdc4cbf4c28f8d19c4f139",
+    "publications/inner-circle/tools/verify.py": "3a2094933df5cd7daced12e1e9d0f6c079b1248c8f2948c160c1287df7c12dae",
+    "publications/inner-circle/tools/render.py": "026f437ef93033ebe219cdf3fe54b677bb7afeec4ca756c8b320aa9af20b7e09"
+  },
+  "other_existing_files_preserved": 158,
+  "global_identity_bindings_profile_child_unchanged": {
+    "/home/hruzam/ia-sync/germline/agents/oraculum/identity.md": "12df35006f33407be8e93198807af918fc0a7063e3bd462c8002b90c27df838d",
+    "/home/hruzam/ia-sync/germline/agents/oraculum/binding.codex.md": "06ffe9302a9b78daeb5a1c91941ff8c16babc11de70955f6094338217b8948fe",
+    "/home/hruzam/ia-sync/germline/agents/oraculum/binding.claude.md": "13b95148d748064a530508c44d763355de79a20a0aee568255efbc04fd37f780",
+    "/home/hruzam/.germline/agents/oraculum/identity.md": "12df35006f33407be8e93198807af918fc0a7063e3bd462c8002b90c27df838d",
+    "/home/hruzam/.germline/agents/oraculum/binding.codex.md": "06ffe9302a9b78daeb5a1c91941ff8c16babc11de70955f6094338217b8948fe",
+    "/home/hruzam/.germline/agents/oraculum/binding.claude.md": "13b95148d748064a530508c44d763355de79a20a0aee568255efbc04fd37f780",
+    "/home/hruzam/.codex/oraculum.config.toml": "5120835f451fd6bd2f253df9e8036e57d69eb9c3be902e8f44759251c4f7ea99",
+    "/home/hruzam/.codex/agents/oraculum.toml": "427bba7b343235c637bfb8cc78e507571f5daf23bce5d52699b10f9a0925b3bc"
+  },
+  "installed_publication_verifier": "/home/hruzam/ia-sync/.dev/session/germline-A2-nabla-lab/raw/FOLLOWTHROUGH.publication-check.2026-10-29.json",
+  "actual_publication_checks": true,
+  "scientific_scope": "No study changed or Track 2 investigation begun; existing publications and historical receipt preserved."
+}

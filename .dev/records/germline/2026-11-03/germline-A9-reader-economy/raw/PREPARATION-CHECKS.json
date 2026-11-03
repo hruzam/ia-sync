@@ -1,0 +1,13 @@
+{
+  "frozen_input_hashes": 57,
+  "freeze_mismatches": [],
+  "protected_files": 103,
+  "protected_mismatches": [],
+  "subjects_started": 0,
+  "admitted_turns": 0,
+  "body_word_range": [
+    60,
+    68
+  ],
+  "limitations": "No dispatch, scoring, metrics, or result yet. Paired inputs were generated from common case objects; subject payload byte carriage remains unverified."
+}

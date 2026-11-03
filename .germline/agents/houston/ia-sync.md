@@ -4,8 +4,8 @@ project: ia-sync
 scope: project context, source map and card landing paths; specialises the shared Houston contracts
 authority: AGENTS.md and SYNC_DISCIPLINE.md; Majkee's project-layer assignments, 2026-10-26 and 2026-10-29
 state: CANDIDATE — local documentation-route fold; runtime qualification is route-specific evidence
-updated: 2026-10-29
-stamp: 0c9da1ff
+updated: 2026-11-03
+stamp: 7749b4f0
 authored: Cartan · Codex · office
 ---
 # houston · ia-sync addendum
@@ -54,6 +54,7 @@ orientation. They are navigation routes, not instructions to read an entire vaul
 | Shared explanatory guides | `/home/hruzam/reposoma/raw.guides/`; discover topics from `*/GUIDE.md` frontmatter and the selected guide's manifest, using the available guide skill or targeted filesystem reads. Load only the relevant topic/chapter. |
 | Agent-forging explanation | `/home/hruzam/reposoma/raw.guides/germline-forge/GUIDE.md`; its explicit partly-stale warning covers the older rendered-body/symlink model. Use the current germline entry, deployment code and selected operative sources to resolve current mechanics; do not silently adopt the old model. |
 | Session continuity and known-issue vault | `/home/hruzam/reposoma/_cold-start/README.md` → relevant `card/`, `issues/`, `routines/` or `archive/` entries, filtered to `project: ia-sync` and the assigned question. Inspect filenames/frontmatter first. Cards are pointers/evidence, not new locks or execution grants. |
+| Retired work, scars and recovery | `ARCHIVE.md` → manifest, readable evidence, compressed local copies and `.dev/observations/`. Preserve historical identities and pending dispositions; local archival is not shared custody or result acceptance. |
 | Current task and architecture-document status | `pulse.md` → the selected bed's `STATUS.md` and assigned evidence. Check whether an architecture reference actually exists and was accepted before treating it as an enduring source. No project-wide architecture entrance is declared in this addendum yet. |
 
 `germline/README.md`, this project layer and repository task/docs material are

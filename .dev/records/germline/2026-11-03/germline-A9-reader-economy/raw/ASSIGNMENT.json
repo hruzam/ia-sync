@@ -1,0 +1,44 @@
+[
+  {
+    "reader": "01",
+    "case": "readiness",
+    "arm": "full",
+    "model": "gpt-6-luna",
+    "effort": "low"
+  },
+  {
+    "reader": "02",
+    "case": "readiness",
+    "arm": "selective",
+    "model": "gpt-6-luna",
+    "effort": "low"
+  },
+  {
+    "reader": "03",
+    "case": "identity",
+    "arm": "selective",
+    "model": "gpt-6-luna",
+    "effort": "low"
+  },
+  {
+    "reader": "04",
+    "case": "identity",
+    "arm": "full",
+    "model": "gpt-6-luna",
+    "effort": "low"
+  },
+  {
+    "reader": "05",
+    "case": "recovery",
+    "arm": "full",
+    "model": "gpt-6-luna",
+    "effort": "low"
+  },
+  {
+    "reader": "06",
+    "case": "recovery",
+    "arm": "selective",
+    "model": "gpt-6-luna",
+    "effort": "low"
+  }
+]

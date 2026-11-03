@@ -1,0 +1,34 @@
+{
+  "date": "2026-11-03",
+  "scope": "operator-authorized local retirement; not published formal closure",
+  "verdict": "PASS",
+  "checks": [
+    {
+      "name": "readable files and historical aliases match manifest; archive hashes and ignore classification verified",
+      "files": 436,
+      "aliases": 13,
+      "pass": true
+    },
+    {
+      "name": "four local tunnel handles closed, zero model turns",
+      "pass": true
+    },
+    {
+      "name": "retired routes removed; independent living routes and A2 continuation present",
+      "pass": true
+    },
+    {
+      "name": "six promoted observation bodies preserve originals; native harvest exists",
+      "pass": true
+    },
+    {
+      "name": "heading hierarchy retained and git diff whitespace check passed",
+      "pass": true
+    }
+  ],
+  "preservation_commit": null,
+  "remote_backup": "unverified/not performed",
+  "result_acceptance": "pending remains pending",
+  "named_agol_route": "unavailable; attributed native-reader function performed instead",
+  "presence": "detached exact attachment ad883e79bbbd92130b80a41cdde2657f; other attachments preserved"
+}

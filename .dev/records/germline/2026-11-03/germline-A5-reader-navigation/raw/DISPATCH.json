@@ -1,0 +1,448 @@
+{
+  "attempts": [
+    {
+      "subject": "reader-01",
+      "model": "gpt-6.1-terra",
+      "effort": "low",
+      "arm": "structured",
+      "role": "default",
+      "fork_turns": "none",
+      "handle": "/root/reader_01",
+      "request_rounds": 3,
+      "deliveries": 6,
+      "sends": [
+        {
+          "turn": 1,
+          "at": "2026-10-30T08:21:18.558065+01:00",
+          "handle": null,
+          "sha256": "ed11425c8bdf59e8dcd3f28e723294b99788e20072d820e906f2a7885a227874",
+          "paths": [],
+          "bytes": 2126,
+          "budget": {
+            "rounds_left": 4,
+            "deliveries_left": 6
+          }
+        },
+        {
+          "turn": 2,
+          "at": "2026-10-30T08:22:01.880400+01:00",
+          "handle": "/root/reader_01",
+          "sha256": "1336cbf8cf88249573a4d74d7a3f6db654bad79e40aa94282c08b7d7bbd9848d",
+          "paths": [
+            "components/plan.md",
+            "state/inputs.md"
+          ],
+          "bytes": 289,
+          "budget": {
+            "rounds_left": 3,
+            "deliveries_left": 4
+          }
+        },
+        {
+          "turn": 3,
+          "at": "2026-10-30T08:22:21.744315+01:00",
+          "handle": "/root/reader_01",
+          "sha256": "fa8a32327e3c9aeae8eb4a337be0be889faecd0e8be356d933f0ee2ebec5e581",
+          "paths": [
+            "rules/review.md",
+            "contracts/copy.md"
+          ],
+          "bytes": 439,
+          "budget": {
+            "rounds_left": 2,
+            "deliveries_left": 2
+          }
+        },
+        {
+          "turn": 4,
+          "at": "2026-10-30T08:22:40.131110+01:00",
+          "handle": "/root/reader_01",
+          "sha256": "d2aec0a25778b4a4599318fd23c72948dd3b37d8698884d1524ceacb287cd9c4",
+          "paths": [
+            "operations/copy-17.md",
+            "state/target.md"
+          ],
+          "bytes": 358,
+          "budget": {
+            "rounds_left": 1,
+            "deliveries_left": 0
+          }
+        }
+      ],
+      "replies": [
+        {
+          "turn": 1,
+          "at": "2026-10-30T08:22:01.611103+01:00",
+          "message": "READ components/plan.md, state/inputs.md\nOutside reads/tools: none.",
+          "bytes": 67,
+          "sha256": "34ed0e82ee45ba16c7ccd382b241fbc82d87a811fbeb5fa7ef0186ad7d2ba8d3"
+        },
+        {
+          "turn": 2,
+          "at": "2026-10-30T08:22:21.481600+01:00",
+          "message": "READ rules/review.md, contracts/copy.md\nOutside reads/tools: none.",
+          "bytes": 66,
+          "sha256": "b914ea4589d33f1b3dce73f3b0aa05f1fbe5afb5f843591df25ce85dc12ed27d"
+        },
+        {
+          "turn": 3,
+          "at": "2026-10-30T08:22:39.878810+01:00",
+          "message": "READ operations/copy-17.md, state/target.md\nOutside reads/tools: none.",
+          "bytes": 70,
+          "sha256": "0b14a21c358831222e6a278940b27d4ac654761f4b09c41c72c737de8d870651"
+        },
+        {
+          "turn": 4,
+          "at": "2026-10-30T08:22:56.468510+01:00",
+          "message": "1. **Draft plan:** Obtain accepted constraints before running `draft-plan`. Current inventory is available, but the constraints are missing. Once both inputs are present, the component can produce a proposal; it cannot execute it. Evidence: `components/plan.md` (PLAN revision 2) and `state/inputs.md` (INPUTS revision 5).\n\n2. **Review:** Obtain approval from a second distinct reviewer. The operative revision 4 requires two distinct reviewers, so the inherited revision-3 summary does not establish approval. Evidence: `rules/review.md` (REVIEW revision 4).\n\n3. **Copy-17:** Reconcile the desired state while preserving the later edit; do not retry merely because the report was lost. The durable receipt records completion at 10:05 with digest A0, while the current target is B1 and has a recorded 10:10 edit. A retry could overwrite later changes and requires separate authority. Evidence: `contracts/copy.md` (COPY-CONTRACT revision 2), `operations/copy-17.md` (COPY-17 revision 1), and `state/target.md` (TARGET revision 6).\n\nOutside reads/tools: none.",
+          "bytes": 1058,
+          "sha256": "14f98a5b3d79fce9095f1f91e4fd9c49d0e53cf90ad18931ffc889474424c633"
+        }
+      ],
+      "delivered_paths": [
+        "components/plan.md",
+        "state/inputs.md",
+        "rules/review.md",
+        "contracts/copy.md",
+        "operations/copy-17.md",
+        "state/target.md"
+      ]
+    },
+    {
+      "subject": "reader-02",
+      "model": "gpt-6-luna",
+      "effort": "low",
+      "arm": "prose",
+      "role": "default",
+      "fork_turns": "none",
+      "handle": "/root/reader_02",
+      "request_rounds": 3,
+      "deliveries": 6,
+      "sends": [
+        {
+          "turn": 1,
+          "at": "2026-10-30T08:22:56.742663+01:00",
+          "handle": null,
+          "sha256": "5e5630254a2bfdc6961a2f45ee28ef27aee03e447af340e972b8deb57bdd7ffe",
+          "paths": [],
+          "bytes": 2059,
+          "budget": {
+            "rounds_left": 4,
+            "deliveries_left": 6
+          }
+        },
+        {
+          "turn": 2,
+          "at": "2026-10-30T08:23:16.366538+01:00",
+          "handle": "/root/reader_02",
+          "sha256": "1336cbf8cf88249573a4d74d7a3f6db654bad79e40aa94282c08b7d7bbd9848d",
+          "paths": [
+            "components/plan.md",
+            "state/inputs.md"
+          ],
+          "bytes": 289,
+          "budget": {
+            "rounds_left": 3,
+            "deliveries_left": 4
+          }
+        },
+        {
+          "turn": 3,
+          "at": "2026-10-30T08:23:35.712206+01:00",
+          "handle": "/root/reader_02",
+          "sha256": "fa8a32327e3c9aeae8eb4a337be0be889faecd0e8be356d933f0ee2ebec5e581",
+          "paths": [
+            "rules/review.md",
+            "contracts/copy.md"
+          ],
+          "bytes": 439,
+          "budget": {
+            "rounds_left": 2,
+            "deliveries_left": 2
+          }
+        },
+        {
+          "turn": 4,
+          "at": "2026-10-30T08:23:47.853616+01:00",
+          "handle": "/root/reader_02",
+          "sha256": "d2aec0a25778b4a4599318fd23c72948dd3b37d8698884d1524ceacb287cd9c4",
+          "paths": [
+            "operations/copy-17.md",
+            "state/target.md"
+          ],
+          "bytes": 358,
+          "budget": {
+            "rounds_left": 1,
+            "deliveries_left": 0
+          }
+        }
+      ],
+      "replies": [
+        {
+          "turn": 1,
+          "at": "2026-10-30T08:23:16.088805+01:00",
+          "message": "READ components/plan.md and state/inputs.md. Outside reads/tools used: none.",
+          "bytes": 76,
+          "sha256": "f11ad9d04073cfba368d524374c204eecf4a42681c374ff5d8f5834e084261c0"
+        },
+        {
+          "turn": 2,
+          "at": "2026-10-30T08:23:35.404446+01:00",
+          "message": "READ rules/review.md and contracts/copy.md. Outside reads/tools used: none.",
+          "bytes": 75,
+          "sha256": "c5cfc8ba3a75d232576e64af2564ef8032b6683f66a8468ac1138fda9b9e2bda"
+        },
+        {
+          "turn": 3,
+          "at": "2026-10-30T08:23:47.616899+01:00",
+          "message": "READ operations/copy-17.md and state/target.md. Outside reads/tools used: none.",
+          "bytes": 79,
+          "sha256": "4cac4f6d1bf0df7189efdede09056d931d138701179f1f820608bc7ad8347544"
+        },
+        {
+          "turn": 4,
+          "at": "2026-10-30T08:24:04.101673+01:00",
+          "message": "1. **Draft plan:** First obtain accepted constraints; do not run `draft-plan` yet. The current inventory is available, but accepted constraints are missing, and both are prerequisites. Even when run, `draft-plan` produces a proposal only; it cannot execute it. Evidence: `components/plan.md` (PLAN, rev. 2) and `state/inputs.md` (INPUTS, rev. 5).\n\n2. **Review:** Obtain approval from a second distinct reviewer. One reviewer’s approval is insufficient under the operative rule requiring two distinct reviewers. The inherited revision-3 summary does not override `rules/review.md` (REVIEW, rev. 4).\n\n3. **Copy-17:** Reconcile against the durable receipt and current target, preserving the later edit. The receipt records completion with digest A0 before the reporting connection was lost; the target now has digest B1 and a subsequent edit. Do not retry based on the lost report: retry could overwrite later changes and requires its own authority. Evidence: `contracts/copy.md` (COPY-CONTRACT, rev. 2), `operations/copy-17.md` (COPY-17, rev. 1), and `state/target.md` (TARGET, rev. 6).\n\nOutside reads/tools used: none.",
+          "bytes": 1119,
+          "sha256": "6230ac3a557a928ab7943c8eaddddd7c55aa73798d31f45cf116e2c2c727103f"
+        }
+      ],
+      "delivered_paths": [
+        "components/plan.md",
+        "state/inputs.md",
+        "rules/review.md",
+        "contracts/copy.md",
+        "operations/copy-17.md",
+        "state/target.md"
+      ]
+    },
+    {
+      "subject": "reader-03",
+      "model": "gpt-6.1-terra",
+      "effort": "low",
+      "arm": "prose",
+      "role": "default",
+      "fork_turns": "none",
+      "handle": "/root/reader_03",
+      "request_rounds": 3,
+      "deliveries": 6,
+      "sends": [
+        {
+          "turn": 1,
+          "at": "2026-10-30T08:24:04.367657+01:00",
+          "handle": null,
+          "sha256": "5e5630254a2bfdc6961a2f45ee28ef27aee03e447af340e972b8deb57bdd7ffe",
+          "paths": [],
+          "bytes": 2059,
+          "budget": {
+            "rounds_left": 4,
+            "deliveries_left": 6
+          }
+        },
+        {
+          "turn": 2,
+          "at": "2026-10-30T08:24:42.029086+01:00",
+          "handle": "/root/reader_03",
+          "sha256": "1336cbf8cf88249573a4d74d7a3f6db654bad79e40aa94282c08b7d7bbd9848d",
+          "paths": [
+            "components/plan.md",
+            "state/inputs.md"
+          ],
+          "bytes": 289,
+          "budget": {
+            "rounds_left": 3,
+            "deliveries_left": 4
+          }
+        },
+        {
+          "turn": 3,
+          "at": "2026-10-30T08:24:55.099231+01:00",
+          "handle": "/root/reader_03",
+          "sha256": "fa8a32327e3c9aeae8eb4a337be0be889faecd0e8be356d933f0ee2ebec5e581",
+          "paths": [
+            "rules/review.md",
+            "contracts/copy.md"
+          ],
+          "bytes": 439,
+          "budget": {
+            "rounds_left": 2,
+            "deliveries_left": 2
+          }
+        },
+        {
+          "turn": 4,
+          "at": "2026-10-30T08:25:10.612588+01:00",
+          "handle": "/root/reader_03",
+          "sha256": "d2aec0a25778b4a4599318fd23c72948dd3b37d8698884d1524ceacb287cd9c4",
+          "paths": [
+            "operations/copy-17.md",
+            "state/target.md"
+          ],
+          "bytes": 358,
+          "budget": {
+            "rounds_left": 1,
+            "deliveries_left": 0
+          }
+        }
+      ],
+      "replies": [
+        {
+          "turn": 1,
+          "at": "2026-10-30T08:24:41.766475+01:00",
+          "message": "READ components/plan.md state/inputs.md\n\nOutside reads/tools: none.",
+          "bytes": 67,
+          "sha256": "63d8674374a44977e29bf5f655056876250406771a5c7582bab16d76fc1c2731"
+        },
+        {
+          "turn": 2,
+          "at": "2026-10-30T08:24:54.800164+01:00",
+          "message": "READ rules/review.md contracts/copy.md\n\nOutside reads/tools: none.",
+          "bytes": 66,
+          "sha256": "86b1e1de60ad2584c7fa2d3ebf754256430f826195f4404d95a61bcceaf8b87d"
+        },
+        {
+          "turn": 3,
+          "at": "2026-10-30T08:25:10.384733+01:00",
+          "message": "READ operations/copy-17.md state/target.md\n\nOutside reads/tools: none.",
+          "bytes": 70,
+          "sha256": "d306fc29aeeda87533bf9bbb3b66ed46a6b01e1f76b2779bf7bccf1d0d766b6d"
+        },
+        {
+          "turn": 4,
+          "at": "2026-10-30T08:25:31.440216+01:00",
+          "message": "1. **Draft plan:** Obtain accepted constraints before running `draft-plan`. Current inventory is available, but accepted constraints are missing. Once both prerequisites are met, `draft-plan` may produce a proposal; it cannot execute it. Evidence: `components/plan.md` (PLAN, revision 2) and `state/inputs.md` (INPUTS, revision 5).\n\n2. **Review:** Obtain approval from a second, distinct reviewer. The operative revision 4 requires two distinct reviewers, so the inherited revision 3 summary does not establish approval. Evidence: `rules/review.md` (REVIEW, revision 4).\n\n3. **Copy recovery:** Reconcile the desired state while preserving the later edit; do not retry solely because the report was lost. The durable receipt records completion with digest A0 at 10:05, before the reporting connection was lost. The target is now B1, with a subsequent edit at 10:10. Any retry requires its own authority because it can overwrite later changes. Evidence: `contracts/copy.md` (COPY-CONTRACT, revision 2), `operations/copy-17.md` (COPY-17, revision 1), and `state/target.md` (TARGET, revision 6).\n\nOutside reads/tools: none.",
+          "bytes": 1119,
+          "sha256": "db55bce03436b21f89307f23ccfed4c9d8874b68a024de00551ce77c80fba9f9"
+        }
+      ],
+      "delivered_paths": [
+        "components/plan.md",
+        "state/inputs.md",
+        "rules/review.md",
+        "contracts/copy.md",
+        "operations/copy-17.md",
+        "state/target.md"
+      ]
+    },
+    {
+      "subject": "reader-04",
+      "model": "gpt-6-luna",
+      "effort": "low",
+      "arm": "structured",
+      "role": "default",
+      "fork_turns": "none",
+      "handle": "/root/reader_04",
+      "request_rounds": 3,
+      "deliveries": 6,
+      "sends": [
+        {
+          "turn": 1,
+          "at": "2026-10-30T08:25:31.676894+01:00",
+          "handle": null,
+          "sha256": "ed11425c8bdf59e8dcd3f28e723294b99788e20072d820e906f2a7885a227874",
+          "paths": [],
+          "bytes": 2126,
+          "budget": {
+            "rounds_left": 4,
+            "deliveries_left": 6
+          }
+        },
+        {
+          "turn": 2,
+          "at": "2026-10-30T08:26:15.387525+01:00",
+          "handle": "/root/reader_04",
+          "sha256": "1336cbf8cf88249573a4d74d7a3f6db654bad79e40aa94282c08b7d7bbd9848d",
+          "paths": [
+            "components/plan.md",
+            "state/inputs.md"
+          ],
+          "bytes": 289,
+          "budget": {
+            "rounds_left": 3,
+            "deliveries_left": 4
+          }
+        },
+        {
+          "turn": 3,
+          "at": "2026-10-30T08:26:26.749918+01:00",
+          "handle": "/root/reader_04",
+          "sha256": "fa8a32327e3c9aeae8eb4a337be0be889faecd0e8be356d933f0ee2ebec5e581",
+          "paths": [
+            "rules/review.md",
+            "contracts/copy.md"
+          ],
+          "bytes": 439,
+          "budget": {
+            "rounds_left": 2,
+            "deliveries_left": 2
+          }
+        },
+        {
+          "turn": 4,
+          "at": "2026-10-30T08:27:03.636950+01:00",
+          "handle": "/root/reader_04",
+          "sha256": "d2aec0a25778b4a4599318fd23c72948dd3b37d8698884d1524ceacb287cd9c4",
+          "paths": [
+            "operations/copy-17.md",
+            "state/target.md"
+          ],
+          "bytes": 358,
+          "budget": {
+            "rounds_left": 1,
+            "deliveries_left": 0
+          }
+        }
+      ],
+      "replies": [
+        {
+          "turn": 1,
+          "at": "2026-10-30T08:26:15.128150+01:00",
+          "message": "READ components/plan.md and state/inputs.md\n\nOutside reads/tools: none.",
+          "bytes": 71,
+          "sha256": "a46288cf729984132ded94d58d911f061e032cbc4b513f608d0011d8bbcaca76"
+        },
+        {
+          "turn": 2,
+          "at": "2026-10-30T08:26:26.494935+01:00",
+          "message": "READ rules/review.md and contracts/copy.md",
+          "bytes": 42,
+          "sha256": "d251a086d64b334797a444f5aae6d48bdf5161744e6344c0c9ef97ef4438ce80"
+        },
+        {
+          "turn": 3,
+          "at": "2026-10-30T08:27:03.311887+01:00",
+          "message": "READ operations/copy-17.md and state/target.md. Outside reads/tools: none.",
+          "bytes": 74,
+          "sha256": "7f1c6082759b87b6ec912850363296360f0c65a16e37940cb7ed9cba5077e70b"
+        },
+        {
+          "turn": 4,
+          "at": "2026-10-30T08:27:24.393341+01:00",
+          "message": "1. **Draft plan:** The next valid action is to obtain accepted constraints before preparing the proposal. Current inventory is available, but draft-plan requires both current inventory and accepted constraints. The output would be a proposal only and cannot execute it. [components/plan.md](components/plan.md), Source PLAN rev. 2; [state/inputs.md](state/inputs.md), Source INPUTS rev. 5.\n\n2. **Review:** The single reviewer’s approval is insufficient. The operative rule requires two distinct reviewers; the inherited revision-3 summary does not override the current rule. Obtain approval from a second distinct reviewer. [rules/review.md](rules/review.md), Source REVIEW rev. 4.\n\n3. **Copy-17:** Check the durable receipt and current target, then preserve the later edit while reconciling the desired state. The receipt records completion with digest A0; the reporting connection was lost afterward. The current target is B1, with a subsequent edit recorded at 10:10. Do not infer retry authority from the lost report; retry could overwrite later changes and requires its own authority. [contracts/copy.md](contracts/copy.md), Source COPY-CONTRACT rev. 2; [operations/copy-17.md](operations/copy-17.md), Source COPY-17 rev. 1; [state/target.md](state/target.md), Source TARGET rev. 6.\n\nOutside reads/tools: none.",
+          "bytes": 1317,
+          "sha256": "2015d589f573a1a35bbeaadaba533729311259910eb6fbee513b07a6cecf2be8"
+        }
+      ],
+      "delivered_paths": [
+        "components/plan.md",
+        "state/inputs.md",
+        "rules/review.md",
+        "contracts/copy.md",
+        "operations/copy-17.md",
+        "state/target.md"
+      ]
+    }
+  ],
+  "native_transport": {
+    "reader-01": "spawn_agent then three send_message deliveries while same subject remained running; READs arrived as MESSAGE, answer as FINAL_ANSWER",
+    "reader-02": "spawn_agent then three send_message deliveries while same subject remained running; READs arrived as MESSAGE, answer as FINAL_ANSWER",
+    "reader-03": "spawn_agent then three followup_task resumptions of same returned handle; READs arrived as FINAL_ANSWER but content is a document request, not a submitted scenario answer",
+    "note": "Task names returned as native handles. No effective-model/effort or token telemetry exposed. Message text retained exactly; receipt timestamps are parent landing times. Tool envelopes are summarized here, not represented as complete internal traces.",
+    "reader-04": "spawn_agent; followup_task for first and second deliveries after native task completion; send_message for third delivery while running. Second logical request had MESSAGE, supplemental disclosure, and repeated FINAL_ANSWER. All retained; no duplicate documents served."
+  },
+  "limitations": [
+    "No backend model/effort or full tool-trace evidence exposed.",
+    "Four logical answer exchanges per subject. Reader-04 has two additional native messages within a request exchange; strict message-count interpretation exceeds five messages, while native task-turn count and paired exchanges do not. Report as protocol qualification, not hidden zero cost.",
+    "Parent manually lands exact native reply bodies and dispatch texts; envelopes summarized; no feedback/coaching/substitution."
+  ]
+}

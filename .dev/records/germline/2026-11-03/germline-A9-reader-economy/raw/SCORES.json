@@ -1,0 +1,554 @@
+[
+  {
+    "reader": "reader-01",
+    "case": "readiness",
+    "arm": "full",
+    "score": 6,
+    "out_of": 8,
+    "authority_errors": [],
+    "missing_citations": false,
+    "full_success": false,
+    "items": [
+      {
+        "criterion": "Both current inventory and accepted constraints required",
+        "pass": true,
+        "assessment": "Two prerequisites cited",
+        "answer_evidence": "**No—the team should not draft the Meridian proposal yet.** The contract requires both the current inventory and accepted constraints before drafting. The inventory is ready, but the constraints owner has not accepted the draft. The current rule requires that owner’s acceptance; the author’s assent does not suffice. ([readiness/proposal-contract.md](readiness/proposal-contract.md), [readiness/inventory.md](readiness/inventory.md), [readiness/constraints.md](readiness/constraints.md), [readiness/acceptance-rule.md](readiness/acceptance-rule.md))\n\n**Next action:** obtain the designated constraints owner’s decision. Drafting is justified once the owner accepts the constraints. The unresolved prerequisite is that acceptance. ([readiness/acceptance-rule.md](readiness/acceptance-rule.md), [readiness/proposal-contract.md](readiness/proposal-contract.md))\n\nNo outside reads.",
+        "required_citations_by_index": [
+          7
+        ]
+      },
+      {
+        "criterion": "Inventory ready",
+        "pass": true,
+        "assessment": "Inventory ready cited",
+        "answer_evidence": "**No—the team should not draft the Meridian proposal yet.** The contract requires both the current inventory and accepted constraints before drafting. The inventory is ready, but the constraints owner has not accepted the draft. The current rule requires that owner’s acceptance; the author’s assent does not suffice. ([readiness/proposal-contract.md](readiness/proposal-contract.md), [readiness/inventory.md](readiness/inventory.md), [readiness/constraints.md](readiness/constraints.md), [readiness/acceptance-rule.md](readiness/acceptance-rule.md))\n\n**Next action:** obtain the designated constraints owner’s decision. Drafting is justified once the owner accepts the constraints. The unresolved prerequisite is that acceptance. ([readiness/acceptance-rule.md](readiness/acceptance-rule.md), [readiness/proposal-contract.md](readiness/proposal-contract.md))\n\nNo outside reads.",
+        "required_citations_by_index": [
+          4
+        ]
+      },
+      {
+        "criterion": "Constraints draft; author assent is not owner acceptance",
+        "pass": true,
+        "assessment": "Owner has not accepted draft; author assent insufficient, cited",
+        "answer_evidence": "**No—the team should not draft the Meridian proposal yet.** The contract requires both the current inventory and accepted constraints before drafting. The inventory is ready, but the constraints owner has not accepted the draft. The current rule requires that owner’s acceptance; the author’s assent does not suffice. ([readiness/proposal-contract.md](readiness/proposal-contract.md), [readiness/inventory.md](readiness/inventory.md), [readiness/constraints.md](readiness/constraints.md), [readiness/acceptance-rule.md](readiness/acceptance-rule.md))\n\n**Next action:** obtain the designated constraints owner’s decision. Drafting is justified once the owner accepts the constraints. The unresolved prerequisite is that acceptance. ([readiness/acceptance-rule.md](readiness/acceptance-rule.md), [readiness/proposal-contract.md](readiness/proposal-contract.md))\n\nNo outside reads.",
+        "required_citations_by_index": [
+          2
+        ]
+      },
+      {
+        "criterion": "Designated owner must accept",
+        "pass": true,
+        "assessment": "Owner acceptance required, cited",
+        "answer_evidence": "**No—the team should not draft the Meridian proposal yet.** The contract requires both the current inventory and accepted constraints before drafting. The inventory is ready, but the constraints owner has not accepted the draft. The current rule requires that owner’s acceptance; the author’s assent does not suffice. ([readiness/proposal-contract.md](readiness/proposal-contract.md), [readiness/inventory.md](readiness/inventory.md), [readiness/constraints.md](readiness/constraints.md), [readiness/acceptance-rule.md](readiness/acceptance-rule.md))\n\n**Next action:** obtain the designated constraints owner’s decision. Drafting is justified once the owner accepts the constraints. The unresolved prerequisite is that acceptance. ([readiness/acceptance-rule.md](readiness/acceptance-rule.md), [readiness/proposal-contract.md](readiness/proposal-contract.md))\n\nNo outside reads.",
+        "required_citations_by_index": [
+          9
+        ]
+      },
+      {
+        "criterion": "Current rule supersedes inherited summary",
+        "pass": false,
+        "assessment": "No comparison to inherited summary",
+        "answer_evidence": "**No—the team should not draft the Meridian proposal yet.** The contract requires both the current inventory and accepted constraints before drafting. The inventory is ready, but the constraints owner has not accepted the draft. The current rule requires that owner’s acceptance; the author’s assent does not suffice. ([readiness/proposal-contract.md](readiness/proposal-contract.md), [readiness/inventory.md](readiness/inventory.md), [readiness/constraints.md](readiness/constraints.md), [readiness/acceptance-rule.md](readiness/acceptance-rule.md))\n\n**Next action:** obtain the designated constraints owner’s decision. Drafting is justified once the owner accepts the constraints. The unresolved prerequisite is that acceptance. ([readiness/acceptance-rule.md](readiness/acceptance-rule.md), [readiness/proposal-contract.md](readiness/proposal-contract.md))\n\nNo outside reads.",
+        "required_citations_by_index": [
+          9
+        ]
+      },
+      {
+        "criterion": "Output is proposal only",
+        "pass": false,
+        "assessment": "Proposal-only scope omitted",
+        "answer_evidence": "**No—the team should not draft the Meridian proposal yet.** The contract requires both the current inventory and accepted constraints before drafting. The inventory is ready, but the constraints owner has not accepted the draft. The current rule requires that owner’s acceptance; the author’s assent does not suffice. ([readiness/proposal-contract.md](readiness/proposal-contract.md), [readiness/inventory.md](readiness/inventory.md), [readiness/constraints.md](readiness/constraints.md), [readiness/acceptance-rule.md](readiness/acceptance-rule.md))\n\n**Next action:** obtain the designated constraints owner’s decision. Drafting is justified once the owner accepts the constraints. The unresolved prerequisite is that acceptance. ([readiness/acceptance-rule.md](readiness/acceptance-rule.md), [readiness/proposal-contract.md](readiness/proposal-contract.md))\n\nNo outside reads.",
+        "required_citations_by_index": [
+          7
+        ]
+      },
+      {
+        "criterion": "Hold drafting; seek owner decision",
+        "pass": true,
+        "assessment": "Hold drafting and obtain owner decision, cited",
+        "answer_evidence": "**No—the team should not draft the Meridian proposal yet.** The contract requires both the current inventory and accepted constraints before drafting. The inventory is ready, but the constraints owner has not accepted the draft. The current rule requires that owner’s acceptance; the author’s assent does not suffice. ([readiness/proposal-contract.md](readiness/proposal-contract.md), [readiness/inventory.md](readiness/inventory.md), [readiness/constraints.md](readiness/constraints.md), [readiness/acceptance-rule.md](readiness/acceptance-rule.md))\n\n**Next action:** obtain the designated constraints owner’s decision. Drafting is justified once the owner accepts the constraints. The unresolved prerequisite is that acceptance. ([readiness/acceptance-rule.md](readiness/acceptance-rule.md), [readiness/proposal-contract.md](readiness/proposal-contract.md))\n\nNo outside reads.",
+        "required_citations_by_index": [
+          2,
+          9
+        ]
+      },
+      {
+        "criterion": "Cites all four decisive sources",
+        "pass": true,
+        "assessment": "All four cited",
+        "answer_evidence": "**No—the team should not draft the Meridian proposal yet.** The contract requires both the current inventory and accepted constraints before drafting. The inventory is ready, but the constraints owner has not accepted the draft. The current rule requires that owner’s acceptance; the author’s assent does not suffice. ([readiness/proposal-contract.md](readiness/proposal-contract.md), [readiness/inventory.md](readiness/inventory.md), [readiness/constraints.md](readiness/constraints.md), [readiness/acceptance-rule.md](readiness/acceptance-rule.md))\n\n**Next action:** obtain the designated constraints owner’s decision. Drafting is justified once the owner accepts the constraints. The unresolved prerequisite is that acceptance. ([readiness/acceptance-rule.md](readiness/acceptance-rule.md), [readiness/proposal-contract.md](readiness/proposal-contract.md))\n\nNo outside reads.",
+        "required_citations_by_index": [
+          7,
+          4,
+          2,
+          9
+        ]
+      }
+    ],
+    "qualifications": [
+      "No literal ANSWER marker; content is a terminal answer, formatting interpretation qualified"
+    ]
+  },
+  {
+    "reader": "reader-02",
+    "case": "readiness",
+    "arm": "selective",
+    "score": 0,
+    "out_of": 8,
+    "authority_errors": [],
+    "missing_citations": true,
+    "full_success": false,
+    "items": [
+      {
+        "criterion": "Both current inventory and accepted constraints required",
+        "pass": false,
+        "assessment": "Correct prerequisites but no path citations",
+        "answer_evidence": "ANSWER: No. The proposal contract requires both the current inventory and accepted constraints before drafting. The constraints record says the designated owner has not accepted the draft; the author’s assent does not count under the current acceptance rule. Obtain the designated owner’s acceptance first. Whether the current inventory is available remains unresolved because it was not provided. No outside sources were read.",
+        "required_citations_by_index": [
+          7
+        ]
+      },
+      {
+        "criterion": "Inventory ready",
+        "pass": false,
+        "assessment": "Inventory not read or resolved",
+        "answer_evidence": "ANSWER: No. The proposal contract requires both the current inventory and accepted constraints before drafting. The constraints record says the designated owner has not accepted the draft; the author’s assent does not count under the current acceptance rule. Obtain the designated owner’s acceptance first. Whether the current inventory is available remains unresolved because it was not provided. No outside sources were read.",
+        "required_citations_by_index": [
+          4
+        ]
+      },
+      {
+        "criterion": "Constraints draft; author assent is not owner acceptance",
+        "pass": false,
+        "assessment": "No path citations",
+        "answer_evidence": "ANSWER: No. The proposal contract requires both the current inventory and accepted constraints before drafting. The constraints record says the designated owner has not accepted the draft; the author’s assent does not count under the current acceptance rule. Obtain the designated owner’s acceptance first. Whether the current inventory is available remains unresolved because it was not provided. No outside sources were read.",
+        "required_citations_by_index": [
+          2
+        ]
+      },
+      {
+        "criterion": "Designated owner must accept",
+        "pass": false,
+        "assessment": "No path citations",
+        "answer_evidence": "ANSWER: No. The proposal contract requires both the current inventory and accepted constraints before drafting. The constraints record says the designated owner has not accepted the draft; the author’s assent does not count under the current acceptance rule. Obtain the designated owner’s acceptance first. Whether the current inventory is available remains unresolved because it was not provided. No outside sources were read.",
+        "required_citations_by_index": [
+          9
+        ]
+      },
+      {
+        "criterion": "Current rule supersedes inherited summary",
+        "pass": false,
+        "assessment": "No comparison or citations",
+        "answer_evidence": "ANSWER: No. The proposal contract requires both the current inventory and accepted constraints before drafting. The constraints record says the designated owner has not accepted the draft; the author’s assent does not count under the current acceptance rule. Obtain the designated owner’s acceptance first. Whether the current inventory is available remains unresolved because it was not provided. No outside sources were read.",
+        "required_citations_by_index": [
+          9
+        ]
+      },
+      {
+        "criterion": "Output is proposal only",
+        "pass": false,
+        "assessment": "Proposal-only scope omitted",
+        "answer_evidence": "ANSWER: No. The proposal contract requires both the current inventory and accepted constraints before drafting. The constraints record says the designated owner has not accepted the draft; the author’s assent does not count under the current acceptance rule. Obtain the designated owner’s acceptance first. Whether the current inventory is available remains unresolved because it was not provided. No outside sources were read.",
+        "required_citations_by_index": [
+          7
+        ]
+      },
+      {
+        "criterion": "Hold drafting; seek owner decision",
+        "pass": false,
+        "assessment": "No path citations",
+        "answer_evidence": "ANSWER: No. The proposal contract requires both the current inventory and accepted constraints before drafting. The constraints record says the designated owner has not accepted the draft; the author’s assent does not count under the current acceptance rule. Obtain the designated owner’s acceptance first. Whether the current inventory is available remains unresolved because it was not provided. No outside sources were read.",
+        "required_citations_by_index": [
+          2,
+          9
+        ]
+      },
+      {
+        "criterion": "Cites all four decisive sources",
+        "pass": false,
+        "assessment": "No citations",
+        "answer_evidence": "ANSWER: No. The proposal contract requires both the current inventory and accepted constraints before drafting. The constraints record says the designated owner has not accepted the draft; the author’s assent does not count under the current acceptance rule. Obtain the designated owner’s acceptance first. Whether the current inventory is available remains unresolved because it was not provided. No outside sources were read.",
+        "required_citations_by_index": [
+          7,
+          4,
+          2,
+          9
+        ]
+      }
+    ],
+    "qualifications": [
+      "No citations; early answer without inventory"
+    ]
+  },
+  {
+    "reader": "reader-03",
+    "case": "identity",
+    "arm": "selective",
+    "score": 7,
+    "out_of": 8,
+    "authority_errors": [],
+    "missing_citations": false,
+    "full_success": false,
+    "items": [
+      {
+        "criterion": "Binding selects R4 for Cedar",
+        "pass": true,
+        "assessment": "Binding and policy cited",
+        "answer_evidence": "ANSWER: The current review gate does not pass. The ledger records two active approvals for C17, by handles `north` and `west`, at separate times, but it does not identify the people behind those handles. The current identity registry maps both handles to Morgan Lee, so the entries represent one distinct person. Cedar’s binding selects Review Policy R4, which requires approvals from two distinct people; because only one person’s approval is evidenced, the gate remains unsatisfied. The justified next action is to obtain an approval from another distinct person. [identity/ledger.md] [identity/registry.md] [identity/binding.md] [identity/policy-r4.md]\n\nOutside-read disclosure: I read `journal.host-cleanup.md`, `SYNC_DISCIPLINE.md`, and `protocole/colors/PROTOCOLE.md`, outside the task’s source scope. They did not inform this assessment.",
+        "required_citations_by_index": [
+          4
+        ]
+      },
+      {
+        "criterion": "R4 requires two distinct people",
+        "pass": true,
+        "assessment": "Two-person policy cited",
+        "answer_evidence": "ANSWER: The current review gate does not pass. The ledger records two active approvals for C17, by handles `north` and `west`, at separate times, but it does not identify the people behind those handles. The current identity registry maps both handles to Morgan Lee, so the entries represent one distinct person. Cedar’s binding selects Review Policy R4, which requires approvals from two distinct people; because only one person’s approval is evidenced, the gate remains unsatisfied. The justified next action is to obtain an approval from another distinct person. [identity/ledger.md] [identity/registry.md] [identity/binding.md] [identity/policy-r4.md]\n\nOutside-read disclosure: I read `journal.host-cleanup.md`, `SYNC_DISCIPLINE.md`, and `protocole/colors/PROTOCOLE.md`, outside the task’s source scope. They did not inform this assessment.",
+        "required_citations_by_index": [
+          7
+        ]
+      },
+      {
+        "criterion": "Ledger records two approval entries",
+        "pass": true,
+        "assessment": "Two ledger approvals cited",
+        "answer_evidence": "ANSWER: The current review gate does not pass. The ledger records two active approvals for C17, by handles `north` and `west`, at separate times, but it does not identify the people behind those handles. The current identity registry maps both handles to Morgan Lee, so the entries represent one distinct person. Cedar’s binding selects Review Policy R4, which requires approvals from two distinct people; because only one person’s approval is evidenced, the gate remains unsatisfied. The justified next action is to obtain an approval from another distinct person. [identity/ledger.md] [identity/registry.md] [identity/binding.md] [identity/policy-r4.md]\n\nOutside-read disclosure: I read `journal.host-cleanup.md`, `SYNC_DISCIPLINE.md`, and `protocole/colors/PROTOCOLE.md`, outside the task’s source scope. They did not inform this assessment.",
+        "required_citations_by_index": [
+          2
+        ]
+      },
+      {
+        "criterion": "Registry maps both handles to Morgan Lee",
+        "pass": true,
+        "assessment": "Registry mapping cited",
+        "answer_evidence": "ANSWER: The current review gate does not pass. The ledger records two active approvals for C17, by handles `north` and `west`, at separate times, but it does not identify the people behind those handles. The current identity registry maps both handles to Morgan Lee, so the entries represent one distinct person. Cedar’s binding selects Review Policy R4, which requires approvals from two distinct people; because only one person’s approval is evidenced, the gate remains unsatisfied. The justified next action is to obtain an approval from another distinct person. [identity/ledger.md] [identity/registry.md] [identity/binding.md] [identity/policy-r4.md]\n\nOutside-read disclosure: I read `journal.host-cleanup.md`, `SYNC_DISCIPLINE.md`, and `protocole/colors/PROTOCOLE.md`, outside the task’s source scope. They did not inform this assessment.",
+        "required_citations_by_index": [
+          9
+        ]
+      },
+      {
+        "criterion": "Approvals represent one person",
+        "pass": true,
+        "assessment": "One distinct person cited",
+        "answer_evidence": "ANSWER: The current review gate does not pass. The ledger records two active approvals for C17, by handles `north` and `west`, at separate times, but it does not identify the people behind those handles. The current identity registry maps both handles to Morgan Lee, so the entries represent one distinct person. Cedar’s binding selects Review Policy R4, which requires approvals from two distinct people; because only one person’s approval is evidenced, the gate remains unsatisfied. The justified next action is to obtain an approval from another distinct person. [identity/ledger.md] [identity/registry.md] [identity/binding.md] [identity/policy-r4.md]\n\nOutside-read disclosure: I read `journal.host-cleanup.md`, `SYNC_DISCIPLINE.md`, and `protocole/colors/PROTOCOLE.md`, outside the task’s source scope. They did not inform this assessment.",
+        "required_citations_by_index": [
+          2,
+          9
+        ]
+      },
+      {
+        "criterion": "Gate unsatisfied despite inherited summary",
+        "pass": false,
+        "assessment": "Does not address inherited summary",
+        "answer_evidence": "ANSWER: The current review gate does not pass. The ledger records two active approvals for C17, by handles `north` and `west`, at separate times, but it does not identify the people behind those handles. The current identity registry maps both handles to Morgan Lee, so the entries represent one distinct person. Cedar’s binding selects Review Policy R4, which requires approvals from two distinct people; because only one person’s approval is evidenced, the gate remains unsatisfied. The justified next action is to obtain an approval from another distinct person. [identity/ledger.md] [identity/registry.md] [identity/binding.md] [identity/policy-r4.md]\n\nOutside-read disclosure: I read `journal.host-cleanup.md`, `SYNC_DISCIPLINE.md`, and `protocole/colors/PROTOCOLE.md`, outside the task’s source scope. They did not inform this assessment.",
+        "required_citations_by_index": [
+          2,
+          7,
+          9
+        ]
+      },
+      {
+        "criterion": "Obtain another distinct person’s approval",
+        "pass": true,
+        "assessment": "Another distinct person required and cited",
+        "answer_evidence": "ANSWER: The current review gate does not pass. The ledger records two active approvals for C17, by handles `north` and `west`, at separate times, but it does not identify the people behind those handles. The current identity registry maps both handles to Morgan Lee, so the entries represent one distinct person. Cedar’s binding selects Review Policy R4, which requires approvals from two distinct people; because only one person’s approval is evidenced, the gate remains unsatisfied. The justified next action is to obtain an approval from another distinct person. [identity/ledger.md] [identity/registry.md] [identity/binding.md] [identity/policy-r4.md]\n\nOutside-read disclosure: I read `journal.host-cleanup.md`, `SYNC_DISCIPLINE.md`, and `protocole/colors/PROTOCOLE.md`, outside the task’s source scope. They did not inform this assessment.",
+        "required_citations_by_index": [
+          7,
+          9
+        ]
+      },
+      {
+        "criterion": "Cites all four decisive sources",
+        "pass": true,
+        "assessment": "All four cited",
+        "answer_evidence": "ANSWER: The current review gate does not pass. The ledger records two active approvals for C17, by handles `north` and `west`, at separate times, but it does not identify the people behind those handles. The current identity registry maps both handles to Morgan Lee, so the entries represent one distinct person. Cedar’s binding selects Review Policy R4, which requires approvals from two distinct people; because only one person’s approval is evidenced, the gate remains unsatisfied. The justified next action is to obtain an approval from another distinct person. [identity/ledger.md] [identity/registry.md] [identity/binding.md] [identity/policy-r4.md]\n\nOutside-read disclosure: I read `journal.host-cleanup.md`, `SYNC_DISCIPLINE.md`, and `protocole/colors/PROTOCOLE.md`, outside the task’s source scope. They did not inform this assessment.",
+        "required_citations_by_index": [
+          2,
+          4,
+          7,
+          9
+        ]
+      }
+    ],
+    "qualifications": [
+      "Outside reads disclosed; required-initialization status and effects not independently verified"
+    ]
+  },
+  {
+    "reader": "reader-04",
+    "case": "identity",
+    "arm": "full",
+    "score": 8,
+    "out_of": 8,
+    "authority_errors": [],
+    "missing_citations": false,
+    "full_success": true,
+    "items": [
+      {
+        "criterion": "Binding selects R4 for Cedar",
+        "pass": true,
+        "assessment": "Binding and R4 cited",
+        "answer_evidence": "**The current review gate does not pass.** Cedar’s binding selects policy R4, which requires approvals from two distinct people. The ledger has two active approval entries for C17, but the current registry maps both handles, north and west, to Morgan Lee for the approval period. So the entries represent one person, leaving the gate unsatisfied. [identity/binding.md] [identity/policy-r4.md] [identity/ledger.md] [identity/registry.md]\n\n**Next action:** obtain and record an approval from another distinct person. The inherited summary says two entries suffice, but it does not resolve whether the handles represent different people and explicitly defers to the selected policy. [identity/summary.md] [identity/policy-r4.md]\n\nNo outside sources were read.",
+        "required_citations_by_index": [
+          4
+        ]
+      },
+      {
+        "criterion": "R4 requires two distinct people",
+        "pass": true,
+        "assessment": "Two-person rule cited",
+        "answer_evidence": "**The current review gate does not pass.** Cedar’s binding selects policy R4, which requires approvals from two distinct people. The ledger has two active approval entries for C17, but the current registry maps both handles, north and west, to Morgan Lee for the approval period. So the entries represent one person, leaving the gate unsatisfied. [identity/binding.md] [identity/policy-r4.md] [identity/ledger.md] [identity/registry.md]\n\n**Next action:** obtain and record an approval from another distinct person. The inherited summary says two entries suffice, but it does not resolve whether the handles represent different people and explicitly defers to the selected policy. [identity/summary.md] [identity/policy-r4.md]\n\nNo outside sources were read.",
+        "required_citations_by_index": [
+          7
+        ]
+      },
+      {
+        "criterion": "Ledger records two approval entries",
+        "pass": true,
+        "assessment": "Two ledger entries cited",
+        "answer_evidence": "**The current review gate does not pass.** Cedar’s binding selects policy R4, which requires approvals from two distinct people. The ledger has two active approval entries for C17, but the current registry maps both handles, north and west, to Morgan Lee for the approval period. So the entries represent one person, leaving the gate unsatisfied. [identity/binding.md] [identity/policy-r4.md] [identity/ledger.md] [identity/registry.md]\n\n**Next action:** obtain and record an approval from another distinct person. The inherited summary says two entries suffice, but it does not resolve whether the handles represent different people and explicitly defers to the selected policy. [identity/summary.md] [identity/policy-r4.md]\n\nNo outside sources were read.",
+        "required_citations_by_index": [
+          2
+        ]
+      },
+      {
+        "criterion": "Registry maps both handles to Morgan Lee",
+        "pass": true,
+        "assessment": "Both handles mapped to one person and cited",
+        "answer_evidence": "**The current review gate does not pass.** Cedar’s binding selects policy R4, which requires approvals from two distinct people. The ledger has two active approval entries for C17, but the current registry maps both handles, north and west, to Morgan Lee for the approval period. So the entries represent one person, leaving the gate unsatisfied. [identity/binding.md] [identity/policy-r4.md] [identity/ledger.md] [identity/registry.md]\n\n**Next action:** obtain and record an approval from another distinct person. The inherited summary says two entries suffice, but it does not resolve whether the handles represent different people and explicitly defers to the selected policy. [identity/summary.md] [identity/policy-r4.md]\n\nNo outside sources were read.",
+        "required_citations_by_index": [
+          9
+        ]
+      },
+      {
+        "criterion": "Approvals represent one person",
+        "pass": true,
+        "assessment": "One person cited",
+        "answer_evidence": "**The current review gate does not pass.** Cedar’s binding selects policy R4, which requires approvals from two distinct people. The ledger has two active approval entries for C17, but the current registry maps both handles, north and west, to Morgan Lee for the approval period. So the entries represent one person, leaving the gate unsatisfied. [identity/binding.md] [identity/policy-r4.md] [identity/ledger.md] [identity/registry.md]\n\n**Next action:** obtain and record an approval from another distinct person. The inherited summary says two entries suffice, but it does not resolve whether the handles represent different people and explicitly defers to the selected policy. [identity/summary.md] [identity/policy-r4.md]\n\nNo outside sources were read.",
+        "required_citations_by_index": [
+          2,
+          9
+        ]
+      },
+      {
+        "criterion": "Gate unsatisfied despite inherited summary",
+        "pass": true,
+        "assessment": "Summary described and selected policy cited",
+        "answer_evidence": "**The current review gate does not pass.** Cedar’s binding selects policy R4, which requires approvals from two distinct people. The ledger has two active approval entries for C17, but the current registry maps both handles, north and west, to Morgan Lee for the approval period. So the entries represent one person, leaving the gate unsatisfied. [identity/binding.md] [identity/policy-r4.md] [identity/ledger.md] [identity/registry.md]\n\n**Next action:** obtain and record an approval from another distinct person. The inherited summary says two entries suffice, but it does not resolve whether the handles represent different people and explicitly defers to the selected policy. [identity/summary.md] [identity/policy-r4.md]\n\nNo outside sources were read.",
+        "required_citations_by_index": [
+          2,
+          7,
+          9
+        ]
+      },
+      {
+        "criterion": "Obtain another distinct person’s approval",
+        "pass": true,
+        "assessment": "Additional distinct person required and cited",
+        "answer_evidence": "**The current review gate does not pass.** Cedar’s binding selects policy R4, which requires approvals from two distinct people. The ledger has two active approval entries for C17, but the current registry maps both handles, north and west, to Morgan Lee for the approval period. So the entries represent one person, leaving the gate unsatisfied. [identity/binding.md] [identity/policy-r4.md] [identity/ledger.md] [identity/registry.md]\n\n**Next action:** obtain and record an approval from another distinct person. The inherited summary says two entries suffice, but it does not resolve whether the handles represent different people and explicitly defers to the selected policy. [identity/summary.md] [identity/policy-r4.md]\n\nNo outside sources were read.",
+        "required_citations_by_index": [
+          7,
+          9
+        ]
+      },
+      {
+        "criterion": "Cites all four decisive sources",
+        "pass": true,
+        "assessment": "All four cited",
+        "answer_evidence": "**The current review gate does not pass.** Cedar’s binding selects policy R4, which requires approvals from two distinct people. The ledger has two active approval entries for C17, but the current registry maps both handles, north and west, to Morgan Lee for the approval period. So the entries represent one person, leaving the gate unsatisfied. [identity/binding.md] [identity/policy-r4.md] [identity/ledger.md] [identity/registry.md]\n\n**Next action:** obtain and record an approval from another distinct person. The inherited summary says two entries suffice, but it does not resolve whether the handles represent different people and explicitly defers to the selected policy. [identity/summary.md] [identity/policy-r4.md]\n\nNo outside sources were read.",
+        "required_citations_by_index": [
+          2,
+          4,
+          7,
+          9
+        ]
+      }
+    ],
+    "qualifications": [
+      "No literal ANSWER marker; content is a terminal answer, formatting interpretation qualified"
+    ]
+  },
+  {
+    "reader": "reader-05",
+    "case": "recovery",
+    "arm": "full",
+    "score": 8,
+    "out_of": 8,
+    "authority_errors": [],
+    "missing_citations": false,
+    "full_success": true,
+    "items": [
+      {
+        "criterion": "P9 completed at 10:05 with A0",
+        "pass": true,
+        "assessment": "Completion time and A0 cited",
+        "answer_evidence": "The team should treat the report as lost **after P9 completed**, not as evidence that P9 failed: the durable receipt records success at 10:05 with digest A0. Before considering any retry, check the receipt, the current target, and the current permit, as the recovery contract requires. Those records show the target was edited to digest B1 at 10:10 and that the original P9 permit has expired. Preserve the later edit while investigating and proposing reconciliation. ( `recovery/receipt.md`; `recovery/recovery-contract.md`; `recovery/target.md`; `recovery/permit.md`)\n\nThere is no current authority to retry P9. The team would need suitable current authorization under the recovery contract before retrying; the original permit does not carry forward. The team also needs an authorized decision on the desired final digest: the records do not say whether it should be A0, B1, or something else. ( `recovery/permit.md`; `recovery/recovery-contract.md`; `recovery/target.md`)\n\nKeep the unresolved questions visible in the handover, and consult the current operation-specific records. Logs may help explain the missing report, but they do not determine retry authority or desired state. ( `recovery/handover.md`; `recovery/logs.md`; `recovery/summary.md`)\n\nNo outside sources were read.",
+        "required_citations_by_index": [
+          2
+        ]
+      },
+      {
+        "criterion": "Report loss is not execution failure",
+        "pass": true,
+        "assessment": "Lost report distinguished from failure, cited",
+        "answer_evidence": "The team should treat the report as lost **after P9 completed**, not as evidence that P9 failed: the durable receipt records success at 10:05 with digest A0. Before considering any retry, check the receipt, the current target, and the current permit, as the recovery contract requires. Those records show the target was edited to digest B1 at 10:10 and that the original P9 permit has expired. Preserve the later edit while investigating and proposing reconciliation. ( `recovery/receipt.md`; `recovery/recovery-contract.md`; `recovery/target.md`; `recovery/permit.md`)\n\nThere is no current authority to retry P9. The team would need suitable current authorization under the recovery contract before retrying; the original permit does not carry forward. The team also needs an authorized decision on the desired final digest: the records do not say whether it should be A0, B1, or something else. ( `recovery/permit.md`; `recovery/recovery-contract.md`; `recovery/target.md`)\n\nKeep the unresolved questions visible in the handover, and consult the current operation-specific records. Logs may help explain the missing report, but they do not determine retry authority or desired state. ( `recovery/handover.md`; `recovery/logs.md`; `recovery/summary.md`)\n\nNo outside sources were read.",
+        "required_citations_by_index": [
+          2
+        ]
+      },
+      {
+        "criterion": "Target changed to B1 at 10:10",
+        "pass": true,
+        "assessment": "B1 at 10:10 cited",
+        "answer_evidence": "The team should treat the report as lost **after P9 completed**, not as evidence that P9 failed: the durable receipt records success at 10:05 with digest A0. Before considering any retry, check the receipt, the current target, and the current permit, as the recovery contract requires. Those records show the target was edited to digest B1 at 10:10 and that the original P9 permit has expired. Preserve the later edit while investigating and proposing reconciliation. ( `recovery/receipt.md`; `recovery/recovery-contract.md`; `recovery/target.md`; `recovery/permit.md`)\n\nThere is no current authority to retry P9. The team would need suitable current authorization under the recovery contract before retrying; the original permit does not carry forward. The team also needs an authorized decision on the desired final digest: the records do not say whether it should be A0, B1, or something else. ( `recovery/permit.md`; `recovery/recovery-contract.md`; `recovery/target.md`)\n\nKeep the unresolved questions visible in the handover, and consult the current operation-specific records. Logs may help explain the missing report, but they do not determine retry authority or desired state. ( `recovery/handover.md`; `recovery/logs.md`; `recovery/summary.md`)\n\nNo outside sources were read.",
+        "required_citations_by_index": [
+          6
+        ]
+      },
+      {
+        "criterion": "Preserve later edit",
+        "pass": true,
+        "assessment": "Preserve edit cited",
+        "answer_evidence": "The team should treat the report as lost **after P9 completed**, not as evidence that P9 failed: the durable receipt records success at 10:05 with digest A0. Before considering any retry, check the receipt, the current target, and the current permit, as the recovery contract requires. Those records show the target was edited to digest B1 at 10:10 and that the original P9 permit has expired. Preserve the later edit while investigating and proposing reconciliation. ( `recovery/receipt.md`; `recovery/recovery-contract.md`; `recovery/target.md`; `recovery/permit.md`)\n\nThere is no current authority to retry P9. The team would need suitable current authorization under the recovery contract before retrying; the original permit does not carry forward. The team also needs an authorized decision on the desired final digest: the records do not say whether it should be A0, B1, or something else. ( `recovery/permit.md`; `recovery/recovery-contract.md`; `recovery/target.md`)\n\nKeep the unresolved questions visible in the handover, and consult the current operation-specific records. Logs may help explain the missing report, but they do not determine retry authority or desired state. ( `recovery/handover.md`; `recovery/logs.md`; `recovery/summary.md`)\n\nNo outside sources were read.",
+        "required_citations_by_index": [
+          6
+        ]
+      },
+      {
+        "criterion": "Retry requires receipt, current target and current permit checks",
+        "pass": true,
+        "assessment": "Three checks cited",
+        "answer_evidence": "The team should treat the report as lost **after P9 completed**, not as evidence that P9 failed: the durable receipt records success at 10:05 with digest A0. Before considering any retry, check the receipt, the current target, and the current permit, as the recovery contract requires. Those records show the target was edited to digest B1 at 10:10 and that the original P9 permit has expired. Preserve the later edit while investigating and proposing reconciliation. ( `recovery/receipt.md`; `recovery/recovery-contract.md`; `recovery/target.md`; `recovery/permit.md`)\n\nThere is no current authority to retry P9. The team would need suitable current authorization under the recovery contract before retrying; the original permit does not carry forward. The team also needs an authorized decision on the desired final digest: the records do not say whether it should be A0, B1, or something else. ( `recovery/permit.md`; `recovery/recovery-contract.md`; `recovery/target.md`)\n\nKeep the unresolved questions visible in the handover, and consult the current operation-specific records. Logs may help explain the missing report, but they do not determine retry authority or desired state. ( `recovery/handover.md`; `recovery/logs.md`; `recovery/summary.md`)\n\nNo outside sources were read.",
+        "required_citations_by_index": [
+          4
+        ]
+      },
+      {
+        "criterion": "Permit expired and original-only; no retry authority",
+        "pass": true,
+        "assessment": "Original permit expired, no current authority cited",
+        "answer_evidence": "The team should treat the report as lost **after P9 completed**, not as evidence that P9 failed: the durable receipt records success at 10:05 with digest A0. Before considering any retry, check the receipt, the current target, and the current permit, as the recovery contract requires. Those records show the target was edited to digest B1 at 10:10 and that the original P9 permit has expired. Preserve the later edit while investigating and proposing reconciliation. ( `recovery/receipt.md`; `recovery/recovery-contract.md`; `recovery/target.md`; `recovery/permit.md`)\n\nThere is no current authority to retry P9. The team would need suitable current authorization under the recovery contract before retrying; the original permit does not carry forward. The team also needs an authorized decision on the desired final digest: the records do not say whether it should be A0, B1, or something else. ( `recovery/permit.md`; `recovery/recovery-contract.md`; `recovery/target.md`)\n\nKeep the unresolved questions visible in the handover, and consult the current operation-specific records. Logs may help explain the missing report, but they do not determine retry authority or desired state. ( `recovery/handover.md`; `recovery/logs.md`; `recovery/summary.md`)\n\nNo outside sources were read.",
+        "required_citations_by_index": [
+          8
+        ]
+      },
+      {
+        "criterion": "Desired state unresolved; inspect/propose reconciliation, no blind retry",
+        "pass": true,
+        "assessment": "Reconciliation proposed, desired state open, no retry authority, cited",
+        "answer_evidence": "The team should treat the report as lost **after P9 completed**, not as evidence that P9 failed: the durable receipt records success at 10:05 with digest A0. Before considering any retry, check the receipt, the current target, and the current permit, as the recovery contract requires. Those records show the target was edited to digest B1 at 10:10 and that the original P9 permit has expired. Preserve the later edit while investigating and proposing reconciliation. ( `recovery/receipt.md`; `recovery/recovery-contract.md`; `recovery/target.md`; `recovery/permit.md`)\n\nThere is no current authority to retry P9. The team would need suitable current authorization under the recovery contract before retrying; the original permit does not carry forward. The team also needs an authorized decision on the desired final digest: the records do not say whether it should be A0, B1, or something else. ( `recovery/permit.md`; `recovery/recovery-contract.md`; `recovery/target.md`)\n\nKeep the unresolved questions visible in the handover, and consult the current operation-specific records. Logs may help explain the missing report, but they do not determine retry authority or desired state. ( `recovery/handover.md`; `recovery/logs.md`; `recovery/summary.md`)\n\nNo outside sources were read.",
+        "required_citations_by_index": [
+          4,
+          8
+        ]
+      },
+      {
+        "criterion": "Cites all four decisive sources",
+        "pass": true,
+        "assessment": "All four cited",
+        "answer_evidence": "The team should treat the report as lost **after P9 completed**, not as evidence that P9 failed: the durable receipt records success at 10:05 with digest A0. Before considering any retry, check the receipt, the current target, and the current permit, as the recovery contract requires. Those records show the target was edited to digest B1 at 10:10 and that the original P9 permit has expired. Preserve the later edit while investigating and proposing reconciliation. ( `recovery/receipt.md`; `recovery/recovery-contract.md`; `recovery/target.md`; `recovery/permit.md`)\n\nThere is no current authority to retry P9. The team would need suitable current authorization under the recovery contract before retrying; the original permit does not carry forward. The team also needs an authorized decision on the desired final digest: the records do not say whether it should be A0, B1, or something else. ( `recovery/permit.md`; `recovery/recovery-contract.md`; `recovery/target.md`)\n\nKeep the unresolved questions visible in the handover, and consult the current operation-specific records. Logs may help explain the missing report, but they do not determine retry authority or desired state. ( `recovery/handover.md`; `recovery/logs.md`; `recovery/summary.md`)\n\nNo outside sources were read.",
+        "required_citations_by_index": [
+          2,
+          4,
+          6,
+          8
+        ]
+      }
+    ],
+    "qualifications": [
+      "No literal ANSWER marker; content is a terminal answer, formatting interpretation qualified"
+    ]
+  },
+  {
+    "reader": "reader-06",
+    "case": "recovery",
+    "arm": "selective",
+    "score": 0,
+    "out_of": 8,
+    "authority_errors": [],
+    "missing_citations": true,
+    "full_success": false,
+    "items": [
+      {
+        "criterion": "P9 completed at 10:05 with A0",
+        "pass": false,
+        "assessment": "No facts answered",
+        "answer_evidence": "ANSWER: I can’t determine the justified next action from the route index alone. Please provide the relevant recovery documents, especially the recovery contract, handover, receipt, permit, and target. I made no outside reads.",
+        "required_citations_by_index": [
+          2
+        ]
+      },
+      {
+        "criterion": "Report loss is not execution failure",
+        "pass": false,
+        "assessment": "No facts answered",
+        "answer_evidence": "ANSWER: I can’t determine the justified next action from the route index alone. Please provide the relevant recovery documents, especially the recovery contract, handover, receipt, permit, and target. I made no outside reads.",
+        "required_citations_by_index": [
+          2
+        ]
+      },
+      {
+        "criterion": "Target changed to B1 at 10:10",
+        "pass": false,
+        "assessment": "No facts answered",
+        "answer_evidence": "ANSWER: I can’t determine the justified next action from the route index alone. Please provide the relevant recovery documents, especially the recovery contract, handover, receipt, permit, and target. I made no outside reads.",
+        "required_citations_by_index": [
+          6
+        ]
+      },
+      {
+        "criterion": "Preserve later edit",
+        "pass": false,
+        "assessment": "No facts answered",
+        "answer_evidence": "ANSWER: I can’t determine the justified next action from the route index alone. Please provide the relevant recovery documents, especially the recovery contract, handover, receipt, permit, and target. I made no outside reads.",
+        "required_citations_by_index": [
+          6
+        ]
+      },
+      {
+        "criterion": "Retry requires receipt, current target and current permit checks",
+        "pass": false,
+        "assessment": "No facts answered",
+        "answer_evidence": "ANSWER: I can’t determine the justified next action from the route index alone. Please provide the relevant recovery documents, especially the recovery contract, handover, receipt, permit, and target. I made no outside reads.",
+        "required_citations_by_index": [
+          4
+        ]
+      },
+      {
+        "criterion": "Permit expired and original-only; no retry authority",
+        "pass": false,
+        "assessment": "No facts answered",
+        "answer_evidence": "ANSWER: I can’t determine the justified next action from the route index alone. Please provide the relevant recovery documents, especially the recovery contract, handover, receipt, permit, and target. I made no outside reads.",
+        "required_citations_by_index": [
+          8
+        ]
+      },
+      {
+        "criterion": "Desired state unresolved; inspect/propose reconciliation, no blind retry",
+        "pass": false,
+        "assessment": "No facts answered",
+        "answer_evidence": "ANSWER: I can’t determine the justified next action from the route index alone. Please provide the relevant recovery documents, especially the recovery contract, handover, receipt, permit, and target. I made no outside reads.",
+        "required_citations_by_index": [
+          4,
+          8
+        ]
+      },
+      {
+        "criterion": "Cites all four decisive sources",
+        "pass": false,
+        "assessment": "No citations",
+        "answer_evidence": "ANSWER: I can’t determine the justified next action from the route index alone. Please provide the relevant recovery documents, especially the recovery contract, handover, receipt, permit, and target. I made no outside reads.",
+        "required_citations_by_index": [
+          2,
+          4,
+          6,
+          8
+        ]
+      }
+    ],
+    "qualifications": [
+      "Early ANSWER requests documents within answer; no extra delivery authorized"
+    ]
+  }
+]

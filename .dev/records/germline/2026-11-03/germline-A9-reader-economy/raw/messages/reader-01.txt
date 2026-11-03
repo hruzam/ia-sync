@@ -1,0 +1,103 @@
+You are answering one synthetic document-based task. Do not operate any system, write files, delegate, or inspect outside sources for the task. Required runtime initialization remains permitted; disclose any such reads in your final answer. Use the sources to state the justified next action and what remains unresolved. Cite the relative document path for every consequential claim. Do not guess missing facts. Source scope and authority matter. Give one terminal response per requested turn, through your normal final-answer channel; do not use coordination tools to send a second copy. Put either READ requests or ANSWER in that response, not both.
+
+Task: Should the team draft the Meridian proposal now? State the justified next action and any unresolved prerequisite.
+
+# Route index
+
+- `readiness/build-notes.md` — Build pipeline: current build pipeline for its stated scope.
+- `readiness/support-rota.md` — Support rota: current support rota for its stated scope.
+- `readiness/constraints.md` — Constraints record: current constraints record for its stated scope.
+- `readiness/metrics.md` — Metrics scope: current metrics scope for its stated scope.
+- `readiness/inventory.md` — Current inventory: current current inventory for its stated scope.
+- `readiness/summary.md` — Inherited summary: current inherited summary for its stated scope.
+- `readiness/capacity.md` — Capacity report: current capacity report for its stated scope.
+- `readiness/proposal-contract.md` — Proposal contract: current proposal contract for its stated scope.
+- `readiness/access.md` — Access register: current access register for its stated scope.
+- `readiness/acceptance-rule.md` — Acceptance rule: current acceptance rule for its stated scope.
+- `readiness/incident.md` — Incident procedure: current incident procedure for its stated scope.
+- `readiness/archive.md` — Archive policy: current archive policy for its stated scope.
+
+All document bodies follow. Give one ANSWER with citations and disclose any outside reads. No additional retrieval is available.
+
+PATH: readiness/build-notes.md
+# Build pipeline
+Revision: current
+
+The build pipeline runs a smoke test before artifacts are packaged. Packaging uses the release branch and records the build identifier in its output. The pipeline owner reviews flaky checks separately; its result concerns whether a binary can be packaged. It does not establish whether a planning proposal has the inputs required by its own contract. The next scheduled packaging window is Tuesday.
+
+---
+PATH: readiness/support-rota.md
+# Support rota
+Revision: current
+
+The support rota identifies an on-call person for customer questions during the current cycle. Escalations about existing deployments go to that person, who may contact the component team for details. The rota is maintained weekly and the current entry covers this week. Its purpose is operational response, including acknowledgement and handover, rather than approval of planning constraints. The handover includes contact details for the next shift.
+
+---
+PATH: readiness/constraints.md
+# Constraints record
+Revision: current
+
+The Meridian constraints document is a draft for the current cycle. Its author has assented to the draft, and the record identifies a designated owner for acceptance. The owner has not accepted it. A draft may be discussed and revised, but the record does not show the acceptance event required to change its status. An author’s assent is recorded separately from owner acceptance.
+
+---
+PATH: readiness/metrics.md
+# Metrics scope
+Revision: current
+
+The monitoring team tracks request volume and service latency for the Meridian service. Its dashboard refreshes hourly, and a missing sample is investigated by the monitoring owner. The dashboard is intended to help operators understand the service under load. It is not a register of proposal inputs, nor does a green dashboard convey a planning approval for another team. The dashboard owner maintains its measurement definitions.
+
+---
+PATH: readiness/inventory.md
+# Current inventory
+Revision: current
+
+The current Meridian inventory lists the available components and has passed its completeness review. Its custodian marked the inventory ready for use in this planning cycle. The inventory includes component names and ownership, while usage constraints are maintained in a separate record. The inventory review establishes that this prerequisite is ready; it does not approve the separate constraints document. The custodian retains the reviewed version for reference.
+
+---
+PATH: readiness/summary.md
+# Inherited summary
+Revision: current
+
+An inherited planning summary says a constraints author can assent to their own draft and thereby make the constraints accepted. It was written as a quick orientation for the previous cycle, before the current acceptance rule was issued. Teams may use it to locate related records, but should compare its approval language with the current operative rule before making a decision.
+
+---
+PATH: readiness/capacity.md
+# Capacity report
+Revision: current
+
+The capacity report describes the service’s expected headroom for the current month. It uses recent measurements and notes that traffic varies across the week. Operations reviews the report at the monthly meeting and records follow-up work in its own backlog. Capacity findings inform service operations but do not themselves supply the planning constraints acceptance required by the proposal process. The report includes ranges rather than a single forecast.
+
+---
+PATH: readiness/proposal-contract.md
+# Proposal contract
+Revision: current
+
+The Meridian proposal contract requires two inputs before drafting: the current inventory and accepted constraints. When both inputs are present the component produces a proposal only; it does not authorize implementation, deployment, or changes to the inventory. The team should keep the inputs available for review and identify any missing prerequisite. This contract applies to the current planning cycle and governs the proposal request.
+
+---
+PATH: readiness/access.md
+# Access register
+Revision: current
+
+The access register lists the groups that can view Meridian planning materials. Access is reviewed each month, and a group owner handles changes to membership. A person with read access can examine the materials but receives no decision authority merely by appearing in the register. Requests for additional access follow the normal service desk procedure for the relevant group. Access changes are recorded against the relevant group.
+
+---
+PATH: readiness/acceptance-rule.md
+# Acceptance rule
+Revision: current
+
+The current operative constraints rule requires acceptance by the designated constraints owner. Author assent is useful evidence of drafting agreement but is not owner acceptance, even if the same record captures both events. This rule supersedes the contrary statement in the inherited summary for the present cycle. If acceptance is absent, obtain the designated owner’s decision before treating constraints as accepted.
+
+---
+PATH: readiness/incident.md
+# Incident procedure
+Revision: current
+
+The incident procedure describes how operators declare and communicate a service incident. The incident lead records impact, coordinates responders and closes the incident after recovery evidence has been reviewed. Planning reviews and proposal preparation are handled by their own contracts. The procedure remains current for incidents but does not decide whether a draft planning input has been accepted. The lead documents closure in the incident record.
+
+---
+PATH: readiness/archive.md
+# Archive policy
+Revision: current
+
+Completed planning records are retained in the project archive with their identifiers and dates. The archive custodian checks that records can be found and that retention dates are applied consistently. Archived copies are useful for audit and comparison with current records, but a retained copy is not by itself a current authorization to draft or implement a new proposal. The custodian maintains an index of retained records.

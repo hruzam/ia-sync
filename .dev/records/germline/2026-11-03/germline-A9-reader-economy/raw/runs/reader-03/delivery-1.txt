@@ -1,0 +1,12 @@
+PATH: identity/registry.md
+# Identity registry
+Revision: current
+
+The current identity registry maps both the north and west review handles to the same person, Morgan Lee. Both mappings are active for the period containing the C17 approvals. This registry resolves account aliases for review identity; it does not add a new approval. Read together with the ledger, the two recorded approvals therefore represent one distinct person. Registry updates are maintained by the identity owner.
+
+---
+PATH: identity/policy-r4.md
+# Review policy R4
+Revision: current
+
+Review policy R4 requires approval from two distinct people before a Cedar change passes review. Separate handles or separate ledger entries do not establish distinct people by themselves. When recorded approvals resolve to fewer than two people, the gate remains unsatisfied and an approval by another distinct person is needed. The policy governs the threshold, not the identity mapping of individual handles.

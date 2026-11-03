@@ -1,0 +1,45 @@
+{
+  "frozen_at": "2026-10-30T08:20:39.918019+01:00",
+  "sha256": {
+    "raw/fixture/entry-prose.md": "c748b9632d422aa24b5c41bfe9cad8986d03f440a67ca4e76dcc3d459781b585",
+    "raw/fixture/entry-structured.md": "d6b27943cfbd897a414c5cb4925cc9552588c0787f28b15a3620d95f3bfe0c19",
+    "raw/fixture/archive/notes.md": "3254d68fbd958079694268922846cc6b13b7ff4fa8d9e35c30e8e80617eda5bf",
+    "raw/fixture/state/target.md": "d99c431ccdf4aa36f1d780f4b3b4340fed5a56ca7103e7b757314037db2244b9",
+    "raw/fixture/state/inputs.md": "bcc7065c12011dfc14c6f916a129d80d6ab84428beb70055f1d4fc66e23d0c75",
+    "raw/fixture/operations/copy-17.md": "441d82c7a5b7ceaac34f6805f7e9aa55c2e1e42de1c22cf2e456ceb86c59deba",
+    "raw/fixture/contracts/copy.md": "36f42374a24b3c4c5c2cb5d452241e0dd61a05c14776e5269d7f8f9c29a2cb3a",
+    "raw/fixture/components/plan.md": "9de255c6140835d6a79afa7fdc33136e906d95d5a311559e2dcd48efde25dae5",
+    "raw/fixture/rules/review.md": "12458d4266592509ba9eb8a316a89cd3fdbd0124b2e6aae1d1df5b20b6bc0e60",
+    "raw/messages/serve.txt": "3b57e3706404d999bb5f6ddacd68ab5c30cb5205835a81acfcdde2c94ccda713",
+    "raw/messages/final.txt": "bd8946362474200ec3cf365486e8f128c70c2d914e11aa45de1d7e0f98b072e1",
+    "raw/messages/base.txt": "0f4b13e57573e3240066b0756893e5fe7fca85b0ee2f95098d8409b20ea037df",
+    "raw/messages/initial-structured.txt": "ed11425c8bdf59e8dcd3f28e723294b99788e20072d820e906f2a7885a227874",
+    "raw/messages/unavailable.txt": "14f2b387e18e0c2cf9ed5d9209ee198543872f3a2fb23709a6e7e91f5512394c",
+    "raw/messages/initial-prose.txt": "5e5630254a2bfdc6961a2f45ee28ef27aee03e447af340e972b8deb57bdd7ffe",
+    "raw/FACTS.json": "725d5957c034beaedd0e5ed9885358f0556cb9ae668bf887d016337667a55e6f",
+    "raw/RUBRIC.json": "e4643f39fc60d486969a0ff08c3c5a3a53089bf63a19baae8e1e18c4e96816b7",
+    "raw/ASSIGNMENT.json": "cae7fbd30354d45afb223626700d4c7925db6952850212ade9059caeaa720fea",
+    "RUNBOOK.md": "e6d706941b24aee39e37075edebdafcb6e56a5e4ff1348a8f2edf9222c3ec986"
+  },
+  "equivalence": "Identical route paths, relationship clauses and order; identical shared bodies/task/serving/budget/rubric; only entry table versus paragraphs differs.",
+  "sizes": {
+    "structured": {
+      "bytes": 749,
+      "whitespace_units": 107
+    },
+    "prose": {
+      "bytes": 682,
+      "whitespace_units": 80
+    }
+  },
+  "budget": {
+    "attempts": 4,
+    "request_rounds": 4,
+    "deliveries": 6,
+    "documents_per_round": 2,
+    "final_answers": 1,
+    "max_subject_response_turns": 5
+  },
+  "analysis": "Descriptive comparison only; four subjects, no model ranking or training familiarity mechanism inference. Retrieval necessity, unsupported claims, mistakes and exhausted budget recorded separately.",
+  "unnecessary_retrieval_definition": "Archive or duplicate delivery; six other documents are necessary support under frozen rubric."
+}

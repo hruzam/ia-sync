@@ -3,17 +3,12 @@
 `bounded router (raw.guides/runbook/GUIDE.md): active slug · gate · exact STATUS path. No next`
 `action, no narrative — STATUS.md is the sole doing-state for its gate.`
 
-- `germline-A9-reader-economy` · gate: Majkee accepts an evidence-backed disposition of the six-run reader-economy pilot, including frozen matched cases, citation-grounded scores, complete delivery accounting, protocol qualifications and a bounded design return to A3. ·
-  `/home/hruzam/ia-sync/.dev/session/germline-A9-reader-economy/STATUS.md`
-
-- `germline-A5-reader-navigation` · gate: Majkee accepts an evidence-backed disposition of the four-subject navigation experiment, including fixture equivalence, retrieval transcripts, semantic scores, harness limits and a concrete return to A3's reading-design question. ·
-  `/home/hruzam/ia-sync/.dev/session/germline-A5-reader-navigation/STATUS.md`
-
-- `germline-A4-reader-shapes` · gate: Majkee accepts the four-subject reader-shape pilot disposition, with frozen equivalent facts, checked per-item scores, preserved returns, and explicit limits on familiarity, model and economy claims. ·
-  `/home/hruzam/ia-sync/.dev/session/germline-A4-reader-shapes/STATUS.md`
+Retired full-slug aliases, reusable evidence and recovery: [ARCHIVE.md](ARCHIVE.md).
 
 - `germline-A3-guide-to-controller` · gate: Majkee accepts the independently reviewed guide-to-program fold package, with every whole-design roadmap item accounted for, reading and continuity contracts demonstrated on paper, and explicit destinations and release conditions for documentation, agent routing and later implementation. ·
   `/home/hruzam/ia-sync/.dev/session/germline-A3-guide-to-controller/STATUS.md`
+
+- `germline-A2-projects` · gate: Majkee accepts the selected project's bounded preparation and evidence, with its limits and outstanding obligations explicit. · `/home/hruzam/ia-sync/.dev/session/germline-A2-projects/STATUS.md`
 
 - `germline-A1-vi-agents` · gate: For each selected agent or related group, Majkee accepts its scoped build disposition and evidence under the shared five-phase workflow; continuation selects another group within this production line. ·
   `/home/hruzam/ia-sync/.dev/session/germline-A1-vi-agents/STATUS.md`
@@ -23,20 +18,12 @@
   a change reaches affected participants, and work based on an earlier understanding is reconciled. ·
   `/home/hruzam/ia-sync/.dev/session/runbook-tool-02-understanding/STATUS.md`
 
+- `germline-03-foundation-audit` · gate: Majkee accepts a source-accounted audit of every named deferred input, with any required design choice independently reviewed and every non-audit implementation deferred to a later gate. · `/home/hruzam/ia-sync/.dev/session/germline-03-foundation-audit/STATUS.md`
+
 - `germline-09-source-reader` · gate: Majkee accepts the independently checked read-only
   source-reader artifact and a separately evidenced disposition of the main's consultation
   burden, with no activation, deployment or germline architecture promotion implied ·
   `/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/STATUS.md`
-
-- `germline-08-caretaker-receipts` · gate: Majkee accepts a verified disposition of receipt-first
-  recovery and two fresh low-effort tasks, including result quality, effective runtime, target
-  usage and comparison limits, without promotion or transport-source changes ·
-  `/home/hruzam/ia-sync/.dev/session/germline-08-caretaker-receipts/STATUS.md`
-
-- `germline-07-make-program` · gate: Majkee accepts an evidence-backed experiment_1 disposition
-  covering recipient isolation, verified results, explicit-ID resumption, caretaker reuse,
-  operational failures, and the limits of the context/usage comparison, with no promotion or
-  transport-source change · `/home/hruzam/ia-sync/.dev/session/germline-07-make-program/STATUS.md`
 
 - `jev-01-codex-pilot` · gate: Majkee records GO on an independently Codex-verified Jev pilot
   that completes an individually approved mixed-type OpenRouter request, preserves its structured

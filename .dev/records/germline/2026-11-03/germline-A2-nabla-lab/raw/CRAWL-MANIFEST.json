@@ -1,0 +1,101 @@
+{
+  "created": "2026-10-27T02:05:21.960585+01:00",
+  "limit": "four concurrent native agents including root; disjoint reader waves; maximum crawler grade Terra",
+  "thinking": [
+    {
+      "id": "T01",
+      "task": "/root/lab_oraculum_thinking",
+      "role": "oraculum",
+      "requested_model": "gpt-6-astra/high (role pin)",
+      "state": "returned; retained for one follow-up",
+      "note": "Own source assessment is not independent. Preprocessor refused under installed child contract."
+    },
+    {
+      "id": "T02",
+      "task": "/root/lab_astrobley_thinking",
+      "role": "astrobley",
+      "requested_model": "gpt-6.1-sol/high (role pin)",
+      "state": "returned; retained for concrete-plan review"
+    }
+  ],
+  "crawlers": [
+    {
+      "id": "C01",
+      "task": "/root/lab_c01_program_routes",
+      "requested_model": "gpt-6-luna/high",
+      "owns": [
+        "C01.program-routes.md"
+      ],
+      "state": "returned; hashes and load-bearing anchors checked; corrections in CRAWL-VERIFY.md",
+      "reported_sha256": "e5abfefa5d7f20fb2e681000fdc0d40f0ab16422c452b5ac273efd6bdb09dd19",
+      "observed_artifacts": {
+        "C01.program-routes.md": "e5abfefa5d7f20fb2e681000fdc0d40f0ab16422c452b5ac273efd6bdb09dd19"
+      }
+    },
+    {
+      "id": "C02",
+      "task": "/root/lab_c02_filesystem_graph",
+      "requested_model": "gpt-6-luna/high",
+      "owns": [
+        "C02.lab-graph.md",
+        "C02.lab-inventory.json"
+      ],
+      "state": "returned; hashes and load-bearing anchors checked; corrections in CRAWL-VERIFY.md",
+      "reported_hashes": {
+        "C02.lab-graph.md": "998e33d7a61c8aab7c63569129e72de005791aa3ba1f1501a06e851921dd6b08",
+        "C02.lab-inventory.json": "48c8c1229e97739cf18d3e72076a9d85d40c653ae8d840deac95cbf6de132a50"
+      },
+      "observed_artifacts": {
+        "C02.lab-graph.md": "998e33d7a61c8aab7c63569129e72de005791aa3ba1f1501a06e851921dd6b08",
+        "C02.lab-inventory.json": "48c8c1229e97739cf18d3e72076a9d85d40c653ae8d840deac95cbf6de132a50"
+      }
+    },
+    {
+      "id": "C03",
+      "task": "/root/lab_c03_role_methods",
+      "requested_model": "gpt-6-luna/high",
+      "owns": [
+        "C03.role-methods.md",
+        "C03.role-inventory.json"
+      ],
+      "state": "returned; hashes and load-bearing anchors checked; corrections in CRAWL-VERIFY.md",
+      "reported_hashes": {
+        "C03.role-methods.md": "5b394f4a7aa73d33200e0667ae86a6c110b7866481d4921d7f34bf6c88eb101f",
+        "C03.role-inventory.json": "79083e5c0f498f42e33ec04d5af1683f10bcad0bdf720ae9db4fbbe61d9ca9cf"
+      },
+      "observed_artifacts": {
+        "C03.role-methods.md": "5b394f4a7aa73d33200e0667ae86a6c110b7866481d4921d7f34bf6c88eb101f",
+        "C03.role-inventory.json": "79083e5c0f498f42e33ec04d5af1683f10bcad0bdf720ae9db4fbbe61d9ca9cf"
+      }
+    },
+    {
+      "id": "C04",
+      "task": "/root/lab_c04_native_harness",
+      "requested_model": "gpt-6.1-terra/high",
+      "owns": [
+        "C04.native-harness.md",
+        "C04.native-harness.initial.md"
+      ],
+      "state": "returned; hashes and load-bearing anchors checked; corrections in CRAWL-VERIFY.md",
+      "observed_artifacts": {
+        "C04.native-harness.md": "028d6ea974c0114e9be335297e1be84aeadbc6c6a2eaaace8a2313b39f8ba856",
+        "C04.native-harness.initial.md": "37d3ac92c72f5a599efa2a316fda2b0e1fc6ae2bba7e21dba8b8fb29184aaff6"
+      }
+    },
+    {
+      "id": "C05",
+      "task": "/root/lab_c05_aberration_audit",
+      "requested_model": "gpt-6.1-terra/high",
+      "owns": [
+        "C05.aberration-audit.md"
+      ],
+      "state": "returned; hashes and load-bearing anchors checked; corrections in CRAWL-VERIFY.md",
+      "observed_artifacts": {
+        "C05.aberration-audit.md": "92ee3071e1f44cd7935295fcdb53e4ec08ff0dbc78fd0dee8bb08afc6fe1030f"
+      },
+      "follow_up": "returned source-only review of actual candidates; two wording ambiguities corrected; no blocking authority issue"
+    }
+  ],
+  "updated": "2026-10-27T02:21:47.281025+01:00",
+  "observed_runtime": "Requested models are recorded above. No rollout/session history is copied here. Runtime model fields remain unverified where not separately witnessed."
+}

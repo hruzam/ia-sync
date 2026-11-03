@@ -1,0 +1,103 @@
+You are answering one synthetic document-based task. Do not operate any system, write files, delegate, or inspect outside sources for the task. Required runtime initialization remains permitted; disclose any such reads in your final answer. Use the sources to state the justified next action and what remains unresolved. Cite the relative document path for every consequential claim. Do not guess missing facts. Source scope and authority matter. Give one terminal response per requested turn, through your normal final-answer channel; do not use coordination tools to send a second copy. Put either READ requests or ANSWER in that response, not both.
+
+Task: Does the current review gate pass? State the justified next action and explain the identity and policy evidence.
+
+# Route index
+
+- `identity/release-calendar.md` — Release calendar: current release calendar for its stated scope.
+- `identity/support.md` — Support process: current support process for its stated scope.
+- `identity/ledger.md` — Approval ledger: current approval ledger for its stated scope.
+- `identity/handover.md` — Handover guide: current handover guide for its stated scope.
+- `identity/binding.md` — Project binding: current project binding for its stated scope.
+- `identity/summary.md` — Inherited summary: current inherited summary for its stated scope.
+- `identity/telemetry.md` — Telemetry guide: current telemetry guide for its stated scope.
+- `identity/policy-r4.md` — Review policy R4: current review policy r4 for its stated scope.
+- `identity/access.md` — Access register: current access register for its stated scope.
+- `identity/registry.md` — Identity registry: current identity registry for its stated scope.
+- `identity/training.md` — Training notes: current training notes for its stated scope.
+- `identity/retention.md` — Retention policy: current retention policy for its stated scope.
+
+All document bodies follow. Give one ANSWER with citations and disclose any outside reads. No additional retrieval is available.
+
+PATH: identity/release-calendar.md
+# Release calendar
+Revision: current
+
+The release calendar lists planned deployment windows and the operations contacts assigned to each window. Teams request changes through the release coordinator, who updates the current schedule after checking conflicts. The calendar helps responders plan availability; it does not decide whether an individual review satisfies the governing approval policy. A scheduled release window is not approval of the reviewed change.
+
+---
+PATH: identity/support.md
+# Support process
+Revision: current
+
+Support requests are categorized by customer impact and assigned to a queue owner. Each queue records acknowledgements, updates and the eventual resolution. The current procedure asks staff to escalate stalled requests during the working day. This workflow applies to support cases and their communications, while project review requirements are defined in the policy selected by the project binding. Queue owners record the outcome of each escalation.
+
+---
+PATH: identity/ledger.md
+# Approval ledger
+Revision: current
+
+The current review ledger records two approval entries for change C17: handle north signed at 09:00 and handle west signed at 09:12. Both entries are recorded as approvals and neither is revoked in this ledger. The ledger records handles and events, not the underlying person behind a handle. Identity equivalence must be resolved using the current identity registry. Each entry retains its original event timestamp.
+
+---
+PATH: identity/handover.md
+# Handover guide
+Revision: current
+
+The handover guide asks reviewers to leave a concise note for the next working shift. It recommends recording the change identifier, the latest review location and any open operational questions. A handover note reduces confusion when shifts change but does not replace the review policy or the approval records. The guide applies to all current project shifts. Open questions stay visible to the receiving shift.
+
+---
+PATH: identity/binding.md
+# Project binding
+Revision: current
+
+The current project binding for environment Cedar selects review policy R4 as the operative policy for changes in this environment. Other project summaries may describe older practices, but review decisions for Cedar must apply R4. The binding also points to the approval ledger and identity registry as separate evidence sources. It does not itself count reviewers or grant an approval.
+
+---
+PATH: identity/summary.md
+# Inherited summary
+Revision: current
+
+The inherited review summary states that two approval entries in the ledger are sufficient to pass the gate. It was written for quick orientation and does not resolve whether handles represent different people. Its statement conflicts with the current policy selected by the Cedar binding. Use the selected operative policy when deciding the review gate rather than applying this summary alone.
+
+---
+PATH: identity/telemetry.md
+# Telemetry guide
+Revision: current
+
+The telemetry guide specifies how to locate recent service traces and how long operational metrics remain available. On-call staff use it when investigating performance changes. Trace identifiers can be added to incident reports, but a trace does not represent a person’s review approval. The guide is current for operations and does not define the Cedar review threshold. The guide also describes trace lookup by identifier.
+
+---
+PATH: identity/policy-r4.md
+# Review policy R4
+Revision: current
+
+Review policy R4 requires approval from two distinct people before a Cedar change passes review. Separate handles or separate ledger entries do not establish distinct people by themselves. When recorded approvals resolve to fewer than two people, the gate remains unsatisfied and an approval by another distinct person is needed. The policy governs the threshold, not the identity mapping of individual handles.
+
+---
+PATH: identity/access.md
+# Access register
+Revision: current
+
+The access register lists which groups may open the review workspace. Membership is reviewed monthly by each group owner, and access requests use the service desk. Viewing rights permit examination of review materials but do not themselves count as approval. The register is maintained for access administration and is separate from the identity registry that resolves review handles. Access changes are recorded against the relevant group.
+
+---
+PATH: identity/registry.md
+# Identity registry
+Revision: current
+
+The current identity registry maps both the north and west review handles to the same person, Morgan Lee. Both mappings are active for the period containing the C17 approvals. This registry resolves account aliases for review identity; it does not add a new approval. Read together with the ledger, the two recorded approvals therefore represent one distinct person. Registry updates are maintained by the identity owner.
+
+---
+PATH: identity/training.md
+# Training notes
+Revision: current
+
+The reviewer training notes describe how to write useful comments and refer authors to specific lines of a proposed change. They encourage clear reasoning and respectful questions and apply to the current reviewer cohort. Completion of training helps reviewers communicate but is not an approval event. The governing threshold and the current ledger are maintained in separate records. Reviewers can discuss unclear comments with the author.
+
+---
+PATH: identity/retention.md
+# Retention policy
+Revision: current
+
+The retention policy specifies how long review materials remain available and which team owns their eventual archival. Review records retain their identifiers so an audit can associate them with changes. Retention ensures later access to evidence but does not convert an entry into an approval or determine how many distinct people approved. Current review policy determines the gate. The owner checks retention dates at archival.

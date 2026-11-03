@@ -10,6 +10,11 @@
 
 ---
 
+
+## OFFICE — 2026-11-03 · myShell · germline retirement and A2 continuation
+
+Majkee blessed the cleanup after Oraculum’s scoped release. ARCHIVE.md is the discovery/recovery entry, wired from AGENTS, Houston’s project addendum and pulse. Thirteen original packages (including A2’s closed setup) moved byte-preserved to .dev/records/germline/2026-11-03, with ignored compressed copies and extraction/hash checks. Old full slugs remain historical symlinks, never reusable identities. Pending trial acceptance remains pending; G03/A3/G09 ownership is unchanged. Four idle G07/G08 tunnel handles were closed locally through the supported verb; no model calls or thread deletion. A2-projects continues the project ladder with accepted lab group 001 and separate Track 2. Scars and full result receipts were copied with origin headers to .dev/observations. G03 raw contains the full crawler report. No commit/push/deploy or cross-host preservation is claimed; archive manifest and validation record carry current custody and limits. G00’s outdated route remains an explicit owner-disposition concern.
+
 ## OFFICE — 2026-10-30 · Cartan · A3 clarification and continuous A1 production
 
 At Majkee's request, added the main-session docs-discovery correction to A3 S04:

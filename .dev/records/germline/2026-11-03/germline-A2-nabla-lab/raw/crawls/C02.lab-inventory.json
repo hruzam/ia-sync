@@ -1,0 +1,581 @@
+{
+  "schema": "C02.lab-inventory.v1",
+  "root": "/home/hruzam/nabla-lab",
+  "method": "filesystem metadata only: lstat type and size; no symlink targets followed; inbox bodies excluded and not opened",
+  "inventory_counts": {
+    "directory": 19,
+    "file": 87
+  },
+  "inventory_entry_count": 106,
+  "excluded_entry_count": 5,
+  "excluded_zones": [
+    ".git/** (git internals)",
+    "_monkeynet/** (personal untracked area)",
+    "_mail/**/inbox/* (bodies not opened; path and size metadata recorded only)",
+    "No .majkee/ or .hlm/ tree present. No other secret/auth/history/state paths matched the filename/path filters."
+  ],
+  "entries": [
+    {
+      "path": ".claude",
+      "type": "directory",
+      "bytes": 4096
+    },
+    {
+      "path": ".claude/settings.local.json",
+      "type": "file",
+      "bytes": 882
+    },
+    {
+      "path": ".gitignore",
+      "type": "file",
+      "bytes": 125
+    },
+    {
+      "path": "AGENTS.md",
+      "type": "file",
+      "bytes": 5424
+    },
+    {
+      "path": "CLAUDE.md",
+      "type": "file",
+      "bytes": 11
+    },
+    {
+      "path": "PROJECT.yaml",
+      "type": "file",
+      "bytes": 729
+    },
+    {
+      "path": "_mail",
+      "type": "directory",
+      "bytes": 4096
+    },
+    {
+      "path": "_mail/.gitignore",
+      "type": "file",
+      "bytes": 25
+    },
+    {
+      "path": "_mail/README.md",
+      "type": "file",
+      "bytes": 1199
+    },
+    {
+      "path": "_mail/oraculum",
+      "type": "directory",
+      "bytes": 4096
+    },
+    {
+      "path": "_mail/oraculum/inbox",
+      "type": "directory",
+      "bytes": 4096
+    },
+    {
+      "path": "drafts",
+      "type": "directory",
+      "bytes": 4096
+    },
+    {
+      "path": "drafts.oraculum",
+      "type": "directory",
+      "bytes": 4096
+    },
+    {
+      "path": "drafts.oraculum/README.md",
+      "type": "file",
+      "bytes": 1651
+    },
+    {
+      "path": "drafts/.gitkeep",
+      "type": "file",
+      "bytes": 0
+    },
+    {
+      "path": "drafts/2026-07-17-epoch-gavel-id-collision.md",
+      "type": "file",
+      "bytes": 1131
+    },
+    {
+      "path": "drafts/agent-memory-architecture.md",
+      "type": "file",
+      "bytes": 11078
+    },
+    {
+      "path": "drafts/atlas2-research-substrate.md",
+      "type": "file",
+      "bytes": 20735
+    },
+    {
+      "path": "drafts/brick1.py",
+      "type": "file",
+      "bytes": 6573
+    },
+    {
+      "path": "drafts/brick2.py",
+      "type": "file",
+      "bytes": 208
+    },
+    {
+      "path": "drafts/card.interposition-driven-mode.2026-07-07.md",
+      "type": "file",
+      "bytes": 273
+    },
+    {
+      "path": "drafts/cmds-zen-coldstart-test.2026-07-17.md",
+      "type": "file",
+      "bytes": 3047
+    },
+    {
+      "path": "drafts/decentralized-memory-substrate-spec-v2.md",
+      "type": "file",
+      "bytes": 26148
+    },
+    {
+      "path": "drafts/decentralized-memory-substrate-spec.md",
+      "type": "file",
+      "bytes": 14903
+    },
+    {
+      "path": "drafts/handwriting-analogue.md",
+      "type": "file",
+      "bytes": 2849
+    },
+    {
+      "path": "drafts/how-epoch-sees-reincarnation.md",
+      "type": "file",
+      "bytes": 3734
+    },
+    {
+      "path": "drafts/interposition-study.md",
+      "type": "file",
+      "bytes": 9527
+    },
+    {
+      "path": "drafts/larva.contract.v0.1.md",
+      "type": "file",
+      "bytes": 9221
+    },
+    {
+      "path": "drafts/mental-map-collective-mind.md",
+      "type": "file",
+      "bytes": 15087
+    },
+    {
+      "path": "drafts/oraculum-synthesis-brief.2026-07-13.md",
+      "type": "file",
+      "bytes": 9611
+    },
+    {
+      "path": "drafts/oraculum.factory-taste-files.md",
+      "type": "file",
+      "bytes": 4522
+    },
+    {
+      "path": "drafts/orchestration-atlas-v2.md",
+      "type": "file",
+      "bytes": 36434
+    },
+    {
+      "path": "drafts/process-note.eagle.2026-07-17.md",
+      "type": "file",
+      "bytes": 5314
+    },
+    {
+      "path": "drafts/reincarnation-meditation-stone.md",
+      "type": "file",
+      "bytes": 7543
+    },
+    {
+      "path": "drafts/terminal-onion-study.md",
+      "type": "file",
+      "bytes": 7721
+    },
+    {
+      "path": "drafts/three-spines-orchestration.md",
+      "type": "file",
+      "bytes": 27659
+    },
+    {
+      "path": "guides",
+      "type": "directory",
+      "bytes": 4096
+    },
+    {
+      "path": "guides/lab-workflow.md",
+      "type": "file",
+      "bytes": 13165
+    },
+    {
+      "path": "papers",
+      "type": "directory",
+      "bytes": 4096
+    },
+    {
+      "path": "papers/.gitkeep",
+      "type": "file",
+      "bytes": 0
+    },
+    {
+      "path": "papers/card.branching-ratio-monitor.2026-07-02.md",
+      "type": "file",
+      "bytes": 3398
+    },
+    {
+      "path": "papers/card.choquet-consensus-gate.2026-07-02.md",
+      "type": "file",
+      "bytes": 4507
+    },
+    {
+      "path": "papers/card.interposition-driven-mode.2026-07-07.md",
+      "type": "file",
+      "bytes": 9552
+    },
+    {
+      "path": "papers/card.spectral-engine-core.2026-07-02.md",
+      "type": "file",
+      "bytes": 8396
+    },
+    {
+      "path": "papers/card.tensor-log-analytics.2026-07-02.md",
+      "type": "file",
+      "bytes": 3324
+    },
+    {
+      "path": "session",
+      "type": "directory",
+      "bytes": 4096
+    },
+    {
+      "path": "session/flag.md",
+      "type": "file",
+      "bytes": 14040
+    },
+    {
+      "path": "session/gavels-pending.2026-07-12.twin.md",
+      "type": "file",
+      "bytes": 1106
+    },
+    {
+      "path": "session/gavels.2026-07-07.md",
+      "type": "file",
+      "bytes": 1525
+    },
+    {
+      "path": "session/handoff",
+      "type": "directory",
+      "bytes": 4096
+    },
+    {
+      "path": "session/handoff/FOR-all-houstons.fable-last-light.2026-07-07.md",
+      "type": "file",
+      "bytes": 3650
+    },
+    {
+      "path": "session/handoff/FOR-nabla-symmetry.card-notification.2026-07-25.md",
+      "type": "file",
+      "bytes": 1402
+    },
+    {
+      "path": "session/handoff/FOR-oraculum-track3.handwriting.2026-07-17.md",
+      "type": "file",
+      "bytes": 3100
+    },
+    {
+      "path": "session/handoff/FOR-oraculum-twin.reincarnation.2026-07-13.md",
+      "type": "file",
+      "bytes": 2135
+    },
+    {
+      "path": "session/handoff/FOR-subai.card.008.driven-mode-adoption.md",
+      "type": "file",
+      "bytes": 2883
+    },
+    {
+      "path": "session/handoff/FOR-temple.method.ring-trio.2026-07-10.md",
+      "type": "file",
+      "bytes": 2953
+    },
+    {
+      "path": "session/handoff/FOR-temple.triangulation-roster.template.2026-07-08.md",
+      "type": "file",
+      "bytes": 3778
+    },
+    {
+      "path": "session/handoff/README.md",
+      "type": "file",
+      "bytes": 555
+    },
+    {
+      "path": "session/handoff/archive",
+      "type": "directory",
+      "bytes": 4096
+    },
+    {
+      "path": "session/handoff/archive/FOR-atlas.oraculum.fable-sunset-fallout.2026-07-07.md",
+      "type": "file",
+      "bytes": 1844
+    },
+    {
+      "path": "session/handoff/archive/handoff.oraculum.2026-07-02.md",
+      "type": "file",
+      "bytes": 7419
+    },
+    {
+      "path": "session/handoff/archive/handoff.oraculum.2026-07-08.md",
+      "type": "file",
+      "bytes": 8063
+    },
+    {
+      "path": "session/handoff/handoff.oraculum.2026-07-18.md",
+      "type": "file",
+      "bytes": 6780
+    },
+    {
+      "path": "session/parked",
+      "type": "directory",
+      "bytes": 4096
+    },
+    {
+      "path": "session/parked/adjoint-naming-fork.md",
+      "type": "file",
+      "bytes": 981
+    },
+    {
+      "path": "session/plan.md",
+      "type": "file",
+      "bytes": 3769
+    },
+    {
+      "path": "session/plan.reincarnation-audits.2026-07-03.md",
+      "type": "file",
+      "bytes": 3148
+    },
+    {
+      "path": "session/project-bed",
+      "type": "directory",
+      "bytes": 4096
+    },
+    {
+      "path": "session/project-bed/session.project-bed.md",
+      "type": "file",
+      "bytes": 8
+    },
+    {
+      "path": "session/pulse.md",
+      "type": "file",
+      "bytes": 2971
+    },
+    {
+      "path": "session/report.final.oraculum.2026-07-02.md",
+      "type": "file",
+      "bytes": 8999
+    },
+    {
+      "path": "session/research",
+      "type": "directory",
+      "bytes": 4096
+    },
+    {
+      "path": "session/research-atlas2-stance-geometry",
+      "type": "directory",
+      "bytes": 4096
+    },
+    {
+      "path": "session/research-atlas2-stance-geometry/cross-measure.2026-07-02.md",
+      "type": "file",
+      "bytes": 14396
+    },
+    {
+      "path": "session/research-atlas2-stance-geometry/leg-color.2026-07-02.md",
+      "type": "file",
+      "bytes": 28158
+    },
+    {
+      "path": "session/research-atlas2-stance-geometry/leg-epoch-followup.2026-07-02.md",
+      "type": "file",
+      "bytes": 12967
+    },
+    {
+      "path": "session/research-atlas2-stance-geometry/leg-epoch.2026-07-02.md",
+      "type": "file",
+      "bytes": 43526
+    },
+    {
+      "path": "session/research-atlas2-stance-geometry/leg-gemini-direct.2026-07-02.md",
+      "type": "file",
+      "bytes": 10143
+    },
+    {
+      "path": "session/research-atlas2-stance-geometry/leg-gemini.2026-07-02.md",
+      "type": "file",
+      "bytes": 2631
+    },
+    {
+      "path": "session/research-handwriting",
+      "type": "directory",
+      "bytes": 4096
+    },
+    {
+      "path": "session/research-handwriting/cross-measure.2026-07-18.md",
+      "type": "file",
+      "bytes": 7097
+    },
+    {
+      "path": "session/research-handwriting/leg-crossvendor.brief.md",
+      "type": "file",
+      "bytes": 1954
+    },
+    {
+      "path": "session/research-handwriting/leg1-brief.epoch.md",
+      "type": "file",
+      "bytes": 3192
+    },
+    {
+      "path": "session/research-handwriting/leg1-online.epoch.2026-07-18.md",
+      "type": "file",
+      "bytes": 21633
+    },
+    {
+      "path": "session/research-handwriting/leg2-brief.color.md",
+      "type": "file",
+      "bytes": 2502
+    },
+    {
+      "path": "session/research-handwriting/leg2-offline.color.2026-07-18.md",
+      "type": "file",
+      "bytes": 12625
+    },
+    {
+      "path": "session/research-handwriting/run-manifest.md",
+      "type": "file",
+      "bytes": 6051
+    },
+    {
+      "path": "session/research-interposition-fullrange",
+      "type": "directory",
+      "bytes": 4096
+    },
+    {
+      "path": "session/research-interposition-fullrange/epoch.findings.2026-07-07.md",
+      "type": "file",
+      "bytes": 16208
+    },
+    {
+      "path": "session/research-interposition-fullrange/status.gavel-loop-A.2026-08-02.md",
+      "type": "file",
+      "bytes": 2422
+    },
+    {
+      "path": "session/research-mental-map",
+      "type": "directory",
+      "bytes": 4096
+    },
+    {
+      "path": "session/research-mental-map/card.amendment-A1.composer.2026-07-25.md",
+      "type": "file",
+      "bytes": 4656
+    },
+    {
+      "path": "session/research-mental-map/card.mental-map.DRAFT.2026-07-19.md",
+      "type": "file",
+      "bytes": 14917
+    },
+    {
+      "path": "session/research-mental-map/corpus-manifest.md",
+      "type": "file",
+      "bytes": 6206
+    },
+    {
+      "path": "session/research-mental-map/cross-measure.2026-07-17.md",
+      "type": "file",
+      "bytes": 13731
+    },
+    {
+      "path": "session/research-mental-map/leg-crossvendor.brief.md",
+      "type": "file",
+      "bytes": 1935
+    },
+    {
+      "path": "session/research-mental-map/leg-offline-math.result.2026-07-17.md",
+      "type": "file",
+      "bytes": 50468
+    },
+    {
+      "path": "session/research-mental-map/leg-online.result.2026-07-17.md",
+      "type": "file",
+      "bytes": 33154
+    },
+    {
+      "path": "session/research-mental-map/leg-philosophy.result.2026-07-18.md",
+      "type": "file",
+      "bytes": 8819
+    },
+    {
+      "path": "session/research.journal.md",
+      "type": "file",
+      "bytes": 1486
+    },
+    {
+      "path": "session/research/.gitkeep",
+      "type": "file",
+      "bytes": 0
+    },
+    {
+      "path": "session/split-map.2026-07-02.md",
+      "type": "file",
+      "bytes": 6343
+    },
+    {
+      "path": "shaped",
+      "type": "directory",
+      "bytes": 4096
+    },
+    {
+      "path": "shaped/.gitkeep",
+      "type": "file",
+      "bytes": 0
+    },
+    {
+      "path": "shaped/card.interposition-driven-mode.2026-07-07.md",
+      "type": "file",
+      "bytes": 263
+    },
+    {
+      "path": "shaped/seed.brick2.py",
+      "type": "file",
+      "bytes": 16263
+    }
+  ],
+  "excluded_metadata": [
+    {
+      "path": ".git",
+      "type": "directory",
+      "bytes": 4096,
+      "reason": "excluded zone"
+    },
+    {
+      "path": "_mail/oraculum/inbox/2026-07-12.from-oraculum-main.addendum-clock-reprieve.md",
+      "type": "file",
+      "bytes": 850,
+      "reason": "mail inbox body excluded; filename/size metadata only; body not opened"
+    },
+    {
+      "path": "_mail/oraculum/inbox/2026-07-12.from-oraculum-main.to-oraculum-twin.kickoff-nabla-drafts.md",
+      "type": "file",
+      "bytes": 7688,
+      "reason": "mail inbox body excluded; filename/size metadata only; body not opened"
+    },
+    {
+      "path": "_mail/oraculum/inbox/atlas.nature-synthesis-brief.2026-07-13.md",
+      "type": "file",
+      "bytes": 598,
+      "reason": "mail inbox body excluded; filename/size metadata only; body not opened"
+    },
+    {
+      "path": "_monkeynet",
+      "type": "directory",
+      "bytes": 4096,
+      "reason": "excluded zone"
+    }
+  ]
+}

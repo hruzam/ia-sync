@@ -1,0 +1,55 @@
+{
+  "frozen_at": "2026-10-30T06:57:32.680483+01:00",
+  "subject_attempts_so_far": 0,
+  "fact_equivalence": "Every fact clause and question checked identical in both forms; order retained.",
+  "files": [
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-A4-reader-shapes/raw/FACTS.json",
+      "sha256": "4d34dccf55ffdbe6053f4f2a50b7131abac307e711ad79c6f9d489d8fed2f0d5",
+      "words": 250,
+      "bytes": 1991
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-A4-reader-shapes/raw/RUBRIC.json",
+      "sha256": "d8d8be595215fd2ec47d855a2168e0c192fb46bbd325e9c00da631130866caba",
+      "words": 172,
+      "bytes": 1407
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-A4-reader-shapes/raw/PROTOCOL.md",
+      "sha256": "6d4a3e511241e1417a995a5511514dcc01799c9f10a5ee361883f2053f99b343",
+      "words": 345,
+      "bytes": 2498
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-A4-reader-shapes/raw/PACKET.structured.md",
+      "sha256": "18d6475215f182f8091560eaf55f487efad02b3ea6b04bc29249d9f9dcf9bb42",
+      "words": 274,
+      "bytes": 1536
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-A4-reader-shapes/raw/PACKET.prose.md",
+      "sha256": "2c2c2b00820a1a6df2c37275bef4c4f6a28551517a1e1ad4b4a63f6b4755cc1b",
+      "words": 202,
+      "bytes": 1318
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-A4-reader-shapes/raw/prompts/structured.txt",
+      "sha256": "f623ea325a543eaa36b8dae7f2fb3056b3852ca03b827b397d227a15db594eae",
+      "words": 406,
+      "bytes": 2336
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-A4-reader-shapes/raw/prompts/prose.txt",
+      "sha256": "b5645923160b0c36d086bb5824cdaf571821491726cbe7847aa4b0b06d750bb7",
+      "words": 334,
+      "bytes": 2118
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-A4-reader-shapes/RUNBOOK.md",
+      "sha256": "2042c4438ca6f7e1412d0fec3b3783b5924678e441d328650178c30624ffb4c0",
+      "words": 755,
+      "bytes": 5932
+    }
+  ]
+}

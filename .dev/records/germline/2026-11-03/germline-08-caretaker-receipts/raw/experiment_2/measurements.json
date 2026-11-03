@@ -1,0 +1,145 @@
+{
+  "experiment": "experiment_2",
+  "rows": [
+    {
+      "peer": "peer-a",
+      "ask_seconds": 14.397,
+      "usage_total": {
+        "totalTokens": 44734,
+        "inputTokens": 44403,
+        "cachedInputTokens": 27648,
+        "cacheWriteInputTokens": 0,
+        "outputTokens": 331,
+        "reasoningOutputTokens": 0
+      },
+      "last_input_context": 23858,
+      "model": "gpt-6.1-sol",
+      "effort_after_resume": "low",
+      "birth_time_effort_snapshot": "high",
+      "read_commands": 1,
+      "source_output_lines": 142,
+      "final_word_count": 156
+    },
+    {
+      "peer": "peer-b",
+      "ask_seconds": 17.702,
+      "usage_total": {
+        "totalTokens": 44789,
+        "inputTokens": 44418,
+        "cachedInputTokens": 27648,
+        "cacheWriteInputTokens": 0,
+        "outputTokens": 371,
+        "reasoningOutputTokens": 0
+      },
+      "last_input_context": 23834,
+      "model": "gpt-6.1-sol",
+      "effort_after_resume": "low",
+      "birth_time_effort_snapshot": "high",
+      "read_commands": 1,
+      "source_output_lines": 198,
+      "final_word_count": 159
+    }
+  ],
+  "totals": {
+    "inputTokens": 88821,
+    "cachedInputTokens": 55296,
+    "outputTokens": 702,
+    "reasoningOutputTokens": 0
+  },
+  "parent_receipt_checks": [
+    {
+      "peer": "peer-a",
+      "operations": [
+        {
+          "verb": "open",
+          "classification": "completed-and-validated",
+          "elapsed_seconds": 1.009,
+          "exit": 0
+        },
+        {
+          "verb": "ask",
+          "classification": "completed-and-validated",
+          "elapsed_seconds": 14.397,
+          "exit": 0
+        },
+        {
+          "verb": "resume",
+          "classification": "completed-and-validated",
+          "elapsed_seconds": 0.981,
+          "exit": 0
+        }
+      ],
+      "ask_prompt_matches_frozen": true,
+      "reply_identity_matches_state": true,
+      "read_budget_pass": true,
+      "source_output_lines": 142,
+      "content_review": "Cartan checked cited GUIDE/source lines; required distinctions supported"
+    },
+    {
+      "peer": "peer-b",
+      "operations": [
+        {
+          "verb": "open",
+          "classification": "completed-and-validated",
+          "elapsed_seconds": 0.929,
+          "exit": 0
+        },
+        {
+          "verb": "ask",
+          "classification": "completed-and-validated",
+          "elapsed_seconds": 17.702,
+          "exit": 0
+        },
+        {
+          "verb": "resume",
+          "classification": "completed-and-validated",
+          "elapsed_seconds": 0.917,
+          "exit": 0
+        }
+      ],
+      "ask_prompt_matches_frozen": true,
+      "reply_identity_matches_state": true,
+      "read_budget_pass": true,
+      "source_output_lines": 198,
+      "content_review": "Cartan checked cited GUIDE/source lines; required distinctions supported"
+    }
+  ],
+  "historical_initial_pair": [
+    {
+      "peer": "peer-a",
+      "elapsed_seconds": 30.37,
+      "usage_delta": {
+        "totalTokens": 45230,
+        "inputTokens": 44326,
+        "cachedInputTokens": 20352,
+        "cacheWriteInputTokens": 0,
+        "outputTokens": 904,
+        "reasoningOutputTokens": 472
+      }
+    },
+    {
+      "peer": "peer-b",
+      "elapsed_seconds": 62.881,
+      "usage_delta": {
+        "totalTokens": 161610,
+        "inputTokens": 159964,
+        "cachedInputTokens": 118144,
+        "cacheWriteInputTokens": 0,
+        "outputTokens": 1646,
+        "reasoningOutputTokens": 775
+      }
+    }
+  ],
+  "limits": [
+    "Only target-thread usage is measured; native main/caretaker usage unavailable.",
+    "Historical comparison varies prompt, source-read budget, date/CLI, cache and inherited context; no causal savings claim.",
+    "No subscription quota or monetary conversion.",
+    "Ask runtime snapshot is stamped at thread/start before turn override; post-turn resume independently reports low.",
+    "Caller stdout was intentionally ignored, not a live transport failure."
+  ],
+  "target_budget": {
+    "maximum": 2,
+    "used": 2,
+    "remaining": 0
+  }
+}

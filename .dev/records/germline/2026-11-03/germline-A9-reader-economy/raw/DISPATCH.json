@@ -1,0 +1,131 @@
+{
+  "spawns_admitted": 6,
+  "turns_admitted": 10,
+  "spawns_limit": 6,
+  "turns_limit": 15,
+  "admissions": [
+    {
+      "reader": "reader-01",
+      "turn": 1,
+      "kind": "spawn",
+      "task_name": "reader_01",
+      "status": "completed",
+      "payload_sha256": "3c3f689b0900c7c71b886b57b3d45824d7de21beed1b87b9e6d491767f329612",
+      "payload_bytes": 8102,
+      "payload_path": "raw/messages/reader-01.txt",
+      "handle": "/root/reader_01",
+      "output_bytes": 886
+    },
+    {
+      "reader": "reader-02",
+      "turn": 1,
+      "kind": "spawn",
+      "task_name": "reader_02",
+      "status": "completed",
+      "payload_sha256": "2c280ca3619433573a63fe59c10dfde9ec69a17defa76b71b91539786e3c9515",
+      "payload_bytes": 2186,
+      "payload_path": "raw/messages/reader-02.txt",
+      "handle": "/root/reader_02"
+    },
+    {
+      "reader": "reader-02",
+      "turn": 2,
+      "kind": "continuation",
+      "handle": "/root/reader_02",
+      "status": "completed",
+      "payload_path": "raw/runs/reader-02/delivery-1.txt",
+      "payload_sha256": "b494ea7b9ba2ab5a9475fd451c88742c51a829f8abf74b845e496ab4aa0a91ff",
+      "payload_bytes": 970,
+      "documents": [
+        "summary",
+        "proposal-contract"
+      ]
+    },
+    {
+      "reader": "reader-02",
+      "turn": 3,
+      "kind": "continuation",
+      "handle": "/root/reader_02",
+      "status": "completed",
+      "payload_path": "raw/runs/reader-02/delivery-2.txt",
+      "payload_sha256": "12d06f3b71f3079d35f7c48a1cbbb3b1e404f3d196ba6a29b20e72930cb0cf5a",
+      "payload_bytes": 957,
+      "documents": [
+        "acceptance-rule",
+        "constraints"
+      ]
+    },
+    {
+      "reader": "reader-03",
+      "turn": 1,
+      "kind": "spawn",
+      "task_name": "reader_03",
+      "status": "completed",
+      "payload_sha256": "fff999768553f9a260ba12fef06f2d5bd4081a839fa35f73735e5379749e7519",
+      "payload_bytes": 2155,
+      "payload_path": "raw/messages/reader-03.txt",
+      "handle": "/root/reader_03"
+    },
+    {
+      "reader": "reader-03",
+      "turn": 2,
+      "kind": "continuation",
+      "handle": "/root/reader_03",
+      "status": "completed",
+      "payload_path": "raw/runs/reader-03/delivery-1.txt",
+      "payload_sha256": "e365e9c8e7c6a14e31018a1a56b06c59f02683668304e7330bac1e68a6b30f3a",
+      "payload_bytes": 971,
+      "documents": [
+        "registry",
+        "policy-r4"
+      ]
+    },
+    {
+      "reader": "reader-03",
+      "turn": 3,
+      "kind": "continuation",
+      "handle": "/root/reader_03",
+      "status": "completed",
+      "payload_path": "raw/runs/reader-03/delivery-2.txt",
+      "payload_sha256": "814988e56de7ca57ebb8ad1fa5b74460a0e133531588cae8a74741f09eb2070d",
+      "payload_bytes": 935,
+      "documents": [
+        "ledger",
+        "binding"
+      ]
+    },
+    {
+      "reader": "reader-04",
+      "turn": 1,
+      "kind": "spawn",
+      "task_name": "reader_04",
+      "status": "completed",
+      "payload_sha256": "6a9db2aa62a638f7b927677edd8908d3fc1d7888eeff5dc0324349d5336cd715",
+      "payload_bytes": 7938,
+      "payload_path": "raw/messages/reader-04.txt",
+      "handle": "/root/reader_04"
+    },
+    {
+      "reader": "reader-05",
+      "turn": 1,
+      "kind": "spawn",
+      "task_name": "reader_05",
+      "status": "completed",
+      "payload_sha256": "9e720842899962254cb3a04f11d61d531d2a9bc639c7875f05a6fca0a308fbc6",
+      "payload_bytes": 7942,
+      "payload_path": "raw/messages/reader-05.txt",
+      "handle": "/root/reader_05"
+    },
+    {
+      "reader": "reader-06",
+      "turn": 1,
+      "kind": "spawn",
+      "task_name": "reader_06",
+      "status": "completed",
+      "payload_sha256": "adb47c92fa1d63ea8f2df1507ca0b59c3849bb62dce98a6b82fecf2a0da68435",
+      "payload_bytes": 2144,
+      "payload_path": "raw/messages/reader-06.txt",
+      "handle": "/root/reader_06"
+    }
+  ]
+}

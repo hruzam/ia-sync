@@ -1,0 +1,13 @@
+Return the exact first line `experiment_1.peer-a.direct`.
+Read `/home/hruzam/reposoma/raw.guides/tunnel/GUIDE.md` only as the task source. Identify the
+GUIDE's statements about what `open --enable` establishes, when a thread is born, and recovery
+after uncertain completion. Give exact line citations with short supporting text. Say whether
+the GUIDE distinguishes transport preflight from a completed model task. Do not execute its
+examples or propose an implemented fix. Report missing coverage honestly; do not invent a defect.
+
+Shared restrictions: You are a bounded read-only instrument, not the G03 head or investigator.
+Read only your named task source plus necessary applicable instructions, follow no document links,
+perform no network research, launch no model/agent/process, and edit nothing. Cap your response
+at 180 words.
+
+Clarification: read-only file-inspection commands such as rg, sed and cat are permitted for the named sources. Do not execute the inspected code/examples or launch any additional agent, model CLI, daemon, or service.

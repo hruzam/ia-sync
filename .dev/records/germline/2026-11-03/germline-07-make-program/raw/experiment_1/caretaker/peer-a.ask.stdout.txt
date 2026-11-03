@@ -1,0 +1,10 @@
+experiment_1.peer-a.initial
+
+- **`open --enable`:** the operator opens the table; it is “preflight only, no thread yet.” [GUIDE line 36](/home/hruzam/reposoma/raw.guides/tunnel/GUIDE.md:36). The enable gate is a “presence check, not an authorisation check.” [Lines 94–97](/home/hruzam/reposoma/raw.guides/tunnel/GUIDE.md:94).
+- **Thread birth:** “thread born on FIRST send.” [Line 37](/home/hruzam/reposoma/raw.guides/tunnel/GUIDE.md:37). The lineage reiterates that zero-turn `thread/start` leaves no rollout. [Lines 137–138](/home/hruzam/reposoma/raw.guides/tunnel/GUIDE.md:137).
+- **Recovery:** `read` re-fetches the thread without a turn and is explicitly “the recovery primitive.” [Line 39](/home/hruzam/reposoma/raw.guides/tunnel/GUIDE.md:39). A reconciliation mismatch must be recorded, “never silently retry”; an in-flight turn calls for waiting or reading. [Lines 74–76](/home/hruzam/reposoma/raw.guides/tunnel/GUIDE.md:74).
+
+**Yes**, the GUIDE distinguishes preflight from completed model work: opening performs preflight, while `ask` promises reconciliation and a verified result. [Lines 36–38](/home/hruzam/reposoma/raw.guides/tunnel/GUIDE.md:36).
+
+Coverage limit: it gives no general decision procedure for whether an ambiguously completed `send` should be resent. That omission alone establishes no defect.
+[usage: {"total":{"totalTokens":45230,"inputTokens":44326,"cachedInputTokens":20352,"cacheWriteInputTokens":0,"outputTokens":904,"reasoningOutputTokens":472},"last":{"totalTokens":24649,"inputTokens":23816,"cachedInputTokens":20352,"cacheWriteInputTokens":0,"outputTokens":833,"reasoningOutputTokens":472},"modelContextWindow":475000}]

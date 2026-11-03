@@ -1,0 +1,31 @@
+{
+  "frozen_mismatches": [],
+  "protected_mismatches": [],
+  "stored_serving_mismatches": [],
+  "spawns": 6,
+  "turns": 10,
+  "within_budget": true,
+  "all_admissions_completed": true,
+  "native_payload_byte_carriage": "manual transcription; no independent machine-readable tool-call capture available",
+  "paired_common_inputs": "generated from common cases, checked by frozen files; actual tool payload carriage not independently verified",
+  "paired_fixture_checks": [
+    {
+      "case": "01",
+      "common_prefix_equal": true,
+      "full_bodies_exact_and_ordered": true,
+      "body_count": 12
+    },
+    {
+      "case": "02",
+      "common_prefix_equal": true,
+      "full_bodies_exact_and_ordered": true,
+      "body_count": 12
+    },
+    {
+      "case": "03",
+      "common_prefix_equal": true,
+      "full_bodies_exact_and_ordered": true,
+      "body_count": 12
+    }
+  ]
+}

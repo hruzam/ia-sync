@@ -5,6 +5,9 @@ another live progress register. Current phase, interruptions and next action bel
 to [A3 STATUS](../../../.dev/session/germline-A3-guide-to-controller/STATUS.md).
 The [HTML](index.html) is the visual model; [EVIDENCE](EVIDENCE.md) holds the research,
 consultations, corrections and source references behind this compact account.
+For participant/fork IDs, parked-thread retrieval cues and analytical hypotheses,
+consult the optional [CACHE](CACHE.md), collected 2026-11-03. It points to existing
+owners and evidence; it does not replace STATUS or the cold-start cards.
 
 ## Read this before rebuilding the picture
 
@@ -125,3 +128,8 @@ with Astrobley contributor review and recorded corrections. S02/S07/S10 inherit
 this concrete candidate; they need not reconstruct the requirement. No runtime
 trial, skill installation or global policy promotion is implied. The REVIEW file
 records the review limits and the parent-integrated fixes.
+
+
+## 2026-11-03 cleanup custody update — myShell
+
+Majkee authorized retirement after Oraculum’s consumer clearance. The [archive entry](../../../ARCHIVE.md) now supplies the exact readable and compressed locations, per-file hashes and pending dispositions. Existing full-slug citations remain valid through historical aliases; original evidence was not rewritten. This is local retirement, not result acceptance, a preservation commit or cross-host receipt. G03 and A3 remain separately owned; G09 remains live. The [crawler feedback](../../../.dev/session/germline-03-foundation-audit/raw/REPORT.myShell.crawler-experience.2026-11-03.md) is available for review, not claimed consumed.

@@ -1,0 +1,1 @@
+resume: thread 01a1694b-0c61-76f0-897c-fc3c66f665c0 status={'type': 'idle'} sandbox={'type': 'readOnly', 'networkAccess': False} effort=xhigh cwd=/home/hruzam/ia-sync/.dev/session/germline-07-make-program instructionSources=['/home/hruzam/.codex/AGENTS.md', '/home/hruzam/ia-sync/AGENTS.md']

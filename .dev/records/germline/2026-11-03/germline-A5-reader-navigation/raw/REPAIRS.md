@@ -1,0 +1,1 @@
+Initial admission utility wrote DISPATCH, then failed on duplicate at key before logging/STATUS. No native call had been invoked. Cartan inspected that exact failure, repaired log serialization, reconstructed the exact admitted transcript and STATUS without a second admission. No model send was retried.

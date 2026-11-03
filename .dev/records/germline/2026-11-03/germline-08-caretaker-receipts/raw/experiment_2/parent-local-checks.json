@@ -1,0 +1,10 @@
+{
+  "command": "python3 -B .dev/session/germline-08-caretaker-receipts/raw/experiment_2/test_receipt_runner.py",
+  "testsRun": 10,
+  "failures": 0,
+  "errors": 0,
+  "elapsed_seconds_reported": 0.003,
+  "observed_by": "Cartan",
+  "integration_correction": "JSON nonobject and malformed nested shape inspection; nonobject state recognition",
+  "target_turns": 0
+}

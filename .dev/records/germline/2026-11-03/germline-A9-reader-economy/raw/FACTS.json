@@ -1,0 +1,74 @@
+{
+  "readiness": {
+    "necessary": [
+      "readiness/proposal-contract.md",
+      "readiness/inventory.md",
+      "readiness/constraints.md",
+      "readiness/acceptance-rule.md"
+    ],
+    "word_counts": [
+      68,
+      71,
+      68,
+      71,
+      72,
+      66,
+      73,
+      69,
+      72,
+      66,
+      71,
+      72
+    ],
+    "document_bytes": 5621,
+    "index_bytes": 1163
+  },
+  "identity": {
+    "necessary": [
+      "identity/ledger.md",
+      "identity/binding.md",
+      "identity/policy-r4.md",
+      "identity/registry.md"
+    ],
+    "word_counts": [
+      65,
+      71,
+      70,
+      70,
+      65,
+      66,
+      70,
+      68,
+      71,
+      71,
+      71,
+      70
+    ],
+    "document_bytes": 5518,
+    "index_bytes": 1133
+  },
+  "recovery": {
+    "necessary": [
+      "recovery/receipt.md",
+      "recovery/recovery-contract.md",
+      "recovery/target.md",
+      "recovery/permit.md"
+    ],
+    "word_counts": [
+      69,
+      66,
+      69,
+      72,
+      67,
+      70,
+      68,
+      68,
+      69,
+      67,
+      70,
+      72
+    ],
+    "document_bytes": 5546,
+    "index_bytes": 1092
+  }
+}

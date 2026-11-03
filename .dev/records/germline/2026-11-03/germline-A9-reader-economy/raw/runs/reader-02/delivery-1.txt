@@ -1,0 +1,12 @@
+PATH: readiness/summary.md
+# Inherited summary
+Revision: current
+
+An inherited planning summary says a constraints author can assent to their own draft and thereby make the constraints accepted. It was written as a quick orientation for the previous cycle, before the current acceptance rule was issued. Teams may use it to locate related records, but should compare its approval language with the current operative rule before making a decision.
+
+---
+PATH: readiness/proposal-contract.md
+# Proposal contract
+Revision: current
+
+The Meridian proposal contract requires two inputs before drafting: the current inventory and accepted constraints. When both inputs are present the component produces a proposal only; it does not authorize implementation, deployment, or changes to the inventory. The team should keep the inputs available for review and identify any missing prerequisite. This contract applies to the current planning cycle and governs the proposal request.

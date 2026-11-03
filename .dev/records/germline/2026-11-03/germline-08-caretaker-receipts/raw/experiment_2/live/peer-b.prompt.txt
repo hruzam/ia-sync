@@ -1,0 +1,14 @@
+Return the exact first line `experiment_2.peer-b.low`.
+Read `/home/hruzam/ia-sync/zsh/ai/tunnel-codex.py` as your only task source.
+Inspect save_state, cmd_open, _birth_or_resume and cmd_ask/cmd_send. Cite exact source
+line numbers for open's preflight, thread creation and persistence of a new threadId.
+Explain the first-turn timeout/reconciliation-failure uncertainty. Distinguish a source
+finding from an observed runtime failure. Do not run the code or implement a fix.
+Maximum 180 words.
+
+Read budget: at most two read-only source-inspection commands, at most 260 source lines
+in total; the relevant windows are 602–614, 621–718, 842–889 and 929–967. You may use
+rg, nl or sed for that source. Necessary applicable runtime instructions may be read,
+but follow no document links, read no other task sources and do no network research.
+Do not execute source examples, start another model/agent/CLI, edit files or perform
+another task. You are a read-only instrument, not a session head.

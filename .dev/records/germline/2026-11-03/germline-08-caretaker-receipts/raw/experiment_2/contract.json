@@ -1,0 +1,50 @@
+{
+  "experiment": "experiment_2",
+  "maximum_target_turns": 2,
+  "requested": {
+    "model": "gpt-6.1-sol",
+    "effort": "low",
+    "sandbox": "read-only",
+    "codex_binary": "/home/hruzam/.local/bin/codex",
+    "version": "codex-cli 0.164.0"
+  },
+  "files": [
+    {
+      "path": "/home/hruzam/ia-sync/zsh/ai/tunnel-codex.py",
+      "sha256": "8ca70c3044a9756265b42bc94d4a58b1d2c512ecd6b2e25becbd781ca2259052"
+    },
+    {
+      "path": "/home/hruzam/ia-sync/zsh/ai/tunnel-codex.zsh",
+      "sha256": "ae7803d804b54fd59145550807286a030d9efc6c2f13c6a0e17584dffe768f4e"
+    },
+    {
+      "path": "/home/hruzam/reposoma/raw.guides/tunnel/GUIDE.md",
+      "sha256": "1dc0f9c41d0004744b4820c302cb7be78330528ebaf55732c34ddf78c93f75a4"
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-08-caretaker-receipts/raw/experiment_2/receipt_runner.py",
+      "sha256": "ec4dc8ffdf13bbf3c4de1d8ddbb4e74bddec5def949dba659326f2f7c7b11430"
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-08-caretaker-receipts/raw/experiment_2/test_receipt_runner.py",
+      "sha256": "06f9e490406fee5120799e9c0c88ec85c29ec3d8cbf7ca5d3778e8c52cd6caa1"
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-08-caretaker-receipts/raw/experiment_2/QUALITY.md",
+      "sha256": "a683da68e58bdfa8ea4763905f13a862d1cf4434aec3af5b6e0576b02e4f2745"
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-08-caretaker-receipts/raw/experiment_2/live/peer-a.prompt.txt",
+      "sha256": "548d390ff3e55973dbce0552466e22a006d1b2cdcb92c21e2f957d590f10f06d"
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-08-caretaker-receipts/raw/experiment_2/live/peer-b.prompt.txt",
+      "sha256": "0284265059e616a087318d3503a3eee3a268c04d265be700a8098e109cea97cf"
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-08-caretaker-receipts/_bus/02.cartan.point.md",
+      "sha256": "3d0d3b3caeafa9a6ea1cee5f8356d84b18aa67e637780479595026667ed2af5e"
+    }
+  ],
+  "prior_trial": "/home/hruzam/ia-sync/.dev/session/germline-07-make-program/raw/experiment_1/RESULT.md"
+}

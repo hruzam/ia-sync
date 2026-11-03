@@ -1,0 +1,986 @@
+{
+  "scored_by": "cartan, parent review; no independent scorer",
+  "frozen_rubric_sha256": "e4643f39fc60d486969a0ff08c3c5a3a53089bf63a19baae8e1e18c4e96816b7",
+  "subjects": [
+    {
+      "subject": "reader-01",
+      "model_requested": "gpt-6.1-terra",
+      "effort_requested": "low",
+      "arm": "structured",
+      "total": 12,
+      "items": [
+        {
+          "id": "P1",
+          "criterion": "Both current inventory and accepted constraints recognized as prerequisites; cite PLAN and INPUTS.",
+          "points": 1,
+          "score": 1,
+          "answer_support": "1. **Draft plan:** Obtain accepted constraints before running `draft-plan`. Current inventory is available, but the constraints are missing. Once both inputs are present, the component can produce a proposal; it cannot execute it. Evidence: `components/plan.md` (PLAN revision 2) and `state/inputs.md` (INPUTS revision 5).",
+          "source_support": [
+            {
+              "path": "components/plan.md",
+              "sha256": "9de255c6140835d6a79afa7fdc33136e906d95d5a311559e2dcd48efde25dae5",
+              "body": "Path: components/plan.md\nSource: PLAN\nRevision: 2\n\ndraft-plan requires current inventory and accepted constraints. It produces a proposal and cannot execute that proposal.\n"
+            },
+            {
+              "path": "state/inputs.md",
+              "sha256": "bcc7065c12011dfc14c6f916a129d80d6ab84428beb70055f1d4fc66e23d0c75",
+              "body": "Path: state/inputs.md\nSource: INPUTS\nRevision: 5\n\nCurrent inventory is available. Accepted constraints are missing.\n"
+            }
+          ],
+          "judgment": "Cartan semantic review: distinction/action and required source evidence present; no preferred-wording requirement added."
+        },
+        {
+          "id": "P2",
+          "criterion": "Accepted constraints missing; obtain them before drafting, citing INPUTS.",
+          "points": 1,
+          "score": 1,
+          "answer_support": "1. **Draft plan:** Obtain accepted constraints before running `draft-plan`. Current inventory is available, but the constraints are missing. Once both inputs are present, the component can produce a proposal; it cannot execute it. Evidence: `components/plan.md` (PLAN revision 2) and `state/inputs.md` (INPUTS revision 5).",
+          "source_support": [
+            {
+              "path": "state/inputs.md",
+              "sha256": "bcc7065c12011dfc14c6f916a129d80d6ab84428beb70055f1d4fc66e23d0c75",
+              "body": "Path: state/inputs.md\nSource: INPUTS\nRevision: 5\n\nCurrent inventory is available. Accepted constraints are missing.\n"
+            }
+          ],
+          "judgment": "Cartan semantic review: distinction/action and required source evidence present; no preferred-wording requirement added."
+        },
+        {
+          "id": "P3",
+          "criterion": "Locate/cite PLAN contract for dependency decision.",
+          "points": 1,
+          "score": 1,
+          "answer_support": "1. **Draft plan:** Obtain accepted constraints before running `draft-plan`. Current inventory is available, but the constraints are missing. Once both inputs are present, the component can produce a proposal; it cannot execute it. Evidence: `components/plan.md` (PLAN revision 2) and `state/inputs.md` (INPUTS revision 5).",
+          "source_support": [
+            {
+              "path": "components/plan.md",
+              "sha256": "9de255c6140835d6a79afa7fdc33136e906d95d5a311559e2dcd48efde25dae5",
+              "body": "Path: components/plan.md\nSource: PLAN\nRevision: 2\n\ndraft-plan requires current inventory and accepted constraints. It produces a proposal and cannot execute that proposal.\n"
+            }
+          ],
+          "judgment": "Cartan semantic review: distinction/action and required source evidence present; no preferred-wording requirement added."
+        },
+        {
+          "id": "P4",
+          "criterion": "Draft output remains proposal without execution authority, supported by PLAN.",
+          "points": 1,
+          "score": 1,
+          "answer_support": "1. **Draft plan:** Obtain accepted constraints before running `draft-plan`. Current inventory is available, but the constraints are missing. Once both inputs are present, the component can produce a proposal; it cannot execute it. Evidence: `components/plan.md` (PLAN revision 2) and `state/inputs.md` (INPUTS revision 5).",
+          "source_support": [
+            {
+              "path": "components/plan.md",
+              "sha256": "9de255c6140835d6a79afa7fdc33136e906d95d5a311559e2dcd48efde25dae5",
+              "body": "Path: components/plan.md\nSource: PLAN\nRevision: 2\n\ndraft-plan requires current inventory and accepted constraints. It produces a proposal and cannot execute that proposal.\n"
+            }
+          ],
+          "judgment": "Cartan semantic review: distinction/action and required source evidence present; no preferred-wording requirement added."
+        },
+        {
+          "id": "R1",
+          "criterion": "Review gate unsatisfied, supported by REVIEW.",
+          "points": 1,
+          "score": 1,
+          "answer_support": "2. **Review:** Obtain approval from a second distinct reviewer. The operative revision 4 requires two distinct reviewers, so the inherited revision-3 summary does not establish approval. Evidence: `rules/review.md` (REVIEW revision 4).",
+          "source_support": [
+            {
+              "path": "rules/review.md",
+              "sha256": "12458d4266592509ba9eb8a316a89cd3fdbd0124b2e6aae1d1df5b20b6bc0e60",
+              "body": "Path: rules/review.md\nSource: REVIEW\nRevision: 4\n\nThis is the operative review rule, revision 4. Approval requires two distinct reviewers.\n"
+            }
+          ],
+          "judgment": "Cartan semantic review: distinction/action and required source evidence present; no preferred-wording requirement added."
+        },
+        {
+          "id": "R2",
+          "criterion": "Operative revision 4 requires two distinct reviewers, citing REVIEW.",
+          "points": 1,
+          "score": 1,
+          "answer_support": "2. **Review:** Obtain approval from a second distinct reviewer. The operative revision 4 requires two distinct reviewers, so the inherited revision-3 summary does not establish approval. Evidence: `rules/review.md` (REVIEW revision 4).",
+          "source_support": [
+            {
+              "path": "rules/review.md",
+              "sha256": "12458d4266592509ba9eb8a316a89cd3fdbd0124b2e6aae1d1df5b20b6bc0e60",
+              "body": "Path: rules/review.md\nSource: REVIEW\nRevision: 4\n\nThis is the operative review rule, revision 4. Approval requires two distinct reviewers.\n"
+            }
+          ],
+          "judgment": "Cartan semantic review: distinction/action and required source evidence present; no preferred-wording requirement added."
+        },
+        {
+          "id": "R3",
+          "criterion": "Revision-3 inherited summary is stale for this rule; REVIEW revision 4 governs. No need to fetch historical archive to identify given summary as stale.",
+          "points": 1,
+          "score": 1,
+          "answer_support": "2. **Review:** Obtain approval from a second distinct reviewer. The operative revision 4 requires two distinct reviewers, so the inherited revision-3 summary does not establish approval. Evidence: `rules/review.md` (REVIEW revision 4).",
+          "source_support": [
+            {
+              "path": "rules/review.md",
+              "sha256": "12458d4266592509ba9eb8a316a89cd3fdbd0124b2e6aae1d1df5b20b6bc0e60",
+              "body": "Path: rules/review.md\nSource: REVIEW\nRevision: 4\n\nThis is the operative review rule, revision 4. Approval requires two distinct reviewers.\n"
+            }
+          ],
+          "judgment": "Cartan semantic review: distinction/action and required source evidence present; no preferred-wording requirement added."
+        },
+        {
+          "id": "R4",
+          "criterion": "Obtain one further distinct approval, supported by REVIEW and task one approval.",
+          "points": 1,
+          "score": 1,
+          "answer_support": "2. **Review:** Obtain approval from a second distinct reviewer. The operative revision 4 requires two distinct reviewers, so the inherited revision-3 summary does not establish approval. Evidence: `rules/review.md` (REVIEW revision 4).",
+          "source_support": [
+            {
+              "path": "rules/review.md",
+              "sha256": "12458d4266592509ba9eb8a316a89cd3fdbd0124b2e6aae1d1df5b20b6bc0e60",
+              "body": "Path: rules/review.md\nSource: REVIEW\nRevision: 4\n\nThis is the operative review rule, revision 4. Approval requires two distinct reviewers.\n"
+            }
+          ],
+          "judgment": "Cartan semantic review: distinction/action and required source evidence present; no preferred-wording requirement added."
+        },
+        {
+          "id": "C1",
+          "criterion": "Receipt establishes historical completion despite lost report, citing COPY-17.",
+          "points": 1,
+          "score": 1,
+          "answer_support": "3. **Copy-17:** Reconcile the desired state while preserving the later edit; do not retry merely because the report was lost. The durable receipt records completion at 10:05 with digest A0, while the current target is B1 and has a recorded 10:10 edit. A retry could overwrite later changes and requires separate authority. Evidence: `contracts/copy.md` (COPY-CONTRACT revision 2), `operations/copy-17.md` (COPY-17 revision 1), and `state/target.md` (TARGET revision 6).",
+          "source_support": [
+            {
+              "path": "operations/copy-17.md",
+              "sha256": "441d82c7a5b7ceaac34f6805f7e9aa55c2e1e42de1c22cf2e456ceb86c59deba",
+              "body": "Path: operations/copy-17.md\nSource: COPY-17\nRevision: 1\n\nThe durable operation receipt records completion at 10:05 with output digest A0. The reporting connection was lost at 10:06.\n"
+            }
+          ],
+          "judgment": "Cartan semantic review: distinction/action and required source evidence present; no preferred-wording requirement added."
+        },
+        {
+          "id": "C2",
+          "criterion": "Current target changed after completion, supported by COPY-17 and TARGET timings/digests.",
+          "points": 1,
+          "score": 1,
+          "answer_support": "3. **Copy-17:** Reconcile the desired state while preserving the later edit; do not retry merely because the report was lost. The durable receipt records completion at 10:05 with digest A0, while the current target is B1 and has a recorded 10:10 edit. A retry could overwrite later changes and requires separate authority. Evidence: `contracts/copy.md` (COPY-CONTRACT revision 2), `operations/copy-17.md` (COPY-17 revision 1), and `state/target.md` (TARGET revision 6).",
+          "source_support": [
+            {
+              "path": "operations/copy-17.md",
+              "sha256": "441d82c7a5b7ceaac34f6805f7e9aa55c2e1e42de1c22cf2e456ceb86c59deba",
+              "body": "Path: operations/copy-17.md\nSource: COPY-17\nRevision: 1\n\nThe durable operation receipt records completion at 10:05 with output digest A0. The reporting connection was lost at 10:06.\n"
+            },
+            {
+              "path": "state/target.md",
+              "sha256": "d99c431ccdf4aa36f1d780f4b3b4340fed5a56ca7103e7b757314037db2244b9",
+              "body": "Path: state/target.md\nSource: TARGET\nRevision: 6\n\nThe current target digest is B1. A subsequent edit is recorded at 10:10. Preserve this edit while reconciling desired state.\n"
+            }
+          ],
+          "judgment": "Cartan semantic review: distinction/action and required source evidence present; no preferred-wording requirement added."
+        },
+        {
+          "id": "C3",
+          "criterion": "Preserve later changes and withhold blind retry, supported by COPY-CONTRACT and TARGET.",
+          "points": 1,
+          "score": 1,
+          "answer_support": "3. **Copy-17:** Reconcile the desired state while preserving the later edit; do not retry merely because the report was lost. The durable receipt records completion at 10:05 with digest A0, while the current target is B1 and has a recorded 10:10 edit. A retry could overwrite later changes and requires separate authority. Evidence: `contracts/copy.md` (COPY-CONTRACT revision 2), `operations/copy-17.md` (COPY-17 revision 1), and `state/target.md` (TARGET revision 6).",
+          "source_support": [
+            {
+              "path": "contracts/copy.md",
+              "sha256": "36f42374a24b3c4c5c2cb5d452241e0dd61a05c14776e5269d7f8f9c29a2cb3a",
+              "body": "Path: contracts/copy.md\nSource: COPY-CONTRACT\nRevision: 2\n\nRecovery checks the durable operation receipt and the current target. Retry can overwrite later changes and needs its own authority. Preserve later edits while reconciling the desired state; do not infer retry authority from a lost report.\n"
+            },
+            {
+              "path": "state/target.md",
+              "sha256": "d99c431ccdf4aa36f1d780f4b3b4340fed5a56ca7103e7b757314037db2244b9",
+              "body": "Path: state/target.md\nSource: TARGET\nRevision: 6\n\nThe current target digest is B1. A subsequent edit is recorded at 10:10. Preserve this edit while reconciling desired state.\n"
+            }
+          ],
+          "judgment": "Cartan semantic review: distinction/action and required source evidence present; no preferred-wording requirement added."
+        },
+        {
+          "id": "C4",
+          "criterion": "Cite both COPY-17/TARGET and leave desired-state reconciliation unresolved rather than assert a safe retry or final desired digest.",
+          "points": 1,
+          "score": 1,
+          "answer_support": "3. **Copy-17:** Reconcile the desired state while preserving the later edit; do not retry merely because the report was lost. The durable receipt records completion at 10:05 with digest A0, while the current target is B1 and has a recorded 10:10 edit. A retry could overwrite later changes and requires separate authority. Evidence: `contracts/copy.md` (COPY-CONTRACT revision 2), `operations/copy-17.md` (COPY-17 revision 1), and `state/target.md` (TARGET revision 6).",
+          "source_support": [
+            {
+              "path": "operations/copy-17.md",
+              "sha256": "441d82c7a5b7ceaac34f6805f7e9aa55c2e1e42de1c22cf2e456ceb86c59deba",
+              "body": "Path: operations/copy-17.md\nSource: COPY-17\nRevision: 1\n\nThe durable operation receipt records completion at 10:05 with output digest A0. The reporting connection was lost at 10:06.\n"
+            },
+            {
+              "path": "state/target.md",
+              "sha256": "d99c431ccdf4aa36f1d780f4b3b4340fed5a56ca7103e7b757314037db2244b9",
+              "body": "Path: state/target.md\nSource: TARGET\nRevision: 6\n\nThe current target digest is B1. A subsequent edit is recorded at 10:10. Preserve this edit while reconciling desired state.\n"
+            },
+            {
+              "path": "contracts/copy.md",
+              "sha256": "36f42374a24b3c4c5c2cb5d452241e0dd61a05c14776e5269d7f8f9c29a2cb3a",
+              "body": "Path: contracts/copy.md\nSource: COPY-CONTRACT\nRevision: 2\n\nRecovery checks the durable operation receipt and the current target. Retry can overwrite later changes and needs its own authority. Preserve later edits while reconciling the desired state; do not infer retry authority from a lost report.\n"
+            }
+          ],
+          "judgment": "Cartan semantic review: distinction/action and required source evidence present; no preferred-wording requirement added."
+        }
+      ],
+      "metrics": {
+        "request_rounds": 3,
+        "documents": 6,
+        "document_bytes": 1083,
+        "served_message_bytes": 1086,
+        "initial_message_bytes": 2126,
+        "logical_response_exchanges": 4,
+        "native_extra_messages": 0,
+        "native_extra_message_bytes": 0,
+        "retrieval_sequence": [
+          "components/plan.md",
+          "state/inputs.md",
+          "rules/review.md",
+          "contracts/copy.md",
+          "operations/copy-17.md",
+          "state/target.md"
+        ],
+        "unnecessary_deliveries": 0,
+        "invalid_requests": 0,
+        "document_allowance_fully_used": true,
+        "forced_final": false,
+        "request_rounds_exhausted": false,
+        "unsupported_claims": 0,
+        "authority_mistakes": 0,
+        "answer_corrections": 0,
+        "answer_bytes": 1058,
+        "outside_reads": "none self-reported; complete independent trace unavailable",
+        "tokens": "unknown",
+        "total_cost": "unknown"
+      },
+      "scoring_disagreements": "none recorded; no independent reviewer authorized"
+    },
+    {
+      "subject": "reader-02",
+      "model_requested": "gpt-6-luna",
+      "effort_requested": "low",
+      "arm": "prose",
+      "total": 12,
+      "items": [
+        {
+          "id": "P1",
+          "criterion": "Both current inventory and accepted constraints recognized as prerequisites; cite PLAN and INPUTS.",
+          "points": 1,
+          "score": 1,
+          "answer_support": "1. **Draft plan:** First obtain accepted constraints; do not run `draft-plan` yet. The current inventory is available, but accepted constraints are missing, and both are prerequisites. Even when run, `draft-plan` produces a proposal only; it cannot execute it. Evidence: `components/plan.md` (PLAN, rev. 2) and `state/inputs.md` (INPUTS, rev. 5).",
+          "source_support": [
+            {
+              "path": "components/plan.md",
+              "sha256": "9de255c6140835d6a79afa7fdc33136e906d95d5a311559e2dcd48efde25dae5",
+              "body": "Path: components/plan.md\nSource: PLAN\nRevision: 2\n\ndraft-plan requires current inventory and accepted constraints. It produces a proposal and cannot execute that proposal.\n"
+            },
+            {
+              "path": "state/inputs.md",
+              "sha256": "bcc7065c12011dfc14c6f916a129d80d6ab84428beb70055f1d4fc66e23d0c75",
+              "body": "Path: state/inputs.md\nSource: INPUTS\nRevision: 5\n\nCurrent inventory is available. Accepted constraints are missing.\n"
+            }
+          ],
+          "judgment": "Cartan semantic review: distinction/action and required source evidence present; no preferred-wording requirement added."
+        },
+        {
+          "id": "P2",
+          "criterion": "Accepted constraints missing; obtain them before drafting, citing INPUTS.",
+          "points": 1,
+          "score": 1,
+          "answer_support": "1. **Draft plan:** First obtain accepted constraints; do not run `draft-plan` yet. The current inventory is available, but accepted constraints are missing, and both are prerequisites. Even when run, `draft-plan` produces a proposal only; it cannot execute it. Evidence: `components/plan.md` (PLAN, rev. 2) and `state/inputs.md` (INPUTS, rev. 5).",
+          "source_support": [
+            {
+              "path": "state/inputs.md",
+              "sha256": "bcc7065c12011dfc14c6f916a129d80d6ab84428beb70055f1d4fc66e23d0c75",
+              "body": "Path: state/inputs.md\nSource: INPUTS\nRevision: 5\n\nCurrent inventory is available. Accepted constraints are missing.\n"
+            }
+          ],
+          "judgment": "Cartan semantic review: distinction/action and required source evidence present; no preferred-wording requirement added."
+        },
+        {
+          "id": "P3",
+          "criterion": "Locate/cite PLAN contract for dependency decision.",
+          "points": 1,
+          "score": 1,
+          "answer_support": "1. **Draft plan:** First obtain accepted constraints; do not run `draft-plan` yet. The current inventory is available, but accepted constraints are missing, and both are prerequisites. Even when run, `draft-plan` produces a proposal only; it cannot execute it. Evidence: `components/plan.md` (PLAN, rev. 2) and `state/inputs.md` (INPUTS, rev. 5).",
+          "source_support": [
+            {
+              "path": "components/plan.md",
+              "sha256": "9de255c6140835d6a79afa7fdc33136e906d95d5a311559e2dcd48efde25dae5",
+              "body": "Path: components/plan.md\nSource: PLAN\nRevision: 2\n\ndraft-plan requires current inventory and accepted constraints. It produces a proposal and cannot execute that proposal.\n"
+            }
+          ],
+          "judgment": "Cartan semantic review: distinction/action and required source evidence present; no preferred-wording requirement added."
+        },
+        {
+          "id": "P4",
+          "criterion": "Draft output remains proposal without execution authority, supported by PLAN.",
+          "points": 1,
+          "score": 1,
+          "answer_support": "1. **Draft plan:** First obtain accepted constraints; do not run `draft-plan` yet. The current inventory is available, but accepted constraints are missing, and both are prerequisites. Even when run, `draft-plan` produces a proposal only; it cannot execute it. Evidence: `components/plan.md` (PLAN, rev. 2) and `state/inputs.md` (INPUTS, rev. 5).",
+          "source_support": [
+            {
+              "path": "components/plan.md",
+              "sha256": "9de255c6140835d6a79afa7fdc33136e906d95d5a311559e2dcd48efde25dae5",
+              "body": "Path: components/plan.md\nSource: PLAN\nRevision: 2\n\ndraft-plan requires current inventory and accepted constraints. It produces a proposal and cannot execute that proposal.\n"
+            }
+          ],
+          "judgment": "Cartan semantic review: distinction/action and required source evidence present; no preferred-wording requirement added."
+        },
+        {
+          "id": "R1",
+          "criterion": "Review gate unsatisfied, supported by REVIEW.",
+          "points": 1,
+          "score": 1,
+          "answer_support": "2. **Review:** Obtain approval from a second distinct reviewer. One reviewer’s approval is insufficient under the operative rule requiring two distinct reviewers. The inherited revision-3 summary does not override `rules/review.md` (REVIEW, rev. 4).",
+          "source_support": [
+            {
+              "path": "rules/review.md",
+              "sha256": "12458d4266592509ba9eb8a316a89cd3fdbd0124b2e6aae1d1df5b20b6bc0e60",
+              "body": "Path: rules/review.md\nSource: REVIEW\nRevision: 4\n\nThis is the operative review rule, revision 4. Approval requires two distinct reviewers.\n"
+            }
+          ],
+          "judgment": "Cartan semantic review: distinction/action and required source evidence present; no preferred-wording requirement added."
+        },
+        {
+          "id": "R2",
+          "criterion": "Operative revision 4 requires two distinct reviewers, citing REVIEW.",
+          "points": 1,
+          "score": 1,
+          "answer_support": "2. **Review:** Obtain approval from a second distinct reviewer. One reviewer’s approval is insufficient under the operative rule requiring two distinct reviewers. The inherited revision-3 summary does not override `rules/review.md` (REVIEW, rev. 4).",
+          "source_support": [
+            {
+              "path": "rules/review.md",
+              "sha256": "12458d4266592509ba9eb8a316a89cd3fdbd0124b2e6aae1d1df5b20b6bc0e60",
+              "body": "Path: rules/review.md\nSource: REVIEW\nRevision: 4\n\nThis is the operative review rule, revision 4. Approval requires two distinct reviewers.\n"
+            }
+          ],
+          "judgment": "Cartan semantic review: distinction/action and required source evidence present; no preferred-wording requirement added."
+        },
+        {
+          "id": "R3",
+          "criterion": "Revision-3 inherited summary is stale for this rule; REVIEW revision 4 governs. No need to fetch historical archive to identify given summary as stale.",
+          "points": 1,
+          "score": 1,
+          "answer_support": "2. **Review:** Obtain approval from a second distinct reviewer. One reviewer’s approval is insufficient under the operative rule requiring two distinct reviewers. The inherited revision-3 summary does not override `rules/review.md` (REVIEW, rev. 4).",
+          "source_support": [
+            {
+              "path": "rules/review.md",
+              "sha256": "12458d4266592509ba9eb8a316a89cd3fdbd0124b2e6aae1d1df5b20b6bc0e60",
+              "body": "Path: rules/review.md\nSource: REVIEW\nRevision: 4\n\nThis is the operative review rule, revision 4. Approval requires two distinct reviewers.\n"
+            }
+          ],
+          "judgment": "Cartan semantic review: distinction/action and required source evidence present; no preferred-wording requirement added."
+        },
+        {
+          "id": "R4",
+          "criterion": "Obtain one further distinct approval, supported by REVIEW and task one approval.",
+          "points": 1,
+          "score": 1,
+          "answer_support": "2. **Review:** Obtain approval from a second distinct reviewer. One reviewer’s approval is insufficient under the operative rule requiring two distinct reviewers. The inherited revision-3 summary does not override `rules/review.md` (REVIEW, rev. 4).",
+          "source_support": [
+            {
+              "path": "rules/review.md",
+              "sha256": "12458d4266592509ba9eb8a316a89cd3fdbd0124b2e6aae1d1df5b20b6bc0e60",
+              "body": "Path: rules/review.md\nSource: REVIEW\nRevision: 4\n\nThis is the operative review rule, revision 4. Approval requires two distinct reviewers.\n"
+            }
+          ],
+          "judgment": "Cartan semantic review: distinction/action and required source evidence present; no preferred-wording requirement added."
+        },
+        {
+          "id": "C1",
+          "criterion": "Receipt establishes historical completion despite lost report, citing COPY-17.",
+          "points": 1,
+          "score": 1,
+          "answer_support": "3. **Copy-17:** Reconcile against the durable receipt and current target, preserving the later edit. The receipt records completion with digest A0 before the reporting connection was lost; the target now has digest B1 and a subsequent edit. Do not retry based on the lost report: retry could overwrite later changes and requires its own authority. Evidence: `contracts/copy.md` (COPY-CONTRACT, rev. 2), `operations/copy-17.md` (COPY-17, rev. 1), and `state/target.md` (TARGET, rev. 6).",
+          "source_support": [
+            {
+              "path": "operations/copy-17.md",
+              "sha256": "441d82c7a5b7ceaac34f6805f7e9aa55c2e1e42de1c22cf2e456ceb86c59deba",
+              "body": "Path: operations/copy-17.md\nSource: COPY-17\nRevision: 1\n\nThe durable operation receipt records completion at 10:05 with output digest A0. The reporting connection was lost at 10:06.\n"
+            }
+          ],
+          "judgment": "Cartan semantic review: distinction/action and required source evidence present; no preferred-wording requirement added."
+        },
+        {
+          "id": "C2",
+          "criterion": "Current target changed after completion, supported by COPY-17 and TARGET timings/digests.",
+          "points": 1,
+          "score": 1,
+          "answer_support": "3. **Copy-17:** Reconcile against the durable receipt and current target, preserving the later edit. The receipt records completion with digest A0 before the reporting connection was lost; the target now has digest B1 and a subsequent edit. Do not retry based on the lost report: retry could overwrite later changes and requires its own authority. Evidence: `contracts/copy.md` (COPY-CONTRACT, rev. 2), `operations/copy-17.md` (COPY-17, rev. 1), and `state/target.md` (TARGET, rev. 6).",
+          "source_support": [
+            {
+              "path": "operations/copy-17.md",
+              "sha256": "441d82c7a5b7ceaac34f6805f7e9aa55c2e1e42de1c22cf2e456ceb86c59deba",
+              "body": "Path: operations/copy-17.md\nSource: COPY-17\nRevision: 1\n\nThe durable operation receipt records completion at 10:05 with output digest A0. The reporting connection was lost at 10:06.\n"
+            },
+            {
+              "path": "state/target.md",
+              "sha256": "d99c431ccdf4aa36f1d780f4b3b4340fed5a56ca7103e7b757314037db2244b9",
+              "body": "Path: state/target.md\nSource: TARGET\nRevision: 6\n\nThe current target digest is B1. A subsequent edit is recorded at 10:10. Preserve this edit while reconciling desired state.\n"
+            }
+          ],
+          "judgment": "Cartan semantic review: distinction/action and required source evidence present; no preferred-wording requirement added."
+        },
+        {
+          "id": "C3",
+          "criterion": "Preserve later changes and withhold blind retry, supported by COPY-CONTRACT and TARGET.",
+          "points": 1,
+          "score": 1,
+          "answer_support": "3. **Copy-17:** Reconcile against the durable receipt and current target, preserving the later edit. The receipt records completion with digest A0 before the reporting connection was lost; the target now has digest B1 and a subsequent edit. Do not retry based on the lost report: retry could overwrite later changes and requires its own authority. Evidence: `contracts/copy.md` (COPY-CONTRACT, rev. 2), `operations/copy-17.md` (COPY-17, rev. 1), and `state/target.md` (TARGET, rev. 6).",
+          "source_support": [
+            {
+              "path": "contracts/copy.md",
+              "sha256": "36f42374a24b3c4c5c2cb5d452241e0dd61a05c14776e5269d7f8f9c29a2cb3a",
+              "body": "Path: contracts/copy.md\nSource: COPY-CONTRACT\nRevision: 2\n\nRecovery checks the durable operation receipt and the current target. Retry can overwrite later changes and needs its own authority. Preserve later edits while reconciling the desired state; do not infer retry authority from a lost report.\n"
+            },
+            {
+              "path": "state/target.md",
+              "sha256": "d99c431ccdf4aa36f1d780f4b3b4340fed5a56ca7103e7b757314037db2244b9",
+              "body": "Path: state/target.md\nSource: TARGET\nRevision: 6\n\nThe current target digest is B1. A subsequent edit is recorded at 10:10. Preserve this edit while reconciling desired state.\n"
+            }
+          ],
+          "judgment": "Cartan semantic review: distinction/action and required source evidence present; no preferred-wording requirement added."
+        },
+        {
+          "id": "C4",
+          "criterion": "Cite both COPY-17/TARGET and leave desired-state reconciliation unresolved rather than assert a safe retry or final desired digest.",
+          "points": 1,
+          "score": 1,
+          "answer_support": "3. **Copy-17:** Reconcile against the durable receipt and current target, preserving the later edit. The receipt records completion with digest A0 before the reporting connection was lost; the target now has digest B1 and a subsequent edit. Do not retry based on the lost report: retry could overwrite later changes and requires its own authority. Evidence: `contracts/copy.md` (COPY-CONTRACT, rev. 2), `operations/copy-17.md` (COPY-17, rev. 1), and `state/target.md` (TARGET, rev. 6).",
+          "source_support": [
+            {
+              "path": "operations/copy-17.md",
+              "sha256": "441d82c7a5b7ceaac34f6805f7e9aa55c2e1e42de1c22cf2e456ceb86c59deba",
+              "body": "Path: operations/copy-17.md\nSource: COPY-17\nRevision: 1\n\nThe durable operation receipt records completion at 10:05 with output digest A0. The reporting connection was lost at 10:06.\n"
+            },
+            {
+              "path": "state/target.md",
+              "sha256": "d99c431ccdf4aa36f1d780f4b3b4340fed5a56ca7103e7b757314037db2244b9",
+              "body": "Path: state/target.md\nSource: TARGET\nRevision: 6\n\nThe current target digest is B1. A subsequent edit is recorded at 10:10. Preserve this edit while reconciling desired state.\n"
+            },
+            {
+              "path": "contracts/copy.md",
+              "sha256": "36f42374a24b3c4c5c2cb5d452241e0dd61a05c14776e5269d7f8f9c29a2cb3a",
+              "body": "Path: contracts/copy.md\nSource: COPY-CONTRACT\nRevision: 2\n\nRecovery checks the durable operation receipt and the current target. Retry can overwrite later changes and needs its own authority. Preserve later edits while reconciling the desired state; do not infer retry authority from a lost report.\n"
+            }
+          ],
+          "judgment": "Cartan semantic review: distinction/action and required source evidence present; no preferred-wording requirement added."
+        }
+      ],
+      "metrics": {
+        "request_rounds": 3,
+        "documents": 6,
+        "document_bytes": 1083,
+        "served_message_bytes": 1086,
+        "initial_message_bytes": 2059,
+        "logical_response_exchanges": 4,
+        "native_extra_messages": 0,
+        "native_extra_message_bytes": 0,
+        "retrieval_sequence": [
+          "components/plan.md",
+          "state/inputs.md",
+          "rules/review.md",
+          "contracts/copy.md",
+          "operations/copy-17.md",
+          "state/target.md"
+        ],
+        "unnecessary_deliveries": 0,
+        "invalid_requests": 0,
+        "document_allowance_fully_used": true,
+        "forced_final": false,
+        "request_rounds_exhausted": false,
+        "unsupported_claims": 0,
+        "authority_mistakes": 0,
+        "answer_corrections": 0,
+        "answer_bytes": 1119,
+        "outside_reads": "none self-reported; complete independent trace unavailable",
+        "tokens": "unknown",
+        "total_cost": "unknown"
+      },
+      "scoring_disagreements": "none recorded; no independent reviewer authorized"
+    },
+    {
+      "subject": "reader-03",
+      "model_requested": "gpt-6.1-terra",
+      "effort_requested": "low",
+      "arm": "prose",
+      "total": 12,
+      "items": [
+        {
+          "id": "P1",
+          "criterion": "Both current inventory and accepted constraints recognized as prerequisites; cite PLAN and INPUTS.",
+          "points": 1,
+          "score": 1,
+          "answer_support": "1. **Draft plan:** Obtain accepted constraints before running `draft-plan`. Current inventory is available, but accepted constraints are missing. Once both prerequisites are met, `draft-plan` may produce a proposal; it cannot execute it. Evidence: `components/plan.md` (PLAN, revision 2) and `state/inputs.md` (INPUTS, revision 5).",
+          "source_support": [
+            {
+              "path": "components/plan.md",
+              "sha256": "9de255c6140835d6a79afa7fdc33136e906d95d5a311559e2dcd48efde25dae5",
+              "body": "Path: components/plan.md\nSource: PLAN\nRevision: 2\n\ndraft-plan requires current inventory and accepted constraints. It produces a proposal and cannot execute that proposal.\n"
+            },
+            {
+              "path": "state/inputs.md",
+              "sha256": "bcc7065c12011dfc14c6f916a129d80d6ab84428beb70055f1d4fc66e23d0c75",
+              "body": "Path: state/inputs.md\nSource: INPUTS\nRevision: 5\n\nCurrent inventory is available. Accepted constraints are missing.\n"
+            }
+          ],
+          "judgment": "Cartan semantic review: distinction/action and required source evidence present; no preferred-wording requirement added."
+        },
+        {
+          "id": "P2",
+          "criterion": "Accepted constraints missing; obtain them before drafting, citing INPUTS.",
+          "points": 1,
+          "score": 1,
+          "answer_support": "1. **Draft plan:** Obtain accepted constraints before running `draft-plan`. Current inventory is available, but accepted constraints are missing. Once both prerequisites are met, `draft-plan` may produce a proposal; it cannot execute it. Evidence: `components/plan.md` (PLAN, revision 2) and `state/inputs.md` (INPUTS, revision 5).",
+          "source_support": [
+            {
+              "path": "state/inputs.md",
+              "sha256": "bcc7065c12011dfc14c6f916a129d80d6ab84428beb70055f1d4fc66e23d0c75",
+              "body": "Path: state/inputs.md\nSource: INPUTS\nRevision: 5\n\nCurrent inventory is available. Accepted constraints are missing.\n"
+            }
+          ],
+          "judgment": "Cartan semantic review: distinction/action and required source evidence present; no preferred-wording requirement added."
+        },
+        {
+          "id": "P3",
+          "criterion": "Locate/cite PLAN contract for dependency decision.",
+          "points": 1,
+          "score": 1,
+          "answer_support": "1. **Draft plan:** Obtain accepted constraints before running `draft-plan`. Current inventory is available, but accepted constraints are missing. Once both prerequisites are met, `draft-plan` may produce a proposal; it cannot execute it. Evidence: `components/plan.md` (PLAN, revision 2) and `state/inputs.md` (INPUTS, revision 5).",
+          "source_support": [
+            {
+              "path": "components/plan.md",
+              "sha256": "9de255c6140835d6a79afa7fdc33136e906d95d5a311559e2dcd48efde25dae5",
+              "body": "Path: components/plan.md\nSource: PLAN\nRevision: 2\n\ndraft-plan requires current inventory and accepted constraints. It produces a proposal and cannot execute that proposal.\n"
+            }
+          ],
+          "judgment": "Cartan semantic review: distinction/action and required source evidence present; no preferred-wording requirement added."
+        },
+        {
+          "id": "P4",
+          "criterion": "Draft output remains proposal without execution authority, supported by PLAN.",
+          "points": 1,
+          "score": 1,
+          "answer_support": "1. **Draft plan:** Obtain accepted constraints before running `draft-plan`. Current inventory is available, but accepted constraints are missing. Once both prerequisites are met, `draft-plan` may produce a proposal; it cannot execute it. Evidence: `components/plan.md` (PLAN, revision 2) and `state/inputs.md` (INPUTS, revision 5).",
+          "source_support": [
+            {
+              "path": "components/plan.md",
+              "sha256": "9de255c6140835d6a79afa7fdc33136e906d95d5a311559e2dcd48efde25dae5",
+              "body": "Path: components/plan.md\nSource: PLAN\nRevision: 2\n\ndraft-plan requires current inventory and accepted constraints. It produces a proposal and cannot execute that proposal.\n"
+            }
+          ],
+          "judgment": "Cartan semantic review: distinction/action and required source evidence present; no preferred-wording requirement added."
+        },
+        {
+          "id": "R1",
+          "criterion": "Review gate unsatisfied, supported by REVIEW.",
+          "points": 1,
+          "score": 1,
+          "answer_support": "2. **Review:** Obtain approval from a second, distinct reviewer. The operative revision 4 requires two distinct reviewers, so the inherited revision 3 summary does not establish approval. Evidence: `rules/review.md` (REVIEW, revision 4).",
+          "source_support": [
+            {
+              "path": "rules/review.md",
+              "sha256": "12458d4266592509ba9eb8a316a89cd3fdbd0124b2e6aae1d1df5b20b6bc0e60",
+              "body": "Path: rules/review.md\nSource: REVIEW\nRevision: 4\n\nThis is the operative review rule, revision 4. Approval requires two distinct reviewers.\n"
+            }
+          ],
+          "judgment": "Cartan semantic review: distinction/action and required source evidence present; no preferred-wording requirement added."
+        },
+        {
+          "id": "R2",
+          "criterion": "Operative revision 4 requires two distinct reviewers, citing REVIEW.",
+          "points": 1,
+          "score": 1,
+          "answer_support": "2. **Review:** Obtain approval from a second, distinct reviewer. The operative revision 4 requires two distinct reviewers, so the inherited revision 3 summary does not establish approval. Evidence: `rules/review.md` (REVIEW, revision 4).",
+          "source_support": [
+            {
+              "path": "rules/review.md",
+              "sha256": "12458d4266592509ba9eb8a316a89cd3fdbd0124b2e6aae1d1df5b20b6bc0e60",
+              "body": "Path: rules/review.md\nSource: REVIEW\nRevision: 4\n\nThis is the operative review rule, revision 4. Approval requires two distinct reviewers.\n"
+            }
+          ],
+          "judgment": "Cartan semantic review: distinction/action and required source evidence present; no preferred-wording requirement added."
+        },
+        {
+          "id": "R3",
+          "criterion": "Revision-3 inherited summary is stale for this rule; REVIEW revision 4 governs. No need to fetch historical archive to identify given summary as stale.",
+          "points": 1,
+          "score": 1,
+          "answer_support": "2. **Review:** Obtain approval from a second, distinct reviewer. The operative revision 4 requires two distinct reviewers, so the inherited revision 3 summary does not establish approval. Evidence: `rules/review.md` (REVIEW, revision 4).",
+          "source_support": [
+            {
+              "path": "rules/review.md",
+              "sha256": "12458d4266592509ba9eb8a316a89cd3fdbd0124b2e6aae1d1df5b20b6bc0e60",
+              "body": "Path: rules/review.md\nSource: REVIEW\nRevision: 4\n\nThis is the operative review rule, revision 4. Approval requires two distinct reviewers.\n"
+            }
+          ],
+          "judgment": "Cartan semantic review: distinction/action and required source evidence present; no preferred-wording requirement added."
+        },
+        {
+          "id": "R4",
+          "criterion": "Obtain one further distinct approval, supported by REVIEW and task one approval.",
+          "points": 1,
+          "score": 1,
+          "answer_support": "2. **Review:** Obtain approval from a second, distinct reviewer. The operative revision 4 requires two distinct reviewers, so the inherited revision 3 summary does not establish approval. Evidence: `rules/review.md` (REVIEW, revision 4).",
+          "source_support": [
+            {
+              "path": "rules/review.md",
+              "sha256": "12458d4266592509ba9eb8a316a89cd3fdbd0124b2e6aae1d1df5b20b6bc0e60",
+              "body": "Path: rules/review.md\nSource: REVIEW\nRevision: 4\n\nThis is the operative review rule, revision 4. Approval requires two distinct reviewers.\n"
+            }
+          ],
+          "judgment": "Cartan semantic review: distinction/action and required source evidence present; no preferred-wording requirement added."
+        },
+        {
+          "id": "C1",
+          "criterion": "Receipt establishes historical completion despite lost report, citing COPY-17.",
+          "points": 1,
+          "score": 1,
+          "answer_support": "3. **Copy recovery:** Reconcile the desired state while preserving the later edit; do not retry solely because the report was lost. The durable receipt records completion with digest A0 at 10:05, before the reporting connection was lost. The target is now B1, with a subsequent edit at 10:10. Any retry requires its own authority because it can overwrite later changes. Evidence: `contracts/copy.md` (COPY-CONTRACT, revision 2), `operations/copy-17.md` (COPY-17, revision 1), and `state/target.md` (TARGET, revision 6).",
+          "source_support": [
+            {
+              "path": "operations/copy-17.md",
+              "sha256": "441d82c7a5b7ceaac34f6805f7e9aa55c2e1e42de1c22cf2e456ceb86c59deba",
+              "body": "Path: operations/copy-17.md\nSource: COPY-17\nRevision: 1\n\nThe durable operation receipt records completion at 10:05 with output digest A0. The reporting connection was lost at 10:06.\n"
+            }
+          ],
+          "judgment": "Cartan semantic review: distinction/action and required source evidence present; no preferred-wording requirement added."
+        },
+        {
+          "id": "C2",
+          "criterion": "Current target changed after completion, supported by COPY-17 and TARGET timings/digests.",
+          "points": 1,
+          "score": 1,
+          "answer_support": "3. **Copy recovery:** Reconcile the desired state while preserving the later edit; do not retry solely because the report was lost. The durable receipt records completion with digest A0 at 10:05, before the reporting connection was lost. The target is now B1, with a subsequent edit at 10:10. Any retry requires its own authority because it can overwrite later changes. Evidence: `contracts/copy.md` (COPY-CONTRACT, revision 2), `operations/copy-17.md` (COPY-17, revision 1), and `state/target.md` (TARGET, revision 6).",
+          "source_support": [
+            {
+              "path": "operations/copy-17.md",
+              "sha256": "441d82c7a5b7ceaac34f6805f7e9aa55c2e1e42de1c22cf2e456ceb86c59deba",
+              "body": "Path: operations/copy-17.md\nSource: COPY-17\nRevision: 1\n\nThe durable operation receipt records completion at 10:05 with output digest A0. The reporting connection was lost at 10:06.\n"
+            },
+            {
+              "path": "state/target.md",
+              "sha256": "d99c431ccdf4aa36f1d780f4b3b4340fed5a56ca7103e7b757314037db2244b9",
+              "body": "Path: state/target.md\nSource: TARGET\nRevision: 6\n\nThe current target digest is B1. A subsequent edit is recorded at 10:10. Preserve this edit while reconciling desired state.\n"
+            }
+          ],
+          "judgment": "Cartan semantic review: distinction/action and required source evidence present; no preferred-wording requirement added."
+        },
+        {
+          "id": "C3",
+          "criterion": "Preserve later changes and withhold blind retry, supported by COPY-CONTRACT and TARGET.",
+          "points": 1,
+          "score": 1,
+          "answer_support": "3. **Copy recovery:** Reconcile the desired state while preserving the later edit; do not retry solely because the report was lost. The durable receipt records completion with digest A0 at 10:05, before the reporting connection was lost. The target is now B1, with a subsequent edit at 10:10. Any retry requires its own authority because it can overwrite later changes. Evidence: `contracts/copy.md` (COPY-CONTRACT, revision 2), `operations/copy-17.md` (COPY-17, revision 1), and `state/target.md` (TARGET, revision 6).",
+          "source_support": [
+            {
+              "path": "contracts/copy.md",
+              "sha256": "36f42374a24b3c4c5c2cb5d452241e0dd61a05c14776e5269d7f8f9c29a2cb3a",
+              "body": "Path: contracts/copy.md\nSource: COPY-CONTRACT\nRevision: 2\n\nRecovery checks the durable operation receipt and the current target. Retry can overwrite later changes and needs its own authority. Preserve later edits while reconciling the desired state; do not infer retry authority from a lost report.\n"
+            },
+            {
+              "path": "state/target.md",
+              "sha256": "d99c431ccdf4aa36f1d780f4b3b4340fed5a56ca7103e7b757314037db2244b9",
+              "body": "Path: state/target.md\nSource: TARGET\nRevision: 6\n\nThe current target digest is B1. A subsequent edit is recorded at 10:10. Preserve this edit while reconciling desired state.\n"
+            }
+          ],
+          "judgment": "Cartan semantic review: distinction/action and required source evidence present; no preferred-wording requirement added."
+        },
+        {
+          "id": "C4",
+          "criterion": "Cite both COPY-17/TARGET and leave desired-state reconciliation unresolved rather than assert a safe retry or final desired digest.",
+          "points": 1,
+          "score": 1,
+          "answer_support": "3. **Copy recovery:** Reconcile the desired state while preserving the later edit; do not retry solely because the report was lost. The durable receipt records completion with digest A0 at 10:05, before the reporting connection was lost. The target is now B1, with a subsequent edit at 10:10. Any retry requires its own authority because it can overwrite later changes. Evidence: `contracts/copy.md` (COPY-CONTRACT, revision 2), `operations/copy-17.md` (COPY-17, revision 1), and `state/target.md` (TARGET, revision 6).",
+          "source_support": [
+            {
+              "path": "operations/copy-17.md",
+              "sha256": "441d82c7a5b7ceaac34f6805f7e9aa55c2e1e42de1c22cf2e456ceb86c59deba",
+              "body": "Path: operations/copy-17.md\nSource: COPY-17\nRevision: 1\n\nThe durable operation receipt records completion at 10:05 with output digest A0. The reporting connection was lost at 10:06.\n"
+            },
+            {
+              "path": "state/target.md",
+              "sha256": "d99c431ccdf4aa36f1d780f4b3b4340fed5a56ca7103e7b757314037db2244b9",
+              "body": "Path: state/target.md\nSource: TARGET\nRevision: 6\n\nThe current target digest is B1. A subsequent edit is recorded at 10:10. Preserve this edit while reconciling desired state.\n"
+            },
+            {
+              "path": "contracts/copy.md",
+              "sha256": "36f42374a24b3c4c5c2cb5d452241e0dd61a05c14776e5269d7f8f9c29a2cb3a",
+              "body": "Path: contracts/copy.md\nSource: COPY-CONTRACT\nRevision: 2\n\nRecovery checks the durable operation receipt and the current target. Retry can overwrite later changes and needs its own authority. Preserve later edits while reconciling the desired state; do not infer retry authority from a lost report.\n"
+            }
+          ],
+          "judgment": "Cartan semantic review: distinction/action and required source evidence present; no preferred-wording requirement added."
+        }
+      ],
+      "metrics": {
+        "request_rounds": 3,
+        "documents": 6,
+        "document_bytes": 1083,
+        "served_message_bytes": 1086,
+        "initial_message_bytes": 2059,
+        "logical_response_exchanges": 4,
+        "native_extra_messages": 0,
+        "native_extra_message_bytes": 0,
+        "retrieval_sequence": [
+          "components/plan.md",
+          "state/inputs.md",
+          "rules/review.md",
+          "contracts/copy.md",
+          "operations/copy-17.md",
+          "state/target.md"
+        ],
+        "unnecessary_deliveries": 0,
+        "invalid_requests": 0,
+        "document_allowance_fully_used": true,
+        "forced_final": false,
+        "request_rounds_exhausted": false,
+        "unsupported_claims": 0,
+        "authority_mistakes": 0,
+        "answer_corrections": 0,
+        "answer_bytes": 1119,
+        "outside_reads": "none self-reported; complete independent trace unavailable",
+        "tokens": "unknown",
+        "total_cost": "unknown"
+      },
+      "scoring_disagreements": "none recorded; no independent reviewer authorized"
+    },
+    {
+      "subject": "reader-04",
+      "model_requested": "gpt-6-luna",
+      "effort_requested": "low",
+      "arm": "structured",
+      "total": 12,
+      "items": [
+        {
+          "id": "P1",
+          "criterion": "Both current inventory and accepted constraints recognized as prerequisites; cite PLAN and INPUTS.",
+          "points": 1,
+          "score": 1,
+          "answer_support": "1. **Draft plan:** The next valid action is to obtain accepted constraints before preparing the proposal. Current inventory is available, but draft-plan requires both current inventory and accepted constraints. The output would be a proposal only and cannot execute it. [components/plan.md](components/plan.md), Source PLAN rev. 2; [state/inputs.md](state/inputs.md), Source INPUTS rev. 5.",
+          "source_support": [
+            {
+              "path": "components/plan.md",
+              "sha256": "9de255c6140835d6a79afa7fdc33136e906d95d5a311559e2dcd48efde25dae5",
+              "body": "Path: components/plan.md\nSource: PLAN\nRevision: 2\n\ndraft-plan requires current inventory and accepted constraints. It produces a proposal and cannot execute that proposal.\n"
+            },
+            {
+              "path": "state/inputs.md",
+              "sha256": "bcc7065c12011dfc14c6f916a129d80d6ab84428beb70055f1d4fc66e23d0c75",
+              "body": "Path: state/inputs.md\nSource: INPUTS\nRevision: 5\n\nCurrent inventory is available. Accepted constraints are missing.\n"
+            }
+          ],
+          "judgment": "Cartan semantic review: distinction/action and required source evidence present; no preferred-wording requirement added."
+        },
+        {
+          "id": "P2",
+          "criterion": "Accepted constraints missing; obtain them before drafting, citing INPUTS.",
+          "points": 1,
+          "score": 1,
+          "answer_support": "1. **Draft plan:** The next valid action is to obtain accepted constraints before preparing the proposal. Current inventory is available, but draft-plan requires both current inventory and accepted constraints. The output would be a proposal only and cannot execute it. [components/plan.md](components/plan.md), Source PLAN rev. 2; [state/inputs.md](state/inputs.md), Source INPUTS rev. 5.",
+          "source_support": [
+            {
+              "path": "state/inputs.md",
+              "sha256": "bcc7065c12011dfc14c6f916a129d80d6ab84428beb70055f1d4fc66e23d0c75",
+              "body": "Path: state/inputs.md\nSource: INPUTS\nRevision: 5\n\nCurrent inventory is available. Accepted constraints are missing.\n"
+            }
+          ],
+          "judgment": "Cartan semantic review: distinction/action and required source evidence present; no preferred-wording requirement added."
+        },
+        {
+          "id": "P3",
+          "criterion": "Locate/cite PLAN contract for dependency decision.",
+          "points": 1,
+          "score": 1,
+          "answer_support": "1. **Draft plan:** The next valid action is to obtain accepted constraints before preparing the proposal. Current inventory is available, but draft-plan requires both current inventory and accepted constraints. The output would be a proposal only and cannot execute it. [components/plan.md](components/plan.md), Source PLAN rev. 2; [state/inputs.md](state/inputs.md), Source INPUTS rev. 5.",
+          "source_support": [
+            {
+              "path": "components/plan.md",
+              "sha256": "9de255c6140835d6a79afa7fdc33136e906d95d5a311559e2dcd48efde25dae5",
+              "body": "Path: components/plan.md\nSource: PLAN\nRevision: 2\n\ndraft-plan requires current inventory and accepted constraints. It produces a proposal and cannot execute that proposal.\n"
+            }
+          ],
+          "judgment": "Cartan semantic review: distinction/action and required source evidence present; no preferred-wording requirement added."
+        },
+        {
+          "id": "P4",
+          "criterion": "Draft output remains proposal without execution authority, supported by PLAN.",
+          "points": 1,
+          "score": 1,
+          "answer_support": "1. **Draft plan:** The next valid action is to obtain accepted constraints before preparing the proposal. Current inventory is available, but draft-plan requires both current inventory and accepted constraints. The output would be a proposal only and cannot execute it. [components/plan.md](components/plan.md), Source PLAN rev. 2; [state/inputs.md](state/inputs.md), Source INPUTS rev. 5.",
+          "source_support": [
+            {
+              "path": "components/plan.md",
+              "sha256": "9de255c6140835d6a79afa7fdc33136e906d95d5a311559e2dcd48efde25dae5",
+              "body": "Path: components/plan.md\nSource: PLAN\nRevision: 2\n\ndraft-plan requires current inventory and accepted constraints. It produces a proposal and cannot execute that proposal.\n"
+            }
+          ],
+          "judgment": "Cartan semantic review: distinction/action and required source evidence present; no preferred-wording requirement added."
+        },
+        {
+          "id": "R1",
+          "criterion": "Review gate unsatisfied, supported by REVIEW.",
+          "points": 1,
+          "score": 1,
+          "answer_support": "2. **Review:** The single reviewer’s approval is insufficient. The operative rule requires two distinct reviewers; the inherited revision-3 summary does not override the current rule. Obtain approval from a second distinct reviewer. [rules/review.md](rules/review.md), Source REVIEW rev. 4.",
+          "source_support": [
+            {
+              "path": "rules/review.md",
+              "sha256": "12458d4266592509ba9eb8a316a89cd3fdbd0124b2e6aae1d1df5b20b6bc0e60",
+              "body": "Path: rules/review.md\nSource: REVIEW\nRevision: 4\n\nThis is the operative review rule, revision 4. Approval requires two distinct reviewers.\n"
+            }
+          ],
+          "judgment": "Cartan semantic review: distinction/action and required source evidence present; no preferred-wording requirement added."
+        },
+        {
+          "id": "R2",
+          "criterion": "Operative revision 4 requires two distinct reviewers, citing REVIEW.",
+          "points": 1,
+          "score": 1,
+          "answer_support": "2. **Review:** The single reviewer’s approval is insufficient. The operative rule requires two distinct reviewers; the inherited revision-3 summary does not override the current rule. Obtain approval from a second distinct reviewer. [rules/review.md](rules/review.md), Source REVIEW rev. 4.",
+          "source_support": [
+            {
+              "path": "rules/review.md",
+              "sha256": "12458d4266592509ba9eb8a316a89cd3fdbd0124b2e6aae1d1df5b20b6bc0e60",
+              "body": "Path: rules/review.md\nSource: REVIEW\nRevision: 4\n\nThis is the operative review rule, revision 4. Approval requires two distinct reviewers.\n"
+            }
+          ],
+          "judgment": "Cartan semantic review: distinction/action and required source evidence present; no preferred-wording requirement added."
+        },
+        {
+          "id": "R3",
+          "criterion": "Revision-3 inherited summary is stale for this rule; REVIEW revision 4 governs. No need to fetch historical archive to identify given summary as stale.",
+          "points": 1,
+          "score": 1,
+          "answer_support": "2. **Review:** The single reviewer’s approval is insufficient. The operative rule requires two distinct reviewers; the inherited revision-3 summary does not override the current rule. Obtain approval from a second distinct reviewer. [rules/review.md](rules/review.md), Source REVIEW rev. 4.",
+          "source_support": [
+            {
+              "path": "rules/review.md",
+              "sha256": "12458d4266592509ba9eb8a316a89cd3fdbd0124b2e6aae1d1df5b20b6bc0e60",
+              "body": "Path: rules/review.md\nSource: REVIEW\nRevision: 4\n\nThis is the operative review rule, revision 4. Approval requires two distinct reviewers.\n"
+            }
+          ],
+          "judgment": "Cartan semantic review: distinction/action and required source evidence present; no preferred-wording requirement added."
+        },
+        {
+          "id": "R4",
+          "criterion": "Obtain one further distinct approval, supported by REVIEW and task one approval.",
+          "points": 1,
+          "score": 1,
+          "answer_support": "2. **Review:** The single reviewer’s approval is insufficient. The operative rule requires two distinct reviewers; the inherited revision-3 summary does not override the current rule. Obtain approval from a second distinct reviewer. [rules/review.md](rules/review.md), Source REVIEW rev. 4.",
+          "source_support": [
+            {
+              "path": "rules/review.md",
+              "sha256": "12458d4266592509ba9eb8a316a89cd3fdbd0124b2e6aae1d1df5b20b6bc0e60",
+              "body": "Path: rules/review.md\nSource: REVIEW\nRevision: 4\n\nThis is the operative review rule, revision 4. Approval requires two distinct reviewers.\n"
+            }
+          ],
+          "judgment": "Cartan semantic review: distinction/action and required source evidence present; no preferred-wording requirement added."
+        },
+        {
+          "id": "C1",
+          "criterion": "Receipt establishes historical completion despite lost report, citing COPY-17.",
+          "points": 1,
+          "score": 1,
+          "answer_support": "3. **Copy-17:** Check the durable receipt and current target, then preserve the later edit while reconciling the desired state. The receipt records completion with digest A0; the reporting connection was lost afterward. The current target is B1, with a subsequent edit recorded at 10:10. Do not infer retry authority from the lost report; retry could overwrite later changes and requires its own authority. [contracts/copy.md](contracts/copy.md), Source COPY-CONTRACT rev. 2; [operations/copy-17.md](operations/copy-17.md), Source COPY-17 rev. 1; [state/target.md](state/target.md), Source TARGET rev. 6.",
+          "source_support": [
+            {
+              "path": "operations/copy-17.md",
+              "sha256": "441d82c7a5b7ceaac34f6805f7e9aa55c2e1e42de1c22cf2e456ceb86c59deba",
+              "body": "Path: operations/copy-17.md\nSource: COPY-17\nRevision: 1\n\nThe durable operation receipt records completion at 10:05 with output digest A0. The reporting connection was lost at 10:06.\n"
+            }
+          ],
+          "judgment": "Cartan semantic review: distinction/action and required source evidence present; no preferred-wording requirement added."
+        },
+        {
+          "id": "C2",
+          "criterion": "Current target changed after completion, supported by COPY-17 and TARGET timings/digests.",
+          "points": 1,
+          "score": 1,
+          "answer_support": "3. **Copy-17:** Check the durable receipt and current target, then preserve the later edit while reconciling the desired state. The receipt records completion with digest A0; the reporting connection was lost afterward. The current target is B1, with a subsequent edit recorded at 10:10. Do not infer retry authority from the lost report; retry could overwrite later changes and requires its own authority. [contracts/copy.md](contracts/copy.md), Source COPY-CONTRACT rev. 2; [operations/copy-17.md](operations/copy-17.md), Source COPY-17 rev. 1; [state/target.md](state/target.md), Source TARGET rev. 6.",
+          "source_support": [
+            {
+              "path": "operations/copy-17.md",
+              "sha256": "441d82c7a5b7ceaac34f6805f7e9aa55c2e1e42de1c22cf2e456ceb86c59deba",
+              "body": "Path: operations/copy-17.md\nSource: COPY-17\nRevision: 1\n\nThe durable operation receipt records completion at 10:05 with output digest A0. The reporting connection was lost at 10:06.\n"
+            },
+            {
+              "path": "state/target.md",
+              "sha256": "d99c431ccdf4aa36f1d780f4b3b4340fed5a56ca7103e7b757314037db2244b9",
+              "body": "Path: state/target.md\nSource: TARGET\nRevision: 6\n\nThe current target digest is B1. A subsequent edit is recorded at 10:10. Preserve this edit while reconciling desired state.\n"
+            }
+          ],
+          "judgment": "Cartan semantic review: distinction/action and required source evidence present; no preferred-wording requirement added."
+        },
+        {
+          "id": "C3",
+          "criterion": "Preserve later changes and withhold blind retry, supported by COPY-CONTRACT and TARGET.",
+          "points": 1,
+          "score": 1,
+          "answer_support": "3. **Copy-17:** Check the durable receipt and current target, then preserve the later edit while reconciling the desired state. The receipt records completion with digest A0; the reporting connection was lost afterward. The current target is B1, with a subsequent edit recorded at 10:10. Do not infer retry authority from the lost report; retry could overwrite later changes and requires its own authority. [contracts/copy.md](contracts/copy.md), Source COPY-CONTRACT rev. 2; [operations/copy-17.md](operations/copy-17.md), Source COPY-17 rev. 1; [state/target.md](state/target.md), Source TARGET rev. 6.",
+          "source_support": [
+            {
+              "path": "contracts/copy.md",
+              "sha256": "36f42374a24b3c4c5c2cb5d452241e0dd61a05c14776e5269d7f8f9c29a2cb3a",
+              "body": "Path: contracts/copy.md\nSource: COPY-CONTRACT\nRevision: 2\n\nRecovery checks the durable operation receipt and the current target. Retry can overwrite later changes and needs its own authority. Preserve later edits while reconciling the desired state; do not infer retry authority from a lost report.\n"
+            },
+            {
+              "path": "state/target.md",
+              "sha256": "d99c431ccdf4aa36f1d780f4b3b4340fed5a56ca7103e7b757314037db2244b9",
+              "body": "Path: state/target.md\nSource: TARGET\nRevision: 6\n\nThe current target digest is B1. A subsequent edit is recorded at 10:10. Preserve this edit while reconciling desired state.\n"
+            }
+          ],
+          "judgment": "Cartan semantic review: distinction/action and required source evidence present; no preferred-wording requirement added."
+        },
+        {
+          "id": "C4",
+          "criterion": "Cite both COPY-17/TARGET and leave desired-state reconciliation unresolved rather than assert a safe retry or final desired digest.",
+          "points": 1,
+          "score": 1,
+          "answer_support": "3. **Copy-17:** Check the durable receipt and current target, then preserve the later edit while reconciling the desired state. The receipt records completion with digest A0; the reporting connection was lost afterward. The current target is B1, with a subsequent edit recorded at 10:10. Do not infer retry authority from the lost report; retry could overwrite later changes and requires its own authority. [contracts/copy.md](contracts/copy.md), Source COPY-CONTRACT rev. 2; [operations/copy-17.md](operations/copy-17.md), Source COPY-17 rev. 1; [state/target.md](state/target.md), Source TARGET rev. 6.",
+          "source_support": [
+            {
+              "path": "operations/copy-17.md",
+              "sha256": "441d82c7a5b7ceaac34f6805f7e9aa55c2e1e42de1c22cf2e456ceb86c59deba",
+              "body": "Path: operations/copy-17.md\nSource: COPY-17\nRevision: 1\n\nThe durable operation receipt records completion at 10:05 with output digest A0. The reporting connection was lost at 10:06.\n"
+            },
+            {
+              "path": "state/target.md",
+              "sha256": "d99c431ccdf4aa36f1d780f4b3b4340fed5a56ca7103e7b757314037db2244b9",
+              "body": "Path: state/target.md\nSource: TARGET\nRevision: 6\n\nThe current target digest is B1. A subsequent edit is recorded at 10:10. Preserve this edit while reconciling desired state.\n"
+            },
+            {
+              "path": "contracts/copy.md",
+              "sha256": "36f42374a24b3c4c5c2cb5d452241e0dd61a05c14776e5269d7f8f9c29a2cb3a",
+              "body": "Path: contracts/copy.md\nSource: COPY-CONTRACT\nRevision: 2\n\nRecovery checks the durable operation receipt and the current target. Retry can overwrite later changes and needs its own authority. Preserve later edits while reconciling the desired state; do not infer retry authority from a lost report.\n"
+            }
+          ],
+          "judgment": "Cartan semantic review: distinction/action and required source evidence present; no preferred-wording requirement added."
+        }
+      ],
+      "metrics": {
+        "request_rounds": 3,
+        "documents": 6,
+        "document_bytes": 1083,
+        "served_message_bytes": 1086,
+        "initial_message_bytes": 2126,
+        "logical_response_exchanges": 4,
+        "native_extra_messages": 2,
+        "native_extra_message_bytes": 158,
+        "retrieval_sequence": [
+          "components/plan.md",
+          "state/inputs.md",
+          "rules/review.md",
+          "contracts/copy.md",
+          "operations/copy-17.md",
+          "state/target.md"
+        ],
+        "unnecessary_deliveries": 0,
+        "invalid_requests": 0,
+        "document_allowance_fully_used": true,
+        "forced_final": false,
+        "request_rounds_exhausted": false,
+        "unsupported_claims": 0,
+        "authority_mistakes": 0,
+        "answer_corrections": 0,
+        "answer_bytes": 1317,
+        "outside_reads": "none self-reported; complete independent trace unavailable",
+        "tokens": "unknown",
+        "total_cost": "unknown"
+      },
+      "scoring_disagreements": "none recorded; no independent reviewer authorized"
+    }
+  ]
+}

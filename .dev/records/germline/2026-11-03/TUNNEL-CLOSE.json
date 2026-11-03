@@ -1,0 +1,34 @@
+{
+  "local_only": true,
+  "model_turns": 0,
+  "closed": [
+    {
+      "origin": ".dev/session/germline-07-make-program/raw/experiment_1/caretaker/tunnel.peer-a.state.json",
+      "before_sha256": "50fdd3b5ec485f6c6137de4714c4245f2140e4f6b98d7db9e26946428a75233f",
+      "threadId": "01a1694a-7bdd-7d70-913d-d3dcef66c8ac",
+      "lastTurnId": "01a16951-2359-7a00-93f2-429f3a70fe15",
+      "close_output": "close: releasing thread 01a1694a-7bdd-7d70-913d-d3dcef66c8ac \u2014 it still exists server-side. To return to it later:\nclose:   tun open --enable --thread 01a1694a-7bdd-7d70-913d-d3dcef66c8ac   (transcript: ~/.codex/sessions/*/*/*/rollout-*-01a1694a-7bdd-7d70-913d-d3dcef66c8ac.jsonl)\nclose: tunnel.state.json removed \u2014 Law 2.4 re-arms; next 'open' requires --enable again\n"
+    },
+    {
+      "origin": ".dev/session/germline-07-make-program/raw/experiment_1/caretaker/tunnel.peer-b.state.json",
+      "before_sha256": "cb460a629f82f0cab7eb58b8a9d74ec05ba100ad51dafd3f80ee2ab8ac4309ad",
+      "threadId": "01a1694b-0c61-76f0-897c-fc3c66f665c0",
+      "lastTurnId": "01a16951-2359-7d72-9e70-b9262e9df2f8",
+      "close_output": "close: releasing thread 01a1694b-0c61-76f0-897c-fc3c66f665c0 \u2014 it still exists server-side. To return to it later:\nclose:   tun open --enable --thread 01a1694b-0c61-76f0-897c-fc3c66f665c0   (transcript: ~/.codex/sessions/*/*/*/rollout-*-01a1694b-0c61-76f0-897c-fc3c66f665c0.jsonl)\nclose: tunnel.state.json removed \u2014 Law 2.4 re-arms; next 'open' requires --enable again\n"
+    },
+    {
+      "origin": ".dev/session/germline-08-caretaker-receipts/raw/experiment_2/live/tunnel.peer-a.state.json",
+      "before_sha256": "b8142eeadfca91ca0afca6b6284c65637a71c37c0aaa6b3a6b5d79425ecb7cfc",
+      "threadId": "01a175fc-379f-7c92-81cb-936d59e7ec06",
+      "lastTurnId": "01a175fc-3853-7182-adbf-e1710a5f1ceb",
+      "close_output": "close: releasing thread 01a175fc-379f-7c92-81cb-936d59e7ec06 \u2014 it still exists server-side. To return to it later:\nclose:   tun open --enable --thread 01a175fc-379f-7c92-81cb-936d59e7ec06   (transcript: ~/.codex/sessions/*/*/*/rollout-*-01a175fc-379f-7c92-81cb-936d59e7ec06.jsonl)\nclose: tunnel.state.json removed \u2014 Law 2.4 re-arms; next 'open' requires --enable again\n"
+    },
+    {
+      "origin": ".dev/session/germline-08-caretaker-receipts/raw/experiment_2/live/tunnel.peer-b.state.json",
+      "before_sha256": "94bf28bba61ce937329c1ea19fd4055a3475bf05ef57333b2416b937cc56cc9a",
+      "threadId": "01a175fc-7a38-7620-97e2-ab0c5409a502",
+      "lastTurnId": "01a175fc-7aa5-74e1-b6dd-722aaff5dc51",
+      "close_output": "close: releasing thread 01a175fc-7a38-7620-97e2-ab0c5409a502 \u2014 it still exists server-side. To return to it later:\nclose:   tun open --enable --thread 01a175fc-7a38-7620-97e2-ab0c5409a502   (transcript: ~/.codex/sessions/*/*/*/rollout-*-01a175fc-7a38-7620-97e2-ab0c5409a502.jsonl)\nclose: tunnel.state.json removed \u2014 Law 2.4 re-arms; next 'open' requires --enable again\n"
+    }
+  ]
+}

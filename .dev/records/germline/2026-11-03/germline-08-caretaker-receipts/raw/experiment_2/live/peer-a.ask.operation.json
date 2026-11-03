@@ -1,0 +1,76 @@
+{
+  "argv": [
+    "/home/hruzam/ia-sync/zsh/ai/tunnel-codex.zsh",
+    "ask",
+    "--state",
+    "/home/hruzam/ia-sync/.dev/session/germline-08-caretaker-receipts/raw/experiment_2/live/tunnel.peer-a.state.json",
+    "Return the exact first line `experiment_2.peer-a.low`.\nRead `/home/hruzam/reposoma/raw.guides/tunnel/GUIDE.md` as your only task source.\nIdentify what `open --enable` establishes, when a thread is born, and the recovery\nprimitive after uncertain completion. Cite exact source line numbers and say whether\nthe GUIDE distinguishes preflight from completed model work. Report missing coverage\nhonestly. Do not invent a defect or implement a fix. Maximum 180 words.\n\nRead budget: at most two read-only source-inspection commands, at most 180 source lines\nin total. You may use rg, nl, sed or cat for that source. Necessary applicable runtime\ninstructions may be read, but follow no document links, read no other task sources and\ndo no network research. Do not execute source examples, start another model/agent/CLI,\nedit files or perform another task. You are a read-only instrument, not a session head.\n"
+  ],
+  "codex_binary": "/home/hruzam/.local/bin/codex",
+  "codex_version": {
+    "argv": [
+      "/home/hruzam/.local/bin/codex",
+      "--version"
+    ],
+    "exit": 0,
+    "stderr": "",
+    "stdout": "codex-cli 0.164.0"
+  },
+  "elapsed_seconds": 14.397,
+  "ended_unix": 1792980839.900822,
+  "exit": 0,
+  "outputs": {
+    "stderr": {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-08-caretaker-receipts/raw/experiment_2/live/peer-a.ask.stderr.txt",
+      "sha256": "7ba3564150acb1228770ce2e9b656fe083263182c34e2215078195726f049095"
+    },
+    "stdout": {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-08-caretaker-receipts/raw/experiment_2/live/peer-a.ask.stdout.txt",
+      "sha256": "c755816b3692b293ee50fa75cb45a0fc094fa257c32031f84e9f2bfe4004a522"
+    }
+  },
+  "peer": "peer-a",
+  "precondition": null,
+  "requested": {
+    "effort": "low",
+    "model": "gpt-6.1-sol"
+  },
+  "runner": {
+    "pid": 999897,
+    "start": "294630846"
+  },
+  "started_unix": 1792980825.5041544,
+  "state_after": {
+    "lastTurnId": "01a175fc-3853-7182-adbf-e1710a5f1ceb",
+    "model": "gpt-6.1-sol",
+    "runtime": {
+      "approvalPolicy": "never",
+      "cwd": "/home/hruzam/ia-sync/.dev/session/germline-08-caretaker-receipts",
+      "instructionSources": [
+        "/home/hruzam/.codex/AGENTS.md",
+        "/home/hruzam/ia-sync/AGENTS.md"
+      ],
+      "model": "gpt-6.1-sol",
+      "observedAt": "2026-10-26T02:13:46Z",
+      "reasoningEffort": "high",
+      "sandbox": {
+        "networkAccess": false,
+        "type": "readOnly"
+      }
+    },
+    "sandbox": {
+      "networkAccess": false,
+      "type": "readOnly"
+    },
+    "threadId": "01a175fc-379f-7c92-81cb-936d59e7ec06"
+  },
+  "state_before": {
+    "lastTurnId": null,
+    "model": "gpt-6.1-sol",
+    "runtime": null,
+    "sandbox": "read-only",
+    "threadId": null
+  },
+  "status": "completed",
+  "verb": "ask"
+}

@@ -1,0 +1,130 @@
+{
+  "expected": {
+    "latestTurnId": "01a16951-2359-7a00-93f2-429f3a70fe15",
+    "marker": "experiment_1.peer-a.direct",
+    "threadId": "01a1694a-7bdd-7d70-913d-d3dcef66c8ac"
+  },
+  "peer": "peer-a",
+  "read": {
+    "argv": [
+      "/home/hruzam/ia-sync/zsh/ai/tunnel-codex.zsh",
+      "read",
+      "--state",
+      "/home/hruzam/ia-sync/.dev/session/germline-07-make-program/raw/experiment_1/caretaker/tunnel.peer-a.state.json"
+    ],
+    "elapsed_seconds": 0.884,
+    "ended_unix": 1792768495.031135,
+    "exit": 0,
+    "started_unix": 1792768494.1474056,
+    "stderr_path": "/home/hruzam/ia-sync/.dev/session/germline-07-make-program/raw/experiment_1/caretaker/followup/peer-a.read.stderr.txt",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_bytes": 33906,
+    "stdout_sha256": "2b92fc49e1605eedf96c41b775b77411f7602f43a538cf292909f1cd29dbf839"
+  },
+  "read_selected": {
+    "agentReply": "experiment_1.peer-a.direct\n\n- **Opening:** `open --enable` means the operator opens the table: \u201cpreflight only, no thread yet.\u201d [Line 36](/home/hruzam/reposoma/raw.guides/tunnel/GUIDE.md:36). The gate checks presence, not authorisation. [Lines 94\u201397](/home/hruzam/reposoma/raw.guides/tunnel/GUIDE.md:94). With `--thread`, opening is a local binding declaration without server resume. [Line 44](/home/hruzam/reposoma/raw.guides/tunnel/GUIDE.md:44).\n- **Birth:** \u201cthread born on FIRST send.\u201d [Line 37](/home/hruzam/reposoma/raw.guides/tunnel/GUIDE.md:37). This is reinforced by \u201czero-turn `thread/start` leaves no rollout.\u201d [Line 138](/home/hruzam/reposoma/raw.guides/tunnel/GUIDE.md:138).\n- **Recovery:** `read` re-fetches the thread without a turn and is \u201cthe recovery primitive.\u201d [Line 39](/home/hruzam/reposoma/raw.guides/tunnel/GUIDE.md:39). Reconciliation mismatch: record it, \u201cnever silently retry.\u201d In-flight turn: wait or read. [Lines 74\u201376](/home/hruzam/reposoma/raw.guides/tunnel/GUIDE.md:74).\n\n**Yes**, the GUIDE distinguishes transport preflight from a completed model response: opening is preflight; `ask` provides \u201csend + reconcile + verified result.\u201d [Lines 36\u201338](/home/hruzam/reposoma/raw.guides/tunnel/GUIDE.md:36).\n\nMissing coverage: no general procedure decides whether an ambiguously completed `send` should be resent. That does not establish an implementation defect.",
+    "agentReply_sha256": "351709e16ae84970c394c12fe53d05b7a22ca9a9482db5c45c16282e98aa418c",
+    "expectedTurnIndex": 1,
+    "latestTurnId": "01a16951-2359-7a00-93f2-429f3a70fe15",
+    "markerPresent": true,
+    "matchesStoredDirectReply": true,
+    "raw_response_sha256": "2b92fc49e1605eedf96c41b775b77411f7602f43a538cf292909f1cd29dbf839",
+    "storedDirectReply_sha256": "351709e16ae84970c394c12fe53d05b7a22ca9a9482db5c45c16282e98aa418c",
+    "threadId": "01a1694a-7bdd-7d70-913d-d3dcef66c8ac",
+    "threadStatus": {
+      "type": "notLoaded"
+    },
+    "turnCount": 2,
+    "turnIds_sha256": "9e21a81bae365f9082183fbbb1489b7ab68903c85b314f3f97793675910a0410",
+    "turnStatus": "completed",
+    "turnsAfterExpected": 0
+  },
+  "resume": {
+    "argv": [
+      "/home/hruzam/ia-sync/zsh/ai/tunnel-codex.zsh",
+      "resume",
+      "--state",
+      "/home/hruzam/ia-sync/.dev/session/germline-07-make-program/raw/experiment_1/caretaker/tunnel.peer-a.state.json"
+    ],
+    "elapsed_seconds": 1.574,
+    "ended_unix": 1792768494.1467428,
+    "exit": 0,
+    "started_unix": 1792768492.572249,
+    "stderr_path": "/home/hruzam/ia-sync/.dev/session/germline-07-make-program/raw/experiment_1/caretaker/followup/peer-a.resume.stderr.txt",
+    "stderr_sha256": "014101c8a42ffbaf9eef67f92aa4cba9042e0a59eccd5d2ada59e9e73b0a4a90",
+    "stdout_bytes": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "state_after_read": {
+    "lastTurnId": "01a16951-2359-7a00-93f2-429f3a70fe15",
+    "model": "gpt-6.1-sol",
+    "runtime": {
+      "approvalPolicy": "never",
+      "cwd": "/home/hruzam/ia-sync/.dev/session/germline-07-make-program",
+      "instructionSources": [
+        "/home/hruzam/.codex/AGENTS.md",
+        "/home/hruzam/ia-sync/AGENTS.md"
+      ],
+      "model": "gpt-6.1-sol",
+      "observedAt": "2026-10-23T15:14:54Z",
+      "reasoningEffort": "xhigh",
+      "sandbox": {
+        "networkAccess": false,
+        "type": "readOnly"
+      }
+    },
+    "sandbox": {
+      "networkAccess": false,
+      "type": "readOnly"
+    },
+    "threadId": "01a1694a-7bdd-7d70-913d-d3dcef66c8ac"
+  },
+  "state_after_resume": {
+    "lastTurnId": "01a16951-2359-7a00-93f2-429f3a70fe15",
+    "model": "gpt-6.1-sol",
+    "runtime": {
+      "approvalPolicy": "never",
+      "cwd": "/home/hruzam/ia-sync/.dev/session/germline-07-make-program",
+      "instructionSources": [
+        "/home/hruzam/.codex/AGENTS.md",
+        "/home/hruzam/ia-sync/AGENTS.md"
+      ],
+      "model": "gpt-6.1-sol",
+      "observedAt": "2026-10-23T15:14:54Z",
+      "reasoningEffort": "xhigh",
+      "sandbox": {
+        "networkAccess": false,
+        "type": "readOnly"
+      }
+    },
+    "sandbox": {
+      "networkAccess": false,
+      "type": "readOnly"
+    },
+    "threadId": "01a1694a-7bdd-7d70-913d-d3dcef66c8ac"
+  },
+  "state_before": {
+    "lastTurnId": "01a16951-2359-7a00-93f2-429f3a70fe15",
+    "model": "gpt-6.1-sol",
+    "runtime": {
+      "approvalPolicy": "never",
+      "cwd": "/home/hruzam/ia-sync/.dev/session/germline-07-make-program",
+      "instructionSources": [
+        "/home/hruzam/.codex/AGENTS.md",
+        "/home/hruzam/ia-sync/AGENTS.md"
+      ],
+      "model": "gpt-6.1-sol",
+      "observedAt": "2026-10-23T15:11:27Z",
+      "reasoningEffort": "xhigh",
+      "sandbox": {
+        "networkAccess": false,
+        "type": "readOnly"
+      }
+    },
+    "sandbox": {
+      "networkAccess": false,
+      "type": "readOnly"
+    },
+    "threadId": "01a1694a-7bdd-7d70-913d-d3dcef66c8ac"
+  }
+}

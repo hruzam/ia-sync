@@ -1,0 +1,52 @@
+{
+  "argv": [
+    "/home/hruzam/ia-sync/zsh/ai/tunnel-codex.zsh",
+    "ask",
+    "--state",
+    "/home/hruzam/ia-sync/.dev/session/germline-07-make-program/raw/experiment_1/caretaker/tunnel.peer-a.state.json",
+    "Return the exact first line `experiment_1.peer-a.initial`.\nRead `/home/hruzam/reposoma/raw.guides/tunnel/GUIDE.md` only as the task source. Identify the\nGUIDE's statements about what `open --enable` establishes, when a thread is born, and recovery\nafter uncertain completion. Give exact line citations with short supporting text. Say whether\nthe GUIDE distinguishes transport preflight from a completed model task. Do not execute its\nexamples or propose an implemented fix. Report missing coverage honestly; do not invent a defect.\n\nShared restrictions: You are a bounded read-only instrument, not the G03 head or investigator.\nRead only your named task source plus necessary applicable instructions, follow no document links,\nperform no network research, launch no model/agent/process, and edit nothing. Cap your response\nat 180 words.\n"
+  ],
+  "elapsed_seconds": 30.37,
+  "ended_unix": 1792767881.3601854,
+  "exit": 0,
+  "prompt": {
+    "path": "/home/hruzam/ia-sync/.dev/session/germline-07-make-program/raw/experiment_1/caretaker/prompt.peer-a.txt",
+    "sha256": "dae66f1703214649efd4b2e4d9cf267af90b1e1f5cae7ec37863bc602c71c321"
+  },
+  "started_unix": 1792767850.9897895,
+  "state": {
+    "created": "2026-10-23T15:03:57Z",
+    "cwd": "/home/hruzam/ia-sync/.dev/session/germline-07-make-program",
+    "enabled": true,
+    "lastTurnId": "01a1694a-7c7d-7470-afce-f99b82ae10e1",
+    "model": "gpt-6.1-sol",
+    "runtime": {
+      "approvalPolicy": "never",
+      "cwd": "/home/hruzam/ia-sync/.dev/session/germline-07-make-program",
+      "instructionSources": [
+        "/home/hruzam/.codex/AGENTS.md",
+        "/home/hruzam/ia-sync/AGENTS.md"
+      ],
+      "model": "gpt-6.1-sol",
+      "observedAt": "2026-10-23T15:04:11Z",
+      "reasoningEffort": "xhigh",
+      "sandbox": {
+        "networkAccess": false,
+        "type": "readOnly"
+      }
+    },
+    "sandbox": {
+      "networkAccess": false,
+      "type": "readOnly"
+    },
+    "threadId": "01a1694a-7bdd-7d70-913d-d3dcef66c8ac"
+  },
+  "stderr": {
+    "path": "/home/hruzam/ia-sync/.dev/session/germline-07-make-program/raw/experiment_1/caretaker/peer-a.ask.stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "stdout": {
+    "path": "/home/hruzam/ia-sync/.dev/session/germline-07-make-program/raw/experiment_1/caretaker/peer-a.ask.stdout.txt",
+    "sha256": "f6118dd3558b8c2ec18d41113a5fdc74b3c91eb890758f7383d692850ce9a3ba"
+  }
+}

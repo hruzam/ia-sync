@@ -1,0 +1,46 @@
+## S1
+
+### Facts
+
+| ID | Statement |
+|---|---|
+| S1.F1 | The task is to prepare a proposed plan using component draft-plan. |
+| S1.F2 | draft-plan requires a current inventory and accepted constraints. |
+| S1.F3 | The current inventory is available; accepted constraints have not been supplied. |
+| S1.F4 | The draft-plan contract is located at planning.md. |
+| S1.F5 | draft-plan returns a proposed plan and has no authority to execute it. |
+
+### Question
+
+What is the next valid action, what must be available before drafting, and where would you check the contract?
+
+## S2
+
+### Facts
+
+| ID | Statement |
+|---|---|
+| S2.F1 | The task is to determine whether the review gate is satisfied. |
+| S2.F2 | A summary says one reviewer is sufficient and describes contract revision 3. |
+| S2.F3 | The operative contract is now revision 4 and requires two distinct reviewers. |
+| S2.F4 | One reviewer has approved. |
+
+### Question
+
+Is the gate satisfied? Explain which evidence governs and what remains.
+
+## S3
+
+### Facts
+
+| ID | Statement |
+|---|---|
+| S3.F1 | The task is to recover the actual state of a copy operation. |
+| S3.F2 | The copy operation was started; its reporting connection ended before returning a result. |
+| S3.F3 | A session summary labels the operation complete but provides no supporting observation. |
+| S3.F4 | Target files can be inspected against the intended result. |
+| S3.F5 | Repeating the operation can overwrite target changes. |
+
+### Question
+
+What can you conclude, and what should happen before any retry?

@@ -1,0 +1,6 @@
+1dc0f9c41d0004744b4820c302cb7be78330528ebaf55732c34ddf78c93f75a4  /home/hruzam/reposoma/raw.guides/tunnel/GUIDE.md
+8ca70c3044a9756265b42bc94d4a58b1d2c512ecd6b2e25becbd781ca2259052  /home/hruzam/ia-sync/zsh/ai/tunnel-codex.py
+ae7803d804b54fd59145550807286a030d9efc6c2f13c6a0e17584dffe768f4e  /home/hruzam/ia-sync/zsh/ai/tunnel-codex.zsh
+85360dc9c8d5045767e2b665f0ef5824eb5eaebd80bdd4a90e8febb1aeff1a0d  /home/hruzam/ia-sync/.dev/session/germline-07-make-program/raw/experiment_1/program/CONTROLLER.md
+4fcf42600fa1bc7d1f94965a88b697732ffbf67ef9a062b35b18e5ddbcff60a0  /home/hruzam/ia-sync/.dev/session/germline-07-make-program/raw/experiment_1/program/fn/audit-tunnel-opening.md
+083af02f8c5e8c5f6be2bbf87a69ea2044ba822eb13126163bae31a1d222071e  /home/hruzam/ia-sync/.dev/session/germline-07-make-program/_bus/01.cartan.point.md

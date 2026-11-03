@@ -1,0 +1,141 @@
+{
+  "hashes": {
+    "raw/fixture/case-01/inventory.md": "2fca813b1c664ae5935fc4ea18b00b15eb4f383dedc0211d90f24f9ab7d1cd82",
+    "raw/fixture/case-01/access.md": "3839d295e2be4ee17cd7a837ffa36352aa8f356c5b823c310d6332d1c97aa52c",
+    "raw/fixture/case-01/INDEX.md": "17a53d3f2ec2529b5f79f90b0bf604de519c713691d8e0667f29aafff1c217c9",
+    "raw/fixture/case-01/build-notes.md": "3c0164f3544d8ed4c13080c6445624f98369d8575e988ce5788fbf7e2611c134",
+    "raw/fixture/case-01/metrics.md": "3d626118c8ba8f287f6b53d1ab3af2c461c860dc8398ca9f367fb057d48bb7e7",
+    "raw/fixture/case-01/summary.md": "a0f0c063a44ec885e4d2b88078a182bb1e838dfe82015e8bfd8179e920f3f131",
+    "raw/fixture/case-01/acceptance-rule.md": "4644e60ff49ca329537b14c3e40b05cabcf3bbc14b0b5e48bfa5b35d9f6f9e61",
+    "raw/fixture/case-01/incident.md": "7b997accee84fbf86e44e4fe63ada153670f2ce8d8a0decb81a8983bcd03f925",
+    "raw/fixture/case-01/constraints.md": "0f765b72b2ed695062465f931cf1aa5115dff6b907cea611cc678fc0bcbbafcd",
+    "raw/fixture/case-01/TASK.md": "9901e90f9ca1b08e7ef8641082ca8d8c6d6ffce01ec55d693f9fce752b231298",
+    "raw/fixture/case-01/proposal-contract.md": "8d7c4ed1d9ed0683e438cf6b9dd2171ebdd19ef35b0f1207b41a9fe8aeb4dfee",
+    "raw/fixture/case-01/support-rota.md": "c83112570018787ec7315926856a97f8a7c9d189bd59132aa3dff052cc1d2e4c",
+    "raw/fixture/case-01/archive.md": "4c7eb1063560da4286cb5fa7214abb03d2d50d4988a8cc7541771d58b0219f3a",
+    "raw/fixture/case-01/capacity.md": "7a9d1673af18d6362a540a84a68756cef1457d5a55da57614c5c937901c307ca",
+    "raw/fixture/case-02/access.md": "92681afb4f5ad6f9f983c0eb654d797f43f0829477c7eb0e21639b15b51bf728",
+    "raw/fixture/case-02/INDEX.md": "ac98ad18e71e330aeba1b1f6a952e31c58e2c0ea089d68fb11e56b95584709cc",
+    "raw/fixture/case-02/handover.md": "3e6a8de276c7105c6297901dea9ad5ee8866ecbdc52fa6d987aeccd1189b7488",
+    "raw/fixture/case-02/ledger.md": "e0a6059c17f7a81de0781e4ab6118cb10c72d51d2667c16a86c19d83b9b0e8d4",
+    "raw/fixture/case-02/binding.md": "678f23b9bb29ba5d654c7161dd91456a2b8dd5281d7e09b4c7c4eb7dbc790406",
+    "raw/fixture/case-02/summary.md": "cb1b38a22f4e53874d989e51cbd31472114220b97fac6c5b4a150180dcadd345",
+    "raw/fixture/case-02/registry.md": "d91f2ce31a2e565d5ba4c18a744ff9195de299a9fdfbcfed1dadd2caac5c5215",
+    "raw/fixture/case-02/policy-r4.md": "744255a9fcce8e0dc1df7bc8bd7069eb72a99072759b94ac231ad4193fcaf9b0",
+    "raw/fixture/case-02/release-calendar.md": "e6a3f31f2f6a60b94b0408052e25ddc4d9d2d487192f661aa2e52f54c1a840cf",
+    "raw/fixture/case-02/support.md": "60b46abceaeb9349fd1b5c8d9079ef5fdd9608073e84d5931bb1144185287e06",
+    "raw/fixture/case-02/TASK.md": "cfbcbca43ff4c04bb069a345fd92ab9ebd0f51da69429eaaa8b53e07d8ff974b",
+    "raw/fixture/case-02/training.md": "351ec2df4311ae29709c28e2a1ab4c3cc4e90a8a83760bbc588bc92f711ca3e5",
+    "raw/fixture/case-02/retention.md": "3a2f105d17d286aaab9c0201f9324f755bf6e8caabd62d7021f8de716715dc2c",
+    "raw/fixture/case-02/telemetry.md": "21ce0c1231fd798c4d62bf893e48d0c28c362c47d4b51ac76aeecf85ff57258c",
+    "raw/fixture/case-03/recovery-contract.md": "3ff40d04d7bba1ff6f5322c559e25d6387199af8b4eca7d644b43726a4db1c33",
+    "raw/fixture/case-03/INDEX.md": "999a8d7c2e31a65e9de0f7649e25ee2e2ce1fb0a8aa5d3952507dcd0a55086e4",
+    "raw/fixture/case-03/handover.md": "99129a9c2d8e0f22a31c7cef7e4ccbc0beede8041721f8b4d4942dc5c64319de",
+    "raw/fixture/case-03/alerts.md": "d17d7b5c36c70dbee1da18a979871abb4f0b781f1ccd8a89fefba9b01385ae0c",
+    "raw/fixture/case-03/summary.md": "3b960fcb013c2824fdc74cdd386b9635c2fd04e0c77e9fbf74e9307ee305d6fa",
+    "raw/fixture/case-03/backup.md": "7dc47285a159487003652acc354eb1b38b8e7fcb2f4ba98cda4ed85f68a51177",
+    "raw/fixture/case-03/network.md": "2649e1ec3e7c0dea5235613132d79542d550e1de40dd38f9a1093436541aaf0b",
+    "raw/fixture/case-03/permit.md": "310b896d220b6f704458fe1b667b55309601fca8d19a530075f12d45f7300564",
+    "raw/fixture/case-03/target.md": "3797b32a21823cee6e599f50f57d688f1545bf45dabbfcdc3d926a65389e24f6",
+    "raw/fixture/case-03/TASK.md": "ce100cabd5474ac0a76dd64055fbe24e74989c19657dea2110e6f8aa804358a2",
+    "raw/fixture/case-03/receipt.md": "9ca12e0323e6c0fa8ae488176ed0749859b0be5921e98bf12fbf527a80f971f5",
+    "raw/fixture/case-03/shift.md": "5ed9b6b7ff37fe6c54c30c30dd0b4fca16d560429c88b2343be902657438a2ac",
+    "raw/fixture/case-03/logs.md": "1b99ef1ae1b45955364c14efb48c0cbd57c57f5ba7728eaf66f260fa51bb3110",
+    "raw/fixture/case-03/capacity.md": "391ca1f086ec88af60ea06098c6a091317a019f4cf7bf97eb9e46ef8b5a6fc51",
+    "raw/messages/reader-01.txt": "3c3f689b0900c7c71b886b57b3d45824d7de21beed1b87b9e6d491767f329612",
+    "raw/messages/protocol-error.txt": "85634cea41813509dbf1934b1c9d107d1c651d210fa1ef6314265cf4f6d53663",
+    "raw/messages/reader-04.txt": "6a9db2aa62a638f7b927677edd8908d3fc1d7888eeff5dc0324349d5336cd715",
+    "raw/messages/reader-02.txt": "2c280ca3619433573a63fe59c10dfde9ec69a17defa76b71b91539786e3c9515",
+    "raw/messages/reader-03.txt": "fff999768553f9a260ba12fef06f2d5bd4081a839fa35f73735e5379749e7519",
+    "raw/messages/final.txt": "004cc7597e03b2c3ff700286e90604c0e2a66ac335e9cd4dc70a7aa508a4ec16",
+    "raw/messages/serve-template.txt": "1bed758eb6c36b3045da5d0f2b0e7059156736dbc24b6da9b1cc7c4745632cce",
+    "raw/messages/reader-06.txt": "adb47c92fa1d63ea8f2df1507ca0b59c3849bb62dce98a6b82fecf2a0da68435",
+    "raw/messages/unavailable.txt": "4d572f1c08fc19abffd1436fd62b973941ab77351bfe16b9c73b02fd65380079",
+    "raw/messages/separator.txt": "316deeb28892b1cdebfe5c12c2cd620b5b8f29289c1ffe3d4f5fc1b2e6a4ea7d",
+    "raw/messages/reader-05.txt": "9e720842899962254cb3a04f11d61d531d2a9bc639c7875f05a6fca0a308fbc6",
+    "raw/FACTS.json": "ce1cec6ee5aa50107111979e5922ce4dcd2ca6366b53af94403e26e478fb99fa",
+    "raw/RUBRIC.json": "9205f485a5b82c85b3f1db7e42f0f2d9c73e896d60be20eed2987cc48dd5f12d",
+    "raw/ASSIGNMENT.json": "574002ff3584176bfb94dc750ca402d1986ad77dc7f4c7ac35a00ec5f19f1b5a",
+    "RUNBOOK.md": "2da177feb8f3744e8844db5986cb38bee10f52da76850883807f46f8854ea663"
+  },
+  "facts": {
+    "readiness": {
+      "necessary": [
+        "readiness/proposal-contract.md",
+        "readiness/inventory.md",
+        "readiness/constraints.md",
+        "readiness/acceptance-rule.md"
+      ],
+      "word_counts": [
+        68,
+        71,
+        68,
+        71,
+        72,
+        66,
+        73,
+        69,
+        72,
+        66,
+        71,
+        72
+      ],
+      "document_bytes": 5621,
+      "index_bytes": 1163
+    },
+    "identity": {
+      "necessary": [
+        "identity/ledger.md",
+        "identity/binding.md",
+        "identity/policy-r4.md",
+        "identity/registry.md"
+      ],
+      "word_counts": [
+        65,
+        71,
+        70,
+        70,
+        65,
+        66,
+        70,
+        68,
+        71,
+        71,
+        71,
+        70
+      ],
+      "document_bytes": 5518,
+      "index_bytes": 1133
+    },
+    "recovery": {
+      "necessary": [
+        "recovery/receipt.md",
+        "recovery/recovery-contract.md",
+        "recovery/target.md",
+        "recovery/permit.md"
+      ],
+      "word_counts": [
+        69,
+        66,
+        69,
+        72,
+        67,
+        70,
+        68,
+        68,
+        69,
+        67,
+        70,
+        72
+      ],
+      "document_bytes": 5546,
+      "index_bytes": 1092
+    }
+  },
+  "paired_same_task_and_documents": true,
+  "manual_review": "Each necessary source carries a decisive fact, the eight criteria are answerable from those sources, and the six-delivery budget permits two mistakes. Index roles disclose no decisive body facts or relevance labels. Sources are current and necessary entries are interspersed.",
+  "document_body_word_range": [
+    60,
+    68
+  ]
+}

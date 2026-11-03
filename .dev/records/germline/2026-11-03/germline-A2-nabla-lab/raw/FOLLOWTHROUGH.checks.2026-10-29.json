@@ -1,0 +1,21 @@
+{
+  "result": "PASS",
+  "scope": "local setup fold and durable publication tools; no new scientific/runtime qualification",
+  "python_syntax": "pass",
+  "help_read_only": "pass",
+  "targeted_render_changed_paths": [],
+  "targeted_second_run_byte_stable": true,
+  "full_render_preserved_figure_bytes": true,
+  "verifier_publication_read_only": true,
+  "current_publication_check": true,
+  "scratch_publication_check": true,
+  "local_source_links": "pass",
+  "scratch_brief": "Existence-only symlink; body not loaded/copied",
+  "candidate_files": {
+    "AGENTS.md": "e626ead0637b1842a1d6e4046b774f9f1bba405e2b6bc398a42fa7147430ac51",
+    "guides/codex-lab.md": "8aadef3eada1a1baa6235b19c7621184b72d0676cf62a37d5381aaf0d95616a9",
+    "publications/inner-circle/tools/README.md": "9d4caa64414e2cbac3ebba0df307914c2afbe93a4bbdc4cbf4c28f8d19c4f139",
+    "publications/inner-circle/tools/verify.py": "3a2094933df5cd7daced12e1e9d0f6c079b1248c8f2948c160c1287df7c12dae",
+    "publications/inner-circle/tools/render.py": "026f437ef93033ebe219cdf3fe54b677bb7afeec4ca756c8b320aa9af20b7e09"
+  }
+}

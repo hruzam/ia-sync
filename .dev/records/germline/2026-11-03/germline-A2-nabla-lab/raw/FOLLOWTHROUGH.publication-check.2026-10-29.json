@@ -1,0 +1,109 @@
+{
+  "date": "2026-10-29",
+  "scope": "eleven inner-circle research editions and bounded coverage/gap registers; no empirical agent validation",
+  "checks": {
+    "local_markdown_links": true,
+    "standalone_html_figures": true,
+    "flow_initial_and_antipode": true,
+    "flow_decreases": true,
+    "fisher_symmetry_and_limits": true,
+    "fisher_worked_example": true,
+    "spectral_filter_order": true,
+    "capacity_monotone_equal_shapley_non_symmetric": true,
+    "cascade_matrix_matches_formula": true,
+    "tensor_declared_peaks": true,
+    "sampling_boundaries": true,
+    "cycle_residual": true,
+    "all_figure_formats": true,
+    "jev_joint_bounds": true,
+    "jev_choice_confidence_example": true,
+    "coverage_counterexample": true,
+    "budget_boundary_and_interior": true,
+    "completion_conjunction": true,
+    "original_research_unchanged": true,
+    "germline_stamp": true,
+    "germline_discovery_link": true
+  },
+  "all_pass": true,
+  "local_links_checked": 142,
+  "missing_links": [],
+  "html": [
+    {
+      "path": "flow-control-stopping/study.html",
+      "inline_figures": 1,
+      "external_assets": [],
+      "remaining_image_tags": []
+    },
+    {
+      "path": "tensor-analytics/study.html",
+      "inline_figures": 1,
+      "external_assets": [],
+      "remaining_image_tags": []
+    },
+    {
+      "path": "coalition-evidence/study.html",
+      "inline_figures": 1,
+      "external_assets": [],
+      "remaining_image_tags": []
+    },
+    {
+      "path": "mental-map/study.html",
+      "inline_figures": 1,
+      "external_assets": [],
+      "remaining_image_tags": []
+    },
+    {
+      "path": "jev-judgment/study.html",
+      "inline_figures": 1,
+      "external_assets": [],
+      "remaining_image_tags": []
+    },
+    {
+      "path": "spectral-retrieval/study.html",
+      "inline_figures": 1,
+      "external_assets": [],
+      "remaining_image_tags": []
+    },
+    {
+      "path": "coherence-composition/study.html",
+      "inline_figures": 1,
+      "external_assets": [],
+      "remaining_image_tags": []
+    },
+    {
+      "path": "cascade-diagnostics/study.html",
+      "inline_figures": 1,
+      "external_assets": [],
+      "remaining_image_tags": []
+    },
+    {
+      "path": "scratch-instruments/study.html",
+      "inline_figures": 1,
+      "external_assets": [],
+      "remaining_image_tags": []
+    },
+    {
+      "path": "stance-geometry/study.html",
+      "inline_figures": 2,
+      "external_assets": [],
+      "remaining_image_tags": []
+    },
+    {
+      "path": "interactive-interposition/study.html",
+      "inline_figures": 1,
+      "external_assets": [],
+      "remaining_image_tags": []
+    }
+  ],
+  "study_count": 11,
+  "figure_count": 12,
+  "shapley_counterexample_values": [
+    0.25,
+    0.25,
+    0.25,
+    0.25
+  ],
+  "germline_stamp": "4c894176",
+  "stamp_method": "first eight SHA256 hex digits of UTF-8 addendum with stamp line omitted",
+  "verification_limit": "Construction, links and assets only; no new browser, visual, empirical or runtime-model witness."
+}

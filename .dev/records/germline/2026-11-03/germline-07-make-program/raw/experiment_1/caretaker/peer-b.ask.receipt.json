@@ -1,0 +1,52 @@
+{
+  "argv": [
+    "/home/hruzam/ia-sync/zsh/ai/tunnel-codex.zsh",
+    "ask",
+    "--state",
+    "/home/hruzam/ia-sync/.dev/session/germline-07-make-program/raw/experiment_1/caretaker/tunnel.peer-b.state.json",
+    "Return the exact first line `experiment_1.peer-b.initial`.\nRead `/home/hruzam/ia-sync/zsh/ai/tunnel-codex.py` as the task source. Inspect only cmd_open,\n_birth_or_resume, cmd_ask/cmd_send, save_state, and directly needed helpers. Give exact line\ncitations for what open preflights, when a thread starts, and when a new threadId is saved.\nExplain the first-turn timeout/reconciliation-failure uncertainty without claiming a runtime\nfailure was observed. Do not run the code, open other source bodies, or implement a fix.\n\nShared restrictions: You are a bounded read-only instrument, not the G03 head or investigator.\nRead only your named task source plus necessary applicable instructions, follow no document links,\nperform no network research, launch no model/agent/process, and edit nothing. Cap your response\nat 180 words.\n"
+  ],
+  "elapsed_seconds": 62.881,
+  "ended_unix": 1792767950.8363595,
+  "exit": 0,
+  "prompt": {
+    "path": "/home/hruzam/ia-sync/.dev/session/germline-07-make-program/raw/experiment_1/caretaker/prompt.peer-b.txt",
+    "sha256": "db8feb5e13f43e070e795b2ada27f3cf31b33f1ba5c5c75afdabdc8923f319c9"
+  },
+  "started_unix": 1792767887.955072,
+  "state": {
+    "created": "2026-10-23T15:03:59Z",
+    "cwd": "/home/hruzam/ia-sync/.dev/session/germline-07-make-program",
+    "enabled": true,
+    "lastTurnId": "01a1694b-0cdf-78e0-b1a8-00a371f32798",
+    "model": "gpt-6.1-sol",
+    "runtime": {
+      "approvalPolicy": "never",
+      "cwd": "/home/hruzam/ia-sync/.dev/session/germline-07-make-program",
+      "instructionSources": [
+        "/home/hruzam/.codex/AGENTS.md",
+        "/home/hruzam/ia-sync/AGENTS.md"
+      ],
+      "model": "gpt-6.1-sol",
+      "observedAt": "2026-10-23T15:04:48Z",
+      "reasoningEffort": "xhigh",
+      "sandbox": {
+        "networkAccess": false,
+        "type": "readOnly"
+      }
+    },
+    "sandbox": {
+      "networkAccess": false,
+      "type": "readOnly"
+    },
+    "threadId": "01a1694b-0c61-76f0-897c-fc3c66f665c0"
+  },
+  "stderr": {
+    "path": "/home/hruzam/ia-sync/.dev/session/germline-07-make-program/raw/experiment_1/caretaker/peer-b.ask.stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "stdout": {
+    "path": "/home/hruzam/ia-sync/.dev/session/germline-07-make-program/raw/experiment_1/caretaker/peer-b.ask.stdout.txt",
+    "sha256": "f497402a8975864cf5ffed487a42862766e2b21d306d0659e09a92ee68f8a315"
+  }
+}

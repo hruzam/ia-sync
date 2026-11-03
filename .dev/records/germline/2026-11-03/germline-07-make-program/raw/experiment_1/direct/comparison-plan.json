@@ -1,0 +1,11 @@
+{
+  "purpose": "within-session route/output observation; not an unbiased token/latency benchmark",
+  "order": [
+    "caretaker initial pair",
+    "Cartan direct pair on same named threads",
+    "same caretaker zero-target-turn resume/read check"
+  ],
+  "maximum_additional_target_turns": 2,
+  "same_thread_history_and_order_are_confounders": true,
+  "caretaker_model_usage": "unavailable unless runtime exposes it; do not infer total billed savings"
+}

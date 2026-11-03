@@ -1,0 +1,1 @@
+Serve exact frozen document bytes, including Path/Source/Revision headers, separated by one blank line. No hints or corrections.

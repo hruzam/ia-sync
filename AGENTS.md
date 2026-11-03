@@ -29,6 +29,10 @@ Reply to Houston through the central temple bus at:
 
 Other agents (Houston, @majkee) may also drop tasks here between sessions.
 
+### Retired session discovery
+
+`ARCHIVE.md` is the local entry for retired germline packages, full-slug aliases, compressed-copy recovery and reusable scars. `pulse.md` continues to route living gates only. A directory symlink or archived STATUS is historical evidence, not an active work assignment. Check custody before claiming Git/home availability.
+
 ### Known issues
 
 Known defects for this repo: the shared cold-start vault `~/reposoma/_cold-start/`, filtered

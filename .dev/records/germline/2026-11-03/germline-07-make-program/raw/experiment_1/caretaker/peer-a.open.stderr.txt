@@ -1,0 +1,1 @@
+open: enabled (model=gpt-6.1-sol, sandbox=read-only, cwd=/home/hruzam/ia-sync/.dev/session/germline-07-make-program); no thread yet — thread will be born on first send

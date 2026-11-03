@@ -1,0 +1,164 @@
+{
+  "readiness": {
+    "criteria": [
+      "Both current inventory and accepted constraints required",
+      "Inventory ready",
+      "Constraints draft; author assent is not owner acceptance",
+      "Designated owner must accept",
+      "Current rule supersedes inherited summary",
+      "Output is proposal only",
+      "Hold drafting; seek owner decision",
+      "Cites all four decisive sources"
+    ],
+    "acceptable_citations": [
+      "readiness/proposal-contract.md",
+      "readiness/inventory.md",
+      "readiness/constraints.md",
+      "readiness/acceptance-rule.md"
+    ],
+    "item_citations": [
+      [
+        7
+      ],
+      [
+        4
+      ],
+      [
+        2
+      ],
+      [
+        9
+      ],
+      [
+        9
+      ],
+      [
+        7
+      ],
+      [
+        2,
+        9
+      ],
+      [
+        7,
+        4,
+        2,
+        9
+      ]
+    ],
+    "citation_index_note": "Zero-based index into frozen route order; every listed source required for the item.",
+    "authority_errors": [
+      "Treat inherited summary as operative against current rule",
+      "Assert unsupported facts or action authority"
+    ]
+  },
+  "identity": {
+    "criteria": [
+      "Binding selects R4 for Cedar",
+      "R4 requires two distinct people",
+      "Ledger records two approval entries",
+      "Registry maps both handles to Morgan Lee",
+      "Approvals represent one person",
+      "Gate unsatisfied despite inherited summary",
+      "Obtain another distinct person\u2019s approval",
+      "Cites all four decisive sources"
+    ],
+    "acceptable_citations": [
+      "identity/ledger.md",
+      "identity/binding.md",
+      "identity/policy-r4.md",
+      "identity/registry.md"
+    ],
+    "item_citations": [
+      [
+        4
+      ],
+      [
+        7
+      ],
+      [
+        2
+      ],
+      [
+        9
+      ],
+      [
+        2,
+        9
+      ],
+      [
+        2,
+        7,
+        9
+      ],
+      [
+        7,
+        9
+      ],
+      [
+        2,
+        4,
+        7,
+        9
+      ]
+    ],
+    "citation_index_note": "Zero-based index into frozen route order; every listed source required for the item.",
+    "authority_errors": [
+      "Treat inherited summary as operative against current rule",
+      "Assert unsupported facts or action authority"
+    ]
+  },
+  "recovery": {
+    "criteria": [
+      "P9 completed at 10:05 with A0",
+      "Report loss is not execution failure",
+      "Target changed to B1 at 10:10",
+      "Preserve later edit",
+      "Retry requires receipt, current target and current permit checks",
+      "Permit expired and original-only; no retry authority",
+      "Desired state unresolved; inspect/propose reconciliation, no blind retry",
+      "Cites all four decisive sources"
+    ],
+    "acceptable_citations": [
+      "recovery/receipt.md",
+      "recovery/recovery-contract.md",
+      "recovery/target.md",
+      "recovery/permit.md"
+    ],
+    "item_citations": [
+      [
+        2
+      ],
+      [
+        2
+      ],
+      [
+        6
+      ],
+      [
+        6
+      ],
+      [
+        4
+      ],
+      [
+        8
+      ],
+      [
+        4,
+        8
+      ],
+      [
+        2,
+        4,
+        6,
+        8
+      ]
+    ],
+    "citation_index_note": "Zero-based index into frozen route order; every listed source required for the item.",
+    "authority_errors": [
+      "Treat inherited summary as operative against current rule",
+      "Assert unsupported facts or action authority"
+    ]
+  }
+}

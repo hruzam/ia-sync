@@ -1,0 +1,18 @@
+{
+  "command": "python3 -m py_compile receipt_runner.py test_receipt_runner.py && python3 test_receipt_runner.py",
+  "checks": [
+    "completed receipt remains recoverable after caller ignores return",
+    "blocked fake command remains classified running while its recorded runner identity lives",
+    "dead pending receipt is unknown",
+    "altered output hash is unknown",
+    "nonzero exit is failed-with-remote-outcome-unknown",
+    "malformed receipt is unknown",
+    "duplicate operation refuses without a second fake execution",
+    "fixed open argv pins source shim, G08 cwd, gpt-6.1-sol and effort=low"
+  ],
+  "errors": 0,
+  "failures": 0,
+  "post_fixed_name_check": "PYTHONDONTWRITEBYTECODE=1 python3 test_receipt_runner.py: 8 tests passed; no __pycache__ residue",
+  "successful": true,
+  "testsRun": 8
+}

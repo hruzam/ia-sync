@@ -1,0 +1,81 @@
+{
+  "peer": "peer-a",
+  "status": "completed",
+  "argv": [
+    "/home/hruzam/ia-sync/zsh/ai/tunnel-codex.zsh",
+    "ask",
+    "--state",
+    "/home/hruzam/ia-sync/.dev/session/germline-07-make-program/raw/experiment_1/caretaker/tunnel.peer-a.state.json",
+    "Return the exact first line `experiment_1.peer-a.direct`.\nRead `/home/hruzam/reposoma/raw.guides/tunnel/GUIDE.md` only as the task source. Identify the\nGUIDE's statements about what `open --enable` establishes, when a thread is born, and recovery\nafter uncertain completion. Give exact line citations with short supporting text. Say whether\nthe GUIDE distinguishes transport preflight from a completed model task. Do not execute its\nexamples or propose an implemented fix. Report missing coverage honestly; do not invent a defect.\n\nShared restrictions: You are a bounded read-only instrument, not the G03 head or investigator.\nRead only your named task source plus necessary applicable instructions, follow no document links,\nperform no network research, launch no model/agent/process, and edit nothing. Cap your response\nat 180 words.\n\nClarification: read-only file-inspection commands such as rg, sed and cat are permitted for the named sources. Do not execute the inspected code/examples or launch any additional agent, model CLI, daemon, or service.\n"
+  ],
+  "prompt": {
+    "path": "/home/hruzam/ia-sync/.dev/session/germline-07-make-program/raw/experiment_1/direct/peer-a.prompt.txt",
+    "sha256": "59c4ae6866c9983f81418025e9dc7541be076973f098bdd8346180d8d5fb2877"
+  },
+  "state_before": {
+    "created": "2026-10-23T15:03:57Z",
+    "cwd": "/home/hruzam/ia-sync/.dev/session/germline-07-make-program",
+    "enabled": true,
+    "lastTurnId": "01a1694a-7c7d-7470-afce-f99b82ae10e1",
+    "model": "gpt-6.1-sol",
+    "runtime": {
+      "approvalPolicy": "never",
+      "cwd": "/home/hruzam/ia-sync/.dev/session/germline-07-make-program",
+      "instructionSources": [
+        "/home/hruzam/.codex/AGENTS.md",
+        "/home/hruzam/ia-sync/AGENTS.md"
+      ],
+      "model": "gpt-6.1-sol",
+      "observedAt": "2026-10-23T15:04:11Z",
+      "reasoningEffort": "xhigh",
+      "sandbox": {
+        "networkAccess": false,
+        "type": "readOnly"
+      }
+    },
+    "sandbox": {
+      "networkAccess": false,
+      "type": "readOnly"
+    },
+    "threadId": "01a1694a-7bdd-7d70-913d-d3dcef66c8ac"
+  },
+  "started_unix": 1792768286.1594741,
+  "ended_unix": 1792768306.3718517,
+  "exit": 0,
+  "stdout": {
+    "path": "/home/hruzam/ia-sync/.dev/session/germline-07-make-program/raw/experiment_1/direct/peer-a.stdout.txt",
+    "sha256": "c14175324295a945301b5bb3ee6e364e5843e18fb1686ab00b30b730ad5b029a"
+  },
+  "stderr": {
+    "path": "/home/hruzam/ia-sync/.dev/session/germline-07-make-program/raw/experiment_1/direct/peer-a.stderr.txt",
+    "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "state_after": {
+    "created": "2026-10-23T15:03:57Z",
+    "cwd": "/home/hruzam/ia-sync/.dev/session/germline-07-make-program",
+    "enabled": true,
+    "lastTurnId": "01a16951-2359-7a00-93f2-429f3a70fe15",
+    "model": "gpt-6.1-sol",
+    "runtime": {
+      "approvalPolicy": "never",
+      "cwd": "/home/hruzam/ia-sync/.dev/session/germline-07-make-program",
+      "instructionSources": [
+        "/home/hruzam/.codex/AGENTS.md",
+        "/home/hruzam/ia-sync/AGENTS.md"
+      ],
+      "model": "gpt-6.1-sol",
+      "observedAt": "2026-10-23T15:11:27Z",
+      "reasoningEffort": "xhigh",
+      "sandbox": {
+        "networkAccess": false,
+        "type": "readOnly"
+      }
+    },
+    "sandbox": {
+      "networkAccess": false,
+      "type": "readOnly"
+    },
+    "threadId": "01a1694a-7bdd-7d70-913d-d3dcef66c8ac"
+  },
+  "elapsed_seconds": 20.212
+}

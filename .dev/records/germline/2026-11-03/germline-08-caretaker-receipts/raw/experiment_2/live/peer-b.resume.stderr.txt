@@ -1,0 +1,1 @@
+resume: thread 01a175fc-7a38-7620-97e2-ab0c5409a502 status={'type': 'idle'} sandbox={'type': 'readOnly', 'networkAccess': False} effort=low cwd=/home/hruzam/ia-sync/.dev/session/germline-08-caretaker-receipts instructionSources=['/home/hruzam/.codex/AGENTS.md', '/home/hruzam/ia-sync/AGENTS.md']

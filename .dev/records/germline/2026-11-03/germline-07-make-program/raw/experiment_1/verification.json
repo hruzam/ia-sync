@@ -1,0 +1,45 @@
+{
+  "verified_by": "Cartan",
+  "independent_protocol_read_checks": [
+    {
+      "peer": "peer-a",
+      "argv": [
+        "/home/hruzam/ia-sync/zsh/ai/tunnel-codex.zsh",
+        "read",
+        "--state",
+        "/home/hruzam/ia-sync/.dev/session/germline-07-make-program/raw/experiment_1/caretaker/tunnel.peer-a.state.json"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 0.834,
+      "raw_response_sha256": "2b92fc49e1605eedf96c41b775b77411f7602f43a538cf292909f1cd29dbf839",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "thread_id": "01a1694a-7bdd-7d70-913d-d3dcef66c8ac",
+      "turn_count": 2,
+      "latest_turn_id": "01a16951-2359-7a00-93f2-429f3a70fe15",
+      "latest_status": "completed",
+      "reply_sha256": "351709e16ae84970c394c12fe53d05b7a22ca9a9482db5c45c16282e98aa418c",
+      "matches_direct_and_caretaker_selected_reply": true
+    },
+    {
+      "peer": "peer-b",
+      "argv": [
+        "/home/hruzam/ia-sync/zsh/ai/tunnel-codex.zsh",
+        "read",
+        "--state",
+        "/home/hruzam/ia-sync/.dev/session/germline-07-make-program/raw/experiment_1/caretaker/tunnel.peer-b.state.json"
+      ],
+      "exit": 0,
+      "elapsed_seconds": 0.839,
+      "raw_response_sha256": "bca155d79e1ba710312e40eacbcde0e0466f45844a418c98ac96da3ffa5faa1c",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "thread_id": "01a1694b-0c61-76f0-897c-fc3c66f665c0",
+      "turn_count": 2,
+      "latest_turn_id": "01a16951-2359-7d72-9e70-b9262e9df2f8",
+      "latest_status": "completed",
+      "reply_sha256": "feff762d9ea526a0206adb624fb18935832f571f454719779afda3785e4b1ff7",
+      "matches_direct_and_caretaker_selected_reply": true
+    }
+  ],
+  "additional_target_model_turns": 0,
+  "full_thread_history_persisted": false
+}

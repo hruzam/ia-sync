@@ -1,0 +1,92 @@
+{
+  "argv": [
+    "/home/hruzam/ia-sync/zsh/ai/tunnel-codex.zsh",
+    "resume",
+    "--state",
+    "/home/hruzam/ia-sync/.dev/session/germline-08-caretaker-receipts/raw/experiment_2/live/tunnel.peer-a.state.json"
+  ],
+  "codex_binary": "/home/hruzam/.local/bin/codex",
+  "codex_version": {
+    "argv": [
+      "/home/hruzam/.local/bin/codex",
+      "--version"
+    ],
+    "exit": 0,
+    "stderr": "",
+    "stdout": "codex-cli 0.164.0"
+  },
+  "elapsed_seconds": 0.981,
+  "ended_unix": 1792980841.226521,
+  "exit": 0,
+  "outputs": {
+    "stderr": {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-08-caretaker-receipts/raw/experiment_2/live/peer-a.resume.stderr.txt",
+      "sha256": "e2b983ab98546263115a5a9d387ae252ef56f19e19d0b778acc00bc550c9048e"
+    },
+    "stdout": {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-08-caretaker-receipts/raw/experiment_2/live/peer-a.resume.stdout.txt",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    }
+  },
+  "peer": "peer-a",
+  "precondition": null,
+  "requested": {
+    "effort": "low",
+    "model": "gpt-6.1-sol"
+  },
+  "runner": {
+    "pid": 1000432,
+    "start": "294632323"
+  },
+  "started_unix": 1792980840.2458332,
+  "state_after": {
+    "lastTurnId": "01a175fc-3853-7182-adbf-e1710a5f1ceb",
+    "model": "gpt-6.1-sol",
+    "runtime": {
+      "approvalPolicy": "never",
+      "cwd": "/home/hruzam/ia-sync/.dev/session/germline-08-caretaker-receipts",
+      "instructionSources": [
+        "/home/hruzam/.codex/AGENTS.md",
+        "/home/hruzam/ia-sync/AGENTS.md"
+      ],
+      "model": "gpt-6.1-sol",
+      "observedAt": "2026-10-26T02:14:01Z",
+      "reasoningEffort": "low",
+      "sandbox": {
+        "networkAccess": false,
+        "type": "readOnly"
+      }
+    },
+    "sandbox": {
+      "networkAccess": false,
+      "type": "readOnly"
+    },
+    "threadId": "01a175fc-379f-7c92-81cb-936d59e7ec06"
+  },
+  "state_before": {
+    "lastTurnId": "01a175fc-3853-7182-adbf-e1710a5f1ceb",
+    "model": "gpt-6.1-sol",
+    "runtime": {
+      "approvalPolicy": "never",
+      "cwd": "/home/hruzam/ia-sync/.dev/session/germline-08-caretaker-receipts",
+      "instructionSources": [
+        "/home/hruzam/.codex/AGENTS.md",
+        "/home/hruzam/ia-sync/AGENTS.md"
+      ],
+      "model": "gpt-6.1-sol",
+      "observedAt": "2026-10-26T02:13:46Z",
+      "reasoningEffort": "high",
+      "sandbox": {
+        "networkAccess": false,
+        "type": "readOnly"
+      }
+    },
+    "sandbox": {
+      "networkAccess": false,
+      "type": "readOnly"
+    },
+    "threadId": "01a175fc-379f-7c92-81cb-936d59e7ec06"
+  },
+  "status": "completed",
+  "verb": "resume"
+}

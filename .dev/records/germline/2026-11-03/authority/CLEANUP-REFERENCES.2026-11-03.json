@@ -1,0 +1,269 @@
+{
+  "kind": "scoped-literal-reference-inventory",
+  "date": "2026-11-03",
+  "scope": [
+    ".dev/session/germline-A3-guide-to-controller",
+    "_staging/codex/germline-whole-design.2026-10-29",
+    "_staging/codex/germline-reader-experiments.2026-11-03"
+  ],
+  "targets": [
+    "germline-02-guide-model-law",
+    "germline-04-wiring-plan",
+    "germline-05-sella-germline-audit",
+    "germline-06-full-audit",
+    "germline-07-make-program",
+    "germline-08-caretaker-receipts",
+    "germline-A4-reader-shapes",
+    "germline-A5-reader-navigation",
+    "germline-A9-reader-economy",
+    "germline-A6-harness-builder",
+    "germline-A7-shuttle-execution",
+    "germline-A8-epoch-researcher"
+  ],
+  "limits": "Literal matches in Markdown/HTML only; not an exhaustive backlink audit or an instruction to rewrite frozen/historical evidence. Archive destination and preservation remain with the cleanup team.",
+  "scanned_files": 18,
+  "references": [
+    {
+      "source": ".dev/session/germline-A3-guide-to-controller/RUNBOOK.md",
+      "line": 393,
+      "mentions": [
+        "germline-05-sella-germline-audit",
+        "germline-06-full-audit"
+      ],
+      "text": "| Accepted audits | `/home/hruzam/ia-sync/.dev/session/germline-05-sella-germline-audit/STATUS.md`, `/home/hruzam/ia-sync/.dev/session/germline-06-full-audit/STATUS.md`; follow decisions and evidence |"
+    },
+    {
+      "source": ".dev/session/germline-A3-guide-to-controller/RUNBOOK.md",
+      "line": 394,
+      "mentions": [
+        "germline-06-full-audit"
+      ],
+      "text": "| G06 foundation | `/home/hruzam/ia-sync/.dev/session/germline-06-full-audit/decisions/DEC.01.germline-identity-and-load-contract.md`; D1/D2/D4 and explicit dispositions |"
+    },
+    {
+      "source": ".dev/session/germline-A3-guide-to-controller/RUNBOOK.md",
+      "line": 395,
+      "mentions": [
+        "germline-06-full-audit"
+      ],
+      "text": "| G06 guide layering | `/home/hruzam/ia-sync/.dev/session/germline-06-full-audit/units/RESULT.U6.md`, `units/INTEGRATED.recommendations.md` relative to that bed |"
+    },
+    {
+      "source": ".dev/session/germline-A3-guide-to-controller/RUNBOOK.md",
+      "line": 398,
+      "mentions": [
+        "germline-07-make-program",
+        "germline-08-caretaker-receipts"
+      ],
+      "text": "| Existing specimens | `/home/hruzam/ia-sync/.dev/session/germline-07-make-program/STATUS.md`, `/home/hruzam/ia-sync/.dev/session/germline-08-caretaker-receipts/STATUS.md`, `/home/hruzam/ia-sync/.dev/session/germline-09-source-reader/STATUS.md`; follow result receipts and limits |"
+    },
+    {
+      "source": ".dev/session/germline-A3-guide-to-controller/raw/RETURN.oraculum.A5-navigation.2026-10-30.md",
+      "line": 9,
+      "mentions": [
+        "germline-A5-reader-navigation"
+      ],
+      "text": "[A5 RESULT](../../germline-A5-reader-navigation/RESULT.md), with"
+    },
+    {
+      "source": ".dev/session/germline-A3-guide-to-controller/raw/RETURN.oraculum.A5-navigation.2026-10-30.md",
+      "line": 10,
+      "mentions": [
+        "germline-A5-reader-navigation"
+      ],
+      "text": "[scores](../../germline-A5-reader-navigation/raw/SCORES.json),"
+    },
+    {
+      "source": ".dev/session/germline-A3-guide-to-controller/raw/RETURN.oraculum.A5-navigation.2026-10-30.md",
+      "line": 11,
+      "mentions": [
+        "germline-A5-reader-navigation"
+      ],
+      "text": "[checks](../../germline-A5-reader-navigation/raw/CHECKS.json) and"
+    },
+    {
+      "source": ".dev/session/germline-A3-guide-to-controller/raw/RETURN.oraculum.A5-navigation.2026-10-30.md",
+      "line": 12,
+      "mentions": [
+        "germline-A5-reader-navigation"
+      ],
+      "text": "[STATUS](../../germline-A5-reader-navigation/STATUS.md)."
+    },
+    {
+      "source": ".dev/session/germline-A3-guide-to-controller/raw/RETURN.oraculum.A5-navigation.2026-10-30.md",
+      "line": 54,
+      "mentions": [
+        "germline-A4-reader-shapes"
+      ],
+      "text": "  [A4's supplied-fact pilot](../../germline-A4-reader-shapes/RESULT.md)."
+    },
+    {
+      "source": ".dev/session/germline-A3-guide-to-controller/raw/reader-design/README.md",
+      "line": 106,
+      "mentions": [
+        "germline-06-full-audit"
+      ],
+      "text": "- Decisions: `/home/hruzam/ia-sync/.dev/session/germline-06-full-audit/decisions/DEC.01.germline-identity-and-load-contract.md`;"
+    },
+    {
+      "source": ".dev/session/germline-A3-guide-to-controller/raw/reader-design/README.md",
+      "line": 121,
+      "mentions": [
+        "germline-06-full-audit"
+      ],
+      "text": "> `/home/hruzam/ia-sync/.dev/session/germline-06-full-audit/decisions/DEC.01.germline-identity-and-load-contract.md`."
+    },
+    {
+      "source": "_staging/codex/germline-whole-design.2026-10-29/CONTINUITY.md",
+      "line": 46,
+      "mentions": [
+        "germline-06-full-audit"
+      ],
+      "text": "[G06 DEC.01](../../../.dev/session/germline-06-full-audit/decisions/DEC.01.germline-identity-and-load-contract.md)."
+    },
+    {
+      "source": "_staging/codex/germline-whole-design.2026-10-29/EVIDENCE.md",
+      "line": 75,
+      "mentions": [
+        "germline-07-make-program"
+      ],
+      "text": "- `/home/hruzam/ia-sync/.dev/session/germline-07-make-program/RUNBOOK.md`"
+    },
+    {
+      "source": "_staging/codex/germline-whole-design.2026-10-29/EVIDENCE.md",
+      "line": 77,
+      "mentions": [
+        "germline-07-make-program"
+      ],
+      "text": "- `/home/hruzam/ia-sync/.dev/session/germline-07-make-program/raw/experiment_1/RESULT.md`"
+    },
+    {
+      "source": "_staging/codex/germline-whole-design.2026-10-29/EVIDENCE.md",
+      "line": 134,
+      "mentions": [
+        "germline-05-sella-germline-audit"
+      ],
+      "text": "- `/home/hruzam/ia-sync/.dev/session/germline-05-sella-germline-audit/STATUS.md`"
+    },
+    {
+      "source": "_staging/codex/germline-whole-design.2026-10-29/EVIDENCE.md",
+      "line": 136,
+      "mentions": [
+        "germline-06-full-audit"
+      ],
+      "text": "- `/home/hruzam/ia-sync/.dev/session/germline-06-full-audit/STATUS.md`"
+    },
+    {
+      "source": "_staging/codex/germline-whole-design.2026-10-29/EVIDENCE.md",
+      "line": 138,
+      "mentions": [
+        "germline-06-full-audit"
+      ],
+      "text": "- `/home/hruzam/ia-sync/.dev/session/germline-06-full-audit/units/INTEGRATED.recommendations.md`"
+    },
+    {
+      "source": "_staging/codex/germline-whole-design.2026-10-29/EVIDENCE.md",
+      "line": 140,
+      "mentions": [
+        "germline-06-full-audit"
+      ],
+      "text": "- `/home/hruzam/ia-sync/.dev/session/germline-06-full-audit/units/RESULT.U6.md`"
+    },
+    {
+      "source": "_staging/codex/germline-whole-design.2026-10-29/EVIDENCE.md",
+      "line": 142,
+      "mentions": [
+        "germline-06-full-audit"
+      ],
+      "text": "- `/home/hruzam/ia-sync/.dev/session/germline-06-full-audit/decisions/DEC.01.germline-identity-and-load-contract.md`"
+    },
+    {
+      "source": "_staging/codex/germline-whole-design.2026-10-29/EVIDENCE.md",
+      "line": 144,
+      "mentions": [
+        "germline-06-full-audit"
+      ],
+      "text": "- `/home/hruzam/ia-sync/.dev/session/germline-06-full-audit/decisions/DEC.03.guide-layering.md`"
+    },
+    {
+      "source": "_staging/codex/germline-whole-design.2026-10-29/index.html",
+      "line": 150,
+      "mentions": [
+        "germline-07-make-program"
+      ],
+      "text": "    <li id=\"s5\">G07 <a href=\"../../../.dev/session/germline-07-make-program/RUNBOOK.md\">RUNBOOK</a> and <a href=\"../../../.dev/session/germline-07-make-program/raw/experiment_1/RESULT.md\">experiment result</a> · split hypothesis, observed caretaker behavior and limits.<code>.dev/session/germline-07-make-program/</code></li>"
+    },
+    {
+      "source": "_staging/codex/germline-whole-design.2026-10-29/index.html",
+      "line": 155,
+      "mentions": [
+        "germline-06-full-audit"
+      ],
+      "text": "    <li id=\"s10\">G06 <a href=\"../../../.dev/session/germline-06-full-audit/decisions/DEC.01.germline-identity-and-load-contract.md\">D1 / D2 / D4 accepted wording</a>, <a href=\"../../../.dev/session/germline-06-full-audit/units/INTEGRATED.recommendations.md\">integrated audit handoff</a> and <a href=\"../../../.dev/session/germline-06-full-audit/units/RESULT.U6.md\">GUIDE layering analysis</a> · acceptance of the audit is not acceptance of every proposed follow-up.<code>.dev/session/germline-06-full-audit/</code></li>"
+    },
+    {
+      "source": "_staging/codex/germline-reader-experiments.2026-11-03/EVALUATION.md",
+      "line": 39,
+      "mentions": [
+        "germline-A4-reader-shapes"
+      ],
+      "text": "| [A4: supplied facts](../../../.dev/session/germline-A4-reader-shapes/RESULT.md) | Four 12/12 responses; both ordinary tables and prose supported dependency, current-rule and recovery distinctions. | A presentation winner, general equivalence, autonomous discovery or economy. One subject reported inherited Oraculum loading; parent/contributor scoring was not independent. | `qualified-baseline` — recommend accepting the bounded result |"
+    },
+    {
+      "source": "_staging/codex/germline-reader-experiments.2026-11-03/EVALUATION.md",
+      "line": 40,
+      "mentions": [
+        "germline-A5-reader-navigation"
+      ],
+      "text": "| [A5: distributed evidence](../../../.dev/session/germline-A5-reader-navigation/RESULT.md) | Four 12/12 responses; each retrieved six relevant documents in three rounds and applied them correctly. | Selection efficiency: six of seven documents mattered, and the distractor was explicitly historical. Reader-04's supplemental messages qualify protocol compliance. | `qualified-navigation` — recommend accepting the bounded result |"
+    },
+    {
+      "source": "_staging/codex/germline-reader-experiments.2026-11-03/EVALUATION.md",
+      "line": 41,
+      "mentions": [
+        "germline-A9-reader-economy"
+      ],
+      "text": "| [A9: selective versus full reading](../../../.dev/session/germline-A9-reader-economy/RESULT.md) | Adjudicated identity pair maintains semantic correctness with 48.8% less stored input but 23.9% more visible-history exposure; the other pairs remain incomplete. Useful observations of omitted citations, early termination and request/answer confusion. | Clean maintained-correctness economy, awareness of the undisclosed contrary summary, general inferiority of selective reading, actual monetary savings or crawler benefit. Outside-read effects and actual native payload carriage remain unverified. | `qualified-mixed-evidence; scoring-adjudicated` — recommend accepting the bounded result |"
+    },
+    {
+      "source": "_staging/codex/germline-reader-experiments.2026-11-03/EVALUATION.md",
+      "line": 49,
+      "mentions": [
+        "germline-A9-reader-economy"
+      ],
+      "text": "Scores below incorporate [Cartan's adjudication](../../../.dev/session/germline-A9-reader-economy/raw/SCORING-ADDENDUM.md)."
+    },
+    {
+      "source": "_staging/codex/germline-reader-experiments.2026-11-03/EVALUATION.md",
+      "line": 83,
+      "mentions": [
+        "germline-A9-reader-economy"
+      ],
+      "text": "[RUBRIC](../../../.dev/session/germline-A9-reader-economy/raw/RUBRIC.json),"
+    },
+    {
+      "source": "_staging/codex/germline-reader-experiments.2026-11-03/EVALUATION.md",
+      "line": 84,
+      "mentions": [
+        "germline-A9-reader-economy"
+      ],
+      "text": "[SCORES](../../../.dev/session/germline-A9-reader-economy/raw/SCORES.json) and original"
+    },
+    {
+      "source": "_staging/codex/germline-reader-experiments.2026-11-03/EVALUATION.md",
+      "line": 92,
+      "mentions": [
+        "germline-A9-reader-economy"
+      ],
+      "text": "However, its [initial task/index](../../../.dev/session/germline-A9-reader-economy/raw/messages/reader-03.txt)"
+    },
+    {
+      "source": "_staging/codex/germline-reader-experiments.2026-11-03/EVALUATION.md",
+      "line": 141,
+      "mentions": [
+        "germline-A9-reader-economy"
+      ],
+      "text": "/home/hruzam/ia-sync/.dev/session/germline-A9-reader-economy/raw/SCORING-ADDENDUM.md"
+    }
+  ]
+}

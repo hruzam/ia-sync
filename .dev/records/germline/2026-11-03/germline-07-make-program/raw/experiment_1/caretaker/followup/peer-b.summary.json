@@ -1,0 +1,130 @@
+{
+  "expected": {
+    "latestTurnId": "01a16951-2359-7d72-9e70-b9262e9df2f8",
+    "marker": "experiment_1.peer-b.direct",
+    "threadId": "01a1694b-0c61-76f0-897c-fc3c66f665c0"
+  },
+  "peer": "peer-b",
+  "read": {
+    "argv": [
+      "/home/hruzam/ia-sync/zsh/ai/tunnel-codex.zsh",
+      "read",
+      "--state",
+      "/home/hruzam/ia-sync/.dev/session/germline-07-make-program/raw/experiment_1/caretaker/tunnel.peer-b.state.json"
+    ],
+    "elapsed_seconds": 0.895,
+    "ended_unix": 1792768497.0625849,
+    "exit": 0,
+    "started_unix": 1792768496.1680245,
+    "stderr_path": "/home/hruzam/ia-sync/.dev/session/germline-07-make-program/raw/experiment_1/caretaker/followup/peer-b.read.stderr.txt",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "stdout_bytes": 109591,
+    "stdout_sha256": "bca155d79e1ba710312e40eacbcde0e0466f45844a418c98ac96da3ffa5faa1c"
+  },
+  "read_selected": {
+    "agentReply": "experiment_1.peer-b.direct\n\n`open` validates sandbox/cwd ([622\u2013631](/home/hruzam/ia-sync/zsh/ai/tunnel-codex.py:622)). For a new vault, it preflights app-server startup, initialization, `account/read`, and `model/list` ([666\u2013674](/home/hruzam/ia-sync/zsh/ai/tunnel-codex.py:666)), then saves `threadId:null` or a supplied existing ID without resuming it ([678\u2013703](/home/hruzam/ia-sync/zsh/ai/tunnel-codex.py:678)). Reopening an unborn vault returns; an existing thread is initialized/resumed ([728\u2013752](/home/hruzam/ia-sync/zsh/ai/tunnel-codex.py:728)).\n\nOn first `send`/`ask`, `_birth_or_resume` calls `thread/start` when the ID is null, assigning the returned ID **in memory** ([847\u2013857](/home/hruzam/ia-sync/zsh/ai/tunnel-codex.py:847)).\n\nPersistence follows successful turn completion and reconciliation ([879\u2013885](/home/hruzam/ia-sync/zsh/ai/tunnel-codex.py:879), [946\u2013952](/home/hruzam/ia-sync/zsh/ai/tunnel-codex.py:946)); `save_state` writes temporary JSON and replaces the state file ([609\u2013614](/home/hruzam/ia-sync/zsh/ai/tunnel-codex.py:609)).\n\nA first-turn timeout ([485\u2013491](/home/hruzam/ia-sync/zsh/ai/tunnel-codex.py:485)) or reconciliation exception ([521\u2013534](/home/hruzam/ia-sync/zsh/ai/tunnel-codex.py:521)) can therefore leave the saved ID null despite server-side creation or processing. Null does not establish non-execution; retrying can create another thread. `ask`\u2019s later text mismatch occurs **after saving** ([952\u2013959](/home/hruzam/ia-sync/zsh/ai/tunnel-codex.py:952)).\n\nThis is static analysis; no runtime failure was observed.",
+    "agentReply_sha256": "feff762d9ea526a0206adb624fb18935832f571f454719779afda3785e4b1ff7",
+    "expectedTurnIndex": 1,
+    "latestTurnId": "01a16951-2359-7d72-9e70-b9262e9df2f8",
+    "markerPresent": true,
+    "matchesStoredDirectReply": true,
+    "raw_response_sha256": "bca155d79e1ba710312e40eacbcde0e0466f45844a418c98ac96da3ffa5faa1c",
+    "storedDirectReply_sha256": "feff762d9ea526a0206adb624fb18935832f571f454719779afda3785e4b1ff7",
+    "threadId": "01a1694b-0c61-76f0-897c-fc3c66f665c0",
+    "threadStatus": {
+      "type": "notLoaded"
+    },
+    "turnCount": 2,
+    "turnIds_sha256": "611e8e88afec3a4a696e3f670314dc0b6689ec1e80c5d5ed7702462e46007c32",
+    "turnStatus": "completed",
+    "turnsAfterExpected": 0
+  },
+  "resume": {
+    "argv": [
+      "/home/hruzam/ia-sync/zsh/ai/tunnel-codex.zsh",
+      "resume",
+      "--state",
+      "/home/hruzam/ia-sync/.dev/session/germline-07-make-program/raw/experiment_1/caretaker/tunnel.peer-b.state.json"
+    ],
+    "elapsed_seconds": 1.133,
+    "ended_unix": 1792768496.167372,
+    "exit": 0,
+    "started_unix": 1792768495.034264,
+    "stderr_path": "/home/hruzam/ia-sync/.dev/session/germline-07-make-program/raw/experiment_1/caretaker/followup/peer-b.resume.stderr.txt",
+    "stderr_sha256": "7c123114f47fb98d02a68641dbcebfe5f1b0370105077942affa05945f3dd7c5",
+    "stdout_bytes": 0,
+    "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "state_after_read": {
+    "lastTurnId": "01a16951-2359-7d72-9e70-b9262e9df2f8",
+    "model": "gpt-6.1-sol",
+    "runtime": {
+      "approvalPolicy": "never",
+      "cwd": "/home/hruzam/ia-sync/.dev/session/germline-07-make-program",
+      "instructionSources": [
+        "/home/hruzam/.codex/AGENTS.md",
+        "/home/hruzam/ia-sync/AGENTS.md"
+      ],
+      "model": "gpt-6.1-sol",
+      "observedAt": "2026-10-23T15:14:56Z",
+      "reasoningEffort": "xhigh",
+      "sandbox": {
+        "networkAccess": false,
+        "type": "readOnly"
+      }
+    },
+    "sandbox": {
+      "networkAccess": false,
+      "type": "readOnly"
+    },
+    "threadId": "01a1694b-0c61-76f0-897c-fc3c66f665c0"
+  },
+  "state_after_resume": {
+    "lastTurnId": "01a16951-2359-7d72-9e70-b9262e9df2f8",
+    "model": "gpt-6.1-sol",
+    "runtime": {
+      "approvalPolicy": "never",
+      "cwd": "/home/hruzam/ia-sync/.dev/session/germline-07-make-program",
+      "instructionSources": [
+        "/home/hruzam/.codex/AGENTS.md",
+        "/home/hruzam/ia-sync/AGENTS.md"
+      ],
+      "model": "gpt-6.1-sol",
+      "observedAt": "2026-10-23T15:14:56Z",
+      "reasoningEffort": "xhigh",
+      "sandbox": {
+        "networkAccess": false,
+        "type": "readOnly"
+      }
+    },
+    "sandbox": {
+      "networkAccess": false,
+      "type": "readOnly"
+    },
+    "threadId": "01a1694b-0c61-76f0-897c-fc3c66f665c0"
+  },
+  "state_before": {
+    "lastTurnId": "01a16951-2359-7d72-9e70-b9262e9df2f8",
+    "model": "gpt-6.1-sol",
+    "runtime": {
+      "approvalPolicy": "never",
+      "cwd": "/home/hruzam/ia-sync/.dev/session/germline-07-make-program",
+      "instructionSources": [
+        "/home/hruzam/.codex/AGENTS.md",
+        "/home/hruzam/ia-sync/AGENTS.md"
+      ],
+      "model": "gpt-6.1-sol",
+      "observedAt": "2026-10-23T15:11:27Z",
+      "reasoningEffort": "xhigh",
+      "sandbox": {
+        "networkAccess": false,
+        "type": "readOnly"
+      }
+    },
+    "sandbox": {
+      "networkAccess": false,
+      "type": "readOnly"
+    },
+    "threadId": "01a1694b-0c61-76f0-897c-fc3c66f665c0"
+  }
+}

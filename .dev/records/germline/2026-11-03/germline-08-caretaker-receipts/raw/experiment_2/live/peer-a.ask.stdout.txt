@@ -1,0 +1,7 @@
+experiment_2.peer-a.low
+
+- **`open --enable`** establishes the operator-opened table and enable gate. It is “preflight only, no thread yet” (GUIDE.md:36). Seats may drive verbs afterward; the gate checks presence, not authorization, and cannot distinguish operator from seat (94–97).
+- **Thread birth:** the first `send` creates the thread, at `--cwd` if supplied (37). The lineage explicitly says zero-turn `thread/start` leaves no rollout (137–138). Opening with `--thread` instead binds an existing thread through a local declaration, with no server resume (44).
+- **Recovery after uncertain completion:** `tun read` re-fetches the thread without a turn and is explicitly called the recovery primitive (39). A reconciliation mismatch must be recorded, never silently retried (74); an in-flight turn permits waiting or reading (75–76).
+- **Preflight versus completed work:** yes—the GUIDE separates preflight (36) from send results and `ask`’s reconciled, verified result (37–38). It does **not** provide a dedicated uncertain-completion decision procedure or establish that a verified response proves the requested task succeeded.
+[usage: {"total":{"totalTokens":44734,"inputTokens":44403,"cachedInputTokens":27648,"cacheWriteInputTokens":0,"outputTokens":331,"reasoningOutputTokens":0},"last":{"totalTokens":24112,"inputTokens":23858,"cachedInputTokens":20480,"cacheWriteInputTokens":0,"outputTokens":254,"reasoningOutputTokens":0},"modelContextWindow":475000}]

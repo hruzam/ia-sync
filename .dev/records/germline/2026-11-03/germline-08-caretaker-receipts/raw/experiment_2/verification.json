@@ -1,0 +1,227 @@
+{
+  "experiment": "experiment_2",
+  "verified_by": "Cartan",
+  "source_hashes": [
+    {
+      "path": "/home/hruzam/ia-sync/zsh/ai/tunnel-codex.py",
+      "matches": true
+    },
+    {
+      "path": "/home/hruzam/ia-sync/zsh/ai/tunnel-codex.zsh",
+      "matches": true
+    },
+    {
+      "path": "/home/hruzam/reposoma/raw.guides/tunnel/GUIDE.md",
+      "matches": true
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-08-caretaker-receipts/raw/experiment_2/receipt_runner.py",
+      "matches": true
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-08-caretaker-receipts/raw/experiment_2/test_receipt_runner.py",
+      "matches": true
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-08-caretaker-receipts/raw/experiment_2/QUALITY.md",
+      "matches": true
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-08-caretaker-receipts/raw/experiment_2/live/peer-a.prompt.txt",
+      "matches": true
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-08-caretaker-receipts/raw/experiment_2/live/peer-b.prompt.txt",
+      "matches": true
+    },
+    {
+      "path": "/home/hruzam/ia-sync/.dev/session/germline-08-caretaker-receipts/_bus/02.cartan.point.md",
+      "matches": true
+    }
+  ],
+  "rows": [
+    {
+      "peer": "peer-a",
+      "resume": {
+        "argv": [
+          "/home/hruzam/ia-sync/zsh/ai/tunnel-codex.zsh",
+          "resume",
+          "--state",
+          "/home/hruzam/ia-sync/.dev/session/germline-08-caretaker-receipts/raw/experiment_2/live/tunnel.peer-a.state.json"
+        ],
+        "exit": 0,
+        "elapsed_seconds": 0.848,
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr_sha256": "e2b983ab98546263115a5a9d387ae252ef56f19e19d0b778acc00bc550c9048e",
+        "stderr": "resume: thread 01a175fc-379f-7c92-81cb-936d59e7ec06 status={'type': 'idle'} sandbox={'type': 'readOnly', 'networkAccess': False} effort=low cwd=/home/hruzam/ia-sync/.dev/session/germline-08-caretaker-receipts instructionSources=['/home/hruzam/.codex/AGENTS.md', '/home/hruzam/ia-sync/AGENTS.md']\n"
+      },
+      "read": {
+        "argv": [
+          "/home/hruzam/ia-sync/zsh/ai/tunnel-codex.zsh",
+          "read",
+          "--state",
+          "/home/hruzam/ia-sync/.dev/session/germline-08-caretaker-receipts/raw/experiment_2/live/tunnel.peer-a.state.json"
+        ],
+        "exit": 0,
+        "elapsed_seconds": 0.701,
+        "stdout_sha256": "0eb65551681ee3fa0c3d7c322e9bf762d828e560e33208bd755bb2846857ca60",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": ""
+      },
+      "runtime": {
+        "approvalPolicy": "never",
+        "cwd": "/home/hruzam/ia-sync/.dev/session/germline-08-caretaker-receipts",
+        "instructionSources": [
+          "/home/hruzam/.codex/AGENTS.md",
+          "/home/hruzam/ia-sync/AGENTS.md"
+        ],
+        "model": "gpt-6.1-sol",
+        "observedAt": "2026-10-26T02:15:09Z",
+        "reasoningEffort": "low",
+        "sandbox": {
+          "networkAccess": false,
+          "type": "readOnly"
+        }
+      },
+      "state_thread_id": "01a175fc-379f-7c92-81cb-936d59e7ec06",
+      "state_last_turn_id": "01a175fc-3853-7182-adbf-e1710a5f1ceb",
+      "identity_unchanged": true,
+      "thread_id": "01a175fc-379f-7c92-81cb-936d59e7ec06",
+      "turn_count": 1,
+      "turn_id": "01a175fc-3853-7182-adbf-e1710a5f1ceb",
+      "turn_status": "completed",
+      "agent_reply": "experiment_2.peer-a.low\n\n- **`open --enable`** establishes the operator-opened table and enable gate. It is \u201cpreflight only, no thread yet\u201d (GUIDE.md:36). Seats may drive verbs afterward; the gate checks presence, not authorization, and cannot distinguish operator from seat (94\u201397).\n- **Thread birth:** the first `send` creates the thread, at `--cwd` if supplied (37). The lineage explicitly says zero-turn `thread/start` leaves no rollout (137\u2013138). Opening with `--thread` instead binds an existing thread through a local declaration, with no server resume (44).\n- **Recovery after uncertain completion:** `tun read` re-fetches the thread without a turn and is explicitly called the recovery primitive (39). A reconciliation mismatch must be recorded, never silently retried (74); an in-flight turn permits waiting or reading (75\u201376).\n- **Preflight versus completed work:** yes\u2014the GUIDE separates preflight (36) from send results and `ask`\u2019s reconciled, verified result (37\u201338). It does **not** provide a dedicated uncertain-completion decision procedure or establish that a verified response proves the requested task succeeded.",
+      "reply_sha256": "6e77b79ba27e48f122062aaf76885d16a87222b2e12128e20e86284433a85d09",
+      "stored_stdout_sha256": "c755816b3692b293ee50fa75cb45a0fc094fa257c32031f84e9f2bfe4004a522",
+      "exact_reply_match": true,
+      "marker_matches": true,
+      "final_word_count": 156,
+      "usage": {
+        "total": {
+          "totalTokens": 44734,
+          "inputTokens": 44403,
+          "cachedInputTokens": 27648,
+          "cacheWriteInputTokens": 0,
+          "outputTokens": 331,
+          "reasoningOutputTokens": 0
+        },
+        "last": {
+          "totalTokens": 24112,
+          "inputTokens": 23858,
+          "cachedInputTokens": 20480,
+          "cacheWriteInputTokens": 0,
+          "outputTokens": 254,
+          "reasoningOutputTokens": 0
+        },
+        "modelContextWindow": 475000
+      },
+      "item_types": {
+        "userMessage": 1,
+        "agentMessage": 2,
+        "commandExecution": 1
+      },
+      "command_count": 1,
+      "task_source_command_count": 1,
+      "task_commands": [
+        {
+          "command": "/usr/bin/zsh -lc \"nl -ba /home/hruzam/reposoma/raw.guides/tunnel/GUIDE.md | sed -n '1,180p'\"",
+          "exitCode": 0,
+          "output_lines": 142
+        }
+      ]
+    },
+    {
+      "peer": "peer-b",
+      "resume": {
+        "argv": [
+          "/home/hruzam/ia-sync/zsh/ai/tunnel-codex.zsh",
+          "resume",
+          "--state",
+          "/home/hruzam/ia-sync/.dev/session/germline-08-caretaker-receipts/raw/experiment_2/live/tunnel.peer-b.state.json"
+        ],
+        "exit": 0,
+        "elapsed_seconds": 0.87,
+        "stdout_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr_sha256": "b86207794dff7cf4c2c308ff6a0f5df8e60781afbed53cfbaac6b621d529014b",
+        "stderr": "resume: thread 01a175fc-7a38-7620-97e2-ab0c5409a502 status={'type': 'idle'} sandbox={'type': 'readOnly', 'networkAccess': False} effort=low cwd=/home/hruzam/ia-sync/.dev/session/germline-08-caretaker-receipts instructionSources=['/home/hruzam/.codex/AGENTS.md', '/home/hruzam/ia-sync/AGENTS.md']\n"
+      },
+      "read": {
+        "argv": [
+          "/home/hruzam/ia-sync/zsh/ai/tunnel-codex.zsh",
+          "read",
+          "--state",
+          "/home/hruzam/ia-sync/.dev/session/germline-08-caretaker-receipts/raw/experiment_2/live/tunnel.peer-b.state.json"
+        ],
+        "exit": 0,
+        "elapsed_seconds": 0.636,
+        "stdout_sha256": "9335f2fb6b94fb0dc7e62653cdde97e3204516520a683b881d55ed663bb95612",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "stderr": ""
+      },
+      "runtime": {
+        "approvalPolicy": "never",
+        "cwd": "/home/hruzam/ia-sync/.dev/session/germline-08-caretaker-receipts",
+        "instructionSources": [
+          "/home/hruzam/.codex/AGENTS.md",
+          "/home/hruzam/ia-sync/AGENTS.md"
+        ],
+        "model": "gpt-6.1-sol",
+        "observedAt": "2026-10-26T02:15:11Z",
+        "reasoningEffort": "low",
+        "sandbox": {
+          "networkAccess": false,
+          "type": "readOnly"
+        }
+      },
+      "state_thread_id": "01a175fc-7a38-7620-97e2-ab0c5409a502",
+      "state_last_turn_id": "01a175fc-7aa5-74e1-b6dd-722aaff5dc51",
+      "identity_unchanged": true,
+      "thread_id": "01a175fc-7a38-7620-97e2-ab0c5409a502",
+      "turn_count": 1,
+      "turn_id": "01a175fc-7aa5-74e1-b6dd-722aaff5dc51",
+      "turn_status": "completed",
+      "agent_reply": "experiment_2.peer-b.low\n\nSource findings in `/home/hruzam/ia-sync/zsh/ai/tunnel-codex.py`:\n\n- `open` performs preflight: starts transport, initializes, reads account and lists models (666\u2013674). It initializes `threadId: None` (680) and saves state (703); it creates no thread. Explicit binding stores an existing ID (692\u2013701).\n- `_birth_or_resume` creates a thread through `session.thread_start` (847\u2013852), extracts and validates its ID (853\u2013856), then assigns it to in-memory state (857).\n- The new ID reaches disk only after turn driving and reconciliation: `send` at 879\u2013885; `ask` at 946\u2013952. `save_state` writes a temporary JSON file and replaces the destination (609\u2013614).\n\nIf first-turn driving times out, or reconciliation raises, control skips that save. A server-side thread\u2014and possibly a running or completed turn\u2014may therefore exist while disk still records a null ID. A retry could create another thread; these windows cannot establish the server\u2019s outcome.\n\nAn `ask` text mismatch differs: it raises at 958\u2013962, **after** persistence at 952.\n\nThis is a source-derived failure possibility, not an observed runtime failure. No code was executed.",
+      "reply_sha256": "e02c00e8329a8b0c0dbbb7fdba97960836e56d52d06d890cb87b9f4dbf7ee686",
+      "stored_stdout_sha256": "69f80303d71ef45e5024df2a3a6a78cfeea74f04da25d606b558b70d661cb17b",
+      "exact_reply_match": true,
+      "marker_matches": true,
+      "final_word_count": 159,
+      "usage": {
+        "total": {
+          "totalTokens": 44789,
+          "inputTokens": 44418,
+          "cachedInputTokens": 27648,
+          "cacheWriteInputTokens": 0,
+          "outputTokens": 371,
+          "reasoningOutputTokens": 0
+        },
+        "last": {
+          "totalTokens": 24111,
+          "inputTokens": 23834,
+          "cachedInputTokens": 20480,
+          "cacheWriteInputTokens": 0,
+          "outputTokens": 277,
+          "reasoningOutputTokens": 0
+        },
+        "modelContextWindow": 475000
+      },
+      "item_types": {
+        "userMessage": 1,
+        "agentMessage": 2,
+        "commandExecution": 1
+      },
+      "command_count": 1,
+      "task_source_command_count": 1,
+      "task_commands": [
+        {
+          "command": "/usr/bin/zsh -lc \"nl -ba /home/hruzam/ia-sync/zsh/ai/tunnel-codex.py | sed -n '602,614p;621,718p;842,889p;929,967p'\"",
+          "exitCode": 0,
+          "output_lines": 198
+        }
+      ]
+    }
+  ],
+  "distinct_new_ids": true,
+  "additional_target_turns": 0,
+  "whole_route_usage": "unavailable"
+}
