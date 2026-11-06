@@ -74,8 +74,6 @@ export PROJECT_NAB_PATH="$HOME/unikuklatrix/nablarva"
 # Session (vibe-code sessions)
 export PROJECT_SES_PATH="$HOME/www/larva_dev/dev"
 export PROJECT_SES_NAME="vibe-code sessions"
-export PROJECT_SES_ZSH="session-helpers.zsh"
-export PROJECT_SES_TOOLKIT="session-helpers.zsh"
 export PROJECT_SES_SHARED_SRC="$HOME/www/larva_dev/dev/.shared"
 export PROJECT_SES_SHARED_DST="$HOME/www/larva_dev/dev/shared"
 export PROJECT_SES_MAJKEE_SRC="$HOME/www/larva_dev/dev/.majkee"
@@ -116,7 +114,6 @@ fi
 # Larva FROM 2026-02-28
 # =============================================================================
 
-[[ -f ~/.config/zsh/larva.zsh ]] && source ~/.config/zsh/larva.zsh
 [[ -f ~/.config/zsh/krfb.zsh ]] && source ~/.config/zsh/krfb.zsh
 # Secrets: .env/ vault layout (unified with office 2026-07-31 — flat secrets.zsh retired,
 # was stale May-era keys; .env/ materialized from zsh/env.vault.age via env-vault open)
@@ -130,14 +127,14 @@ fi
 # nablarva scope (nab-* project verbs — wired 2026-09-04)
 [[ -f ~/.config/zsh/nablarva/base.zsh ]] && source ~/.config/zsh/nablarva/base.zsh
 
+# EXPERIMENTAL BRICK SCOPE (same interactive scope as office)
+[[ -f ~/.config/zsh/experimental/base.zsh ]] && source ~/.config/zsh/experimental/base.zsh
+
 # session scope — session-layer instruments umbrella (runbook browser; reserved:
 # cold-start cards, presence dashboard). RB_ROOT = default .dev/session/ bench;
 # repoint here when the primary bench moves. rb-open <path> targets any other tree.
 export RB_ROOT="$HOME/ia-sync/.dev/session"  # bench repointed 2026-09-09 (bed move, majkee)
 [[ -f ~/.config/zsh/session/base.zsh ]] && source ~/.config/zsh/session/base.zsh
-
-[[ -f ~/.config/zsh/session-helpers.zsh ]] && source ~/.config/zsh/session-helpers.zsh
-[[ -f ~/.config/zsh/env-sync.zsh ]] && source ~/.config/zsh/env-sync.zsh
 
 # =============================================================================
 # TAILSCALE — system scope (engine + keyboard, via system/base.zsh — WP5)
@@ -171,3 +168,13 @@ export PIQL_PORT="0"                   # update to match office piql.env.zsh por
 
 if [ -f '/home/hruzam/google-cloud-sdk/path.zsh.inc' ]; then . '/home/hruzam/google-cloud-sdk/path.zsh.inc'; fi
 if [ -f '/home/hruzam/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/hruzam/google-cloud-sdk/completion.zsh.inc'; fi
+
+# Personal scratch aliases — volatile, uncanonical; edit CMD.zsh beside CMD.md.
+# Keep this interactive-only; a missing or syntactically broken file is skipped.
+if [[ -o interactive && -r "$HOME/reposoma/.majkee/helpers/cmd/CMD.zsh" ]]; then
+    if zsh -fn "$HOME/reposoma/.majkee/helpers/cmd/CMD.zsh"; then
+        source "$HOME/reposoma/.majkee/helpers/cmd/CMD.zsh"
+    else
+        print -u2 -- '[cmd] CMD.zsh has a syntax error; skipped'
+    fi
+fi

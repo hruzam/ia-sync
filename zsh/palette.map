@@ -131,8 +131,6 @@ root	shstat	show source/mirror file counts + latest-modified for all pairs	share
 root	shsyntax	print active.md syntax pointer from the shared mirror	shared-toolkit.zsh
 root	smart_commit	Usage: smart_commit "alpha" "Initial refactor"	git-lifecycle.zsh
 root	tinker	php artisan tinker REPL	project-switcher.zsh
-sync	sync-guides	one-way publish: project guides -> reposoma raw.guides mirror	sync/guides.zsh
-sync	sync-help	this panel	sync/guides.zsh
 system	cod	PHP uniqid	system/keyboard.zsh
 system	composer74	Composer on PHP 7.4	system/home.php-composer.zsh
 system	composer8	Composer on PHP 8+	system/home.php-composer.zsh

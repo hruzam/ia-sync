@@ -51,6 +51,7 @@ Pattern, generalized from `ai/` (the reference implementation):
 | `git-lifecycle.zsh` | `.zshrc` | `smart_commit`, phase symbols, `git_phases` |
 | `projects/session.zsh` | `config.zsh` | `session_core_repomix` helper; also sources `session-meassure.zsh` |
 | `session-meassure.zsh` | `projects/session.zsh` | Session measurement helpers |
+| `CMD.zsh` (outside this repo) | `config.<machine>.zsh` on both hosts | Personal scratch aliases; interactive-only and syntax-checked before source |
 | `projects/larva.zsh` | `project-switcher.zsh` on demand (`lrv`) | LARVA aliases and agent tools (startup copy archived 2026-07-07) |
 | `projects/fo-toolkit.zsh` | `project-switcher.zsh` on demand | FantasyObchod commands; `fo -db` uses `.env/fo-db.cnf` |
 | `projects/im-toolkit.zsh` | `project-switcher.zsh` on demand | Freya/Imago commands |
@@ -62,7 +63,6 @@ Pattern, generalized from `ai/` (the reference implementation):
 | `experimental/base.zsh` | `config.zsh` | **experimental brick scope signpost** — sibling of ai/, promoted out of `ai/experimental/` 2026-09-22 (hiding bricks inside ai/ made orphans). Two brick kinds (LAW — see README Contract): P1 keyboard + P2 dispatcher engine → **lazy runners** (`experimental/<id>/runner.zsh`, resolved on demand via `exp-run`, cannot break shell startup); P3 → **sourced bricks** (`experimental/<id>/<id>.zsh`, explicit-name + `zsh -n`-gated wiring — e.g. `t41`, tmux session-fold). Head carries the MAINTAINER LOG (per-brick plug date · origin · approval status — experimental-only until majkee approves). Contract: `experimental/README.md` |
 | `session/base.zsh` | `config.zsh` | **session scope signpost** — session-layer instruments umbrella (founded 2026-09-06, majkee gavel; rescoped out of nablarva/). P1 keyboard (`rb-*`), P2 runbook browser engine (`session/runbook.zsh` + `session/runbook.py` TUI, browses any `.dev/session/` tree; default bench = `$RB_ROOT` exported by config; `session/help/` holds the in-TUI browsable help tree, `?` key). P5 **ovitmugen** (added 2026-09-25): `session/ovitmugen.zsh` engine + `session/ovitmugen.py` (tmux manager, layout C — frame server `tmux -L ovitmugen` with its own `ovitmugen.tmux.conf`, agents stay on the default server; presets `ovitmugen.presets.json`; help scope `session/help/ovitmugen/`; aliases `ov-*` in `session/keyboard.zsh` P6; `ov-selftest` = isolated servers). Views only — never send-keys. Design: `~/unikuklatrix/nablarva/.dev/session/ovitmugen-00-console/raw/`. P6 **tunnel manager** (added 2026-10-04): `session/tunnel.zsh` engine, `tn-*` aliases in `session/keyboard.zsh` P6 — vault on/off/use/list per bed (`<bed>/tunnel[.<name>].state.json`, one vault = one Codex thread; the JSON-RPC shim stays in `ai/tunnel-codex.*`). Reserved partitions: cold-start cards (needs temple gate on ai/base.zsh), presence dashboard (pending research) |
 | `piql/piql.zsh` | `config.zsh` | PIQL integration (office only) |
-| `sync/guides.zsh` | `config.zsh` | Guide-publish synchronizer |
 | `archx/commands.zsh` | `config.zsh` | Arch monitoring suite |
 | `system/shell.zsh` | `config.zsh` | Shell helpers |
 | `system/home.php-composer.zsh` | `system/base.zsh` on home | `_php74 / _php8 / _phpst / _composer74 / _composer8` — Docker PHP 7.4 + both Composer lanes; native PHP 8+ |
@@ -177,7 +177,7 @@ Archived by majkee 2026-07-07 (plus earlier `substrate.*` parks):
 | `larva.zsh` | Former startup copy; identical to live `projects/larva.zsh` |
 | `session-helpers.zsh`, `session-syntax.zsh` | Superseded by `projects/session.zsh` + `session-meassure.zsh` |
 | `ai-agents.registry.json` | ⚠ home's `ai-lifecycle.zsh` reads `~/.config/zsh/ai-agents.registry.json` — the home seat must verify home before the repo copy is dropped |
-| `env-sync.zsh` | Deprecated tool (sync.deny'd; `.zshrc` source line removed 2026-06-30) |
+| `env-sync.zsh` | Deprecated tool (sync.deny'd; no active source lines) |
 | `project-switcher.home.zsh`, `project-switcher.office.zsh` | Old split variants; unified `project-switcher.zsh` is live |
 | `tasks.js` | larva-era task registry (from `registries/`); sole consumer `ai-lifecycle.zsh:347` (UNCERTAIN/home-only) — ⚠ the home seat must verify home before any repo-copy drop. Archived 2026-07-11 |
 | `larva/` (broadcast.sh · consult.sh · slices.sh · laika.sh) | larva project buried (temple legacy wall); unreferenced on office — ⚠ home seat to verify. Archived 2026-07-11 |

@@ -175,9 +175,6 @@ export RB_ROOT="$HOME/ia-sync/.dev/session"  # bench repointed 2026-09-09 (bed m
 # live in piql/base.zsh, MACHINE_NAME-guarded — see that file's header)
 [[ -f ~/.config/zsh/piql/base.zsh ]] && source ~/.config/zsh/piql/base.zsh
 
-#GUIDE-PUBLISH SYNCHRONIZER
-[[ -f ~/.config/zsh/sync/base.zsh ]] && source ~/.config/zsh/sync/base.zsh
-
 # FREYA PROJECT OPS (buffer + devenv buses — thin wrappers over freya.devenv scripts)
 [[ -f ~/.config/zsh/freya/base.zsh ]] && source ~/.config/zsh/freya/base.zsh
 

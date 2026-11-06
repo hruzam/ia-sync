@@ -10,6 +10,32 @@
 
 ---
 
+## HOME — 2026-11-06 · ZSH scope cleanup
+
+Retired the `sync-guides` scope from both authored machine configs: office no longer
+sources `sync/base.zsh`; home did not source it. Removed `sync/{base,keyboard,guides}.zsh`
+and the sole-consumer `registries/config.sync.json`; regenerated `zsh/palette.map`,
+which no longer lists the sync commands. On home, added `experimental/base.zsh` to
+match office, retained the session path exports, and removed stale root-level
+`larva.zsh` / `env-sync.zsh` source hooks. The project-owned `projects/larva.zsh`
+remains intact. No obsolete session-helper source or toolkit pointers remain; the
+candidate helper's default points to nonexistent `~/www/session`. CMD.zsh remains
+interactive-only with `zsh -fn` guard as on office.
+
+Applied scoped live changes on home and office with dated backups. Home's previous
+`config.zsh`, palette, `sync/` directory and `config.sync.json` are preserved as
+`.bak-2026-11-06`; the root-level `larva.zsh` and `env-sync.zsh` were already absent.
+Office's `config.zsh`, old palette, `sync/` directory and registry are preserved the
+same way; its config no longer sources `sync/base.zsh`. The office checkout has a large
+unrelated dirty worktree, so it was not pulled from or deployed; only the authorized
+live config line, palette and retired live artifacts were changed. Fresh interactive
+shells on both hosts load `exp-run` and the personal `c-houston` alias, with no
+`sync-guides`; home does not load the stale session helper. Both CMD files passed
+`zsh -fn`. The Python palette parser
+accepted all 167 commands with zero malformed rows and no sync entries on both hosts;
+the maps have identical hashes. Majkee authorized the source commit and push on
+2026-11-06 after the live cleanup and verification.
+
 
 ## OFFICE — 2026-11-03 · myShell · germline retirement and A2 continuation
 
