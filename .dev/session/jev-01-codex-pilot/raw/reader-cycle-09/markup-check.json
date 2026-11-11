@@ -1,0 +1,21 @@
+{
+  "view": "/home/hruzam/ia-sync/.dev/session/jev-01-codex-pilot/raw/reader-cycle-09/jev-view-gvdkberh/view.md",
+  "parser": "Python-Markdown 3.10.3",
+  "checks": [
+    {
+      "extensions": [],
+      "raw_fixture_script_element": true,
+      "escaped_fixture_script": false
+    },
+    {
+      "extensions": [
+        "fenced_code"
+      ],
+      "raw_fixture_script_element": true,
+      "escaped_fixture_script": false
+    }
+  ],
+  "pty_80x24_full_scenario_01_visible": false,
+  "pty_80x24_full_scenario_02_visible": false,
+  "pty_80x24_synthetic_prefix_visible": true
+}

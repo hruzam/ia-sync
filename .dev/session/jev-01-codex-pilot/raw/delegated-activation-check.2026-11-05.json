@@ -1,0 +1,19 @@
+{
+  "at": "2026-11-05T05:12:49.685811+01:00",
+  "deployed_hashes": {
+    "PROVIDER.md": "74136576d6c39b2d78b3abaa467484c08cfe88da00e9fd8f797ac05cf5819347",
+    "README.md": "3491de49e35f1535206483ee5139e2732d7c49f04821913999f0b6ae106d0d80",
+    "base.zsh": "dfc0fbdafefd3126453398d2e386dd804ba77b4dfd27265c83ac1aa7b65d5e51",
+    "jev.py": "6f986944f2fc9077fdeae0c4ab6ea8834b0dacce0074d910c3c14d8b8e9f816c",
+    "jev.zsh": "299f3a0f11699ac28e0d758530799a47b3c30f6d2416b6161395c2ef8e932fca",
+    "kernel.py": "df3a31585eda1ec28cb5d8f9375a77c781c841110a31b2ea023ae4aa18f9d44d",
+    "keyboard.zsh": "fe419eef419d6d5809fe34909efb06170a8008abda7fbe413c5e66519b62424e",
+    "provider.py": "582e9b6c39f71f419257136d55eea74f0fcebab62ded4b9f1e3986456c280e87",
+    "store.py": "a98bd60d320a76e6c4fec2a648eab6e710e55b5a8c61417348cf334840a05a64"
+  },
+  "tests": 6,
+  "output": "test_native_valid_grant_exact_body_proof_actor_and_env_read_after_fsync (test_delegated.DelegatedTests.test_native_valid_grant_exact_body_proof_actor_and_env_read_after_fsync) ... ok\ntest_invalid_grant_scope_fields_hash_amount_expiry_refuse_before_key (test_delegated.DelegatedTests.test_invalid_grant_scope_fields_hash_amount_expiry_refuse_before_key) ... ok\ntest_repeat_and_crash_consumption_never_read_key_or_call_again (test_delegated.DelegatedTests.test_repeat_and_crash_consumption_never_read_key_or_call_again) ... ok\ntest_replay_checks_expiry_at_event_time_not_current_clock (test_delegated.DelegatedTests.test_replay_checks_expiry_at_event_time_not_current_clock) ... ok\ntest_concurrent_native_processes_make_at_most_one_mocked_call (test_delegated.DelegatedTests.test_concurrent_native_processes_make_at_most_one_mocked_call) ... ok\ntest_manual_production_guard_remains_active_with_new_mode_available (test_delegated.DelegatedTests.test_manual_production_guard_remains_active_with_new_mode_available) ... ok\n\n----------------------------------------------------------------------\nRan 6 tests in 0.627s\n\nOK\n",
+  "actual_grant_validated_without_key_access": true,
+  "actual_attempts": 0,
+  "inference_calls": 0
+}

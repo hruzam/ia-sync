@@ -1,0 +1,29 @@
+{
+  "at": "2026-11-04T18:35:46.000582+01:00",
+  "installed_hashes": {
+    "PROVIDER.md": "74136576d6c39b2d78b3abaa467484c08cfe88da00e9fd8f797ac05cf5819347",
+    "README.md": "b46e91f1940ccec984033c2e9c64c558646fde6eb641a5adf085d67d1d512851",
+    "base.zsh": "dfc0fbdafefd3126453398d2e386dd804ba77b4dfd27265c83ac1aa7b65d5e51",
+    "jev.py": "f3f7b3f31765a1013740654b296643ca1a0880cd44f2c5b153b40a2a2bf2f41b",
+    "jev.zsh": "bf42df039e285151d6777c1a7bfc45f52b7c348bb11a1038136196f71eba38a5",
+    "kernel.py": "df3a31585eda1ec28cb5d8f9375a77c781c841110a31b2ea023ae4aa18f9d44d",
+    "keyboard.zsh": "fe419eef419d6d5809fe34909efb06170a8008abda7fbe413c5e66519b62424e",
+    "provider.py": "582e9b6c39f71f419257136d55eea74f0fcebab62ded4b9f1e3986456c280e87",
+    "store.py": "1dd642a7e7dfa0d4490528381caab78240ba089ab13741e019276c2ea173cc63"
+  },
+  "tests_run": 3,
+  "test_output": "test_attachment_scope_failure_preservation_and_detach (deployed_test_shell.ShellTests.test_attachment_scope_failure_preservation_and_detach) ... ok\ntest_source_is_silent_inert_and_symlink_root_refuses (deployed_test_shell.ShellTests.test_source_is_silent_inert_and_symlink_root_refuses) ... ok\ntest_subprocess_restart_roundtrip_and_exact_reference (deployed_test_vault.VaultTests.test_subprocess_restart_roundtrip_and_exact_reference) ... ok\n\n----------------------------------------------------------------------\nRan 3 tests in 2.331s\n\nOK\n",
+  "fresh_zsh": {
+    "exit_code": 0,
+    "stdout": "usage: jev.py [-h] [--root ROOT] [--session SESSION] [--channel CHANNEL]\n              {open,settings,prepare,import-reply,interpret,dispose,outcome,show,ref,memory,select,reconcile,send} ...\n\nJev: explicit private judgment sessions. Advice never executes actions.\n\npositional arguments:\n  {open,settings,prepare,import-reply,interpret,dispose,outcome,show,ref,memory,select,reconcile,send}\n\noptions:\n  -h, --help            show this help message and exit\n  --root ROOT\n  --session SESSION\n  --channel CHANNEL\n",
+    "stderr": "gemini-line PARKED 2026-07-24 \u2014 see reposoma maintenance/codex-line/ (override: GEMINI_LINE_FORCE=1)\n"
+  },
+  "runtime_modes": {
+    "/home/hruzam/.jev": "0o700",
+    "/home/hruzam/.jev/projects": "0o700"
+  },
+  "runtime_projects_empty": true,
+  "credential_access": false,
+  "real_inference_calls": 0,
+  "limits": "Temporary-root synthetic tests; no live provider or full pilot GO."
+}

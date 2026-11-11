@@ -1,0 +1,27 @@
+--- before/.dev/session/jev-01-codex-pilot/tests/test_reader.py
++++ after/.dev/session/jev-01-codex-pilot/tests/test_reader.py
+@@ -139,6 +139,24 @@
+             self.assertIn('Selected sequences: `2`', source)
+             self.assertIn('event-2', source)
+ 
++    def test_full_event_tilde_fences_preserve_decoded_text(self):
++        cases = ['before\n~~~html\n<script>DEMO_ONLY</script>\n~~~\nafter',
++                 'before\n\n~~~\nliteral\n~~~\n\nafter']
++        for text in cases:
++            event = {'sequence': 1, 'kind': 'memory', 'event_id': 'fixture', 'at': 'fixture',
++                     'request_id': None, 'previous_event_id': None,
++                     'actor': {'cli_sessions': {'codex': 'original-codex'}},
++                     'data': {'note': {'text': text}}}
++            ledger = SimpleNamespace(events=[event], path=self.ledger, session_id=self.session, tail=None)
++            source = reader.render(ledger)
++            for extensions in ([], ['fenced_code']):
++                parsed = ParsedView()
++                parsed.feed(markdown.markdown(source, extensions=extensions))
++                self.assertIn(text, parsed.values, (text, extensions))
++                self.assertNotIn('script', parsed.tags, (text, extensions))
++                self.assertIn('original-codex', parsed.values, (text, extensions))
++                self.assertIn('fixture', source)
++
+     def test_missing_vault_is_not_created(self):
+         missing = self.work / "missing"
+         with self.assertRaises(kernel.Invalid):

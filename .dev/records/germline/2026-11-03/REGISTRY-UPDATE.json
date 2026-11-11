@@ -1,0 +1,135 @@
+{
+  "kind": "archivalia-registry-update",
+  "date": "2026-11-03",
+  "authority": "Majkee: copy that, you have my blessing -> go",
+  "source_head": "f0fd9b59cd2c0937e5943035c24b27f99b0338bc",
+  "changed_files": {
+    "/home/hruzam/ia-sync/.dev/session/germline-A3-guide-to-controller/RUNBOOK.md": {
+      "before": "7b5e15d955548601f40ef837509a0ccb057aeacc6a985cf5060b28034e65b0f7",
+      "after": "c0f15d6a34b8e5adf9ca0fedcdf955254a0802d3b38a2870a4deee82203986a8"
+    },
+    "/home/hruzam/ia-sync/.dev/session/germline-A3-guide-to-controller/raw/reader-design/README.md": {
+      "before": "1a7ec67aa5d5f89f4e374c54c9a132011c5bee57ee209d4e924cf9fffa789316",
+      "after": "ab40055feb3dc5a09a5aecb5c182789890eb05a0626aa53d731dfb8430c888da"
+    },
+    "/home/hruzam/ia-sync/_staging/codex/germline-whole-design.2026-10-29/CONTINUITY.md": {
+      "before": "91c3bfa9a7ee0c404f732c240acc113f95347af246187c1b3275768271e50784",
+      "after": "00de417798eb2f7bea49f863d6b5d0f968431d10fa309bed3fa2e4ef67f493f5"
+    },
+    "/home/hruzam/ia-sync/_staging/codex/germline-whole-design.2026-10-29/index.html": {
+      "before": "9140294a19119560fddd4d7593d4dfff4683fca7cc15be4d5dc6b69cdef70529",
+      "after": "ebd6d82f33bf524247c55dc2a956e1b706d73dc33ea72c4a1a54133ebb858b36"
+    },
+    "/home/hruzam/ia-sync/_staging/codex/germline-reader-experiments.2026-11-03/EVALUATION.md": {
+      "before": "f2b65931e2c884224ab4390c4dbb9342f8e48ea3dfb62150b1f37b2e0bedbcd1",
+      "after": "215835f98d6636832d9297974e411326f55e3db7c44da3163347648e9deda6ea"
+    },
+    "/home/hruzam/ia-sync/.dev/session/germline-A2-projects/RUNBOOK.md": {
+      "before": "c815d0d76fd523933c2b0eb6f697d604116fade6a5fe723ea2dc9d2853866c49",
+      "after": "b8056360089d55065bd22b786deb0226bd3a65699a450cb00001d842d36687fa"
+    },
+    "/home/hruzam/ia-sync/.dev/session/germline-A2-projects/CACHE.md": {
+      "before": "b44b2a436fef7aafc83de089a1746c2e2b047f9bc7911bf95757f360e7daec7f",
+      "after": "1c8960584b96ab63297192ea6c2ef00e228a4c671418d178a760bf536a6a6eb1"
+    },
+    "/home/hruzam/reposoma/.majkee/engine/README.md": {
+      "before": "cef8de571fe736303cc281926b3a0c55cb0eb3c3a1fc2298ae204ed25dbbbb90",
+      "after": "0fd31f680ef505fc7afdb7f539f6bb4a17cfc18f1a3f37903bb509873571bf81"
+    },
+    "/home/hruzam/reposoma/.majkee/engine/runbook-preparation.md": {
+      "before": "92d39090d0c50637a3d647710e6e45f1d74f2b899b35510a13502845174c0c24",
+      "after": "dea152b4f68e386e7253f0b32bf05d3915afb18757fb0791b526f383857c5af2"
+    },
+    "/home/hruzam/reposoma/_cold-start/card/CS.germline-03-foundation-audit.cartan-head.2026-10-15.md": {
+      "before": "08c6dac15002ea250d74e27fbc859f143fa29d278dc64fe4e2638834a655977a",
+      "after": "1e790ea1c2d98564f5b2d6603d6b7559e3a3e1115c6a7cd3e01d9961193ea32a"
+    },
+    "/home/hruzam/reposoma/_cold-start/issues/ISS.germline-02-deferred-measurement.2026-10-15.md": {
+      "before": "5c7a69a2ec7e323b3ef6e56fb8e5dba613bd5a7588481e2026de199502ec0991",
+      "after": "26b50ace6b35a54d251e2cc4334ffb5ec59972c8502f75b63369483c353524da"
+    },
+    "/home/hruzam/ia-sync/.dev/session/germline-03-foundation-audit/STATUS.md": {
+      "before": "4a07fae71ea1f91f0c34a61eac46bdc3969d07b83d07a1f6cbe23020ae41957d",
+      "after": "c8ced060e120919e97772e33c1479f01e46fdf2219575cbcef9839d4ef0c7bc1"
+    },
+    "/home/hruzam/ia-sync/_staging/codex/germline-whole-design.2026-10-29/EVIDENCE.md": {
+      "before": "f8ecd6ed1754c3c37b39f68c6f0479d8a592fe5b539d92a22db334af2d32ec21",
+      "after": "e56e9b618f32aaeef366a5fbe50886a2efa699188a00a7c37179b244d6f33a7c"
+    },
+    "/home/hruzam/ia-sync/.dev/observations/README.md": {
+      "before": "381a5da490ba497ac4ebd92a968a1ec6b4105ba5216fb617e48bff315009dd03",
+      "after": "a6b593566a5a6f5ef7516fe60d46e9604cce41f51f2c490bd3b016daecad52de"
+    },
+    "/home/hruzam/ia-sync/ARCHIVE.md": {
+      "before": "47b86576ac0f44f8ae8bff0629b18d356b5c4e724cff5381e9274db82ca50213",
+      "after": "61af5c08fea1acc45e40253cd330beb4ac50899cb4205043412075692af9bfb4"
+    },
+    "/home/hruzam/ia-sync/AGENTS.md": {
+      "before": "7afcd5b7697e52a330b7475b3c239b218cbd0b13d17b0923a47de9262ecc65b0",
+      "after": "6198e0f984dfd00aa2f6e3122aff623529c61a164bb9b30e8d22930a0a9ce284"
+    },
+    "/home/hruzam/ia-sync/pulse.md": {
+      "before": "d69b58a37025c0ef31f53850d8742a653e0c4c1946a0f7b0aeb4aca1bc6471b7",
+      "after": "264004c4ddc6204cab9e5f6948fe50dceb6f00dbc3c2d8d669be4693ff1e571c"
+    },
+    "/home/hruzam/ia-sync/.germline/agents/houston/ia-sync.md": {
+      "before": "7b9f62832d9ecb762443fc84c047e51630900091f22bb34e9b963e44dddb064c",
+      "after": "45bf98e47cc10858729784e0a8ceeeea343aa72e34b572083b0d88ad216a5c6e"
+    },
+    "/home/hruzam/ia-sync/journal.host-cleanup.md": {
+      "before": "809cdd899b67f6dcab06cc712eb019a0785dcf15ea31a55c46e1db149e9300ca",
+      "after": "cff4fbf8fc4bd85a80eaecead3dc62342ae967d42220c96b8a61ee1faba5513c"
+    }
+  },
+  "removed_symlinks": {
+    ".dev/session/germline-02-guide-model-law": ".dev/records/germline/2026-11-03/germline-02-guide-model-law",
+    ".dev/session/germline-04-wiring-plan": ".dev/records/germline/2026-11-03/germline-04-wiring-plan",
+    ".dev/session/germline-05-sella-germline-audit": ".dev/records/germline/2026-11-03/germline-05-sella-germline-audit",
+    ".dev/session/germline-06-full-audit": ".dev/records/germline/2026-11-03/germline-06-full-audit",
+    ".dev/session/germline-07-make-program": ".dev/records/germline/2026-11-03/germline-07-make-program",
+    ".dev/session/germline-08-caretaker-receipts": ".dev/records/germline/2026-11-03/germline-08-caretaker-receipts",
+    ".dev/session/germline-A4-reader-shapes": ".dev/records/germline/2026-11-03/germline-A4-reader-shapes",
+    ".dev/session/germline-A5-reader-navigation": ".dev/records/germline/2026-11-03/germline-A5-reader-navigation",
+    ".dev/session/germline-A9-reader-economy": ".dev/records/germline/2026-11-03/germline-A9-reader-economy",
+    ".dev/session/germline-A6-harness-builder": ".dev/records/germline/2026-11-03/germline-A6-harness-builder",
+    ".dev/session/germline-A7-shuttle-execution": ".dev/records/germline/2026-11-03/germline-A7-shuttle-execution",
+    ".dev/session/germline-A8-epoch-researcher": ".dev/records/germline/2026-11-03/germline-A8-epoch-researcher",
+    ".dev/session/germline-A2-nabla-lab": ".dev/records/germline/2026-11-03/germline-A2-nabla-lab"
+  },
+  "preserved_files_verified": 436,
+  "tracked_at_head": 426,
+  "ignored_members": [
+    ".dev/records/germline/2026-11-03/germline-A5-reader-navigation/raw/runs/reader-01/transcript.jsonl",
+    ".dev/records/germline/2026-11-03/germline-A5-reader-navigation/raw/runs/reader-02/transcript.jsonl",
+    ".dev/records/germline/2026-11-03/germline-A5-reader-navigation/raw/runs/reader-03/transcript.jsonl",
+    ".dev/records/germline/2026-11-03/germline-A5-reader-navigation/raw/runs/reader-04/transcript.jsonl",
+    ".dev/records/germline/2026-11-03/germline-A9-reader-economy/raw/runs/reader-01/transcript.jsonl",
+    ".dev/records/germline/2026-11-03/germline-A9-reader-economy/raw/runs/reader-02/transcript.jsonl",
+    ".dev/records/germline/2026-11-03/germline-A9-reader-economy/raw/runs/reader-03/transcript.jsonl",
+    ".dev/records/germline/2026-11-03/germline-A9-reader-economy/raw/runs/reader-04/transcript.jsonl",
+    ".dev/records/germline/2026-11-03/germline-A9-reader-economy/raw/runs/reader-05/transcript.jsonl",
+    ".dev/records/germline/2026-11-03/germline-A9-reader-economy/raw/runs/reader-06/transcript.jsonl"
+  ],
+  "archive_hashes_verified": 13,
+  "historical_bodies": "unchanged; original-address mapping in ARCHIVE.md",
+  "commit_push_deploy": "none",
+  "cross_host_custody": "unverified",
+  "link_validation": {
+    "checked_links": 117,
+    "new_missing": [],
+    "preexisting_or_historical_missing": []
+  },
+  "independent_verification": {
+    "verdict": "PASS",
+    "agent": "/root/cleanup_verifier",
+    "preserved_files": 436,
+    "archive_hashes": 13,
+    "current_links": 117,
+    "legacy_paths_absent": 13,
+    "g03_gate": "unchanged",
+    "evaluation_code_blocks": "unchanged",
+    "evidence_frontmatter": "unchanged; navigation note after H1"
+  },
+  "presence": "detached only f727fbf15da6d5e44d5b7f7cf1733fc5",
+  "continuity": "/home/hruzam/reposoma/.majkee/journal/raw.2026-11-03.md"
+}

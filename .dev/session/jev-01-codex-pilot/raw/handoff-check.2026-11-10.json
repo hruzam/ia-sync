@@ -1,0 +1,149 @@
+{
+  "head": "19f36bd6ea687d321f3832b55b92d008c4257042",
+  "upstream_divergence": "0\t0",
+  "source_installed": {
+    "PROVIDER.md": {
+      "source_sha256": "74136576d6c39b2d78b3abaa467484c08cfe88da00e9fd8f797ac05cf5819347",
+      "installed_sha256": "74136576d6c39b2d78b3abaa467484c08cfe88da00e9fd8f797ac05cf5819347"
+    },
+    "README.md": {
+      "source_sha256": "7f5b1ab837bda26d1aa5ded3884f337cc41fdb4053e444713b5ab6829efad8c9",
+      "installed_sha256": "7f5b1ab837bda26d1aa5ded3884f337cc41fdb4053e444713b5ab6829efad8c9"
+    },
+    "base.zsh": {
+      "source_sha256": "dfc0fbdafefd3126453398d2e386dd804ba77b4dfd27265c83ac1aa7b65d5e51",
+      "installed_sha256": "dfc0fbdafefd3126453398d2e386dd804ba77b4dfd27265c83ac1aa7b65d5e51"
+    },
+    "browser.py": {
+      "source_sha256": "97ed50e350f34cf1e4fdeaad2acfe696e8c0a64115356a15669c2d58988b1914",
+      "installed_sha256": "97ed50e350f34cf1e4fdeaad2acfe696e8c0a64115356a15669c2d58988b1914"
+    },
+    "jev.py": {
+      "source_sha256": "6f986944f2fc9077fdeae0c4ab6ea8834b0dacce0074d910c3c14d8b8e9f816c",
+      "installed_sha256": "6f986944f2fc9077fdeae0c4ab6ea8834b0dacce0074d910c3c14d8b8e9f816c"
+    },
+    "jev.zsh": {
+      "source_sha256": "299f3a0f11699ac28e0d758530799a47b3c30f6d2416b6161395c2ef8e932fca",
+      "installed_sha256": "299f3a0f11699ac28e0d758530799a47b3c30f6d2416b6161395c2ef8e932fca"
+    },
+    "kernel.py": {
+      "source_sha256": "df3a31585eda1ec28cb5d8f9375a77c781c841110a31b2ea023ae4aa18f9d44d",
+      "installed_sha256": "df3a31585eda1ec28cb5d8f9375a77c781c841110a31b2ea023ae4aa18f9d44d"
+    },
+    "keyboard.zsh": {
+      "source_sha256": "fe419eef419d6d5809fe34909efb06170a8008abda7fbe413c5e66519b62424e",
+      "installed_sha256": "fe419eef419d6d5809fe34909efb06170a8008abda7fbe413c5e66519b62424e"
+    },
+    "provider.py": {
+      "source_sha256": "582e9b6c39f71f419257136d55eea74f0fcebab62ded4b9f1e3986456c280e87",
+      "installed_sha256": "582e9b6c39f71f419257136d55eea74f0fcebab62ded4b9f1e3986456c280e87"
+    },
+    "reader.py": {
+      "source_sha256": "48f1e1a903b5fa3b7013b16c4308862c9f3d1665c80e65150deac8f8ba7002c1",
+      "installed_sha256": "48f1e1a903b5fa3b7013b16c4308862c9f3d1665c80e65150deac8f8ba7002c1"
+    },
+    "store.py": {
+      "source_sha256": "a98bd60d320a76e6c4fec2a648eab6e710e55b5a8c61417348cf334840a05a64",
+      "installed_sha256": "a98bd60d320a76e6c4fec2a648eab6e710e55b5a8c61417348cf334840a05a64"
+    }
+  },
+  "ledger_sha256": "68869e87a1770e9f32fac685145ecf30780566dcbd0de650f20ce02d51e19b97",
+  "settings": {
+    "session_id": "539ba0bdb1b645bf90ccba76e621b82b",
+    "channel": "main",
+    "root": "/home/hruzam/.jev",
+    "project": "/home/hruzam/ia-sync",
+    "bed": "/home/hruzam/ia-sync/.dev/session/jev-01-codex-pilot",
+    "policy": {
+      "allowed_models": [
+        "typesafe/jev-1.14",
+        "typesafe/jev-1.14-20261014"
+      ],
+      "budget_usd": "0.02",
+      "model": "typesafe/jev-1.14"
+    },
+    "budget": {
+      "total_usd": "0.02",
+      "spent_usd": "0.001999830",
+      "reserved_usd": "0",
+      "available_usd": "0.018000170",
+      "liabilities": [],
+      "overrun_request_ids": []
+    },
+    "tail": null,
+    "ledger": "/home/hruzam/.jev/projects/90f0943285a474deaf2884cbb069de48c10817118f7e445a2439211014746f96/68a17f45bb752a2a5dccae43f95584e811348c4d571af8c317c3406c3d2a5d61.jsonl"
+  },
+  "event_counts": {
+    "open": 1,
+    "prepare": 3,
+    "attempt": 3,
+    "http": 3,
+    "reply": 3,
+    "settle": 3,
+    "outcome": 3,
+    "dispose": 3,
+    "interpret": 8,
+    "memory": 2
+  },
+  "replies": [
+    {
+      "request_id": "4bfc7e5414cf4976aebbf6c9453d190a",
+      "event_id": "3fa0826227e4aa177bb21786e8f177803fd0625359b3a999f888aa497e128aaf",
+      "validation": "VALID",
+      "actor": {
+        "cli_sessions": {
+          "claude": null,
+          "codex": "01a17a76-073b-7750-8bd9-7a899d3b4646",
+          "controller": null,
+          "gemini": null
+        },
+        "name": "jev",
+        "requester": "hlm",
+        "source": "record"
+      }
+    },
+    {
+      "request_id": "fcf5015cdaa146c5a01ff33fbb6fa9d3",
+      "event_id": "ee779f61883adc518410d2d7bd2bba109495797c976966a87ea7a7c5cb4a43d3",
+      "validation": "INVALID",
+      "actor": {
+        "cli_sessions": {
+          "claude": null,
+          "codex": "01a17a76-073b-7750-8bd9-7a899d3b4646",
+          "controller": null,
+          "gemini": null
+        },
+        "name": "jev",
+        "requester": "hlm",
+        "source": "record"
+      }
+    },
+    {
+      "request_id": "7cb12c488b08432fa71461b7208e924b",
+      "event_id": "c21ee1404b7c46101d27f4d50bebfdf281ee4a545b49ea1a9401aaa33406b2dd",
+      "validation": "VALID",
+      "actor": {
+        "cli_sessions": {
+          "claude": null,
+          "codex": "01a17a76-073b-7750-8bd9-7a899d3b4646",
+          "controller": null,
+          "gemini": null
+        },
+        "name": "jev",
+        "requester": "hlm",
+        "source": "record"
+      }
+    }
+  ],
+  "memory_event_ids": [
+    "83047640e5c4e50632e24c5d1ebea46a269f9b34063406e87ab12aabc14795a0",
+    "281625de38f0850b1ad032fd303235af8661e4a955e089b97c0201ab658fc88b"
+  ],
+  "ignored_owned_paths": [
+    ".dev/session/jev-01-codex-pilot/tests/__pycache__/test_reader.cpython-314.pyc",
+    "zsh/jev/__pycache__/reader.cpython-314.pyc"
+  ],
+  "active_goal": null,
+  "reader_peer": "01a1aa8a-b5d4-70d3-9823-4f44f05af2d2",
+  "check": "read-only native replay; no inference or ledger writes"
+}

@@ -1,4 +1,4 @@
-# Crawl assignments — candidate 02
+# Crawl assignments — candidate 03
 
 This is a selected function contract for ordinary authorized readers, used by
 [controller.md](controller.md). It defines neither a permanent agent roster nor
@@ -29,6 +29,7 @@ not enlarge source access, spend effect authority or permit recursive delegation
 Question and decision it informs:
 Mode:
 Known inherited claims, with source pointers and uncertainty:
+Requested carriage and context policy, with reason; observed carriage if available:
 Allowed roots / explicit exclusions:
 Expected starting sources or revision pair:
 Budget: source/file count, reference depth, time or tool limit appropriate to task:
@@ -56,11 +57,17 @@ Request a revised assignment if mandatory reads consume the available budget.
    For claims informing consequential actions, compare relevant source revisions at
    start and return. Report detected changes and affected claims needing reconciliation;
    observed revisions do not establish an atomic snapshot or absence of all changes.
-4. Follow only in-scope dependencies. For an out-of-scope lead, return the locator,
+4. Read the relevant correction/disposition chain before reporting a current state.
+   A later authorized CLOSE or addendum can qualify earlier pending text or scores;
+   neither its position in a file nor recency alone establishes authority. Cite the
+   governing record and retain the original claim's provenance. Use the project's
+   registry to resolve retired identities; missing old paths alone do not prove lost
+   work, and preserved commands do not confer a new execution grant.
+5. Follow only in-scope dependencies. For an out-of-scope lead, return the locator,
    relevance and information gap without reading beyond the grant.
-5. Inspect contradiction and anomaly leads proportionately. Do not force an outlier
+6. Inspect contradiction and anomaly leads proportionately. Do not force an outlier
    into the released pattern or silently repair the source. Preserve alternatives.
-6. Stop at the assigned result or budget. Report what was inspected and what was not.
+7. Stop at the assigned result or budget. Report what was inspected and what was not.
    A sampled search cannot establish absence across the whole corpus.
 
 ## Return contract

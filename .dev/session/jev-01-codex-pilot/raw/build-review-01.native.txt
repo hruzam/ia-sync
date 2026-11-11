@@ -1,0 +1,28 @@
+VERDICT: FAIL
+TASK: Verify the exact offline first-slice contract in `DESIGN.md`: frozen packets, explicit memory/semantic fields, occurrence/content identity, correlated synthetic receipts, Noul interpretation, and CLI errors/bounds.
+RAN: `python3 -B -m unittest discover -s tests -v`; independent temporary-file probes for occurrence identity, receipt correlation, Noul boundaries, 1 MiB input rejection, 20-question limit, and interpretation-error references; `git diff --check -- DESIGN.md impl/jev.py impl/README.md tests/test_jev.py tests/fixtures`.
+EVIDENCE: All 23 unit tests passed. Independent probes confirmed stable content hashes with distinct occurrence IDs, strict receipt correlation, NO/UNCERTAIN/YES at 0.2/0.5/0.8, oversized-input refusal, and 20/21-question acceptance/refusal. However, invalid-policy interpretation exited 2 with only `{"status":"ERROR","errors":["policy: low must be below high"]}`.
+FAILURES: `DESIGN.md:127-130` requires interpretation ERROR output to include policy, question, and request references; `impl/jev.py:298-300` emits a generic ERROR containing none. This also contradicts `impl/README.md:35`, which says interpretation preserves those references. Tests cover ERROR separation but not reference preservation.
+REPRODUCE: `cd /home/hruzam/ia-sync/.dev/session/jev-01-codex-pilot` then run:
+```bash
+python3 -B - <<'PY'
+import importlib.util, json, pathlib, subprocess, sys, tempfile
+bed = pathlib.Path('.')
+cli = bed / 'impl/jev.py'
+spec = importlib.util.spec_from_file_location('jev_probe', cli)
+jev = importlib.util.module_from_spec(spec); spec.loader.exec_module(jev)
+packet = json.loads((bed/'tests/fixtures/brief-missing.json').read_text())
+expected = json.loads((bed/'tests/fixtures/expected.json').read_text())
+prepared = jev.prepare(packet)
+receipt = {'schema':'jev.receipt/v1','request_id':prepared['request_id'],'packet_sha256':prepared['packet_sha256'],'model':expected['model'],'answers':expected['answers_by_case']['brief-missing']}
+policy = {'id':'bad-policy','version':'v1','low':0.8,'high':0.8}
+with tempfile.TemporaryDirectory(prefix='jev-ref-probe-') as td:
+    root = pathlib.Path(td)
+    for name, value in {'prepared':prepared,'receipt':receipt,'policy':policy}.items():
+        (root/f'{name}.json').write_text(json.dumps(value))
+    run = subprocess.run([sys.executable,'-B',str(cli),'interpret',root/'prepared.json',root/'receipt.json','missing',root/'policy.json'],capture_output=True,text=True)
+    print('exit', run.returncode)
+    print(run.stdout, end='')
+PY
+```
+RESIDUAL RISK: Durable ledger/settings, provider mapping, live sends, USD admission, and usefulness remain intentionally unverified later boundaries, not first-slice failures.

@@ -1,0 +1,25 @@
+--- before/zsh/jev/reader.py
++++ after/zsh/jev/reader.py
+@@ -6,6 +6,7 @@
+ 
+ import argparse
+ from datetime import datetime, timezone
++import html
+ import os
+ from pathlib import Path
+ import re
+@@ -33,10 +34,10 @@
+ 
+ def _literal(value, indent):
+     text = _text(value)
+-    fence = "`" * max(3, max((len(group) + 1 for group in re.findall(r"`+", text)), default=3))
+-    # Content stays byte-for-character readable inside the fence: tabs and newlines are not
+-    # converted to escape notation merely because the field sits in a nested value tree.
+-    return [indent + fence + "text", *text.split("\n"), indent + fence]
++    # Top-level HTML blocks avoid nested Markdown fence ambiguity. Escape all source HTML;
++    # numeric tab entities survive Python-Markdown's tab expansion and decode in the view.
++    literal = html.escape(text, quote=False).replace("\t", "&#9;").replace("`", "&#96;")
++    return ["", "<pre>" + literal + "</pre>", ""]
+ 
+ 
+ def _scalar(value):

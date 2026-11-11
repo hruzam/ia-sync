@@ -1,0 +1,40 @@
+{
+  "at": "2026-11-05T05:16:50.978297+01:00",
+  "session_id": "539ba0bdb1b645bf90ccba76e621b82b",
+  "request_id": "4bfc7e5414cf4976aebbf6c9453d190a",
+  "ledger": "/home/hruzam/.jev/projects/90f0943285a474deaf2884cbb069de48c10817118f7e445a2439211014746f96/68a17f45bb752a2a5dccae43f95584e811348c4d571af8c317c3406c3d2a5d61.jsonl",
+  "reply_event_id": "3fa0826227e4aa177bb21786e8f177803fd0625359b3a999f888aa497e128aaf",
+  "reply_actor": {
+    "cli_sessions": {
+      "claude": null,
+      "codex": "01a17a76-073b-7750-8bd9-7a899d3b4646",
+      "controller": null,
+      "gemini": null
+    },
+    "name": "jev",
+    "requester": "hlm",
+    "source": "record"
+  },
+  "event_counts": {
+    "attempt": 1,
+    "http": 1,
+    "reply": 1,
+    "settle": 1,
+    "uncertain": 0,
+    "outcome": 1,
+    "dispose": 1
+  },
+  "one_use_approval_rejected": "budget upper bound exceeds allowance",
+  "status": "SETTLED",
+  "validation": {
+    "errors": [],
+    "status": "VALID"
+  },
+  "cost_usd": "0.001226022",
+  "remaining_allowance_usd": "0.018773978",
+  "provider_key_usage_matches_receipt": true,
+  "private_artifacts": "/home/hruzam/.jev/dogfeed-20261105",
+  "private_baseline_sha256": "045a1ee2c52e50b2f54e91034ffb1c2e541f035704a09bc6d51a39a60e4c023b",
+  "actual_http_requests_to_decisions": 1,
+  "automatic_retries": 0
+}

@@ -16,6 +16,7 @@ participant_3: [astrobley, {brand: Codex, model: role-default, effort: role-defa
 participant_4: [verifier, {brand: Codex, model: role-default, effort: role-default}, {host: office, role: fresh independent design and implementation witness}]
 participant_5: [houston, {brand: Codex, model: role-default, effort: role-default}, {host: office, role: optional card-bounded grounding consult}]
 participant_6: [majkee, {brand: human}, {host: office, role: design gavels and individual send confirmation and final acceptance}]
+participant_7: [cartan-reader, {brand: Codex, session: 01a1aa8a-b5d4-70d3-9823-4f44f05af2d2}, {host: office, role: cooperating reader implementer; separate main session; bounded bus assignments}]
 status_owner: cartan
 head_note: >-
   cSharp — this seat authored the RUNBOOK and stays live through the whole arc as navigator
@@ -35,6 +36,17 @@ was not met. This bed's STATUS is the sole live Jev position.
 The golden-rule check is the existing shared Python CLI proposal: native shell calls, files
 and Codex subagents suffice. No new relay, daemon, hook, MCP, registry or transport is needed.
 Re-evaluate the wrapper if a supported native client later covers its exact behavior.
+
+### Reader cooperation — November 10 operator instruction
+
+Majkee requested the bus protocol for continued cooperation with the reader implementer.
+`cartan-reader` is the file-ownership label for the existing session above, not a new
+persona, runtime profile or spawned child. Cartan keeps navigation and the sole STATUS pen.
+Use `/home/hruzam/reposoma/raw.guides/bus/GUIDE.md`: Cartan writes a numbered POINT,
+cartan-reader writes its own RETURN, and Cartan checks the cited evidence before writing
+the VERDICT. The current reader cycle starts at `09.cartan.point.md`; subsequent cycles
+use the next available number. Prior handoffs remain evidence, not retroactive bus receipts.
+The operator relays the exact path between these sessions; files alone provide no notification.
 
 ## Fixed scope and design boundary
 

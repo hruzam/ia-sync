@@ -1,0 +1,179 @@
+{
+  "schema": "jev.offline-task-result/v1",
+  "status": "PREPARED_OFFLINE",
+  "source_card": "/home/hruzam/ia-sync/.dev/session/jev-01-codex-pilot/tasks/case.example.json",
+  "source_sha256": "0434518544c17b889b268ce54aac04022c8460d4d8f1fb9b66566db94e425979",
+  "binding_note": "Only session_id/channel rebound to a disposable main-stream session.",
+  "run_directory": "/tmp/jev-task-50f1uyr6",
+  "bound_case": "/tmp/jev-task-50f1uyr6/bound-case.json",
+  "request_id": "417ac64efb744b2297abe34742d2542a",
+  "reference": {
+    "actor": {
+      "cli_sessions": {
+        "claude": null,
+        "codex": "01a17a76-073b-7750-8bd9-7a899d3b4646",
+        "controller": null,
+        "gemini": null
+      },
+      "name": "jev",
+      "requester": "hlm",
+      "source": "record"
+    },
+    "event_id": "e3b1a225c2cd3eb03936141d33e4ea69228fb65c05a1876841a188006c1ded65",
+    "kind": "prepare",
+    "ledger": "/tmp/jev-task-50f1uyr6/vault/projects/552fbbf2e2a6539abccbe82988d431823ca62f1ab911480bd9feac3d8930d6ff/00683c4c735cb11ee2231d6b0d2eefabdd87f43bc7c8eadf885c86ce5dfece12.jsonl",
+    "prepared_event_id": "e3b1a225c2cd3eb03936141d33e4ea69228fb65c05a1876841a188006c1ded65",
+    "request_id": "417ac64efb744b2297abe34742d2542a",
+    "sequence": 2,
+    "session_id": "fe9be990271a40fcbe4214ea617b32b4",
+    "tail": null
+  },
+  "settings": {
+    "bed": "/tmp/jev-task-50f1uyr6/project/offline-bed",
+    "budget": {
+      "available_usd": null,
+      "liabilities": [],
+      "overrun_request_ids": [],
+      "reserved_usd": "0",
+      "spent_usd": "0",
+      "total_usd": null
+    },
+    "channel": "main",
+    "ledger": "/tmp/jev-task-50f1uyr6/vault/projects/552fbbf2e2a6539abccbe82988d431823ca62f1ab911480bd9feac3d8930d6ff/00683c4c735cb11ee2231d6b0d2eefabdd87f43bc7c8eadf885c86ce5dfece12.jsonl",
+    "policy": {
+      "allowed_models": [],
+      "budget_usd": null,
+      "model": null
+    },
+    "project": "/tmp/jev-task-50f1uyr6/project",
+    "root": "/tmp/jev-task-50f1uyr6/vault",
+    "session_id": "fe9be990271a40fcbe4214ea617b32b4",
+    "tail": null
+  },
+  "history": {
+    "events": [
+      {
+        "actor": {
+          "cli_sessions": {
+            "claude": null,
+            "codex": "01a17a76-073b-7750-8bd9-7a899d3b4646",
+            "controller": null,
+            "gemini": null
+          },
+          "name": "jev",
+          "requester": "hlm",
+          "source": "record"
+        },
+        "at": "2026-11-05T02:54:03.209177+00:00",
+        "channel": "main",
+        "data": {
+          "bound_evidence": null,
+          "certainty": "confirmed",
+          "lineage": null,
+          "memory_event_id": null,
+          "prepared": {
+            "evidence_sha256": {
+              "task": "bb1685fcb0156dd36ceba0086f8bf9cd999f65db1bae04cba12e81eef1e6e136"
+            },
+            "memory_sha256": "7c2ab2fd154494f79bc0bbd01fa2f8bc2d54cd2eb79216524747859414dbe55b",
+            "packet": {
+              "case_id": "brief-missing",
+              "channel": "main",
+              "evidence": [
+                {
+                  "id": "task",
+                  "ref": "synthetic:brief-001",
+                  "text": "Build a CSV importer. Return working code."
+                }
+              ],
+              "memory": {
+                "author": "synthetic-head",
+                "refs": [
+                  "synthetic:brief-001"
+                ],
+                "text": "Assess only constraints in the explicit list. Prior advice remains advice.",
+                "version": "1"
+              },
+              "missing_evidence": [
+                "delimiter",
+                "file-size bound",
+                "verification expectation"
+              ],
+              "protocol": {
+                "id": "brief-check",
+                "version": "v1"
+              },
+              "questions": [
+                {
+                  "id": "missing",
+                  "predicate_meaning": "Presence of a material omission relative to the supplied required-constraint list",
+                  "rubric_version": "synthetic-v1",
+                  "text": "Does the supplied brief omit a listed required constraint?",
+                  "type": "noul"
+                },
+                {
+                  "id": "action",
+                  "options": [
+                    "clarify",
+                    "proceed"
+                  ],
+                  "predicate_meaning": "Whether to request clarification or proceed under the explicitly supplied constraints",
+                  "rubric_version": "synthetic-v1",
+                  "text": "Which review action is supported by the supplied brief?",
+                  "type": "choice"
+                },
+                {
+                  "id": "coverage",
+                  "levels": [
+                    "zero constraints",
+                    "one constraint",
+                    "two constraints",
+                    "three constraints"
+                  ],
+                  "predicate_meaning": "Count of explicitly stated required constraints, coded by ordered rubric level",
+                  "rubric_version": "synthetic-v1",
+                  "text": "How many of the three required constraints are stated?",
+                  "type": "score"
+                }
+              ],
+              "related_case_group": "brief-001",
+              "schema": "jev.case/v1",
+              "session_id": "fe9be990271a40fcbe4214ea617b32b4",
+              "state": {
+                "brief": "Build a CSV importer. Return working code.",
+                "required_constraints": [
+                  "input delimiter",
+                  "maximum file size",
+                  "expected verification"
+                ]
+              },
+              "target": "Completeness of a synthetic delegation brief"
+            },
+            "packet_sha256": "95b7d78886df80f746e076b57a527d23137e5facb818a6131120d00a0694f806",
+            "request_id": "417ac64efb744b2297abe34742d2542a",
+            "schema": "jev.prepared/v1"
+          },
+          "provider": null,
+          "selection_event_id": null,
+          "source": {
+            "path": "/tmp/jev-task-50f1uyr6/bound-case.json",
+            "sha256": "f4d6c5e51a874c8f048d9645bff22d9c54dbc853c0b91462675f3b4d45300c27"
+          },
+          "upper_bound_usd": null
+        },
+        "event_id": "e3b1a225c2cd3eb03936141d33e4ea69228fb65c05a1876841a188006c1ded65",
+        "kind": "prepare",
+        "previous_event_id": "113df0a11c5253cc35d0ae18949b6f7896e2f83a74c4605e28dc5ea11bf83039",
+        "request_id": "417ac64efb744b2297abe34742d2542a",
+        "schema": "jev.event/v1",
+        "sequence": 2,
+        "session_id": "fe9be990271a40fcbe4214ea617b32b4"
+      }
+    ],
+    "ledger": "/tmp/jev-task-50f1uyr6/vault/projects/552fbbf2e2a6539abccbe82988d431823ca62f1ab911480bd9feac3d8930d6ff/00683c4c735cb11ee2231d6b0d2eefabdd87f43bc7c8eadf885c86ce5dfece12.jsonl",
+    "session_id": "fe9be990271a40fcbe4214ea617b32b4",
+    "tail": null
+  },
+  "provider_calls": 0,
+  "judgment": null
+}

@@ -96,3 +96,11 @@ alias adr-guard="zsh ${HOME}/.config/zsh/ai/adr-guard.zsh"
 # Wraps ai/command-palette.py against palette.map (both sibling deliverables,
 # built in parallel — may not exist on disk yet).
 [[ -f ~/.config/zsh/ai/command-palette.zsh ]] && source ~/.config/zsh/ai/command-palette.zsh
+
+# -----------------------------------------------------------------------------
+# PARTITION 13: Jev consultation CLI and per-shell vault attachment
+# -----------------------------------------------------------------------------
+[[ -f ~/.config/zsh/jev/base.zsh ]] && source ~/.config/zsh/jev/base.zsh
+
+# PARTITION 14: Local file-reading tools
+[[ -f ~/.config/zsh/tools/base.zsh ]] && source ~/.config/zsh/tools/base.zsh

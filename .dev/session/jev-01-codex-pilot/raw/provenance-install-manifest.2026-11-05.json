@@ -1,0 +1,24 @@
+{
+  "before": {
+    "PROVIDER.md": "74136576d6c39b2d78b3abaa467484c08cfe88da00e9fd8f797ac05cf5819347",
+    "README.md": "b46e91f1940ccec984033c2e9c64c558646fde6eb641a5adf085d67d1d512851",
+    "base.zsh": "dfc0fbdafefd3126453398d2e386dd804ba77b4dfd27265c83ac1aa7b65d5e51",
+    "jev.py": "f3f7b3f31765a1013740654b296643ca1a0880cd44f2c5b153b40a2a2bf2f41b",
+    "jev.zsh": "bf42df039e285151d6777c1a7bfc45f52b7c348bb11a1038136196f71eba38a5",
+    "kernel.py": "df3a31585eda1ec28cb5d8f9375a77c781c841110a31b2ea023ae4aa18f9d44d",
+    "keyboard.zsh": "fe419eef419d6d5809fe34909efb06170a8008abda7fbe413c5e66519b62424e",
+    "provider.py": "582e9b6c39f71f419257136d55eea74f0fcebab62ded4b9f1e3986456c280e87",
+    "store.py": "1dd642a7e7dfa0d4490528381caab78240ba089ab13741e019276c2ea173cc63"
+  },
+  "after": {
+    "PROVIDER.md": "74136576d6c39b2d78b3abaa467484c08cfe88da00e9fd8f797ac05cf5819347",
+    "README.md": "aac83be12e8cf2be1a10e1df3a0ca48aed9565fd26493e9c017f0b61dc771c0c",
+    "base.zsh": "dfc0fbdafefd3126453398d2e386dd804ba77b4dfd27265c83ac1aa7b65d5e51",
+    "jev.py": "1efca93ae7f931cf6eecf2c87d21b20335cfcd534e9d3f80688e45c3e8d924aa",
+    "jev.zsh": "299f3a0f11699ac28e0d758530799a47b3c30f6d2416b6161395c2ef8e932fca",
+    "kernel.py": "df3a31585eda1ec28cb5d8f9375a77c781c841110a31b2ea023ae4aa18f9d44d",
+    "keyboard.zsh": "fe419eef419d6d5809fe34909efb06170a8008abda7fbe413c5e66519b62424e",
+    "provider.py": "582e9b6c39f71f419257136d55eea74f0fcebab62ded4b9f1e3986456c280e87",
+    "store.py": "3f7b3bef5e3efc394ebda51675e5e1ec11a627d8107e7c6db1876e145847db11"
+  }
+}

@@ -1,0 +1,98 @@
+{
+  "at": "2026-11-03T11:28:26.499000+01:00",
+  "scope": "parent offline first-slice integration; all judgments synthetic",
+  "checks": [
+    {
+      "command": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/hruzam/ia-sync/.dev/session/jev-01-codex-pilot/impl/jev.py",
+        "prepare",
+        "/home/hruzam/ia-sync/.dev/session/jev-01-codex-pilot/tests/fixtures/brief-missing.json"
+      ],
+      "exit": 0,
+      "status": "jev.prepared/v1"
+    },
+    {
+      "command": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/hruzam/ia-sync/.dev/session/jev-01-codex-pilot/impl/jev.py",
+        "check",
+        "/tmp/jev-parent-smoke-6_ktxkwh/prepared.json",
+        "/tmp/jev-parent-smoke-6_ktxkwh/receipt.json"
+      ],
+      "exit": 0,
+      "status": "VALID"
+    },
+    {
+      "command": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/hruzam/ia-sync/.dev/session/jev-01-codex-pilot/impl/jev.py",
+        "interpret",
+        "/tmp/jev-parent-smoke-6_ktxkwh/prepared.json",
+        "/tmp/jev-parent-smoke-6_ktxkwh/receipt.json",
+        "missing",
+        "/home/hruzam/ia-sync/.dev/session/jev-01-codex-pilot/tests/fixtures/policy.json"
+      ],
+      "exit": 0,
+      "status": "UNCERTAIN"
+    },
+    {
+      "command": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/hruzam/ia-sync/.dev/session/jev-01-codex-pilot/impl/jev.py",
+        "check",
+        "/tmp/jev-parent-smoke-6_ktxkwh/prepared.json",
+        "/tmp/jev-parent-smoke-6_ktxkwh/receipt.json"
+      ],
+      "exit": 2,
+      "status": "INVALID"
+    },
+    {
+      "command": [
+        "/usr/bin/python3",
+        "-B",
+        "/home/hruzam/ia-sync/.dev/session/jev-01-codex-pilot/impl/jev.py",
+        "interpret",
+        "/tmp/jev-parent-smoke-6_ktxkwh/prepared.json",
+        "/tmp/jev-parent-smoke-6_ktxkwh/receipt.json",
+        "missing",
+        "/home/hruzam/ia-sync/.dev/session/jev-01-codex-pilot/tests/fixtures/policy.json"
+      ],
+      "exit": 2,
+      "status": "ERROR"
+    },
+    {
+      "assertion": "Semantically invalid original receipt retained unchanged",
+      "result": "PASS"
+    }
+  ],
+  "tests": {
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "/home/hruzam/ia-sync/.dev/session/jev-01-codex-pilot/tests",
+      "-v"
+    ],
+    "exit": 0,
+    "output": "test_full_cli_roundtrip_and_input_files_unchanged (test_jev.CLITests.test_full_cli_roundtrip_and_input_files_unchanged) ... ok\ntest_instruction_like_text_is_preserved_data (test_jev.CLITests.test_instruction_like_text_is_preserved_data) ... ok\ntest_invalid_json_duplicate_keys_nonfinite_utf8_and_nesting (test_jev.CLITests.test_invalid_json_duplicate_keys_nonfinite_utf8_and_nesting) ... ok\ntest_invalid_semantic_receipt_preserved_and_error_separate (test_jev.CLITests.test_invalid_semantic_receipt_preserved_and_error_separate) ... ok\ntest_missing_file_and_wrong_arguments_are_json_errors (test_jev.CLITests.test_missing_file_and_wrong_arguments_are_json_errors) ... ok\ntest_oversized_input_refused_before_parsing (test_jev.CLITests.test_oversized_input_refused_before_parsing) ... ok\ntest_unicode_output_reloads_with_its_actual_byte_bound (test_jev.CLITests.test_unicode_output_reloads_with_its_actual_byte_bound) ... ok\ntest_all_practical_fixtures_validate (test_jev.KernelTests.test_all_practical_fixtures_validate) ... ok\ntest_answer_set_is_exact (test_jev.KernelTests.test_answer_set_is_exact) ... ok\ntest_canonical_bytes_and_independent_occurrences (test_jev.KernelTests.test_canonical_bytes_and_independent_occurrences) ... ok\ntest_choice_keys_sum_maximizer_and_tie (test_jev.KernelTests.test_choice_keys_sum_maximizer_and_tie) ... ok\ntest_confidence_is_optional_statistic_but_never_noul_field (test_jev.KernelTests.test_confidence_is_optional_statistic_but_never_noul_field) ... ok\ntest_invalid_policy_receipt_and_non_noul_never_interpreted (test_jev.KernelTests.test_invalid_policy_receipt_and_non_noul_never_interpreted) ... ok\ntest_optional_memory_and_empty_evidence (test_jev.KernelTests.test_optional_memory_and_empty_evidence) ... ok\ntest_prepare_copies_memory_input_and_semantics (test_jev.KernelTests.test_prepare_copies_memory_input_and_semantics) ... ok\ntest_prepared_hash_tampering (test_jev.KernelTests.test_prepared_hash_tampering) ... ok\ntest_probability_range_type_and_finiteness (test_jev.KernelTests.test_probability_range_type_and_finiteness) ... ok\ntest_question_count_limit (test_jev.KernelTests.test_question_count_limit) ... ok\ntest_receipt_correlates_both_identity_and_content (test_jev.KernelTests.test_receipt_correlates_both_identity_and_content) ... ok\ntest_required_semantic_fields (test_jev.KernelTests.test_required_semantic_fields) ... ok\ntest_schema_fields_types_and_duplicate_names (test_jev.KernelTests.test_schema_fields_types_and_duplicate_names) ... ok\ntest_score_weighted_index_and_exact_keys (test_jev.KernelTests.test_score_weighted_index_and_exact_keys) ... ok\ntest_threshold_boundaries_and_uncertainty (test_jev.KernelTests.test_threshold_boundaries_and_uncertainty) ... ok\n\n----------------------------------------------------------------------\nRan 23 tests in 2.638s\n\nOK\n"
+  },
+  "hashes": {
+    "impl/README.md": "176e4eebd4565c5924cb96e0a9568e6dc75931aca83f71d56304b382ac2e61d8",
+    "impl/jev.py": "9a10194348f514d9557733336577bdcbeabd4711d33c3f512a9a88f8089805f8",
+    "tests/fixtures/brief-missing.json": "0434518544c17b889b268ce54aac04022c8460d4d8f1fb9b66566db94e425979",
+    "tests/fixtures/claim-insufficient.json": "d82bbe743c9a4f1328d66aad2048886a6e8c26f56f02171423babae6ca2f0064",
+    "tests/fixtures/claim-refuted.json": "045aa973044b1202b7f90fe1ad75480d0deb3154e21149088296d96ed4a08f75",
+    "tests/fixtures/claim-supported.json": "d226308bacd022e52b47180a52439828cdcc10e00fa79993181d92e6cdad2564",
+    "tests/fixtures/expected.json": "74dc15f8ae350991463c403ae9703926ca9441013dc926bc157978d0778614e7",
+    "tests/fixtures/policy.json": "b34bb3ddd0c471ab301518b83ccd1e2b411115c66ee7e84ef90208f9f9eac7ed",
+    "tests/test_jev.py": "0dbc0ef271f9ba7cef5114a8b56c140d9bdfd367c7c31afd6da714319adf7163"
+  }
+}

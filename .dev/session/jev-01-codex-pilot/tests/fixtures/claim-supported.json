@@ -1,0 +1,37 @@
+{
+  "schema": "jev.case/v1",
+  "case_id": "claim-supported",
+  "target": "Support for the claim within the supplied text",
+  "related_case_group": "closing-time-001",
+  "session_id": "synthetic-session",
+  "channel": "main",
+  "protocol": {
+    "id": "claim-support",
+    "version": "v1"
+  },
+  "state": {
+    "claim": "The laboratory closes at 18:00."
+  },
+  "evidence": [
+    {
+      "id": "source",
+      "ref": "synthetic:closing-time-supported",
+      "text": "The laboratory closes at 18:00."
+    }
+  ],
+  "missing_evidence": [],
+  "questions": [
+    {
+      "id": "support",
+      "type": "choice",
+      "text": "Does the supplied source support, refute, or provide insufficient evidence for the claim?",
+      "predicate_meaning": "Textual evidence relation within exactly the supplied source, without asserting external truth",
+      "rubric_version": "synthetic-v1",
+      "options": [
+        "supported",
+        "refuted",
+        "insufficient"
+      ]
+    }
+  ]
+}

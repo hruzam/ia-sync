@@ -1,0 +1,73 @@
+{
+  "schema": "jev.case/v1",
+  "case_id": "brief-missing",
+  "target": "Completeness of a synthetic delegation brief",
+  "related_case_group": "brief-001",
+  "session_id": "synthetic-session",
+  "channel": "main",
+  "protocol": {
+    "id": "brief-check",
+    "version": "v1"
+  },
+  "state": {
+    "brief": "Build a CSV importer. Return working code.",
+    "required_constraints": [
+      "input delimiter",
+      "maximum file size",
+      "expected verification"
+    ]
+  },
+  "evidence": [
+    {
+      "id": "task",
+      "ref": "synthetic:brief-001",
+      "text": "Build a CSV importer. Return working code."
+    }
+  ],
+  "missing_evidence": [
+    "delimiter",
+    "file-size bound",
+    "verification expectation"
+  ],
+  "questions": [
+    {
+      "id": "missing",
+      "type": "noul",
+      "text": "Does the supplied brief omit a listed required constraint?",
+      "predicate_meaning": "Presence of a material omission relative to the supplied required-constraint list",
+      "rubric_version": "synthetic-v1"
+    },
+    {
+      "id": "action",
+      "type": "choice",
+      "text": "Which review action is supported by the supplied brief?",
+      "predicate_meaning": "Whether to request clarification or proceed under the explicitly supplied constraints",
+      "rubric_version": "synthetic-v1",
+      "options": [
+        "clarify",
+        "proceed"
+      ]
+    },
+    {
+      "id": "coverage",
+      "type": "score",
+      "text": "How many of the three required constraints are stated?",
+      "predicate_meaning": "Count of explicitly stated required constraints, coded by ordered rubric level",
+      "rubric_version": "synthetic-v1",
+      "levels": [
+        "zero constraints",
+        "one constraint",
+        "two constraints",
+        "three constraints"
+      ]
+    }
+  ],
+  "memory": {
+    "version": "1",
+    "author": "synthetic-head",
+    "text": "Assess only constraints in the explicit list. Prior advice remains advice.",
+    "refs": [
+      "synthetic:brief-001"
+    ]
+  }
+}

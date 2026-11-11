@@ -4,6 +4,8 @@ Read only the observations relevant to the next task. These are attributed, scop
 
 Start with [G06 scars](germline.scars.g06.flight.2026-10-22.md). Receipt files preserve the complete original results, including carriage limits and qualifications. Fixture files named support/notes are experimental inputs, not process observations; they remain unchanged in their complete evidence packages.
 
-Archive and custody: [ARCHIVE](../../ARCHIVE.md). No preservation commit or cross-host receipt is claimed.
+Archive and custody: [ARCHIVE](../../ARCHIVE.md). The archivalia registry records current Git coverage and remaining local-only evidence; cross-host receipt remains unverified.
 
 [Bounded native-reader harvest](harvest.2026-11-03.native-reader.md) records cross-session patterns and candidate improvements. Actual route: existing explorer, Astra/high; this is not a witnessed Agol/Fable invocation or promoted doctrine.
+
+Historical bodies and their origin headers remain verbatim. Old session addresses and relative links may no longer be directly clickable: resolve them from the original document location using [the registry](../../ARCHIVE.md#resolve-a-historical-address).

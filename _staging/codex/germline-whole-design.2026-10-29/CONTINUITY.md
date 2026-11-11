@@ -43,7 +43,7 @@ a fresh incarnation has not yet encountered their evidence.
 | Houston discovery | Existing cards suffice; project addendum needs explicit documentation routes | A1 discovery consult; later authorized edits and a fresh navigation witness are still owed |
 
 Load-bearing decision source:
-[G06 DEC.01](../../../.dev/session/germline-06-full-audit/decisions/DEC.01.germline-identity-and-load-contract.md).
+[G06 DEC.01](../../../.dev/records/germline/2026-11-03/germline-06-full-audit/decisions/DEC.01.germline-identity-and-load-contract.md).
 The G06 audit's acceptance does not accept every recommendation: D10–D13 guide/source
 changes remain separately dispositioned proposals in the inspected records. Later A1/A2
 agent work may supersede old pending questions; inspect that evidence only when relevant.
@@ -132,4 +132,4 @@ records the review limits and the parent-integrated fixes.
 
 ## 2026-11-03 cleanup custody update — myShell
 
-Majkee authorized retirement after Oraculum’s consumer clearance. The [archive entry](../../../ARCHIVE.md) now supplies the exact readable and compressed locations, per-file hashes and pending dispositions. Existing full-slug citations remain valid through historical aliases; original evidence was not rewritten. This is local retirement, not result acceptance, a preservation commit or cross-host receipt. G03 and A3 remain separately owned; G09 remains live. The [crawler feedback](../../../.dev/session/germline-03-foundation-audit/raw/REPORT.myShell.crawler-experience.2026-11-03.md) is available for review, not claimed consumed.
+Majkee authorized retirement after Oraculum’s consumer clearance. The [archive entry](../../../ARCHIVE.md) now supplies the exact readable and compressed locations, per-file hashes and pending dispositions. Current citations now use preserved locations directly. Historical addresses resolve through ARCHIVE.md; compatibility aliases were removed by the later registry pass. Original evidence was not rewritten. This is local retirement, not result acceptance, a preservation commit or cross-host receipt. G03 and A3 remain separately owned; G09 remains live. The [crawler feedback](../../../.dev/session/germline-03-foundation-audit/raw/REPORT.myShell.crawler-experience.2026-11-03.md) is available for review, not claimed consumed.

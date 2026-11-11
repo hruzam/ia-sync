@@ -1,0 +1,9 @@
+Parent capture of native /root/jev_source_verify final recheck:
+
+VERDICT: PASS
+TASK: Recheck corrected CLI-session and requester provenance design for deterministic validation, legacy replay, exact `ref` identity, selection preservation, and future cache semantics.
+RAN: `nl -ba .dev/session/jev-01-codex-pilot/tasks/CLI-PROVENANCE.md`; `rg -n -- '--cli|ASCII|128|ambient|normalization|ref|actor|legacy|requester|Acceptance' .dev/session/jev-01-codex-pilot/tasks/CLI-PROVENANCE.md`.
+EVIDENCE: Lines 21–30 now lock mandatory paired flags, exact 1–128-byte ASCII grammar, no normalization, invalid/empty ambient refusal, exact dual-variable conflict handling, and explicit override precedence. Lines 39–43 lock `ref.actor` to an exact stored copy and preserve legacy actor shape without rewriting. Independent `requester`, all-null unknown provenance, controller-null, full selected source events, and future cache identity remain coherent.
+FAILURES: none
+REPRODUCE: `cd /home/hruzam/ia-sync`; `nl -ba .dev/session/jev-01-codex-pilot/tasks/CLI-PROVENANCE.md`; `rg -n -- '--cli|ASCII|128|ambient|normalization|ref|actor|legacy|requester|Acceptance' .dev/session/jev-01-codex-pilot/tasks/CLI-PROVENANCE.md`.
+RESIDUAL RISK: Implementation remains unverified. Integration must prove mixed legacy/new replay without changing old bytes/hashes, exact actor copying, origin/requester independence, ambient precedence, cross-client prepare/reply/ref, selected source provenance, mocked send provenance, and shell open/help/selected routing.

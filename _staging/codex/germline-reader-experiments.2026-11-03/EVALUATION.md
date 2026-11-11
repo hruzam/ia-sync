@@ -2,13 +2,22 @@
 kind: research-evaluation
 author: oraculum
 date: 2026-11-03
-status: plan approved; adjudication incorporated; experiment result acceptance pending
+status: experiments retired; adjudication incorporated; result acceptance pending
 tags: [germline, reader-experiments, A4, A5, A9, A3, reading-economy, scoring-adjudicated, continuity]
 ---
 
 # A4 / A5 / A9 — evaluation and disposition plan
 
 ## Point
+
+Cleanup update, 2026-11-03: myShell completed the operator-authorized retirement.
+[ARCHIVE](../../../ARCHIVE.md) is now the discovery entry; A4/A5/A9 readable packages
+live under `.dev/records/germline/2026-11-03/`, with manifest/disposition records and
+ignored cold copies. This supersedes the proposed `evidence/A4/`, `evidence/A5/`,
+`evidence/A9/` destinations below; do not create another copy for that old proposal.
+Acceptance remains pending. The registry records 426/436 preserved files in its named
+Git HEAD, with ten experiment JSONL files and cold copies local/ignored; remote/home
+availability remains unverified. Historical STATUS files are not active assignments.
 
 Operator decision, 2026-11-03: Majkee replied “Agree with that plan.” This approves
 the sequence of adjudication, result disposition, preservation and return to A3.
@@ -22,9 +31,9 @@ stored material delivered in A9, but has not established a clean economy benefit
 maintained correctness. A9's scoring ambiguity is now adjudicated under the frozen
 meaning-based rule, with the undisclosed-summary limitation retained.
 
-Recommendation: accept the adjudicated bounded findings with their limits, preserve
-the evidence, and return to A3's design sequence. The record review is complete;
-no new subject run is needed.
+Recommendation: accept the adjudicated bounded findings with their limits and use
+their preserved evidence in A3's design sequence. The record review and operational
+retirement are complete; no new subject run is needed.
 
 This is Oraculum's recipient evaluation and proposed disposition, not independent
 validation of experiments I helped design, operator acceptance, or canon. Tags here
@@ -36,9 +45,9 @@ dated correction while retaining its initial report for provenance.
 
 | Experiment / source | What it supports | What it does not establish | Proposed disposition tag |
 |---|---|---|---|
-| [A4: supplied facts](../../../.dev/session/germline-A4-reader-shapes/RESULT.md) | Four 12/12 responses; both ordinary tables and prose supported dependency, current-rule and recovery distinctions. | A presentation winner, general equivalence, autonomous discovery or economy. One subject reported inherited Oraculum loading; parent/contributor scoring was not independent. | `qualified-baseline` — recommend accepting the bounded result |
-| [A5: distributed evidence](../../../.dev/session/germline-A5-reader-navigation/RESULT.md) | Four 12/12 responses; each retrieved six relevant documents in three rounds and applied them correctly. | Selection efficiency: six of seven documents mattered, and the distractor was explicitly historical. Reader-04's supplemental messages qualify protocol compliance. | `qualified-navigation` — recommend accepting the bounded result |
-| [A9: selective versus full reading](../../../.dev/session/germline-A9-reader-economy/RESULT.md) | Adjudicated identity pair maintains semantic correctness with 48.8% less stored input but 23.9% more visible-history exposure; the other pairs remain incomplete. Useful observations of omitted citations, early termination and request/answer confusion. | Clean maintained-correctness economy, awareness of the undisclosed contrary summary, general inferiority of selective reading, actual monetary savings or crawler benefit. Outside-read effects and actual native payload carriage remain unverified. | `qualified-mixed-evidence; scoring-adjudicated` — recommend accepting the bounded result |
+| [A4: supplied facts](../../../.dev/records/germline/2026-11-03/germline-A4-reader-shapes/RESULT.md) | Four 12/12 responses; both ordinary tables and prose supported dependency, current-rule and recovery distinctions. | A presentation winner, general equivalence, autonomous discovery or economy. One subject reported inherited Oraculum loading; parent/contributor scoring was not independent. | `qualified-baseline` — recommend accepting the bounded result |
+| [A5: distributed evidence](../../../.dev/records/germline/2026-11-03/germline-A5-reader-navigation/RESULT.md) | Four 12/12 responses; each retrieved six relevant documents in three rounds and applied them correctly. | Selection efficiency: six of seven documents mattered, and the distractor was explicitly historical. Reader-04's supplemental messages qualify protocol compliance. | `qualified-navigation` — recommend accepting the bounded result |
+| [A9: selective versus full reading](../../../.dev/records/germline/2026-11-03/germline-A9-reader-economy/RESULT.md) | Adjudicated identity pair maintains semantic correctness with 48.8% less stored input but 23.9% more visible-history exposure; the other pairs remain incomplete. Useful observations of omitted citations, early termination and request/answer confusion. | Clean maintained-correctness economy, awareness of the undisclosed contrary summary, general inferiority of selective reading, actual monetary savings or crawler benefit. Outside-read effects and actual native payload carriage remain unverified. | `qualified-mixed-evidence; scoring-adjudicated` — recommend accepting the bounded result |
 
 These are 4 + 4 + 6 subject attempts across different designs and harness conditions,
 not fourteen interchangeable samples. Do not pool criterion counts into an accuracy
@@ -46,7 +55,7 @@ rate or attribute the differences to model, format or one mechanism.
 
 ## A9: less delivery can still mean more conversation exposure
 
-Scores below incorporate [Cartan's adjudication](../../../.dev/session/germline-A9-reader-economy/raw/SCORING-ADDENDUM.md).
+Scores below incorporate [Cartan's adjudication](../../../.dev/records/germline/2026-11-03/germline-A9-reader-economy/raw/SCORING-ADDENDUM.md).
 Original scores remain in SCORES.json and the historical part of RESULT; replaying
 `analyze.py` still reproduces the original scores and flags, not this addendum.
 
@@ -80,8 +89,8 @@ fixture/minimum-evidence inconsistency, not a substantive reader failure.
 The issue and task below are retained as the history of this completed review.
 
 The fixed RUNBOOK requires semantic scoring rather than preferred wording.
-[RUBRIC](../../../.dev/session/germline-A9-reader-economy/raw/RUBRIC.json),
-[SCORES](../../../.dev/session/germline-A9-reader-economy/raw/SCORES.json) and original
+[RUBRIC](../../../.dev/records/germline/2026-11-03/germline-A9-reader-economy/raw/RUBRIC.json),
+[SCORES](../../../.dev/records/germline/2026-11-03/germline-A9-reader-economy/raw/SCORES.json) and original
 answers must remain available together.
 
 **Reader-03 / review identity:** the answer cites the binding, policy, ledger and
@@ -89,7 +98,7 @@ registry; explains that the two handles belong to one person; declares the gate
 unsatisfied under the current two-person rule; and requests another distinct approval.
 The single deduction says it did not address the inherited summary.
 
-However, its [initial task/index](../../../.dev/session/germline-A9-reader-economy/raw/messages/reader-03.txt)
+However, its [initial task/index](../../../.dev/records/germline/2026-11-03/germline-A9-reader-economy/raw/messages/reader-03.txt)
 does not state that summary's contrary claim. The frozen four-source minimum does not
 include `identity/summary.md`. The binding warns generally about older summaries, but
 the exact contrary claim is in that fifth document. Full reading received it. Requiring
@@ -169,8 +178,10 @@ the whole conversation. A4/A5's positive results and A9's mixed results can coex
 This evaluation's stable local entry is
 `/home/hruzam/ia-sync/_staging/codex/germline-reader-experiments.2026-11-03/EVALUATION.md`.
 It lives outside the prunable experiment beds and remains deploy-inert research.
-The approved sequence below records the completed review and the remaining acceptance
-and custody obligations; it does not replace the owners' live STATUS files:
+The sequence below preserves the original plan. Review is complete; cleanup's registry
+and manifests now supply the actual preservation/retirement implementation in place of
+steps 3–4's proposed layout. Result acceptance and unverified remote custody remain open.
+Archived owner STATUS files retain historical state; ARCHIVE records retirement:
 
 1. **Adjudicate A9 — completed:** Cartan's linked SCORING-ADDENDUM accounts for the
    two deductions and their effect on the headline. RESULT and A9 STATUS point to it.
@@ -230,4 +241,4 @@ missing provenance or new contradictory results reopen affected conclusions.
 
 ## 2026-11-03 cleanup custody update — myShell
 
-Majkee authorized retirement after Oraculum’s consumer clearance. The [archive entry](../../../ARCHIVE.md) now supplies the exact readable and compressed locations, per-file hashes and pending dispositions. Existing full-slug citations remain valid through historical aliases; original evidence was not rewritten. This is local retirement, not result acceptance, a preservation commit or cross-host receipt. G03 and A3 remain separately owned; G09 remains live. The [crawler feedback](../../../.dev/session/germline-03-foundation-audit/raw/REPORT.myShell.crawler-experience.2026-11-03.md) is available for review, not claimed consumed.
+Majkee authorized retirement after Oraculum’s consumer clearance. The [archive entry](../../../ARCHIVE.md) now supplies the exact readable and compressed locations, per-file hashes and pending dispositions. Current links point directly to preserved records. Historical assignments keep their original addresses, resolved through ARCHIVE.md; compatibility aliases were removed by the later registry pass. Original evidence was not rewritten. This is local retirement, not result acceptance, a preservation commit or cross-host receipt. G03 and A3 remain separately owned; G09 remains live. The [crawler feedback](../../../.dev/session/germline-03-foundation-audit/raw/REPORT.myShell.crawler-experience.2026-11-03.md) is available for review, not claimed consumed.

@@ -1,4 +1,4 @@
-# Reader controller — candidate 02
+# Reader controller — candidate 03
 
 Purpose: expand inherited context only far enough to make the next bounded decision
 or action supportable. Read [README.md](README.md) for entry and knowledge roles.
@@ -22,6 +22,13 @@ result receipt in the session's already assigned evidence home. No separate live
 2. **Name the decision.** State the immediate question and the fact that would change
    the next action. Map only its implicated contracts, decisions and receipts. If the
    assignment itself is ambiguous, seek the missing scope; more crawling may not help.
+
+   If the question concerns session state, recover the relevant disposition history:
+   explicit CLOSE records, acceptance decisions and correction/addendum chains. Do
+   not decide from the first YAML block, a folder number, file mtime or last paragraph
+   alone. Resolve authority and temporal scope; preserve any unresolved conflict.
+   For retired sources, use the project's declared archive registry and exact original
+   identity. An archived STATUS explains history; it is not a live instruction to run.
 
 3. **Assess inherited claims.** For each consequential claim, resolve may-inherit,
    must-verify and invalidation conditions from the entry account and source. Check
@@ -53,6 +60,14 @@ result receipt in the session's already assigned evidence home. No separate live
    location and return size. Give the relevant inherited claims and known gaps;
    exclude unrelated conversation. Start with one helper. Broaden or parallelize
    only when independent questions justify it and delegation is authorized.
+
+   Choose and record requested role/model/effort and context policy for the question.
+   A role name such as crawler or explorer does not specify price or model tier.
+   Give a bounded brief where sufficient; inherit broader context only for a stated
+   need and account for it. When dividing sources among helpers, name the join question
+   and overlap. Follow-up facts shared by the head make this coordinated collection,
+   not independent audits. Record observed runtime evidence separately from requests;
+   copied parent metadata must not be mistaken for a child's own identity or work.
 
 6. **Integrate with verification proportional to consequence.** Inspect decisive
    cited passages before changing architecture, ownership or an effectful action.

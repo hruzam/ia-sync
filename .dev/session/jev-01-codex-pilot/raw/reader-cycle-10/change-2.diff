@@ -1,0 +1,76 @@
+--- before/.dev/session/jev-01-codex-pilot/tests/test_reader.py
++++ after/.dev/session/jev-01-codex-pilot/tests/test_reader.py
+@@ -1,12 +1,15 @@
+ """Native Jev Markdown reader acceptance with a temporary private vault."""
+ 
+ import hashlib
++from html.parser import HTMLParser
+ import importlib.util
+ import sys
+ import tempfile
+ from pathlib import Path
+ import unittest
+ from unittest import mock
++from types import SimpleNamespace
++import markdown
+ 
+ BED = Path(__file__).resolve().parents[1]
+ SOURCE = BED.parents[2] / "zsh" / "jev"
+@@ -20,6 +23,26 @@
+ reader = importlib.util.module_from_spec(reader_spec)
+ reader_spec.loader.exec_module(reader)
+ import browser
++
++
++class ParsedView(HTMLParser):
++    def __init__(self):
++        super().__init__(convert_charrefs=True)
++        self.tags, self.values, self.current = [], [], None
++
++    def handle_starttag(self, tag, attrs):
++        self.tags.append(tag)
++        if tag == 'pre':
++            self.current = []
++
++    def handle_data(self, data):
++        if self.current is not None:
++            self.current.append(data)
++
++    def handle_endtag(self, tag):
++        if tag == 'pre' and self.current is not None:
++            self.values.append(''.join(self.current))
++            self.current = None
+ 
+ 
+ class ReaderTests(unittest.TestCase):
+@@ -92,7 +115,29 @@
+         self.assertIn("ordinary text", evidence)
+         literal = "\n".join(reader._value({"unsafe``key\n<script>alert(1)</script>": "first\n\tsecond\n"}))
+         self.assertIn("```unsafe``key\\n<script>alert(1)</script>```", literal)
+-        self.assertIn("first\n\tsecond\n", literal)
++        self.assertIn("first\n&#9;second\n", literal)
++
++    def test_full_render_keeps_nested_untrusted_content_inert_and_readable(self):
++        note = 'Příliš 日本語\n\tIndented\n\n```sh\n</pre><script>alert(1)</script>\n```\n\x1b[31m'
++        hostile_key = 'unsafe``key\n<script>alert(2)</script>'
++        event = {'sequence': 2, 'kind': 'memory', 'event_id': 'event-2', 'at': 'recorded-time',
++                 'request_id': None, 'previous_event_id': 'event-1',
++                 'actor': {'cli_sessions': {'codex': 'original-codex', 'claude': 'original-claude',
++                                            'gemini': None, 'controller': None},
++                           'name': 'jev', 'requester': 'author', 'source': 'record'},
++                 'data': {'note': {'text': note, hostile_key: '<img src=x onerror=alert(3)>'}}}
++        ledger = SimpleNamespace(events=[event], path=self.ledger, session_id=self.session, tail=None)
++        source = reader.render(ledger, sequences={2})
++        for extensions in ([], ['fenced_code']):
++            parsed = ParsedView()
++            parsed.feed(markdown.markdown(source, extensions=extensions))
++            self.assertFalse({'script', 'img'} & set(parsed.tags), extensions)
++            self.assertIn(reader._text(note), parsed.values, extensions)
++            self.assertIn('<img src=x onerror=alert(3)>', parsed.values, extensions)
++            self.assertIn('original-codex', parsed.values, extensions)
++            self.assertIn('original-claude', parsed.values, extensions)
++            self.assertIn('Selected sequences: `2`', source)
++            self.assertIn('event-2', source)
+ 
+     def test_missing_vault_is_not_created(self):
+         missing = self.work / "missing"

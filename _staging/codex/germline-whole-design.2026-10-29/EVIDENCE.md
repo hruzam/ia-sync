@@ -9,6 +9,8 @@ status: proposal — operator-requested synthesis, no promotion
 
 # Evidence for the HTML understanding map
 
+Navigation note, 2026-11-03: this attributed research record retains historical addresses. Resolve retired full slugs through [ARCHIVE.md](../../../ARCHIVE.md); current CONTINUITY and the visual entry use direct preserved links.
+
 Majkee requested a small HTML preview of Oraculum's whole germline understanding and plan, including caches, frontmatter, classmap, guide/controller/function composition and natural Luna/Terra crawlers. Majkee then explicitly added exploratory aberration/chaotic-tail detection. This directory is the assigned synthesis artifact; it does not alter the formal G03 audit, G09 acceptance, native wrappers, shared canon or runtime deployment.
 
 ## Research performed

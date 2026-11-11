@@ -20,7 +20,7 @@ Use the five-phase ladder: P1 inspect local instructions and existing harness/re
 
 | Group | Scope | Disposition / evidence |
 |---|---|---|
-| 001-nabla-lab | Original office Oraculum preparation and post-trial procedure fold | Accepted and closed; [original STATUS](../germline-A2-nabla-lab/STATUS.md), [closure](../germline-A2-nabla-lab/raw/CLOSE.office.2026-10-29.md). Historical acceptance is unchanged. |
+| 001-nabla-lab | Original office Oraculum preparation and post-trial procedure fold | Accepted and closed; [original STATUS](../../records/germline/2026-11-03/germline-A2-nabla-lab/STATUS.md), [closure](../../records/germline/2026-11-03/germline-A2-nabla-lab/raw/CLOSE.office.2026-10-29.md). Historical acceptance is unchanged. |
 
 Track 2 external-source delegation/three-source synthesis remains separate unfinished lab research. Its owner/source pointers are in the original closure; continuing this preparation line does not take it over or accept it. No group 002 is invented before a project/task is selected.
 

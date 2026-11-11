@@ -1,0 +1,71 @@
+{
+  "python_markdown_version": "3.10.3",
+  "cases": [
+    {
+      "text": "before\n~~~html\n<script>DEMO_ONLY</script>\n~~~\nafter",
+      "extensions": [],
+      "preserved": true,
+      "script_elements": 0,
+      "nested_cli_preserved": true
+    },
+    {
+      "text": "before\n~~~html\n<script>DEMO_ONLY</script>\n~~~\nafter",
+      "extensions": [
+        "fenced_code"
+      ],
+      "preserved": true,
+      "script_elements": 0,
+      "nested_cli_preserved": true
+    },
+    {
+      "text": "before\n\n~~~\nliteral\n~~~\n\nafter",
+      "extensions": [],
+      "preserved": true,
+      "script_elements": 0,
+      "nested_cli_preserved": true
+    },
+    {
+      "text": "before\n\n~~~\nliteral\n~~~\n\nafter",
+      "extensions": [
+        "fenced_code"
+      ],
+      "preserved": true,
+      "script_elements": 0,
+      "nested_cli_preserved": true
+    }
+  ],
+  "fixture_checks": [
+    {
+      "extensions": [],
+      "preserved_notes": 6,
+      "nested_cli_values": 6,
+      "script_or_img": 0
+    },
+    {
+      "extensions": [
+        "fenced_code"
+      ],
+      "preserved_notes": 6,
+      "nested_cli_values": 6,
+      "script_or_img": 0
+    }
+  ],
+  "fixture_hashes_before": {
+    "01-memory-notes": "06f888cb9389e707eccb18c4de117d01148fda515692fe6358f2f9d5aa76c224",
+    "02-mixed-judgments": "ff1ac7af568f0c412725bdaf7eadd85cd9675d4f0110e1cecc3198b4f04e5c22",
+    "03-invalid-reply": "5b27ee2a8c39bfb7d610ad62cced00f15b1b012cd6bdf2c0221e19c5812766db",
+    "04-no-memory": "f6889690461bcdc4220467e7674edc04a157ec252ec6fb9c0e2d0f955dbac334"
+  },
+  "fixture_hashes_after": {
+    "01-memory-notes": "06f888cb9389e707eccb18c4de117d01148fda515692fe6358f2f9d5aa76c224",
+    "02-mixed-judgments": "ff1ac7af568f0c412725bdaf7eadd85cd9675d4f0110e1cecc3198b4f04e5c22",
+    "03-invalid-reply": "5b27ee2a8c39bfb7d610ad62cced00f15b1b012cd6bdf2c0221e19c5812766db",
+    "04-no-memory": "f6889690461bcdc4220467e7674edc04a157ec252ec6fb9c0e2d0f955dbac334"
+  },
+  "fixture_hashes_unchanged": true,
+  "source_hashes_after": {
+    "zsh/jev/reader.py": "48f1e1a903b5fa3b7013b16c4308862c9f3d1665c80e65150deac8f8ba7002c1",
+    ".dev/session/jev-01-codex-pilot/tests/test_reader.py": "2e5b02df19838585fb4df62445f6f967129502ad8f7a622d2ef2be8ce16e6ce8"
+  },
+  "installed_reader_sha256": "788dab016f9296d232d70054cf928dce8b2afb629de0cfc4054a2345523ae1a7"
+}

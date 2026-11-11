@@ -1,0 +1,14 @@
+{
+  "date": "2026-11-10",
+  "synthetic": true,
+  "root": "/home/hruzam/.local/share/jev-reader-demo-c9wshleb/vault",
+  "sessions": 4,
+  "events": 23,
+  "memory_notes": 11,
+  "installed_discovery": "PASS",
+  "installed_render_views": 8,
+  "interactive_memory_composition": "PASS",
+  "fixture_ledger_hashes_unchanged": true,
+  "permissions": "0700 directories; 0600 files",
+  "provider_calls": 0
+}

@@ -1,0 +1,71 @@
+{
+  "notice": "SYNTHETIC TEST LABELS AND RECEIPTS; no provider invocation or measured Jev behavior.",
+  "model": "synthetic-fixture/v1",
+  "answers_by_case": {
+    "brief-missing": [
+      {
+        "id": "missing",
+        "type": "noul",
+        "probability": 1
+      },
+      {
+        "id": "action",
+        "type": "choice",
+        "value": "clarify",
+        "probabilities": {
+          "clarify": 1,
+          "proceed": 0
+        },
+        "confidence": 1
+      },
+      {
+        "id": "coverage",
+        "type": "score",
+        "value": 0,
+        "probabilities": {
+          "0": 1,
+          "1": 0,
+          "2": 0,
+          "3": 0
+        },
+        "confidence": 1
+      }
+    ],
+    "claim-supported": [
+      {
+        "id": "support",
+        "type": "choice",
+        "value": "supported",
+        "probabilities": {
+          "supported": 1,
+          "refuted": 0,
+          "insufficient": 0
+        }
+      }
+    ],
+    "claim-refuted": [
+      {
+        "id": "support",
+        "type": "choice",
+        "value": "refuted",
+        "probabilities": {
+          "supported": 0,
+          "refuted": 1,
+          "insufficient": 0
+        }
+      }
+    ],
+    "claim-insufficient": [
+      {
+        "id": "support",
+        "type": "choice",
+        "value": "insufficient",
+        "probabilities": {
+          "supported": 0,
+          "refuted": 0,
+          "insufficient": 1
+        }
+      }
+    ]
+  }
+}

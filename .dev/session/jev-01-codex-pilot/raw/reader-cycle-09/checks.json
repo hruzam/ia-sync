@@ -1,0 +1,122 @@
+{
+  "schema": "reader-cycle-09/v1",
+  "command": [
+    "/usr/bin/python3",
+    "-B",
+    "/home/hruzam/.config/zsh/jev/browser.py",
+    "--root",
+    "/home/hruzam/.local/share/jev-reader-demo-c9wshleb/vault"
+  ],
+  "terminal": "PTY 80x24",
+  "exit": 0,
+  "scenario_order": [
+    "03-invalid-reply",
+    "01-memory-notes",
+    "04-no-memory",
+    "02-mixed-judgments"
+  ],
+  "scenario_counts": [
+    {
+      "name": "03-invalid-reply",
+      "session": "52a9e554f4a64bc3b53f4df89386b8c6",
+      "events": 5,
+      "memories": 2,
+      "sha256": "5b27ee2a8c39bfb7d610ad62cced00f15b1b012cd6bdf2c0221e19c5812766db"
+    },
+    {
+      "name": "01-memory-notes",
+      "session": "292fed307e5f418fb51e8292fdbf5121",
+      "events": 7,
+      "memories": 6,
+      "sha256": "06f888cb9389e707eccb18c4de117d01148fda515692fe6358f2f9d5aa76c224"
+    },
+    {
+      "name": "04-no-memory",
+      "session": "baba92b313e44699ad6fc92cb2c0fb95",
+      "events": 1,
+      "memories": 0,
+      "sha256": "f6889690461bcdc4220467e7674edc04a157ec252ec6fb9c0e2d0f955dbac334"
+    },
+    {
+      "name": "02-mixed-judgments",
+      "session": "aa896fc07f4049c9b07ab303c9b038bc",
+      "events": 10,
+      "memories": 3,
+      "sha256": "ff1ac7af568f0c412725bdaf7eadd85cd9675d4f0110e1cecc3198b4f04e5c22"
+    }
+  ],
+  "total_events": 23,
+  "total_memories": 11,
+  "memory_view": "/home/hruzam/ia-sync/.dev/session/jev-01-codex-pilot/raw/reader-cycle-09/jev-view-gvdkberh/view.md",
+  "memory_view_mode": "0o600",
+  "memory_checks": [
+    {
+      "sequence": 2,
+      "event_id": "ceab23cc8fa8c4d0ce8ace3a68b08bf9da10f62f1af7031e80928829a36ac557",
+      "text_present": true,
+      "event_id_present": true,
+      "recorded_time_present": true,
+      "author_present": true,
+      "actor_values_present": true,
+      "refs_present": true
+    },
+    {
+      "sequence": 3,
+      "event_id": "3782c48238630b6c3ee61f43301ad0d35d774a1e5de236e90bc8110732d370ad",
+      "text_present": true,
+      "event_id_present": true,
+      "recorded_time_present": true,
+      "author_present": true,
+      "actor_values_present": true,
+      "refs_present": true
+    },
+    {
+      "sequence": 4,
+      "event_id": "d53e9f48a3aeeda2795f757557d76ac0cd64303dcf19f10c0e63e344ca59a7e2",
+      "text_present": true,
+      "event_id_present": true,
+      "recorded_time_present": true,
+      "author_present": true,
+      "actor_values_present": true,
+      "refs_present": true
+    },
+    {
+      "sequence": 5,
+      "event_id": "00c94ad65729c2365365f3a43bde276349826f470c7118da1116c5645943394a",
+      "text_present": true,
+      "event_id_present": true,
+      "recorded_time_present": true,
+      "author_present": true,
+      "actor_values_present": true,
+      "refs_present": true
+    },
+    {
+      "sequence": 6,
+      "event_id": "4b7c611beb7a9c6debff6d8adf21bc16d02222080660246f06f4506393dea29f",
+      "text_present": true,
+      "event_id_present": true,
+      "recorded_time_present": true,
+      "author_present": true,
+      "actor_values_present": true,
+      "refs_present": true
+    },
+    {
+      "sequence": 7,
+      "event_id": "5f566b931ccecf870a772a2a08994797cbb58a76907fccb8a16dd74b6da75868",
+      "text_present": true,
+      "event_id_present": true,
+      "recorded_time_present": true,
+      "author_present": true,
+      "actor_values_present": true,
+      "refs_present": true
+    }
+  ],
+  "ledger_hashes_after": {
+    "01-memory-notes": "06f888cb9389e707eccb18c4de117d01148fda515692fe6358f2f9d5aa76c224",
+    "02-mixed-judgments": "ff1ac7af568f0c412725bdaf7eadd85cd9675d4f0110e1cecc3198b4f04e5c22",
+    "03-invalid-reply": "5b27ee2a8c39bfb7d610ad62cced00f15b1b012cd6bdf2c0221e19c5812766db",
+    "04-no-memory": "f6889690461bcdc4220467e7674edc04a157ec252ec6fb9c0e2d0f955dbac334"
+  },
+  "all_hashes_match_manifest": true,
+  "terminal_transcript": "/home/hruzam/ia-sync/.dev/session/jev-01-codex-pilot/raw/reader-cycle-09/pty.raw"
+}

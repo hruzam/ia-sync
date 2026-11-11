@@ -1,0 +1,46 @@
+{
+  "calls": [
+    {
+      "request": "fcf5015cdaa146c5a01ff33fbb6fa9d3",
+      "counts": {
+        "attempt": 1,
+        "http": 1,
+        "reply": 1,
+        "settle": 1,
+        "uncertain": 0,
+        "outcome": 1,
+        "dispose": 1,
+        "interpret": 1
+      }
+    },
+    {
+      "request": "7cb12c488b08432fa71461b7208e924b",
+      "counts": {
+        "attempt": 1,
+        "http": 1,
+        "reply": 1,
+        "settle": 1,
+        "uncertain": 0,
+        "outcome": 1,
+        "dispose": 1,
+        "interpret": 7
+      }
+    }
+  ],
+  "memory_count": 2,
+  "experiment_cost_usd": "0.000773808",
+  "budget": {
+    "total_usd": "0.02",
+    "spent_usd": "0.001999830",
+    "reserved_usd": "0",
+    "available_usd": "0.018000170",
+    "liabilities": [],
+    "overrun_request_ids": []
+  },
+  "grant_reuse_rejections": [
+    "request already attempted/completed; prepare a new occurrence with lineage",
+    "request already attempted/completed; prepare a new occurrence with lineage"
+  ],
+  "baseline_hash_matches": true,
+  "network_calls_in_verification": 0
+}

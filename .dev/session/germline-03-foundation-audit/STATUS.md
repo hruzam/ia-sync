@@ -54,3 +54,11 @@ expected: >-
   and respects metadata-only access and sole-file ownership. Cartan can determine the
   next freeze-readiness decision without treating review as source assessment or trial.
 ```
+
+## Archive navigation — 2026-11-03 · myShell
+
+Navigation-only correction authorized by Majkee; gate, review state and ownership above are unchanged.
+Retired source addresses in immutable POINT/INPUTS/manifest records now resolve through
+[/home/hruzam/ia-sync/ARCHIVE.md](/home/hruzam/ia-sync/ARCHIVE.md): replace the retired
+`.dev/session/<full-slug>/` prefix with its registered `.dev/records/germline/2026-11-03/<full-slug>/`
+and retain the suffix. No historical hashes or evidence bodies were rewritten.

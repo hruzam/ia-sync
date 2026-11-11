@@ -13,6 +13,7 @@ Usage: `~/.config/zsh/guides/guide-for-user.md` · keyboard map: `guides/keyboar
 |---|---|---|---|
 | `base.zsh` | Signpost (0009 L2) — wires the whole scope in partition order | `config.zsh`, git post-commit hook | sourced |
 | `keyboard.zsh` | Control panel: **aliases only — no bodies** | Human shell | `base.zsh` P1 |
+| `../jev/base.zsh` | Jev scope entry: consultation CLI and explicit per-shell vault attachment; exact engine reference in `../jev/README.md` | Human shell + local agent consumers | `base.zsh` P13 |
 | `gemini-processor.sh` | Gemini scope engine (dual-sourced): subprocess core (`_gai_*`) + interactive surface (agy wrappers, hygiene, `gemini-agents-help`) | per-agent launchers + `keyboard.zsh` aliases | launchers (bash) + `base.zsh` P8 (zsh) |
 | `claude.zsh` | Claude Code RC engine + help: `_rc_stop`, `_temple_help`, `_ai_help` | `keyboard.zsh` aliases | `base.zsh` P7 |
 | `devenv.zsh` | Project devenv transport engine: `_devenv_*`, `_fr_*`, `_bo_*`, `_devenv_help` (pull --rebase discipline built in) | `keyboard.zsh` P11 aliases | `base.zsh` P6 |

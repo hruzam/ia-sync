@@ -1,0 +1,19 @@
+{
+  "at": "2026-11-05T05:12:17.773165+01:00",
+  "host": "hruzam-120922",
+  "files": {
+    "PROVIDER.md": "74136576d6c39b2d78b3abaa467484c08cfe88da00e9fd8f797ac05cf5819347",
+    "README.md": "3491de49e35f1535206483ee5139e2732d7c49f04821913999f0b6ae106d0d80",
+    "base.zsh": "dfc0fbdafefd3126453398d2e386dd804ba77b4dfd27265c83ac1aa7b65d5e51",
+    "jev.py": "6f986944f2fc9077fdeae0c4ab6ea8834b0dacce0074d910c3c14d8b8e9f816c",
+    "jev.zsh": "299f3a0f11699ac28e0d758530799a47b3c30f6d2416b6161395c2ef8e932fca",
+    "kernel.py": "df3a31585eda1ec28cb5d8f9375a77c781c841110a31b2ea023ae4aa18f9d44d",
+    "keyboard.zsh": "fe419eef419d6d5809fe34909efb06170a8008abda7fbe413c5e66519b62424e",
+    "provider.py": "582e9b6c39f71f419257136d55eea74f0fcebab62ded4b9f1e3986456c280e87",
+    "store.py": "a98bd60d320a76e6c4fec2a648eab6e710e55b5a8c61417348cf334840a05a64"
+  },
+  "backup": "/home/hruzam/.config/zsh/.jev-delegated-backup-20261105",
+  "provider_calls": 0,
+  "credential_access": false,
+  "engagement_created": false
+}

@@ -1,49 +1,50 @@
-# Retired germline work and reusable evidence
+# Archivalia registry — germline
 
-2026-11-03 · operator-authorized local cleanup. This is discovery and custody information, not a second STATUS or acceptance ledger. Local relocation with historical aliases is distinct from a completed guide-defined preservation/closure: the preservation commit remains pending. No source bytes are discarded.
+This is the readable registry of retired identities and preserved knowledge. Live work remains in [pulse](pulse.md) and the owning STATUS. Retirement does not accept pending results or erase obligations. Numeric prefixes may be reused with different descriptive names; an original full slug is a reserved historical identity and must never point to unrelated work.
 
-## Where to look
+## Registry
 
-- Live work: [pulse](pulse.md) → each owning STATUS. Directory numbering is identity, not dependency or execution order.
-- Retired readable packages: `.dev/records/germline/2026-11-03/<original-full-slug>/`.
-- Compressed cold copies: `history/germline/2026-11-03/<original-full-slug>.tar.gz` (already gitignored).
-- [Manifest](.dev/records/germline/2026-11-03/MANIFEST.json): full origin, each file hash, archive hash, disposition and custody. [Disposition records](.dev/records/germline/2026-11-03/dispositions/) distinguish retirement from acceptance.
-- Old `.dev/session/<full-slug>` paths are compatibility symlinks to the exact historical package. They are not active sessions. Never repoint an old full slug to unrelated work. For relative links in historical bodies, read through these aliases; historical snapshots are not silently rewritten.
+Every row below retains its original full identity. Readable packages live outside the working session shelf; no compatibility symlinks remain in `.dev/session/`.
 
-## Recovery and preservation limits
+| Original identity | Purpose | Preserved location / reusable knowledge | Disposition and surviving responsibility |
+|---|---|---|---|
+| `germline-02-guide-model-law` | Public-program law planning | [record](.dev/records/germline/2026-11-03/germline-02-guide-model-law/STATUS.md) · [Gavel and deferred-input chain](.dev/records/germline/2026-11-03/germline-02-guide-model-law/raw/GAVELS.program-guide-law.md) | Closed planning; deferred C1/composition questions remain with G03 and the existing issue card. |
+| `germline-04-wiring-plan` | Wiring preparation | [record](.dev/records/germline/2026-11-03/germline-04-wiring-plan/STATUS.md) · [Closure and successor handoff](.dev/records/germline/2026-11-03/germline-04-wiring-plan/raw/CLOSE.g04-preparation.2026-10-20.md) | Closed preparation; no independent execution remains. |
+| `germline-05-sella-germline-audit` | Sella/germline audit | [record](.dev/records/germline/2026-11-03/germline-05-sella-germline-audit/STATUS.md) · [Findings and distinctions](.dev/records/germline/2026-11-03/germline-05-sella-germline-audit/findings.q1.md) | Audit accepted; residual composition/compaction questions retain the owners in CLOSE. |
+| `germline-06-full-audit` | Full foundation audit | [record](.dev/records/germline/2026-11-03/germline-06-full-audit/STATUS.md) · [Integrated audit book](.dev/records/germline/2026-11-03/germline-06-full-audit/units/INTEGRATED.recommendations.md) | Audit accepted; proposed decisions and validation debts remain separately dispositioned by Majkee/assigned owners. |
+| `germline-07-make-program` | Caretaker trial and inherited methods | [record](.dev/records/germline/2026-11-03/germline-07-make-program/STATUS.md) · [Qualified result and receipts](.dev/records/germline/2026-11-03/germline-07-make-program/raw/experiment_1/RESULT.md) | Retired; result acceptance pending with Majkee/Cartan. Scars and contract-testing brief remain reusable. |
+| `germline-08-caretaker-receipts` | Receipt-first recovery trial | [record](.dev/records/germline/2026-11-03/germline-08-caretaker-receipts/STATUS.md) · [Recovery result and limits](.dev/records/germline/2026-11-03/germline-08-caretaker-receipts/raw/experiment_2/RESULT.md) | Retired; result acceptance pending with Majkee/Cartan. |
+| `germline-A4-reader-shapes` | Prose/table reader experiment | [record](.dev/records/germline/2026-11-03/germline-A4-reader-shapes/STATUS.md) · [Bounded baseline](.dev/records/germline/2026-11-03/germline-A4-reader-shapes/RESULT.md) | Retired; acceptance pending with Majkee; original owner Oraculum. |
+| `germline-A5-reader-navigation` | Linked-evidence navigation experiment | [record](.dev/records/germline/2026-11-03/germline-A5-reader-navigation/STATUS.md) · [Navigation findings](.dev/records/germline/2026-11-03/germline-A5-reader-navigation/RESULT.md) | Retired; acceptance pending with Majkee; original owner Cartan. |
+| `germline-A9-reader-economy` | Selective/full reading experiment | [record](.dev/records/germline/2026-11-03/germline-A9-reader-economy/STATUS.md) · [Scoring correction and qualifications](.dev/records/germline/2026-11-03/germline-A9-reader-economy/raw/SCORING-ADDENDUM.md) | Retired; acceptance pending with Majkee/Cartan. Original scores and corrected interpretation coexist. |
+| `germline-A6-harness-builder` | Superseded builder preparation | [record](.dev/records/germline/2026-11-03/germline-A6-harness-builder/STATUS.md) · [Original preparation](.dev/records/germline/2026-11-03/germline-A6-harness-builder/RUNBOOK.md) | Unstarted build survives in A1 group 002; A1 head owns continuation. |
+| `germline-A7-shuttle-execution` | Superseded Shuttle preparation | [record](.dev/records/germline/2026-11-03/germline-A7-shuttle-execution/STATUS.md) · [Original preparation](.dev/records/germline/2026-11-03/germline-A7-shuttle-execution/RUNBOOK.md) | Unstarted build survives in A1 group 003; A1 head owns continuation. |
+| `germline-A8-epoch-researcher` | Superseded Epoch preparation | [record](.dev/records/germline/2026-11-03/germline-A8-epoch-researcher/STATUS.md) · [Original preparation](.dev/records/germline/2026-11-03/germline-A8-epoch-researcher/RUNBOOK.md) | Unstarted build survives in A1 group 004; A1 head owns continuation. |
+| `germline-A2-nabla-lab` | Original office lab preparation | [record](.dev/records/germline/2026-11-03/germline-A2-nabla-lab/STATUS.md) · [Accepted setup receipt](.dev/records/germline/2026-11-03/germline-A2-nabla-lab/raw/CLOSE.office.2026-10-29.md) | Closed group 001 of A2-projects; Track 2 research stays with its separate lab assignment. |
 
-The readable packages and compressed copies were compared file-by-file after actual extraction. Original result bodies, frozen fixtures, scores, addenda, dispatches and returns remain unchanged. Four idle G07/G08 tunnel handles were closed through the supported local operation before archival; [close receipts](.dev/records/germline/2026-11-03/TUNNEL-CLOSE.json) preserve identifiers without live enable state. No model turns or thread deletion occurred.
+## Resolve a historical address
 
-Custodian: myShell for this move; original owners retain result disposition. Everything is currently local to office. No preservation commit, independent backup, transport or home receipt is claimed. Readable ordinary source files are eligible for normal authorized Git preservation; existing ignore rules still apply to JSONL/runtime material. Do not force-add runtime histories. The compressed copy is not shared custody by itself.
+The [source manifest](.dev/records/germline/2026-11-03/MANIFEST.json) maps each `origin` to its `readable` location, file hashes and compressed copy. Given an old `.dev/session/<original-full-slug>/<suffix>`, find the exact slug above or in the manifest and use `.dev/records/germline/2026-11-03/<original-full-slug>/<suffix>`. The suffix and original identity stay unchanged. Never resolve by number alone or substitute a newer session with the same number.
 
-To recover: select the exact full slug in MANIFEST, verify the archive SHA-256, extract to a fresh temporary directory with `tar -xzf <archive> -C <empty-directory>`, and compare every member against the manifest before restoring anything. Never extract over living work. A missing local archive is unknown custody, not proof of deletion; the manifest alone cannot recover bytes. Retained scripts may embed original absolute paths; aliases preserve local reads, but executing an archived script needs a fresh scoped review and authorization. Restoration does not re-enable a tunnel.
+For a relative link in a historical document, resolve it against that document's original location first, then apply the same mapping if it names a retired package. Links to still-live packages retain their live location. Frozen reports, dispatches, scores, fixtures and historical messages keep their original bytes; their old links may therefore need this lookup instead of being directly clickable. This registry grants no authority to replay an archived command or script.
 
-## Retired packages
+## Recovery and custody
 
-| Original identity | Disposition | Integrity |
-|---|---|---|
-| [germline-02-guide-model-law](.dev/session/germline-02-guide-model-law/STATUS.md) | accepted closed scope; proposals and unresolved exit distinctions retain their original status | [manifest](.dev/records/germline/2026-11-03/MANIFEST.json) |
-| [germline-04-wiring-plan](.dev/session/germline-04-wiring-plan/STATUS.md) | accepted closed scope; proposals and unresolved exit distinctions retain their original status | [manifest](.dev/records/germline/2026-11-03/MANIFEST.json) |
-| [germline-05-sella-germline-audit](.dev/session/germline-05-sella-germline-audit/STATUS.md) | accepted closed scope; proposals and unresolved exit distinctions retain their original status | [manifest](.dev/records/germline/2026-11-03/MANIFEST.json) |
-| [germline-06-full-audit](.dev/session/germline-06-full-audit/STATUS.md) | accepted closed scope; proposals and unresolved exit distinctions retain their original status | [manifest](.dev/records/germline/2026-11-03/MANIFEST.json) |
-| [germline-07-make-program](.dev/session/germline-07-make-program/STATUS.md) | retired from active use by Majkee; result acceptance remains pending; no further trial released | [manifest](.dev/records/germline/2026-11-03/MANIFEST.json) |
-| [germline-08-caretaker-receipts](.dev/session/germline-08-caretaker-receipts/STATUS.md) | retired from active use by Majkee; result acceptance remains pending; no further trial released | [manifest](.dev/records/germline/2026-11-03/MANIFEST.json) |
-| [germline-A4-reader-shapes](.dev/session/germline-A4-reader-shapes/STATUS.md) | retired from active use by Majkee; result acceptance remains pending; no further trial released | [manifest](.dev/records/germline/2026-11-03/MANIFEST.json) |
-| [germline-A5-reader-navigation](.dev/session/germline-A5-reader-navigation/STATUS.md) | retired from active use by Majkee; result acceptance remains pending; no further trial released | [manifest](.dev/records/germline/2026-11-03/MANIFEST.json) |
-| [germline-A9-reader-economy](.dev/session/germline-A9-reader-economy/STATUS.md) | retired from active use by Majkee; result acceptance remains pending; no further trial released | [manifest](.dev/records/germline/2026-11-03/MANIFEST.json) |
-| [germline-A6-harness-builder](.dev/session/germline-A6-harness-builder/STATUS.md) | superseded preparation; unstarted builds belong to A1 groups 002–004, not completed | [manifest](.dev/records/germline/2026-11-03/MANIFEST.json) |
-| [germline-A7-shuttle-execution](.dev/session/germline-A7-shuttle-execution/STATUS.md) | superseded preparation; unstarted builds belong to A1 groups 002–004, not completed | [manifest](.dev/records/germline/2026-11-03/MANIFEST.json) |
-| [germline-A8-epoch-researcher](.dev/session/germline-A8-epoch-researcher/STATUS.md) | superseded preparation; unstarted builds belong to A1 groups 002–004, not completed | [manifest](.dev/records/germline/2026-11-03/MANIFEST.json) |
-| [germline-A2-nabla-lab](.dev/session/germline-A2-nabla-lab/STATUS.md) | accepted closed lab setup, inherited as group 001 of A2-projects; Track 2 research remains separate | [manifest](.dev/records/germline/2026-11-03/MANIFEST.json) |
+- Readable source: `.dev/records/germline/2026-11-03/<original-full-slug>/`.
+- Compressed cold copy: `history/germline/2026-11-03/<original-full-slug>.tar.gz`, intentionally ignored.
+- [Manifest](.dev/records/germline/2026-11-03/MANIFEST.json), [retirement dispositions](.dev/records/germline/2026-11-03/dispositions/) and [original verification](.dev/records/germline/2026-11-03/VERIFICATION.json) are dated records. Their original alias/local-only statements describe the earlier pass; this registry and its [update receipt](.dev/records/germline/2026-11-03/REGISTRY-UPDATE.json) describe current navigation and observed custody.
 
-## Knowledge worth inheriting
+Observed at ia-sync `f0fd9b59cd2c0937e5943035c24b27f99b0338bc`: **426 of 436 preserved files are in Git HEAD**. The remaining ten experiment `transcript.jsonl` files and compressed copies remain ignored/local. This corrects the earlier all-local/uncommitted observation; it does not prove remote backup, transport or home availability. No commit or push was performed by this registry pass.
 
-- [G06 integrated audit](.dev/session/germline-06-full-audit/units/INTEGRATED.recommendations.md): findings, decision distinctions and later work; accepted audit is not blanket acceptance of proposals.
-- [Scars and receipts](.dev/observations/README.md): verbatim process lessons and result qualifications for reincarnation and sequential work. Choose relevant lessons; verify currentness.
-- [A1 CACHE](.dev/session/germline-A1-vi-agents/CACHE.md): reusable agent-production experience, separate from its task queue.
-- [A2 projects](.dev/session/germline-A2-projects/RUNBOOK.md): the continuing project-preparation ladder, with original lab setup as group 001.
-- [Whole-design understanding](_staging/codex/germline-whole-design.2026-10-29/CONTINUITY.md) and [CACHE](_staging/codex/germline-whole-design.2026-10-29/CACHE.md): coordinator's attributed synthesis; A3 owns design position.
-- [A4/A5/A9 evaluation](_staging/codex/germline-reader-experiments.2026-11-03/EVALUATION.md): bounded findings and A9 adjudication; pending result acceptance travels with retirement.
-- [Crawler feedback for G03](.dev/session/germline-03-foundation-audit/raw/REPORT.myShell.crawler-experience.2026-11-03.md): actual model/effort evidence, useful findings and limits; no measured economy claim.
+To recover a cold copy, choose the exact full slug, verify its archive SHA-256 against the manifest, extract into a fresh empty directory, and compare every extracted file with the manifest before restoring anything. Do not extract over living work or recreate enabled tunnel state. Four idle G07/G08 handles were closed in the original cleanup; [the receipt](.dev/records/germline/2026-11-03/TUNNEL-CLOSE.json) retains identities without granting a new turn.
 
-G03 and G09 remain live. G00's outdated symlink-era gate requires an owner disposition; do not execute its old recovery instruction as current guidance. G01 remains a historical witness source and A0 broader intake. No GUIDE/canon promotion occurred. The named Agol harvest route is not exposed by this Codex runtime; any bounded native-reader harvest is labeled with its actual role/model, not passed off as a witnessed Agol invocation.
+## Inheritance entrances
+
+- [Scars and attributed receipt lessons](.dev/observations/README.md): relevant material for reincarnation and long sequential work; preserve source, limits and invalidation conditions.
+- [A1 CACHE](.dev/session/germline-A1-vi-agents/CACHE.md): reusable agent-production experience.
+- [A2 projects](.dev/session/germline-A2-projects/RUNBOOK.md): continuing project preparation with the original lab setup as closed group 001.
+- [Whole-design understanding](_staging/codex/germline-whole-design.2026-10-29/CONTINUITY.md) and [CACHE](_staging/codex/germline-whole-design.2026-10-29/CACHE.md): attributed coordinator knowledge; A3 owns design state.
+- [Experiment evaluation](_staging/codex/germline-reader-experiments.2026-11-03/EVALUATION.md): A4/A5/A9 findings, corrections and acceptance limits.
+- [Crawler experience](.dev/session/germline-03-foundation-audit/raw/REPORT.myShell.crawler-experience.2026-11-03.md): historical survey, model/effort evidence and qualifications.
+
+G03, A3 and G09 retain their own obligations. G00's obsolete next action still needs owner disposition. G01 remains historical witness material and A0 broader intake. This registry is navigation and preservation information, not a second task queue or a GUIDE promotion.

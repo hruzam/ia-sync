@@ -1,0 +1,12 @@
+{
+  "at": "2026-11-04T18:36:49.014839+01:00",
+  "before_snapshot": "build-before.2026-11-04.json",
+  "changed_existing_files": [
+    ".dev/session/jev-01-codex-pilot/STATUS.md",
+    ".dev/session/jev-01-codex-pilot/tests/test_jev.py",
+    "zsh/ai/base.zsh",
+    "zsh/AGENTS.md",
+    "journal.host-cleanup.md"
+  ],
+  "all_changes_within_authorized_scope": true
+}

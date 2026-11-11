@@ -1,0 +1,9 @@
+{
+  "installed_reader": "/home/hruzam/.config/zsh/jev/reader.py",
+  "sha256": "48f1e1a903b5fa3b7013b16c4308862c9f3d1665c80e65150deac8f8ba7002c1",
+  "parser": "3.10.3",
+  "six_notes_both_configurations": "PASS",
+  "tilde_cases_both_configurations": "PASS",
+  "ledger_hashes_unchanged": true,
+  "fresh_view": "/home/hruzam/.local/share/jev-reader-demo-c9wshleb/views/01-memory-notes-fixed.md"
+}

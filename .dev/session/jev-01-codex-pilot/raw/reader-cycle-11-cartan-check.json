@@ -1,0 +1,50 @@
+{
+  "parser": "3.10.3",
+  "scope_diffs_match": true,
+  "six_original_notes_preserved": true,
+  "fixture_hashes_unchanged": true,
+  "tilde_fence_cases": [
+    {
+      "text": "before\n~~~html\n<script>DEMO_ONLY</script>\n~~~\nafter",
+      "extensions": [],
+      "preserved": true,
+      "pre_values": [
+        "before\n~~~html\n<script>DEMO_ONLY</script>\n~~~\nafter"
+      ],
+      "active_script": false
+    },
+    {
+      "text": "before\n~~~html\n<script>DEMO_ONLY</script>\n~~~\nafter",
+      "extensions": [
+        "fenced_code"
+      ],
+      "preserved": true,
+      "pre_values": [
+        "before\n~~~html\n<script>DEMO_ONLY</script>\n~~~\nafter"
+      ],
+      "active_script": false
+    },
+    {
+      "text": "before\n\n~~~\nliteral\n~~~\n\nafter",
+      "extensions": [],
+      "preserved": true,
+      "pre_values": [
+        "before\n\n~~~\nliteral\n~~~\n\nafter"
+      ],
+      "active_script": false
+    },
+    {
+      "text": "before\n\n~~~\nliteral\n~~~\n\nafter",
+      "extensions": [
+        "fenced_code"
+      ],
+      "preserved": true,
+      "pre_values": [
+        "before\n\n~~~\nliteral\n~~~\n\nafter"
+      ],
+      "active_script": false
+    }
+  ],
+  "source_sha256": "48f1e1a903b5fa3b7013b16c4308862c9f3d1665c80e65150deac8f8ba7002c1",
+  "installed_sha256": "788dab016f9296d232d70054cf928dce8b2afb629de0cfc4054a2345523ae1a7"
+}

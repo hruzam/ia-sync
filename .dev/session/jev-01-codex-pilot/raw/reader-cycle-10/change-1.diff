@@ -1,0 +1,19 @@
+--- before/zsh/jev/README.md
++++ after/zsh/jev/README.md
+@@ -75,6 +75,16 @@
+ `{"source":"record","name":"jev"}` replay without rewriting bytes or hashes. `ref.actor`
+ is a copy of the selected saved event's exact actor, including that legacy shape; it never
+ substitutes the querying client's actor. Missing legacy fields mean unknown to readers.
++
++### Reading views and Markdown support
++
++The local `reader.py` and `jev-browse` render event strings in escaped HTML `<pre>`
++blocks, with controls made visible. The source text remains data, including markup and
++backticks; the output is a derived view. The checked Markdown configuration is
++Python-Markdown 3.10.3 with default settings or the `fenced_code` extension, with raw
++HTML enabled. Renderers that remove or alter HTML, and other Markdown engines, have not
++been verified. Python-Markdown is needed only for the renderer regression tests; the
++reader itself uses the Python standard library.
+ Explicit selections embed original source events with their IDs and provenance; subsequent
+ consumer events carry their own actor. A future response-cache entry must point to the
+ original ledger/session/request/reply event ID and preserve that actor, rather than present

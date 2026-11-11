@@ -1,0 +1,113 @@
+{
+  "source_live_unchanged": {
+    "PROVIDER.md": "74136576d6c39b2d78b3abaa467484c08cfe88da00e9fd8f797ac05cf5819347",
+    "README.md": "7f5b1ab837bda26d1aa5ded3884f337cc41fdb4053e444713b5ab6829efad8c9",
+    "base.zsh": "dfc0fbdafefd3126453398d2e386dd804ba77b4dfd27265c83ac1aa7b65d5e51",
+    "browser.py": "97ed50e350f34cf1e4fdeaad2acfe696e8c0a64115356a15669c2d58988b1914",
+    "jev.py": "6f986944f2fc9077fdeae0c4ab6ea8834b0dacce0074d910c3c14d8b8e9f816c",
+    "jev.zsh": "299f3a0f11699ac28e0d758530799a47b3c30f6d2416b6161395c2ef8e932fca",
+    "kernel.py": "df3a31585eda1ec28cb5d8f9375a77c781c841110a31b2ea023ae4aa18f9d44d",
+    "keyboard.zsh": "fe419eef419d6d5809fe34909efb06170a8008abda7fbe413c5e66519b62424e",
+    "provider.py": "582e9b6c39f71f419257136d55eea74f0fcebab62ded4b9f1e3986456c280e87",
+    "reader.py": "48f1e1a903b5fa3b7013b16c4308862c9f3d1665c80e65150deac8f8ba7002c1",
+    "store.py": "a98bd60d320a76e6c4fec2a648eab6e710e55b5a8c61417348cf334840a05a64"
+  },
+  "ledger_sha256": "68869e87a1770e9f32fac685145ecf30780566dcbd0de650f20ce02d51e19b97",
+  "event_counts": {
+    "open": 1,
+    "prepare": 3,
+    "attempt": 3,
+    "http": 3,
+    "reply": 3,
+    "settle": 3,
+    "outcome": 3,
+    "dispose": 3,
+    "interpret": 8,
+    "memory": 2
+  },
+  "budget": {
+    "available_usd": "0.018000170",
+    "liabilities": [],
+    "overrun_request_ids": [],
+    "reserved_usd": "0",
+    "spent_usd": "0.001999830",
+    "total_usd": "0.02"
+  },
+  "response_sha256": "c9ab60db8418ac08c7842f03efee40bd2974c68a7405c91b154c0f15221d1bdf",
+  "native_validation": {
+    "status": "INVALID",
+    "errors": [
+      "receipt.answers[5].value: differs from expected rubric index"
+    ]
+  },
+  "native_cost_usd": "0.000420126",
+  "scores": [
+    {
+      "question": "S1_maturity",
+      "score": "1.16",
+      "weighted": "1.16",
+      "scalar_minus_weighted": "0.00",
+      "probability_sum": "1.00"
+    },
+    {
+      "question": "S2_maturity",
+      "score": "2",
+      "weighted": "2.01",
+      "scalar_minus_weighted": "-0.01",
+      "probability_sum": "1.00",
+      "hypothetical_nearest_cent_witness": {
+        "probabilities": [
+          "0.013",
+          "0",
+          "0.957",
+          "0.030"
+        ],
+        "unrounded_mean": "2.004"
+      }
+    },
+    {
+      "question": "S3_maturity",
+      "score": "2.02",
+      "weighted": "2.02",
+      "scalar_minus_weighted": "0.00",
+      "probability_sum": "1.00"
+    },
+    {
+      "question": "S4_maturity",
+      "score": "2.95",
+      "weighted": "2.96",
+      "scalar_minus_weighted": "-0.01",
+      "probability_sum": "1.00",
+      "hypothetical_nearest_cent_witness": {
+        "probabilities": [
+          "0.003",
+          "0",
+          "0.040",
+          "0.957"
+        ],
+        "unrounded_mean": "2.951"
+      }
+    },
+    {
+      "question": "S6_maturity",
+      "score": "1.78",
+      "weighted": "1.77",
+      "scalar_minus_weighted": "0.01",
+      "probability_sum": "1.00",
+      "hypothetical_nearest_cent_witness": {
+        "probabilities": [
+          "0.107",
+          "0.010",
+          "0.883",
+          "0"
+        ],
+        "unrounded_mean": "1.776"
+      }
+    }
+  ],
+  "calibration_protocol_sha256": "efbd3e188a04fa9ddf79d8581c676a3654bef1011506f2ab84dfdc5682c8a513",
+  "implementation_substrate_sha256": "33cbbd71f7ec2083e798f6382cfc646f4e981e965057cc696e620ac62aa8b9d9",
+  "inference_calls": 0,
+  "ledger_unchanged": true,
+  "rounding_status": "Hypothesis only; no provider serialization guarantee established"
+}

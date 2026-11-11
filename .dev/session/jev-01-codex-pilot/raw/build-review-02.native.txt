@@ -1,0 +1,7 @@
+VERDICT: PASS
+TASK: Reverify the repaired first-slice interpretation ERROR contract, including available references and null request references for structurally/hash-invalid prepared objects.
+RAN: `python3 -B -m unittest discover -s tests -v`; inspected `impl/jev.py:255-319`, `impl/README.md:31-39`, and regression tests; ran an independent temporary-file CLI probe for invalid-policy and hash-invalid prepared cases; `git diff --check -- impl/jev.py impl/README.md tests/test_jev.py`.
+EVIDENCE: All 26 tests passed. With a valid prepared object and invalid policy, ERROR retained the validated request/hash, question, raw policy, file pointers, and validation labels. With a spoofed request ID plus packet tampering that invalidated the prepared hash, ERROR returned null request/hash/policy, `prepared_validation: INVALID`, and retained only safe question/file references. Source inspection confirms request references are populated only after `validate_prepared` succeeds.
+FAILURES: none.
+REPRODUCE: `cd /home/hruzam/ia-sync/.dev/session/jev-01-codex-pilot && python3 -B -m unittest discover -s tests -v`
+RESIDUAL RISK: Prepared hashes establish local consistency, not authenticity; a self-consistent same-user rewrite cannot be authenticated by this offline slice. Durable lifecycle, USD admission, provider mapping, live sending, and usefulness remain later unverified boundaries.

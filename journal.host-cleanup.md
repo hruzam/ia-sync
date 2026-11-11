@@ -10,6 +10,61 @@
 
 ---
 
+## OFFICE — 2026-11-11 · Cartan · Resource cleanup
+
+Operator requested closing all tmux sessions; stopped the default, ovitmugen and
+pc-trial-j6j1id09 servers. Available RAM increased from about 7.4 to 9.7 GiB.
+Baloo is being switched to manual use with the native `balooctl6 disable` command;
+its existing index is retained. Before-state: idle, 369452 indexed files, 1.28 GiB
+index, about 325 MiB process PSS. Re-enable with `balooctl6 enable`, inspect with
+`balooctl6 status`, then disable again when finished. This is an office user
+preference outside the deploy tree. CPU profile observed as power-saver; no change
+to that profile or project-facing services was authorized or applied.
+
+---
+
+## OFFICE — 2026-11-10 · Cartan · JSONL reading tools
+
+Installed a separate `zsh/tools/` JSONL reader through the shared `ai/base.zsh` signpost.
+It previews and selects physical lines, renders private disposable Markdown, and supports
+refresh, clear, open and explicit non-overwriting save. Direct Jev ledgers are refused by
+the generic reader; `zsh/jev/reader.py` uses native replay for validated Jev views.
+Office scoped installation copied only tools files, the Jev reader and signpost; backup:
+`~/.config/zsh/.tools-backup-20261110/`. Fresh interactive shell loads the alias; eight
+generic and five native reader tests pass. Actual November 5 audit replay produced a
+private view and left the ledger SHA256 unchanged. No paid request or home deployment.
+Broader Jev handoff acceptance (all answer types, recovery and distribution checks) is
+not yet established. Instructions: `zsh/tools/README.md`.
+
+Later added `tools-help`, a compact panel for ordinary JSONL and validated Jev views;
+it explains that an existing audit.md is already Markdown and that request-filtered
+views omit session-level events. Scoped office update verified in a fresh interactive
+shell; previous files backed up in `~/.config/zsh/.tools-help-backup-20261110-054508/`.
+
+Added `tools-browse [directory]` for interactive folder/file navigation, line selection
+and Markdown generation, plus `tool-help` as an alias. JSONL views now include a record
+index, physical-line explanation and quoted source-search examples. Eleven synthetic
+tests pass; an interactive PTY selection created the expected single-record view. Scoped
+office deployment verified; backup `~/.config/zsh/.tools-browser-backup-20261110-055646/`.
+Jev ledgers still require native replay and are not browsed as generic JSONL.
+
+Added `jev-browse` for validated session/event navigation, memory-only filtering, marking
+and private Markdown composition. Actual vault discovery found one session, eight events
+and no separately authored memory notes; existing prepare/reply events are available under
+all events. A real interactive PTY selected the saved reply, produced a mode-0600 private
+view and left the ledger hash unchanged; six native-reader tests pass. Scoped office
+installation backup: `~/.config/zsh/.jev-browser-backup-20261110-060455/`.
+
+Cartan(jev-01) independently verified reader cycles09–11 and corrected two parser-level
+literal-rendering defects: source HTML and tilde fences could escape the intended literal
+presentation. Eight focused tests pass; scope is Python-Markdown3.10.3 default/fenced_code
+with raw HTML enabled. Installed only accepted `jev/reader.py` and `jev/README.md`, after
+matching live bytes to before snapshots; backup `~/.config/zsh/.jev-renderer-backup-20261110-082626`.
+Fresh installed checks preserve six notes, both fence counterexamples and ledger hashes.
+Evidence: `.dev/session/jev-01-codex-pilot/raw/reader-installed-check.2026-11-10.json`.
+Earlier generated views are snapshots and must be regenerated to benefit. Home deployment,
+other viewers and broader acceptance remain open. No provider call or ledger changes.
+
 ## HOME — 2026-11-06 · ZSH scope cleanup
 
 Retired the `sync-guides` scope from both authored machine configs: office no longer
@@ -35,9 +90,66 @@ shells on both hosts load `exp-run` and the personal `c-houston` alias, with no
 accepted all 167 commands with zero malformed rows and no sync entries on both hosts;
 the maps have identical hashes. Majkee authorized the source commit and push on
 2026-11-06 after the live cleanup and verification.
+## OFFICE — 2026-11-05 · Cartan · Jev task cards and caller provenance
+
+Majkee requested test/debug tasks, settings/spending clarity and a continuity cache, then
+added CLI session provenance and `hlm` for his requests. Jev 01 now has a Bash/JSON offline
+intake example, an ordered task card, and CACHE with the actual controller ID, Luna-medium
+transcript audit and open requirements. Provider key limits/expiry and usage/export documentation
+were checked without account access; a billing downloader and settings revision remain gaps.
+
+The bounded provenance increment in `zsh/jev` is independently accepted and office-installed:
+independent requester plus Codex/Claude/Gemini session slots and reserved null controller,
+preserving legacy bytes and original response references. All 86 tests pass; seven deployed
+checks and fresh zsh load pass. Only store.py, jev.py, jev.zsh and README.md were updated under
+filesystem approval; backups: `~/.config/zsh/.jev-provenance-backup-20261105/`. Actual runtime
+remains empty and private. Evidence: Jev 01 `raw/provenance-build-check`, `source-review`,
+`install-receipt`, `activation-check` dated 2026-11-05, and `_bus/07.cartan.verdict.md`.
+Current truth: `.dev/session/jev-01-codex-pilot/STATUS.md`; contract: `tasks/CLI-PROVENANCE.md`.
+That provenance increment involved no paid call, credentials or new real engagement; no home
+activation, commit/push or guide publication.
+
+Later in the same sitting, Majkee requested real transcript dogfeeding via JEV_ORAK_KEY and
+explicitly approved a one-use delegated-send path with USD0.02 allowance. Parent checked key
+status and public model metadata, froze31 eligible user/final records and16 typed questions,
+and opened/prepared the authorized engagement. Actual transcript/key-status artifacts remain
+private under `~/.jev/dogfeed-20261105/`. Independent baseline is kept out of provider input.
+The native delegated route is now independently accepted and installed (three files, backups
+at `~/.config/zsh/.jev-delegated-backup-20261105/`);103offline tests and six deployed checks pass.
+Existing manual guard remains. One fsynced attempt consumed the exact grant before key access.
+One actual Jev1.14 call returned HTTP200/VALID, costUSD0.001226022, with matching provider usage;
+no retry or unresolved cost. No group classified genuinely unanswered;15/15 baseline agreement,
+aggregate0.15 retained with conditional probability-coherence caveat. Raw transcript/response
+and authority remain private; source summary `raw/dogfeed-result.2026-11-05.md`, verification
+`raw/dogfeed-live-check.2026-11-05.json`, acceptance `_bus/08.cartan.verdict.md`. No further
+spending authority, home activation, commit/push, global guide publication or final pilot GO.
+
+## OFFICE — 2026-11-04 · Cartan · Jev source and private vault
+
+Majkee requested the Jev build and zsh vault via the surgical table. Added `zsh/jev/`
+Python kernel/store/provider/CLI and the scope's base/keyboard/engine; `ai/base.zsh` P13
+loads the scope for both existing machine-config paths. Source maps point to its adjacent
+reference. Historical pilot kernel remains preserved in the Jev 01 bed; source authority
+is now `zsh/jev/`. Runtime records remain host-local, outside portable source.
+
+All 71 offline tests pass, independently verified, including process concurrency/restart,
+forensic recovery, explicit memory/selection/lineage, exact USD accounting and mocked send
+boundaries. A recovered malformed fragment retains an unknown liability; recovery cannot
+authorize spending. Provider fixtures are synthetic; no real key, HTTP inference, allowance,
+remote ceiling or usefulness was verified. Scoped office activation completed with filesystem
+approval: nine Jev files plus its single signpost and empty owned 0700 `~/.jev/projects`.
+Deployed hashes match; fresh zsh loading and three deployed temporary-root tests pass. The
+original signpost backup is `~/.config/zsh/.jev-install-backup-20261104/ai-base.zsh`.
+Evidence: `.dev/session/jev-01-codex-pilot/STATUS.md`, `BUILD.md`,
+`raw/source-review.2026-11-04.txt`, `raw/install-receipt.2026-11-04.json`, and
+`raw/activation-check.2026-11-04.json`. Only the scoped files were deployed; unrelated work
+stays untouched. Both machine configs already source ai/base; home receives the shared Jev
+signpost on a later deployment. No commit/push, home activation or global guide publication.
 
 
 ## OFFICE — 2026-11-03 · myShell · germline retirement and A2 continuation
+
+Registry follow-through, same day: Majkee approved replacing compatibility aliases with the archivalia registry. ARCHIVE.md now maps exact historical identities to preserved records, knowledge and unresolved obligations. Current readers and personal scar preparation routes were repointed; 13 old session symlinks removed after hash checks. Historical bodies remain byte-identical. Observed HEAD f0fd9b5 already preserves 426/436 files; ten JSONL files and cold copies remain local/ignored. No new commit/push/deploy or cross-host claim. REGISTRY-UPDATE.json records this pass; the earlier account below describes the first retirement stage.
 
 Majkee blessed the cleanup after Oraculum’s scoped release. ARCHIVE.md is the discovery/recovery entry, wired from AGENTS, Houston’s project addendum and pulse. Thirteen original packages (including A2’s closed setup) moved byte-preserved to .dev/records/germline/2026-11-03, with ignored compressed copies and extraction/hash checks. Old full slugs remain historical symlinks, never reusable identities. Pending trial acceptance remains pending; G03/A3/G09 ownership is unchanged. Four idle G07/G08 tunnel handles were closed locally through the supported verb; no model calls or thread deletion. A2-projects continues the project ladder with accepted lab group 001 and separate Track 2. Scars and full result receipts were copied with origin headers to .dev/observations. G03 raw contains the full crawler report. No commit/push/deploy or cross-host preservation is claimed; archive manifest and validation record carry current custody and limits. G00’s outdated route remains an explicit owner-disposition concern.
 

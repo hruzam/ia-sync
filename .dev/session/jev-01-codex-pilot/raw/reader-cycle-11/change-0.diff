@@ -1,0 +1,14 @@
+--- before/zsh/jev/reader.py
++++ after/zsh/jev/reader.py
+@@ -35,8 +35,9 @@
+ def _literal(value, indent):
+     text = _text(value)
+     # Top-level HTML blocks avoid nested Markdown fence ambiguity. Escape all source HTML;
+-    # numeric tab entities survive Python-Markdown's tab expansion and decode in the view.
+-    literal = html.escape(text, quote=False).replace("\t", "&#9;").replace("`", "&#96;")
++    # Numeric entities survive tab expansion and fenced-code preprocessing, then decode in the view.
++    literal = (html.escape(text, quote=False).replace("\t", "&#9;")
++               .replace("`", "&#96;").replace("~", "&#126;"))
+     return ["", "<pre>" + literal + "</pre>", ""]
+ 
+ 

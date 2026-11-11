@@ -3,7 +3,7 @@
 `bounded router (raw.guides/runbook/GUIDE.md): active slug · gate · exact STATUS path. No next`
 `action, no narrative — STATUS.md is the sole doing-state for its gate.`
 
-Retired full-slug aliases, reusable evidence and recovery: [ARCHIVE.md](ARCHIVE.md).
+Archivalia registry — retired identities, reusable evidence and recovery: [ARCHIVE.md](ARCHIVE.md).
 
 - `germline-A3-guide-to-controller` · gate: Majkee accepts the independently reviewed guide-to-program fold package, with every whole-design roadmap item accounted for, reading and continuity contracts demonstrated on paper, and explicit destinations and release conditions for documentation, agent routing and later implementation. ·
   `/home/hruzam/ia-sync/.dev/session/germline-A3-guide-to-controller/STATUS.md`

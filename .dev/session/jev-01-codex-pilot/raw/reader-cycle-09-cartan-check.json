@@ -1,0 +1,72 @@
+{
+  "verified_by": "cartan",
+  "counts": [
+    [
+      "01-memory-notes",
+      7,
+      6
+    ],
+    [
+      "02-mixed-judgments",
+      10,
+      3
+    ],
+    [
+      "03-invalid-reply",
+      5,
+      2
+    ],
+    [
+      "04-no-memory",
+      1,
+      0
+    ]
+  ],
+  "six_notes_and_nested_cli_values_present": true,
+  "fixture_hashes_match_manifest": true,
+  "markdown_version": "3.10.3",
+  "html_parser_checks": [
+    {
+      "source": "peer-view",
+      "extensions": [],
+      "script_elements": 1
+    },
+    {
+      "source": "peer-view",
+      "extensions": [
+        "fenced_code"
+      ],
+      "script_elements": 1
+    },
+    {
+      "source": "fresh-installed-render",
+      "extensions": [],
+      "script_elements": 1
+    },
+    {
+      "source": "fresh-installed-render",
+      "extensions": [
+        "fenced_code"
+      ],
+      "script_elements": 1
+    }
+  ],
+  "source_installed_sha256": {
+    "reader.py": "788dab016f9296d232d70054cf928dce8b2afb629de0cfc4054a2345523ae1a7",
+    "browser.py": "97ed50e350f34cf1e4fdeaad2acfe696e8c0a64115356a15669c2d58988b1914"
+  },
+  "pty_full_scenario_labels_absent": true,
+  "peer_artifacts_sha256": {
+    "raw/reader-cycle-09/check.py": "8af0d620ce76cea3bae8ac2ac5142d6b9094cbdfe91bbe7bfb39c96a80c73ca9",
+    "raw/reader-cycle-09/checks.json": "d055c62e959e7cbf5a3e49f3d5dbcb66f413d5914dab39fd3ea637096b3dc0a0",
+    "raw/reader-cycle-09/markup_check.py": "2ab736038638ff72a0bfa8885758541fdea752d93ea0b0d3ba6d58e5ce5c3818",
+    "raw/reader-cycle-09/markup-check.json": "be9d1d1815a9460970d2ad16a3566479be5344deaf952eb4c855743a73e25b3f",
+    "raw/reader-cycle-09/pty.raw": "f338a3faaea460365a979819c0a44c808ec5aecad1ce8f7d4e68bf2f76f60756",
+    "raw/reader-cycle-09/jev-view-gvdkberh/view.md": "c1fc9eedd59f476bfad7d3182258c98d9a5752449808f393825fb20fea8c7b2a"
+  },
+  "limits": [
+    "Peer PTY script inspected; not rerun because it mutates peer outputs and requires exactly one composed view. Parent previously exercised same PTY path.",
+    "No historical before-diff for every peer boundary; source/install parity and unchanged fixture hashes checked.",
+    "No rendered HTML opened or executed; parser-level reproduction only."
+  ]
+}

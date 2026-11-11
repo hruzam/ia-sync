@@ -1,0 +1,16 @@
+{
+  "files": [
+    {
+      "file": "reader.py",
+      "before": "788dab016f9296d232d70054cf928dce8b2afb629de0cfc4054a2345523ae1a7",
+      "after": "48f1e1a903b5fa3b7013b16c4308862c9f3d1665c80e65150deac8f8ba7002c1"
+    },
+    {
+      "file": "README.md",
+      "before": "3491de49e35f1535206483ee5139e2732d7c49f04821913999f0b6ae106d0d80",
+      "after": "7f5b1ab837bda26d1aa5ded3884f337cc41fdb4053e444713b5ab6829efad8c9"
+    }
+  ],
+  "backup": "/home/hruzam/.config/zsh/.jev-renderer-backup-20261110-082626",
+  "scope": "reader.py and README.md only; before snapshots match"
+}

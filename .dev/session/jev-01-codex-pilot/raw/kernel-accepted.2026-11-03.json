@@ -1,0 +1,52 @@
+{
+  "at": "2026-11-03T11:33:23.707521+01:00",
+  "scope": "accepted first offline slice only; all receipts synthetic",
+  "parent_verification": {
+    "command": [
+      "/usr/bin/python3",
+      "-B",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "/home/hruzam/ia-sync/.dev/session/jev-01-codex-pilot/tests",
+      "-v"
+    ],
+    "exit": 0,
+    "output": "test_full_cli_roundtrip_and_input_files_unchanged (test_jev.CLITests.test_full_cli_roundtrip_and_input_files_unchanged) ... ok\ntest_instruction_like_text_is_preserved_data (test_jev.CLITests.test_instruction_like_text_is_preserved_data) ... ok\ntest_interpret_invalid_policy_retains_review_references (test_jev.CLITests.test_interpret_invalid_policy_retains_review_references) ... ok\ntest_interpret_unavailable_or_tampered_prepared_never_verifies_ids (test_jev.CLITests.test_interpret_unavailable_or_tampered_prepared_never_verifies_ids) ... ok\ntest_interpret_unparseable_policy_retains_available_request_refs (test_jev.CLITests.test_interpret_unparseable_policy_retains_available_request_refs) ... ok\ntest_invalid_json_duplicate_keys_nonfinite_utf8_and_nesting (test_jev.CLITests.test_invalid_json_duplicate_keys_nonfinite_utf8_and_nesting) ... ok\ntest_invalid_semantic_receipt_preserved_and_error_separate (test_jev.CLITests.test_invalid_semantic_receipt_preserved_and_error_separate) ... ok\ntest_missing_file_and_wrong_arguments_are_json_errors (test_jev.CLITests.test_missing_file_and_wrong_arguments_are_json_errors) ... ok\ntest_oversized_input_refused_before_parsing (test_jev.CLITests.test_oversized_input_refused_before_parsing) ... ok\ntest_unicode_output_reloads_with_its_actual_byte_bound (test_jev.CLITests.test_unicode_output_reloads_with_its_actual_byte_bound) ... ok\ntest_all_practical_fixtures_validate (test_jev.KernelTests.test_all_practical_fixtures_validate) ... ok\ntest_answer_set_is_exact (test_jev.KernelTests.test_answer_set_is_exact) ... ok\ntest_canonical_bytes_and_independent_occurrences (test_jev.KernelTests.test_canonical_bytes_and_independent_occurrences) ... ok\ntest_choice_keys_sum_maximizer_and_tie (test_jev.KernelTests.test_choice_keys_sum_maximizer_and_tie) ... ok\ntest_confidence_is_optional_statistic_but_never_noul_field (test_jev.KernelTests.test_confidence_is_optional_statistic_but_never_noul_field) ... ok\ntest_invalid_policy_receipt_and_non_noul_never_interpreted (test_jev.KernelTests.test_invalid_policy_receipt_and_non_noul_never_interpreted) ... ok\ntest_optional_memory_and_empty_evidence (test_jev.KernelTests.test_optional_memory_and_empty_evidence) ... ok\ntest_prepare_copies_memory_input_and_semantics (test_jev.KernelTests.test_prepare_copies_memory_input_and_semantics) ... ok\ntest_prepared_hash_tampering (test_jev.KernelTests.test_prepared_hash_tampering) ... ok\ntest_probability_range_type_and_finiteness (test_jev.KernelTests.test_probability_range_type_and_finiteness) ... ok\ntest_question_count_limit (test_jev.KernelTests.test_question_count_limit) ... ok\ntest_receipt_correlates_both_identity_and_content (test_jev.KernelTests.test_receipt_correlates_both_identity_and_content) ... ok\ntest_required_semantic_fields (test_jev.KernelTests.test_required_semantic_fields) ... ok\ntest_schema_fields_types_and_duplicate_names (test_jev.KernelTests.test_schema_fields_types_and_duplicate_names) ... ok\ntest_score_weighted_index_and_exact_keys (test_jev.KernelTests.test_score_weighted_index_and_exact_keys) ... ok\ntest_threshold_boundaries_and_uncertainty (test_jev.KernelTests.test_threshold_boundaries_and_uncertainty) ... ok\n\n----------------------------------------------------------------------\nRan 26 tests in 2.383s\n\nOK\n"
+  },
+  "independent_review": {
+    "agent": "/root/jev_offline_build_verify",
+    "capture": "raw/build-review-02.native.txt",
+    "verdict": "PASS"
+  },
+  "hashes": {
+    "DESIGN.md": "806c9f77fc3badcd513121ca344a39c83927f3695103bed34dab20a70ab61e99",
+    "impl/README.md": "01fb4293ac3c672cf62b7a1a557cc23b6c79c64bfaca6625143e3832b5e5c9f9",
+    "impl/jev.py": "df3a31585eda1ec28cb5d8f9375a77c781c841110a31b2ea023ae4aa18f9d44d",
+    "tests/fixtures/brief-missing.json": "0434518544c17b889b268ce54aac04022c8460d4d8f1fb9b66566db94e425979",
+    "tests/fixtures/claim-insufficient.json": "d82bbe743c9a4f1328d66aad2048886a6e8c26f56f02171423babae6ca2f0064",
+    "tests/fixtures/claim-refuted.json": "045aa973044b1202b7f90fe1ad75480d0deb3154e21149088296d96ed4a08f75",
+    "tests/fixtures/claim-supported.json": "d226308bacd022e52b47180a52439828cdcc10e00fa79993181d92e6cdad2564",
+    "tests/fixtures/expected.json": "74dc15f8ae350991463c403ae9703926ca9441013dc926bc157978d0778614e7",
+    "tests/fixtures/policy.json": "b34bb3ddd0c471ab301518b83ccd1e2b411115c66ee7e84ef90208f9f9eac7ed",
+    "tests/test_jev.py": "0dbe7e0b33bc5c893e687282d3dd22a472b7f101d81e14a82556584ccef060fe"
+  },
+  "protected_files_unchanged": [
+    "/home/hruzam/ia-sync/.dev/session/jev-01-codex-pilot/RUNBOOK.md",
+    "/home/hruzam/ia-sync/.dev/session/jev-implementation-00-build/raw/majkee-gavels.2026-10-12.md",
+    "/home/hruzam/nabla-lab/publications/inner-circle/jev-usage/implementer-brief.md",
+    "/home/hruzam/nabla-lab/publications/inner-circle/jev-usage/usage-atlas.md",
+    "/home/hruzam/nabla-lab/publications/inner-circle/jev-usage/study.md",
+    "/home/hruzam/nabla-lab/publications/inner-circle/jev-usage/experiments.md",
+    "/home/hruzam/nabla-lab/session/research-jev-usage/sources.md"
+  ],
+  "runtime_root_exists": false,
+  "remaining": [
+    "durable lifecycle and session/channel settings",
+    "USD admission",
+    "current provider mapping and credential/backstop selection",
+    "individually approved live proof",
+    "measured usefulness"
+  ]
+}

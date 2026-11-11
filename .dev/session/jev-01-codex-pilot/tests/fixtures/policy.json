@@ -1,0 +1,6 @@
+{
+  "id": "synthetic-threshold-example",
+  "version": "v1",
+  "low": 0.2,
+  "high": 0.8
+}

@@ -1,4 +1,4 @@
-# Reader continuity — candidate 02
+# Reader continuity — candidate 03
 
 Oraculum · Codex · 2026-10-29. Operator-requested design, with Astrobley consultation.
 Plain-language document specimen for A3 S02/S07/S10; no installed skill, automatic
@@ -11,8 +11,11 @@ describe candidate 01 and are historical evidence, not verification of these new
 
 Operator decision, 2026-11-03: crawlers are one of the possible germline programs.
 This admits the option into the design; it does not make delegation mandatory or
-approve global placement/activation. Further feedback was announced for “03/raw”;
-its exact filenames and contents are pending and have not been incorporated.
+approve global placement/activation. The announced feedback is now received from
+G03/raw and integrated as candidate 03; see the [feedback receipt](../RETURN.oraculum.crawler-feedback.2026-11-03.md).
+It adds practical reconnaissance evidence, disposition/correction-chain reading and
+explicit carriage/context selection. It does not establish cheap execution or satisfy
+A3's fresh-head intake or independent review.
 
 ## Germline program candidate: bounded source inquiry
 
@@ -103,7 +106,7 @@ For this A3 specimen the bins resolve through existing sources:
 
 - Operative: `/home/hruzam/ia-sync/germline/README.md` → selected component contract;
   retain its recorded stamp-proof disagreement.
-- Decisions: `/home/hruzam/ia-sync/.dev/session/germline-06-full-audit/decisions/DEC.01.germline-identity-and-load-contract.md`;
+- Decisions: `/home/hruzam/ia-sync/.dev/records/germline/2026-11-03/germline-06-full-audit/decisions/DEC.01.germline-identity-and-load-contract.md`;
   check later relevant A1/A2 rulings before assuming dated open questions remain open.
 - Observations: the G07–G09 receipt routes in [A3 RUNBOOK](../../RUNBOOK.md#source-routes).
 - Questions/anomalies: [A3 coverage](../../CHECKLIST.md#concern-coverage-and-unresolved-tails)
@@ -118,7 +121,7 @@ or appropriate commit pins before the source beds can be pruned.
 
 > Claim: shared agent definitions and instruction programs coexist.
 > Status/source: accepted G06 D1, in
-> `/home/hruzam/ia-sync/.dev/session/germline-06-full-audit/decisions/DEC.01.germline-identity-and-load-contract.md`.
+> `/home/hruzam/ia-sync/.dev/records/germline/2026-11-03/germline-06-full-audit/decisions/DEC.01.germline-identity-and-load-contract.md`.
 > May inherit: controller drafting need not reopen agent-versus-program as an either/or.
 > Must verify: accepted wording and any relevant later decision before changing that boundary.
 > Would invalidate this application: an explicit superseding ruling, or evidence that
