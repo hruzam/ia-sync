@@ -1,0 +1,12 @@
+{
+  "observed_at": "2026-11-12T12:48:03.587424+01:00",
+  "method": "git ls-remote --symref git@github.com:hruzam/<repo>.git HEAD refs/heads/core; all six exit 0, symbolic HEAD=refs/heads/core",
+  "refs": {
+    "nablarva": "37a6bf665c488d32e33549d3f6511a7c1c6a69d7",
+    "nabla-lab": "07c62dc7027f88c5aaf362692ff1910ec62d8e09",
+    "vacuole": "68f1929812c622f394c1e47b091117eb019c807d",
+    "applications-in-common": "c3bba24ac7d55eadce7a4b32d84d28e6fdea981a",
+    "pajdulium-web": "5c12010e4ca49931e48a781da267103496f2dd72",
+    "pajdulium-studio": "46cce58e100183ab1cda650ef6997c084e71afbb"
+  }
+}
