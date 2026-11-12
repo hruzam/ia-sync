@@ -1,0 +1,17 @@
+{
+  "office_head": "f2578a5646f130ddcd0117682dda3a857d64b811",
+  "reviewed_incoming": "b962110f2f7798defd578371a846d1d6429d6cd5",
+  "tracked_status": [
+    " D _mail/office/inbox/cartan.monitor-ssh-journal.2026-11-12.md",
+    " M journal.host-cleanup.md"
+  ],
+  "staged_empty": true,
+  "seven_live_unchanged": true,
+  "protected_unchanged": true,
+  "scratch_merge_exit": 0,
+  "local_note_preserved_once": true,
+  "local_journal_sha256": "b478fc5f65d09eaf67a41ef8d3d0ab205b82cc61e7780f4cf3e72504b6d24f6e",
+  "incoming_journal_sha256": "994b2aa0ad3fdca82a7d1791dbf5e8e91cc5ae9745ca717fbc5025bfe44876c4",
+  "merged_journal_sha256": "358b853d1a24dfd0c872bd304e1575629b51eaa126208d97d706f27107173bba",
+  "method": "Head read-only scratch three-way merge. No remote working-tree mutation."
+}

@@ -1,0 +1,193 @@
+--- HEAD:zsh/system/tailscale.zsh
++++ live:system/tailscale.zsh
+@@ -2,3 +2,3 @@
+ # system/tailscale.zsh — Tailscale scope engine
+-# Scope: cross-machine (home + office + monitor); pure tailscale, no piql wiring
++# Scope: cross-machine (home + office); pure tailscale, no piql wiring
+ # Sourced by: config.zsh (via keyboard.zsh companion)
+@@ -84,4 +84,4 @@
+ # ssh dying (new-session -A = attach-or-create) and is reachable again by re-running.
+-# Explicit host/address targets pass through. Logical names resolve through
+-# ia-sync/machines.json; monitor's bare tso offers its other registered peers.
++# Peer is any tailnet name that ssh resolves (Host alias or MagicDNS) — a NEW PC needs
++# zero code here, only a resolvable name. Registry of record: ia-sync/machines.json.
+ _ts_session() {
+@@ -91,73 +91,7 @@
+     esac
+-    local peer="${1:-}" machines="$HOME/ia-sync/machines.json"
+-    if [[ -z "$peer" && "$MACHINE_NAME" == "monitor" ]]; then
+-        [[ -t 0 && -t 1 ]] || { print -u2 "[ts] tso needs a target without a terminal"; return 1; }
+-        local -a choices
+-        local listed
+-        listed=$(python3 -c '
+-import ipaddress, json, sys
+-try:
+-    values = json.load(open(sys.argv[1]))["machines"].values()
+-    choices = []
+-    for value in values:
+-        if value.get("logical") == sys.argv[2]:
+-            continue
+-        try:
+-            ip = value.get("tailscale_ip")
+-            if not isinstance(ip, str) or not ip:
+-                continue
+-            ipaddress.ip_address(ip)
+-        except (TypeError, ValueError):
+-            continue
+-        choices.append(value["logical"])
+-    print("\n".join(sorted(choices)))
+-except (OSError, ValueError, KeyError, TypeError, AttributeError):
+-    sys.exit(1)
+-' "$machines" "$MACHINE_NAME" 2>/dev/null) || { print -u2 "[ts] machine map unavailable"; return 1; }
+-        [[ -n "$listed" ]] || { print -u2 "[ts] no registered peers available"; return 1; }
+-        choices=("${(@f)listed}")
+-        (( ${#choices} )) || { print -u2 "[ts] no registered peers available"; return 1; }
+-        local choice i
+-        print -u2 "Select Tailscale peer:"
+-        for (( i=1; i<=${#choices}; i++ )); do print -u2 "  $i) $choices[$i]"; done
+-        printf 'Choice (empty to cancel): ' > /dev/tty
+-        read -r choice < /dev/tty || return 1
+-        [[ "$choice" == <-> && "$choice" -ge 1 && "$choice" -le ${#choices} ]] || return 1
+-        peer="$choices[$choice]"
+-    fi
+-    peer="${peer:-$TAILSCALE_PEER}"
++    local peer="${1:-$TAILSCALE_PEER}"
+     [[ -z "$peer" ]] && { echo "[ts] TAILSCALE_PEER not set in config.zsh"; return 1; }
+-    local target map_status
+-    target=$(python3 -c '
+-import ipaddress, json, sys
+-try:
+-    values = json.load(open(sys.argv[1]))["machines"].values()
+-    for value in values:
+-        if value.get("logical") == sys.argv[2]:
+-            ip = value.get("tailscale_ip")
+-            try:
+-                if not isinstance(ip, str) or not ip:
+-                    sys.exit(2)
+-                ipaddress.ip_address(ip)
+-            except (TypeError, ValueError):
+-                sys.exit(2)
+-            print(ip)
+-            sys.exit(0)
+-    print(sys.argv[2])
+-except (OSError, ValueError, KeyError, TypeError, AttributeError):
+-    sys.exit(3)
+-' "$machines" "$peer" 2>/dev/null)
+-    map_status=$?
+-    if (( map_status == 2 )); then
+-        print -u2 "[ts] no usable address for registered peer: $peer"
+-        return 1
+-    elif (( map_status != 0 )); then
+-        case "$peer" in
+-            home|office|monitor) print -u2 "[ts] machine map unavailable for logical peer: $peer"; return 1 ;;
+-            *) target="$peer" ;;
+-        esac
+-    fi
+     (( bed )) && printf "\n  connecting → %s (bed)\n  ping: " "$peer" \
+              || printf "\n  connecting → %s\n  ping: " "$peer"
+-    if timeout 3 tailscale ping --c 1 "$target" &>/dev/null; then
++    if timeout 3 tailscale ping --c 1 "$peer" &>/dev/null; then
+         printf "reachable ✓\n\n"
+@@ -170,5 +104,5 @@
+         # One reviewed file, both hosts carry it via the repo (absolute path law).
+-        ssh -t "$target" 'exec sh /home/hruzam/ia-sync/devices/_shared/termux/bin/agentive-door'
+-    else
+-        ssh "$target"
++        ssh -t "$peer" 'exec sh /home/hruzam/ia-sync/devices/_shared/termux/bin/agentive-door'
++    else
++        ssh "$peer"
+     fi
+@@ -585,3 +519,3 @@
+     printf "  tsp [host]       ssh to peer (fast, no header)\n"
+-    printf "  tso [-t] [host]  ssh with status; monitor bare tso offers a peer\n"
++    printf "  tso [host]       ssh with pre-connect status line\n"
+     printf "  ts-dash          start HTTP status dashboard (port %s)\n" "$TS_DASH_PORT"
+--- HEAD:zsh/system/keyboard.zsh
++++ live:system/keyboard.zsh
+@@ -14,3 +14,3 @@
+ alias tsp='_ts_ssh'                    # ssh to peer (fast, no header)
+-alias tso='_ts_session'               # ssh w/ status · monitor bare tso chooses peer · -t|--bed → agentive tmux bed
++alias tso='_ts_session'               # ssh w/ pre-connect status · -t|--bed → agentive tmux bed (PC→PC twin of phone `bed`)
+ alias ts-dash='_ts_dash'              # start HTTP status dashboard
+@@ -41,5 +41,2 @@
+ alias src='source ~/.zshrc'            # reload shell config
+-# Shell-only compose-first deployment; host selection remains in deploy.sh.
+-alias zsh-deploy-check='bash "$HOME/ia-sync/deploy.sh" --zsh-only --dry-run'
+-alias zsh-deploy='bash "$HOME/ia-sync/deploy.sh" --zsh-only'
+ alias ord='ls -lthr'                   # list newest last
+--- HEAD:zsh/registries/projects.json
++++ live:registries/projects.json
+@@ -5,3 +5,4 @@
+     "companion": "reposoma/registry/index.md — logical project map. THIS file holds the physical disk paths.",
+-    "layout": "Shared absolute paths are a cross-host convention; repository presence and runtime readiness vary by host.",
++    "layout": "folder layout is 1:1 on office and home; paths are identical on both hosts.",
++    "omitted": "nabla-lab -> subdir of reposoma; resolves via [reposoma], no separate entry.",
+     "retired_2026-09-02": "nablarva.devenv entry removed — merged into nablarva (repo unification, majkee gavel). termbrana also merged in, as toolbox/termbrana/ under [nablarva]; it was never a registered temple project here (no local AGENTS.md/devenv twin) so no entry existed to repoint. Details: nablarva/docs/repo-unification.2026-09-02.md. Local clone quarantined to /tmp/repo-merge-2026-09-02/."
+@@ -16,3 +17,2 @@
+     "vacuole": "/home/hruzam/vacuole",
+-    "nabla-lab": "/home/hruzam/nabla-lab",
+     "fantasyobchod": "/home/hruzam/www/imago_cz/fantasyobchod",
+--- HEAD:zsh/registries/ai.json
++++ live:registries/ai.json
+@@ -18,2 +18,4 @@
+       "nabla-lab": {
++        "_path_note": "nabla-lab is intentionally absent from projects.json (subdir of reposoma per temple-map). This path is the ONLY source for it — rc.sh _project_path falls back here.",
++        "path": "/home/hruzam/nabla-lab",
+         "tmux_session": "rc-nabla-lab",
+--- HEAD:zsh/registries/gen-temple-map.sh
++++ live:registries/gen-temple-map.sh
+@@ -28,3 +28,3 @@
+ 
+-command -v jq >/dev/null || command -v python3 >/dev/null || { echo "gen-temple-map: jq or python3 required" >&2; exit 1; }
++command -v jq >/dev/null || { echo "gen-temple-map: jq required" >&2; exit 1; }
+ [ -f "$SRC" ] || { echo "gen-temple-map: missing $SRC" >&2; exit 1; }
+@@ -43,3 +43,3 @@
+ #
+-# Shared absolute paths are a cross-host convention; repository presence varies by host.
++# folder layout is 1:1 on office and home; paths are identical on both hosts.
+ # companion: reposoma/registry/index.md — logical project map; projects.json holds physical paths.
+@@ -50,7 +50,3 @@
+ HEADER
+-  if command -v jq >/dev/null; then
+-    jq -r '.projects | to_entries[] | "  [\(.key)]=\"\(.value)\""' "$SRC" || return 1
+-  else
+-    python3 -c 'import json,sys; projects=json.load(open(sys.argv[1]))["projects"]; print("\n".join("  ["+k+"]=\""+v+"\"" for k,v in projects.items()))' "$SRC" || return 1
+-  fi
++  jq -r '.projects | to_entries[] | "  [\(.key)]=\"\(.value)\""' "$SRC"
+   cat <<'FOOTER'
+@@ -80,4 +76,3 @@
+   check)
+-    generated="$(render)" || exit 1
+-    if diff -q <(printf '%s\n' "$generated") "$OUT" >/dev/null 2>&1; then
++    if diff -q <(render) "$OUT" >/dev/null 2>&1; then
+       echo "gen-temple-map: up to date"
+@@ -88,9 +83,4 @@
+   write)
+-    tmp="$(mktemp)"
+-    if ! render > "$tmp"; then
+-      rm -- "$tmp"
+-      exit 1
+-    fi
+-    mv "$tmp" "$OUT"
+-    echo "gen-temple-map: regenerated $(basename "$OUT") from projects.json" ;;
++    tmp="$(mktemp)"; render > "$tmp"; mv "$tmp" "$OUT"
++    echo "gen-temple-map: regenerated $(basename "$OUT") from projects.json ($(jq '.projects|length' "$SRC") projects)" ;;
+ esac
+--- HEAD:zsh/ai/temple-project-map.zsh
++++ live:ai/temple-project-map.zsh
+@@ -10,3 +10,3 @@
+ #
+-# Shared absolute paths are a cross-host convention; repository presence varies by host.
++# folder layout is 1:1 on office and home; paths are identical on both hosts.
+ # companion: reposoma/registry/index.md — logical project map; projects.json holds physical paths.
+@@ -23,3 +23,2 @@
+   [vacuole]="/home/hruzam/vacuole"
+-  [nabla-lab]="/home/hruzam/nabla-lab"
+   [fantasyobchod]="/home/hruzam/www/imago_cz/fantasyobchod"
+--- HEAD:zsh/ai/rc.sh
++++ live:ai/rc.sh
+@@ -56,3 +56,3 @@
+ # ---- resolvers (all read JSON; no hardcoded literals) ----
+-_project_path() {  # projects.json authoritative; ai.json path is legacy fallback
++_project_path() {  # projects.json authoritative; ai.json path is legacy fallback (e.g. nabla-lab)
+   local p="$1" path

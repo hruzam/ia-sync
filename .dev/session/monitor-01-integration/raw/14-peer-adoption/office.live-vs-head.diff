@@ -1,0 +1,42 @@
+--- HEAD:zsh/system/keyboard.zsh
++++ live:system/keyboard.zsh
+@@ -41,5 +41,2 @@
+ alias src='source ~/.zshrc'            # reload shell config
+-# Shell-only compose-first deployment; host selection remains in deploy.sh.
+-alias zsh-deploy-check='bash "$HOME/ia-sync/deploy.sh" --zsh-only --dry-run'
+-alias zsh-deploy='bash "$HOME/ia-sync/deploy.sh" --zsh-only'
+ alias ord='ls -lthr'                   # list newest last
+--- HEAD:zsh/registries/gen-temple-map.sh
++++ live:registries/gen-temple-map.sh
+@@ -28,3 +28,3 @@
+ 
+-command -v jq >/dev/null || command -v python3 >/dev/null || { echo "gen-temple-map: jq or python3 required" >&2; exit 1; }
++command -v jq >/dev/null || { echo "gen-temple-map: jq required" >&2; exit 1; }
+ [ -f "$SRC" ] || { echo "gen-temple-map: missing $SRC" >&2; exit 1; }
+@@ -50,7 +50,3 @@
+ HEADER
+-  if command -v jq >/dev/null; then
+-    jq -r '.projects | to_entries[] | "  [\(.key)]=\"\(.value)\""' "$SRC" || return 1
+-  else
+-    python3 -c 'import json,sys; projects=json.load(open(sys.argv[1]))["projects"]; print("\n".join("  ["+k+"]=\""+v+"\"" for k,v in projects.items()))' "$SRC" || return 1
+-  fi
++  jq -r '.projects | to_entries[] | "  [\(.key)]=\"\(.value)\""' "$SRC"
+   cat <<'FOOTER'
+@@ -80,4 +76,3 @@
+   check)
+-    generated="$(render)" || exit 1
+-    if diff -q <(printf '%s\n' "$generated") "$OUT" >/dev/null 2>&1; then
++    if diff -q <(render) "$OUT" >/dev/null 2>&1; then
+       echo "gen-temple-map: up to date"
+@@ -88,9 +83,4 @@
+   write)
+-    tmp="$(mktemp)"
+-    if ! render > "$tmp"; then
+-      rm -- "$tmp"
+-      exit 1
+-    fi
+-    mv "$tmp" "$OUT"
+-    echo "gen-temple-map: regenerated $(basename "$OUT") from projects.json" ;;
++    tmp="$(mktemp)"; render > "$tmp"; mv "$tmp" "$OUT"
++    echo "gen-temple-map: regenerated $(basename "$OUT") from projects.json ($(jq '.projects|length' "$SRC") projects)" ;;
+ esac

@@ -102,6 +102,15 @@ is screen-only, TIOCSTI is disabled. Monitor lacks tmux.
 
 ## MONITOR — 2026-11-12 · Cartan · Third-host bootstrap
 
+Peer shell adoption: home updated with seven exact shared files, verified backups,
+unchanged host/policy files and independently repeated fresh-shell checks. Its local
+q01 receipt commit/blob was preserved through a backed-up rebase and was not pushed.
+Office was preserved under cycle14's dirty-journal guard. Head's subsequent scratch
+merge retains its exact 15-line local SSH receipt with zero incoming lines removed;
+cycle15 assigns a narrowly backed-up integration preserving that note/mail deletion
+as uncommitted work, followed by the same seven-file adoption if checks pass.
+Evidence: .dev/session/monitor-01-integration/_bus/14.cartan.verdict.md.
+
 Saved-policy comparison completed from Majkee's host-local HuJSON export: the
 three-computer all-port grant matches; an additional tab/redmi→computers TCP22
 grant is standing access. Majkee deferred that device-scope decision to safety audit:
