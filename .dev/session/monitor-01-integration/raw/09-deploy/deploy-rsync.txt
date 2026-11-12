@@ -1,0 +1,11 @@
+building file list ... done
+>f.st...... ai/rc.sh
+>f.st...... ai/temple-project-map.zsh
+>f.st...... registries/ai.json
+>f.st...... registries/gen-temple-map.sh
+>f.st...... registries/projects.json
+>f.st...... system/keyboard.zsh
+>f.st...... system/tailscale.zsh
+
+sent 50,583 bytes  received 145 bytes  101,456.00 bytes/sec
+total size is 49,945  speedup is 0.98

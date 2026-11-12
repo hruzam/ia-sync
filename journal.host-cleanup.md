@@ -66,6 +66,14 @@ is screen-only, TIOCSTI is disabled. Monitor lacks tmux.
 
 ## MONITOR — 2026-11-12 · Cartan · Third-host bootstrap
 
+Exact-file shell deployment completed by Astrobley and independently verified by
+Cartan: seven live files match source d9af9d1, prior files/modes have verified backups,
+24 deployed mock cases and two fresh interactive-shell checks pass. The nested
+policy candidate is unchanged. Recovery path/command and evidence are in
+.dev/session/monitor-01-integration/_bus/09.astrobley-exec.return.md.
+No whole-zsh deploy, peer change or PHP/project runtime start. Final independent
+audit and live all-port/device policy evidence remain open.
+
 Shell source review: cycle 07's null-IP resolver defect corrected in cycle 08;
 Cartan reran 24 isolated mock/PTY cases, syntax, registry and generated-map checks.
 Monitor bare tso now offers a peer; explicit targets and home/office defaults are

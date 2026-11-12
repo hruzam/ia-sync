@@ -1,0 +1,7 @@
+system/tailscale.zsh
+system/keyboard.zsh
+registries/projects.json
+registries/ai.json
+registries/gen-temple-map.sh
+ai/temple-project-map.zsh
+ai/rc.sh
