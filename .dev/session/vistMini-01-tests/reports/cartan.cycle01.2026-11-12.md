@@ -64,6 +64,10 @@ Deferred as registered: real TUI ready/busy/occupied behavior; three ordinary li
 
 The head should verify these files and the final output, then schedule the next bounded receiver/live-contract investigation if appropriate. Simply removing `vist-test` validation would not make this a live-TUI adapter.
 
+## Read-only handoff observation (outside the registered fixture trial)
+
+Before the final ready poke, the live Claude pane displayed text after the prompt that a plain capture could mistake for an operator draft. `tmux -L default capture-pane -e -p -t %0` showed that text in ANSI dim mode (`ESC[2m`), while `display-message` reported cursor x=2 at the beginning of input. Together these observations indicate a UI prompt suggestion, not entered text. This corrects Cartan's earlier interpretation of similar plain captures; no extra permission was needed to preserve a nonexistent draft. This was read-only handoff inspection, not a live submission test or an added C-case. Cycle 02 must distinguish prompt suggestions from actual operator input and must not equate a generic prompt label with idle state. A full live readiness rule is still unverified.
+
 ## Source fingerprints
 
 ```text
