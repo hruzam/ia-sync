@@ -1,6 +1,6 @@
 #!/usr/bin/env zsh
 # system/tailscale.zsh — Tailscale scope engine
-# Scope: cross-machine (home + office); pure tailscale, no piql wiring
+# Scope: cross-machine (home + office + monitor); pure tailscale, no piql wiring
 # Sourced by: config.zsh (via keyboard.zsh companion)
 # Aliases surface: system/keyboard.zsh
 # Dashboard script: system/ts-dash.py
@@ -82,18 +82,84 @@ _ts_ssh() {
 # shell — the PC→PC twin of the phone `bed` command
 # (devices/_shared/termux/bin/bed). One mechanism, two origins: the bed survives this
 # ssh dying (new-session -A = attach-or-create) and is reachable again by re-running.
-# Peer is any tailnet name that ssh resolves (Host alias or MagicDNS) — a NEW PC needs
-# zero code here, only a resolvable name. Registry of record: ia-sync/machines.json.
+# Explicit host/address targets pass through. Logical names resolve through
+# ia-sync/machines.json; monitor's bare tso offers its other registered peers.
 _ts_session() {
     local bed=0
     case "$1" in
         -t|--bed) bed=1; shift ;;
     esac
-    local peer="${1:-$TAILSCALE_PEER}"
+    local peer="${1:-}" machines="$HOME/ia-sync/machines.json"
+    if [[ -z "$peer" && "$MACHINE_NAME" == "monitor" ]]; then
+        [[ -t 0 && -t 1 ]] || { print -u2 "[ts] tso needs a target without a terminal"; return 1; }
+        local -a choices
+        local listed
+        listed=$(python3 -c '
+import ipaddress, json, sys
+try:
+    values = json.load(open(sys.argv[1]))["machines"].values()
+    choices = []
+    for value in values:
+        if value.get("logical") == sys.argv[2]:
+            continue
+        try:
+            ip = value.get("tailscale_ip")
+            if not isinstance(ip, str) or not ip:
+                continue
+            ipaddress.ip_address(ip)
+        except (TypeError, ValueError):
+            continue
+        choices.append(value["logical"])
+    print("\n".join(sorted(choices)))
+except (OSError, ValueError, KeyError, TypeError, AttributeError):
+    sys.exit(1)
+' "$machines" "$MACHINE_NAME" 2>/dev/null) || { print -u2 "[ts] machine map unavailable"; return 1; }
+        [[ -n "$listed" ]] || { print -u2 "[ts] no registered peers available"; return 1; }
+        choices=("${(@f)listed}")
+        (( ${#choices} )) || { print -u2 "[ts] no registered peers available"; return 1; }
+        local choice i
+        print -u2 "Select Tailscale peer:"
+        for (( i=1; i<=${#choices}; i++ )); do print -u2 "  $i) $choices[$i]"; done
+        printf 'Choice (empty to cancel): ' > /dev/tty
+        read -r choice < /dev/tty || return 1
+        [[ "$choice" == <-> && "$choice" -ge 1 && "$choice" -le ${#choices} ]] || return 1
+        peer="$choices[$choice]"
+    fi
+    peer="${peer:-$TAILSCALE_PEER}"
     [[ -z "$peer" ]] && { echo "[ts] TAILSCALE_PEER not set in config.zsh"; return 1; }
+    local target map_status
+    target=$(python3 -c '
+import ipaddress, json, sys
+try:
+    values = json.load(open(sys.argv[1]))["machines"].values()
+    for value in values:
+        if value.get("logical") == sys.argv[2]:
+            ip = value.get("tailscale_ip")
+            try:
+                if not isinstance(ip, str) or not ip:
+                    sys.exit(2)
+                ipaddress.ip_address(ip)
+            except (TypeError, ValueError):
+                sys.exit(2)
+            print(ip)
+            sys.exit(0)
+    print(sys.argv[2])
+except (OSError, ValueError, KeyError, TypeError, AttributeError):
+    sys.exit(3)
+' "$machines" "$peer" 2>/dev/null)
+    map_status=$?
+    if (( map_status == 2 )); then
+        print -u2 "[ts] no usable address for registered peer: $peer"
+        return 1
+    elif (( map_status != 0 )); then
+        case "$peer" in
+            home|office|monitor) print -u2 "[ts] machine map unavailable for logical peer: $peer"; return 1 ;;
+            *) target="$peer" ;;
+        esac
+    fi
     (( bed )) && printf "\n  connecting → %s (bed)\n  ping: " "$peer" \
              || printf "\n  connecting → %s\n  ping: " "$peer"
-    if timeout 3 tailscale ping --c 1 "$peer" &>/dev/null; then
+    if timeout 3 tailscale ping --c 1 "$target" &>/dev/null; then
         printf "reachable ✓\n\n"
     else
         printf "no response (proceeding anyway)\n\n"
@@ -102,9 +168,9 @@ _ts_session() {
         # Enter through the bed DOOR: lands on a plain-shell seat instead of whatever
         # TUI was last active; locale hardening lives in the door script itself.
         # One reviewed file, both hosts carry it via the repo (absolute path law).
-        ssh -t "$peer" 'exec sh /home/hruzam/ia-sync/devices/_shared/termux/bin/agentive-door'
+        ssh -t "$target" 'exec sh /home/hruzam/ia-sync/devices/_shared/termux/bin/agentive-door'
     else
-        ssh "$peer"
+        ssh "$target"
     fi
 }
 
@@ -517,7 +583,7 @@ _ts_help() {
     printf "  ts-ls            formatted peer list (online/offline)\n"
     printf "  tsping [host]    ping peer  · default: \$TAILSCALE_PEER\n"
     printf "  tsp [host]       ssh to peer (fast, no header)\n"
-    printf "  tso [host]       ssh with pre-connect status line\n"
+    printf "  tso [-t] [host]  ssh with status; monitor bare tso offers a peer\n"
     printf "  ts-dash          start HTTP status dashboard (port %s)\n" "$TS_DASH_PORT"
     printf "  ts-dash-stop     stop dashboard\n"
     printf "  ts-web           open login.tailscale.com/admin/machines\n"

@@ -3,8 +3,7 @@
     "role": "AUTHORITATIVE physical repo-root paths. Single source of truth (decision 0008/0004, amended 2026-08-15: paths were inline in ai/temple-project-map.zsh, now live HERE).",
     "generates": "ai/temple-project-map.zsh — its TEMPLE_PROJECT_MAP array is GENERATED from this file at deploy time (deploy.sh runs registries/gen-temple-map.sh). NEVER hand-edit that array; edit THIS file.",
     "companion": "reposoma/registry/index.md — logical project map. THIS file holds the physical disk paths.",
-    "layout": "folder layout is 1:1 on office and home; paths are identical on both hosts.",
-    "omitted": "nabla-lab -> subdir of reposoma; resolves via [reposoma], no separate entry.",
+    "layout": "Shared absolute paths are a cross-host convention; repository presence and runtime readiness vary by host.",
     "retired_2026-09-02": "nablarva.devenv entry removed — merged into nablarva (repo unification, majkee gavel). termbrana also merged in, as toolbox/termbrana/ under [nablarva]; it was never a registered temple project here (no local AGENTS.md/devenv twin) so no entry existed to repoint. Details: nablarva/docs/repo-unification.2026-09-02.md. Local clone quarantined to /tmp/repo-merge-2026-09-02/."
   },
   "projects": {
@@ -15,6 +14,7 @@
     "freya.devenv": "/home/hruzam/www/imago_cz/freya.devenv",
     "piql.dev": "/home/hruzam/www/piql/piql.dev",
     "vacuole": "/home/hruzam/vacuole",
+    "nabla-lab": "/home/hruzam/nabla-lab",
     "fantasyobchod": "/home/hruzam/www/imago_cz/fantasyobchod",
     "ham": "/home/hruzam/www/psdvs/ham",
     "ham.devenv": "/home/hruzam/www/psdvs/ham.devenv",

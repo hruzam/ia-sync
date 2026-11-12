@@ -16,8 +16,6 @@
         "available": true
       },
       "nabla-lab": {
-        "_path_note": "nabla-lab is intentionally absent from projects.json (subdir of reposoma per temple-map). This path is the ONLY source for it — rc.sh _project_path falls back here.",
-        "path": "/home/hruzam/nabla-lab",
         "tmux_session": "rc-nabla-lab",
         "rc_name": "Nabla Lab",
         "service": "claude-rc-nabla-lab.service",

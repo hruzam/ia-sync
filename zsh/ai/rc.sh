@@ -54,7 +54,7 @@ _claude_bin() {
 }
 
 # ---- resolvers (all read JSON; no hardcoded literals) ----
-_project_path() {  # projects.json authoritative; ai.json path is legacy fallback (e.g. nabla-lab)
+_project_path() {  # projects.json authoritative; ai.json path is legacy fallback
   local p="$1" path
   path=$(jq -r --arg p "$p" '.projects[$p] // empty' "$PROJECTS" 2>/dev/null)
   [ -z "$path" ] && path=$(jq -r --arg p "$p" '."remote-control".projects[$p].path // empty' "$REGISTRY" 2>/dev/null)

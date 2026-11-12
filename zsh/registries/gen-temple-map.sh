@@ -41,7 +41,7 @@ render() {
 #   2026-08-15 — physical paths moved from this array into the JSON registry so
 #   registry data lives in a registry file and the zsh stays a clean executive.)
 #
-# folder layout is 1:1 on office and home; paths are identical on both hosts.
+# Shared absolute paths are a cross-host convention; repository presence varies by host.
 # companion: reposoma/registry/index.md — logical project map; projects.json holds physical paths.
 # rule: source this file; do NOT hard-code these paths elsewhere.
 

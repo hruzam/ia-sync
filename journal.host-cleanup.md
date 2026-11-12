@@ -66,6 +66,14 @@ is screen-only, TIOCSTI is disabled. Monitor lacks tmux.
 
 ## MONITOR — 2026-11-12 · Cartan · Third-host bootstrap
 
+Shell source review: cycle 07's null-IP resolver defect corrected in cycle 08;
+Cartan reran 24 isolated mock/PTY cases, syntax, registry and generated-map checks.
+Monitor bare tso now offers a peer; explicit targets and home/office defaults are
+preserved. Nabla-lab is registered at its verified standalone root. Source accepted,
+not yet deployed. Whole-zsh dry run also lists unrelated tailnet-policy drift, so
+next deployment is limited to the seven reviewed files with per-file rollback.
+Evidence: .dev/session/monitor-01-integration/_bus/08.cartan.verdict.md.
+
 Repository restoration: Astrobley cloned the six operator-selected repositories at
 physically verified peer-equivalent paths. Cartan independently verified realpath,
 Git root, origin, core HEAD against the published snapshot, and clean status for all
