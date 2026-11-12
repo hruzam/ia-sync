@@ -23,7 +23,8 @@ email enters the public repo. Live tailnet scans from office match the committed
 home host fingerprints. Mailed monitor (`_mail/monitor/inbox/trajectory.peer-ssh-from-office…`).
 **Not done:** office has NOT accepted monitor's keys (awaiting majkee). Home ↔ office was
 already established — office `authorized_keys` holds home's client key and sshd logged
-home logins (latest 2026-11-06, `tso`); office → home acceptance on home is unconfirmed.
+home logins (latest 2026-11-06, `tso`); office → home verified by receipt from office
+(`BatchMode`, strict host key → `hruzam`/`hruzam`), majkee confirms routine use.
 
 **Dedupe (`32aadea`, reposoma `7e6a92b`, + this commit).** Rule from majkee: facts live once
 — data files plus a registry where needed; everything else points. Identity → `machines.json`;
