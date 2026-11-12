@@ -3,12 +3,40 @@
 #
 # ── Rules ────────────────────────────────────────────────────────
 # 1. NEWEST ENTRY FIRST — prepend new entries directly below this header block.
-# 2. New entries: ## HOME — YYYY-MM-DD or ## OFFICE — YYYY-MM-DD (legacy headings vary)
+# 2. New entries: ## HOME / OFFICE / MONITOR — YYYY-MM-DD (legacy headings vary)
 # 3. One entry per session; merge same-day same-host work into one section.
 # 4. Orient command: `head -80 journal.host-cleanup.md`
 # ─────────────────────────────────────────────────────────────────
 
 ---
+
+## MONITOR — 2026-11-12 · Cartan · Third-host bootstrap
+
+Majkee identified hruzam-mntr (mntr = monitor) as a completely new third host.
+Registered logical monitor with unknown/null tailnet ID and IP. Observed Manjaro,
+i3-5005U (2C/4T), 11.6 GiB RAM, 223.6 GiB disk, no swap. The old RAM/PHP
+heuristic cannot distinguish monitor from home. Tailscale, jq, tmux and zellij are
+absent; SSH/Git/rsync/Python/zsh are present. Git pull failed in this session with
+publickey authentication and missing ssh-askpass; no remote freshness claim.
+
+Authored separate minimal config.monitor.zsh and zshrc.monitor, preserving the
+Manjaro prompt and avoiding project/PHP assumptions. deploy.sh now uses Python 3
+for host-map resolution when jq is absent. Full dry run resolves monitor correctly;
+only the two host shell files were installed and byte-checked against source.
+Original .zshrc backup: ~/.zshrc.bak-monitor-20261112-043027. Fresh interactive PTY
+shell reports monitor with no startup errors and no PHP engine loaded. Shell syntax,
+diff whitespace and five no-jq resolver cases passed (three hosts, unknown host,
+explicit override). Non-PTY prompt errors disappeared in the real terminal check.
+Machine guide: ~/reposoma/raw.guides/machine-monitor/GUIDE.md (local inventory,
+known peer records, tailnet enrollment and SSH authorization gaps). PHP installation
+is left to majkee; monitoring/remote project execution remains undecided. No peer
+services, account policy, packages or PHP runtimes changed.
+
+Initial local commit attempts failed because Git author identity was absent.
+Majkee then supplied a public Git email explicitly; configured that address and
+the existing author name locally in ia-sync and reposoma for the bootstrap commits.
+No email account was accessed. Remote synchronization remains pending the separate
+GitHub SSH authentication issue; author configuration does not resolve login.
 
 ## OFFICE — 2026-11-11 · Cartan · Resource cleanup
 

@@ -1,7 +1,7 @@
 # ia-sync — the machine-layer saddle
 
-This repo is Manjaro Linux (Arch-family) config sync for both machines (office + home) — Manjaro, not Arch: /etc/os-release verified 2026-08-25.
-Both hosts are served by ad-hoc seats (Oraculum · Atlas · Flight · Delta · Cartan) reading the journal; there is no standing persona on either host. When Codex opens
+This repo is Manjaro Linux (Arch-family) config sync for three machines (office + home + monitor) — Manjaro, not Arch: /etc/os-release verified 2026-08-25.
+All hosts are served by ad-hoc seats (Oraculum · Atlas · Flight · Delta · Cartan) reading the journal; there is no standing persona on any host. When Codex opens
 this repo, @Cartan is a first-class participant occupying the active host's maintenance
 seat, not an observer outside it. Runtime identity and repository seat coexist.
 
@@ -9,7 +9,7 @@ seat, not an observer outside it. Runtime identity and repository seat coexist.
 
 1. `head -80 journal.host-cleanup.md` — newest entries tell you where things stand
 2. `git log --oneline -5` — see what's been synced recently
-3. `ls _mail/office/inbox/` — read any mail before planning work; archive each after processing
+3. Resolve the host, then inspect `_mail/<logical-host>/inbox/` if present; read any mail before planning work and archive each after processing. A missing inbox can be an empty Git-untracked directory.
 4. `ls ~/reposoma/_active/` (or `rb-board`) — presence board: who else is attached to a
    workspace you are about to touch. Advisory — it informs, never authorizes; overlap means
    coordinate through the operator, not stop. Law: `reposoma/raw.guides/runbook/res/presence-board.md`
@@ -21,8 +21,8 @@ seat, not an observer outside it. Runtime identity and repository seat coexist.
 
 ### Mail inbox
 
-Seat inbox: `~/ia-sync/_mail/office/inbox/`  
-Archive processed mail to: `~/ia-sync/_mail/office/archive/`  
+Seat inbox: `~/ia-sync/_mail/<logical-host>/inbox/`
+Archive processed mail to: `~/ia-sync/_mail/<logical-host>/archive/`
 Reply to Houston through the central temple bus at:
 `~/reposoma/_mail/houston/inbox/<seat>.<scope>.<YYYY-MM-DD>.md` — follow
 `~/reposoma/_mail/README.md` for addressing and archive ownership.
@@ -47,8 +47,8 @@ fold model 2026-09-17.)
 ## What the seat does here
 
 - Pull, edit in this repo, dry-run deploy, then deploy — following SYNC_DISCIPLINE.md always
-- Maintain `zsh/config.office.zsh` and `zsh/config.home.zsh` (each machine owns its own)
-- Keep `zsh/harness.machine-project-registry.json` accurate for both machines
+- Maintain `zsh/config.<logical-host>.zsh` (office, home, monitor; each machine owns its own)
+- Host identity: `machines.json`; per-host shell exports: `zsh/config.<logical-host>.zsh`. The old `harness.machine-project-registry.json` is retired; do not recreate it.
 - Audit `sync.deny` when new stale artifacts appear
 - Flag home needs in the journal — any ad-hoc home session picks them up
 - Keep portable Claude and Codex surfaces current — additive only, never silent delete
@@ -115,7 +115,19 @@ not a per-session ritual. Concrete triggers:
 - SSH or network config changed
 - A package/toolchain change another project's environment depends on
 
-## Machine facts (stable)
+## Monitor — new third host (operator-confirmed 2026-11-12)
+
+`hruzam-mntr` → `monitor` (`mntr` means monitor), independent of home and office.
+Manjaro; Intel i3-5005U (2 cores / 4 threads); 11.6 GiB RAM; 223.6 GiB disk;
+no swap observed. Its RAM resembles home: **RAM and absent PHP cannot identify home**.
+Tailscale is not installed/enrolled yet; null node ID/IP in `machines.json` mean
+unknown, never inherit another host's identity. Shell source: `config.monitor.zsh`
+and `zshrc.monitor`. PHP installation is deferred to majkee. Monitoring and remote
+PHP project access to home/office are possible future roles, not an execution decision.
+Current inventory, access gaps and setup steps:
+`~/reposoma/raw.guides/machine-monitor/GUIDE.md`.
+
+## Machine facts (home and office historical reference)
 
 | | office (hruzam-120922) | home (hruzam) |
 |-|------------------------|---------------|
@@ -146,17 +158,18 @@ least one session.
 Cheap declaration (fine when nothing depends on it):
 
 ```bash
-echo $MACHINE_NAME          # home | office
-hostname -s                 # hruzam | hruzam-120922
+echo $MACHINE_NAME          # home | office | monitor
+hostname -s                 # hruzam | hruzam-120922 | hruzam-mntr
 ```
 
-Authoritative check (use when a deploy, a gate, or evidence depends on it). These are
-mechanism fingerprints, not config strings — a config edit cannot fake them:
+Resolve the hostname through `machines.json` and check Tailscale Self.ID when enrolled.
+The following legacy fingerprints distinguish the original pair only; monitor also has
+12 GB RAM and no native php74. Never classify all non-office hosts as home:
 
 ```bash
-ls /usr/bin/php74           # exists = office · absent = home
-command -v valet            # found  = office · absent = home
-awk '/MemTotal/{print ($2>14000000)?"office":"home"}' /proc/meminfo   # RAM: 16GB office · 12GB home (hardware, ~2GB margin each side)
+ls /usr/bin/php74           # native PHP availability only; absence is not identity
+command -v valet            # Valet availability only
+awk '/MemTotal/{print}' /proc/meminfo   # corroborating inventory, not host classification
 systemctl is-active nginx   # active on BOTH (Valet-linux runs nginx on office) — NOT a discriminator (corrected 2026-09-02)
 tailscale status --json | jq -r .Self.ID   # match against machines.json
 ```
@@ -174,8 +187,8 @@ The tailscale node ID remains the ultimate anti-spoof factor named in `machines.
 it when two signals disagree (RAM can shift on a DIMM swap; the node ID cannot).
 
 **Why it matters:** termbrana's M0 host contract is office-pinned
-(`research/evidence/host-versions.md`) and zellij is absent on home, so that work cannot
-run here at all. The phone rail (`devices/_shared/agentive-tmux.md`) forces a `tmux`
+(`research/evidence/host-versions.md`). The historical claim that zellij is absent on
+home conflicts with the table above; package availability alone does not lift the host pin. The phone rail (`devices/_shared/agentive-tmux.md`) forces a `tmux`
 session — **corrected 2026-09-18: tmux IS present on home (3.7c, live sessions observed),
 so that rail is not office-only.** The zellij pin is what keeps termbrana office-bound.
 

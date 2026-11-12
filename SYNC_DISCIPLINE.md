@@ -27,7 +27,7 @@ The live trees (`~/.claude/`, `~/.config/zsh/`, `~/.gemini/`, `~/.germline/`) ar
 
 **Pull before you push. Always. No exceptions.**
 
-Both machines commit to this repo. If you push without pulling first, you overwrite
+All three machines (office, home, monitor) may commit to this repo. If you push without pulling first, you overwrite
 what the other machine committed. This is how traps happen.
 `pull.rebase=true` is set on both clones — keep it that way.
 
@@ -121,9 +121,10 @@ package manager (AUR `-Syu`, home-made).
 ## Conflict avoidance rules
 
 **Machine config files are owned by their machine's seat.**
+- `config.monitor.zsh` — only monitor edits this file (monitor seats)
 - `config.home.zsh` — only home edits this file (home seats)
 - `config.office.zsh` — only office edits this file (office seats)
-- `zshrc.home` / `zshrc.office` — same ownership rule
+- `zshrc.home` / `zshrc.office` / `zshrc.monitor` — same ownership rule
 - Never cross-edit the other machine's config file. Ownership is about **who edits**,
   not where the file lives — both files sit in this repo, authored here (compose-first).
 
@@ -149,6 +150,9 @@ first. `*.bak` / `*.bak-*` are deny'd, so backups never enter the repo. Undo a b
 deploy with `cp ~/.zshrc.bak-<date> ~/.zshrc`.
 
 **New wiring must be mirrored by hand, not assumed to propagate.**
+Monitor currently has an intentionally minimal bootstrap without project/PHP scopes;
+only home and office participate in the scope-parity checks below. Extending monitor
+is a deliberate host-owned change, not an automatic clone of either workstation.
 - The two machine config files are NOT derived from each other — each is hand-maintained
   by its own seat.
 - When you add a `source`/signpost line to one machine's config, the OTHER machine's

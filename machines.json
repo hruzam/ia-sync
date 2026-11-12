@@ -5,9 +5,15 @@
     "deploy.sh resolves through. The tailscale node id is a verification factor, not a",
     "lookup key: a script MAY check `tailscale status --json | .Self.ID` against it",
     "before trusting the logical identity (kills hostname-spoof and wrong-machine cases).",
+    "Null tailnet fields mean enrollment/verification pending, not a usable identity.",
     "Add a machine = add a row. Never key on IP; IPs are here as convenience data only."
   ],
   "machines": {
+    "hruzam-mntr": {
+      "logical": "monitor",
+      "tailscale_id": null,
+      "tailscale_ip": null
+    },
     "hruzam-120922": {
       "logical": "office",
       "tailscale_id": "n5f4JzTU5Z11CNTRL",

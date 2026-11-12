@@ -8,11 +8,15 @@ REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 # Machine identity resolution chain (machines.json wired 2026-07-31 — kills the
 # silent-skip trap where hostname `hruzam-120922` matched no config.<name>.zsh):
 #   1. MACHINE_NAME env override (explicit wins)
-#   2. machines.json lookup: hostname -s → .machines[<host>].logical (needs jq)
+#   2. machines.json lookup: hostname -s → .machines[<host>].logical (jq or python3)
 #   3. raw hostname -s (legacy fallback — may silently skip host-config legs)
 MACHINE="${MACHINE_NAME:-}"
-if [ -z "$MACHINE" ] && command -v jq >/dev/null && [ -f "$REPO/machines.json" ]; then
-  MACHINE="$(jq -r --arg h "$(hostname -s)" '.machines[$h].logical // empty' "$REPO/machines.json")"
+if [ -z "$MACHINE" ] && [ -f "$REPO/machines.json" ]; then
+  if command -v jq >/dev/null; then
+    MACHINE="$(jq -r --arg h "$(hostname -s)" '.machines[$h].logical // empty' "$REPO/machines.json")"
+  elif command -v python3 >/dev/null; then
+    MACHINE="$(python3 -c 'import json,sys; print(json.load(open(sys.argv[1]))["machines"].get(sys.argv[2], {}).get("logical", ""))' "$REPO/machines.json" "$(hostname -s)")"
+  fi
 fi
 MACHINE="${MACHINE:-$(hostname -s)}"
 
