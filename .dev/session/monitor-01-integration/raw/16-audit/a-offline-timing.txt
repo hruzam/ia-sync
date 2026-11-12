@@ -1,0 +1,2 @@
+mode=plain exit=255 elapsed=8.213076659 err=ssh: connect to host 100.64.0.123 port 22: Connection timed out
+mode=-t  exit=255 elapsed=8.209995344 err=ssh: connect to host 100.64.0.123 port 22: Connection timed out

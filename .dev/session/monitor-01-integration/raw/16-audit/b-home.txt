@@ -1,0 +1,56 @@
+B1 hostname=hruzam tz=CET
+B2 HEAD=b2f314a46bb3e05a45f0c8f10e1515d035c258ef
+B2 backupref=0dcb4285534d3c33c5d6ed2b498468bdebb845b3
+B2 origin/main=b962110f2f7798defd578371a846d1d6429d6cd5 ahead=1 behind=0
+B2 difftree backup:
+:000000 100644 0000000000000000000000000000000000000000 d8cc15cb6ea2f5439d590b7d6048978527dddda6 A	.dev/session/vistMini-01-tests/reports/trial-msgs/q01.cartan.receipt.md
+B2 difftree HEAD:
+:000000 100644 0000000000000000000000000000000000000000 d8cc15cb6ea2f5439d590b7d6048978527dddda6 A	.dev/session/vistMini-01-tests/reports/trial-msgs/q01.cartan.receipt.md
+B2 author/date/subject equal=yes
+B2 branch-r-contains-count=0
+B2 status:
+?? .dev/session/vistMini-01-tests/reports/cartan.native-resume-clue.2026-11-12.md
+B2 stash count=20
+B3 /home/hruzam/.config/zsh/system/tailscale.zsh b567e698174c80f81f7bd2498c151f91c599287ed1457763fb8fcd77564eda50 mode=644
+B3 /home/hruzam/ia-sync/zsh/system/tailscale.zsh b567e698174c80f81f7bd2498c151f91c599287ed1457763fb8fcd77564eda50 mode=644
+B3 /home/hruzam/.config/zsh/system/keyboard.zsh dffd687d66292a3c254296137351356f4f42c2afee9971d63fe4eec106859f7d mode=644
+B3 /home/hruzam/ia-sync/zsh/system/keyboard.zsh dffd687d66292a3c254296137351356f4f42c2afee9971d63fe4eec106859f7d mode=644
+B3 /home/hruzam/.config/zsh/registries/projects.json 6f653dcade66d7b7fb92fc6592879b3baccef51e892ff0f2209ae67c5891222a mode=644
+B3 /home/hruzam/ia-sync/zsh/registries/projects.json 6f653dcade66d7b7fb92fc6592879b3baccef51e892ff0f2209ae67c5891222a mode=644
+B3 /home/hruzam/.config/zsh/registries/ai.json 3e1ada2e370c3e9bf9270ff927b33e6fb4924fe180fc1ec8446aebdc3c21cfb7 mode=644
+B3 /home/hruzam/ia-sync/zsh/registries/ai.json 3e1ada2e370c3e9bf9270ff927b33e6fb4924fe180fc1ec8446aebdc3c21cfb7 mode=644
+B3 /home/hruzam/.config/zsh/registries/gen-temple-map.sh 94475a141f282a406b9c571a43234cce69bdb70ea95be6d6465623d5fdda9067 mode=755
+B3 /home/hruzam/ia-sync/zsh/registries/gen-temple-map.sh 94475a141f282a406b9c571a43234cce69bdb70ea95be6d6465623d5fdda9067 mode=755
+B3 /home/hruzam/.config/zsh/ai/temple-project-map.zsh 859c9304a7323a3c71662d2e249da5f6da9b8b36154d687d417cd3e80af0ed37 mode=600
+B3 /home/hruzam/ia-sync/zsh/ai/temple-project-map.zsh 859c9304a7323a3c71662d2e249da5f6da9b8b36154d687d417cd3e80af0ed37 mode=644
+B3 /home/hruzam/.config/zsh/ai/rc.sh 676beac171794e53047c1e2248d1ba53d93ea7d5162b6fc4290ca0663a9500d9 mode=755
+B3 /home/hruzam/ia-sync/zsh/ai/rc.sh 676beac171794e53047c1e2248d1ba53d93ea7d5162b6fc4290ca0663a9500d9 mode=755
+B4 /home/hruzam/.config/zsh/config.zsh d406192d5ecdec2737d2e1de27be545375ef9a2397dcb2b735be57c5bfe2605c
+B4 /home/hruzam/.zshrc be95e117045165313886409342cb0a0d5707db78cec6bf429bb74d312ec73cd8
+B4 /home/hruzam/.config/zsh/.config/tailnet.access-controls.json d6a208086517c0bc921d846a7166c417ef8628b12fb9d4d2c5e5e396c57d530d
+B5 /home/hruzam/.local/state/ia-sync/backups/monitor-01-cycle14/20261112T163216Z/ai
+B5 /home/hruzam/.local/state/ia-sync/backups/monitor-01-cycle14/20261112T163216Z/registries
+B5 /home/hruzam/.local/state/ia-sync/backups/monitor-01-cycle14/20261112T163216Z/system
+B5 b34fd852306dd20323cd0c923139b06e0e8645466d4f2736ffc0d88499d3b372 mode=644 system/tailscale.zsh
+B5 339c1beb193c37ed6c06ca2ed8b2c9a7796e51e05c041c32c0006e6196784cec mode=644 system/keyboard.zsh
+B5 c8f8ab542cd4a9a66d8acdee91f689b330e4d592de037d87a8e741cc1814dd5e mode=755 registries/gen-temple-map.sh
+B5 c4b4ea1a2dbf040329d9fb13e96ca8b455d767e5ef8feaf22d6a6ce1223e8a8f mode=644 registries/ai.json
+B5 a87126ca103231e44f59acfc1cd4cfec86dd88948c5408157454416fe3071e8d mode=644 registries/projects.json
+B5 ef67eb901fc6d67068785a4b568b4a7c350c5a1309d2406f23d8f7fed9bb1f5d mode=755 ai/rc.sh
+B5 ed7f53ed6a0e079684bfdc0aed1985990d5ff8b47a457c713f34f017a982da0f mode=600 ai/temple-project-map.zsh
+B6 changed:
+system/tailscale.zsh
+system/keyboard.zsh
+registries/gen-temple-map.sh
+registries/ai.json
+registries/projects.json
+ai/rc.sh
+ai/temple-project-map.zsh
+B7 target=100.80.107.66 exit=0 out=hruzam-mntr err=
+B7 target=hruzam-120922 exit=0 out=hruzam-120922 err=
+fatal: git cat-file: could not get object info
+monitor catfile exit=
+41534f7840e675d22906be839aaa30551d13961b	refs/heads/develop/wave-radio
+d56737113222384b41933a611c3f5c05d6dbde3d	refs/heads/main
+ls-remote exit=
+0

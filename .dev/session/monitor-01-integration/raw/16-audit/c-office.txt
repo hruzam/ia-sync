@@ -1,0 +1,62 @@
+C1 hostname=hruzam-120922 tz=CET
+C2 HEAD=b962110f2f7798defd578371a846d1d6429d6cd5 behind_origin=0
+C2 status:
+ D _mail/office/inbox/cartan.monitor-ssh-journal.2026-11-12.md
+ M journal.host-cleanup.md
+C2 cached-names-count=0
+C2 stash total=14
+1:2c8300bae1a9a89d01158295f6b0306e446286ae stash@{0}
+2:fd6b96d357b9b159eeaceb5ed1a3b5eb3b17a663 stash@{1}
+C2 2c8300b^1=f2578a5646f130ddcd0117682dda3a857d64b811
+C2 name-status:
+D	_mail/office/inbox/cartan.monitor-ssh-journal.2026-11-12.md
+M	journal.host-cleanup.md
+C2 journal sha=358b853d1a24dfd0c872bd304e1575629b51eaa126208d97d706f27107173bba mode=644
+C2 stash journal sha=b478fc5f65d09eaf67a41ef8d3d0ab205b82cc61e7780f4cf3e72504b6d24f6e
+C2 numstat HEAD: 15	0
+C2 numstat stash: 15	0
+C2 added-lines wt=8305a04cee678f84c894fbfc9daafe5d9f1d211b7e0559710ba3d4fee7747695 stash=8305a04cee678f84c894fbfc9daafe5d9f1d211b7e0559710ba3d4fee7747695 equal=yes
+C2 mail absent
+C2 HEAD mail sha=762b489a0bc9a6512a3cf5bb610d352300af85b6f8b4fa667189ae64641e743e
+C2bk 2a843288a04e015bdb0a5211abfd3c8de1d15d78e373358b5ad93bc0b58a9c31 mode=644 stash.oid
+C2bk 43db873c0c8009a6eba14473a62ddfc72a83d3778a9b674103f1e2432f7177f8 mode=644 local.diff.binary
+C2bk 762b489a0bc9a6512a3cf5bb610d352300af85b6f8b4fa667189ae64641e743e mode=644 mail.original
+C2bk 5101670c74db5eff94c8b09aabb124d89cdfcfdc7438331ec6c33f7659f2f8ad mode=644 metadata.json
+C2bk 358b853d1a24dfd0c872bd304e1575629b51eaa126208d97d706f27107173bba mode=644 journal.expected-merged
+C2bk b478fc5f65d09eaf67a41ef8d3d0ab205b82cc61e7780f4cf3e72504b6d24f6e mode=644 journal.local
+C2bk 994b2aa0ad3fdca82a7d1791dbf5e8e91cc5ae9745ca717fbc5025bfe44876c4 mode=644 journal.incoming
+C2bk 1f31556a9ce271a07e6ca99eae7b5e92af3df9a17157be2ac490720285cf7f6f mode=644 journal.base
+C3 /home/hruzam/.config/zsh/system/tailscale.zsh b567e698174c80f81f7bd2498c151f91c599287ed1457763fb8fcd77564eda50 mode=644
+C3 /home/hruzam/ia-sync/zsh/system/tailscale.zsh b567e698174c80f81f7bd2498c151f91c599287ed1457763fb8fcd77564eda50 mode=644
+C3 /home/hruzam/.config/zsh/system/keyboard.zsh dffd687d66292a3c254296137351356f4f42c2afee9971d63fe4eec106859f7d mode=644
+C3 /home/hruzam/ia-sync/zsh/system/keyboard.zsh dffd687d66292a3c254296137351356f4f42c2afee9971d63fe4eec106859f7d mode=644
+C3 /home/hruzam/.config/zsh/registries/projects.json 6f653dcade66d7b7fb92fc6592879b3baccef51e892ff0f2209ae67c5891222a mode=644
+C3 /home/hruzam/ia-sync/zsh/registries/projects.json 6f653dcade66d7b7fb92fc6592879b3baccef51e892ff0f2209ae67c5891222a mode=644
+C3 /home/hruzam/.config/zsh/registries/ai.json 3e1ada2e370c3e9bf9270ff927b33e6fb4924fe180fc1ec8446aebdc3c21cfb7 mode=644
+C3 /home/hruzam/ia-sync/zsh/registries/ai.json 3e1ada2e370c3e9bf9270ff927b33e6fb4924fe180fc1ec8446aebdc3c21cfb7 mode=644
+C3 /home/hruzam/.config/zsh/registries/gen-temple-map.sh 94475a141f282a406b9c571a43234cce69bdb70ea95be6d6465623d5fdda9067 mode=755
+C3 /home/hruzam/ia-sync/zsh/registries/gen-temple-map.sh 94475a141f282a406b9c571a43234cce69bdb70ea95be6d6465623d5fdda9067 mode=755
+C3 /home/hruzam/.config/zsh/ai/temple-project-map.zsh 859c9304a7323a3c71662d2e249da5f6da9b8b36154d687d417cd3e80af0ed37 mode=600
+C3 /home/hruzam/ia-sync/zsh/ai/temple-project-map.zsh 859c9304a7323a3c71662d2e249da5f6da9b8b36154d687d417cd3e80af0ed37 mode=644
+C3 /home/hruzam/.config/zsh/ai/rc.sh 676beac171794e53047c1e2248d1ba53d93ea7d5162b6fc4290ca0663a9500d9 mode=755
+C3 /home/hruzam/ia-sync/zsh/ai/rc.sh 676beac171794e53047c1e2248d1ba53d93ea7d5162b6fc4290ca0663a9500d9 mode=755
+C4 /home/hruzam/.config/zsh/config.zsh 642b95fa3fb3d706ae26ab4aeccc89b946e94853c6df8d4ffd2670726e05dadc
+C4 /home/hruzam/.zshrc 85f3acab2ab1d1d071451fd1bfb2aeb7f4bb8c69b5c689079f88a79d892c3720
+C4 /home/hruzam/.config/zsh/.config/tailnet.access-controls.json d6a208086517c0bc921d846a7166c417ef8628b12fb9d4d2c5e5e396c57d530d
+C5 ef67eb901fc6d67068785a4b568b4a7c350c5a1309d2406f23d8f7fed9bb1f5d mode=755 ai/rc.sh
+C5 ed7f53ed6a0e079684bfdc0aed1985990d5ff8b47a457c713f34f017a982da0f mode=600 ai/temple-project-map.zsh
+C5 c8f8ab542cd4a9a66d8acdee91f689b330e4d592de037d87a8e741cc1814dd5e mode=755 registries/gen-temple-map.sh
+C5 a87126ca103231e44f59acfc1cd4cfec86dd88948c5408157454416fe3071e8d mode=644 registries/projects.json
+C5 c4b4ea1a2dbf040329d9fb13e96ca8b455d767e5ef8feaf22d6a6ce1223e8a8f mode=644 registries/ai.json
+C5 b34fd852306dd20323cd0c923139b06e0e8645466d4f2736ffc0d88499d3b372 mode=644 system/tailscale.zsh
+C5 339c1beb193c37ed6c06ca2ed8b2c9a7796e51e05c041c32c0006e6196784cec mode=644 system/keyboard.zsh
+C6 changed:
+ai/rc.sh
+ai/temple-project-map.zsh
+registries/gen-temple-map.sh
+registries/projects.json
+registries/ai.json
+system/tailscale.zsh
+system/keyboard.zsh
+C7 target=100.80.107.66 exit=0 out=hruzam-mntr err=
+C7 target=hruzam exit=0 out=hruzam err=

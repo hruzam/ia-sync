@@ -102,6 +102,17 @@ is screen-only, TIOCSTI is disabled. Monitor lacks tmux.
 
 ## MONITOR — 2026-11-12 · Cartan · Third-host bootstrap
 
+Final independent audit accepted (cycle16): no blocking defect. Real plain/bed
+SSH timeout witnesses returned in about 8.21 seconds; seven-file peer deployments,
+backups, preserved local work and all six strict SSH directions passed. The access
+guide now uses logical `tso monitor` examples instead of copied DNS names. Turn10
+joined; implementation and audit complete, final Majkee acceptance pending.
+Device TCP22 review remains in the agreed safety backlog; PHP/full runtime deploy
+remain deferred. Future peer pulls must preserve home's unpublished receipt commit
+and office's overlapping local journal/mail edits; address office recovery stashes
+by exact OID (STATUS), not index. Do not replay rollout or clean peer work.
+Evidence: .dev/session/monitor-01-integration/_bus/16.cartan.verdict.md.
+
 Office peer adoption completed and independently checked: seven shared files match
 integrated source, exact old modes/backups are verified, and fresh-shell default /
 monitor / bed checks pass. Office's 15-line SSH receipt and consumed-mail deletion
