@@ -57,6 +57,17 @@ Side note: `~/reposoma` on home has diverged from origin/core (1 ahead, 10 behin
 ## MONITOR — 2026-11-12 · Cartan · Third-host bootstrap
 
 
+Cross-host mail follow-up: received and processed both Trajectory messages from
+home and office through bcf33f6; archived them under monitor/archive. Office's
+self-published host key matches a fresh tailnet scan. Accepted office's RSA client
+public key and ED25519 host key on monitor, preserving local backups; no algorithm
+weakening or private-key transfer. Bounded strict SSH attempts from monitor to both
+peers pass host trust and reach publickey authentication but are denied. Sent one
+bounded question card to each host covering acceptance receipts, selected-repository
+path/source facts and native cross-host messaging capability. Replies, not Git
+availability, will establish consumption. Directional state remains in access.md.
+
+
 Peer-key follow-up: pulled home publication 1881c9e. Home's self-published ED25519
 host key matches the live tailnet scan exactly, ending WmRB0 (zero); the old WmRBO
 text was a transcription error. Accepted home's public host key into monitor's
