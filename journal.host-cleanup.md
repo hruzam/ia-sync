@@ -102,6 +102,13 @@ is screen-only, TIOCSTI is disabled. Monitor lacks tmux.
 
 ## MONITOR — 2026-11-12 · Cartan · Third-host bootstrap
 
+Audit F1 resolved: both tso SSH modes now set ConnectTimeout=8 and
+ConnectionAttempts=1, preserving established interactive sessions. Astrobley deployed
+only system/tailscale.zsh with a verified backup; Cartan independently checked the
+two-line diff, hashes/modes, unchanged other files/policy and reran 28 source + 28
+deployed mocks plus two fresh-shell checks. Cycle 12 ACCEPT; no monitor implementation
+finding remains open. Saved-policy comparison and final operator acceptance remain.
+
 Independent audit completed: monitor repository/shell implementation passes with
 bounded follow-ups. Timeout correction assigned as cycle 12. Cartan directly reran
 home→monitor, office→monitor, home→office and office→home from each actual origin

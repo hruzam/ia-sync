@@ -1,0 +1,12 @@
+{
+  "source": {
+    "sha256": "b567e698174c80f81f7bd2498c151f91c599287ed1457763fb8fcd77564eda50",
+    "mode": "0644"
+  },
+  "live_after": {
+    "sha256": "b567e698174c80f81f7bd2498c151f91c599287ed1457763fb8fcd77564eda50",
+    "mode": "0644"
+  },
+  "other_live_unchanged": true,
+  "policy_sha256": "d6a208086517c0bc921d846a7166c417ef8628b12fb9d4d2c5e5e396c57d530d"
+}

@@ -1,0 +1,5 @@
+sending incremental file list
+>f.st...... tailscale.zsh
+
+sent 28,330 bytes  received 35 bytes  56,730.00 bytes/sec
+total size is 28,214  speedup is 0.99

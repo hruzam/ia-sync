@@ -168,9 +168,9 @@ except (OSError, ValueError, KeyError, TypeError, AttributeError):
         # Enter through the bed DOOR: lands on a plain-shell seat instead of whatever
         # TUI was last active; locale hardening lives in the door script itself.
         # One reviewed file, both hosts carry it via the repo (absolute path law).
-        ssh -t "$target" 'exec sh /home/hruzam/ia-sync/devices/_shared/termux/bin/agentive-door'
+        ssh -o ConnectTimeout=8 -o ConnectionAttempts=1 -t "$target" 'exec sh /home/hruzam/ia-sync/devices/_shared/termux/bin/agentive-door'
     else
-        ssh "$target"
+        ssh -o ConnectTimeout=8 -o ConnectionAttempts=1 "$target"
     fi
 }
 

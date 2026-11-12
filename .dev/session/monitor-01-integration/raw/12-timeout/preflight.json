@@ -1,0 +1,39 @@
+{
+  "head": "2d095ec241a8905fbcdccfa68da00ea42f7171fd",
+  "old_sha256": "01a3c7b50d4e53a88c35fa46efde453c4900190e53e4f9b12cce150afa3df4c6",
+  "source": {
+    "sha256": "b567e698174c80f81f7bd2498c151f91c599287ed1457763fb8fcd77564eda50",
+    "mode": "0644"
+  },
+  "live_before": {
+    "sha256": "01a3c7b50d4e53a88c35fa46efde453c4900190e53e4f9b12cce150afa3df4c6",
+    "mode": "0644"
+  },
+  "other_live": {
+    "system/keyboard.zsh": {
+      "sha256": "dffd687d66292a3c254296137351356f4f42c2afee9971d63fe4eec106859f7d",
+      "mode": "0644"
+    },
+    "registries/projects.json": {
+      "sha256": "6f653dcade66d7b7fb92fc6592879b3baccef51e892ff0f2209ae67c5891222a",
+      "mode": "0644"
+    },
+    "registries/ai.json": {
+      "sha256": "3e1ada2e370c3e9bf9270ff927b33e6fb4924fe180fc1ec8446aebdc3c21cfb7",
+      "mode": "0644"
+    },
+    "registries/gen-temple-map.sh": {
+      "sha256": "94475a141f282a406b9c571a43234cce69bdb70ea95be6d6465623d5fdda9067",
+      "mode": "0755"
+    },
+    "ai/temple-project-map.zsh": {
+      "sha256": "859c9304a7323a3c71662d2e249da5f6da9b8b36154d687d417cd3e80af0ed37",
+      "mode": "0600"
+    },
+    "ai/rc.sh": {
+      "sha256": "676beac171794e53047c1e2248d1ba53d93ea7d5162b6fc4290ca0663a9500d9",
+      "mode": "0755"
+    }
+  },
+  "policy_sha256": "d6a208086517c0bc921d846a7166c417ef8628b12fb9d4d2c5e5e396c57d530d"
+}

@@ -1,0 +1,2 @@
+PASS fresh shell chooser success: identity=monitor; alias=tso=_ts_session; registry=/home/hruzam/nabla-lab; exit=0; calls=['ping:ping --c 1 100.110.27.60', 'ssh:-o ConnectTimeout=8 -o ConnectionAttempts=1 100.110.27.60']
+PASS fresh shell chooser cancel: identity=monitor; alias=tso=_ts_session; registry=/home/hruzam/nabla-lab; exit=1; calls=[]

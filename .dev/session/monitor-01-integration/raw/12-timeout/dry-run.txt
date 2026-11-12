@@ -1,0 +1,5 @@
+sending incremental file list
+>f.st...... tailscale.zsh
+
+sent 72 bytes  received 19 bytes  182.00 bytes/sec
+total size is 28,214  speedup is 310.04 (DRY RUN)
