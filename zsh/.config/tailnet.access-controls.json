@@ -1,4 +1,6 @@
-// Example/default ACLs for unrestricted connections.
+// Three-computer mesh candidate, operator scope 2026-11-12.
+// Merge into the live policy; repository deployment does not apply tailnet policy.
+// Devices have no standing grant: add narrow access only on explicit request.
 {
 	// Declare static groups of users. Use autogroups for all users or users with a specific role.
 	// "groups": {
@@ -12,6 +14,7 @@
 	"hosts": {
         "office": "100.126.182.111",
         "home":   "100.110.27.60",
+        "monitor": "100.80.107.66",
         "tab":    "100.127.230.71",
         "redmi":  "100.105.201.3"
     },
@@ -19,12 +22,12 @@
 	// Define grants that govern access for users, groups, autogroups, tags,
 	// Tailscale IP addresses, and subnet ranges.
 	"grants": [
-        // computers: full mesh, unchanged working reality
-        {"src": ["office", "home"], "dst": ["*"], "ip": ["*"]},
+        // All protocols/ports among the three computers, in both directions.
+        {"src": ["office", "home", "monitor"],
+         "dst": ["office", "home", "monitor"], "ip": ["*"]}
 
-        // androids: exactly one narrow door — sshd on the computers.
-        // Inert until forced-command keys exist. No 3306, no 80, nothing else.
-        {"src": ["tab", "redmi"], "dst": ["office", "home"], "ip": ["tcp:22"]}
+        // tab/redmi host aliases above are an address book, not an access grant.
+        // Device access requires an explicitly requested, scoped grant.
     ],
 
 	// Define postures that will be applied to all rules without any specific

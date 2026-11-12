@@ -89,6 +89,23 @@ key authorization and all four monitor↔peer login receipts remain pending.
 Access track and why: ~/reposoma/raw.guides/machine-monitor/res/access.md.
 No private key, account credential or authorized_keys entered the repositories.
 
+
+Access checkpoint: operator completed monitor SSH installation. Verified sshd active
+and enabled, IPv4/IPv6 port22 listeners, source/drop-in byte equality, matching local
+ED25519 public host fingerprint and publickey-only authentication offer over a
+loopback SSH handshake. Full privileged sshd -T remains unavailable to the agent;
+non-root invocation cannot read host private keys. Marked monitor-ssh 1.0 installed
+in the host-local task state; this records listener preparation, not peer access.
+
+Majkee clarified network scope: computer-based all↔all; devices on explicit request.
+Updated tracked tailnet policy CANDIDATE: monitor host alias plus one all-port grant
+whose sources and destinations are office/home/monitor. Removed original wildcard
+computer and standing Android grants; kept host aliases and SSH section. Local
+semantic checks cover all six directed computer paths and absence of device grants.
+Live policy is not managed by deploy.sh; operator was asked to merge in Admin after
+checking other additive grants. Public-key exchange and peer logins remain pending;
+monitor authorized_keys is still absent. Current route: machine-monitor/res/access.md.
+
 ## OFFICE — 2026-11-11 · Cartan · Resource cleanup
 
 Operator requested closing all tmux sessions; stopped the default, ovitmugen and
