@@ -235,3 +235,120 @@ c68450ea61d56c960a8f789d94aceead0189240308a4f68341623228718e87ad  scripts/bus-po
 83fc1ad8900d67c1897347432586759f9488b948d3923a8838cf8a6ebbe3f2f0  tests/tmux-interpose.sh
 02bc37c8929729fde1b10377399cc4919062544a2321fce7ef531c29534a981c  tests/README.md
 ```
+
+## Thread02 and observed footer correction
+
+Cartan02 one-shot completed exit0; both checks0 followed by exactly one send0 at09:51:03Z. Peer reply e6ecc03 matches re/thread and now aligns pointer/envelope msg IDs; it attests consumption. Reverse02 clean29 occurred at09:51:40Z, before reservation/send. Its diagnostic supplies an empty composer and the following exact footer, redacted from the otherwise private frame:
+
+```text
+  ⏵⏵ auto mode on · 1 shell · ← 1 agent · ↓ to manage
+```
+
+The old known-footer predicate required the shortcut hint `(shift+tab to cycle)`, absent during the caller's background shell task. Registration d67334b precedes code96edca6, a literal footer alternative only. Both self/recipient checks remain. F01/F02 allow the exact observed empty/dim-suggestion states; F03 preserves typed23/busy24; F04 rejects unobserved two-shell29. All prior cases plus these four IDs pass (40 distinct registered IDs). Fresh read-only verification PASS; no live calls by the reviewer. This diagnoses the observed reverse02 layout; reverse01 remains unproven because its frame was not recorded.
+
+Counts before03: two successful consumed Cartan deliveries; zero reverse adapter deliveries. Both manual notices are outside count. The head authorized04 after observing only the first failure; after the second failure,03/04 could give only two reverse successes. Thread03 asks the head to authorize a fifth bounded pair rather than pretend the3+3 gate is met. Current STATUS's thread01 snapshot lags the newer thread02 artifacts; this report retains observations only and does not replace head-owned STATUS.
+
+### Cartan02 actual adapter calls
+
+```text
+2026-11-12T09:50:54Z handoff-scheduled delay=8 target=%3
+2026-11-12T09:51:02Z call mode=--check server=default pane=%2 state=/tmp/vistMini-cycle03-cartan pointer=[bus 20261112T094906Z.c02] from home:cartan -> read reports/trial-msgs/02.cartan.md ; ack: reply
+2026-11-12T09:51:03Z check=ready server=default pane=%2 attempt=none
+2026-11-12T09:51:03Z result mode=--check pane=%2 exit=0
+2026-11-12T09:51:03Z call mode=--check server=default pane=%3 state=/tmp/vistMini-cycle03-cartan pointer=[bus 20261112T094906Z.c02] from home:cartan -> read reports/trial-msgs/02.cartan.md ; ack: reply
+2026-11-12T09:51:03Z check=ready server=default pane=%3 attempt=none
+2026-11-12T09:51:03Z result mode=--check pane=%3 exit=0
+2026-11-12T09:51:03Z call mode=--send server=default pane=%3 state=/tmp/vistMini-cycle03-cartan pointer=[bus 20261112T094906Z.c02] from home:cartan -> read reports/trial-msgs/02.cartan.md ; ack: reply
+2026-11-12T09:51:03Z notification-attempted server=default pane=%3 msg=20261112T094906Z.c02 receipt=unproven
+2026-11-12T09:51:03Z result mode=--send pane=%3 exit=0
+```
+
+### Reverse02 refusal headers (private frame omitted)
+
+```text
+2026-11-12T09:51:32Z handoff-scheduled delay=8 target=%2
+2026-11-12T09:51:40Z call mode=--check server=default pane=%2 state=/tmp/vistMini-cycle03-trajectory pointer=[bus 20261112T095114Z.t02] from home:trajectory -> read reports/trial-msgs/02.trajectory.md ; ack: none
+2026-11-12T09:51:40Z check=ready server=default pane=%2 attempt=none
+2026-11-12T09:51:40Z result mode=--check pane=%2 exit=0
+2026-11-12T09:51:40Z call mode=--check server=default pane=%3 state=/tmp/vistMini-cycle03-trajectory pointer=[bus 20261112T095114Z.t02] from home:trajectory -> read reports/trial-msgs/02.trajectory.md ; ack: none
+2026-11-12T09:51:40Z refused code=29 unknown/dead/non-agent/unsafe/busy receiver
+2026-11-12T09:51:40Z result mode=--check pane=%3 exit=29
+```
+
+### Exact-footer regression output
+
+```text
+UTC=2026-11-12T09:53:59Z bash=5.3.15(1)-release tmux=tmux 3.7c artifacts=/tmp/vist-cycle01.I5BHWG
+C01 PASS rc=0 read-only state/log absent; composer-equal=yes
+C02 PASS rc=0 literal receiver line text-calls=1 separate-Enter-calls=1; 2026-11-12T09:53:59Z notification-attempted server=vist-test pane=%1 msg=c02 receipt=unproven
+C03 PASS malformed pane rc=2 expected=2
+C03 PASS missing args rc=2 expected=2
+C04 PASS unknown pane rc=20 expected=20
+C05 PASS retained dead pane=1 rc=21 expected=21 log-absent=yes
+C06 PASS non-agent shell rc=22 expected=22
+C07 PASS occupied draft unchanged rc=23 expected=23
+C07 PASS whitespace draft unchanged rc=23 expected=23
+C08 PASS busy unchanged rc=24 expected=24
+C09 PASS first=0 duplicate=25 received-lines=1
+C10 PASS exit after text before Enter rc=27 expected=27 pane-dead=1 no shell parent/no receipt
+C11 PASS foreground=codex enclosing shell refused rc=26 expected=26 fallback sentinel absent
+C12 PASS validation variant=1 rc=30 expected=30 composer unchanged
+C12 PASS validation variant=2 rc=30 expected=30 composer unchanged
+C12 PASS validation variant=3 rc=30 expected=30 composer unchanged
+C12 PASS validation variant=4 rc=30 expected=30 composer unchanged
+C12 PASS validation variant=5 rc=30 expected=30 composer unchanged
+C12 PASS validation variant=6 rc=30 expected=30 composer unchanged
+C12 PASS validation variant=7 rc=30 expected=30 composer unchanged
+C12 PASS literal expansion payload never executed (unique scratch sentinel absent)
+C13 PASS state path is file rc=28 expected=28 no submission
+/home/hruzam/ia-sync/.dev/session/vistMini-01-tests/tests/adapter-test.sh: line 69: 1853695 Killed                     bash "$ADAPTER" "$testmode" --server vist-test --pane "$pane" --pointer "$pointer" --state-dir "$scratch/state" "$@" > "$scratch/last.out" 2>&1
+C14 PASS killed-after-reservation=137 restart=25 expected=25 no receipt; uncertain claim retained
+C15 PASS unknown composer unchanged rc=29 expected=29
+C16 PASS competing exits=25,0 exactly-one-line=1
+C17 PASS registered amendment: forbidden vist-unregistered:%0 rc=2 expected=2 zero tmux calls
+C17 PASS registered amendment: forbidden default:%999999999 rc=2 expected=2 zero tmux calls
+C17 PASS registered amendment: forbidden default:%0 rc=2 expected=2 zero tmux calls
+C17 PASS registered amendment: forbidden default:%1 rc=2 expected=2 zero tmux calls
+C18 PASS codex stand-in rc=0 literal submission
+C18 PASS claude stand-in rc=0 literal submission
+T01 PASS claude mirror=claude-empty check=0 expected=0 final=0 no live calls
+T02 PASS claude mirror=claude-suggestion check=0 expected=0 final=0 no live calls
+T02 PASS claude mirror=claude-reset-dim check=0 expected=0 final=0 no live calls
+T03 PASS claude mirror=claude-typed check=23 expected=23 final=23 no live calls
+T03 PASS claude mirror=claude-typed-start check=23 expected=23 final=23 no live calls
+T04 PASS claude mirror=claude-whitespace check=23 expected=23 final=23 no live calls
+T05 PASS claude mirror=claude-multiline check=23 expected=23 final=23 no live calls
+T05 PASS claude mirror=claude-continuation-start check=23 expected=23 final=23 no live calls
+T05 PASS claude mirror=claude-dim-continuation-start check=23 expected=23 final=23 no live calls
+T06 PASS claude mirror=claude-busy check=24 expected=24 final=24 no live calls
+T07 PASS codex mirror=codex-busy check=24 expected=24 final=24 no live calls
+T08 PASS codex mirror=codex-placeholder check=0 expected=0 final=0 no live calls
+T09 PASS codex mirror=codex-typed check=23 expected=23 final=23 no live calls
+T09 PASS codex mirror=codex-typed-start check=23 expected=23 final=23 no live calls
+T10 PASS claude mirror=claude-rgb check=23 expected=23 final=23 no live calls
+T10 PASS claude mirror=claude-bg-rgb check=23 expected=23 final=23 no live calls
+T10 PASS claude mirror=claude-indexed check=23 expected=23 final=23 no live calls
+T10 PASS claude mirror=claude-bg-indexed check=23 expected=23 final=23 no live calls
+T10 PASS claude mirror=claude-mixed check=23 expected=23 final=23 no live calls
+T11 PASS claude mirror=claude-missing-footer check=29 expected=29 final=29 no live calls
+T11 PASS codex mirror=codex-missing-footer check=29 expected=29 final=29 no live calls
+T11 PASS codex mirror=codex-alternative check=29 expected=29 final=29 no live calls
+T12 PASS claude mirror=claude-historical check=0 expected=0 final=0 no live calls
+T12 PASS codex mirror=codex-historical check=0 expected=0 final=0 no live calls
+T13 PASS pointer-bytes=173 width=130 wrap validation rc=30 expected=30 unchanged/no reservation
+T14 PASS forbidden vist-unregistered:%0 rc=2 no tmux call
+T14 PASS forbidden default:%999999999 rc=2 no tmux call
+T14 PASS forbidden default:%0 rc=2 no tmux call
+T14 PASS forbidden default:%1 rc=2 no tmux call
+T15 PASS mirrored state changed after text=27 restart=25 expected=27,25 no Enter/receipt
+T16 PASS claude mirror=claude-suggestion check=0 expected=0 final=0 no live calls
+T16 PASS codex mirror=codex-placeholder check=0 expected=0 final=0 no live calls
+F01 PASS claude mirror=claude-shell-empty check=0 expected=0 final=0 no live calls
+F02 PASS claude mirror=claude-shell-suggestion check=0 expected=0 final=0 no live calls
+F03 PASS claude mirror=claude-shell-typed check=23 expected=23 final=23 no live calls
+F03 PASS claude mirror=claude-shell-busy check=24 expected=24 final=24 no live calls
+F04 PASS claude mirror=claude-two-shell-empty check=29 expected=29 final=29 no live calls
+R01 PASS metadata-once rc=0 expected=0 metadata-reads=4 expected=4 no state/input
+R02 PASS metadata-always rc=29 expected=29 metadata-reads=6 expected=6 no state/input
+SUMMARY failures=0 artifacts=/tmp/vist-cycle01.I5BHWG UTC=2026-11-12T09:54:05Z
+```
