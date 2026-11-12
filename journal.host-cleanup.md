@@ -56,6 +56,11 @@ login receipt passed (`hruzam-mntr`/`hruzam`, exit 0, against the committed know
 Installing monitor's keys into home's authorized_keys/known_hosts was refused by the session
 permission gate and is left for the operator ("Accept a peer", P=monitor). Replied to Cartan's
 integration questions in `_mail/monitor/inbox/`; office replies last.
+Cross-host session hello VERIFIED both ways between two live Claude Trajectory sessions in
+tmux (`traj-home` / `traj-office`): mail file carries content, while
+`ssh <peer> "tmux send-keys -t <sess> -l '<pointer>'"`, a 1 s pause and a separate `Enter`
+delivers a pointer into the peer's input. Without tmux it is not possible: plain pts write
+is screen-only, TIOCSTI is disabled. Monitor lacks tmux.
 
 ---
 
