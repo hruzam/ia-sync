@@ -37,8 +37,7 @@ Continue the device-access work from session `REP.office.oraculum-fable` (2026-0
 - Tablet: relay office key via home (home→tablet key works):
   `ssh hruzam@100.126.182.111 'cat ~/.ssh/id_*.pub' | ssh -p 8022 100.127.230.71 'cat >> ~/.ssh/authorized_keys'`
 - Verify from both PCs: `ssh -p 8022 <dev-ip> 'echo OK'`.
-- Host-key fingerprints for first contact: home ED25519 `SHA256:AYQ8YIZiUxYSZnMXiq8VH/Csw8uygQ81tf86WPWmRBO`,
-  office ED25519 `SHA256:Zu4j+Cuu8P9dpuQPoHpEPFnq8fB3EckdgjrDUwe/s/U`.
+- Host-key fingerprints for first contact: `ssh-keygen -lf ~/ia-sync/ssh/peers/<home|office>.known_hosts`.
 
 ## Step 2 — the JIT device→PC access build (the main goal)
 1. **Keygen on each device** (operator's hands): `ssh-keygen -t ed25519` WITH a strong passphrase

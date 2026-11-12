@@ -26,8 +26,8 @@ ssh <other-pc> 'cat ~/.ssh/id_*.pub' | ssh -p 8022 <device-tailscale-ip> 'cat >>
 ```
 
 Device IPs: tablet `100.127.230.71` · redmi `100.105.201.3`. Host-key fingerprints for
-first-contact verification: home ED25519 `SHA256:AYQ8YIZiUxYSZnMXiq8VH/Csw8uygQ81tf86WPWmRBO`,
-office ED25519 `SHA256:Zu4j+Cuu8P9dpuQPoHpEPFnq8fB3EckdgjrDUwe/s/U`.
+first-contact verification: `ssh-keygen -lf ~/ia-sync/ssh/peers/<home|office>.known_hosts`
+(the only published copy; do not transcribe fingerprints here).
 
 ## 3. Verify + close the password door
 
