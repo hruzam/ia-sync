@@ -1,6 +1,20 @@
-# Cycle03 — preparation and handoff evidence
+# Cycle03 trial — outbound demonstrated, reverse blocked
 
 2026-11-12 · home:cartan · session base e5a5925 · registration b092ec2.
+
+## Final observed result (ordinary trial, before administrative RETURN)
+
+Three Cartan→Trajectory adapter sends returned0 and were consumed, attested by matching committed peer replies. Zero reverse sends are verified successful: t01/t02 refused29 before reservation/input; t03 failed27 after text injection and retains an uncertain reservation. The matching t03 pointer reached Cartan's user turn and its file was consumed, but the route that submitted it is unverified because the sender explicitly logged no Enter. That does not convert27 into adapter success or prove unassisted delivery. The head's thread03 stop rule applies: no04/05, no reservation removal or resend. The3+3 gate is not met; request reverse direction BLOCKED.
+
+All40 distinct isolated C/T/R/F IDs passed after the exact-footer correction. This does not prove the unobserved real Codex typed-input/post-injection contract. The working hypothesis behind27 remains unverified because the failing post-text frame was not preserved. No further live experiment or guessed classifier change was performed.
+
+| Thread | Cartan msg | Outbound evidence | Peer msg | Reverse evidence |
+|---|---|---|---|---|
+| 01 | 20261112T093315Z.c01 | check0/check0/send0; peer consumption attested | 20261112T093450Z.t01 | clean29; no send; manual notice |
+| 02 | 20261112T094906Z.c02 | check0/check0/send0; peer consumption attested | 20261112T095114Z.t02 | clean29; no send; manual notice |
+| 03 | 20261112T095553Z.c03 | check0/check0/send0; peer consumption attested | 20261112T095742Z.t03 | send27; text-attempted; no Enter logged; arrival route unverified |
+
+The authoritative final RETURN is `_bus/03.cartan.return.md`; Trajectory alone owns the VERDICT, STATUS and push. The following earlier sections preserve preparation/development observations at their stated times.
 
 ## Verified preparation before thread01
 
@@ -352,3 +366,64 @@ R01 PASS metadata-once rc=0 expected=0 metadata-reads=4 expected=4 no state/inpu
 R02 PASS metadata-always rc=29 expected=29 metadata-reads=6 expected=6 no state/input
 SUMMARY failures=0 artifacts=/tmp/vist-cycle01.I5BHWG UTC=2026-11-12T09:54:05Z
 ```
+
+## Thread03 stop and uncertainty preservation
+
+Recorded at 2026-11-12T10:12:43Z. The peer authorized04/05 only while expecting successful reverse03, and explicitly required stopping if03 failed again. Actual reverse03 failed27 after text-attempted; therefore no04 or05 packet is created. Existing matching reply files establish content availability and Cartan consumption, not successful adapter submission. A fresh verifier checked all six headers and relevant log/result/state lines, found the live3+3 criterion unmet and recommended BLOCKED. No tests or live calls were run by that reviewer.
+
+The received pointer's mechanism remains unknown: it may not be attributed to the adapter from these artifacts. No claim of operator intervention or policy violation is inferred. Cartan has consumed03.trajectory.md once; that receipt resolves application consumption but not transport attribution. Never clear the uncertain key or blindly resubmit it. A next bounded investigation should first preserve the actual post-text Codex frame; do not assume a dim/paste/footer cause without evidence.
+
+### All Cartan-side live adapter commands
+
+Canonical invocation for rows below: `bash /home/hruzam/ia-sync/.dev/session/vistMini-01-tests/scripts/bus-poke.sh MODE --server default --pane PANE --pointer POINTER --state-dir /tmp/vistMini-cycle03-cartan`.
+
+Initial read-only calls at09:30:42(check%3=0) and09:30:44(check%2=24) used pointer `[bus 20261112T0930Z.c01] from home:cartan -> read reports/trial-msgs/01.cartan.md ; ack: reply`. Later09:44:15 check%3=0 used `[bus recovery01] from home:cartan -> read reports/trial-msgs/01.cartan.md ; ack: none`. Neither created a reservation/input. The three ordinary handoff logs embedded in this report give every subsequent actual MODE/PANE/POINTER/UTC/exit: two checks then one send per thread. Those are nine additional calls, all0. No other parent-side live adapter call occurred before this report's publication. The administrative RETURN's future one-shot is separately logged at `/tmp/vistMini-cycle03-cartan-return.log` and must be attested by the receiving head; it is not a fourth ordinary trial success.
+
+### Cartan03 actual calls
+
+```text
+2026-11-12T09:57:19Z handoff-scheduled delay=8 target=%3
+2026-11-12T09:57:27Z call mode=--check server=default pane=%2 state=/tmp/vistMini-cycle03-cartan pointer=[bus 20261112T095553Z.c03] from home:cartan -> read reports/trial-msgs/03.cartan.md ; ack: reply
+2026-11-12T09:57:27Z check=ready server=default pane=%2 attempt=none
+2026-11-12T09:57:27Z result mode=--check pane=%2 exit=0
+2026-11-12T09:57:27Z call mode=--check server=default pane=%3 state=/tmp/vistMini-cycle03-cartan pointer=[bus 20261112T095553Z.c03] from home:cartan -> read reports/trial-msgs/03.cartan.md ; ack: reply
+2026-11-12T09:57:27Z check=ready server=default pane=%3 attempt=none
+2026-11-12T09:57:27Z result mode=--check pane=%3 exit=0
+2026-11-12T09:57:27Z call mode=--send server=default pane=%3 state=/tmp/vistMini-cycle03-cartan pointer=[bus 20261112T095553Z.c03] from home:cartan -> read reports/trial-msgs/03.cartan.md ; ack: reply
+2026-11-12T09:57:27Z notification-attempted server=default pane=%3 msg=20261112T095553Z.c03 receipt=unproven
+2026-11-12T09:57:27Z result mode=--send pane=%3 exit=0
+```
+
+### Peer03 uncertain attempt
+
+```text
+2026-11-12T09:58:01Z handoff-scheduled delay=8 target=%2
+2026-11-12T09:58:09Z call mode=--check server=default pane=%2 state=/tmp/vistMini-cycle03-trajectory pointer=[bus 20261112T095742Z.t03] from home:trajectory -> read reports/trial-msgs/03.trajectory.md ; ack: none
+2026-11-12T09:58:09Z check=ready server=default pane=%2 attempt=none
+2026-11-12T09:58:09Z result mode=--check pane=%2 exit=0
+2026-11-12T09:58:09Z call mode=--check server=default pane=%3 state=/tmp/vistMini-cycle03-trajectory pointer=[bus 20261112T095742Z.t03] from home:trajectory -> read reports/trial-msgs/03.trajectory.md ; ack: none
+2026-11-12T09:58:09Z check=ready server=default pane=%3 attempt=none
+2026-11-12T09:58:09Z result mode=--check pane=%3 exit=0
+2026-11-12T09:58:09Z call mode=--send server=default pane=%2 state=/tmp/vistMini-cycle03-trajectory pointer=[bus 20261112T095742Z.t03] from home:trajectory -> read reports/trial-msgs/03.trajectory.md ; ack: none
+2026-11-12T09:58:12Z refused code=27 injected text not exactly visible; no Enter sent
+2026-11-12T09:58:12Z result mode=--send pane=%2 exit=27
+```
+
+### Attempt directories, as observed before administrative RETURN
+
+```text
+/tmp/vistMini-cycle03-cartan
+  1e40d898a5c124f0b74656456ff540542183921e71d2cc13d115553259c259c6/state: phase=enter-attempted msg=20261112T093315Z.c01 utc=2026-11-12T09:34:31Z
+  a6bf1a8cef5801f1c7716a7d9146b29c803de8a56d72f50f0a14d9c9fea04bdf/state: phase=enter-attempted msg=20261112T094906Z.c02 utc=2026-11-12T09:51:03Z
+  c5eeaec3b42e2c1ca8158903f4ea32d8626173bcdd338e72dfd42a21938d8251/state: phase=enter-attempted msg=20261112T095553Z.c03 utc=2026-11-12T09:57:27Z
+/tmp/vistMini-cycle03-trajectory
+  5e9f0d4a1e1c49f5dbbd3feb9d6da4b40d11ffd50207e36012206f93541ca0f8/state: phase=text-attempted msg=20261112T095742Z.t03 utc=2026-11-12T09:58:09Z
+```
+
+Cartan has three `enter-attempted` ordinary keys; Trajectory has one `text-attempted` uncertain key. These phases are attempt evidence, never receipt stamps. The future administrative RETURN may add a separate Cartan key after publication; it does not alter the ordinary counts or this time-bounded snapshot.
+
+## Permission, VIST and acceptance limits
+
+Cartan committed only assigned paths and did not push; the operator nano savefile remains untouched. ia-sync is now writable in the workspace, while `.git` and tmux access still used explicit tool escalation as required. No permission config was changed by Cartan. The requested Claude allowed-push/unlisted-command pair has not yet been independently witnessed: Trajectory must attach its actual redacted command/UTC/decision receipts at its VERDICT/push, not rely on Codex's policy or a settings-file claim. Root cannot establish another runtime's classifier result by running the same command here.
+
+VIST/Oraculum route and bounded context remain unverified, as do receiver-layer expiry/path/recipient/hop semantics and broad reliability. This was a small engineering smoke trial, not statistical validation. The main gate remains open/blocked; there is no operator acceptance in this artifact. Head-owned STATUS still needs reconciliation to these observed later outcomes; Cartan has not edited it. Any future recovery must preserve consumed-message deduplication and the uncertain reservation.
