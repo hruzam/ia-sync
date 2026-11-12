@@ -201,7 +201,7 @@ ok=0; [[ $got == 0 && $(wc -l < "$log") == 1 ]] && { [[ $ra == 0 && $rb != 0 || 
 result C16 "$ok" "competing exits=$ra,$rb exactly-one-line=$([[ $got == 0 ]] && wc -l < "$log" || printf no)"
 
 pointer_for c17
-for endpoint in 'vist-unregistered:%0' 'default:%999999999'; do
+for endpoint in 'vist-unregistered:%0' 'default:%999999999' 'default:%0' 'default:%1'; do
     before_calls=$(cat "$VIST_CALL_LOG")
     bash "$ADAPTER" --check --server "${endpoint%%:*}" --pane "${endpoint#*:}" --pointer "$pointer" --state-dir "$scratch/state" > "$scratch/last.out" 2>&1; rc=$?
     after_calls=$(cat "$VIST_CALL_LOG"); ok=0
@@ -269,7 +269,7 @@ ok=0; [[ $rc == 30 && $before == "$after" && ! -e $scratch/t13.attempts && ! -e 
 result T13 "$ok" "pointer-bytes=${#pointer} width=130 wrap validation rc=$rc expected=30 unchanged/no reservation"
 
 pointer_for t14
-for endpoint in 'vist-unregistered:%0' 'default:%999999999'; do
+for endpoint in 'vist-unregistered:%0' 'default:%999999999' 'default:%0' 'default:%1'; do
     before_calls=$(cat "$VIST_CALL_LOG")
     bash "$ADAPTER" --check --server "${endpoint%%:*}" --pane "${endpoint#*:}" --pointer "$pointer" --state-dir "$scratch/state" > "$scratch/last.out" 2>&1; rc=$?
     after_calls=$(cat "$VIST_CALL_LOG"); ok=0

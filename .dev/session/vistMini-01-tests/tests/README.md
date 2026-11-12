@@ -2,7 +2,7 @@
 
 Run with Bash; no install/deploy is needed. Required arguments are `--check|--send`, `--server`, `--pane %N`, `--pointer LINE`, and `--state-dir ABS`. Pointer example: `[bus example.01] from home:cartan -> read /tmp/request.md ; ack: none`.
 
-The exact registered live bindings are `default:%0` → Claude and `default:%1` → Codex. All other live endpoints refuse locally. `vist-test` supports the legacy cycle-01 stand-in and the registered runtime mirrors. There is no caller flag that bypasses a live endpoint's classifier; no live endpoint falls back to the legacy layout.
+The cycle-03 registered live bindings are `default:%3` → Claude and `default:%2` → Codex, after direct-agent relaunch. The old `%0`/`%1` and all other live endpoints refuse locally. `vist-test` supports the legacy cycle-01 stand-in and the registered runtime mirrors. There is no caller flag that bypasses a live endpoint's classifier; no live endpoint falls back to the legacy layout.
 
 ## Contract and limits
 
@@ -31,4 +31,6 @@ Run `bash /home/hruzam/ia-sync/.dev/session/vistMini-01-tests/tests/adapter-test
 
 The harness refuses a preexisting `vist-test` session, creates a unique session, cleans up only that session, and leaves evidence under the printed `/tmp/vist-cycle01.*` path. It never resets a server or touches live panes. Trusted Bash stand-ins use `exec -a` and synthetic text; they are renderer fixtures, not real TUIs. External tmux interposition records separate text/Enter calls and synchronizes exit, crash and busy-after-text cases. The production adapter contains no fixture hook.
 
-Output preserves C01–C18 and T01–T16 identifiers. C17's forbidden-endpoint samples were amended in the registered cycle-02 contract because `default:%0` became allowed. Keep earlier failed/aborted logs alongside a later pass. Reports, RETURNS and VERDICTS are owned by the controller/head, not these fixtures.
+Output preserves C01–C18 and T01–T16 identifiers. C17/T14 include the old bindings as local refusals following `reports/cartan.binding-03.2026-11-12.md`. Keep earlier failed/aborted logs alongside a later pass. Reports, RETURNS and VERDICTS are owned by the controller/head, not these fixtures.
+
+For cycle03, notification paths beginning `reports/` or `_bus/` resolve under the fixed session bed `/home/hruzam/ia-sync/.dev/session/vistMini-01-tests/`, never the caller's cwd. `scripts/handoff-once.sh TARGET POINTER ABS_STATE_DIR` is a one-shot controller command: after one8-second delay, it checks both registered endpoints once, then performs one adapter send only if both were ready. End the launching controller turn promptly so its own receiver can become idle. Any refusal stops; there is no loop, retry, watcher or manual fallback. Capture stdout/stderr outside the checkout and promote outcomes in the next Git window. The helper never commits or pushes.

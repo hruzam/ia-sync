@@ -22,7 +22,7 @@ done
 [[ -n $mode && -n $pointer && $pane =~ ^%[0-9]+$ && $state_dir == /* ]] || fail 2 'explicit server, pane id, mode, pointer and absolute state path required'
 expected=
 case $server:$pane in
-    default:%0) expected=claude;; default:%1) expected=codex;;
+    default:%3) expected=claude;; default:%2) expected=codex;;
     vist-test:*) ;; *) fail 2 'unregistered endpoint';;
 esac
 # Deliberately bounded grammar; it cannot express a shell-expansion payload.
