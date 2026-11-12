@@ -286,5 +286,19 @@ ok=0; [[ $changed_rc == 27 && $rc == 25 && -d $scratch/t15.attempts && ! -e $log
 result T15 "$ok" "mirrored state changed after text=$changed_rc restart=$rc expected=27,25 no Enter/receipt"
 mirror T16 claude claude-suggestion 0
 mirror T16 codex codex-placeholder 0
+for recovery in once always; do
+    make_agent "r-$recovery" codex ready; pointer_for "r-$recovery"
+    export VIST_CONTROL=$control VIST_INTERPOSE_MODE="metadata-$recovery"
+    before=$(composer_snapshot)
+    run_adapter --check --state-dir "$scratch/r-$recovery.attempts"
+    VIST_INTERPOSE_MODE=none
+    after=$(composer_snapshot)
+    count=0; read -r count < "$control/meta-count"
+    expected_rc=0; expected_count=4; id=R01
+    if [[ $recovery == always ]]; then expected_rc=29; expected_count=6; id=R02; fi
+    ok=0
+    [[ $rc == "$expected_rc" && $count == "$expected_count" && $before == "$after" && ! -e $scratch/r-$recovery.attempts && ! -e $log ]] && ok=1
+    result "$id" "$ok" "metadata-$recovery rc=$rc expected=$expected_rc metadata-reads=$count expected=$expected_count no state/input"
+done
 printf 'SUMMARY failures=%s artifacts=%s UTC=%s\n' "$failures" "$scratch" "$(date -u +%FT%TZ)"
 ((failures == 0))

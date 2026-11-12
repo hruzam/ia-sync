@@ -14,6 +14,12 @@ call() {
     bash "$adapter" "$mode" --server default --pane "$pane" --pointer "$pointer" --state-dir "$state_dir"
     rc=$?
     printf '%s result mode=%s pane=%s exit=%s\n' "$(date -u +%FT%TZ)" "$mode" "$pane" "$rc"
+    if ((rc == 29)); then
+        printf '%s LOCAL-PRIVATE diagnostic pane=%s; original refusal retained\n' "$(date -u +%FT%TZ)" "$pane"
+        tmux -L default display-message -p -t "$pane" '#{pane_id}|#{pane_current_command}|#{pane_dead}|#{cursor_x}|#{cursor_y}|#{pane_width}' || :
+        tmux -L default capture-pane -e -p -t "$pane" || :
+        printf 'END LOCAL-PRIVATE diagnostic; redact before promotion\n'
+    fi
     return "$rc"
 }
 call --check %2 || exit $?

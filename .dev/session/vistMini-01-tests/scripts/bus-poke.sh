@@ -33,7 +33,7 @@ key=$(printf '%s\n%s\n%s\n' "$server" "$pane" "$msg" | sha256sum) || fail 28 'ca
 claim=$state_dir/${key%% *}
 [[ ! -e $claim ]] || fail 25 'duplicate or uncertain prior attempt; inspect receipt before recovery'
 
-identity= cursor_x= cursor_y= pane_width= composer_row= suffix= suffix_dim= layout=
+identity= cursor_x= cursor_y= pane_width= composer_row= suffix= suffix_dim= layout= incoherent=0
 sgr_re=$'\033''\[([0-9;]*)m'
 strip_sgr() {
     plain=$1
@@ -123,6 +123,7 @@ screen_contract() {
 snapshot() {
     local info again id pid dead command argv0 stat rest screen
     local -a fields
+    incoherent=0
     info=$(tmux -L "$server" display-message -p -t "$pane" '#{pane_id}|#{pane_pid}|#{pane_dead}|#{pane_current_command}|#{cursor_x}|#{cursor_y}|#{pane_width}' 2>/dev/null) || return 20
     IFS='|' read -r id pid dead command cursor_x cursor_y pane_width <<< "$info"
     [[ $id == "$pane" && $pid =~ ^[0-9]+$ ]] || return 20
@@ -140,10 +141,16 @@ snapshot() {
     identity=$pid:${fields[19]}
     screen=$(tmux -L "$server" capture-pane -p -e -t "$pane" 2>/dev/null) || return 20
     again=$(tmux -L "$server" display-message -p -t "$pane" '#{pane_id}|#{pane_pid}|#{pane_dead}|#{pane_current_command}|#{cursor_x}|#{cursor_y}|#{pane_width}' 2>/dev/null) || return 20
-    [[ $again == "$info" ]] || return 29
+    [[ $again == "$info" ]] || { incoherent=1; return 29; }
     screen_contract "$screen" "$command"
 }
-snapshot; rc=$?
+# Observe a changing frame again before declaring a refusal. Coherent unknown
+# layouts are never retried or accepted by this bounded metadata-coherence path.
+for ((observation=0; observation<3; observation++)); do
+    snapshot; rc=$?
+    if ((rc == 29 && incoherent == 1 && observation < 2)); then sleep 0.025; continue; fi
+    break
+done
 ((rc == 0)) || fail "$rc" 'unknown/dead/non-agent/unsafe/busy receiver'
 initial_identity=$identity
 initial_row=$composer_row; initial_layout=$layout

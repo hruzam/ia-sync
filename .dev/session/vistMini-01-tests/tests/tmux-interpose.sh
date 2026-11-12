@@ -3,6 +3,19 @@
 set -u
 [[ -z ${VIST_CALL_LOG:-} ]] || printf '%s\n' "$*" >> "$VIST_CALL_LOG"
 case ${VIST_INTERPOSE_MODE:-none} in
+    metadata-once|metadata-always)
+        if [[ " $* " == *' display-message '* && $* == *'#{pane_width}'* ]]; then
+            count=0
+            [[ ! -f $VIST_CONTROL/meta-count ]] || read -r count < "$VIST_CONTROL/meta-count"
+            count=$((count+1)); printf '%s\n' "$count" > "$VIST_CONTROL/meta-count"
+            value=$("$VIST_REAL_TMUX" "$@") || exit $?
+            if ((count % 2 == 0)) && { [[ $VIST_INTERPOSE_MODE == metadata-always ]] || ((count == 2)); }; then
+                printf '%s|fixture-metadata-change\n' "$value"
+            else
+                printf '%s\n' "$value"
+            fi
+            exit 0
+        fi;;
     busy-after-text)
         if [[ " $* " == *' send-keys '* && " $* " == *' -l '* ]]; then
             "$VIST_REAL_TMUX" "$@" || exit $?
