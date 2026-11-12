@@ -120,8 +120,9 @@ not a per-session ritual. Concrete triggers:
 `hruzam-mntr` → `monitor` (`mntr` means monitor), independent of home and office.
 Manjaro; Intel i3-5005U (2 cores / 4 threads); 11.6 GiB RAM; 223.6 GiB disk;
 no swap observed. Its RAM resembles home: **RAM and absent PHP cannot identify home**.
-Tailscale is not installed/enrolled yet; null node ID/IP in `machines.json` mean
-unknown, never inherit another host's identity. Shell source: `config.monitor.zsh`
+Tailscale enrollment verified 2026-11-12: `100.80.107.66`, node
+`n7msXDoqQ621CNTRL`; DNS `hruzam-mntr.tail36b8ab.ts.net`. SSH access remains
+a separate authorization and directional-verification step. Shell source: `config.monitor.zsh`
 and `zshrc.monitor`. PHP installation is deferred to majkee. Monitoring and remote
 PHP project access to home/office are possible future roles, not an execution decision.
 Current inventory, access gaps and setup steps:

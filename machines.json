@@ -11,8 +11,8 @@
   "machines": {
     "hruzam-mntr": {
       "logical": "monitor",
-      "tailscale_id": null,
-      "tailscale_ip": null
+      "tailscale_id": "n7msXDoqQ621CNTRL",
+      "tailscale_ip": "100.80.107.66"
     },
     "hruzam-120922": {
       "logical": "office",

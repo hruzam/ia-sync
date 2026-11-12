@@ -64,6 +64,31 @@ for Git commands, and authenticated pulls succeeded for ia-sync/main and
 reposoma/core. This supersedes the authentication blocker above. No private key
 was copied or changed; the agent socket is host-local and is not portable config.
 
+
+Access integration follow-up: three bounded Terra max readers covered ia-sync shell,
+reposoma guidance and local readiness; Houston consult returned stretches with
+observed-identity, live-policy, ordinary-OpenSSH and directional-proof constraints.
+Historical evidence supports conventional sshd/keys over Tailscale, not enabling
+the separate Tailscale SSH product. No new peer engine is needed: tsp/tso accept
+explicit resolvable targets. Houston's project addendum still names only two hosts;
+that context drift is noted, not changed as part of access implementation.
+
+Operator installed tailscale 1.102.5 and jq 1.8.2, started tailscaled and enrolled
+monitor. Verified Self.ID n7msXDoqQ621CNTRL, IPv4 100.80.107.66, DNS
+hruzam-mntr.tail36b8ab.ts.net. Home and office IDs match machines.json; home online,
+office offline. Home Tailscale ping passed; bounded TCP22 key scan got no reply.
+This is not SSH readiness. Current live policy remains unverified; the saved policy
+omits monitor as a source. Prepared a minimal monitor→home/office TCP22 grant for
+operator merge, preserving Android restrictions and original computer rules.
+
+Authored ssh/sshd.monitor.conf and manual install-pkgs/monitor-ssh.md; fixed the
+install runner's missing monitor hostname mapping. The new task lists correctly as
+not-installed (manual). Operator generated host keys; ED25519 public fingerprint
+recorded in machine-monitor/res/access.md. Key-only listener installation, public
+key authorization and all four monitor↔peer login receipts remain pending.
+Access track and why: ~/reposoma/raw.guides/machine-monitor/res/access.md.
+No private key, account credential or authorized_keys entered the repositories.
+
 ## OFFICE — 2026-11-11 · Cartan · Resource cleanup
 
 Operator requested closing all tmux sessions; stopped the default, ovitmugen and

@@ -32,6 +32,7 @@ MACHINE="$(hostname -s)"
 case "$MACHINE" in
   hruzam-120922) FRIENDLY=office ;;
   hruzam)        FRIENDLY=home ;;
+  hruzam-mntr)   FRIENDLY=monitor ;;
   *)             FRIENDLY="$MACHINE" ;;
 esac
 
