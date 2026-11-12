@@ -82,6 +82,11 @@ Rules:
 6. **Max 3 open threads per sender.** Pending = not yet stamped.
 7. **expires** is honoured: stale mail is archived, nothing is owed.
 8. A receiver in the middle of a task finishes or parks it first. A poke never preempts operator work.
+9. **Manual-notice fallback** (majkee, 2026-11-12). After a *clean* adapter refusal (non-zero exit before any
+   reservation, nothing sent), the sender may send **one** manual notice for that message. It is labelled `manual`
+   and points at the message and the refusal log. It is not delivery evidence, and it is not repeated.
+   If the send is *uncertain* (a reservation exists), no manual notice: receipt and recovery decide.
+   Origin: vistMini-01-tests cycle 03, sender self-check refused on a Claude pane.
 
 ## 5. Stamps (receipt is stamped, never inferred: HANDSHAKE r1)
 
