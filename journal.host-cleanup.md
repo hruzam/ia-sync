@@ -39,6 +39,42 @@ keeps its dated values by design.
 
 ## HOME — 2026-11-12 · Trajectory · Public-key exchange without USB
 
+**Final Cartan receipt — all six SSH directions verified.** Majkee removed
+monitor's client-key passphrase, then explicitly authorized remote completion on
+office. Cartan connected through verified tailnet SSH, confirmed office identity,
+and ran the journal's backup-first acceptance block there. Office pulled ia-sync
+fast-forward to f2578a5; its SSH installation and backup receipt are in office's
+local journal. Fresh noninteractive BatchMode + StrictHostKeyChecking logins using
+normal known_hosts passed home → office, home → monitor, office → home,
+office → monitor, monitor → home and monitor → office: expected hostname,
+user hruzam and exit 0 for every direction. This supersedes the earlier pending
+SSH checkpoints below. No agent forwarding, private-key transfer, service restart,
+or live tailnet-policy change. SSH entries are active; journal/mail receipt edits
+on home and office remain uncommitted, with no push required for SSH activation.
+
+**Cartan follow-up — home acceptance executed (12:16 CET).** Majkee asked this
+home session to read the monitor handoff in
+`reposoma/.majkee/journal/raw.2026-11-12.md` and prepare/execute the local step.
+Confirmed hostname and Tailscale Self.ID against `machines.json`; both peers online.
+Ran that journal's exact acceptance block on home after verifying monitor's live
+ED25519 fingerprint against `ssh/peers/monitor.known_hosts`. Backups:
+`~/.ssh/{authorized_keys,known_hosts}.before-monitor-20261112-121655-750065965`.
+Both missing public-key entries are installed, modes remain 0600, and strict
+home → monitor using normal known_hosts returns `hruzam-mntr` / `hruzam`.
+Fresh home → office and office → home identity receipts also pass.
+
+Monitor → home now reaches **Server accepts key**, but the nested noninteractive
+client cannot sign: monitor's id_ed25519 is passphrase-encrypted (local empty-passphrase
+probe reports incorrect passphrase; no key data printed), and SSH_AUTH_SOCK is unset.
+Unlock that key in an authorized monitor terminal/agent, then retest from that context.
+Monitor → office is still publickey-denied. Office → monitor passes when explicitly
+using the published repo known_hosts file, but normal office known_hosts lacks monitor.
+Office still needs its own journal acceptance block; this session changed only home.
+No live tailnet-policy save or agent-message delivery was attempted or established.
+The access guide's earlier checkpoint remains older than these dated receipts.
+Archived the consumed monitor SSH journal notice; unrelated batch-return mail remains
+in the inbox for its owner. No commit/push: unrelated `nano.1844235.save` pre-existed.
+
 Monitor asked for keys; no USB stick available. Public keys need integrity, not
 secrecy: git (authenticated push) and the tailnet (IP bound to node key) are two
 independent channels. Home-side `ssh-keyscan` over the tailnet returned monitor ED25519

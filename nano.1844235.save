@@ -1,0 +1,26 @@
+1. Sol (cartan-home): in his window, quit Codex (/quit or Ctrl-C twice). 
+Then, from any other terminal:   
+tmux kill-session -t cartan-home   
+tmux new -d -s cartan-home -c ~/reposoma 
+'exec /home/hruzam/.npm-global/bin/codex resume 01a1ce98-6aa1-7021-b9cd-99805a07b2b2 --add-dir 
+/home/hruzam/ia-sync'   
+
+tmux attach -t cartan-home 
+--add-dir ~/ia-sync 
+should also stop the approval prompts for his commits in ia-sync.    
+2. Me (traj-home): type /exit here. Then, from a plain Konsole tab (not inside tmux):   
+tmux kill-session -t traj-home   
+tmux new -d -s traj-home -c ~/ia-sync 
+'exec /home/hruzam/.local/bin/claude --agent trajectory --model 
+claude-opus-5-5 --resume 06352fda-5b7f-4621-b7d1-617be6bc51a4'   
+tmux attach -t traj-home    
+
+
+3. Check: after both are back, tell me "relaunched". 
+I'll run the recovery probe from STATUS. 
+It must print claude   and codex as the pane roots, not zsh. 
+Then I'll open cycle 03:   - the two live sends through the adapter;   
+- the rest of the 3+3 ordinary messages;   
+- "commit, don't push" written into Sol's POINT.
+ If anything goes wrong, --resume / resume <id> brings back the 
+same conversations, so nothing is lost. Everything is also in git and in STATUS. 
