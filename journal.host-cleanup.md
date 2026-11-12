@@ -10,6 +10,32 @@
 
 ---
 
+## OFFICE — 2026-11-12 · Trajectory · Office peer keys published; host facts deduplicated
+
+Pulled ia-sync + reposoma fast-forward (reposoma via `merge --ff-only`: pull.rebase refuses
+with majkee's uncommitted `.majkee/projects/_temporarily_suspended_sessions.md`, left
+untouched). Host confirmed office by tailnet node ID against `machines.json`.
+
+**Peer keys (`b3e868a`).** Published `ssh/peers/office.known_hosts` and `office.client.pub`
+per the README. Office has no ed25519 client key: the published client key is the existing
+RSA 4096 `~/.ssh/id_rsa.pub` (also on github.com/hruzam.keys); comment replaced so no
+email enters the public repo. Live tailnet scans from office match the committed monitor and
+home host fingerprints. Mailed monitor (`_mail/monitor/inbox/trajectory.peer-ssh-from-office…`).
+**Not done:** office has NOT accepted monitor's keys (awaiting majkee). Home ↔ office was
+already established — office `authorized_keys` holds home's client key and sshd logged
+home logins (latest 2026-11-06, `tso`); office → home acceptance on home is unconfirmed.
+
+**Dedupe (`32aadea`, reposoma `7e6a92b`, + this commit).** Rule from majkee: facts live once
+— data files plus a registry where needed; everything else points. Identity → `machines.json`;
+keys → `ssh/peers/`; monitor inventory → reposoma `machine-monitor/GUIDE.md`; directional
+SSH state → `machine-monitor/res/access.md` only. Removed copies from `AGENTS.md` (Monitor
+section, Machine-facts IP row), GUIDE/access, the office mail, and
+`devices/_shared/{termux-bootstrap,session.next}.md` — whose copied home fingerprint carried the
+`WmRBO` (letter O) transcription error and would have rejected home's real key. The journal
+keeps its dated values by design.
+
+---
+
 ## HOME — 2026-11-12 · Trajectory · Public-key exchange without USB
 
 Monitor asked for keys; no USB stick available. Public keys need integrity, not

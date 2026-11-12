@@ -123,9 +123,11 @@ Peer keys: `ssh/peers/`. Inventory, role and access state:
 
 ## Machine facts (home and office historical reference)
 
+Identity (hostname → logical name, tailnet node ID and IP) lives only in `machines.json`;
+peer keys only in `ssh/peers/`. This table holds runtime inventory that has no other home.
+
 | | office (hruzam-120922) | home (hruzam) |
 |-|------------------------|---------------|
-| IP (Tailscale) | 100.126.182.111 | 100.110.27.60 |
 | PHP 7.4 | `/usr/bin/php74` | Docker (`php74-composer`), no native CLI |
 | PHP 8 | `/usr/bin/php` | system |
 | Web | Valet-linux | nginx + systemctl |
