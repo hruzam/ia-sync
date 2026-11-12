@@ -3,6 +3,17 @@
 set -u
 [[ -z ${VIST_CALL_LOG:-} ]] || printf '%s\n' "$*" >> "$VIST_CALL_LOG"
 case ${VIST_INTERPOSE_MODE:-none} in
+    busy-after-text)
+        if [[ " $* " == *' send-keys '* && " $* " == *' -l '* ]]; then
+            "$VIST_REAL_TMUX" "$@" || exit $?
+            : > "$VIST_CONTROL/busy-now"
+            for ((i=0; i<100; i++)); do
+                screen=$("$VIST_REAL_TMUX" -L vist-test capture-pane -p -t "$VIST_PANE")
+                [[ $screen == *'esc to interrupt'* ]] && exit 0
+                sleep 0.025
+            done
+            exit 1
+        fi;;
     exit-before-enter)
         if [[ " $* " == *' send-keys '* && " $* " == *' -l '* ]]; then
             "$VIST_REAL_TMUX" "$@" || exit $?

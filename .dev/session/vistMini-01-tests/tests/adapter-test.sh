@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# C01-C18 from reports/cartan.matrix.2026-11-12.md; only isolated vist-test.
+# C01-C18 and registered T01-T16 mirrors; calls only isolated vist-test.
 set -uo pipefail
 HERE=$(cd -- "$(dirname -- "${BASH_SOURCE[0]}")" && pwd)
 ADAPTER=$HERE/../scripts/bus-poke.sh
@@ -59,7 +59,7 @@ make_agent() {
     for ((j=0; j<100; j++)); do
         command=$("$REAL_TMUX" -L vist-test display-message -p -t "$pane" '#{pane_current_command}')
         screen=$(capture)
-        if [[ $command == "$agent" && -n $screen ]]; then return 0; fi
+        if [[ $command == "$agent" && -e $control/ready ]]; then return 0; fi
         sleep 0.025
     done
     printf 'fixture failed to become ready: %s command=%s\n' "$tag" "$command" >&2
@@ -201,16 +201,90 @@ ok=0; [[ $got == 0 && $(wc -l < "$log") == 1 ]] && { [[ $ra == 0 && $rb != 0 || 
 result C16 "$ok" "competing exits=$ra,$rb exactly-one-line=$([[ $got == 0 ]] && wc -l < "$log" || printf no)"
 
 pointer_for c17
-before_calls=$(cat "$VIST_CALL_LOG")
-bash "$ADAPTER" --check --server default --pane %0 --pointer "$pointer" --state-dir "$scratch/state" > "$scratch/last.out" 2>&1; rc=$?
-after_calls=$(cat "$VIST_CALL_LOG"); ok=0
-[[ $rc == 2 && $before_calls == "$after_calls" ]] && ok=1
-result C17 "$ok" "forbidden default server rc=$rc expected=2 no tmux call (local validation)"
+for endpoint in 'vist-unregistered:%0' 'default:%999999999'; do
+    before_calls=$(cat "$VIST_CALL_LOG")
+    bash "$ADAPTER" --check --server "${endpoint%%:*}" --pane "${endpoint#*:}" --pointer "$pointer" --state-dir "$scratch/state" > "$scratch/last.out" 2>&1; rc=$?
+    after_calls=$(cat "$VIST_CALL_LOG"); ok=0
+    [[ $rc == 2 && $before_calls == "$after_calls" ]] && ok=1
+    result C17 "$ok" "registered amendment: forbidden $endpoint rc=$rc expected=2 zero tmux calls"
+done
 
 for agent in codex claude; do
     make_agent "c18-$agent" "$agent" ready; pointer_for "c18-$agent"; run_adapter --send
     ok=0; if ((rc == 0)) && received "$pointer"; then ok=1; fi
     result C18 "$ok" "$agent stand-in rc=$rc literal submission"
 done
+
+# Registered cycle-02 mirrors; all remain on vist-test and use synthetic text.
+mirror_count=0
+mirror() {
+    local id=$1 agent=$2 fixture=$3 expected_rc=$4 send=${5:-0} state before after check_rc ok
+    mirror_count=$((mirror_count+1))
+    make_agent "$id-$mirror_count" "$agent" "$fixture"
+    pointer_for "$id-$mirror_count"
+    state=$scratch/$id-$mirror_count.attempts
+    before=$(composer_snapshot)
+    run_adapter --check --state-dir "$state"; check_rc=$rc
+    after=$(composer_snapshot); ok=0
+    [[ $check_rc == "$expected_rc" && $before == "$after" && ! -e $state && ! -e $log ]] && ok=1
+    if ((send && check_rc == 0)); then
+        run_adapter --send --state-dir "$state"
+        if ((rc != 0)) || ! received "$pointer"; then ok=0; fi
+    elif ((expected_rc != 0)); then
+        run_adapter --send --state-dir "$state"
+        after=$(composer_snapshot)
+        [[ $rc == "$expected_rc" && $before == "$after" && ! -e $state && ! -e $log ]] || ok=0
+    fi
+    result "$id" "$ok" "$agent mirror=$fixture check=$check_rc expected=$expected_rc final=$rc no live calls"
+    ((ok)) || cat "$scratch/last.out"
+}
+mirror T01 claude claude-empty 0 1
+mirror T02 claude claude-suggestion 0 1
+mirror T02 claude claude-reset-dim 0 1
+mirror T03 claude claude-typed 23
+mirror T03 claude claude-typed-start 23
+mirror T04 claude claude-whitespace 23
+mirror T05 claude claude-multiline 23
+mirror T05 claude claude-continuation-start 23
+mirror T05 claude claude-dim-continuation-start 23
+mirror T06 claude claude-busy 24
+mirror T07 codex codex-busy 24
+mirror T08 codex codex-placeholder 0 1
+mirror T09 codex codex-typed 23
+mirror T09 codex codex-typed-start 23
+for fixture in claude-rgb claude-bg-rgb claude-indexed claude-bg-indexed claude-mixed; do mirror T10 claude "$fixture" 23; done
+mirror T11 claude claude-missing-footer 29
+mirror T11 codex codex-missing-footer 29
+mirror T11 codex codex-alternative 29
+mirror T12 claude claude-historical 0
+mirror T12 codex codex-historical 0
+
+make_agent t13 claude claude-empty
+window=$("$REAL_TMUX" -L vist-test display-message -p -t "$pane" '#{window_id}')
+"$REAL_TMUX" -L vist-test resize-window -t "$window" -x 130 -y 30
+printf -v wide_path '%0125d' 0
+pointer="[bus t13] from home:cartan -> read /$wide_path ; ack: none"
+before=$(composer_snapshot); run_adapter --send --state-dir "$scratch/t13.attempts"; after=$(composer_snapshot)
+ok=0; [[ $rc == 30 && $before == "$after" && ! -e $scratch/t13.attempts && ! -e $log ]] && ok=1
+result T13 "$ok" "pointer-bytes=${#pointer} width=130 wrap validation rc=$rc expected=30 unchanged/no reservation"
+
+pointer_for t14
+for endpoint in 'vist-unregistered:%0' 'default:%999999999'; do
+    before_calls=$(cat "$VIST_CALL_LOG")
+    bash "$ADAPTER" --check --server "${endpoint%%:*}" --pane "${endpoint#*:}" --pointer "$pointer" --state-dir "$scratch/state" > "$scratch/last.out" 2>&1; rc=$?
+    after_calls=$(cat "$VIST_CALL_LOG"); ok=0
+    [[ $rc == 2 && $before_calls == "$after_calls" ]] && ok=1
+    result T14 "$ok" "forbidden $endpoint rc=$rc no tmux call"
+done
+
+make_agent t15 claude claude-empty; pointer_for t15
+export VIST_CONTROL=$control VIST_PANE=$pane VIST_INTERPOSE_MODE=busy-after-text
+run_adapter --send --state-dir "$scratch/t15.attempts"; changed_rc=$rc
+VIST_INTERPOSE_MODE=none
+run_adapter --send --state-dir "$scratch/t15.attempts"
+ok=0; [[ $changed_rc == 27 && $rc == 25 && -d $scratch/t15.attempts && ! -e $log ]] && ok=1
+result T15 "$ok" "mirrored state changed after text=$changed_rc restart=$rc expected=27,25 no Enter/receipt"
+mirror T16 claude claude-suggestion 0
+mirror T16 codex codex-placeholder 0
 printf 'SUMMARY failures=%s artifacts=%s UTC=%s\n' "$failures" "$scratch" "$(date -u +%FT%TZ)"
 ((failures == 0))

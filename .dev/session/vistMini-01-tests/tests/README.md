@@ -1,48 +1,34 @@
-# Cycle 01 fixture adapter
+# Cycle 02 screen-inferred adapter and isolated fixtures
 
-Run from any directory with Bash; no install/deploy is needed:
+Run with Bash; no install/deploy is needed. Required arguments are `--check|--send`, `--server`, `--pane %N`, `--pointer LINE`, and `--state-dir ABS`. Pointer example: `[bus example.01] from home:cartan -> read /tmp/request.md ; ack: none`.
 
-```sh
-bash /home/hruzam/ia-sync/.dev/session/vistMini-01-tests/scripts/bus-poke.sh \
-  --check --server vist-test --pane %N \
-  --pointer '[bus example.01] from home:cartan -> read /tmp/request.md ; ack: none' \
-  --state-dir /tmp/explicit-attempt-state
-```
+The exact registered live bindings are `default:%0` → Claude and `default:%1` → Codex. All other live endpoints refuse locally. `vist-test` supports the legacy cycle-01 stand-in and the registered runtime mirrors. There is no caller flag that bypasses a live endpoint's classifier; no live endpoint falls back to the legacy layout.
 
-`--send` replaces `--check`. Only `vist-test` is accepted in this cycle. `--check` writes no attempt state, creates no directory, and injects no input. Both modes refuse a previously reserved message+server+pane key. The caller supplies an explicit temporary/machine-local state path; it is transport attempt state, never a consumption stamp or session STATUS. Do not erase a reservation to retry an uncertain send without checking the receiver's receipt.
+## Contract and limits
 
-## Receiver contract and limits
+`reports/cartan.tui-contract.2026-11-12.md` registers cycle-02 decisions before implementation. The adapter checks Linux top-level PID/start-time/argv0 plus foreground identity, the bottommost runtime composer, its cursor, ANSI dim state, known footer shapes and the registered current busy region. It refuses enclosing-shell lifetimes, non-dim drafts (including detectable whitespace/multiline continuations), unknown layouts, alternate Codex suggestions and pointers that would wrap. Color SGR38/48 payloads do not count as standalone SGR2 dim.
 
-This prototype requires Linux `/proc` and an explicitly trusted dedicated top-level agent process whose argv0 and tmux foreground command both identify as `codex` or `claude`. It records top-level PID plus process start time and rechecks them before Enter. An enclosing shell with a foreground child refuses. This is not authentication against malicious processes that spoof names or change their own input semantics.
+Post-text redraws may require repeated read-only observations within the same reservation. No additional text is injected. Enter is a separate call and requires a coherent view containing the exact non-dim pointer at the expected row/cursor and unchanged process identity. Any failed/uncertain attempt retains its reservation; never erase it and resend without checking the recipient's receipt.
 
-The contracted stand-in draws a single prompt `❯ ` at screen origin, cursor `(2,0)`, and needs enough width for the one-line pointer. Any draft, including only spaces, refuses. `esc to interrupt` refuses as busy. The adapter accepts only a bounded ASCII pointer grammar (maximum 200 bytes); after literal injection, it requires the exact pointer and corresponding cursor position before issuing a separate Enter call. It does not promise an atomic handoff across those observations. A change/timeout after text injection leaves an uncertain reservation; it does not clear partial input or resend.
+`--check` writes no attempt state or directory and injects nothing. The explicit state location is transport-attempt state, not consumption or STATUS. A successful send reports `receipt=unproven`. The adapter does not authenticate processes, make observations atomic, prove absence of invisible/trimmed input at cursor-start, or cover unseen progress placements. It assumes a trusted, stable, uncontested UI for its scheduled send. Codex own-idle is a predicted contract pending reverse live validation; passing stand-ins do not upgrade it to observed live behavior.
 
-The real Claude/Codex TUIs have not been shown to implement this receiver contract. The cycle intentionally does not send to their live panes. Do not use this helper for a live peer merely by changing the server check. Envelope expiry, recipient authority, request path authorization, hop/retry budgets and consumption belong to a separate receiver/protocol layer.
+Envelope expiry, recipient authority, path authorization, hop/retry policy and semantic consumption remain receiver-layer work. The parent alone performs one scheduled ordinary live send after publishing RETURN; Trajectory performs the reverse after its VERDICT. Disruptive cases are isolated; child fixture tests never inspect or send to live peers.
 
 ## Exit codes
 
 | Code | Meaning |
 |---|---|
-| 0 | read-only ready snapshot, or text/Enter notification attempted; receipt remains unproven |
-| 2 | usage, missing argument, malformed pane ID, or forbidden server |
-| 20 | unknown/unavailable pane or tmux read failure |
-| 21 | dead pane |
-| 22 | non-agent foreground command |
-| 23 | occupied composer, including whitespace/cursor mismatch |
-| 24 | busy marker |
-| 25 | duplicate or uncertain prior/concurrent attempt |
-| 26 | unsafe top-level process lifetime/identity |
-| 27 | receiver/composer changed after text attempt; no Enter |
-| 28 | state or injection I/O failure/interruption; inspect any reservation |
-| 29 | unrecognized composer |
-| 30 | invalid pointer grammar/encoding/length |
+| 0 | ready snapshot, or notification attempted; receipt remains unproven |
+| 2 | usage, missing argument, malformed pane ID, unregistered endpoint |
+| 20 / 21 / 22 | unknown/unavailable pane / dead pane / wrong foreground agent |
+| 23 / 24 / 25 | occupied or continuation / busy / duplicate or uncertain reservation |
+| 26 / 27 / 28 | unsafe top-level lifetime / changed or uncertain post-text state / I/O or interruption |
+| 29 / 30 | unknown or incoherent layout / invalid or wrapping pointer |
 
-## Isolated tests
+## Reproduction
 
-```sh
-bash /home/hruzam/ia-sync/.dev/session/vistMini-01-tests/tests/adapter-test.sh
-```
+Run `bash /home/hruzam/ia-sync/.dev/session/vistMini-01-tests/tests/adapter-test.sh`.
 
-The harness refuses if `vist-test` already has sessions. It creates one uniquely named session, cleans up only that exact session, and preserves logs/state under the printed `/tmp/vist-cycle01.*` directory. It never resets/kills the server or inspects live peer panes. A trusted Bash stand-in uses `exec -a` to represent each agent; its prompt contract is deliberately explicit, not an emulation claim. External test-only tmux interposition synchronizes C10 (stand-in exits after text) and C14 (adapter killed after reservation before send). The adapter contains no test hook or bypass. The wrapper records calls so C02 can attest separate text/Enter invocations and C17 can attest zero tmux calls.
+The harness refuses a preexisting `vist-test` session, creates a unique session, cleans up only that session, and leaves evidence under the printed `/tmp/vist-cycle01.*` path. It never resets a server or touches live panes. Trusted Bash stand-ins use `exec -a` and synthetic text; they are renderer fixtures, not real TUIs. External tmux interposition records separate text/Enter calls and synchronizes exit, crash and busy-after-text cases. The production adapter contains no fixture hook.
 
-`reports/cartan.matrix.2026-11-12.md` is the pre-registration. Output labels C01–C18 and individual C12 variants; failures and aborted fixture runs must be retained alongside a later passing run. The final report and independent VERDICT belong to Cartan and Trajectory respectively, outside these implementation-owned files.
+Output preserves C01–C18 and T01–T16 identifiers. C17's forbidden-endpoint samples were amended in the registered cycle-02 contract because `default:%0` became allowed. Keep earlier failed/aborted logs alongside a later pass. Reports, RETURNS and VERDICTS are owned by the controller/head, not these fixtures.
