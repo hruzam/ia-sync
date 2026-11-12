@@ -1,0 +1,23 @@
+{
+  "observed_at": "2026-11-12T17:10:38.830046+01:00",
+  "provenance": "Operator confirms saved control-plane policy and supplied this host-local export. No direct API retrieval.",
+  "input_sha256": "07dd109d974fb6d2598d1d78a74c1d9b8971c3eab12ad13c5d17b703379d3112",
+  "candidate_sha256": "062917da73a2eac4edab73815649e66dc8c1b3d7f480c087e7c85d908381ec55",
+  "parser": "String-aware removal of line/block comments and trailing commas, then strict json.loads rejecting duplicate keys. Original export unchanged.",
+  "comparison": {
+    "host_aliases_equal": true,
+    "ssh_section_equal": true,
+    "computer_mesh_grant_equal": true,
+    "extra_grants": 1,
+    "extra_scope": "Standing TCP 22 from tab/redmi to the three computers",
+    "other_policy_sections": false
+  },
+  "disposition": "Three-computer all-port mesh confirmed in supplied saved policy; on-request-only device scope differs. Operator choice requested.",
+  "proposal_path": "/home/hruzam/.local/state/ia-sync/tailnet-policy.on-request.proposed.json",
+  "proposal_semantically_equals_candidate": true,
+  "control_plane_changes": false,
+  "documentation": [
+    "https://tailscale.com/docs/reference/syntax/policy-file",
+    "https://tailscale.com/docs/reference/syntax/grants"
+  ]
+}

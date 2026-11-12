@@ -1,23 +1,23 @@
 # STATUS — monitor-01-integration
 
 ```yaml
-updated: '2026-11-12T13:59:33.532270+01:00'
+updated: '2026-11-12T17:14:04.748093+01:00'
 writer: cartan · codex
 host: monitor / hruzam-mntr
-worktree: ia-sync main; accepted two-line source/live timeout correction and cycle 12 receipts prepared
-  for publication; incoming peer journal and vistMini commits will be preserved.
+worktree: ia-sync main; policy comparison receipt, operator-deferred safety backlog, journal and STATUS
+  prepared for publication.
 gate: Majkee accepts monitor's agreed repository layout, shell integration and computer access after independent
   verification, with remaining limitations explicitly recorded.
-checkpoint: 'Turn 06 joined: cycle 12 ACCEPT. Audit F1 corrected and deployed; 28 source + 28 deployed
-  mock cases and two fresh-shell checks independently pass. Independent audit and strict six-direction
-  SSH evidence remain recorded.'
-in_flight: No delegated work outstanding. Operator confirms saved policy; host-local export requested
-  and not yet present.
-recovery_probe: Read cycle 12 verdict and current holds. If ~/.local/state/ia-sync/tailnet-policy.live.json
-  arrives, compare read-only against intended policy; keep contents out of Git. Do not repeat completed
-  source/deployment work.
+checkpoint: Monitor implementation and three-computer mesh verified. Saved export has additional device
+  TCP22 access; Majkee deferred that scope decision to safety audit in .dev/_backlog/device-ssh-safety-audit.md.
+in_flight: No delegated work outstanding. Device-scope finding parked for safety audit at operator request;
+  current live policy unchanged.
+recovery_probe: Read .dev/_backlog/device-ssh-safety-audit.md and raw/policy-comparison.2026-11-12.json.
+  Do not reopen the immediate device-choice question or apply the local proposal without the later audit
+  decision.
 holds:
-- Majkee confirms live policy saved; independent saved-text comparison pending at ~/.local/state/ia-sync/tailnet-policy.live.json.
+- Device SSH scope deferred by Majkee to .dev/_backlog/device-ssh-safety-audit.md; not an immediate blocker
+  or authorization to change policy.
 - New shell deployed only on monitor; home/office adoption not certified.
 - Full deployment excluded due to unrelated Claude settings drift; routine whole-zsh inert-policy refresh
   awaits disposition.
@@ -25,8 +25,8 @@ holds:
 - Generated map verified through runtime load + generator --check; earlier blanket zsh -n claim corrected
   in cycle 11 verdict.
 - Unreadable-map guard reserves current three logical labels; new labels require review.
-next: Compare operator-provided saved policy when available, disposition inert candidate-copy refresh,
-  then present the final acceptance scope.
-expected: Policy scope verified from saved text or clearly retained as an operator-confirmed limitation;
-  final acceptance grounded in actual completed work.
+next: Finish remaining integration documentation and present final acceptance scope, carrying the device
+  SSH review as the operator-deferred backlog item.
+expected: Accurate handoff and acceptance scope; standing device rule remains unchanged pending safety
+  audit.
 ```

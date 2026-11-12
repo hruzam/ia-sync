@@ -7,3 +7,4 @@ Drafts that are not canon yet and not deployed. One file per item. Each file sta
 | item | state | what |
 |---|---|---|
 | `cross-host-session-bus.md` | draft | envelope, stamps, loop limits and scoped permissions for session↔session messages across hosts and vendors (mail file + tmux poke) |
+| `device-ssh-safety-audit.md` | draft | operator-deferred review of standing tab/redmi SSH access to the three computers; live policy unchanged |

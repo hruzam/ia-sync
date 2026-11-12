@@ -102,6 +102,12 @@ is screen-only, TIOCSTI is disabled. Monitor lacks tmux.
 
 ## MONITOR — 2026-11-12 · Cartan · Third-host bootstrap
 
+Saved-policy comparison completed from Majkee's host-local HuJSON export: the
+three-computer all-port grant matches; an additional tab/redmi→computers TCP22
+grant is standing access. Majkee deferred that device-scope decision to safety audit:
+.dev/_backlog/device-ssh-safety-audit.md. Live policy remains unchanged. Export and
+unapplied on-request proposal remain host-local; only comparison metadata is tracked.
+
 Audit F1 resolved: both tso SSH modes now set ConnectTimeout=8 and
 ConnectionAttempts=1, preserving established interactive sessions. Astrobley deployed
 only system/tailscale.zsh with a verified backup; Cartan independently checked the
