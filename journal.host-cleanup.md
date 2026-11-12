@@ -102,6 +102,15 @@ is screen-only, TIOCSTI is disabled. Monitor lacks tmux.
 
 ## MONITOR — 2026-11-12 · Cartan · Third-host bootstrap
 
+Independent audit completed: monitor repository/shell implementation passes with
+bounded follow-ups. Timeout correction assigned as cycle 12. Cartan directly reran
+home→monitor, office→monitor, home→office and office→home from each actual origin
+using strict default trust; all pass without trust-file edits. Majkee confirms policy
+saved; saved-text comparison pending. Earlier broad zsh -n claim corrected: individual
+engine/keyboard checks pass; generated associative map is checked by runtime loading
+and generator --check. Audit raw device/listener/log evidence remains host-local;
+publishable disposition: .dev/session/monitor-01-integration/_bus/11.cartan.verdict.md.
+
 Exact-file shell deployment completed by Astrobley and independently verified by
 Cartan: seven live files match source d9af9d1, prior files/modes have verified backups,
 24 deployed mock cases and two fresh interactive-shell checks pass. The nested

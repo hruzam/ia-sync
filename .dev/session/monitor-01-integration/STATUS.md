@@ -1,35 +1,37 @@
 # STATUS — monitor-01-integration
 
 ```yaml
-updated: '2026-11-12T13:21:32.025123+01:00'
+updated: '2026-11-12T13:53:06.719541+01:00'
 writer: cartan · codex
 host: monitor / hruzam-mntr
-worktree: ia-sync main; source d9af9d1 deployed; deployment receipts, verdicts and audit POINT prepared
-  for publication.
+worktree: ia-sync main at 9578061; audit disposition and cycle 12 POINT local; raw audit/RETURN excluded
+  from Git for host privacy.
 gate: Majkee accepts monitor's agreed repository layout, shell integration and computer access after independent
   verification, with remaining limitations explicitly recorded.
-checkpoint: 'Turn 04 joined: cycle 09 deployment and cycle 10 goal alignment ACCEPT. All seven live files
-  and backups independently checked; 24 deployed and two fresh-shell tests pass.'
-in_flight: Cycle 11 independent audit prepared; dispatch outcome in raw/dispatch-11.md.
-recovery_probe: Read cycle 11 POINT, any RETURN/verdict and dispatch receipt. Verify claims against current
-  live files and immutable d9af9d1 source; do not repeat deployment.
+checkpoint: 'Turn 05 joined: independent audit accepted as assessment; monitor implementation passes with
+  follow-ups. F5 resolved by four fresh origin-executed strict SSH checks. Audit raw evidence/RETURN are
+  host-local.'
+in_flight: Cycle 12 timeout correction prepared; dispatch outcome in raw/dispatch-12.md. Saved policy
+  text requested from Majkee.
+recovery_probe: Read cycle 12 POINT, RETURN/verdict and dispatch receipt; inspect source/live/backup before
+  retry. Saved policy, if provided, is host-local and must not enter Git.
 holds:
-- Live all-port Tailscale policy and device-on-request semantics remain unverified; six SSH receipts are
-  not that certificate.
-- Claude live settings differ from source and nested deployed tailnet candidate differs. No full deploy;
-  seven deployed files have verified backups; broader deployment stays excluded.
-- Shell deployment verified; final independent technical audit remains pending. PHP/runtime startup deferred.
-- Unreadable-map guard reserves current home/office/monitor labels; adding future logical labels requires
-  review.
-next: Assess independent audit RETURN; resolve concrete findings and obtain only the missing live-policy
-  evidence.
-expected: Independent implementation assessment plus precise disposition of live-policy and final operator-acceptance
-  gaps.
+- Majkee confirms live policy saved; independent saved-text comparison pending at ~/.local/state/ia-sync/tailnet-policy.live.json.
+- 'F1: tso has no SSH connection timeout; cycle 12 will correct this.'
+- New shell deployed only on monitor; home/office adoption not certified.
+- Full deployment excluded due to unrelated Claude settings drift; routine whole-zsh inert-policy refresh
+  awaits disposition.
+- PHP/project runtimes deferred; final Majkee acceptance pending.
+- Generated map verified through runtime load + generator --check; earlier blanket zsh -n claim corrected
+  in cycle 11 verdict.
+- Unreadable-map guard reserves current three logical labels; new labels require review.
+next: Verify timeout correction RETURN; compare saved policy if Majkee provides it.
+expected: Bounded offline-peer connection behavior and precise remaining acceptance scope.
 delegated:
-- cycle: '11'
-  to: oraculum-audit
-  turn: '05'
+- cycle: '12'
+  to: astrobley-exec
+  turn: '06'
   awaiting: return
-join_when: Cartan checks independent cycle 11 findings, writes a terminal verdict and replaces STATUS
-  with verified outcome and remaining policy/acceptance gates.
+join_when: Cartan independently verifies cycle 12 source/deployed evidence and writes its verdict, then
+  replaces STATUS; live policy remains a separate hold until compared.
 ```

@@ -1,0 +1,30 @@
+{
+  "observed_at": "2026-11-12T13:53:06.719541+01:00",
+  "method": "Monitor SSH transport to each peer, then SSH executed by peer using default trust files, BatchMode=yes, StrictHostKeyChecking=yes, UpdateHostKeys=no, ConnectTimeout=8. No UserKnownHostsFile override, no auth changes. Transport itself also strict with explicit monitor identity.",
+  "checks": [
+    {
+      "src": "home",
+      "dst": "monitor",
+      "hostname": "hruzam-mntr",
+      "exit": 0
+    },
+    {
+      "src": "office",
+      "dst": "monitor",
+      "hostname": "hruzam-mntr",
+      "exit": 0
+    },
+    {
+      "src": "home",
+      "dst": "office",
+      "hostname": "hruzam-120922",
+      "exit": 0
+    },
+    {
+      "src": "office",
+      "dst": "home",
+      "hostname": "hruzam",
+      "exit": 0
+    }
+  ]
+}
