@@ -1,5 +1,3 @@
-# monitor (hruzam-mntr) host key — scanned from home over tailnet 2026-11-12,
-# matches monitor self-recorded fingerprint SHA256:XcMUK2B+Geq55COSYl3jwjXrOzm56QMlR2R78QkpTk8
-# monitor seat: replace with your self-published line if you prefer; must keep this fingerprint
-hruzam-mntr,hruzam-mntr.tail36b8ab.ts.net,100.80.107.66 100.80.107.66:22 SSH-2.0-OpenSSH_10.6
-ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKtDpOnAJAmT9P6ChCXoTB+/qSjPKnO2c6oqCG4GHMiJ
+# monitor host key, self-published 2026-11-12
+# SHA256:XcMUK2B+Geq55COSYl3jwjXrOzm56QMlR2R78QkpTk8
+hruzam-mntr,hruzam-mntr.tail36b8ab.ts.net,100.80.107.66 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKtDpOnAJAmT9P6ChCXoTB+/qSjPKnO2c6oqCG4GHMiJ

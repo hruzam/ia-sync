@@ -29,6 +29,23 @@ Side note: `~/reposoma` on home has diverged from origin/core (1 ahead, 10 behin
 
 ## MONITOR — 2026-11-12 · Cartan · Third-host bootstrap
 
+
+Peer-key follow-up: pulled home publication 1881c9e. Home's self-published ED25519
+host key matches the live tailnet scan exactly, ending WmRB0 (zero); the old WmRBO
+text was a transcription error. Accepted home's public host key into monitor's
+known_hosts and home client public key into monitor's authorized_keys, append-only
+with a pre-change known_hosts backup. No private keys copied. Replaced malformed
+ssh/peers/monitor.known_hosts (SSH banner split into the key line) with monitor's
+own valid host-key line, and added monitor.client.pub from the local public key.
+Both public fingerprints parse and match the earlier monitor inventory.
+
+Monitor → home now passes strict host verification and reaches user authentication,
+but returns Permission denied (publickey): home still needs to accept monitor's
+published client key. Home → monitor has not yet been tested from home. Office is
+online, but its peer publication is absent; no office key was guessed or accepted.
+Home's divergent reposoma checkout remains untouched. These observations supersede
+the earlier home-port/no-host-trust gap, not the six-direction access acceptance.
+
 Majkee identified hruzam-mntr (mntr = monitor) as a completely new third host.
 Registered logical monitor with unknown/null tailnet ID and IP. Observed Manjaro,
 i3-5005U (2C/4T), 11.6 GiB RAM, 223.6 GiB disk, no swap. The old RAM/PHP
