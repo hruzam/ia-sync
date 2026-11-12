@@ -286,6 +286,11 @@ ok=0; [[ $changed_rc == 27 && $rc == 25 && -d $scratch/t15.attempts && ! -e $log
 result T15 "$ok" "mirrored state changed after text=$changed_rc restart=$rc expected=27,25 no Enter/receipt"
 mirror T16 claude claude-suggestion 0
 mirror T16 codex codex-placeholder 0
+mirror F01 claude claude-shell-empty 0 1
+mirror F02 claude claude-shell-suggestion 0 1
+mirror F03 claude claude-shell-typed 23
+mirror F03 claude claude-shell-busy 24
+mirror F04 claude claude-two-shell-empty 29
 for recovery in once always; do
     make_agent "r-$recovery" codex ready; pointer_for "r-$recovery"
     export VIST_CONTROL=$control VIST_INTERPOSE_MODE="metadata-$recovery"

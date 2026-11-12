@@ -99,7 +99,7 @@ screen_contract() {
         line=${rows[row]}
         [[ $line != *'esc to interrupt'* ]] || return 24
         known=0
-        [[ $line != *'⏵⏵ auto mode on (shift+tab to cycle)'* ]] || { footer=1; known=1; }
+        if [[ $line == *'⏵⏵ auto mode on (shift+tab to cycle)'* || $line == '  ⏵⏵ auto mode on · 1 shell · ← 1 agent · ↓ to manage' ]]; then footer=1; known=1; fi
         [[ -z $line || -n ${line//─/} ]] || { separator=1; known=1; }
         [[ $line != '  GPT-6.1-Sol high · ~/reposoma · cartan|astrobley · '* || $line != *' · Context '* ]] || { model_footer=1; known=1; }
         [[ $line != '  ← for agents · ? for shortcuts' ]] || { shortcuts=1; known=1; }

@@ -12,6 +12,10 @@ draw() {
     printf '\033[2J\033[H'
     if [[ $style == legacy ]]; then printf '❯ %s' "$draft"; return; fi
     [[ $style != codex ]] || glyph='›'
+    case $mode in
+        claude-shell-*) footer='⏵⏵ auto mode on · 1 shell · ← 1 agent · ↓ to manage';;
+        claude-two-shell-*) footer='⏵⏵ auto mode on · 2 shells · ← 1 agent · ↓ to manage';;
+    esac
     if [[ $mode == *historical ]]; then
         row=12
         printf '%s old prompt-looking transcript\n• Working (historical • esc to interrupt)' "$glyph"
@@ -60,7 +64,7 @@ case $mode in
     *-mixed) ghost='dim hint'; draft='non-dim draft'; draw;;
     *-whitespace) draft='   '; draw;;
     *-multiline) draft='synthetic first line'; multiline=1; draw;;
-    claude-busy) ghost='synthetic suggestion'; : > "$control/busy-now"; draw;;
+    claude-busy|claude-shell-busy) ghost='synthetic suggestion'; : > "$control/busy-now"; draw;;
     occupied) draft='operator draft: keep me'; draw;;
     whitespace) draft='   '; draw;;
     busy) printf '\033[2J\033[Hesc to interrupt';;
