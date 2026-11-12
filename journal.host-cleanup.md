@@ -10,6 +10,23 @@
 
 ---
 
+## HOME — 2026-11-12 · Trajectory · Public-key exchange without USB
+
+Monitor asked for keys; no USB stick available. Public keys need integrity, not
+secrecy: git (authenticated push) and the tailnet (IP bound to node key) are two
+independent channels. Home-side `ssh-keyscan` over the tailnet returned monitor ED25519
+`SHA256:XcMUK2B+Geq55COSYl3jwjXrOzm56QMlR2R78QkpTk8`, equal to monitor's self-recorded
+value, so monitor's host key is verified from home. New `ssh/peers/` (README + per-host
+`<host>.known_hosts` / `<host>.client.pub`). Published home host `SHA256:AYQ8…mRB0` and
+home client `SHA256:EEej…7jw` (also on github.com/hruzam.keys); added monitor.known_hosts
+from the verified scan. Repo is PUBLIC; only public material. Not done: nothing installed
+in any known_hosts/authorized_keys; office and monitor still publish their own pair, and
+each host runs "Accept a peer" from the README. Office was online at check time.
+Side note: `~/reposoma` on home has diverged from origin/core (1 ahead, 10 behind), so
+`machine-monitor/` is not on home's working tree yet. Left untouched for the operator.
+
+---
+
 ## MONITOR — 2026-11-12 · Cartan · Third-host bootstrap
 
 Majkee identified hruzam-mntr (mntr = monitor) as a completely new third host.
