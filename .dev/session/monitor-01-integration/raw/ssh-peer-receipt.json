@@ -1,0 +1,22 @@
+{
+  "observed_at": "2026-11-12T06:53:14.389100+01:00",
+  "source_commit": "1881c9e",
+  "home_host_fingerprint": "SHA256:AYQ8YIZiUxYSZnMXiq8VH/Csw8uygQ81tf86WPWmRB0",
+  "home_client_fingerprint": "SHA256:EEejMlLSkA/T1Ww92W2piUgbIyugJUWmHKzpGCyv7jw",
+  "monitor_host_fingerprint": "SHA256:XcMUK2B+Geq55COSYl3jwjXrOzm56QMlR2R78QkpTk8",
+  "monitor_client_fingerprint": "SHA256:Sc3gMKgkZVQPWfkoXB4IKewz2BiVDIgXLCSbuKHTnj0",
+  "local_changes": {
+    "known_hosts_appended": true,
+    "authorized_keys_appended": true
+  },
+  "backups": [
+    "/home/hruzam/.ssh/known_hosts.before-peers-20261112-065314-389100"
+  ],
+  "published_files": [
+    "ssh/peers/monitor.known_hosts",
+    "ssh/peers/monitor.client.pub"
+  ],
+  "publish_state": "committed and pushed origin/main at 73c4b53",
+  "ssh_login": "monitor -> home: strict host verification passed; exit 255 Permission denied (publickey), remote command not executed",
+  "office": "online; no office public peer files yet"
+}

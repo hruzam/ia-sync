@@ -1,0 +1,23 @@
+{
+  "observed_at": "2026-11-12T07:14:50.740113+01:00",
+  "source_commit": "bcf33f6",
+  "office_host": "256 SHA256:Zu4j+Cuu8P9dpuQPoHpEPFnq8fB3EckdgjrDUwe/s/U hruzam-120922,hruzam-120922.tail36b8ab.ts.net,100.126.182.111 (ED25519)",
+  "office_client": "4096 SHA256:7zkzdPmQLrwur7kLwQ6dMTlsHuvhRE6pBupKiIluRxs office-hruzam-120922 (RSA)",
+  "live_scan_matches": true,
+  "appended": {
+    "known_hosts": true,
+    "authorized_keys": true
+  },
+  "backups": [
+    "/home/hruzam/.ssh/known_hosts.before-office-20261112-071450-740113",
+    "/home/hruzam/.ssh/authorized_keys.before-office-20261112-071450-740113"
+  ],
+  "monitor_to_home": {
+    "exit_code": 255,
+    "result": "Permission denied (publickey); host trust passes"
+  },
+  "monitor_to_office": {
+    "exit_code": 255,
+    "result": "Permission denied (publickey); host trust passes"
+  }
+}
