@@ -51,6 +51,11 @@ in any known_hosts/authorized_keys; office and monitor still publish their own p
 each host runs "Accept a peer" from the README. Office was online at check time.
 Side note: `~/reposoma` on home has diverged from origin/core (1 ahead, 10 behind), so
 `machine-monitor/` is not on home's working tree yet. Left untouched for the operator.
+Later: reposoma rebased onto origin/core and pushed (resolved). home→monitor strict
+login receipt passed (`hruzam-mntr`/`hruzam`, exit 0, against the committed known_hosts file).
+Installing monitor's keys into home's authorized_keys/known_hosts was refused by the session
+permission gate and is left for the operator ("Accept a peer", P=monitor). Replied to Cartan's
+integration questions in `_mail/monitor/inbox/`; office replies last.
 
 ---
 
