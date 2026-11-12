@@ -1,0 +1,9 @@
+{
+  "recorded_at": "2026-11-12T12:40:19.363286+01:00",
+  "origin": "monitor",
+  "destination": "office",
+  "command": "ssh -o BatchMode=yes -o IdentitiesOnly=yes -i /home/hruzam/.ssh/id_ed25519 -o StrictHostKeyChecking=yes -o ConnectTimeout=8 hruzam@100.126.182.111 'hostname -s; id -un'",
+  "exit_code": 0,
+  "stdout": "hruzam-120922\nhruzam\n",
+  "scope": "Final missing directed SSH login; does not verify all ports or application runtimes."
+}

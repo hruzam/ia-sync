@@ -66,6 +66,13 @@ is screen-only, TIOCSTI is disabled. Monitor lacks tmux.
 
 ## MONITOR — 2026-11-12 · Cartan · Third-host bootstrap
 
+Final SSH follow-up: after Majkee requested another test, monitor → office now
+passes strict host checking with the explicit monitor identity, returning
+hruzam-120922/hruzam and exit 0. All six directed SSH paths have dated success
+receipts (two monitor-origin checks verified here, four peer-reported). This clears
+the SSH authorization blocker, not the separate all-port policy or project runtime
+acceptance. Receipt: .dev/session/monitor-01-integration/raw/ssh-office-success.2026-11-12.json.
+
 SSH feedback after the operator sent acceptance instructions: monitor → home now
 passes strict host checking and explicit monitor-key authentication, returning
 hruzam/hruzam with exit 0. Monitor → office still returns publickey denial. No

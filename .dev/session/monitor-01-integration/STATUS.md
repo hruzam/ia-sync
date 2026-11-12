@@ -1,25 +1,25 @@
 # STATUS — monitor-01-integration
 
 ```yaml
-updated: 2026-11-12 12:34 CET
+updated: 2026-11-12 12:40 CET
 writer: cartan · codex
 host: monitor / hruzam-mntr
-worktree: /home/hruzam/ia-sync · main · baseline 780cbfd · this checkpoint changes STATUS.md, journal.host-cleanup.md
-  and raw/ssh-feedback.2026-11-12.json; /home/hruzam/reposoma · core · baseline 04f45e1 · access.md
-  updated; existing cold-start card untracked
+worktree: /home/hruzam/ia-sync · main · baseline f2578a5 · this checkpoint updates STATUS.md, journal.host-cleanup.md
+  and raw/ssh-office-success.2026-11-12.json; /home/hruzam/reposoma · core · baseline 94a4052 · access.md
+  updated; pre-existing cold-start card untracked
 gate: Majkee accepts monitor's agreed repository layout, shell integration and computer access after
   independent verification, with remaining limitations explicitly recorded.
-checkpoint: Monitor→home strict identity-bound SSH now exits 0 (hruzam/hruzam); monitor→office remains
-  publickey denied. cartan-monitor tmux session is attached with Codex. See raw/ssh-feedback.2026-11-12.json.
-  Cycles 01/02 accepted; 03/04 verification still pending.
+checkpoint: 'All six directed SSH paths have successful dated receipts: monitor→home and monitor→office
+  verified here, other four from peer reports. Final receipt raw/ssh-office-success.2026-11-12.json.
+  Cycles 01/02 accepted; coordination/audit verification and broader integration remain.'
 in_flight: none
 recovery_probe: Compare ssh/peers/home.known_hosts with a fresh home tailnet keyscan; inspect local
   public-key fingerprints and backups plus raw/ssh-peer-receipt.json. Check git status, git log and
   origin/main before retrying publish. For opening turn 01 reconcile exact POINT, RETURN and VERDICT
   contents; do not resend accepted notifications.
 holds:
-- Office still rejects monitor’s client key; operator-side acceptance on office remains the outstanding
-  login step. Do not bypass the prior peer-session permission gate.
+- SSH authorization blocker cleared. Complete live all-port Tailscale policy, project/runtime readiness
+  and final independent integration acceptance remain separate unverified matters.
 - Other four SSH directions have earlier peer-reported receipts; this probe did not replay them.
   Peer default known_hosts behavior beyond those explicit trust-file tests remains unverified.
 - Remote repository HEADs differ and tracking refs were not fetched. Fresh source qualification required
