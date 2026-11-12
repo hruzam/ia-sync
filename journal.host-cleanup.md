@@ -58,6 +58,12 @@ Existing Gemini-parked/substrates-loaded notices remain informational. No provid
 call, peer connection, service start or package install. Git pull still fails with
 publickey authentication; local commits only.
 
+Git access follow-up: majkee registered the public key. GitHub accepts it; this
+agent session lacked SSH_AUTH_SOCK. Selected the existing unlocked local SSH agent
+for Git commands, and authenticated pulls succeeded for ia-sync/main and
+reposoma/core. This supersedes the authentication blocker above. No private key
+was copied or changed; the agent socket is host-local and is not portable config.
+
 ## OFFICE — 2026-11-11 · Cartan · Resource cleanup
 
 Operator requested closing all tmux sessions; stopped the default, ovitmugen and
