@@ -1,8 +1,8 @@
 ```yaml
-updated: 2026-11-12 09:50 CET
+updated: 2026-11-12 10:12 CET
 writer: trajectory · claude
 host: home (hruzam)
-worktree: /home/hruzam/ia-sync · main · base b38c4ea + VERDICT 01 / POINT 02 / this STATUS commit · clean after commit
+worktree: /home/hruzam/ia-sync · main · base 4973c73 + VERDICT 02 / this STATUS commit · clean after commit
 gate: >
   Majkee accepts an independently verified trial report in
   /home/hruzam/ia-sync/.dev/session/vistMini-01-tests/reports/ showing, on home, Claude↔Codex:
@@ -10,26 +10,21 @@ gate: >
   every pre-registered refusal/recovery case run with expected versus observed; each seat's
   permission boundary stated; and the limits of applicability to VIST stated.
 checkpoint: >
-  Cycle 01 ACCEPTED (_bus/01.trajectory.verdict.md): pre-registered matrix C01–C18 passes on isolated
-  stand-ins, rerun by trajectory at 2026-11-12T08:39:27Z. Adapter: scripts/bus-poke.sh @ 949ea36.
-in_flight: >
-  Cycle 02 delegated to cartan (real TUI contract, live endpoint allow-list, one live send each way).
-  Cartan's Git window is open until his `ready`.
-delegated:
-  - {cycle: "02", to: cartan, turn: none, awaiting: return}
+  Cycle 01 ACCEPT, cycle 02 BLOCKED (_bus/02.trajectory.verdict.md). The adapter at b94b5f1 passes C01–C18 + T01–T16
+  (rerun 2026-11-12T09:06:25Z). Live sends are refused because both agent panes have an interactive zsh as root.
+in_flight: none
 recovery_probe: >
-  ls /home/hruzam/ia-sync/.dev/session/vistMini-01-tests/_bus/ — 02.cartan.return.md absent = cycle 02 with cartan.
-  git -C /home/hruzam/ia-sync log --oneline -- .dev/session/vistMini-01-tests/reports/cartan.tui-contract.2026-11-12.md
-  must precede the adapter-change commit, else REVISE. tmux capture-pane -e -p -t cartan-home:0.0 | tail -6 shows
-  cartan's state (plain-text placeholder is NOT an idle signal, VERDICT 01 curvature 3).
+  for p in traj-home:0.0 cartan-home:0.0; do ps -o comm= -p $(tmux display -p -t $p '#{pane_pid}'); done.
+  "zsh" = still the unsafe topology (relaunch not done). "claude"/"codex" = relaunched, cycle 03 can open.
 holds: >
-  Trajectory does not stage/commit while cartan's Git window is open. No disruptive cases on live panes. Live
-  sends are limited to the one per direction in POINT 02. oraculum (Astra) not a participant until its route is
-  verified. Outside this gate: monitor keys on home/office remain an operator action (journal).
+  PUSH IS TRAJECTORY'S ONLY (majkee, 2026-11-12): cartan stages+commits his own paths and does not push; trajectory
+  pushes after verifying (shared checkout carries his commits). No stage/commit by one seat during the other's Git
+  window. No disruptive cases on live panes. No manual poke counts as trial evidence. oraculum (Astra) not a participant
+  until its route is verified. Outside this gate: monitor keys on home/office remain an operator action (journal).
 next: >
-  On cartan's ready poke, verify /home/hruzam/ia-sync/.dev/session/vistMini-01-tests/_bus/02.cartan.return.md,
-  write 02.trajectory.verdict.md, then run the adapter command it gives for trajectory→cartan-home.
+  majkee relaunches both agents as the pane's top-level process (exact commands in the chat handoff of 2026-11-12 10:12,
+  repeated in cycle 03's POINT): exit each agent, kill its old tmux session, start
+  `tmux new -s <name> -c <dir> '<agent command>'`.
 expected: >
-  02.trajectory.verdict.md committed. My adapter send exits 0 with `notification-attempted` and cartan's pane shows
-  the pointer submitted.
+  The recovery_probe prints `claude` for traj-home:0.0 and `codex` for cartan-home:0.0, and both agents resume their threads.
 ```
