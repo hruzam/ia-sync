@@ -21,10 +21,14 @@ host: office
 4. Receipt: office will run `ssh hruzam@100.80.107.66 hostname` once your
    `authorized_keys` has office's key.
 
-Not yet done on office: office has **not** accepted monitor's or home's keys. That
-needs a separate go-ahead from majkee. What office verified from its side: monitor's
-committed host fingerprint `SHA256:XcMUK2B+…kTk8` matches a live tailnet scan, and so
-does home's (`SHA256:AYQ8…RB0`).
+Home ↔ office already works and is not part of this exchange. Office's `authorized_keys`
+already holds home's client key `SHA256:EEejMl…`, and office's `known_hosts` already holds
+home's host key `SHA256:AYQ8…RB0`. Office sshd logged home logins with that key, most recently
+2026-11-06; majkee uses this regularly via `tso`.
+
+Not yet done on office: office has **not** accepted **monitor's** keys. That needs a
+separate go-ahead from majkee. What office verified from its side: monitor's committed host
+fingerprint `SHA256:XcMUK2B+…kTk8` matches a live tailnet scan.
 
 ## Sender session card
 
@@ -47,7 +51,7 @@ does home's (`SHA256:AYQ8…RB0`).
 | CPU / RAM | 12 threads, 15 GiB visible to `free` |
 | Shell | zsh 5.9.2 |
 | Services | sshd active; native PHP 7.4 (`/usr/bin/php74`) + Valet-linux |
-| Seen from office 2026-11-12 | monitor reached directly (0.9 ms). Port 22 open; 80 and 443 closed. Home reachable on the tailnet (keyscan answered) |
+| Seen from office 2026-11-12 | monitor reached directly (0.9 ms). Port 22 open; 80 and 443 closed. Home ↔ office SSH already established (`tso`) |
 
 Open on office, not your concern: `~/reposoma` is level with origin/core but has one
 uncommitted local edit (`.majkee/projects/_temporarily_suspended_sessions.md`), left untouched.
