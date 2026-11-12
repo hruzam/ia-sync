@@ -39,6 +39,9 @@ alias web-reach-down='_web_reach_down' # close the web-reach SOCKS tunnel
 # ── General shell utilities ────────────────────────────────────────────────────
 # Bodies in: system/shell.zsh
 alias src='source ~/.zshrc'            # reload shell config
+# Shell-only compose-first deployment; host selection remains in deploy.sh.
+alias zsh-deploy-check='bash "$HOME/ia-sync/deploy.sh" --zsh-only --dry-run'
+alias zsh-deploy='bash "$HOME/ia-sync/deploy.sh" --zsh-only'
 alias ord='ls -lthr'                   # list newest last
 alias hasz='openssl rand -hex 12 | cut -c 1-21'  # random 21-char hex token
 alias cod="php -r 'echo uniqid(). PHP_EOL;'"     # PHP uniqid

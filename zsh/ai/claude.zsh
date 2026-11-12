@@ -109,7 +109,11 @@ keyboard.zsh — AI interactive surface (Gemini + Claude Code RC)
   ── Project devenv transport ─────────────────────────────────────────────────
   devenv-help    full devenv key listing (bo-sync, bo-deploy, fr-sync, fr-deploy …)
 EOF
-  gemini-agents-help
+  if (( $+functions[gemini-agents-help] )); then
+    gemini-agents-help
+  else
+    print -- '  Gemini help unavailable: the Gemini line is parked.'
+  fi
   temple-help
   devenv-help
   _project_help

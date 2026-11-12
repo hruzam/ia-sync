@@ -25,6 +25,7 @@ MACHINE="${MACHINE:-$(hostname -s)}"
 # Scope modes (mutually exclusive — a contradictory pair exits 2):
 #   (none)           full deploy. The global germline leg (~/.germline) runs FIRST,
 #                    because the Claude/Codex Houston wrappers load from it.
+#   --zsh-only       only shell bricks and the selected host config/.zshrc.
 #   --germline-only  only the global germline leg (germline-01, 2026-10-12).
 #   --codex-only     only the portable Codex leg (incl. the allowlisted Houston profile).
 #                    It does NOT refresh ~/.germline — run --germline-only for that.
@@ -35,27 +36,29 @@ MACHINE="${MACHINE:-$(hostname -s)}"
 # pre-existing tree) skips that item loudly, lets the other legs run, and makes the
 # script exit 3 at the end. Under --germline-only that is the whole run.
 DRY=0
+ZSH_ONLY=0
 CODEX_ONLY=0
 GERMLINE_ONLY=0
 ADOPT_GERMLINE=0
 for arg in "$@"; do
   case "$arg" in
     --dry-run|-n) DRY=1 ;;
+    --zsh-only) ZSH_ONLY=1 ;;
     --codex-only) CODEX_ONLY=1 ;;
     --germline-only) GERMLINE_ONLY=1 ;;
     --adopt-germline) ADOPT_GERMLINE=1 ;;
     *)
-      echo "Usage: $0 [--dry-run|-n] [--codex-only | --germline-only] [--adopt-germline]" >&2
+      echo "Usage: $0 [--dry-run|-n] [--codex-only | --germline-only | --zsh-only] [--adopt-germline]" >&2
       exit 2
       ;;
   esac
 done
-if [ "$CODEX_ONLY" = 1 ] && [ "$GERMLINE_ONLY" = 1 ]; then
-  echo "ERROR: --codex-only and --germline-only are mutually exclusive (run them one after the other)." >&2
+if [ "$((CODEX_ONLY + GERMLINE_ONLY + ZSH_ONLY))" -gt 1 ]; then
+  echo "ERROR: --codex-only, --germline-only and --zsh-only are mutually exclusive." >&2
   exit 2
 fi
-if [ "$ADOPT_GERMLINE" = 1 ] && [ "$CODEX_ONLY" = 1 ]; then
-  echo "ERROR: --adopt-germline applies to the germline leg; it contradicts --codex-only." >&2
+if [ "$ADOPT_GERMLINE" = 1 ] && [ "$((CODEX_ONLY + ZSH_ONLY))" -gt 0 ]; then
+  echo "ERROR: --adopt-germline applies only to full or germline-only deploys." >&2
   exit 2
 fi
 HOLDS=()
@@ -272,6 +275,65 @@ finish() {
   echo "=== $label complete ==="
 }
 
+deploy_zsh() {
+  # ── ~/.config/zsh ─────────────────────────────────────────────────────────────
+  echo ""
+  echo "→ ~/.config/zsh"
+  ensure_dir "$HOME/.config/zsh"
+
+  # Regenerate generated zsh artifacts from their JSON registries BEFORE the rsync, so
+  # the fresh copy deploys. temple-project-map.zsh's array is generated from
+  # registries/projects.json (decision 0008/0004 amended 2026-08-15 — paths live in JSON).
+  if [ -x "$REPO/zsh/registries/gen-temple-map.sh" ]; then
+    if [ "$DRY" = 1 ]; then
+      if bash "$REPO/zsh/registries/gen-temple-map.sh" --check; then
+        :
+      else
+        local map_status=$?
+        if [ "$map_status" = 3 ]; then
+          echo "  temple-project-map.zsh would be regenerated from projects.json"
+        else
+          return "$map_status"
+        fi
+      fi
+    else
+      bash "$REPO/zsh/registries/gen-temple-map.sh" | sed 's/^/  /'
+    fi
+  fi
+
+  # Sync everything except machine-specific host files (deployed separately below)
+  rsync "${RSYNC_FLAGS[@]}" \
+    --exclude='config.*.zsh' \
+    --exclude='zshrc.*' \
+    "$REPO/zsh/" "$HOME/.config/zsh/"
+
+  # Deploy machine-specific config.zsh
+  CFG="$REPO/zsh/config.${MACHINE}.zsh"
+  if [ -f "$CFG" ]; then
+    copy_file "$CFG" "$HOME/.config/zsh/config.zsh" "config.${MACHINE}.zsh → config.zsh"
+  else
+    echo "  WARNING: config.${MACHINE}.zsh not found in repo — config.zsh NOT deployed"
+    echo "  Available host configs:"
+    ls "$REPO/zsh/config."*.zsh 2>/dev/null | sed 's|.*/||' | sed 's/^/    /' || echo "    (none)"
+  fi
+
+  # Deploy machine-specific .zshrc — root shell entry point, host-specific
+  ZSHRC_SRC="$REPO/zsh/zshrc.${MACHINE}"
+  if [ -f "$ZSHRC_SRC" ]; then
+    copy_file "$ZSHRC_SRC" "$HOME/.zshrc" "zshrc.${MACHINE} → ~/.zshrc"
+  else
+    echo "  WARNING: zshrc.${MACHINE} not found in repo — ~/.zshrc NOT deployed"
+    echo "  Available host zshrc files:"
+    ls "$REPO/zsh/zshrc."* 2>/dev/null | sed 's|.*/||' | sed 's/^/    /' || echo "    (none)"
+  fi
+}
+
+if [ "$ZSH_ONLY" = 1 ]; then
+  deploy_zsh
+  finish "Zsh deploy"
+  exit 0
+fi
+
 if [ "$GERMLINE_ONLY" = 1 ]; then
   deploy_germline || true
   finish "Germline deploy"
@@ -395,48 +457,7 @@ if [ -f "$REPO/nano/nanorc" ]; then
   copy_file "$REPO/nano/nanorc" "$HOME/.nanorc" ".nanorc"
 fi
 
-# ── ~/.config/zsh ─────────────────────────────────────────────────────────────
-echo ""
-echo "→ ~/.config/zsh"
-ensure_dir "$HOME/.config/zsh"
-
-# Regenerate generated zsh artifacts from their JSON registries BEFORE the rsync, so
-# the fresh copy deploys. temple-project-map.zsh's array is generated from
-# registries/projects.json (decision 0008/0004 amended 2026-08-15 — paths live in JSON).
-if [ -x "$REPO/zsh/registries/gen-temple-map.sh" ]; then
-  if [ "$DRY" = 1 ]; then
-    bash "$REPO/zsh/registries/gen-temple-map.sh" --check \
-      || echo "  temple-project-map.zsh would be regenerated from projects.json"
-  else
-    bash "$REPO/zsh/registries/gen-temple-map.sh" | sed 's/^/  /'
-  fi
-fi
-
-# Sync everything except machine-specific host files (deployed separately below)
-rsync "${RSYNC_FLAGS[@]}" \
-  --exclude='config.*.zsh' \
-  --exclude='zshrc.*' \
-  "$REPO/zsh/" "$HOME/.config/zsh/"
-
-# Deploy machine-specific config.zsh
-CFG="$REPO/zsh/config.${MACHINE}.zsh"
-if [ -f "$CFG" ]; then
-  copy_file "$CFG" "$HOME/.config/zsh/config.zsh" "config.${MACHINE}.zsh → config.zsh"
-else
-  echo "  WARNING: config.${MACHINE}.zsh not found in repo — config.zsh NOT deployed"
-  echo "  Available host configs:"
-  ls "$REPO/zsh/config."*.zsh 2>/dev/null | sed 's|.*/||' | sed 's/^/    /' || echo "    (none)"
-fi
-
-# Deploy machine-specific .zshrc — root shell entry point, host-specific
-ZSHRC_SRC="$REPO/zsh/zshrc.${MACHINE}"
-if [ -f "$ZSHRC_SRC" ]; then
-  copy_file "$ZSHRC_SRC" "$HOME/.zshrc" "zshrc.${MACHINE} → ~/.zshrc"
-else
-  echo "  WARNING: zshrc.${MACHINE} not found in repo — ~/.zshrc NOT deployed"
-  echo "  Available host zshrc files:"
-  ls "$REPO/zsh/zshrc."* 2>/dev/null | sed 's|.*/||' | sed 's/^/    /' || echo "    (none)"
-fi
+deploy_zsh
 
 finish "Deploy"
 echo "Next (out-of-repo installs deploy.sh can't do):"

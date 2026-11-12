@@ -10,6 +10,18 @@ typeset -U path
 path=("$HOME/.local/bin" "$HOME/bin" $path)
 export PATH
 
-# Deliberately minimal bootstrap. Local PHP and remote project execution are
-# undecided. Do not source home/office project, PHP, database or service wiring.
-# Tailnet enrollment and SSH authorization remain pending; see the machine guide.
+# Shared bricks follow the builder guide: config -> base -> keyboard + engines.
+# Loading defines commands; it does not run experiments, connect peers or start services.
+export RB_ROOT="$HOME/ia-sync/.dev/session"
+[[ -f "$ZSH_CONFIG_DIR/ai/base.zsh" ]] && source "$ZSH_CONFIG_DIR/ai/base.zsh"
+[[ -f "$ZSH_CONFIG_DIR/experimental/base.zsh" ]] && source "$ZSH_CONFIG_DIR/experimental/base.zsh"
+[[ -f "$ZSH_CONFIG_DIR/session/base.zsh" ]] && source "$ZSH_CONFIG_DIR/session/base.zsh"
+[[ -f "$ZSH_CONFIG_DIR/archx/base.zsh" ]] && source "$ZSH_CONFIG_DIR/archx/base.zsh"
+[[ -f "$ZSH_CONFIG_DIR/system/base.zsh" ]] && source "$ZSH_CONFIG_DIR/system/base.zsh"
+
+# Shared system keyboard includes workstation PHP aliases, but monitor has no
+# PHP engines. Hide those aliases until this host has its own runtime decision.
+unalias php74 php8 phpst composer74 composer8 tmcp cod 2>/dev/null
+
+# Local PHP/project scopes remain undecided. Peer commands take an explicit target;
+# no default home/office peer or startup network probe is selected for monitor.

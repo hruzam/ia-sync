@@ -26,7 +26,7 @@ case "${1:-}" in
   *) echo "usage: gen-temple-map.sh [--check|--stdout]" >&2; exit 2 ;;
 esac
 
-command -v jq >/dev/null || { echo "gen-temple-map: jq required" >&2; exit 1; }
+command -v jq >/dev/null || command -v python3 >/dev/null || { echo "gen-temple-map: jq or python3 required" >&2; exit 1; }
 [ -f "$SRC" ] || { echo "gen-temple-map: missing $SRC" >&2; exit 1; }
 
 render() {
@@ -48,7 +48,11 @@ render() {
 typeset -gA TEMPLE_PROJECT_MAP
 TEMPLE_PROJECT_MAP=(
 HEADER
-  jq -r '.projects | to_entries[] | "  [\(.key)]=\"\(.value)\""' "$SRC"
+  if command -v jq >/dev/null; then
+    jq -r '.projects | to_entries[] | "  [\(.key)]=\"\(.value)\""' "$SRC" || return 1
+  else
+    python3 -c 'import json,sys; projects=json.load(open(sys.argv[1]))["projects"]; print("\n".join("  ["+k+"]=\""+v+"\"" for k,v in projects.items()))' "$SRC" || return 1
+  fi
   cat <<'FOOTER'
 )
 
@@ -74,13 +78,19 @@ FOOTER
 case "$MODE" in
   stdout) render ;;
   check)
-    if diff -q <(render) "$OUT" >/dev/null 2>&1; then
+    generated="$(render)" || exit 1
+    if diff -q <(printf '%s\n' "$generated") "$OUT" >/dev/null 2>&1; then
       echo "gen-temple-map: up to date"
     else
       echo "gen-temple-map: DRIFT — $OUT differs from projects.json (deploy will regenerate)" >&2
       exit 3
     fi ;;
   write)
-    tmp="$(mktemp)"; render > "$tmp"; mv "$tmp" "$OUT"
-    echo "gen-temple-map: regenerated $(basename "$OUT") from projects.json ($(jq '.projects|length' "$SRC") projects)" ;;
+    tmp="$(mktemp)"
+    if ! render > "$tmp"; then
+      rm -- "$tmp"
+      exit 1
+    fi
+    mv "$tmp" "$OUT"
+    echo "gen-temple-map: regenerated $(basename "$OUT") from projects.json" ;;
 esac

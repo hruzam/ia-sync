@@ -150,9 +150,10 @@ first. `*.bak` / `*.bak-*` are deny'd, so backups never enter the repo. Undo a b
 deploy with `cp ~/.zshrc.bak-<date> ~/.zshrc`.
 
 **New wiring must be mirrored by hand, not assumed to propagate.**
-Monitor currently has an intentionally minimal bootstrap without project/PHP scopes;
-only home and office participate in the scope-parity checks below. Extending monitor
-is a deliberate host-owned change, not an automatic clone of either workstation.
+Monitor loads the shared ai/tools, experimental, session, archx and system bricks.
+Project/PHP scopes remain intentionally absent; only home and office participate
+in those project-scope parity checks. `bash deploy.sh --zsh-only` deploys shell
+files without the agent/runtime legs; inspect `--zsh-only --dry-run` first.
 - The two machine config files are NOT derived from each other — each is hand-maintained
   by its own seat.
 - When you add a `source`/signpost line to one machine's config, the OTHER machine's

@@ -1,5 +1,30 @@
 # Guide: Adding a New Gemini Agent Seat
 
+## Host shell deployment (office, home, monitor — 2026-11-12)
+
+Author in `~/ia-sync/zsh/`. Each host owns `config.<host>.zsh` and `zshrc.<host>`.
+Load a shared scope through its `base.zsh`; that signpost wires its keyboard and
+engines according to the Architecture rules below. Copying files alone does not
+activate a scope: its host config must source the signpost.
+
+```sh
+cd ~/ia-sync
+bash deploy.sh --zsh-only --dry-run
+bash deploy.sh --zsh-only
+# Open a new terminal, then check MACHINE_NAME and the requested commands.
+```
+
+Once system/base.zsh is loaded, `zsh-deploy-check` and `zsh-deploy` run those two
+commands from any directory. Plain `bash deploy.sh` remains the full multi-runtime
+deploy. The shell-only mode copies the shared zsh tree and selects the current
+host's config/.zshrc; it does not deploy Claude/Codex/Gemini or install packages.
+The project-map generator accepts jq or Python 3. Monitor loads ai (including
+Jev/tools), experimental, session, archx and system (including remote-cli).
+Project scopes, local PHP and peer defaults remain host-specific decisions.
+
+**Historical recipes below that mention `sync.sh` are superseded.** The harvest
+script is retired; use compose-first deployment above and `SYNC_DISCIPLINE.md`.
+
 > **⚕ Cut on the surgical table.** This file is deployed from `~/ia-sync` (the surgical
 > table — the like-composer syncing both machines). Do not edit it in place: cut in
 > ia-sync, deploy outward. Before trusting any machine fact here, reality-check the sync

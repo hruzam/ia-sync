@@ -38,6 +38,26 @@ the existing author name locally in ia-sync and reposoma for the bootstrap commi
 No email account was accessed. Remote synchronization remains pending the separate
 GitHub SSH authentication issue; author configuration does not resolve login.
 
+
+Follow-up, same session: operator requested shared zsh bricks. Monitor now sources
+ai (Jev/tools), experimental, session, archx and system (remote-cli) signposts;
+PHP aliases without engines are hidden. Added shell keyboard zsh-deploy-check /
+zsh-deploy and deploy.sh --zsh-only. Full deploy retains all original legs.
+Fixed the remaining jq-only project-map generator with a Python fallback; dry-run
+now propagates generator errors rather than presenting failures as mere drift.
+Malformed registry checks preserve the existing generated map. ai-help now handles
+the parked Gemini help function. Builder guide carries current shell deployment
+instructions and marks historical sync.sh recipes superseded.
+
+Pre-brick shell backup: ~/.config/zsh.backup-monitor-bricks-20261112-043831.
+Scoped deployment completed; fresh PTY shell resolves monitor and shared commands.
+AI/tools/Jev/archx/Tailscale/remote help, experiment listing and presence-board
+rendering passed. Repeat shell dry-run shows no pending file changes; full dry-run
+passes. Three conflicting scope combinations correctly exit 2.
+Existing Gemini-parked/substrates-loaded notices remain informational. No provider
+call, peer connection, service start or package install. Git pull still fails with
+publickey authentication; local commits only.
+
 ## OFFICE — 2026-11-11 · Cartan · Resource cleanup
 
 Operator requested closing all tmux sessions; stopped the default, ovitmugen and
