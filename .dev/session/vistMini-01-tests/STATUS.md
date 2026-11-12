@@ -1,8 +1,8 @@
 ```yaml
-updated: 2026-11-12 11:22 CET
+updated: 2026-11-12 13:45 CET
 writer: trajectory · claude
 host: home (hruzam)
-worktree: /home/hruzam/ia-sync · main · pushed through VERDICT 03 commit · untracked nano.1844235.save (operator's)
+worktree: /home/hruzam/ia-sync · main · pushed through VERDICT 04 commit · untracked reports/cartan.native-resume-clue (cartan's)
 gate: >
   Majkee accepts an independently verified trial report in
   /home/hruzam/ia-sync/.dev/session/vistMini-01-tests/reports/ showing, on home, Claude↔Codex:
@@ -10,20 +10,21 @@ gate: >
   every pre-registered refusal/recovery case run with expected versus observed; each seat's
   permission boundary stated; and the limits of applicability to VIST stated.
 checkpoint: >
-  Cycle 03 closed (_bus/03.trajectory.verdict.md): Codex→Claude 3/3 counted; Claude→Codex 0/3 (t01, t02 clean 29; t03
-  uncertain 27, key preserved, completed by operator Enter, not counted). Adapter suite passes (rerun 10:18:55Z).
-  Claude-side channel research: reports/trajectory.channels-research.2026-11-12.md.
+  Cycle 04 closed (_bus/04.trajectory.verdict.md): Codex inbound research ACCEPT; Astra answered out of band
+  (reports/oraculum.vist-recommendation.2026-11-12.md, operator-routed, route unverified). Counts unchanged:
+  Codex→Claude 3/3, Claude→Codex 0/3. Carrier candidate: `codex queue` from trajectory's Bash.
 in_flight: none
 recovery_probe: >
-  ls /home/hruzam/ia-sync/.dev/session/vistMini-01-tests/_bus/ — 04.trajectory.point.md absent = cycle 04 not issued yet
-  (next applies); present without 04.cartan.return.md = cycle 04 with cartan.
+  ls /home/hruzam/ia-sync/.dev/session/vistMini-01-tests/_bus/ — 05.trajectory.point.md absent = cycle 05 not issued
+  (awaiting majkee's transport release); present = cycle 05 live.
 holds: >
   PUSH IS TRAJECTORY'S ONLY: cartan commits, trajectory pushes. No stage/commit by one seat during the other's Git window.
-  No disruptive cases on live panes. Manual pokes never count. Manual-notice fallback: one per CLEAN refusal only (backlog §4.9).
+  No disruptive cases on live panes. Manual pokes never count. Manual-notice fallback: one per CLEAN refusal only (backlog §4.9). Every POINT names its bell in a `bell:` field.
   Key /tmp/vistMini-cycle03-trajectory/5e9f…/state (t03, text-attempted): preserve, never retry. oraculum (Astra) is reached
   only through cartan's Codex↔Codex route, and is not a participant until that route is verified.
 next: >
-  Issue _bus/04.trajectory.point.md to cartan (Codex inbound research + Astra VIST relay) and ring him.
+  On majkee's transport release: issue POINT 05, one `codex queue --thread 01a1ce98-… --message <pointer>` probe from
+  trajectory into cartan's existing thread, with a file receipt. No retry on uncertainty.
 expected: >
-  04.trajectory.point.md committed and pushed. Cartan's pane shows the POINT pointer submitted.
+  Release given or withheld. No transport attempt before it.
 ```
