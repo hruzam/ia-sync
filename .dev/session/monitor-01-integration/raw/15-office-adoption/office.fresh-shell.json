@@ -1,0 +1,38 @@
+[
+  {
+    "case": "default",
+    "identity": "office",
+    "peer": "hruzam",
+    "alias": "tso=_ts_session",
+    "registry": "/home/hruzam/nabla-lab",
+    "exit": 0,
+    "calls": [
+      "ping:ping --c 1 hruzam",
+      "ssh:-o ConnectTimeout=8 -o ConnectionAttempts=1 hruzam"
+    ]
+  },
+  {
+    "case": "monitor",
+    "identity": "office",
+    "peer": "hruzam",
+    "alias": "tso=_ts_session",
+    "registry": "/home/hruzam/nabla-lab",
+    "exit": 0,
+    "calls": [
+      "ping:ping --c 1 100.80.107.66",
+      "ssh:-o ConnectTimeout=8 -o ConnectionAttempts=1 100.80.107.66"
+    ]
+  },
+  {
+    "case": "monitor_bed",
+    "identity": "office",
+    "peer": "hruzam",
+    "alias": "tso=_ts_session",
+    "registry": "/home/hruzam/nabla-lab",
+    "exit": 0,
+    "calls": [
+      "ping:ping --c 1 100.80.107.66",
+      "ssh:-o ConnectTimeout=8 -o ConnectionAttempts=1 -t 100.80.107.66 exec sh /home/hruzam/ia-sync/devices/_shared/termux/bin/agentive-door"
+    ]
+  }
+]

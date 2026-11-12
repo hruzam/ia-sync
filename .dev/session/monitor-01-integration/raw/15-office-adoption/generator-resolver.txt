@@ -1,0 +1,2 @@
+gen-temple-map: up to date
+/home/hruzam/nabla-lab

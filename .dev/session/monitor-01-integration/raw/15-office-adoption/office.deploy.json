@@ -1,0 +1,48 @@
+{
+  "backup": "/home/hruzam/.local/state/ia-sync/backups/monitor-01-cycle15/20261112T164142Z",
+  "backup_changes": [
+    "building file list ... done",
+    "cd+++++++++ ai/",
+    ">f+++++++++ ai/rc.sh",
+    ">f+++++++++ ai/temple-project-map.zsh",
+    "cd+++++++++ registries/",
+    ">f+++++++++ registries/ai.json",
+    ">f+++++++++ registries/gen-temple-map.sh",
+    ">f+++++++++ registries/projects.json",
+    "cd+++++++++ system/",
+    ">f+++++++++ system/keyboard.zsh",
+    ">f+++++++++ system/tailscale.zsh",
+    "",
+    "sent 47,620 bytes  received 158 bytes  95,556.00 bytes/sec",
+    "total size is 46,961  speedup is 0.98"
+  ],
+  "dry_run": [
+    "building file list ... done",
+    ">f.st...... ai/rc.sh",
+    ">f.stp..... ai/temple-project-map.zsh",
+    ">f.st...... registries/ai.json",
+    ">f.st...... registries/gen-temple-map.sh",
+    ">f.st...... registries/projects.json",
+    ">f.st...... system/keyboard.zsh",
+    ">f.st...... system/tailscale.zsh",
+    "",
+    "sent 325 bytes  received 33 bytes  238.67 bytes/sec",
+    "total size is 50,033  speedup is 139.76 (DRY RUN)"
+  ],
+  "copy_changes": [
+    "building file list ... done",
+    ">f.st...... ai/rc.sh",
+    ">f.stp..... ai/temple-project-map.zsh",
+    ">f.st...... registries/ai.json",
+    ">f.st...... registries/gen-temple-map.sh",
+    ">f.st...... registries/projects.json",
+    ">f.st...... system/keyboard.zsh",
+    ">f.st...... system/tailscale.zsh",
+    "",
+    "sent 50,638 bytes  received 145 bytes  101,566.00 bytes/sec",
+    "total size is 50,033  speedup is 0.99"
+  ],
+  "target_hashes_verified": true,
+  "old_modes_preserved": true,
+  "protected_hashes_preserved": true
+}

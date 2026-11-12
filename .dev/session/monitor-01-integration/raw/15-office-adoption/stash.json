@@ -1,0 +1,11 @@
+{
+  "backup": "/home/hruzam/.local/state/ia-sync/backups/monitor-01-cycle15/20261112T163955Z",
+  "prior_stash_oid": "fd6b96d357b9b159eeaceb5ed1a3b5eb3b17a663",
+  "stash_oid": "2c8300bae1a9a89d01158295f6b0306e446286ae",
+  "captured_paths": [
+    "_mail/office/inbox/cartan.monitor-ssh-journal.2026-11-12.md",
+    "journal.host-cleanup.md"
+  ],
+  "push_output": "Saved working directory and index state On main: monitor-01-cycle15-office-preserve",
+  "worktree_and_index_clean": true
+}

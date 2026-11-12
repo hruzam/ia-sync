@@ -1,0 +1,17 @@
+{
+  "backup": "/home/hruzam/.local/state/ia-sync/backups/monitor-01-cycle15/20261112T163955Z",
+  "original_head": "f2578a5646f130ddcd0117682dda3a857d64b811",
+  "incoming_head": "b962110f2f7798defd578371a846d1d6429d6cd5",
+  "index_tree": "19a816be01a4c26af22e276df9f0c7dfc5336ba1",
+  "journal_local_sha256": "b478fc5f65d09eaf67a41ef8d3d0ab205b82cc61e7780f4cf3e72504b6d24f6e",
+  "journal_mode": "0644",
+  "mail_absent": true,
+  "mail_original_sha256": "762b489a0bc9a6512a3cf5bb610d352300af85b6f8b4fa667189ae64641e743e",
+  "binary_diff_sha256": "43db873c0c8009a6eba14473a62ddfc72a83d3778a9b674103f1e2432f7177f8",
+  "merged_journal_sha256": "358b853d1a24dfd0c872bd304e1575629b51eaa126208d97d706f27107173bba",
+  "local_note_lines": 15,
+  "tracked_status": [
+    " D _mail/office/inbox/cartan.monitor-ssh-journal.2026-11-12.md",
+    " M journal.host-cleanup.md"
+  ]
+}

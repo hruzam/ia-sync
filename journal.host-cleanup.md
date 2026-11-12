@@ -102,6 +102,15 @@ is screen-only, TIOCSTI is disabled. Monitor lacks tmux.
 
 ## MONITOR — 2026-11-12 · Cartan · Third-host bootstrap
 
+Office peer adoption completed and independently checked: seven shared files match
+integrated source, exact old modes/backups are verified, and fresh-shell default /
+monitor / bed checks pass. Office's 15-line SSH receipt and consumed-mail deletion
+remain unstaged after the reviewed preserving fast-forward; exact stash and prior
+stash remain as recovery evidence. No peer config/policy/auth changes or remote push.
+All three hosts now have the shared-shell update. Final bounded independent audit
+of the timeout/peer-rollout delta is cycle16; device SSH review remains deferred.
+Evidence: .dev/session/monitor-01-integration/_bus/15.cartan.verdict.md.
+
 Peer shell adoption: home updated with seven exact shared files, verified backups,
 unchanged host/policy files and independently repeated fresh-shell checks. Its local
 q01 receipt commit/blob was preserved through a backed-up rebase and was not pushed.

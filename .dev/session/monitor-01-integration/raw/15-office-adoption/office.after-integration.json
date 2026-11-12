@@ -1,0 +1,146 @@
+{
+  "hostname": "hruzam-120922",
+  "head": "b962110f2f7798defd578371a846d1d6429d6cd5",
+  "origin_main": "b962110f2f7798defd578371a846d1d6429d6cd5",
+  "files": [
+    {
+      "relative": "system/tailscale.zsh",
+      "source": {
+        "exists": true,
+        "sha256": "b567e698174c80f81f7bd2498c151f91c599287ed1457763fb8fcd77564eda50",
+        "mode": "0644"
+      },
+      "source_head_sha256": "b567e698174c80f81f7bd2498c151f91c599287ed1457763fb8fcd77564eda50",
+      "target_origin_sha256": "b567e698174c80f81f7bd2498c151f91c599287ed1457763fb8fcd77564eda50",
+      "live": {
+        "exists": true,
+        "sha256": "b34fd852306dd20323cd0c923139b06e0e8645466d4f2736ffc0d88499d3b372",
+        "mode": "0644"
+      },
+      "source_symlinks": [],
+      "live_symlinks": []
+    },
+    {
+      "relative": "system/keyboard.zsh",
+      "source": {
+        "exists": true,
+        "sha256": "dffd687d66292a3c254296137351356f4f42c2afee9971d63fe4eec106859f7d",
+        "mode": "0644"
+      },
+      "source_head_sha256": "dffd687d66292a3c254296137351356f4f42c2afee9971d63fe4eec106859f7d",
+      "target_origin_sha256": "dffd687d66292a3c254296137351356f4f42c2afee9971d63fe4eec106859f7d",
+      "live": {
+        "exists": true,
+        "sha256": "339c1beb193c37ed6c06ca2ed8b2c9a7796e51e05c041c32c0006e6196784cec",
+        "mode": "0644"
+      },
+      "source_symlinks": [],
+      "live_symlinks": []
+    },
+    {
+      "relative": "registries/projects.json",
+      "source": {
+        "exists": true,
+        "sha256": "6f653dcade66d7b7fb92fc6592879b3baccef51e892ff0f2209ae67c5891222a",
+        "mode": "0644"
+      },
+      "source_head_sha256": "6f653dcade66d7b7fb92fc6592879b3baccef51e892ff0f2209ae67c5891222a",
+      "target_origin_sha256": "6f653dcade66d7b7fb92fc6592879b3baccef51e892ff0f2209ae67c5891222a",
+      "live": {
+        "exists": true,
+        "sha256": "a87126ca103231e44f59acfc1cd4cfec86dd88948c5408157454416fe3071e8d",
+        "mode": "0644"
+      },
+      "source_symlinks": [],
+      "live_symlinks": []
+    },
+    {
+      "relative": "registries/ai.json",
+      "source": {
+        "exists": true,
+        "sha256": "3e1ada2e370c3e9bf9270ff927b33e6fb4924fe180fc1ec8446aebdc3c21cfb7",
+        "mode": "0644"
+      },
+      "source_head_sha256": "3e1ada2e370c3e9bf9270ff927b33e6fb4924fe180fc1ec8446aebdc3c21cfb7",
+      "target_origin_sha256": "3e1ada2e370c3e9bf9270ff927b33e6fb4924fe180fc1ec8446aebdc3c21cfb7",
+      "live": {
+        "exists": true,
+        "sha256": "c4b4ea1a2dbf040329d9fb13e96ca8b455d767e5ef8feaf22d6a6ce1223e8a8f",
+        "mode": "0644"
+      },
+      "source_symlinks": [],
+      "live_symlinks": []
+    },
+    {
+      "relative": "registries/gen-temple-map.sh",
+      "source": {
+        "exists": true,
+        "sha256": "94475a141f282a406b9c571a43234cce69bdb70ea95be6d6465623d5fdda9067",
+        "mode": "0755"
+      },
+      "source_head_sha256": "94475a141f282a406b9c571a43234cce69bdb70ea95be6d6465623d5fdda9067",
+      "target_origin_sha256": "94475a141f282a406b9c571a43234cce69bdb70ea95be6d6465623d5fdda9067",
+      "live": {
+        "exists": true,
+        "sha256": "c8f8ab542cd4a9a66d8acdee91f689b330e4d592de037d87a8e741cc1814dd5e",
+        "mode": "0755"
+      },
+      "source_symlinks": [],
+      "live_symlinks": []
+    },
+    {
+      "relative": "ai/temple-project-map.zsh",
+      "source": {
+        "exists": true,
+        "sha256": "859c9304a7323a3c71662d2e249da5f6da9b8b36154d687d417cd3e80af0ed37",
+        "mode": "0644"
+      },
+      "source_head_sha256": "859c9304a7323a3c71662d2e249da5f6da9b8b36154d687d417cd3e80af0ed37",
+      "target_origin_sha256": "859c9304a7323a3c71662d2e249da5f6da9b8b36154d687d417cd3e80af0ed37",
+      "live": {
+        "exists": true,
+        "sha256": "ed7f53ed6a0e079684bfdc0aed1985990d5ff8b47a457c713f34f017a982da0f",
+        "mode": "0600"
+      },
+      "source_symlinks": [],
+      "live_symlinks": []
+    },
+    {
+      "relative": "ai/rc.sh",
+      "source": {
+        "exists": true,
+        "sha256": "676beac171794e53047c1e2248d1ba53d93ea7d5162b6fc4290ca0663a9500d9",
+        "mode": "0755"
+      },
+      "source_head_sha256": "676beac171794e53047c1e2248d1ba53d93ea7d5162b6fc4290ca0663a9500d9",
+      "target_origin_sha256": "676beac171794e53047c1e2248d1ba53d93ea7d5162b6fc4290ca0663a9500d9",
+      "live": {
+        "exists": true,
+        "sha256": "ef67eb901fc6d67068785a4b568b4a7c350c5a1309d2406f23d8f7fed9bb1f5d",
+        "mode": "0755"
+      },
+      "source_symlinks": [],
+      "live_symlinks": []
+    }
+  ],
+  "old_nabla_lab_fallback": "/home/hruzam/nabla-lab",
+  "new_nabla_lab_path": "/home/hruzam/nabla-lab",
+  "fallback_code_present": true,
+  "protected_live": {
+    ".config/zsh/config.zsh": {
+      "exists": true,
+      "sha256": "642b95fa3fb3d706ae26ab4aeccc89b946e94853c6df8d4ffd2670726e05dadc",
+      "mode": "0644"
+    },
+    ".zshrc": {
+      "exists": true,
+      "sha256": "85f3acab2ab1d1d071451fd1bfb2aeb7f4bb8c69b5c689079f88a79d892c3720",
+      "mode": "0644"
+    },
+    ".config/zsh/.config/tailnet.access-controls.json": {
+      "exists": true,
+      "sha256": "d6a208086517c0bc921d846a7166c417ef8628b12fb9d4d2c5e5e396c57d530d",
+      "mode": "0644"
+    }
+  }
+}
