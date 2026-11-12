@@ -66,6 +66,13 @@ is screen-only, TIOCSTI is disabled. Monitor lacks tmux.
 
 ## MONITOR — 2026-11-12 · Cartan · Third-host bootstrap
 
+SSH feedback after the operator sent acceptance instructions: monitor → home now
+passes strict host checking and explicit monitor-key authentication, returning
+hruzam/hruzam with exit 0. Monitor → office still returns publickey denial. No
+peer auth file was changed by this probe. tmux is now installed; cartan-monitor
+is attached and its pane runs Codex. This was observed, not installed by Cartan.
+Receipt: .dev/session/monitor-01-integration/raw/ssh-feedback.2026-11-12.json.
+
 
 Cross-host mail follow-up: received and processed both Trajectory messages from
 home and office through bcf33f6; archived them under monitor/archive. Office's

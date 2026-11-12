@@ -1,0 +1,27 @@
+{
+  "recorded_at": "2026-11-12T12:34:16.616529+01:00",
+  "host": "monitor",
+  "tmux": {
+    "session": "cartan-monitor",
+    "attached": true,
+    "pane_command": "codex",
+    "note": "TMUX not inherited by tool process; verified with tmux list-sessions and list-panes."
+  },
+  "ssh_options": [
+    "BatchMode=yes",
+    "IdentitiesOnly=yes",
+    "identity=/home/hruzam/.ssh/id_ed25519",
+    "StrictHostKeyChecking=yes",
+    "ConnectTimeout=8"
+  ],
+  "remote_command": "hostname -s; id -un",
+  "monitor_to_home": {
+    "exit_code": 0,
+    "stdout": "hruzam\nhruzam\n"
+  },
+  "monitor_to_office": {
+    "exit_code": 255,
+    "stderr": "Permission denied (publickey)"
+  },
+  "other_directions": "Earlier peer reports, not replayed in this probe."
+}
