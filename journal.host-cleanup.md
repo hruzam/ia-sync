@@ -66,6 +66,13 @@ is screen-only, TIOCSTI is disabled. Monitor lacks tmux.
 
 ## MONITOR — 2026-11-12 · Cartan · Third-host bootstrap
 
+Repository restoration: Astrobley cloned the six operator-selected repositories at
+physically verified peer-equivalent paths. Cartan independently verified realpath,
+Git root, origin, core HEAD against the published snapshot, and clean status for all
+six. Turn 02 joined (clone cycle 05 + myShell goal check 06 ACCEPT). Evidence:
+.dev/session/monitor-01-integration/raw/clone-verification.2026-11-12.json.
+Tracked history only; PHP, project runtimes and ignored state remain deferred.
+
 Final SSH follow-up: after Majkee requested another test, monitor → office now
 passes strict host checking with the explicit monitor identity, returning
 hruzam-120922/hruzam and exit 0. All six directed SSH paths have dated success

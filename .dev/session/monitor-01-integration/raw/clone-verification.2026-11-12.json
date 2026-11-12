@@ -1,0 +1,79 @@
+{
+  "observed_at": "2026-11-12T12:59:54.829273+01:00",
+  "verified_by": "cartan",
+  "method": "Independent local Git metadata checks; compared to prior published-core snapshot, no runtime start.",
+  "repositories": [
+    {
+      "path": "/home/hruzam/unikuklatrix/nablarva",
+      "realpath": "/home/hruzam/unikuklatrix/nablarva",
+      "symlink": false,
+      "root": "/home/hruzam/unikuklatrix/nablarva",
+      "branch": "core",
+      "head": "37a6bf665c488d32e33549d3f6511a7c1c6a69d7",
+      "upstream": "37a6bf665c488d32e33549d3f6511a7c1c6a69d7",
+      "origin": "git@github.com:hruzam/nablarva.git",
+      "status": "",
+      "gitlinks": 0
+    },
+    {
+      "path": "/home/hruzam/nabla-lab",
+      "realpath": "/home/hruzam/nabla-lab",
+      "symlink": false,
+      "root": "/home/hruzam/nabla-lab",
+      "branch": "core",
+      "head": "07c62dc7027f88c5aaf362692ff1910ec62d8e09",
+      "upstream": "07c62dc7027f88c5aaf362692ff1910ec62d8e09",
+      "origin": "git@github.com:hruzam/nabla-lab.git",
+      "status": "",
+      "gitlinks": 0
+    },
+    {
+      "path": "/home/hruzam/vacuole",
+      "realpath": "/home/hruzam/vacuole",
+      "symlink": false,
+      "root": "/home/hruzam/vacuole",
+      "branch": "core",
+      "head": "68f1929812c622f394c1e47b091117eb019c807d",
+      "upstream": "68f1929812c622f394c1e47b091117eb019c807d",
+      "origin": "git@github.com:hruzam/vacuole.git",
+      "status": "",
+      "gitlinks": 0
+    },
+    {
+      "path": "/home/hruzam/www/elements-factory/applications-in-common",
+      "realpath": "/home/hruzam/www/elements-factory/applications-in-common",
+      "symlink": false,
+      "root": "/home/hruzam/www/elements-factory/applications-in-common",
+      "branch": "core",
+      "head": "c3bba24ac7d55eadce7a4b32d84d28e6fdea981a",
+      "upstream": "c3bba24ac7d55eadce7a4b32d84d28e6fdea981a",
+      "origin": "git@github.com:hruzam/applications-in-common.git",
+      "status": "",
+      "gitlinks": 0
+    },
+    {
+      "path": "/home/hruzam/www/kuklana/pajdulium-web",
+      "realpath": "/home/hruzam/www/kuklana/pajdulium-web",
+      "symlink": false,
+      "root": "/home/hruzam/www/kuklana/pajdulium-web",
+      "branch": "core",
+      "head": "5c12010e4ca49931e48a781da267103496f2dd72",
+      "upstream": "5c12010e4ca49931e48a781da267103496f2dd72",
+      "origin": "git@github.com:hruzam/pajdulium-web.git",
+      "status": "",
+      "gitlinks": 0
+    },
+    {
+      "path": "/home/hruzam/www/kuklana/pajdulium-studio",
+      "realpath": "/home/hruzam/www/kuklana/pajdulium-studio",
+      "symlink": false,
+      "root": "/home/hruzam/www/kuklana/pajdulium-studio",
+      "branch": "core",
+      "head": "46cce58e100183ab1cda650ef6997c084e71afbb",
+      "upstream": "46cce58e100183ab1cda650ef6997c084e71afbb",
+      "origin": "git@github.com:hruzam/pajdulium-studio.git",
+      "status": "",
+      "gitlinks": 0
+    }
+  ]
+}
