@@ -87,6 +87,10 @@ Rules:
    and points at the message and the refusal log. It is not delivery evidence, and it is not repeated.
    If the send is *uncertain* (a reservation exists), no manual notice: receipt and recovery decide.
    Origin: vistMini-01-tests cycle 03, sender self-check refused on a Claude pane.
+   **Revised 2026-11-13 (cycle 06):** the fallback applies only to refusals about the *sender's* own state or payload
+   (e.g. own view unrecognised, payload outside the grammar). After a refusal that says the **receiver** is occupied or busy
+   (composer has text, agent working), do NOT type a manual notice: it would land in someone's draft. Re-check once after
+   ≥60 s. Still refused → no notice, and the committed file waits for the receiver's next look.
 
 ## 5. Stamps (receipt is stamped, never inferred: HANDSHAKE r1)
 
