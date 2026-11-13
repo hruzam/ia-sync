@@ -16,7 +16,7 @@ participant_2: [cartan, {brand: codex, model: GPT-6.1-Sol, effort: high}, host: 
 participant_3: [oraculum, {brand: claude, model: Fable-5.2, effort: medium}, host: home, role: keeper watch-and-advise only]
 participant_4: [majkee, {brand: human}, host: any, role: operator, permissions, gavel]
 participant_5: [nablarva.cartan, {brand: codex, model: GPT-6.1-Sol, effort: high}, host: home, role: Nablarva hotline outside trial implementation]
-participant_6: [next.cartan, {brand: codex, model: GPT-6.1-Sol, effort: high}, host: home, role: fresh independent reviewer and controller successor candidate]
+participant_6: [previous.cartan, {brand: codex, model: GPT-6.1-Sol, effort: high}, host: home, role: previous controller; read-only after activation18]
 status_owner: cartan
 head_note: Majkee transferred the long-run head, STATUS, push and gated refresh to Cartan on 2026-11-13; Trajectory remains report author. The gate below is unchanged.
 observations_read: none exist
@@ -103,20 +103,22 @@ would need to show before claiming relevance. Nothing else.
 - Cross-host (office/monitor) runs. Home only. Cross-host is a sibling session if this gate holds.
 - Rewriting HANDSHAKE, the bus guide or the backlog draft into canon. Findings feed them after closure.
 - The Codex TABLE tunnel revalidation on 0.167.2.
-- Any VIST work beyond reading oraculum's context note.
+- VIST shared-layer implementation/activation beyond the authorised documentary evidence analysis; X0 scope and actuator release remain separate.
 
 ## Current operator scope — 2026-11-13 group restart
 
 Majkee authorises repairing observed seat labels, directly coordinating this resident group, finite local check-ins/cache, and labelled manual fallback when an intended channel fails. Preserve actual drafts/approval prompts and process identity. Keeper remains watch-and-advise only. Cartan owns STATUS and push. POINT10–13 form turn10; no worker Git mutation until the controller grants a window or integrates those explicitly assigned outputs. The prototype's safety refusals remain evidence, not permissions to ignore an unknown target. Native Codex queue is used directly for known Codex identities; no forced resume/writer takeover. VIST progress is routed through the owning Nablarva task bed and its live locks, with hotline advice before implementation.
 
-Current unique seat routing for turn10 (bindings are observations, recheck before input):
+Current unique seat routing after activation18 (bindings are observations, recheck before input):
 
 | POINT to | Native identity | Role / owned output |
 |---|---|---|
 | trajectory | Claude06352fda-5b7f-4621-b7d1-617be6bc51a4 | report author, POINT10 |
-| cartan | Codex01a1ce98-6aa1-7021-b9cd-99805a07b2b2 | controller, STATUS and integration |
-| next.cartan | Codex01a1d58a-3b43-7221-bf9b-fa98b219df6b | fresh reviewer, POINT11 |
+| previous.cartan | Codex01a1ce98-6aa1-7021-b9cd-99805a07b2b2 | retired controller, read-only |
+| cartan | Codex01a1d58a-3b43-7221-bf9b-fa98b219df6b | activated head, STATUS/push, POINT18; previously next.cartan |
 | oraculum | Claudec266d10a-ecda-4f89-9f18-f29b59e3130e | keeper, POINT12 |
 | nablarva.cartan | Codex01a1d582-c6ce-74f1-9e66-44715424aa2c | hotline, POINT13 |
 
 The global custom Oraculum child is an analysis-only consultation, distinct from the resident Claude keeper. No roster change creates canon authority.
+
+Controller activation18 follows accepted read-back17 and pushed continuity cache: sole pen moves from Codex01a1ce98 to Codex01a1d58a. Documentary fixture inventory is the next authorised unit; original gate and Majkee GO/STOP stay open. Previous head handles late notices read-only.
