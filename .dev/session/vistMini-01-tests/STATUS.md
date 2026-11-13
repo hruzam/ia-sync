@@ -1,43 +1,56 @@
 ```yaml
 updated: 2026-11-13 CET
-writer: trajectory · claude
+writer: cartan · codex · long-run head (majkee transfer)
 host: home (hruzam)
-worktree: /home/hruzam/ia-sync · main · pushed through VERDICT 08 commit
+worktree: >
+  /home/hruzam/ia-sync · main · report/review pushed through ef275f3.
+  Foreign dirty paths: claude/hooks/oraculum-bash-whitelist.sh, claude/settings.json,
+  claude/hooks/statusline.sh, .dev/session/helper-utils-00-tmux/. Preserve them.
 gate: >
   Majkee accepts an independently verified trial report in
   /home/hruzam/ia-sync/.dev/session/vistMini-01-tests/reports/ showing, on home, Claude↔Codex:
   at least three ordinary messages each direction delivered and consumed without operator relay;
-  every pre-registered refusal/recovery case run with expected versus observed; each seat's
+  every pre-registered refusal/recovery case run with expected vs observed; each seat's
   permission boundary stated; and the limits of applicability to VIST stated.
 checkpoint: >
-  Cycle 08 closed (_bus/08.trajectory.verdict.md): ACCEPT scoped. Counts 3/3 each way (MET, cycle 07). Refusal/recovery
-  cases C08-01..13 run on samples (reports/cartan.cases-08.2026-11-13.md). Permission pair witnessed on sample-claude
-  (C09 pwd no prompt; C06 prompt held, released once by majkee 13:10:46Z, recorded separately). Controller
-  scripts/vist-deliver.sh v3.1 (37887e7) is evidence tooling, not released (L21).
-in_flight: none
+  Report db55d24 reviewed NOK in _bus/09.cartan.verify.md (ef275f3); checks1/2/5 PASS,3/4 NOK.
+  Counts3+3 supported; all-case criterion remains PARTIAL/OPEN. R1-R6 await author repair.
+  Live labels repaired from observed native identities; reports/10.context-observation.json is a snapshot.
+in_flight: >
+  Turn10 dispatch of POINT10-13. A scheduled or accepted send is not consumption.
+  Host-local /tmp/vist-c10-run/dispatch.json records each attempted carrier/fallback; reconcile before any resend.
 recovery_probe: >
-  ls reports/ — a trial report file by trajectory = cycle 09 started; independent check named in its frontmatter.
-seats: >
-  tmux umbrella `vist` (window: name): 1 traj · 2 cartan · 3 claude-test · 4 codex-test · 5 oraculum · 6 cartan2 ·
-  7 next · 8 codex-next · 9 codex-keeper · 10 claude-next · 11 claude-keeper. Successors named by majkee 2026-11-13:
-  trajectory → claude b0080cc2-e56d-4244-86a9-b88660720e63; cartan → codex 01a1d58a-3b43-7221-bf9b-fa98b219df6b;
-  keeper oraculum (claude Fable) c266d10a-ecda-4f89-9f18-f29b59e3130e; nablarva hot line codex 01a1d582-c6ce-74f1-9e66-44715424aa2c.
-  Cartan's live pane is vist:2 %47 (codex resume 01a1ce98…); old %2 is gone.
+  Read _bus/10.cartan.point.md through 13.cartan.point.md, their named RETURN contents and any corresponding
+  VERDICT. Compare report content/revision with _bus/09.cartan.verify.md. Read /tmp/vist-c10-run/dispatch.json
+  and /tmp/vist-c10-run/lease.json if present; inspect current tmux native identities before any peer input.
+  Missing delivery record means unattempted, accepted carrier means no receipt yet, RETURN content permits review.
+delegated:
+  - {cycle: 10, to: trajectory, turn: 10, awaiting: return}
+  - {cycle: 11, to: next.cartan, turn: 10, awaiting: return}
+  - {cycle: 12, to: oraculum, turn: 10, awaiting: return}
+  - {cycle: 13, to: nablarva.cartan, turn: 10, awaiting: return}
+join_when: >
+  Cycles10-13 have content-checked terminal dispositions, and the corrected report from10 has a fresh
+  independent check bound to its exact revision before acceptance. An author RETURN alone cannot pass10.
 decision_20261113_keeper: >
-  majkee, verbatim: "keeper watch-and-advise only. Cartan strongest bash provides pushes and clearing - doing the /clear."
-  So: oraculum watches and writes "card due for <seat>" notes; it does not /clear, type into panes or push.
-  cartan is head of the long run, owns PUSH (all seats commit, cartan pushes) and runs /clear + "read CS card" on a seat
-  only after that seat's card is committed and pushed and it has no uncertain send open.
-  Loop 09: all three acks nonce f60da3d1 (311af01). Bells back: oraculum via Claude SendMessage (manual, majkee's request;
-  first live Claude↔Claude witness); cartan and nablarva.cartan via vist-deliver, waiting on trajectory's busy pane.
+  majkee: "keeper watch-and-advise only. Cartan strongest bash provides pushes and clearing - doing the /clear."
+  Keeper advises on snapshots/notes; Cartan owns STATUS, integration, push and gated clearing/re-entry.
+  Majkee subsequently authorises this group restart, label repair, finite local check-ins/cache and labelled
+  fallback pokes after failed intended communication. Current POINTs scope each seat; no global promotion.
 holds: >
-  PUSH IS CARTAN'S (from decision_20261113_keeper; trajectory pushed up to and including that commit). No disruptive cases on live panes. Manual pokes never count.
-  Manual notice only after sender-side refusals (backlog §4.9 rev). Uncertain keys preserved, never retried:
-  t03 /tmp/vistMini-cycle03-trajectory/5e9f…/state; ~/.local/state/vist/sent/c08r1-05-ae3ee8e7.
-  sample-claude is in default mode and may hold a pending prompt: check @state before any delivery.
+  Main Cartan is the sole STATUS writer and Git integrator for turn10. Workers write only POINT-owned files;
+  no worker stage/commit/push until a separate window. RUNBOOK gate unchanged; Majkee GO/STOP stays open.
+  Prototype not released (L21). No forced resume, writer-lock deletion, approval bypass or disruptive senior tests.
+  Keep historical t03 state and sent/c08r1-05-ae3ee8e7 forever; never resend those IDs.
+  Current shell-rooted seats are outside helper's agent-root contract; use native queue for known Codex IDs,
+  labelled manual fallback only after current foreground identity and idle/draft/approval checks for Claude.
+  No fallback after uncertain input until receipt reconciliation. No /clear with active writes/sends; card must
+  be committed/pushed and successor read-back obtained before controller transfer. Keeper never clears or pushes.
+  Host-local heartbeat is finite, controller-only and stops on completion, failure or awaiting operator decision.
 next: >
-  Cycle 09: trajectory drafts reports/trial-report.vistmini-01.md (counts, case table, permission pair, VIST limits,
-  uncertain keys); an independent seat (assay or cartan) verifies; cartan pushes; majkee GO/STOP.
+  Reconcile the four assigned RETURNs against POINTs and dispatch the fresh repaired-report review when its
+  author RETURN is ready; update this snapshot at that verified edge.
 expected: >
-  Report claims each cite a file; limits section says what does not transfer to VIST (single host, samples, one run per case).
+  Specific seat consumption/RETURN evidence, repaired report with R1-R6 dispositions, and independent fresh
+  review of that revision. Empty roster activity or queue acceptance does not satisfy the join.
 ```

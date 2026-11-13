@@ -11,12 +11,14 @@ gate: >
   at least three ordinary messages each direction delivered and consumed without operator relay;
   every pre-registered refusal/recovery case run with expected versus observed; each seat's
   permission boundary stated; and the limits of applicability to VIST stated.
-participant_1: [trajectory, {brand: claude, model: claude-opus-5-5, effort: medium}, host: home, role: cSharp head, navigator, status_owner, reviewer of cartan's work]
-participant_2: [cartan, {brand: codex, model: GPT-6.1-Sol, effort: high}, host: home, role: implementation partner (astrobley when delegating), challenger, standing witness of trajectory's STATUS claims]
-participant_3: [oraculum, {brand: codex, model: GPT-6-Astra, effort: high}, host: unverified, role: VIST context source only; joins only after its route is verified, never as a transport head]
+participant_1: [trajectory, {brand: claude, model: claude-opus-5-5, effort: medium}, host: home, role: report author, evidence witness]
+participant_2: [cartan, {brand: codex, model: GPT-6.1-Sol, effort: high}, host: home, role: long-run head, navigator, status_owner, integration and push owner]
+participant_3: [oraculum, {brand: claude, model: Fable-5.2, effort: medium}, host: home, role: keeper watch-and-advise only]
 participant_4: [majkee, {brand: human}, host: any, role: operator, permissions, gavel]
-status_owner: trajectory
-head_note: cSharp — this seat authored the RUNBOOK and stays live through the whole arc as navigator and status_owner; it may delegate every body of work and receive only navigation + test parts; it closes the session if it can.
+participant_5: [nablarva.cartan, {brand: codex, model: GPT-6.1-Sol, effort: high}, host: home, role: Nablarva hotline outside trial implementation]
+participant_6: [next.cartan, {brand: codex, model: GPT-6.1-Sol, effort: high}, host: home, role: fresh independent reviewer and controller successor candidate]
+status_owner: cartan
+head_note: Majkee transferred the long-run head, STATUS, push and gated refresh to Cartan on 2026-11-13; Trajectory remains report author. The gate below is unchanged.
 observations_read: none exist
 ```
 
@@ -37,7 +39,7 @@ any of it is useful for VIST. That needs a bounded trial with pre-registered cas
   `reports/cartan.preflight.2026-11-12.md` (reuse probe, sandbox observations).
 - Trajectory's permission evidence: `reports/trajectory.permissions.2026-11-12.md`.
 
-## prompt-0 — trajectory
+## Historical prompt-0 — trajectory (superseded by POINT10 and current STATUS)
 
 ```text
 You are trajectory, cSharp head of /home/hruzam/ia-sync/.dev/session/vistMini-01-tests/.
@@ -46,7 +48,7 @@ windows. Delegate implementation by POINT in _bus/; verify each RETURN by the bu
 write the VERDICT. Never edit cartan's files. Bring majkee only permissions and decisions.
 ```
 
-## prompt-1 — cartan
+## Historical prompt-1 — cartan (superseded by the operator transfer and current STATUS)
 
 ```text
 You are cartan (home:cartan), implementation partner and standing witness in
@@ -57,7 +59,7 @@ Never edit RUNBOOK, STATUS, pulse or trajectory's files. You may test any STATUS
 say so in your RETURN. Commit only inside the Git window the POINT gives you.
 ```
 
-## prompt-2 — oraculum (only after its route is verified)
+## Historical prompt-2 — VIST scientific context source (not the current keeper assignment)
 
 ```text
 You are oraculum in /home/hruzam/unikuklatrix/nablarva. Your own instructions and state
@@ -75,8 +77,7 @@ would need to show before claiming relevance. Nothing else.
   writer's `ready` poke or RETURN. Never stash, reset, rebase or commit the other seat's work.
 - **Live panes:** never run disruptive cases (busy, occupied composer, exit-before-Enter, crash)
   against `traj-home` or `cartan-home`. Only on an isolated server (`tmux -L vist-test`).
-- **No new channel at large:** no daemon, watcher, generic remote shell, global settings change,
-  deploy, or promotion to canon. ovitmugen stays viewer-only.
+- **No new channel at large:** no global daemon, generic remote shell, global settings change, deploy, or promotion to canon. Majkee explicitly authorised a bounded, removable host-local controller check-in and caching on 2026-11-13. It queues only the controller and expires; it is not transport release. ovitmugen stays viewer-only.
 - **Mail citing:** durable artifacts cite this bed, never `_mail/*/inbox/` (cSharp scar 3).
 - **Public repo:** no tokens, session messaging tokens, private keys or personal data in any file.
 - Permission limiters are not bypassed. A needed opening goes to majkee as an exact, session-scoped request.
@@ -103,3 +104,19 @@ would need to show before claiming relevance. Nothing else.
 - Rewriting HANDSHAKE, the bus guide or the backlog draft into canon. Findings feed them after closure.
 - The Codex TABLE tunnel revalidation on 0.167.2.
 - Any VIST work beyond reading oraculum's context note.
+
+## Current operator scope — 2026-11-13 group restart
+
+Majkee authorises repairing observed seat labels, directly coordinating this resident group, finite local check-ins/cache, and labelled manual fallback when an intended channel fails. Preserve actual drafts/approval prompts and process identity. Keeper remains watch-and-advise only. Cartan owns STATUS and push. POINT10–13 form turn10; no worker Git mutation until the controller grants a window or integrates those explicitly assigned outputs. The prototype's safety refusals remain evidence, not permissions to ignore an unknown target. Native Codex queue is used directly for known Codex identities; no forced resume/writer takeover. VIST progress is routed through the owning Nablarva task bed and its live locks, with hotline advice before implementation.
+
+Current unique seat routing for turn10 (bindings are observations, recheck before input):
+
+| POINT to | Native identity | Role / owned output |
+|---|---|---|
+| trajectory | Claude06352fda-5b7f-4621-b7d1-617be6bc51a4 | report author, POINT10 |
+| cartan | Codex01a1ce98-6aa1-7021-b9cd-99805a07b2b2 | controller, STATUS and integration |
+| next.cartan | Codex01a1d58a-3b43-7221-bf9b-fa98b219df6b | fresh reviewer, POINT11 |
+| oraculum | Claudec266d10a-ecda-4f89-9f18-f29b59e3130e | keeper, POINT12 |
+| nablarva.cartan | Codex01a1d582-c6ce-74f1-9e66-44715424aa2c | hotline, POINT13 |
+
+The global custom Oraculum child is an analysis-only consultation, distinct from the resident Claude keeper. No roster change creates canon authority.

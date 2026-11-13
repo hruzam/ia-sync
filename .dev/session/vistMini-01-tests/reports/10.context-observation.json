@@ -1,0 +1,66 @@
+{
+  "host": "home",
+  "source": "native footer and tmux metadata; no raw screen contents",
+  "seats": [
+    {
+      "seat": "trajectory|engineer",
+      "window": "vist:1",
+      "pane": "%49",
+      "pid": 800615,
+      "root_comm": "zsh",
+      "vendor": "claude",
+      "id": "06352fda-5b7f-4621-b7d1-617be6bc51a4",
+      "carrier": "tmux",
+      "context_percent_left": 89,
+      "observed_at": "2026-11-13T17:11:01.972140+00:00"
+    },
+    {
+      "seat": "cartan|astrobley",
+      "window": "vist:2",
+      "pane": "%47",
+      "pid": 705701,
+      "root_comm": "zsh",
+      "vendor": "codex",
+      "id": "01a1ce98-6aa1-7021-b9cd-99805a07b2b2",
+      "carrier": "codex-queue",
+      "context_percent_left": 52,
+      "observed_at": "2026-11-13T17:11:02.034745+00:00"
+    },
+    {
+      "seat": "oraculum",
+      "window": "vist:5",
+      "pane": "%22",
+      "pid": 527050,
+      "root_comm": "zsh",
+      "vendor": "claude",
+      "id": "c266d10a-ecda-4f89-9f18-f29b59e3130e",
+      "carrier": "tmux",
+      "context_percent_left": 95,
+      "observed_at": "2026-11-13T17:11:02.090416+00:00"
+    },
+    {
+      "seat": "nablarva.cartan",
+      "window": "vist:6",
+      "pane": "%23",
+      "pid": 527057,
+      "root_comm": "zsh",
+      "vendor": "codex",
+      "id": "01a1d582-c6ce-74f1-9e66-44715424aa2c",
+      "carrier": "codex-queue",
+      "context_percent_left": 93,
+      "observed_at": "2026-11-13T17:11:02.146590+00:00"
+    },
+    {
+      "seat": "next.cartan",
+      "window": "vist:8",
+      "pane": "%31",
+      "pid": 648446,
+      "root_comm": "zsh",
+      "vendor": "codex",
+      "id": "01a1d58a-3b43-7221-bf9b-fa98b219df6b",
+      "carrier": "codex-queue",
+      "context_percent_left": 97,
+      "observed_at": "2026-11-13T17:11:02.200863+00:00"
+    }
+  ]
+}
