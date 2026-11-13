@@ -46,3 +46,40 @@ This cycle’s table does not silently retire earlier preregistrations. Original
 Trajectory owns `scripts/vist-deliver.sh`, `scripts/vist-signatures.conf`, STATUS, cycle verdicts and push. Cartan owns this registration and the later `_bus/08.cartan.return.md`. The registrar/verifier will not fix the implementation under test. No live case is authorized to start merely because this table exists; wait for the specified build ring and reconcile the public mapping first.
 
 After committing this table, the requested administrative bell is `[bus 08.cases] from home:cartan -> read reports/cartan.cases-08.2026-11-13.md ; ack: none`. The existing one-shot helper needs both panes ready. Fallback is restricted to own-view/payload refusals; receiver23/24 gets one re-check after at least60s, then no notice on continued refusal; uncertainty stops. Bell outcomes belong in `/tmp/vistMini-cycle08-cartan-cases-bell.log` and must not be inferred from this file’s availability. This stage emits no premature cycle RETURN.
+
+## Build b08 pre-run review — NOK, no live case executions
+
+Build ring `20261113T-b08` names source commit `428ef2a`; registration commit is `1588af0`. The builder’s smoke runs are explicitly not independent case runs and are not adopted as verification here. No verifier run of `vist-deliver.sh`, including dry-run, has occurred. No sample input, relaunch, kill or test-state mutation occurred in this review.
+
+Observed source identity:
+
+- `scripts/vist-deliver.sh`: SHA256 `f9be4416ff76d4cdef7f23bdbe31533c5d01bba351aa8367270cbe9323f0d671`.
+- `scripts/vist-signatures.conf`: SHA256 `39040d20dd83675636f021e314a9df240c482646fcda716c1f37c17a50fecda6`.
+- Installed CLI probes: Codex0.169.0; Claude2.1.323. Sample identity inventory still shows Claude `%18/PID183856`, Codex `%19/PID189655`; no relaunch assumed.
+
+The published CLI is `vist-deliver.sh ABS_BUS_FILE [FROM_LABEL]`; file fields are `to:` and `msg:`. Supported environment controls are `VIST_SESSION`, `VIST_STATE`, `VIST_WAITS`, `VIST_QUIET`, `VIST_DRY`, `VIST_SIGNATURES`. Numeric mapping matches the proposed 0/20/21/25/31, and adds 2/22/27/28; **29/unknown-signature does not exist**. Log fields actually use `INFO/WARN/ERROR`, `msg=`, `seat=`, `state=`, `exit=` and textual details. No mapping change has been tested or used to weaken a criterion. The proposed 5s wait can be represented by `VIST_WAITS='1 1 1 1 1'`, retaining `VIST_QUIET=5`; it has not been executed.
+
+The build declares `@state` values `stuck / needs_approval / delivered / uncertain`. This is a mixture of target observations and attempt outcomes. It does not resolve the preregistered requirement for a separately identifiable target that is still frozen-on-approval after delivery timeout. `signal stuck` at line74 replaces `needs_approval`; log history retains the prior reason, but no separate current frozen signal is implemented. That behavioral mismatch requires the head’s explicit disposition before the approval case.
+
+### Ranked findings from inspected source, not witnessed live failures
+
+**F1 — blocking: missing or unknown typed input surface is accepted.** Lines50–63 inspect the last six nonempty rows, search for a prompt, and return `ok` if the extracted text is empty. There is no requirement that a recognised composer exists, no cursor condition, and no unknown-view result. A missing `❯` yields an empty pipeline result, hence `ok`. Lines88–93 ignore both `send-keys` exit statuses and use the same empty-result condition as submission evidence. Missing prompt/capture failure after typing can therefore be labelled `delivered`. This contradicts C08-10’s fail-closed requirement and cannot qualify the C08-07 hypothesis. Required correction belongs to the builder: distinguish supported-empty input from absent/unrecognised input, preserve I/O errors, and require positive submission evidence. “Composer clears” alone is insufficient when the composer itself may have vanished.
+
+**F2 — blocking: process lifetime and post-text guard regressions.** Line49 tests only current command text. There is no root-PID/start-time binding, enclosing-shell refusal or revalidation between text and Enter. Line88 unconditionally sleeps then sends Enter. The old adapter’s checks and retained uncertainty are not preserved by this new carrier. A recipient exiting, changing owner or acquiring a draft during this interval has no fail-closed check here. This is a source-level gap, not a claim that a live sample was harmed. The preregistered identity/draft stop rule forbids exercising a potentially unsafe typed route merely to make its happy path green.
+
+**F3 — blocking for a general duplicate claim: reservation has a check/release race.** Existence is checked once at line37 **before** waiting. Lines78–79 take a transient directory lock, write the message marker, then remove the lock before dispatch. A second caller that passed line37 earlier can acquire the lock after that removal without rechecking the now-existing marker and dispatch the same message. The identified interleaving is inferred from the inspected operations; no concurrent live case was run or claimed. Sequential C08-03 alone would not establish concurrent deduplication. Keep a durable exclusive claim or recheck under an appropriate lock; Cartan has not fixed it.
+
+**F4 — evidence limitation: sender acceptance and target state are merged.** Queue exit0 at lines83–86 immediately sets `@state=delivered`. There is no matching receiving turn/receipt in that decision. That can report carrier acceptance, as the header says, but must not be read as target consumption or native readiness. Exact route semantics and the frozen-on-approval signal need distinct documented meanings. This finding does not deny the earlier q01–q03 receipt evidence.
+
+Other unqualified assumptions visible in source: the resolver takes the first exact-or-prefix seat match without rejecting ambiguity (lines29–34); signature registration includes a permission expression explicitly awaiting observation; quiet time is not an independent proof of idle. None is promoted into a witnessed runtime result by this review. The builder’s U+00A0 explanation is a candidate for the old adapter’s23, not an independently reproduced cause here.
+
+### Expected versus observed status at this handoff
+
+| Cases | Expected | Observed | Status |
+|---|---|---|---|
+| C08-01/02/03/04 | Unknown/dead/duplicate/busy behavior as registered. | Public source/interface inspected only; no calls or setup. | NOT_RUN pending corrected build / head disposition. |
+| C08-05/07/08 | Preserve draft; distinguish real idle input; exhaust a bounded wait without sending. | F1/F2 invalidate safe typed-route prerequisites. | BLOCKED before live setup. |
+| C08-06/09 | Positively witnessed permission-mode pair, no automatic approval, truthful frozen signal. | No permission mode changed; F1/F2 and unresolved signal semantics prevent this release from satisfying the declared prerequisites. | BLOCKED before live setup. |
+| C08-10 | Unknown input surface refuses without input. | Source has no unknown branch; absent prompt falls through to `ok` (F1). | Static contract NOK; live case NOT_RUN. |
+
+This follows the preregistration’s pre-run rule: an incompatible behavioral contract returns to the head before testing. No source was changed, no attempt key was cleared, and no trial count changes. `bash -n scripts/vist-deliver.sh` passed; this syntax check is independent of live case execution. Head action: fix or explicitly disposition F1–F4, publish the revised source hash and interface, then send a new bounded build ring. Cartan will preserve these original expectations and preregister any added race qualification before running it. The other original gate items remain outstanding.
