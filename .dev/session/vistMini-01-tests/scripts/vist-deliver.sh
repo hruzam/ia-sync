@@ -1,97 +1,145 @@
 #!/usr/bin/env bash
-# vist-deliver.sh — deliver ONE bus pointer to the seat named in the bus file's `to:`.
-# Resolver = tmux session "vist" window options (@seat @vendor @id @carrier). Data, not code.
-# Usage: vist-deliver.sh <abs-path-to-bus-file> [from-label]
-# Exit: 0 delivered(accepted) · 2 usage · 20 unknown seat · 21 dead pane · 22 not an agent · 25 duplicate msg
-#       27 uncertain (keys typed, no turn start seen) · 28 carrier error · 31 wait exhausted (occupied/busy/needs_approval)
-# Log (persistent, outside repos): ${VIST_STATE:-~/.local/state/vist}/deliver.log
-# Env: VIST_SESSION (vist) · VIST_WAITS ("30 60 120 120") · VIST_QUIET (5 s) · VIST_DRY=1 (resolve + check, never send)
+# vist-deliver.sh v2 — deliver ONE bus pointer to the seat named in the bus file's `to:` (cycle 08, after cartan NOK d032fd1).
+# Resolver: tmux session "vist" window options @seat @vendor @id @carrier (data, not code).
+# Usage: vist-deliver.sh <abs-path-to-bus-file> [from-label]      (from-label default: the file's `from:`, else home:trajectory)
+#
+# Exit  0 carrier accepted (queue) / submitted (keys: composer positively cleared) — NOT consumption
+#       2 usage · 20 unknown recipient · 21 dead target · 22 not an agent (root process) · 25 duplicate / retained key
+#      27 uncertain: keys typed, submission not proven (key kept, never retry) · 28 carrier error before any input
+#      29 unknown composer/signature or identity changed before input · 31 bounded wait exhausted (nothing typed)
+# Window options: @state   = latest TARGET observation: ready|busy|occupied|needs_approval|dead|unknown|not_agent|identity_changed
+#                 @attempt = "<msg> <outcome> <utc>"   (this sender's attempt outcome; never overwrites @state)
+#                 @notice  = on the SENDER's window when an attempt fails: "<utc> <msg> exit=<n> <reason>"
+# Files (host-local, outside repos): $VIST_STATE (~/.local/state/vist)/deliver.log · notices.log · sent/<msg>/phase
+# Env: VIST_SESSION=vist · VIST_WAITS="30 60 120 120" · VIST_QUIET=5 · VIST_DRY=1 (resolve+observe, no send) · VIST_SIGNATURES
 set -u
 SES=${VIST_SESSION:-vist}
 STATE=${VIST_STATE:-$HOME/.local/state/vist}
 WAITS=${VIST_WAITS:-"30 60 120 120"}
 QUIET=${VIST_QUIET:-5}
-SIG=${VIST_SIGNATURES:-$(dirname "$(readlink -f "$0")")/vist-signatures.conf}
-mkdir -p "$STATE/sent"; LOG=$STATE/deliver.log
+HERE=$(dirname "$(readlink -f "$0")")
+SIG=${VIST_SIGNATURES:-$HERE/vist-signatures.conf}
+mkdir -p "$STATE/sent" && chmod 700 "$STATE"; LOG=$STATE/deliver.log
+MSG=- TO=- CARRIER=- ATTEMPT=0 RESERVED=0 TYPED=0 IDX="" SIDX=""
 
-log() { printf '%s %s msg=%s seat=%s %s\n' "$(date -u +%FT%TZ)" "$1" "${MSG:--}" "${TO:--}" "$2" >>"$LOG"; }
-die() { log ERROR "exit=$1 $2"; echo "vist-deliver: $2 (exit $1)" >&2; exit "$1"; }
+utc() { date -u +%FT%TZ; }
+log() { printf '%s %s event=%s msg=%s seat=%s carrier=%s attempt=%s %s\n' "$(utc)" "$1" "$2" "$MSG" "$TO" "$CARRIER" "$ATTEMPT" "${3:-}" >>"$LOG"; }
+phase() { [[ $RESERVED == 1 ]] && printf '%s %s\n' "$(utc)" "$1" >>"$STATE/sent/$MSG/phase"; }
+release() { phase "$1"; rm -rf "${STATE:?}/sent/$MSG"; RESERVED=0; }
+notify_sender() {   # $1 exit, $2 reason
+  local line; line="$(utc) $MSG exit=$1 $2"
+  printf '%s to=%s\n' "$line" "$TO" >>"$STATE/notices.log"
+  if [[ -n $SIDX ]]; then
+    tmux set -w -t "$SES:$SIDX" @notice "$line" 2>/dev/null
+    tmux display-message -d 8000 "vist: delivery to $TO failed: $2 (msg $MSG)" 2>/dev/null
+  fi
+}
+finish() {          # $1 exit, $2 event, $3 reason   (non-zero exits only)
+  local rc=$1
+  log ERROR "$2" "reason=$3 exit=$rc"; notify_sender "$rc" "$3"; echo "vist-deliver: $3 (exit $rc)" >&2
+  [[ -n $IDX ]] && tmux set -w -t "$SES:$IDX" @attempt "$MSG $2 $(utc)" 2>/dev/null
+  if [[ $RESERVED == 1 && $TYPED == 0 ]]; then release "released-clean exit=$rc"; fi
+  if [[ $RESERVED == 1 && $TYPED == 1 ]]; then phase "kept exit=$rc $3"; fi
+  exit "$rc"
+}
 
-FILE=${1:-}; FROM=${2:-home:trajectory}
+FILE=${1:-}
 [[ -n $FILE && -f $FILE && $FILE = /* ]] || { echo "usage: $0 /abs/bus-file [from]" >&2; exit 2; }
 field() { grep -m1 -E "^$1:" "$FILE" | sed -E "s/^$1:[[:space:]]*//; s/[[:space:]]+#.*$//"; }
-TO=$(field to); MSG=$(field msg)
-[[ -n $TO && -n $MSG ]] || die 2 "bus file lacks to:/msg:"
-[[ $MSG =~ ^[A-Za-z0-9._-]+$ ]] || die 2 "msg id has unsafe characters"
+TO=$(field to); MSG=$(field msg); FROM=${2:-$(field from)}; FROM=${FROM:-home:trajectory}
+if [[ -z $TO || -z $MSG ]]; then MSG=${MSG:--}; TO=${TO:--}; finish 2 refused bad_bus_file; fi
+[[ $MSG =~ ^[A-Za-z0-9._-]+$ ]] || { MSG=unsafe; finish 2 refused unsafe_msg_id; }
 
-# --- resolve: match `to:` against @seat, whole value or the part before '|'
-row=""
-while IFS=$'\t' read -r idx seat vendor id carrier pane dead cmd; do
-  [[ -z $seat ]] && continue
-  if [[ $TO == "$seat" || $TO == "${seat%%|*}" ]]; then row="$idx"$'\t'"$vendor"$'\t'"$id"$'\t'"$carrier"$'\t'"$pane"$'\t'"$dead"$'\t'"$cmd"; break; fi
-done < <(tmux list-windows -t "$SES" -F $'#{window_index}\t#{@seat}\t#{@vendor}\t#{@id}\t#{@carrier}\t#{pane_id}\t#{pane_dead}\t#{pane_current_command}' 2>/dev/null)
-[[ -n $row ]] || die 20 "no window in session $SES labels seat '$TO'"
-IFS=$'\t' read -r IDX VENDOR ID CARRIER PANE DEAD CMD <<<"$row"
-log INFO "resolved window=$SES:$IDX pane=$PANE vendor=$VENDOR carrier=$CARRIER"
+# --- resolve recipient (and sender, for notices): match @seat whole or the part before '|'
+ROWS=$(tmux list-windows -t "$SES" -F $'#{window_index}\t#{@seat}\t#{@vendor}\t#{@id}\t#{@carrier}\t#{pane_id}' 2>/dev/null)
+match() { local want=$1 i s rest
+  while IFS=$'\t' read -r i s rest; do
+    [[ -n $s && ( $want == "$s" || $want == "${s%%|*}" ) ]] && { printf '%s\t%s\t%s\n' "$i" "$s" "$rest"; return; }
+  done <<<"$ROWS"; }
+srow=$(match "${FROM##*:}"); SIDX=${srow%%$'\t'*}
+row=$(match "$TO"); [[ -n $row ]] || finish 20 refused unknown_recipient
+IFS=$'\t' read -r IDX _ VENDOR ID CARRIER PANE <<<"$row"
+log INFO resolved "window=$SES:$IDX pane=$PANE vendor=$VENDOR"
+[[ $CARRIER == codex-queue || ( $CARRIER == tmux && $VENDOR == claude ) ]] || finish 28 refused unsupported_carrier
 
-[[ -e $STATE/sent/$MSG ]] && die 25 "duplicate: $MSG already reserved ($(cat "$STATE/sent/$MSG" 2>/dev/null))"
+# --- durable reservation BEFORE waiting (atomic mkdir: a concurrent second caller gets 25 at once)
+mkdir "$STATE/sent/$MSG" 2>/dev/null || finish 25 refused "duplicate_or_retained_key last_phase=$(tail -1 "$STATE/sent/$MSG/phase" 2>/dev/null | tr ' ' '_')"
+RESERVED=1; phase "reserved by $FROM to $TO via $CARRIER"
 
-signal() { tmux set -w -t "$SES:$IDX" @state "$1" 2>/dev/null; [[ $1 == needs_approval || $1 == stuck ]] && \
-  tmux display-message -d 8000 "vist: $SES:$IDX ($TO) is $1 — msg $MSG waiting" 2>/dev/null; }
-
-# NB: Claude writes a NO-BREAK SPACE (U+00A0) after the prompt glyph; [[:space:]] does not match it (found 2026-11-13).
-# --- one read-only observation → prints: ok | dead | not_agent | busy | occupied | needs_approval
-observe() {
-  local d c act quiet raw plain prompt st
-  d=$(tmux display -p -t "$PANE" '#{pane_dead}' 2>/dev/null) || { echo dead; return; }
-  [[ $d == 1 ]] && { echo dead; return; }
-  c=$(tmux display -p -t "$PANE" '#{pane_current_command}')
-  [[ $c == "$VENDOR" || ( $VENDOR == codex && $c == codex* ) ]] || { echo not_agent; return; }
-  raw=$(tmux capture-pane -p -e -t "$PANE" | grep -v '^[[:space:]]*$' | tail -6)
-  plain=$(printf '%s\n' "$raw" | sed -E 's/\x1b\[[0-9;]*[A-Za-z]//g')
+ident() {  # root process identity "<pid> <start-ticks> <comm>", empty when dead
+  local pid; pid=$(tmux display -p -t "$PANE" '#{pane_pid}' 2>/dev/null) || return
+  [[ $(tmux display -p -t "$PANE" '#{pane_dead}' 2>/dev/null) == 1 ]] && return
+  printf '%s %s %s' "$pid" "$(awk '{print $22}' "/proc/$pid/stat" 2>/dev/null)" "$(ps -o comm= -p "$pid" 2>/dev/null)"
+}
+composer() {  # Claude input box = rows between the last two border rows (blank rows dropped first: Claude draws inline, the
+              # pane bottom can be empty); first row must hold the prompt glyph.
+              # Prints NOBOX, or the box text with dim (suggestion) segments, NBSP, the glyph and all whitespace removed.
+  tmux capture-pane -p -e -t "$PANE" | grep -v $'^[[:space:]]*$' | tail -25 | python3 -c '
+import re,sys
+rows=[re.sub(r"\x1b\[2m.*?\x1b\[(?:0|22)m","",r).replace(" "," ") for r in sys.stdin.read().split("\n")]
+plain=[re.sub(r"\x1b\[[0-9;?]*[A-Za-z]","",r) for r in rows]
+b=[i for i,r in enumerate(plain) if len(r.strip())>=20 and set(r.strip())<={"─"}]
+if len(b)<2 or b[-1]-b[-2]<2 or "❯" not in plain[b[-2]+1]: print("NOBOX"); sys.exit()
+print(re.sub(r"\s+","","".join(plain[b[-2]+1:b[-1]]).replace("❯","",1)))'
+}
+ID0=$(ident)
+observe() {  # -> ready|busy|occupied|needs_approval|dead|not_agent|unknown|identity_changed
+  local now v st re act c plain
+  now=$(ident); [[ -z $now ]] && { echo dead; return; }
+  [[ ${now##* } == "$VENDOR" && $(tmux display -p -t "$PANE" '#{pane_current_command}') == "$VENDOR"* ]] || { echo not_agent; return; }
+  [[ $now == "$ID0" ]] || { echo identity_changed; return; }
+  plain=$(tmux capture-pane -p -t "$PANE" | grep -v '^[[:space:]]*$' | tail -6)
   while IFS='|' read -r v st re; do
     [[ -z $v || $v == \#* || $v != "$VENDOR" ]] && continue
     printf '%s\n' "$plain" | grep -qE -- "$re" && { echo "$st"; return; }
   done <"$SIG"
-  act=$(tmux display -p -t "$PANE" '#{window_activity}'); quiet=$(( $(date +%s) - act ))
-  # busy blocks only the typed carrier; codex queue holds the message until the receiver's turn ends (receiver keeps working)
-  [[ $CARRIER == tmux ]] && (( quiet < QUIET )) && { echo busy; return; }
-  if [[ $CARRIER == tmux ]]; then   # typed carrier: composer must be empty once dim (suggestion) text is removed
-    prompt=$(printf '%s\n' "$raw" | grep '❯' | tail -1 | sed -E 's/\xc2\xa0/ /g; s/\x1b\[2m[^\x1b]*\x1b\[(0|22)m//g; s/\x1b\[[0-9;]*[A-Za-z]//g; s/^.*❯[[:space:]]*//; s/[[:space:]]+$//')
-    [[ -n $prompt ]] && { echo occupied; return; }
-  fi
-  echo ok
+  [[ $CARRIER == codex-queue ]] && { echo ready; return; }   # queue holds the message until the receiver's turn ends
+  act=$(tmux display -p -t "$PANE" '#{window_activity}'); (( $(date +%s) - act < QUIET )) && { echo busy; return; }
+  c=$(composer); [[ $c == NOBOX ]] && { echo unknown; return; }; [[ -n $c ]] && { echo occupied; return; }
+  echo ready
 }
+setstate() { tmux set -w -t "$SES:$IDX" @state "$1" 2>/dev/null; }
+[[ -n $ID0 ]] || { setstate dead; finish 21 refused dead_target; }
 
-# --- wait loop: re-observe (read-only) with growing gaps; send at most once
-st=$(observe); n=0
+# --- bounded wait (read-only observations only)
+st=$(observe); setstate "$st"; n=0
 for w in $WAITS; do
-  case $st in ok) break ;; dead) die 21 "pane $PANE dead" ;; not_agent) die 22 "pane $PANE runs '$CMD', not $VENDOR" ;; esac
-  signal "$st"; log WARN "state=$st attempt=$((++n)) waiting=${w}s quiet_needed=${QUIET}s"
-  sleep "$w"; st=$(observe)
+  case $st in ready) break ;; dead) finish 21 refused dead_target ;; not_agent) finish 22 refused not_agent_root ;;
+    identity_changed) finish 29 refused identity_changed ;; esac
+  ATTEMPT=$((++n)); log WARN wait "state=$st waiting=${w}s"; sleep "$w"; st=$(observe); setstate "$st"
 done
-case $st in ok) ;; dead) die 21 "pane $PANE dead" ;; not_agent) die 22 "pane $PANE not $VENDOR" ;;
-  *) signal stuck; die 31 "wait exhausted: last state=$st after $n waits ($WAITS)" ;; esac
+case $st in ready) ;; dead) finish 21 refused dead_target ;; not_agent) finish 22 refused not_agent_root ;;
+  identity_changed) finish 29 refused identity_changed ;; unknown) finish 29 refused unknown_composer ;;
+  *) finish 31 refused "wait_exhausted last_state=$st waits=$n" ;; esac
 
 POINTER="[vist $MSG] from $FROM -> read $FILE ; ack: per file"
-[[ ${VIST_DRY:-0} == 1 ]] && { log INFO "dry-run ok, would send via $CARRIER"; echo "dry-run ok: $SES:$IDX $CARRIER"; exit 0; }
-mkdir "$STATE/sent/$MSG.lock" 2>/dev/null || die 25 "duplicate: concurrent reservation for $MSG"
-printf '%s %s %s\n' "$(date -u +%FT%TZ)" "$CARRIER" "$PANE" >"$STATE/sent/$MSG"; rmdir "$STATE/sent/$MSG.lock"
+if [[ ${VIST_DRY:-0} == 1 ]]; then log INFO dry_run "would_send=1"; release released-dry; echo "dry-run ok: $SES:$IDX $CARRIER"; exit 0; fi
 
 case $CARRIER in
   codex-queue)
+    [[ $(ident) == "$ID0" ]] || finish 29 refused identity_changed
+    TYPED=1; phase carrier-called   # from here a submission may exist: key is kept whatever happens
     out=$(codex queue --thread "$ID" --message "$POINTER" 2>&1); rc=$?
-    log INFO "codex-queue rc=$rc out=$(printf '%s' "$out" | tr '\n' ' ')"
-    (( rc == 0 )) || die 28 "codex queue failed rc=$rc"
-    signal delivered; echo "delivered (queued): $out"; exit 0 ;;
+    log INFO carrier_call "rc=$rc out=$(printf '%s' "$out" | tr '\n' ' ')"
+    (( rc == 0 )) || finish 27 uncertain "codex_queue_rc=$rc"
+    phase "queued $(printf '%s' "$out" | grep -oE '[0-9a-f]{8}-[0-9a-f-]{27}' | head -1)"
+    tmux set -w -t "$SES:$IDX" @attempt "$MSG queued $(utc)"; log INFO queued "accepted=1"; echo "queued: $out"; exit 0 ;;
   tmux)
-    tmux send-keys -t "$PANE" -l "$POINTER"; sleep 1; tmux send-keys -t "$PANE" Enter
-    log INFO "keys sent, waiting for the composer to clear (= submitted)"
-    for _ in 1 2 3 4 5 6 7 8 9 10; do   # vendor-neutral: submitted text leaves the composer. Spinner words vary by version.
-      sleep 1
-      left=$(tmux capture-pane -p -e -t "$PANE" | grep '❯' | tail -1 | sed -E 's/\xc2\xa0/ /g; s/\x1b\[2m[^\x1b]*\x1b\[(0|22)m//g; s/\x1b\[[0-9;]*[A-Za-z]//g; s/^.*❯[[:space:]]*//; s/[[:space:]]+$//')
-      if [[ -z $left ]]; then signal delivered; log INFO "submitted (composer clear)"; echo "delivered (submitted)"; exit 0; fi
+    [[ $(ident) == "$ID0" ]] || finish 29 refused identity_changed
+    TYPED=1; phase text-attempted
+    tmux send-keys -t "$PANE" -l "$POINTER" || finish 27 uncertain send_keys_text_failed
+    sleep 1
+    [[ $(ident) == "$ID0" ]] || finish 27 uncertain identity_changed_after_text
+    want=$(printf '%s' "$POINTER" | tr -d '[:space:]'); have=$(composer)
+    [[ $have == "$want" ]] || finish 27 uncertain "post_text_mismatch box_len=${#have} want_len=${#want}"
+    phase enter-attempted
+    tmux send-keys -t "$PANE" Enter || finish 27 uncertain send_keys_enter_failed
+    for _ in 1 2 3 4 5 6 7 8 9 10; do
+      sleep 1; c=$(composer)
+      if [[ $c != NOBOX && -z $c ]]; then
+        phase submitted; tmux set -w -t "$SES:$IDX" @attempt "$MSG submitted $(utc)"
+        log INFO submitted "composer=positively_empty"; echo "submitted"; exit 0
+      fi
     done
-    signal uncertain; die 27 "keys typed, no turn start seen in 10 s; reservation kept, never retry" ;;
-  *) die 28 "unknown carrier '$CARRIER'" ;;
+    finish 27 uncertain "no_positive_submission_evidence" ;;
 esac
