@@ -17,7 +17,7 @@ checkpoint: >
   Counts3+3 supported; all-case criterion remains PARTIAL/OPEN. R1-R6 await author repair.
   Live labels repaired from observed native identities; reports/10.context-observation.json is a snapshot.
 in_flight: >
-  POINT10-13 consumed and RETURNs exist; repaired report awaits source-bound fresh review14. A scheduled or accepted send is not consumption.
+  Cycles10-14 reviewed; report remains NOK only for residual R4/R5. Corrective POINT15 dispatch/reply pending. A scheduled or accepted send is not consumption.
   Host-local /tmp/vist-c10-run/dispatch.json records each attempted carrier/fallback; reconcile before any resend.
 recovery_probe: >
   Read _bus/10.cartan.point.md through 13.cartan.point.md, their named RETURN contents and any corresponding
@@ -25,11 +25,10 @@ recovery_probe: >
   and /tmp/vist-c10-run/lease.json if present; inspect current tmux native identities before any peer input.
   Missing delivery record means unattempted, accepted carrier means no receipt yet, RETURN content permits review.
 delegated:
-  - {cycle: 10, to: trajectory, turn: 10, awaiting: verdict cartan}
-  - {cycle: 14, to: next.cartan, turn: 10, awaiting: return}
+  - {cycle: 15, to: trajectory, turn: 10, awaiting: return}
 join_when: >
-  Cycles11-13 have scoped ACCEPT verdicts; cycle14 must review its named report hash R1-R6 and cycle10 must
-  receive Cartan's disposition based on that review. Unrun experimental criteria and Majkee GO remain OPEN.
+  Cycles11-14 have terminal scoped dispositions. Corrective15 must receive a fresh source-bound review and
+  terminal disposition satisfying the replaced report branch. Unrun criteria and Majkee GO remain OPEN.
 decision_20261113_keeper: >
   majkee: "keeper watch-and-advise only. Cartan strongest bash provides pushes and clearing - doing the /clear."
   Keeper advises on snapshots/notes; Cartan owns STATUS, integration, push and gated clearing/re-entry.
@@ -46,8 +45,8 @@ holds: >
   be committed/pushed and successor read-back obtained before controller transfer. Keeper never clears or pushes.
   Host-local heartbeat is finite, controller-only and stops on completion, failure or awaiting operator decision.
 next: >
-  Read _bus/14.next-cartan.return.md against POINT14's exact report hash and R1-R6; then disposition cycle10
-  and join turn10, or issue one bounded corrective POINT for a concrete NOK.
+  Read _bus/15.trajectory.return.md, freeze its report hash and dispatch one source-bound fresh review;
+  stop expanding wording scope and join once the supported corrections pass.
 expected: >
   Specific seat consumption/RETURN evidence, repaired report with R1-R6 dispositions, and independent fresh
   review of that revision. Empty roster activity or queue acceptance does not satisfy the join.
