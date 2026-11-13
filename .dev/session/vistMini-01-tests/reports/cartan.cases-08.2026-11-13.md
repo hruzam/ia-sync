@@ -99,3 +99,49 @@ Run order refinement for independent cleanup: known/unknown recipient and Codex 
 ### C08-05 pre-setup timing clarification
 
 Registered before its setup or call: C08-05 alone uses `VIST_WAITS='1 1 1 1 1 1 1 1 1 1'` (10s), retaining `VIST_QUIET=5`; completion allowance is12s. Clearing the verifier’s draft causes native redraw/output and restarts that five-second quiet gate, so a five-second total cannot reliably contain both an observed occupied interval and a full post-clear quiet interval. C08-08 and all other cases retain the frozen five-second wait. No C08-05 observation has been used to select this bound.
+
+## Build b08r1 observed results — PARTIAL, NOK for release
+
+Independent live work was run after registration commits `76bf843` and, for C08-05 timing, `e7642ac`. Source remained `06cc9b4` with the frozen hashes before and after. Evidence root: `/tmp/vc08r1.tkz50zbf` (mode0700; files mode0600). `requests.jsonl`, `results.jsonl`, selected `codex-receipts.json`, timestamped metadata/ANSI frames and `05-readonly-recovery-check.json` remain local. Persistent logs remain at `~/.local/state/vist/{deliver,notices}.log`; only this verifier’s fresh IDs were extracted. No implementation or signature changes were made.
+
+| ID | Expected | Observed | Verdict |
+|---|---|---|---|
+| C08-01 | 20, unknown recipient, no carrier. | `c08r1-01-fdf67161`: 20 in0.042s at12:03:09Z; `event=refused reason=unknown_recipient`. A sender notice/log was written; no carrier event for this ID. | PASS. |
+| C08-02 | 21, dead sample, no resume/carrier. | `c08r1-02-9d1310c8`: verified `%19/PID189655` was terminated last among Codex cases with remain-on-exit enabled; `pane_dead=1`. 21 in0.089s at12:10:17Z, `reason=dead_target`, `@state=dead`. Window retained. | PASS; sample deliberately remains dead. |
+| C08-03 | First0, duplicate25, one receiving turn/nonce. | `c08r1-03-54ed9856`: first0 at12:03:10Z, second25 at12:03:24Z. Exactly one matching user turn `01a1d4ca-4cc7-7b21-9003-694dcad1166a`; final `copy-f3c19ad67c` at12:03:15.601Z. Retained claim not cleared. | PASS for sequential duplicate. |
+| C08-04 | Queue accepted while active; first task completes, second follows; target remains observed busy while first runs. | `c08r1-04-90c4f4e6`: 0 at12:08:11Z while setup turn `01a1d4ce-ad52-7112-ac5b-1855b95db180` was active executing a bounded `sleep 12`. Setup completed12:08:16.549Z; queued request user event12:08:16.596Z, final `copy-dbf673b9ec` at12:08:22.194Z. **`@state=ready` during the active first task.** | Carrier/ordering PASS; observation expectation FAIL. “Queue can accept” is not native idle. |
+| C08-05 | Preserve draft until deliberate clear; then one submitted message, exit0, receipt. | `c08r1-05-ae3ee8e7`: occupied witnessed, exact verifier draft cleared through the existing writable client, then quiet-gate waits. At12:11:00Z the helper’s unqualified `tmux send-keys` returned `client is read-only`; exit27 in10.861s. No `enter-attempted` phase. | FAIL successful recovery; conservative uncertainty handling held. Global stop rule fired; no further cases. |
+| C08-06 | Positively witnessed default-mode approval, no input while frozen, truthful state. | No relaunch/approval setup performed after C08-05 uncertainty. Original Claude sample remains auto mode. | BLOCKED / NOT_RUN, not permission evidence. |
+| C08-07 | Supported genuine native dim suggestion is recognised idle; no false23. | Initial native sample frame had an empty composer and **no dim suggestion**. No synthetic suggestion or substituted ordinary-send pass was manufactured. | SETUP_NOT_WITNESSED for the required subtype. |
+| C08-08 | 31 within5s+2s allowance; exact draft preserved; occupied remains observed. | `c08r1-08-8497fd5d`: occupied throughout five waits, ERROR refusal `reason=wait_exhausted ... exit=31`; elapsed5.643s, `@state=occupied`. Exact draft and cursor unchanged; only the unchanged verifier draft was then cleared, without Enter. No carrier event. | PASS. |
+| C08-09 | Actual allowed/default-mode counterpart, observed permission outcome. | Not run after global stop; no mode change or permission decision fabricated. | BLOCKED / NOT_RUN. |
+| C08-10 | Native unknown view refuses29 without input; does not invent approval. | `c08r1-10-0c0e00f2`: native `/help` is a non-security modal. Read-only classification (`VIST_DRY=1`) returned31 after5.392s, repeatedly `needs_approval`, because help also says **“Esc to cancel.”** No carrier input. Original unknown classification expectation was29. | FAIL classifier specificity; safe refusal. This is not a witnessed actual permission prompt. |
+| C08-11 | Concurrent callers yield{0,25}, one carrier/receiving turn and nonce. | `c08r1-11-8ac7e397`: simultaneous calls at12:03:35Z yielded25 and0. One queued ID and one matching user turn `01a1d4ca-b1a7-7790-852c-0c450293ffb3`; final `copy-dc59659077` at12:03:40.376Z. Durable claim retained. | PASS for this observed concurrent pair; not arbitrary crash/concurrency proof. |
+
+All UTC times above are2026-11-13. Codex receipt extraction found one user event and matching nonce final for each of03,11,04-setup and04, with separate completed turn IDs. This is independently checked consumption, not an inference from helper exit0. Sample tests do not add to the senior-seat ordinary counts.
+
+### Retained uncertainty, client routing and cleanup
+
+Do not retry or clear `~/.local/state/vist/sent/c08r1-05-ae3ee8e7/phase`. Its actual trail is:
+
+```text
+2026-11-13T12:10:50Z reserved by home:cartan to sample-claude via tmux
+2026-11-13T12:11:00Z text-attempted
+2026-11-13T12:11:00Z kept exit=27 send_keys_text_failed
+```
+
+Read-only post-stop inspection found no matching C08-05 user message in the sample Claude transcript. That is useful evidence, not permission to erase the uncertain claim. There was no Enter phase, no retry and no manual fallback to that sample. All following case execution stopped; permission cases remain unqualified.
+
+A setup-cleanup `send-keys Escape` also returned `client is read-only` while closing the known `/help` view. Read-only client inventory showed two spectator clients (`vist-majkee`/`vist-majkee2`, read-only=1) and Cartan’s existing `/dev/pts/23` client, read-only=0. Installed tmux supports explicit `send-keys -c`. Cleanup and owned-draft setup used **that existing writable client**, without changing either spectator flag, target identity, permission mode or helper source. The tested helper itself remained unchanged and selected no client. Its exact client-selection internals were not instrumented; default routing versus explicit routing is the observed distinction, not a fully established causal account of a particular spectator’s selection.
+
+C08-02’s Codex sample intentionally remains dead in `vist:4/%19`, with its old UUID/transcript and remain-on-exit retained; a future head must explicitly relaunch and rebind it. Claude sample remains the original `%18/PID183856`, empty composer after its verifier-owned draft was removed; no default-mode relaunch or native approval was performed. Other than separately authorised administrative bells, no input went to senior windows1/2. State-option and notice writes are recorded as such, not agent input.
+
+### Remaining findings / next build scope
+
+- Fix or explicitly bind the typed carrier’s client routing; preserve the safe uncertainty result and never clear its historical key as part of a repair.
+- Replace the overbroad help/approval signature with positively distinguished, witnessed contexts. A real native permission dialog is still required for C08-06; `/help` cannot stand in for it.
+- `@state=ready` on the queue route currently means carrier acceptance is possible, even while the native agent is busy. Separate that capability from the promised target observation; retain the original expected-state failure until the head settles the contract.
+- Sender failure feedback was actually observed as `@notice`, popup/log output and retained attempt state. **No separate sending-agent turn was generated by those channels.** The notifier function contains window/log operations, not a native runtime wake-up. This qualifies display/log feedback, not Majkee’s requested automatic return to an idle sender. A bounded native callback is a candidate; it needs explicit loop limits and must not report callback failure by recursively calling itself.
+- Static lifetime/known-composer repairs were inspected and the draft/timeout paths exercised, but exit-between-text-and-Enter, crash recovery and all original semantic cases remain unqualified. No broad delivery release or completed gate follows from the passing subset.
+
+Recommended outcome: PARTIAL verification, NOK for release. Five cases passed as scoped (01,02,03,08,11); busy04 has carrier success and an observation failure;05 and10 failed their declared functional expectations;06/09 are blocked and07’s subtype was not witnessed. Preserve the original b08 RETURN and use the separate r1 RETURN for this handoff.
