@@ -11,3 +11,9 @@ Operator authorised this project-local continuity cache. Pointer only: **read ST
 - Foreign dirty hooks/config/helper-utils are not this work. Workers write assigned files, controller stages exact paths. Preserve historical t03 and c08r1-05-ae3ee8e7 keys forever. No forced resume/writer-lock changes. Prototype not released; all-cases criterion and Majkee GO remain open.
 - Keeper recommends card preparation at45%, transfer by35% remaining; last root observation43%, fresh reviewer78% (17:23Z), not live promises. Fresh reviewer is already working and has context; a warm successor is not a zero-history experiment.
 - Next VIST proposal is `_bus/13.nablarva-cartan.return.md`; source L20/L21 checked in Nablarva flags. It recommends documentary/offline replay qualification before any actuator release. No X0 RUNBOOK/STATUS has been opened or authorised by implication.
+
+## Transfer checkpoint update
+
+Turn10 reporting unit is complete: report3584a02, SHA dc219b62e304b48f02c98117f258b25be0a86061520ed289892f17a337e72d39, fresh RETURN16 PASS R1-R6 and scoped verdicts15/16. All-cases coverage and Majkee GO remain OPEN. POINT17 is a read-back candidate, not activation. Follow the current STATUS for ownership. Proposed next unit is a documentary fixture inventory against reports/vist.offline-qualification-proposal.2026-11-13.md, no X0/actuator activation.
+
+Old advisory presence ID64343d12f6bf0d076ccf72bee92dfb21 (RB_STATE=/tmp/vist-c10-restart-presence) belongs to the old controller; detach exactly this ID when transfer completes. Host-local timer must stop on the completed unit/transfer. Pending hb-1735d777836f4828 was queued to old root and must be retained until actual receipt, never recycled as new work. Old root handles late queued messages read-only after transfer. Successor must take its own presence ID and timer lease.

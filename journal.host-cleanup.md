@@ -18,6 +18,7 @@ Started transient user timer `vist-mini-c10-controller.timer`: controller-only n
 failure or completed/operator-held work. Host-local lease and logs: `/tmp/vist-c10-run/`.
 Source/tests and restart checkpoint: `.dev/session/vistMini-01-tests/` at635811a;7 focused tests pass.
 First timer call returned queue acceptance; native consumption remains separately observed.
+Timer stopped after the reporting unit joined, before successor read-back17; pending wake retained.
 No permanent cron, global configuration, peer credentials or runtime history was added to source.
 Stop this exact timer with `systemctl --user stop vist-mini-c10-controller.timer`; do not stop
 other user services. STATUS owns task state. This is local experimental orchestration, not VIST
