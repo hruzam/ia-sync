@@ -10,6 +10,36 @@
 
 ---
 
+## HOME — 2026-11-12 · Trajectory · zram swap guard completed (pad.1-zram-guard)
+
+Home had zero swap (9.6 GB RAM). Added a 4 GiB zstd zram swap (`/etc/systemd/zram-generator.conf`,
+prio 100), `vm.swappiness=100` (`/etc/sysctl.d/99-zram-swappiness.conf`), and zswap switched
+off at runtime only (reverts to `Y` on reboot — no grub edit, by design). The 2026-09-25 STEP 2
+failure was the kernel/module mismatch (running 6.18.39 vs installed 6.18.49); a reboot fixed it
+and zram-generator armed the device on its own. Verified: `/dev/zram0` 4G zstd, swappiness 100,
+zswap N. Re-arms every boot. Home-local, no escalation to Houston. PAD:
+`.dev/session/zram-guard-implementation/pad.1-zram-guard.md`.
+
+**Machine registry + zram brick (Oraculum directive, majkee-granted).** Added
+`zsh/registries/machine.{home,office,monitor}.json` (declared intent + `ram_class_gb`, swap
+policy; home = zram 4096/zstd/100, swappiness 100; office/monitor = `policy: none`),
+`zsh/system/machine.zsh` (`_machine_get`, `machine-show`), `zsh/system/zram.zsh`
+(`zram-st` with declared-vs-realized block, `zram-set`, `zram-revert`, RAM-guarded restart),
+`registries/README.md` (file-kind rule), `zsh/AGENTS.md` rows. `config.home.zsh` exports
+`MACHINE_REGISTRY`. **Seeding exception:** all three host files were authored from home under
+majkee's one-time grant (values measured read-only over the tailnet); from now each host's own
+seat edits its file. **Owed by office + monitor seats:** mirror the one-line export in their
+`config.<host>.zsh` (`export MACHINE_REGISTRY="$ZSH_CONFIG_DIR/registries/machine.$MACHINE_NAME.json"`)
+— optional, the reader falls back to the same path. Root `AGENTS.md`: RAM line corrected (11.6 GiB
+was monitor, home is 9.58 GiB) and now points at `ram_class_gb`. Deployed home only.
+
+**Watch:** at verification, swap showed 3.8G of 4G used with only ~190 MiB RAM free, so the 4G
+size may be tight. Resize = edit `zram-size`, then `systemctl restart systemd-zram-setup@zram0`.
+**Not done:** the MagicDNS companion (DN0–DN3) — reports still blank; check whether it is still
+needed (name resolution may have been fixed by the reboot).
+
+---
+
 ## OFFICE — 2026-11-12 · Trajectory · Office peer keys published; host facts deduplicated
 
 Pulled ia-sync + reposoma fast-forward (reposoma via `merge --ff-only`: pull.rebase refuses

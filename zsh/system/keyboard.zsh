@@ -57,3 +57,14 @@ alias phpst='_phpst'                   # host runtime status
 alias composer74='_composer74'         # Composer on PHP 7.4
 alias composer8='_composer8'           # Composer on PHP 8+
 alias tmcp='_test_mariadb_mcp'          # office MariaDB MCP stdio probe
+
+# ── Machine registry ───────────────────────────────────────────────────────────
+# Bodies in: system/machine.zsh · data: registries/machine.<host>.json
+alias machine-show='_machine_show'     # pretty-print this host's declared registry
+
+# ── zram swap guard ────────────────────────────────────────────────────────────
+# Bodies in: system/zram.zsh
+alias zram-st='_zram_status'           # swap + zramctl + memory + tunables + config
+alias zram-set='_zram_set'             # size= algo= prio= swappiness= zswap= [--no-apply] [--force]
+alias zram-revert='_zram_revert'       # remove config + swapoff (confirms)
+alias zram-help='_zram_help'           # command panel for this engine

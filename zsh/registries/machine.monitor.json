@@ -1,0 +1,11 @@
+{
+  "_meta": {
+    "role": "Per-machine registry: declared intent + nominal class for THIS host. Not measurements (kernel) and not realized state (/etc).",
+    "reached_by": "config.<host>.zsh exports MACHINE_REGISTRY; engines read via _machine_get (system/machine.zsh). Never eval'd.",
+    "owner": "this host's seat, same rule as config.<host>.zsh",
+    "seeded": "2026-11-12 from read-only tailnet inventory"
+  },
+  "machine": "monitor",
+  "ram_class_gb": 12,
+  "swap": { "policy": "none" }
+}

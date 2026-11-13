@@ -174,7 +174,8 @@ tailscale status --json | jq -r .Self.ID   # match against machines.json
 "exists = office · absent = home". It is FALSE — `~/projects` exists on home too. Do not
 reinstate it; use the php74 / valet / tailscale signals above.
 
-RAM is a hardware fingerprint (office 15.38 GiB / 16 GB · home ~11.6 GiB / 12 GB, two cards) —
+RAM is a hardware fingerprint (nominal class per host: `ram_class_gb` in
+`zsh/registries/machine.<host>.json`; measure with `awk '/MemTotal/' /proc/meminfo`) —
 a cheap second factor a config edit cannot fake, and independent of the PHP setup it helps
 classify (unlike `ls /usr/bin/php74`, which probes the very thing you're deciding, and flickers
 while php74 is mid-rebuild). Verified office-side 2026-09-22.

@@ -152,7 +152,12 @@ Branch:
 
 >MAJKEE report 3
 ```zsh
-
+(after reboot onto 6.18.49; verified by seat 2026-11-12)
+NAME       TYPE      SIZE USED PRIO
+/dev/zram0 partition   4G 3,8G  100
+---
+NAME       ALGORITHM DISKSIZE    DATA  COMPR  TOTAL STREAMS MOUNTPOINT
+/dev/zram0 zstd            4G 1020,4M 252,6M 259,2M         [SWAP]
 ```
 
 ---
@@ -174,7 +179,8 @@ Branch:
 
 >MAJKEE report 4
 ```zsh
-
+vm.swappiness=100
+swappiness = 100
 ```
 
 ---
@@ -199,7 +205,8 @@ Branch:
 
 >MAJKEE report 5
 ```zsh
-
+N
+(seat re-read /sys/module/zswap/parameters/enabled = N)
 ```
 
 ---
@@ -224,7 +231,15 @@ Branch:
 
 >MAJKEE report 6
 ```zsh
+               total        used        free      shared  buff/cache   available
+Mem:           9,6Gi       7,1Gi       191Mi        89Mi       2,5Gi       2,5Gi
+Swap:          4,0Gi       3,8Gi       154Mi
+NAME       TYPE      SIZE USED PRIO
+/dev/zram0 partition   4G 3,8G  100
+-rw-r--r-- 1 root root  18 12. lis 22.51 /etc/sysctl.d/99-zram-swappiness.conf
+-rw-r--r-- 1 root root 148 26. zář 06.52 /etc/systemd/zram-generator.conf
 
+VERDICT: DONE (zram part). Note: swap 3.8G/4G used at check time — see journal.
 ```
 
 ---

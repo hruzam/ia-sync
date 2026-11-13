@@ -142,6 +142,8 @@ export RB_ROOT="$HOME/ia-sync/.dev/session"  # bench repointed 2026-09-09 (bed m
 export TAILSCALE_PEER="hruzam-120922"  # office machine hostname on tailnet
 export TS_DASH_PORT="9733"             # HTTP dashboard port (ts-dash)
 
+# Per-machine registry pointer (data: registries/machine.home.json; read by system/machine.zsh)
+export MACHINE_REGISTRY="$ZSH_CONFIG_DIR/registries/machine.$MACHINE_NAME.json"
 [[ -f ~/.config/zsh/system/base.zsh ]] && source ~/.config/zsh/system/base.zsh
 _ts_header 2>/dev/null  # compact peer status line on every shell open (silent if down)
 _dash_header 2>/dev/null  # startup dashboard — @majkee's editable notes (system/dashboard.md)

@@ -67,3 +67,13 @@
 # PARTITION 7: remote-cli control panel (both hosts; defines only)
 # -----------------------------------------------------------------------------
 [[ -f ~/.config/zsh/remote-cli/base.zsh ]] && source ~/.config/zsh/remote-cli/base.zsh
+
+# -----------------------------------------------------------------------------
+# PARTITION 8: machine registry reader (defines only) — must precede zram
+# -----------------------------------------------------------------------------
+[[ -f ~/.config/zsh/system/machine.zsh ]] && source ~/.config/zsh/system/machine.zsh
+
+# -----------------------------------------------------------------------------
+# PARTITION 9: zram swap engine (cross-machine; defines only — acts on call)
+# -----------------------------------------------------------------------------
+[[ -f ~/.config/zsh/system/zram.zsh ]] && source ~/.config/zsh/system/zram.zsh

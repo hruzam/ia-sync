@@ -66,6 +66,9 @@ Pattern, generalized from `ai/` (the reference implementation):
 | `piql/piql.zsh` | `config.zsh` | PIQL integration (office only) |
 | `archx/commands.zsh` | `config.zsh` | Arch monitoring suite |
 | `system/shell.zsh` | `config.zsh` | Shell helpers |
+| `system/machine.zsh` | `system/base.zsh` (P8) | Per-machine registry reader — `_machine_get <jq-path>`, `machine-show`; reads `registries/machine.<host>.json` via `$MACHINE_REGISTRY` (home exports it; other hosts fall back to the same path). Defines only, never eval'd |
+| `system/zram.zsh` | `system/base.zsh` (P9) | zram swap engine — `zram-st` (live + realized + declared), `zram-set`, `zram-revert`, `zram-help`; defaults: realized conf → registry → fallback; RAM-guarded restart |
+| `registries/machine.<host>.json` | `system/machine.zsh` | Declared intent + nominal class per host (`ram_class_gb`, swap policy); one file per machine, host's own seat edits it. File-kind rule: `registries/README.md` |
 | `system/home.php-composer.zsh` | `system/base.zsh` on home | `_php74 / _php8 / _phpst / _composer74 / _composer8` — Docker PHP 7.4 + both Composer lanes; native PHP 8+ |
 | `system/office.php-switch.zsh` | `system/base.zsh` on office | Same keyboard targets with native CLI + concurrent FPM/socket routing; `$MACHINE_NAME` guard keeps it inert elsewhere |
 | `.env/secrets.zsh` | `config.zsh` | API keys (GEMINI, OPENAI, etc.) |
