@@ -43,7 +43,8 @@ notify_sender() {   # $1 exit, $2 reason
       mkdir -p "$STATE/notices"; local nf="$STATE/notices/$MSG.n.md"
       printf '```yaml\nmsg: %s.n\nfrom: vist\nto: %s\nre: %s\n```\n\nDelivery of %s to %s FAILED: exit=%s %s.\nSee %s/deliver.log (msg=%s). Nothing was resent.\n' \
         "$MSG" "$SSEAT" "$FILE" "$MSG" "$TO" "$1" "$2" "$STATE" "$MSG" >"$nf"
-      VIST_NOTICE_HOP=1 VIST_WAITS="${VIST_NOTICE_WAITS:-30 60 120}" nohup bash "$0" "$nf" vist >/dev/null 2>&1 &
+      # C12 (r2): a managed caller may kill its whole process group on return; setsid -f gives the child its own session.
+      VIST_NOTICE_HOP=1 VIST_WAITS="${VIST_NOTICE_WAITS:-30 60 120}" setsid -f bash "$0" "$nf" vist </dev/null >/dev/null 2>&1
       log INFO notice_spawned "notice=$nf to=$SSEAT"
     fi
   fi
