@@ -10,6 +10,22 @@
 
 ---
 
+## HOME — 2026-11-13 · Cartan · bounded vistMini controller check-in
+
+Majkee authorised group restart, observed tmux re-marking, caches and scoped cron/check-ins.
+Started transient user timer `vist-mini-c10-controller.timer`: controller-only native Codex queue,
+120s cadence,20min lease,max8 wakes, no repeat while a wake is unacknowledged; stops on expiry,
+failure or completed/operator-held work. Host-local lease and logs: `/tmp/vist-c10-run/`.
+Source/tests and restart checkpoint: `.dev/session/vistMini-01-tests/` at635811a;7 focused tests pass.
+First timer call returned queue acceptance; native consumption remains separately observed.
+No permanent cron, global configuration, peer credentials or runtime history was added to source.
+Stop this exact timer with `systemctl --user stop vist-mini-c10-controller.timer`; do not stop
+other user services. STATUS owns task state. This is local experimental orchestration, not VIST
+transport release or canon. All existing pane roots were observed as shell wrappers; direct native
+Codex queue and explicitly authorised, guarded manual Claude start notices were kept distinct.
+
+---
+
 ## HOME — 2026-11-12 · Trajectory · zram swap guard completed (pad.1-zram-guard)
 
 Home had zero swap (9.6 GB RAM). Added a 4 GiB zstd zram swap (`/etc/systemd/zram-generator.conf`,

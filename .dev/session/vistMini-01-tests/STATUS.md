@@ -10,14 +10,14 @@ gate: >
   Majkee accepts an independently verified trial report in
   /home/hruzam/ia-sync/.dev/session/vistMini-01-tests/reports/ showing, on home, Claude↔Codex:
   at least three ordinary messages each direction delivered and consumed without operator relay;
-  every pre-registered refusal/recovery case run with expected vs observed; each seat's
+  every pre-registered refusal/recovery case run with expected versus observed; each seat's
   permission boundary stated; and the limits of applicability to VIST stated.
 checkpoint: >
   Report db55d24 reviewed NOK in _bus/09.cartan.verify.md (ef275f3); checks1/2/5 PASS,3/4 NOK.
   Counts3+3 supported; all-case criterion remains PARTIAL/OPEN. R1-R6 await author repair.
   Live labels repaired from observed native identities; reports/10.context-observation.json is a snapshot.
 in_flight: >
-  Cycles10-14 reviewed; report remains NOK only for residual R4/R5. Corrective POINT15 dispatch/reply pending. A scheduled or accepted send is not consumption.
+  Cycles10-14 reviewed; report remains NOK only for residual R4/R5. Corrective15 returned; report hash is frozen by POINT16, whose fresh check is pending. A scheduled or accepted send is not consumption.
   Host-local /tmp/vist-c10-run/dispatch.json records each attempted carrier/fallback; reconcile before any resend.
 recovery_probe: >
   Read _bus/10.cartan.point.md through 13.cartan.point.md, their named RETURN contents and any corresponding
@@ -25,7 +25,8 @@ recovery_probe: >
   and /tmp/vist-c10-run/lease.json if present; inspect current tmux native identities before any peer input.
   Missing delivery record means unattempted, accepted carrier means no receipt yet, RETURN content permits review.
 delegated:
-  - {cycle: 15, to: trajectory, turn: 10, awaiting: return}
+  - {cycle: 15, to: trajectory, turn: 10, awaiting: verdict cartan}
+  - {cycle: 16, to: next.cartan, turn: 10, awaiting: return}
 join_when: >
   Cycles11-14 have terminal scoped dispositions. Corrective15 must receive a fresh source-bound review and
   terminal disposition satisfying the replaced report branch. Unrun criteria and Majkee GO remain OPEN.
@@ -43,10 +44,11 @@ holds: >
   labelled manual fallback only after current foreground identity and idle/draft/approval checks for Claude.
   No fallback after uncertain input until receipt reconciliation. No /clear with active writes/sends; card must
   be committed/pushed and successor read-back obtained before controller transfer. Keeper never clears or pushes.
-  Host-local heartbeat is finite, controller-only and stops on completion, failure or awaiting operator decision.
+  Host-local heartbeat lease /tmp/vist-c10-run/lease.json is finite (20min,max8), controller-only, one pending wake;
+  it stops on completion, failure, transfer or awaiting operator. First wake queued; receipt must be observed.
 next: >
-  Read _bus/15.trajectory.return.md, freeze its report hash and dispatch one source-bound fresh review;
-  stop expanding wording scope and join once the supported corrections pass.
+  Read _bus/16.next-cartan.return.md against POINT16 hash; disposition15/16 and join turn10 when reporting
+  corrections pass. Preserve all-cases PARTIAL/OPEN and Majkee GO/STOP. Stop check-in while awaiting operator.
 expected: >
   Specific seat consumption/RETURN evidence, repaired report with R1-R6 dispositions, and independent fresh
   review of that revision. Empty roster activity or queue acceptance does not satisfy the join.

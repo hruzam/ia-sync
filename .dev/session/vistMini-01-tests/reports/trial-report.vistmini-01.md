@@ -47,9 +47,11 @@ Sample-claude, **default mode**, evidence `/tmp/vc08r2.kk50sqqh/permission-tool-
 Senior seats (dated, not uniform across the trial; no parity claimed):
 - **trajectory, 2026-11-12** (`reports/trajectory.permissions.2026-11-12.md`): auto-mode classifier, not a settings rule. In that session
   `tmux send-keys` into cartan's pane, ssh send-keys and `git add/commit/push` ran **without** prompt. That file already notes auto mode can refuse later what it allowed earlier.
-- **trajectory, 2026-11-13 ~15:40–16:00Z (cycle 09):** majkee reported, in this session, operator approval prompts on trajectory Bash calls that combined
-  `codex queue`, tmux paste into another pane and/or `git push`. **No captured denial receipt exists**; which subcommand triggered each prompt is not established.
-  Majkee then added a local allow-list (`~/ia-sync/.claude/settings.local.json`, host-local, not committed). After it, single-step `git add/commit` and `codex queue` ran without prompt in this session.
+- **trajectory, 2026-11-13 ~15:40–16:00Z (cycle 09) — UNVERIFIED, operator and author accounts only, no captured receipt for any part:**
+  per majkee's in-session reports, trajectory Bash calls combining `codex queue`, tmux paste into another pane and/or `git push` raised operator
+  approval prompts; which subcommand triggered each is not known. Per majkee's statement, a host-local allow-list was then added
+  (`~/ia-sync/.claude/settings.local.json`, not committed, contents not cited here). Per trajectory's own account, later single-step
+  `git add/commit` and `codex queue` calls completed without a prompt being reported. None of this paragraph is independently evidenced.
 - **cartan, 2026-11-12** (`reports/cartan.preflight.2026-11-12.md` lines 21–22): ordinary sandbox denied the tmux socket ("Operation not permitted");
   the same listing succeeded with explicit escalation at 08:03Z. Later Codex boundaries were not separately recorded in this report.
 
@@ -82,7 +84,7 @@ Counted sample tests never add to the senior-seat counts in §1.
 5. **Observation is not consumption.** Exit 0 means queue accepted or keys submitted. Consumption needs a receipt from the receiver (nonce in the answer) or the native transcript.
 6. **Unqualified original cases:** unknown surface (C10), crash or exit between text and Enter, expired or misaddressed requests, receiver semantic and hop limits. Declared gaps, not failures.
 7. **The tmux adapter sends keystrokes.** L21 holds: any transport released into VIST needs its own release by the operator. The trial proves a prototype, not a release.
-8. **Operator views.** In r1, an unqualified `tmux send-keys` failed "client is read-only" (exit 27) while read-only spectator clients were attached; the outcome depends on which client tmux routed to, so it is not a claim that every read-only viewer breaks every send. v2+ uses `paste-buffer`. Read-only clients also ignored scrolling in majkee's views, which looked like a frozen UI. Viewer limit as observed here.
+8. **Operator views.** Observed in r1 (build `06cc9b4`): the helper's default-routed `tmux send-keys` failed "client is read-only" (exit 27) while read-only spectator clients were attached; cleanup through an explicitly chosen existing writable client succeeded. The exact selection mechanism is unconfirmed, and this is not a claim that every read-only viewer breaks every send. Build `22d5008` (r2) replaced the typed carrier with `paste-buffer`. Read-only clients also ignored scrolling in majkee's views, which looked like a frozen UI. Viewer limit as observed here.
 9. **The controller can only act on agent-as-pane-root.** Seats started under a shell are refused (22 `not_agent_root`). See §6.
 
 ## 6. Cycle 09 contact loop (live, uncounted)
