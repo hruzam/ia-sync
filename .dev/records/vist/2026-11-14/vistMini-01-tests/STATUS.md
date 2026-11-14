@@ -1,43 +1,37 @@
 ```yaml
 updated: 2026-11-14 CET
-writer: cartan · codex · closing controller01a1d58a-3b43-7221-bf9b-fa98b219df6b
+writer: cartan · codex · historical closing controller01a1d58a-3b43-7221-bf9b-fa98b219df6b
 host: home (hruzam)
 worktree: >
-  /home/hruzam/ia-sync · main · decision/disposition preserved57240f5; X0 raw carry-over pushed nablarva@a66851a.
-  Foreign claude/settings.json, claude/hooks/oraculum-bash-whitelist.sh, claude/hooks/statusline.sh and helper-utils remain untouched.
+  /home/hruzam/ia-sync · main · retired evidence1233b311e5fd87dcba0e7200259b279596d13500 pushed/verified on origin.
+  Foreign claude/settings.json, claude/hooks/oraculum-bash-whitelist.sh, claude/hooks/statusline.sh and helper-utils were untouched.
 gate: >
   Majkee accepts an independently verified trial report in
   /home/hruzam/ia-sync/.dev/session/vistMini-01-tests/reports/ showing, on home, Claude↔Codex:
   at least three ordinary messages each direction delivered and consumed without operator relay;
   every pre-registered refusal/recovery case run with expected versus observed; each seat's
   permission boundary stated; and the limits of applicability to VIST stated.
+disposition: CLOSED — Majkee GO2026-11-14 with explicit narrowed scope (decision22)
 checkpoint: >
-  Activation18 and independently reviewed six-row inventory published in50ccc21d92e13aa57452bcc54f639262f07ba749;
-  git ls-remote confirmed origin main at that commit. Final inventory SHAe1c0307df33b4c5faed8c50c3a8f580e5b9ab26311d5314c48ffe20ac6976768
-  has review20 PASS plus normalization21 ACCEPT: all14 Git/all37 local pins and4 log lines match; missing fixtures explicit.
-  Accepted trial report remains3584a02/SHA dc219b62e304b48f02c98117f258b25be0a86061520ed289892f17a337e72d39,
-  R1-R6 PASS in RETURN16. Decision22 records Majkee GO2026-11-14 with narrowed scope. The all-cases requirement is discharged
-  by scope decision, not execution; listed cases remain unrun/unqualified and transfer to X0. Prototype not released.
-in_flight: >
-  Evidence-preserving retirement to .dev/records/vist/2026-11-14/: observations promoted verbatim before pruning;
-  archive manifest, one agol harvest, independent closure verification and serial publication are being completed.
+  Original gate text above is historical. Decision22 discharges the all-cases clause by scope decision, not execution.
+  Experimental report3584a02/review16, inventory50ccc21/reviews20-21 and final operator disposition are preserved.
+  All118 baseline artifacts mapped; five process payloads promoted verbatim; independent closure verification PASS.
+  Unrun cases are pre-registered in Nablarva a66851a; two attributed team views published in c8c857c.
+  Readable retirement package1233b31 is pushed and remotely verified. No prototype/shared-layer transport release.
+in_flight: none — trial closed; no active worker, timer, peer bell or experiment
 recovery_probe: >
-  Read /home/hruzam/ia-sync/ARCHIVE.md and .dev/records/vist/2026-11-14/MANIFEST.json to resolve this retired identity.
-  Rehash every readable mapping and promoted payload against preservation57240f5; read CLOSE.md and VERIFICATION.md.
-  Confirm VIST route removed, monitor retained, X0 carry-over at nablarva@a66851a and no X0 lifecycle files created.
-  Old timer remains stopped; no new timer installed, no historical send key touched.
+  Resolve original identity through /home/hruzam/ia-sync/ARCHIVE.md and .dev/records/vist/2026-11-14/MANIFEST.json.
+  Verify readable/payload hashes and read CLOSE.md plus the independent pre-publication VERIFICATION.md.
+  Original session shelf and VIST pulse route must be absent; monitor and other routes preserved.
+  This is a historical record, not an instruction to resume a retired controller or replay a preserved script.
 holds: >
-  New Cartan01a1d58a is the sole head/STATUS/push writer; old01a1ce98 handles late notices read-only.
-  Keeper only watches/advises, never clears, pushes or issues trial verdicts. No /clear needed or performed.
-  Preserve all foreign work and historical t03/c08r1-05-ae3ee8e7 keys; never retry uncertain IDs.
-  Use native Codex queue to known identities. Claude shell-root helper refusal22 remains valid; manual fallback
-  only after failed intended channel and fresh foreground/session/idle/draft/approval checks, never after uncertainty.
-  Documentary evidence inventory is authorised. No X0 bed, adopted envelope, new live VIST transport experiment,
-  shared-layer implementation/activation, global primitive or canon release follows. Trial GO is narrowed scope only.
-  Any new check-in lease targets only the new controller, is finite and stops on unit completion/failure/transfer/operator hold.
-next: >
-  Verify preservation manifest, observation harvest and X0 carry-over, then publish retirement without releasing transport.
+  C10 unknown view, exit/crash between text and Enter, expiry/misaddress, semantic and hop/retry cases remain unrun/unqualified.
+  t03 and c08r1-05-ae3ee8e7 keys stay intact; never blindly retry historical IDs. Private histories/captures are excluded from Git custody.
+  No X0 RUNBOOK/STATUS/router/roster appointment, envelope adoption, live VIST experiment or L21 release follows GO.
+  Old timer verified inactive/dead/not-found; no new timer installed. Both closure presence attachments detached by exact IDs.
+  Late POINT23 is preserved separately from the baseline; raw team proposals and observation-harvest candidates are unadopted.
+next: none — trial retired; a future X0 head/unit requires its own explicit scope and authority
 expected: >
-  Accepted trial is retired with preservation/observation receipts and a verified X0 preregistration; unrun cases still have no experimental PASS,
-  and L21 transport/shared-layer release remains separate.
+  Closed evidence remains discoverable and byte-verifiable through ARCHIVE/manifest. Carried cases remain available to X0
+  without being counted as executed, and no idle controller/check-in loop is restarted.
 ```

@@ -27,8 +27,8 @@
       "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/STATUS.md",
       "source_bytes": 3661,
       "source_sha256": "f8b324fd010dd47b8dca28152e6d392dc165924bc0f03b3d116bab8600d19185",
-      "readable_bytes": 3534,
-      "readable_sha256": "8814793724a1728813e41f8a88f8806047256ee090d7fa15db224c7b47f41254",
+      "readable_bytes": 3010,
+      "readable_sha256": "5ac811691624670578211a05e6c5fdbe34bec7e0f06878287ed3b8cbff994e7d",
       "preservation": "final closure snapshot"
     },
     {
@@ -1119,5 +1119,12 @@
       }
     ],
     "meaning": "Attributed proposals under late POINT23; not an appointed X0 team"
+  },
+  "publication_receipt": {
+    "retirement_commit": "1233b311e5fd87dcba0e7200259b279596d13500",
+    "origin_main_observed": "1233b311e5fd87dcba0e7200259b279596d13500",
+    "nablarva_core_observed": "c8c857cd62f7864f2393f627536e876fa49e07b0",
+    "prepublication_manifest_sha256": "e707e6d017ce8058128e5e587c0c17442e097603cf8c72cea151c8d3def8a7dd",
+    "final_change": "Only mutable readable STATUS snapshot refreshed; all other preservation mappings unchanged"
   }
 }
