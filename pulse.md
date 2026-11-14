@@ -5,11 +5,7 @@
 
 Archivalia registry — retired identities, reusable evidence and recovery: [ARCHIVE.md](ARCHIVE.md).
 
-<<<<<<< Updated upstream
-- `vistMini-01-tests` · gate: Majkee accepts an independently verified trial report in the bed's reports/ showing, on home, Claude↔Codex: at least three ordinary messages each direction delivered and consumed without operator relay; every pre-registered refusal/recovery case run with expected versus observed; each seat's permission boundary stated; and the limits of applicability to VIST stated. · `/home/hruzam/ia-sync/.dev/session/vistMini-01-tests/STATUS.md`
-=======
 - `monitor-01-integration` · gate: Majkee accepts monitor's agreed repository layout, shell integration and computer access after independent verification, with remaining limitations explicitly recorded. · `/home/hruzam/ia-sync/.dev/session/monitor-01-integration/STATUS.md`
->>>>>>> Stashed changes
 
 - `germline-A3-guide-to-controller` · gate: Majkee accepts the independently reviewed guide-to-program fold package, with every whole-design roadmap item accounted for, reading and continuity contracts demonstrated on paper, and explicit destinations and release conditions for documentation, agent routing and later implementation. ·
   `/home/hruzam/ia-sync/.dev/session/germline-A3-guide-to-controller/STATUS.md`

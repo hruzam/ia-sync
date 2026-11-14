@@ -1,3 +1,13 @@
+---
+kind: preserved-session-process
+origin: .dev/session/vistMini-01-tests/reports/cartan.cache-r2.2026-11-13.md
+preservation_commit: 57240f54af1e83fc9bb16209581e31749318e8d1
+source_sha256: 9688c04e432b5e75bbaeab050f66fd68e45da2aac75a07e00520a664c1f36f11
+promoter: home:cartan (01a1d58a-3b43-7221-bf9b-fa98b219df6b)
+promoted: 2026-11-14
+preservation: verbatim payload follows; header added only
+---
+
 # Cartan local cache — resume after compaction
 
 Snapshot: 2026-11-13T12:59:13Z, home (`hruzam`). Historical re-entry pointer, **not STATUS**. Majkee requested this light cache before compacting.

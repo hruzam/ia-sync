@@ -1,9 +1,9 @@
 ```yaml
 updated: 2026-11-14 CET
-writer: cartan · codex · ACTIVE controller01a1d58a-3b43-7221-bf9b-fa98b219df6b
+writer: cartan · codex · closing controller01a1d58a-3b43-7221-bf9b-fa98b219df6b
 host: home (hruzam)
 worktree: >
-  /home/hruzam/ia-sync · main · documentary unit50ccc21 pushed and verified on origin; accepted report3584a02.
+  /home/hruzam/ia-sync · main · decision/disposition preserved57240f5; X0 raw carry-over pushed nablarva@a66851a.
   Foreign claude/settings.json, claude/hooks/oraculum-bash-whitelist.sh, claude/hooks/statusline.sh and helper-utils remain untouched.
 gate: >
   Majkee accepts an independently verified trial report in
@@ -19,13 +19,13 @@ checkpoint: >
   R1-R6 PASS in RETURN16. Decision22 records Majkee GO2026-11-14 with narrowed scope. The all-cases requirement is discharged
   by scope decision, not execution; listed cases remain unrun/unqualified and transfer to X0. Prototype not released.
 in_flight: >
-  Closure/carry-over publication: preserve decision and final disposition, write X0 raw preregistration without activating X0,
-  promote process observations before retirement, preserve full evidence under records, remove the VIST router entry and verify custody.
+  Evidence-preserving retirement to .dev/records/vist/2026-11-14/: observations promoted verbatim before pruning;
+  archive manifest, one agol harvest, independent closure verification and serial publication are being completed.
 recovery_probe: >
-  sha256sum /home/hruzam/ia-sync/.dev/session/vistMini-01-tests/reports/vist.offline-fixture-inventory.2026-11-13.md
-  must match accepted21. Read decision22, final report and closure promotion manifest. Read RETURN18 and reviews20/21. git -C /home/hruzam/ia-sync status --short
-  distinguishes foreign work; published evidence is50ccc21. Exact owner remains01a1d58a. Old lease inactive/pending_id=null on last
-  read, not receipt proof. No new timer; unit presence47dfb1eaab0097bba65659fe0c6c11a3 detached by exact id after publication.
+  Read /home/hruzam/ia-sync/ARCHIVE.md and .dev/records/vist/2026-11-14/MANIFEST.json to resolve this retired identity.
+  Rehash every readable mapping and promoted payload against preservation57240f5; read CLOSE.md and VERIFICATION.md.
+  Confirm VIST route removed, monitor retained, X0 carry-over at nablarva@a66851a and no X0 lifecycle files created.
+  Old timer remains stopped; no new timer installed, no historical send key touched.
 holds: >
   New Cartan01a1d58a is the sole head/STATUS/push writer; old01a1ce98 handles late notices read-only.
   Keeper only watches/advises, never clears, pushes or issues trial verdicts. No /clear needed or performed.
@@ -36,7 +36,7 @@ holds: >
   shared-layer implementation/activation, global primitive or canon release follows. Trial GO is narrowed scope only.
   Any new check-in lease targets only the new controller, is finite and stops on unit completion/failure/transfer/operator hold.
 next: >
-  Complete decision22's evidence-preserving closure and publish the unrun-case carry-over to X0 raw without starting X0.
+  Verify preservation manifest, observation harvest and X0 carry-over, then publish retirement without releasing transport.
 expected: >
   Accepted trial is retired with preservation/observation receipts and a verified X0 preregistration; unrun cases still have no experimental PASS,
   and L21 transport/shared-layer release remains separate.

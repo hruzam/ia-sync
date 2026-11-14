@@ -1,3 +1,13 @@
+---
+kind: preserved-session-process
+origin: .dev/session/vistMini-01-tests/reports/10.context-observation.json
+preservation_commit: 57240f54af1e83fc9bb16209581e31749318e8d1
+source_sha256: 4efc61ec64995576b15156e63d9bb5f1d050e8ef3eb31970964fae1f1901d12e
+promoter: home:cartan (01a1d58a-3b43-7221-bf9b-fa98b219df6b)
+promoted: 2026-11-14
+preservation: verbatim payload follows; header added only
+---
+
 {
   "host": "home",
   "source": "native footer and tmux metadata; no raw screen contents",

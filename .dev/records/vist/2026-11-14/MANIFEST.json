@@ -1,0 +1,1123 @@
+{
+  "schema": "ia-sync-retirement-manifest/v1",
+  "original_identity": "vistMini-01-tests",
+  "closed_date": "2026-11-14",
+  "decision": "Majkee GO with narrowed scope; excluded cases remain unrun/unqualified",
+  "preservation_commit": "57240f54af1e83fc9bb16209581e31749318e8d1",
+  "readable_root": ".dev/records/vist/2026-11-14/vistMini-01-tests",
+  "carryover": {
+    "repo": "/home/hruzam/unikuklatrix/nablarva",
+    "commit": "a66851a0fbd158d9bbc5a9e1c96149adf7c353ae",
+    "path": ".dev/session/vist-X0-helloWorld/raw/preregister.vistmini-carryover.cartan.2026-11-14.md",
+    "sha256": "61d4a035a5aa0fd6c9149faf271fe53a431d4537e93591677120c738157ee952",
+    "activation": "none"
+  },
+  "files": [
+    {
+      "origin": ".dev/session/vistMini-01-tests/RUNBOOK.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/RUNBOOK.md",
+      "source_bytes": 8992,
+      "source_sha256": "8fbcab50331f525cf64483e888c162417ecedf3b0cb0878320f4e2bb2606133b",
+      "readable_bytes": 8992,
+      "readable_sha256": "8fbcab50331f525cf64483e888c162417ecedf3b0cb0878320f4e2bb2606133b",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/STATUS.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/STATUS.md",
+      "source_bytes": 3661,
+      "source_sha256": "f8b324fd010dd47b8dca28152e6d392dc165924bc0f03b3d116bab8600d19185",
+      "readable_bytes": 3534,
+      "readable_sha256": "8814793724a1728813e41f8a88f8806047256ee090d7fa15db224c7b47f41254",
+      "preservation": "final closure snapshot"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/_bus/01.cartan.return.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/_bus/01.cartan.return.md",
+      "source_bytes": 6076,
+      "source_sha256": "cf0098ed004513ab01cf1db3ec07970b6982c7e272abc73cb7355bb440e92637",
+      "readable_bytes": 6076,
+      "readable_sha256": "cf0098ed004513ab01cf1db3ec07970b6982c7e272abc73cb7355bb440e92637",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/_bus/01.trajectory.point.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/_bus/01.trajectory.point.md",
+      "source_bytes": 2498,
+      "source_sha256": "1d2a023b8150503a06b20982ec3f67085788db2f99c55c127b464b1522d55fbe",
+      "readable_bytes": 2498,
+      "readable_sha256": "1d2a023b8150503a06b20982ec3f67085788db2f99c55c127b464b1522d55fbe",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/_bus/01.trajectory.verdict.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/_bus/01.trajectory.verdict.md",
+      "source_bytes": 3457,
+      "source_sha256": "1b9422254c91059c888605834d10c9a3440b58c585480b84267ad9789d2f2800",
+      "readable_bytes": 3457,
+      "readable_sha256": "1b9422254c91059c888605834d10c9a3440b58c585480b84267ad9789d2f2800",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/_bus/02.cartan.return.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/_bus/02.cartan.return.md",
+      "source_bytes": 5679,
+      "source_sha256": "ecdc8189e5cc46746403eda5b79d86dfbb7611b24234cfa45d61bb727b13fb0a",
+      "readable_bytes": 5679,
+      "readable_sha256": "ecdc8189e5cc46746403eda5b79d86dfbb7611b24234cfa45d61bb727b13fb0a",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/_bus/02.trajectory.point.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/_bus/02.trajectory.point.md",
+      "source_bytes": 2318,
+      "source_sha256": "bc331f1c1c6c182d22755f9827f18061ce2390fcf9d52ffa6ef5411d29f21851",
+      "readable_bytes": 2318,
+      "readable_sha256": "bc331f1c1c6c182d22755f9827f18061ce2390fcf9d52ffa6ef5411d29f21851",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/_bus/02.trajectory.verdict.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/_bus/02.trajectory.verdict.md",
+      "source_bytes": 2994,
+      "source_sha256": "4698ef4d51fad0d47bb5067554e0350e61dc6232d81fbadb9df5306bc97d8bec",
+      "readable_bytes": 2994,
+      "readable_sha256": "4698ef4d51fad0d47bb5067554e0350e61dc6232d81fbadb9df5306bc97d8bec",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/_bus/03.cartan.return.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/_bus/03.cartan.return.md",
+      "source_bytes": 6863,
+      "source_sha256": "5fbc27a72d5b4b83dce7a622874c007230c40c3b74d37f23a0a08cc58a2f4c68",
+      "readable_bytes": 6863,
+      "readable_sha256": "5fbc27a72d5b4b83dce7a622874c007230c40c3b74d37f23a0a08cc58a2f4c68",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/_bus/03.trajectory.point.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/_bus/03.trajectory.point.md",
+      "source_bytes": 2641,
+      "source_sha256": "1d57817e682a34a3bda265691c23e666a85b9c0772206eb31993f653f83489b3",
+      "readable_bytes": 2641,
+      "readable_sha256": "1d57817e682a34a3bda265691c23e666a85b9c0772206eb31993f653f83489b3",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/_bus/03.trajectory.verdict.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/_bus/03.trajectory.verdict.md",
+      "source_bytes": 3320,
+      "source_sha256": "2f4a51a3e9ff03d164280c7f4cbbf0a773f5a8137e386eedc2dc0af3534bf6d0",
+      "readable_bytes": 3320,
+      "readable_sha256": "2f4a51a3e9ff03d164280c7f4cbbf0a773f5a8137e386eedc2dc0af3534bf6d0",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/_bus/04.cartan.return.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/_bus/04.cartan.return.md",
+      "source_bytes": 1912,
+      "source_sha256": "613825184edefbf56bfa5f237e5dcac1a26915d4f9f59e3321bd3a72c7903fe3",
+      "readable_bytes": 1912,
+      "readable_sha256": "613825184edefbf56bfa5f237e5dcac1a26915d4f9f59e3321bd3a72c7903fe3",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/_bus/04.trajectory.point.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/_bus/04.trajectory.point.md",
+      "source_bytes": 2171,
+      "source_sha256": "fdd50ba48345616d9d1dc0142116526dd0ce564ef03fa6367cf47ae79fc488b8",
+      "readable_bytes": 2171,
+      "readable_sha256": "fdd50ba48345616d9d1dc0142116526dd0ce564ef03fa6367cf47ae79fc488b8",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/_bus/04.trajectory.verdict.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/_bus/04.trajectory.verdict.md",
+      "source_bytes": 3664,
+      "source_sha256": "d4366065115212ca54b4a262db05ed2ea7eebd599b813d2ae3da22167d952381",
+      "readable_bytes": 3664,
+      "readable_sha256": "d4366065115212ca54b4a262db05ed2ea7eebd599b813d2ae3da22167d952381",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/_bus/05.trajectory.point.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/_bus/05.trajectory.point.md",
+      "source_bytes": 1006,
+      "source_sha256": "43188f83055841fbe64852b2847f090b4e8abb7aa63ab62c6789b83bc14fa234",
+      "readable_bytes": 1006,
+      "readable_sha256": "43188f83055841fbe64852b2847f090b4e8abb7aa63ab62c6789b83bc14fa234",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/_bus/05.trajectory.verdict.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/_bus/05.trajectory.verdict.md",
+      "source_bytes": 2324,
+      "source_sha256": "13f5c603a74d9514f41adfe6f7ba634c10b0783d16c9653f4d0ea7eab651328f",
+      "readable_bytes": 2324,
+      "readable_sha256": "13f5c603a74d9514f41adfe6f7ba634c10b0783d16c9653f4d0ea7eab651328f",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/_bus/06.cartan.return.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/_bus/06.cartan.return.md",
+      "source_bytes": 2536,
+      "source_sha256": "ffd942a06aeec057c3e86b016931e5b36a132647da8591925b0bbca2e597b506",
+      "readable_bytes": 2536,
+      "readable_sha256": "ffd942a06aeec057c3e86b016931e5b36a132647da8591925b0bbca2e597b506",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/_bus/06.trajectory.point.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/_bus/06.trajectory.point.md",
+      "source_bytes": 2332,
+      "source_sha256": "7c70beffbe1dc80eb276c60d712fe954e97a151613db7b7bd40f7b2a1edb4f57",
+      "readable_bytes": 2332,
+      "readable_sha256": "7c70beffbe1dc80eb276c60d712fe954e97a151613db7b7bd40f7b2a1edb4f57",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/_bus/06.trajectory.verdict.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/_bus/06.trajectory.verdict.md",
+      "source_bytes": 2256,
+      "source_sha256": "24fface0977348091ce992f1e8ec21a67e85ea149940b74ba8d14ddd3ff99a6b",
+      "readable_bytes": 2256,
+      "readable_sha256": "24fface0977348091ce992f1e8ec21a67e85ea149940b74ba8d14ddd3ff99a6b",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/_bus/07.cartan.return.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/_bus/07.cartan.return.md",
+      "source_bytes": 2427,
+      "source_sha256": "fff06607eb716ce80568a1640df24d7488589ebf9fee4735ff247901ec07fdf7",
+      "readable_bytes": 2427,
+      "readable_sha256": "fff06607eb716ce80568a1640df24d7488589ebf9fee4735ff247901ec07fdf7",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/_bus/07.trajectory.point.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/_bus/07.trajectory.point.md",
+      "source_bytes": 1379,
+      "source_sha256": "273eb04e9e5d9c7814d5d2e52c18cda3e08b2c00996392c4c025157be4d10dc9",
+      "readable_bytes": 1379,
+      "readable_sha256": "273eb04e9e5d9c7814d5d2e52c18cda3e08b2c00996392c4c025157be4d10dc9",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/_bus/07.trajectory.verdict.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/_bus/07.trajectory.verdict.md",
+      "source_bytes": 2089,
+      "source_sha256": "40700697cd2594bc6c633f9a5c95db62113e41acba124fd85b62b38ede3c8fa3",
+      "readable_bytes": 2089,
+      "readable_sha256": "40700697cd2594bc6c633f9a5c95db62113e41acba124fd85b62b38ede3c8fa3",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/_bus/08.cartan.return-r1.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/_bus/08.cartan.return-r1.md",
+      "source_bytes": 2598,
+      "source_sha256": "08085a8af6182b81c4e0bf8282fb9a4671405d2342f8579d2b9d1dcf5f65d290",
+      "readable_bytes": 2598,
+      "readable_sha256": "08085a8af6182b81c4e0bf8282fb9a4671405d2342f8579d2b9d1dcf5f65d290",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/_bus/08.cartan.return-r2.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/_bus/08.cartan.return-r2.md",
+      "source_bytes": 2780,
+      "source_sha256": "6e5be626cad2b1cf6303ed67fed8d8fd14cffd49c90b8c8f86cb5f73a922433a",
+      "readable_bytes": 2780,
+      "readable_sha256": "6e5be626cad2b1cf6303ed67fed8d8fd14cffd49c90b8c8f86cb5f73a922433a",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/_bus/08.cartan.return-r3.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/_bus/08.cartan.return-r3.md",
+      "source_bytes": 2932,
+      "source_sha256": "1e1b9bd8bc50d0dce6c782a8c77e80f701b9b76848f6d813cbec936d333f849b",
+      "readable_bytes": 2932,
+      "readable_sha256": "1e1b9bd8bc50d0dce6c782a8c77e80f701b9b76848f6d813cbec936d333f849b",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/_bus/08.cartan.return.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/_bus/08.cartan.return.md",
+      "source_bytes": 2469,
+      "source_sha256": "5e116e8c5044195b7a8ccb8bc4acd11cddea1f9ccdd6f7142258b989cef3d1d0",
+      "readable_bytes": 2469,
+      "readable_sha256": "5e116e8c5044195b7a8ccb8bc4acd11cddea1f9ccdd6f7142258b989cef3d1d0",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/_bus/08.trajectory.build-r1.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/_bus/08.trajectory.build-r1.md",
+      "source_bytes": 2744,
+      "source_sha256": "03f9728448ea78c14b2b17b189d75322dad3f303b9ee2057e65bcd64c4ef99c5",
+      "readable_bytes": 2744,
+      "readable_sha256": "03f9728448ea78c14b2b17b189d75322dad3f303b9ee2057e65bcd64c4ef99c5",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/_bus/08.trajectory.build-r2.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/_bus/08.trajectory.build-r2.md",
+      "source_bytes": 2039,
+      "source_sha256": "19e79af74eb92ad37b40113d43e47e665af1e17cf18c652629505038d097ed4a",
+      "readable_bytes": 2039,
+      "readable_sha256": "19e79af74eb92ad37b40113d43e47e665af1e17cf18c652629505038d097ed4a",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/_bus/08.trajectory.build-r3.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/_bus/08.trajectory.build-r3.md",
+      "source_bytes": 1643,
+      "source_sha256": "09657845bf01d2022b499d283eb53ee434d3f4f0f7718f483f4afd921f8a876a",
+      "readable_bytes": 1643,
+      "readable_sha256": "09657845bf01d2022b499d283eb53ee434d3f4f0f7718f483f4afd921f8a876a",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/_bus/08.trajectory.build.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/_bus/08.trajectory.build.md",
+      "source_bytes": 1134,
+      "source_sha256": "3e7dfea68838515100f65b03113d20e2393957f295d0167a7d4b412531d1b358",
+      "readable_bytes": 1134,
+      "readable_sha256": "3e7dfea68838515100f65b03113d20e2393957f295d0167a7d4b412531d1b358",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/_bus/08.trajectory.point.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/_bus/08.trajectory.point.md",
+      "source_bytes": 1756,
+      "source_sha256": "2f9af6a4bb4a1c4164a0062ba6f8b0af5dec46bf42e212a971a385e720e4b9c9",
+      "readable_bytes": 1756,
+      "readable_sha256": "2f9af6a4bb4a1c4164a0062ba6f8b0af5dec46bf42e212a971a385e720e4b9c9",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/_bus/08.trajectory.verdict.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/_bus/08.trajectory.verdict.md",
+      "source_bytes": 2424,
+      "source_sha256": "1d61e3af9112d58660ad663f4ebe04b857ffd38195d08332790632d7afcdb311",
+      "readable_bytes": 2424,
+      "readable_sha256": "1d61e3af9112d58660ad663f4ebe04b857ffd38195d08332790632d7afcdb311",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/_bus/09.cartan.ack.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/_bus/09.cartan.ack.md",
+      "source_bytes": 325,
+      "source_sha256": "9d3b32b5cd212bdd2478d5aab6ed7a72ed09e4b0d2a603f5a7c590d578569323",
+      "readable_bytes": 325,
+      "readable_sha256": "9d3b32b5cd212bdd2478d5aab6ed7a72ed09e4b0d2a603f5a7c590d578569323",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/_bus/09.cartan.verify.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/_bus/09.cartan.verify.md",
+      "source_bytes": 8962,
+      "source_sha256": "d348bc306394c297d31752509e646b7403586394b4b5b812790045f19ef4e4ad",
+      "readable_bytes": 8962,
+      "readable_sha256": "d348bc306394c297d31752509e646b7403586394b4b5b812790045f19ef4e4ad",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/_bus/09.nablarva-cartan.ack.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/_bus/09.nablarva-cartan.ack.md",
+      "source_bytes": 293,
+      "source_sha256": "63c4428758b03810835bcd5a00267ff993d12d49cc9a02b0db6a770e0c175004",
+      "readable_bytes": 293,
+      "readable_sha256": "63c4428758b03810835bcd5a00267ff993d12d49cc9a02b0db6a770e0c175004",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/_bus/09.oraculum.ack.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/_bus/09.oraculum.ack.md",
+      "source_bytes": 1042,
+      "source_sha256": "b24a1dad6cd223ecc330f4da9f8526bd4a55f7e36f57ec463b7eff4153ccd981",
+      "readable_bytes": 1042,
+      "readable_sha256": "b24a1dad6cd223ecc330f4da9f8526bd4a55f7e36f57ec463b7eff4153ccd981",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/_bus/09.trajectory.brief-team.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/_bus/09.trajectory.brief-team.md",
+      "source_bytes": 2521,
+      "source_sha256": "2a1c0406cf9b6284564c74e11c03948e1d62f97bfd328b1cd4ba857e9a9072a0",
+      "readable_bytes": 2521,
+      "readable_sha256": "2a1c0406cf9b6284564c74e11c03948e1d62f97bfd328b1cd4ba857e9a9072a0",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/_bus/10.cartan.point.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/_bus/10.cartan.point.md",
+      "source_bytes": 1732,
+      "source_sha256": "2a9c852037182d86e8708adbcf0d8ba92d21bf161ab286a5683a0c99675880c6",
+      "readable_bytes": 1732,
+      "readable_sha256": "2a9c852037182d86e8708adbcf0d8ba92d21bf161ab286a5683a0c99675880c6",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/_bus/10.cartan.verdict.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/_bus/10.cartan.verdict.md",
+      "source_bytes": 366,
+      "source_sha256": "7b3b6d6c861facaf7c30945768ee8d161a941294beba1426045629a9b1b86c59",
+      "readable_bytes": 366,
+      "readable_sha256": "7b3b6d6c861facaf7c30945768ee8d161a941294beba1426045629a9b1b86c59",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/_bus/10.trajectory.return.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/_bus/10.trajectory.return.md",
+      "source_bytes": 4713,
+      "source_sha256": "011cf8cc76ba2ae0d576641834dca36e1f4367df133bffbc4eb740e0e898bb68",
+      "readable_bytes": 4713,
+      "readable_sha256": "011cf8cc76ba2ae0d576641834dca36e1f4367df133bffbc4eb740e0e898bb68",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/_bus/11.cartan.point.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/_bus/11.cartan.point.md",
+      "source_bytes": 1814,
+      "source_sha256": "817bcc268aa70aa000a6b264b3cf710634873038cd2efa3f09ce66ebee94450c",
+      "readable_bytes": 1814,
+      "readable_sha256": "817bcc268aa70aa000a6b264b3cf710634873038cd2efa3f09ce66ebee94450c",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/_bus/11.cartan.verdict.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/_bus/11.cartan.verdict.md",
+      "source_bytes": 415,
+      "source_sha256": "c03ea638584261b71a689090cfc99b5056c3f4dcd42722847981a8b4f602fcea",
+      "readable_bytes": 415,
+      "readable_sha256": "c03ea638584261b71a689090cfc99b5056c3f4dcd42722847981a8b4f602fcea",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/_bus/11.next-cartan.return.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/_bus/11.next-cartan.return.md",
+      "source_bytes": 10845,
+      "source_sha256": "711dcaa7483c6d84ba3540cfa326928e271b6125ac8517b477d6fa1af4a7ec6b",
+      "readable_bytes": 10845,
+      "readable_sha256": "711dcaa7483c6d84ba3540cfa326928e271b6125ac8517b477d6fa1af4a7ec6b",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/_bus/12.cartan.point.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/_bus/12.cartan.point.md",
+      "source_bytes": 1879,
+      "source_sha256": "2bb68a7d94711f9257f61bb2e8beec6364de7e0f36a7d38507483363ae23efe6",
+      "readable_bytes": 1879,
+      "readable_sha256": "2bb68a7d94711f9257f61bb2e8beec6364de7e0f36a7d38507483363ae23efe6",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/_bus/12.cartan.verdict.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/_bus/12.cartan.verdict.md",
+      "source_bytes": 389,
+      "source_sha256": "1f8abea20f6c0b80cf44bf943738f36e6f21742f686506a8269092a143f28a72",
+      "readable_bytes": 389,
+      "readable_sha256": "1f8abea20f6c0b80cf44bf943738f36e6f21742f686506a8269092a143f28a72",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/_bus/12.oraculum.return.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/_bus/12.oraculum.return.md",
+      "source_bytes": 2696,
+      "source_sha256": "7b5970676d433daefe633c0b06e0f4493387d5cdeea09b4c3407039b7f1946f5",
+      "readable_bytes": 2696,
+      "readable_sha256": "7b5970676d433daefe633c0b06e0f4493387d5cdeea09b4c3407039b7f1946f5",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/_bus/13.cartan.point.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/_bus/13.cartan.point.md",
+      "source_bytes": 1782,
+      "source_sha256": "765642a61474a9f0e033e6f9f8512a5b50a248c44af19b9024a1d26a0e63d15b",
+      "readable_bytes": 1782,
+      "readable_sha256": "765642a61474a9f0e033e6f9f8512a5b50a248c44af19b9024a1d26a0e63d15b",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/_bus/13.cartan.verdict.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/_bus/13.cartan.verdict.md",
+      "source_bytes": 407,
+      "source_sha256": "23626c7e50d7981361a4dc8c8174a6f467820c727bb73e65795a652b76ed1da7",
+      "readable_bytes": 407,
+      "readable_sha256": "23626c7e50d7981361a4dc8c8174a6f467820c727bb73e65795a652b76ed1da7",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/_bus/13.nablarva-cartan.return.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/_bus/13.nablarva-cartan.return.md",
+      "source_bytes": 3689,
+      "source_sha256": "39ec03a4ce26f409a66c603d451bc295452414936a5c939c9c4dadad3a8103b9",
+      "readable_bytes": 3689,
+      "readable_sha256": "39ec03a4ce26f409a66c603d451bc295452414936a5c939c9c4dadad3a8103b9",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/_bus/14.cartan.point.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/_bus/14.cartan.point.md",
+      "source_bytes": 1555,
+      "source_sha256": "52608b3c1d4440441badfbf3a4f7004dbb4cb22225c832f72cbfefcb4a763adf",
+      "readable_bytes": 1555,
+      "readable_sha256": "52608b3c1d4440441badfbf3a4f7004dbb4cb22225c832f72cbfefcb4a763adf",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/_bus/14.cartan.verdict.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/_bus/14.cartan.verdict.md",
+      "source_bytes": 376,
+      "source_sha256": "8317077e289278cb3cc32ff44e3219be51e0fa21241884ed7d753e0454774320",
+      "readable_bytes": 376,
+      "readable_sha256": "8317077e289278cb3cc32ff44e3219be51e0fa21241884ed7d753e0454774320",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/_bus/14.next-cartan.return.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/_bus/14.next-cartan.return.md",
+      "source_bytes": 4604,
+      "source_sha256": "0e009af6529484491ea6b4f44fa835de3effb9c670eb211e83173b1ca1d58f34",
+      "readable_bytes": 4604,
+      "readable_sha256": "0e009af6529484491ea6b4f44fa835de3effb9c670eb211e83173b1ca1d58f34",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/_bus/15.cartan.point.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/_bus/15.cartan.point.md",
+      "source_bytes": 1281,
+      "source_sha256": "9d79ee945e627a9816a0e83691dbb3457847bffa4efa1a120fc3652923ca6009",
+      "readable_bytes": 1281,
+      "readable_sha256": "9d79ee945e627a9816a0e83691dbb3457847bffa4efa1a120fc3652923ca6009",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/_bus/15.cartan.verdict.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/_bus/15.cartan.verdict.md",
+      "source_bytes": 473,
+      "source_sha256": "df45e763c7e8e3e005d9b911f305b252a94686a8d7dd2a1c34fd62779804e87b",
+      "readable_bytes": 473,
+      "readable_sha256": "df45e763c7e8e3e005d9b911f305b252a94686a8d7dd2a1c34fd62779804e87b",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/_bus/15.trajectory.return.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/_bus/15.trajectory.return.md",
+      "source_bytes": 1498,
+      "source_sha256": "df5fcb500744c5271a64060bbf16ec75a487353cfd8fee564c6efbb6ed08292c",
+      "readable_bytes": 1498,
+      "readable_sha256": "df5fcb500744c5271a64060bbf16ec75a487353cfd8fee564c6efbb6ed08292c",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/_bus/16.cartan.point.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/_bus/16.cartan.point.md",
+      "source_bytes": 1190,
+      "source_sha256": "4d0723dc700c0a6568c66e2dfd27cc8c1317b76da01404249db4fa1ef8eb3876",
+      "readable_bytes": 1190,
+      "readable_sha256": "4d0723dc700c0a6568c66e2dfd27cc8c1317b76da01404249db4fa1ef8eb3876",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/_bus/16.cartan.verdict.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/_bus/16.cartan.verdict.md",
+      "source_bytes": 457,
+      "source_sha256": "a14ec4890c82f053bc0b6888eec59f978668bf8d9ca2fd0a34b0bc8d08b9dc67",
+      "readable_bytes": 457,
+      "readable_sha256": "a14ec4890c82f053bc0b6888eec59f978668bf8d9ca2fd0a34b0bc8d08b9dc67",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/_bus/16.next-cartan.return.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/_bus/16.next-cartan.return.md",
+      "source_bytes": 3227,
+      "source_sha256": "050a5dafe33cdce693f990ec9a7fea123d4c352cec3c9152df0985e71faee066",
+      "readable_bytes": 3227,
+      "readable_sha256": "050a5dafe33cdce693f990ec9a7fea123d4c352cec3c9152df0985e71faee066",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/_bus/17.cartan.point.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/_bus/17.cartan.point.md",
+      "source_bytes": 1895,
+      "source_sha256": "7f3f7a1c375e15f38a931ea23ce813676b7d465e150a55b64e1d609575d867cc",
+      "readable_bytes": 1895,
+      "readable_sha256": "7f3f7a1c375e15f38a931ea23ce813676b7d465e150a55b64e1d609575d867cc",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/_bus/17.cartan.verdict.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/_bus/17.cartan.verdict.md",
+      "source_bytes": 652,
+      "source_sha256": "41838036a3555237e34d5043dd0b8490fbe05946fe98252a7d529eff33fe63f6",
+      "readable_bytes": 652,
+      "readable_sha256": "41838036a3555237e34d5043dd0b8490fbe05946fe98252a7d529eff33fe63f6",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/_bus/17.next-cartan.readback.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/_bus/17.next-cartan.readback.md",
+      "source_bytes": 2692,
+      "source_sha256": "133b0487ce0e3c0ab2e24df2ad12a73e06c8c6103bbc383d165a01f153431dff",
+      "readable_bytes": 2692,
+      "readable_sha256": "133b0487ce0e3c0ab2e24df2ad12a73e06c8c6103bbc383d165a01f153431dff",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/_bus/18.cartan.activation.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/_bus/18.cartan.activation.md",
+      "source_bytes": 2698,
+      "source_sha256": "64b3bc407ffc76df45927b45ca86dfcf8aff0890f24c0d32e4437ae17f8747a3",
+      "readable_bytes": 2698,
+      "readable_sha256": "64b3bc407ffc76df45927b45ca86dfcf8aff0890f24c0d32e4437ae17f8747a3",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/_bus/18.cartan.return.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/_bus/18.cartan.return.md",
+      "source_bytes": 2869,
+      "source_sha256": "9aa926db00f6cd4b6c25e8442cbfb150d50b3b3636311c346a1b998c20cbe720",
+      "readable_bytes": 2869,
+      "readable_sha256": "9aa926db00f6cd4b6c25e8442cbfb150d50b3b3636311c346a1b998c20cbe720",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/_bus/19.cartan.point.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/_bus/19.cartan.point.md",
+      "source_bytes": 1828,
+      "source_sha256": "8a323f677891bb18fc0059bbd3844296f6201d0ca9e82584700759340de181c2",
+      "readable_bytes": 1828,
+      "readable_sha256": "8a323f677891bb18fc0059bbd3844296f6201d0ca9e82584700759340de181c2",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/_bus/19.cartan.verdict.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/_bus/19.cartan.verdict.md",
+      "source_bytes": 1394,
+      "source_sha256": "cf182de2e5627a5240ffbc6ac78aeb1d46093fa5428e298d471709533c04c45c",
+      "readable_bytes": 1394,
+      "readable_sha256": "cf182de2e5627a5240ffbc6ac78aeb1d46093fa5428e298d471709533c04c45c",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/_bus/20.cartan.point.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/_bus/20.cartan.point.md",
+      "source_bytes": 1359,
+      "source_sha256": "4cfae98bac7e6da970707e39c7a77c88b8a896f5bd525cbc2b26a792b44ad591",
+      "readable_bytes": 1359,
+      "readable_sha256": "4cfae98bac7e6da970707e39c7a77c88b8a896f5bd525cbc2b26a792b44ad591",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/_bus/20.cartan.verdict.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/_bus/20.cartan.verdict.md",
+      "source_bytes": 2871,
+      "source_sha256": "d403b48ed97b1b1600c26ac207f4f93314ddd6f626b679c680b9e46d3341da7e",
+      "readable_bytes": 2871,
+      "readable_sha256": "d403b48ed97b1b1600c26ac207f4f93314ddd6f626b679c680b9e46d3341da7e",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/_bus/20.inventory-review.return.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/_bus/20.inventory-review.return.md",
+      "source_bytes": 4410,
+      "source_sha256": "534355f8ecb0436b53993d0980d5859ac99c3f61865b43d5a40c647ee2cfca16",
+      "readable_bytes": 4410,
+      "readable_sha256": "534355f8ecb0436b53993d0980d5859ac99c3f61865b43d5a40c647ee2cfca16",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/_bus/21.cartan.point.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/_bus/21.cartan.point.md",
+      "source_bytes": 1329,
+      "source_sha256": "7487ff59896c90bc1106100170c44099bc79eacbe1cf408cbbfa8bc5a503bc32",
+      "readable_bytes": 1329,
+      "readable_sha256": "7487ff59896c90bc1106100170c44099bc79eacbe1cf408cbbfa8bc5a503bc32",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/_bus/21.cartan.verdict.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/_bus/21.cartan.verdict.md",
+      "source_bytes": 1369,
+      "source_sha256": "b2e0b55d342b48b3a35a3b82a7cc3464de34f5ca8ce748f43c78e2cc3c539433",
+      "readable_bytes": 1369,
+      "readable_sha256": "b2e0b55d342b48b3a35a3b82a7cc3464de34f5ca8ce748f43c78e2cc3c539433",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/_bus/21.inventory-review.return.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/_bus/21.inventory-review.return.md",
+      "source_bytes": 1635,
+      "source_sha256": "d24829f8b4a98de2e107934350ce39d70cb06b1fadeb3dd828f9bab81ccef0d1",
+      "readable_bytes": 1635,
+      "readable_sha256": "d24829f8b4a98de2e107934350ce39d70cb06b1fadeb3dd828f9bab81ccef0d1",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/_bus/22.trajectory.majkee-decision.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/_bus/22.trajectory.majkee-decision.md",
+      "source_bytes": 1285,
+      "source_sha256": "4869476d08d0717d123c570d187c08b76159db4faefbb1bf503757977a3bcee8",
+      "readable_bytes": 1285,
+      "readable_sha256": "4869476d08d0717d123c570d187c08b76159db4faefbb1bf503757977a3bcee8",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/protocol-proposal.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/protocol-proposal.md",
+      "source_bytes": 8409,
+      "source_sha256": "59aba0cbd3635aba53d51f0bc405df46405abe0ff8ea27c1e5bc9ba96dc00c5b",
+      "readable_bytes": 8409,
+      "readable_sha256": "59aba0cbd3635aba53d51f0bc405df46405abe0ff8ea27c1e5bc9ba96dc00c5b",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/raw/PROMOTION-MANIFEST.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/raw/PROMOTION-MANIFEST.md",
+      "source_bytes": 1787,
+      "source_sha256": "ee51a84547062188ebd6665edd8198abf826e919d1ca9465e419fd94af0c8302",
+      "readable_bytes": 1787,
+      "readable_sha256": "ee51a84547062188ebd6665edd8198abf826e919d1ca9465e419fd94af0c8302",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/raw/experience-transfer.cartan.2026-11-14.md",
+      "readable": ".dev/observations/vistMini-01-tests.experience.cartan.2026-11-14.md",
+      "source_bytes": 2833,
+      "source_sha256": "9b097f00aee0c408fd4835a958b66ae02454096884aa62aca2874a0195626749",
+      "readable_bytes": 3240,
+      "readable_sha256": "f75496ea4cce9f1bce9f9c597c3d2d885290a548b13aa3362f58352a70813c53",
+      "preservation": "verbatim payload with origin header"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/reports/10.context-observation.json",
+      "readable": ".dev/observations/vistMini-01-tests.context.cartan.2026-11-14.md",
+      "source_bytes": 1786,
+      "source_sha256": "4efc61ec64995576b15156e63d9bb5f1d050e8ef3eb31970964fae1f1901d12e",
+      "readable_bytes": 2184,
+      "readable_sha256": "200ff90b6263916729906f6c165aedbb7f28e3ff388c7c6a8bb5ab223ecd443f",
+      "preservation": "verbatim payload with origin header"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/reports/cartan.binding-03.2026-11-12.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/reports/cartan.binding-03.2026-11-12.md",
+      "source_bytes": 4581,
+      "source_sha256": "78df12d792b92c25be29c35a579a9bb3bf06375d465f659f20928ffaf2e03f4a",
+      "readable_bytes": 4581,
+      "readable_sha256": "78df12d792b92c25be29c35a579a9bb3bf06375d465f659f20928ffaf2e03f4a",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/reports/cartan.cache-r2.2026-11-13.md",
+      "readable": ".dev/observations/vistMini-01-tests.cache-r2.cartan.2026-11-14.md",
+      "source_bytes": 5760,
+      "source_sha256": "9688c04e432b5e75bbaeab050f66fd68e45da2aac75a07e00520a664c1f36f11",
+      "readable_bytes": 6160,
+      "readable_sha256": "67442a692d15efd189810224896b1d4b73232e27f0aaae00e9023c89472ec8a5",
+      "preservation": "verbatim payload with origin header"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/reports/cartan.cache-turn10.2026-11-13.md",
+      "readable": ".dev/observations/vistMini-01-tests.cache-turn10.cartan.2026-11-14.md",
+      "source_bytes": 4801,
+      "source_sha256": "244635da4b2d6c55fd3debdf142a9757f5710e40c2a5992281d318da346bdaf2",
+      "readable_bytes": 5205,
+      "readable_sha256": "3f05083317dce3899f4a20e3ee834f3fc6bd9b674a20203857182d63b39b17e6",
+      "preservation": "verbatim payload with origin header"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/reports/cartan.cases-08.2026-11-13.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/reports/cartan.cases-08.2026-11-13.md",
+      "source_bytes": 56851,
+      "source_sha256": "363850b7da8cb2e2347ac9395c72de9837248a3aecdabbb1b2655601ad6b79cf",
+      "readable_bytes": 56851,
+      "readable_sha256": "363850b7da8cb2e2347ac9395c72de9837248a3aecdabbb1b2655601ad6b79cf",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/reports/cartan.codex-channels.2026-11-12.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/reports/cartan.codex-channels.2026-11-12.md",
+      "source_bytes": 7701,
+      "source_sha256": "c30f3cabe19011d357cf52ba1a292e57ab417f96cbe156b20129e89a8911477c",
+      "readable_bytes": 7701,
+      "readable_sha256": "c30f3cabe19011d357cf52ba1a292e57ab417f96cbe156b20129e89a8911477c",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/reports/cartan.cycle01.2026-11-12.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/reports/cartan.cycle01.2026-11-12.md",
+      "source_bytes": 17364,
+      "source_sha256": "b85b6e77d39063b2950f43e71569c186adc5be93c71ae27933f0045a383614cc",
+      "readable_bytes": 17364,
+      "readable_sha256": "b85b6e77d39063b2950f43e71569c186adc5be93c71ae27933f0045a383614cc",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/reports/cartan.cycle02.2026-11-12.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/reports/cartan.cycle02.2026-11-12.md",
+      "source_bytes": 24578,
+      "source_sha256": "c0db4980454831cf80c718b15825c8a48552ff1ed477e8e7509d620eac5cc958",
+      "readable_bytes": 24578,
+      "readable_sha256": "c0db4980454831cf80c718b15825c8a48552ff1ed477e8e7509d620eac5cc958",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/reports/cartan.cycle03.2026-11-12.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/reports/cartan.cycle03.2026-11-12.md",
+      "source_bytes": 35992,
+      "source_sha256": "d6d16a7d1242ec39144e41b5081be2ad2207e8b5f4243f7a44c658b504d59fd3",
+      "readable_bytes": 35992,
+      "readable_sha256": "d6d16a7d1242ec39144e41b5081be2ad2207e8b5f4243f7a44c658b504d59fd3",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/reports/cartan.handoff-recovery-03.2026-11-12.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/reports/cartan.handoff-recovery-03.2026-11-12.md",
+      "source_bytes": 2790,
+      "source_sha256": "aaa86b7167e4d095f2f6deccdac4965925b67d9024586edc0a8cc266c1928b92",
+      "readable_bytes": 2790,
+      "readable_sha256": "aaa86b7167e4d095f2f6deccdac4965925b67d9024586edc0a8cc266c1928b92",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/reports/cartan.matrix.2026-11-12.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/reports/cartan.matrix.2026-11-12.md",
+      "source_bytes": 7541,
+      "source_sha256": "8c594a4e2c2f597d817e468b7aaed8da31f8148d1d353d2ff564e97b3eb69c4e",
+      "readable_bytes": 7541,
+      "readable_sha256": "8c594a4e2c2f597d817e468b7aaed8da31f8148d1d353d2ff564e97b3eb69c4e",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/reports/cartan.native-resume-clue.2026-11-12.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/reports/cartan.native-resume-clue.2026-11-12.md",
+      "source_bytes": 1696,
+      "source_sha256": "bd1b1b11ab4ae2aed326aec44ca07373c6eddd61160d2c10975d86f99c1c2953",
+      "readable_bytes": 1696,
+      "readable_sha256": "bd1b1b11ab4ae2aed326aec44ca07373c6eddd61160d2c10975d86f99c1c2953",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/reports/cartan.office-handoff.2026-11-12.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/reports/cartan.office-handoff.2026-11-12.md",
+      "source_bytes": 6960,
+      "source_sha256": "507ed0d8c89ac9bddfda69b09dffe9d3e46e5b57b1c8b075ee4bee7fb39f4e64",
+      "readable_bytes": 6960,
+      "readable_sha256": "507ed0d8c89ac9bddfda69b09dffe9d3e46e5b57b1c8b075ee4bee7fb39f4e64",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/reports/cartan.preflight.2026-11-12.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/reports/cartan.preflight.2026-11-12.md",
+      "source_bytes": 4537,
+      "source_sha256": "a8b7a5f8f5a73bf708feac118ce06a7c94f27f85ddd4f0f0f5d186560d422c43",
+      "readable_bytes": 4537,
+      "readable_sha256": "a8b7a5f8f5a73bf708feac118ce06a7c94f27f85ddd4f0f0f5d186560d422c43",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/reports/cartan.shell-footer-03.2026-11-12.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/reports/cartan.shell-footer-03.2026-11-12.md",
+      "source_bytes": 1908,
+      "source_sha256": "d4d5ce446155178215203389dff18e415d1f1bc4e575800d83b69d0c21df34c9",
+      "readable_bytes": 1908,
+      "readable_sha256": "d4d5ce446155178215203389dff18e415d1f1bc4e575800d83b69d0c21df34c9",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/reports/cartan.tui-contract.2026-11-12.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/reports/cartan.tui-contract.2026-11-12.md",
+      "source_bytes": 10672,
+      "source_sha256": "271ec258d97dafb571ace56bcb8d53a6160a80631f67f32a41bb28f4d8fe1405",
+      "readable_bytes": 10672,
+      "readable_sha256": "271ec258d97dafb571ace56bcb8d53a6160a80631f67f32a41bb28f4d8fe1405",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/reports/office.native-messaging-reply.2026-11-12.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/reports/office.native-messaging-reply.2026-11-12.md",
+      "source_bytes": 8592,
+      "source_sha256": "b53a8e885e65aa05ffef1cb3801cf991f59817d9cdc616f62d1f7e72c87d9c9d",
+      "readable_bytes": 8592,
+      "readable_sha256": "b53a8e885e65aa05ffef1cb3801cf991f59817d9cdc616f62d1f7e72c87d9c9d",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/reports/oraculum.vist-context.2026-11-12.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/reports/oraculum.vist-context.2026-11-12.md",
+      "source_bytes": 1468,
+      "source_sha256": "8afc2dc20ef572896878cb7ce93ea5768ca0ffc7b5a7a9dbae9b8a408f25f694",
+      "readable_bytes": 1468,
+      "readable_sha256": "8afc2dc20ef572896878cb7ce93ea5768ca0ffc7b5a7a9dbae9b8a408f25f694",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/reports/oraculum.vist-recommendation.2026-11-12.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/reports/oraculum.vist-recommendation.2026-11-12.md",
+      "source_bytes": 11074,
+      "source_sha256": "8c0445d3e5104bc6afa85b68db790deea06e7cbe2dfdea37953845b0a9975b7e",
+      "readable_bytes": 11074,
+      "readable_sha256": "8c0445d3e5104bc6afa85b68db790deea06e7cbe2dfdea37953845b0a9975b7e",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/reports/trajectory.channels-research.2026-11-12.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/reports/trajectory.channels-research.2026-11-12.md",
+      "source_bytes": 3688,
+      "source_sha256": "2020f29dfd4e37244c94739c419107fefdf3425bba991b96a180537ede5a47d8",
+      "readable_bytes": 3688,
+      "readable_sha256": "2020f29dfd4e37244c94739c419107fefdf3425bba991b96a180537ede5a47d8",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/reports/trajectory.permissions.2026-11-12.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/reports/trajectory.permissions.2026-11-12.md",
+      "source_bytes": 2210,
+      "source_sha256": "738df867d924315bf7c9ee856ceef048416d85300bf7316ca4bac5abd31f629a",
+      "readable_bytes": 2210,
+      "readable_sha256": "738df867d924315bf7c9ee856ceef048416d85300bf7316ca4bac5abd31f629a",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/reports/trial-msgs/01.cartan.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/reports/trial-msgs/01.cartan.md",
+      "source_bytes": 1782,
+      "source_sha256": "ebec665d775ade9b8fefbf0a17a6915af0d1d4cbba961abd625092712b1902df",
+      "readable_bytes": 1782,
+      "readable_sha256": "ebec665d775ade9b8fefbf0a17a6915af0d1d4cbba961abd625092712b1902df",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/reports/trial-msgs/01.trajectory.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/reports/trial-msgs/01.trajectory.md",
+      "source_bytes": 1336,
+      "source_sha256": "10ca4b7f0a63fba649b109f3adb6e1d8304224ae426fa3f75caadf63ba8608d5",
+      "readable_bytes": 1336,
+      "readable_sha256": "10ca4b7f0a63fba649b109f3adb6e1d8304224ae426fa3f75caadf63ba8608d5",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/reports/trial-msgs/02.cartan.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/reports/trial-msgs/02.cartan.md",
+      "source_bytes": 2289,
+      "source_sha256": "984f8c06bc55e9e18f6e7de6317934cfa0d70cd2c44b58abc166e14e7fb126e0",
+      "readable_bytes": 2289,
+      "readable_sha256": "984f8c06bc55e9e18f6e7de6317934cfa0d70cd2c44b58abc166e14e7fb126e0",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/reports/trial-msgs/02.trajectory.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/reports/trial-msgs/02.trajectory.md",
+      "source_bytes": 1157,
+      "source_sha256": "be58749d46f7330f963114854b7b28198523771982202188594688cd73c38614",
+      "readable_bytes": 1157,
+      "readable_sha256": "be58749d46f7330f963114854b7b28198523771982202188594688cd73c38614",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/reports/trial-msgs/03.cartan.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/reports/trial-msgs/03.cartan.md",
+      "source_bytes": 2165,
+      "source_sha256": "0156658ae46b0a5a999a793372eed363c042fe02546b34fbe3ce0c2feab97fb4",
+      "readable_bytes": 2165,
+      "readable_sha256": "0156658ae46b0a5a999a793372eed363c042fe02546b34fbe3ce0c2feab97fb4",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/reports/trial-msgs/03.trajectory.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/reports/trial-msgs/03.trajectory.md",
+      "source_bytes": 1211,
+      "source_sha256": "bd69c69b537d59e2bd4467c05715c54b65d034ea624d4c6591eb33be08d491dd",
+      "readable_bytes": 1211,
+      "readable_sha256": "bd69c69b537d59e2bd4467c05715c54b65d034ea624d4c6591eb33be08d491dd",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/reports/trial-msgs/q01.cartan.receipt.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/reports/trial-msgs/q01.cartan.receipt.md",
+      "source_bytes": 2678,
+      "source_sha256": "7aae0b99f9216ad453b5b48ed77cf36ad9452ae100dcdec4237dc879f200be93",
+      "readable_bytes": 2678,
+      "readable_sha256": "7aae0b99f9216ad453b5b48ed77cf36ad9452ae100dcdec4237dc879f200be93",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/reports/trial-msgs/q02.cartan.receipt.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/reports/trial-msgs/q02.cartan.receipt.md",
+      "source_bytes": 1796,
+      "source_sha256": "b0369e4e08e9e3f62db26a088acfc9d1684fb4f8a7d464e6a8f4448161a8192c",
+      "readable_bytes": 1796,
+      "readable_sha256": "b0369e4e08e9e3f62db26a088acfc9d1684fb4f8a7d464e6a8f4448161a8192c",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/reports/trial-msgs/q03.cartan.receipt.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/reports/trial-msgs/q03.cartan.receipt.md",
+      "source_bytes": 1542,
+      "source_sha256": "88a90eec2fd5f91fb9eadbaf3126c078bc5a263a6f7ebd1c9111fae77617351f",
+      "readable_bytes": 1542,
+      "readable_sha256": "88a90eec2fd5f91fb9eadbaf3126c078bc5a263a6f7ebd1c9111fae77617351f",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/reports/trial-report.vistmini-01.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/reports/trial-report.vistmini-01.md",
+      "source_bytes": 12626,
+      "source_sha256": "fd1b1e20bb0d9e3192b77e1f7582da60a404bbc14644a426df39983428cc7b5d",
+      "readable_bytes": 12626,
+      "readable_sha256": "fd1b1e20bb0d9e3192b77e1f7582da60a404bbc14644a426df39983428cc7b5d",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/reports/vist.offline-fixture-inventory.2026-11-13.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/reports/vist.offline-fixture-inventory.2026-11-13.md",
+      "source_bytes": 22497,
+      "source_sha256": "e1c0307df33b4c5faed8c50c3a8f580e5b9ab26311d5314c48ffe20ac6976768",
+      "readable_bytes": 22497,
+      "readable_sha256": "e1c0307df33b4c5faed8c50c3a8f580e5b9ab26311d5314c48ffe20ac6976768",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/reports/vist.offline-qualification-proposal.2026-11-13.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/reports/vist.offline-qualification-proposal.2026-11-13.md",
+      "source_bytes": 3723,
+      "source_sha256": "71634d527a9e9c6faa57d3a9ca7c6bcc2142e355b3b4722fe3aacd3eb08ec059",
+      "readable_bytes": 3723,
+      "readable_sha256": "71634d527a9e9c6faa57d3a9ca7c6bcc2142e355b3b4722fe3aacd3eb08ec059",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/scripts/bus-poke.sh",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/scripts/bus-poke.sh",
+      "source_bytes": 10278,
+      "source_sha256": "6f8295dcb3ca52fc002eb4a01e34ae495e3dc680cd7301fa630cfcfcbb096b3b",
+      "readable_bytes": 10278,
+      "readable_sha256": "6f8295dcb3ca52fc002eb4a01e34ae495e3dc680cd7301fa630cfcfcbb096b3b",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/scripts/handoff-once.sh",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/scripts/handoff-once.sh",
+      "source_bytes": 1403,
+      "source_sha256": "1537cd2463b11fc24d1a3c3a8477accce18d3b412fb99b2045ebc336be44ac16",
+      "readable_bytes": 1403,
+      "readable_sha256": "1537cd2463b11fc24d1a3c3a8477accce18d3b412fb99b2045ebc336be44ac16",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/scripts/vist-deliver.sh",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/scripts/vist-deliver.sh",
+      "source_bytes": 10875,
+      "source_sha256": "5516d92f6a65d8a464ec266b80e483b6c923873e8634167085408fef7175b6b7",
+      "readable_bytes": 10875,
+      "readable_sha256": "5516d92f6a65d8a464ec266b80e483b6c923873e8634167085408fef7175b6b7",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/scripts/vist-heartbeat.py",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/scripts/vist-heartbeat.py",
+      "source_bytes": 5839,
+      "source_sha256": "381815d8c614e44bae9973264695c9fa4ce456f370f64aae049cbca3612c7efb",
+      "readable_bytes": 5839,
+      "readable_sha256": "381815d8c614e44bae9973264695c9fa4ce456f370f64aae049cbca3612c7efb",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/scripts/vist-signatures.conf",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/scripts/vist-signatures.conf",
+      "source_bytes": 812,
+      "source_sha256": "ae9d5266b041ba960b6cd8b07e1f77c647f7f8a169f8b40ad82e2a187348f62d",
+      "readable_bytes": 812,
+      "readable_sha256": "ae9d5266b041ba960b6cd8b07e1f77c647f7f8a169f8b40ad82e2a187348f62d",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/tests/README.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/tests/README.md",
+      "source_bytes": 5735,
+      "source_sha256": "ab53e03c2bd4aba51999845e231a5e90bd7ccff5710536d5cda315d498f197f5",
+      "readable_bytes": 5735,
+      "readable_sha256": "ab53e03c2bd4aba51999845e231a5e90bd7ccff5710536d5cda315d498f197f5",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/tests/adapter-test.sh",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/tests/adapter-test.sh",
+      "source_bytes": 15461,
+      "source_sha256": "6c9601cd99485609cdfd856b6ae7bfb5195606ab0f8ec7313102df4bbdd1dacf",
+      "readable_bytes": 15461,
+      "readable_sha256": "6c9601cd99485609cdfd856b6ae7bfb5195606ab0f8ec7313102df4bbdd1dacf",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/tests/fake-agent.sh",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/tests/fake-agent.sh",
+      "source_bytes": 4071,
+      "source_sha256": "c64cc477f92743d4966baf8d2d7bd8ff307c7f5e39f5849c04a073085c0ddeaf",
+      "readable_bytes": 4071,
+      "readable_sha256": "c64cc477f92743d4966baf8d2d7bd8ff307c7f5e39f5849c04a073085c0ddeaf",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/tests/test_vist_heartbeat.py",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/tests/test_vist_heartbeat.py",
+      "source_bytes": 5066,
+      "source_sha256": "5ab71ad96d65b18d03c2c98ece4b3b9657377a0030cd82f5f691f6e20c15c31d",
+      "readable_bytes": 5066,
+      "readable_sha256": "5ab71ad96d65b18d03c2c98ece4b3b9657377a0030cd82f5f691f6e20c15c31d",
+      "preservation": "verbatim"
+    },
+    {
+      "origin": ".dev/session/vistMini-01-tests/tests/tmux-interpose.sh",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/tests/tmux-interpose.sh",
+      "source_bytes": 1997,
+      "source_sha256": "83fc1ad8900d67c1897347432586759f9488b948d3923a8838cf8a6ebbe3f2f0",
+      "readable_bytes": 1997,
+      "readable_sha256": "83fc1ad8900d67c1897347432586759f9488b948d3923a8838cf8a6ebbe3f2f0",
+      "preservation": "verbatim"
+    }
+  ],
+  "additional_process_preservation": [
+    {
+      "origin": ".dev/session/vistMini-01-tests/_bus/18.cartan.return.md",
+      "readable": ".dev/observations/vistMini-01-tests.carriage.cartan.2026-11-14.md",
+      "source_sha256": "9aa926db00f6cd4b6c25e8442cbfb150d50b3b3636311c346a1b998c20cbe720",
+      "readable_sha256": "b16d5d26bbfc54fc795fb1e1d2c200f74a2063c0a563024d45f08ef2ad1b88b6",
+      "preservation": "complete immutable receipt payload copied verbatim with origin header; original retained in readable package"
+    }
+  ],
+  "local_only_excluded": [
+    "/tmp/vc08r1.tkz50zbf",
+    "/tmp/vc08r2.kk50sqqh",
+    "/tmp/vc08r3.j6lgeedf",
+    "native histories/credentials/tokens/transport state and uncertain-send keys",
+    "two ignored __pycache__ pyc files moved locally with directory, not tracked/published"
+  ],
+  "release": "No prototype/shared-layer transport release, X0 lifecycle or canon adoption",
+  "late_arrivals": [
+    {
+      "identity": "vistMini-01-tests/_bus/23.trajectory.point-retro.md",
+      "readable": ".dev/records/vist/2026-11-14/vistMini-01-tests/_bus/23.trajectory.point-retro.md",
+      "bytes": 1437,
+      "sha256": "62764915a10598caee5d4d755ffcf0919c538535bde00727ca7809da9383ca51",
+      "provenance": "First observed at readable location after retirement move; not in preservation57240f5 baseline",
+      "disposition": "Documentary two-view team handoff preserved in Nablarva; no roster adopted"
+    }
+  ],
+  "team_handoffs": {
+    "repo": "/home/hruzam/unikuklatrix/nablarva",
+    "commit": "c8c857cd62f7864f2393f627536e876fa49e07b0",
+    "files": [
+      {
+        "path": ".dev/session/vist-X0-helloWorld/raw/handoff.vistmini-04-longrun.trajectory.2026-11-14.md",
+        "sha256": "f1bb4b1d2a0a68dca2f931bce0e20b23a739bca971399675b8c1ee8a759a8806",
+        "bytes": 7454
+      },
+      {
+        "path": ".dev/session/vist-X0-helloWorld/raw/handoff.vistmini-05-team.cartan.2026-11-14.md",
+        "sha256": "9ec7de63e2c7d90785825188653f3766dbb5339e88100cc2ea7c9ad89d06a61f",
+        "bytes": 7004
+      }
+    ],
+    "meaning": "Attributed proposals under late POINT23; not an appointed X0 team"
+  }
+}

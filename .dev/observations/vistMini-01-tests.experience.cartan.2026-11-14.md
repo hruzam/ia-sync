@@ -1,3 +1,13 @@
+---
+kind: preserved-session-process
+origin: .dev/session/vistMini-01-tests/raw/experience-transfer.cartan.2026-11-14.md
+preservation_commit: 57240f54af1e83fc9bb16209581e31749318e8d1
+source_sha256: 9b097f00aee0c408fd4835a958b66ae02454096884aa62aca2874a0195626749
+promoter: home:cartan (01a1d58a-3b43-7221-bf9b-fa98b219df6b)
+promoted: 2026-11-14
+preservation: verbatim payload follows; header added only
+---
+
 # vistMini — experience transfer
 
 ## 1. Inherited head note

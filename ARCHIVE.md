@@ -22,6 +22,14 @@ Every row below retains its original full identity. Readable packages live outsi
 | `germline-A8-epoch-researcher` | Superseded Epoch preparation | [record](.dev/records/germline/2026-11-03/germline-A8-epoch-researcher/STATUS.md) · [Original preparation](.dev/records/germline/2026-11-03/germline-A8-epoch-researcher/RUNBOOK.md) | Unstarted build survives in A1 group 004; A1 head owns continuation. |
 | `germline-A2-nabla-lab` | Original office lab preparation | [record](.dev/records/germline/2026-11-03/germline-A2-nabla-lab/STATUS.md) · [Accepted setup receipt](.dev/records/germline/2026-11-03/germline-A2-nabla-lab/raw/CLOSE.office.2026-10-29.md) | Closed group 001 of A2-projects; Track 2 research stays with its separate lab assignment. |
 
+## VIST retired trials
+
+| Original identity | Preserved evidence | Disposition and surviving responsibility |
+|---|---|---|
+| `vistMini-01-tests` | [Closing receipt](.dev/records/vist/2026-11-14/CLOSE.md) · [recorded STATUS](.dev/records/vist/2026-11-14/vistMini-01-tests/STATUS.md) · [final report](.dev/records/vist/2026-11-14/vistMini-01-tests/reports/trial-report.vistmini-01.md) · [exact mapping/hashes](.dev/records/vist/2026-11-14/MANIFEST.json) | Majkee GO2026-11-14 with narrowed scope. Unrun/unqualified cases carried to Nablarva X0 raw at a66851a; no X0 activation or prototype release. Process lessons promoted under `.dev/observations/vistMini-01-tests.*`. |
+
+For this identity, use the dedicated VIST manifest's exact `origin`→`readable` mapping; some process records moved to observations. The original Git paths/revisions remain valid historical citations. No compatibility symlink, live VIST route or execution authority survives retirement. Local /tmp evidence, histories and uncertain-send keys are not part of the Git preservation claim.
+
 ## Resolve a historical address
 
 The [source manifest](.dev/records/germline/2026-11-03/MANIFEST.json) maps each `origin` to its `readable` location, file hashes and compressed copy. Given an old `.dev/session/<original-full-slug>/<suffix>`, find the exact slug above or in the manifest and use `.dev/records/germline/2026-11-03/<original-full-slug>/<suffix>`. The suffix and original identity stay unchanged. Never resolve by number alone or substitute a newer session with the same number.

@@ -1,3 +1,13 @@
+---
+kind: preserved-session-process
+origin: .dev/session/vistMini-01-tests/reports/cartan.cache-turn10.2026-11-13.md
+preservation_commit: 57240f54af1e83fc9bb16209581e31749318e8d1
+source_sha256: 244635da4b2d6c55fd3debdf142a9757f5710e40c2a5992281d318da346bdaf2
+promoter: home:cartan (01a1d58a-3b43-7221-bf9b-fa98b219df6b)
+promoted: 2026-11-14
+preservation: verbatim payload follows; header added only
+---
+
 # Cartan local cache — turn10 restart
 
 Operator authorised this project-local continuity cache. Pointer only: **read STATUS.md first**; it is the sole doing-state. Current head is Cartan; successors must get an explicit transfer/read-back, not infer ownership from this file.
