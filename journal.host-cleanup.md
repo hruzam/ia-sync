@@ -10,6 +10,25 @@
 
 ---
 
+## HOME — 2026-11-14 · Oraculum (witness) · oraculum Bash whitelist: read-only tmux
+
+Majkee assigned this Oraculum seat as outside `witness` for vist-X0 and repaired its hook with it.
+`claude/hooks/oraculum-bash-whitelist.sh` gained a `tmux)` case: `list-sessions/windows/panes/clients`
+(and short aliases), `show`, and `capture-pane` / `display` only with `-p`; optional leading `-L <name>`.
+Any argument ending in `_` after masking is denied, since a quoted `;` separator looks like that.
+All other tmux stays denied (`send-keys`, `paste-buffer`, `set`, `kill-*`, `new-*`, `attach`, bare `tmux`).
+A `bash …/vistMini-01-tests/scripts/vist-deliver.sh` case added by hand on 2026-11-13 was removed again
+before any commit (that bed is archived); it never reached Git. Edits and tests by delta: 23 allow/deny
+cases fed to the hook as text, all matched. Committed and pushed as 23f15e0.
+Deployed on home with a full `deploy.sh` (exit 0, `.bak-2026-11-14` backups). No `git pull --rebase`
+was run first (local was not behind origin; other seats' unstaged work was in the tree), and
+`install-pkgs/run.sh update` was skipped. **That deploy also made live three uncommitted paths that
+are not this seat's:** `claude/agents/trajectory.md`, `claude/settings.json`, `claude/hooks/statusline.sh`.
+Their owners should commit or revert them. Office and monitor get the hook at their next pull + deploy.
+Economy fence only, not a security boundary. Home-local, no escalation to Houston.
+
+---
+
 ## HOME — 2026-11-13 · Cartan · bounded vistMini controller check-in
 
 Majkee authorised group restart, observed tmux re-marking, caches and scoped cron/check-ins.
