@@ -147,6 +147,21 @@ for seg in "${SEGS[@]}"; do
       esac ;;
     export)
       [ ${#argv[@]} -eq 2 ] && [[ ${argv[1]} == TUNNEL_CODEX_STATE=* ]] || deny "export (only TUNNEL_CODEX_STATE=…)" ;;
+    tmux)
+      # read-only pane inspection for the witness seat; no input, no state change
+      for x in "${argv[@]:1}"; do
+        [[ $x == *_ ]] && deny "tmux argument '$x' may hide a ';' command separator"
+      done
+      a=1
+      while [ "${argv[a]}" = -L ]; do a=$((a + 2)); done
+      case "${argv[a]}" in
+        list-sessions|ls|list-windows|lsw|list-panes|lsp|list-clients|lsc|show-options|show) ;;
+        capture-pane|capturep|display-message|display)
+          has_p=0
+          for x in "${argv[@]:a+1}"; do [[ $x =~ ^-[A-Za-z]*p[A-Za-z]*$ ]] && has_p=1; done
+          [ "$has_p" = 1 ] || deny "tmux ${argv[a]} without -p (print to stdout only)" ;;
+        *) deny "tmux ${argv[a]:-<none>} (read-only: capture-pane -p, list-*, display -p, show)" ;;
+      esac ;;
     *) deny "out of whitelist ($cmd)" ;;
   esac
 done
