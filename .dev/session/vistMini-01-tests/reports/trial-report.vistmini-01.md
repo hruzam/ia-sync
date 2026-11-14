@@ -4,10 +4,10 @@ trial: vistMini-01-tests
 date: 2026-11-13
 host: home (same-host only)
 author: trajectory · claude (writer, not verifier)
-status: DRAFT r2 — R1–R6 from _bus/09.cartan.verify.md (ef275f3) applied; awaiting fresh independent check
+status: ACCEPTED — Majkee GO on 2026-11-14 with narrowed scope; unrun cases carried to VIST X0
 revision_of: db55d24
-verifier: pending fresh check (r1 review by cartan was NOK; that review does not cover this revision)
-decision: majkee GO / STOP
+verifier: R1–R6 PASS in _bus/16.next-cartan.return.md for experimental report3584a02; later changes record operator disposition only
+decision: majkee GO — scope narrowed, unrun cases go to vist-X0 (_bus/22.trajectory.majkee-decision.md)
 tooling_state: scripts/vist-deliver.sh v3.1 (37887e7) = evidence tooling, NOT released (L21)
 sources: STATUS.md · _bus/ · reports/cartan.cases-08.2026-11-13.md · ~/.local/state/vist/deliver.log (host-local, not committed)
 ---
@@ -22,11 +22,11 @@ The verifier should re-check the "evidence" column, not trust this prose.
 | gate part | result | evidence |
 |---|---|---|
 | ≥3 ordinary messages each direction, no operator relay | **MET** | Codex→Claude 3/3 via tmux adapter (cycle 03). Claude→Codex 3/3 via `codex queue`: q01 `_bus/05.*`, q02 `_bus/06.*`, q03 `_bus/07.*` (`_bus/07.trajectory.verdict.md`, nonce `f54df1d7`) |
-| every pre-registered refusal/recovery case run, expected vs observed | **PARTIAL / OPEN** | Cycle 08 rows C01–C13 run with expected vs observed (`reports/cartan.cases-08.2026-11-13.md`, b08 NOK → r1 → r2 → r3; `_bus/08.trajectory.verdict.md`). **Not run or unqualified:** C10 unregistered native view; agent exit or crash between text and Enter; expired or misaddressed requests; receiver semantic and hop limits (case file, "Remaining findings" and r3 notes). Closing this part needs those runs or a recorded operator scope decision |
+| every pre-registered refusal/recovery case run, expected vs observed | **CLOSED BY OPERATOR SCOPE DECISION; coverage remains PARTIAL** | Majkee on2026-11-14: “scope narrowed, unrun cases go to vist-X0, GO” (`_bus/22.trajectory.majkee-decision.md`). C10 unregistered native view; agent exit/crash between text and Enter; expired/misaddressed requests; receiver semantic/hop limits remain **UNRUN OR UNQUALIFIED**, carried as pre-registered cases to `nablarva/.dev/session/vist-X0-helloWorld/raw/preregister.vistmini-carryover.cartan.2026-11-14.md`. This row is discharged by scope, not execution. Original case expectations/results remain in the case file |
 | each seat's permission boundary stated | **STATED** (§3) | C09 + C06 on sample-claude, default mode |
 | limits of applicability to VIST | **STATED** (§5) | |
-| independently verified | **OPEN** | the verifier named above has not yet checked this file |
-| majkee accepts | **OPEN** | |
+| independently verified | **MET for experimental content** | Exact report3584a02 SHA dc219b62e304b48f02c98117f258b25be0a86061520ed289892f17a337e72d39 received R1–R6 PASS in RETURN16/verdict16. This final disposition records the subsequent operator decision; no experiment was rerun |
+| majkee accepts | **GO, narrowed scope** | `_bus/22.trajectory.majkee-decision.md`,2026-11-14. Prototype/shared-layer transport remains unreleased |
 
 ## 2. Doors per direction (what was actually proven)
 
@@ -124,4 +124,4 @@ Brief `_bus/09.trajectory.brief-team.md` (nonce `f60da3d1`), sent to cartan (cod
 
 6. For this revision specifically: R1–R6 dispositions in `_bus/10.trajectory.return.md` against `_bus/09.cartan.verify.md`.
 
-Open: fresh independent check of this revision · all-cases gate part (PARTIAL/OPEN, §1) · majkee GO/STOP · push by cartan.
+Closed2026-11-14 by Majkee GO with narrowed scope (§1, decision22). Deferred cases remain unrun/unqualified in the X0 carry-over; no X0 activation or transport release follows. Frozen reports, reviews and fixture inventory retain their historical scope and bytes.
