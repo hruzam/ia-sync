@@ -83,14 +83,14 @@ _ts_ssh() {
 # (devices/_shared/termux/bin/bed). One mechanism, two origins: the bed survives this
 # ssh dying (new-session -A = attach-or-create) and is reachable again by re-running.
 # Explicit host/address targets pass through. Logical names resolve through
-# ia-sync/machines.json; monitor's bare tso offers its other registered peers.
+# ia-sync/machines.json; bare tso offers the other registered peers.
 _ts_session() {
     local bed=0
     case "$1" in
         -t|--bed) bed=1; shift ;;
     esac
     local peer="${1:-}" machines="$HOME/ia-sync/machines.json"
-    if [[ -z "$peer" && "$MACHINE_NAME" == "monitor" ]]; then
+    if [[ -z "$peer" ]]; then
         [[ -t 0 && -t 1 ]] || { print -u2 "[ts] tso needs a target without a terminal"; return 1; }
         local -a choices
         local listed
@@ -583,7 +583,7 @@ _ts_help() {
     printf "  ts-ls            formatted peer list (online/offline)\n"
     printf "  tsping [host]    ping peer  · default: \$TAILSCALE_PEER\n"
     printf "  tsp [host]       ssh to peer (fast, no header)\n"
-    printf "  tso [-t] [host]  ssh with status; monitor bare tso offers a peer\n"
+    printf "  tso [-t] [host]  ssh with status; bare tso offers a peer\n"
     printf "  ts-dash          start HTTP status dashboard (port %s)\n" "$TS_DASH_PORT"
     printf "  ts-dash-stop     stop dashboard\n"
     printf "  ts-web           open login.tailscale.com/admin/machines\n"

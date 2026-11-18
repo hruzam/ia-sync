@@ -51,7 +51,7 @@ Run `ts-help` in the shell for the live panel. Reference:
 | `ts-header` | `_ts_header` | compact startup line |
 | `tsping [host]` | `_ts_ping` | ping peer · default `$TAILSCALE_PEER` |
 | `tsp [host]` | `_ts_ssh` | ssh to peer (fast) |
-| `tso [host]` | `_ts_session` | ssh with pre-connect check |
+| `tso [-t] [host]` | `_ts_session` | ssh with pre-connect check; bare command selects a registered peer |
 | `ts-dash` | `_ts_dash` | start HTTP dashboard (port `$TS_DASH_PORT`, default 9733) |
 | `ts-dash-stop` | `_ts_dash_stop` | stop dashboard |
 | `ts-web` | `_ts_web` | open Tailscale admin panel in browser |

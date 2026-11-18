@@ -10,6 +10,20 @@
 
 ---
 
+## MONITOR — 2026-11-18 · Cartan · `tso` peer chooser on all hosts
+
+Bare `tso` (and `tso -t`) now prompts for one of the other registered machines on home,
+office, and monitor. Explicit `tso <host>` still connects directly; logical names resolve
+through `machines.json`. Checked chooser output with mocked SSH for all three host identities,
+and checked an explicit target. Monitor zsh-only dry run listed only the three changed system
+files. Monitor zsh-only deployment completed and deployed files match the repo. Home and
+office receive this on their next pull and deployment.
+The unrelated `nano.45236.save` remains untouched. Monitor registry mail from home was
+checked and archived locally: declared 12 GB RAM matches measured 11.59 GiB and
+`swap.policy: none` remains.
+
+---
+
 ## HOME — 2026-11-14 · Oraculum (witness) · oraculum Bash whitelist: read-only tmux
 
 Majkee assigned this Oraculum seat as outside `witness` for vist-X0 and repaired its hook with it.
