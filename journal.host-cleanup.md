@@ -103,6 +103,21 @@ needed (name resolution may have been fixed by the reboot).
 
 ## OFFICE — 2026-11-12 · Trajectory · Office peer keys published; host facts deduplicated
 
+**Cartan remote follow-up — monitor acceptance completed.** Majkee explicitly
+authorized Cartan on home to finish office over the tailnet. Confirmed office's
+hostname and Tailscale Self.ID against machines.json; working tree was clean.
+Ran the exact acceptance block from reposoma's raw 2026-11-12 journal: ia-sync
+pulled fast-forward to f2578a5, monitor's live host fingerprint matched the published
+peer file, existing known_hosts/authorized_keys were backed up, and only missing
+public-key entries were appended. Strict office → monitor returned hruzam-mntr / hruzam.
+Final fresh BatchMode + StrictHostKeyChecking receipts passed in **all six directions**:
+home ↔ office, home ↔ monitor, office ↔ monitor. Each returned the expected hostname,
+user hruzam and exit 0, using normal known_hosts. Majkee removed monitor key's
+passphrase before these checks; no agent forwarding or private-key transfer was used.
+Archived the consumed office SSH journal notice. No tailnet policy, sshd service,
+project shell configuration or agent session was changed. Journal/mail receipt edits
+remain uncommitted; no Git push is required to activate these host-local SSH entries.
+
 Pulled ia-sync + reposoma fast-forward (reposoma via `merge --ff-only`: pull.rebase refuses
 with majkee's uncommitted `.majkee/projects/_temporarily_suspended_sessions.md`, left
 untouched). Host confirmed office by tailnet node ID against `machines.json`.
