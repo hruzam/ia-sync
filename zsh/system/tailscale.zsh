@@ -117,13 +117,43 @@ except (OSError, ValueError, KeyError, TypeError, AttributeError):
         [[ -n "$listed" ]] || { print -u2 "[ts] no registered peers available"; return 1; }
         choices=("${(@f)listed}")
         (( ${#choices} )) || { print -u2 "[ts] no registered peers available"; return 1; }
-        local choice i
-        print -u2 "Select Tailscale peer:"
-        for (( i=1; i<=${#choices}; i++ )); do print -u2 "  $i) $choices[$i]"; done
-        printf 'Choice (empty to cancel): ' > /dev/tty
-        read -r choice < /dev/tty || return 1
-        [[ "$choice" == <-> && "$choice" -ge 1 && "$choice" -le ${#choices} ]] || return 1
-        peer="$choices[$choice]"
+        local choice i selected=1 key sequence candidate rest
+        print -u2 "Select Tailscale peer (↑/↓ move, Space/Enter connect, q cancel):"
+        while true; do
+            for (( i=1; i<=${#choices}; i++ )); do
+                (( i == selected )) && printf '\r\033[2K  > %d) %s\n' "$i" "$choices[$i]" >&2 \
+                                     || printf '\r\033[2K    %d) %s\n' "$i" "$choices[$i]" >&2
+            done
+            read -rs -k1 key < /dev/tty || return 1
+            case "$key" in
+                ' '|$'\r'|$'\n') peer="$choices[$selected]"; break ;;
+                q|Q) return 1 ;;
+                $'\e')
+                    read -rs -t 0.15 -k2 sequence < /dev/tty || return 1
+                    case "$sequence" in
+                        '[A') (( selected = selected == 1 ? ${#choices} : selected - 1 )) ;;
+                        '[B') (( selected = selected == ${#choices} ? 1 : selected + 1 )) ;;
+                        *) return 1 ;;
+                    esac
+                    printf '\033[%dA' "${#choices}" > /dev/tty
+                    ;;
+                [0-9])
+                    (( key >= 1 && key <= ${#choices} )) || { print -u2 "[ts] invalid choice: $key"; return 1; }
+                    peer="$choices[$key]"; break
+                    ;;
+                [a-zA-Z])
+                    printf '\nHost: %s' "$key" > /dev/tty
+                    read -r rest < /dev/tty || return 1
+                    choice="$key$rest"
+                    for candidate in "${choices[@]}"; do
+                        [[ "$choice" == "$candidate" ]] && { peer="$candidate"; break; }
+                    done
+                    [[ -n "$peer" ]] || { print -u2 "[ts] unknown host: $choice"; return 1; }
+                    break
+                    ;;
+                *) print -u2 "[ts] invalid choice"; return 1 ;;
+            esac
+        done
     fi
     peer="${peer:-$TAILSCALE_PEER}"
     [[ -z "$peer" ]] && { echo "[ts] TAILSCALE_PEER not set in config.zsh"; return 1; }

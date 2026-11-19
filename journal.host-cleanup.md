@@ -10,6 +10,17 @@
 
 ---
 
+## MONITOR — 2026-11-19 · Cartan · `tso` interactive peer selection
+
+The 2026-11-18 chooser accepted only digits; entering `office` returned silently to the
+monitor shell. Bare `tso` now highlights a peer, moves with Up/Down, and connects with
+Space or Enter; number and full host-name input still work, and `q` cancels. A bad host
+prints an error. Mocked PTY checks covered arrow + Space, number, name and bad input;
+monitor-to-office SSH with a no-op remote command succeeded. Monitor zsh-only deployment
+completed; home and office receive the shared shell change on their next pull/deploy.
+
+---
+
 ## MONITOR — 2026-11-18 · Cartan · `tso` peer chooser on all hosts
 
 Bare `tso` (and `tso -t`) now prompts for one of the other registered machines on home,
