@@ -206,3 +206,12 @@ bash run.sh update              # runner only checks prereqs, points to the file
 # ...do the steps in netOrchestrating.md by hand...
 bash run.sh mark netOrchestrating
 ```
+
+### sublime-observer · v1.0 · hosts: home · MANUAL
+Sublime package `SublimeObserver` — publishes only operator-shared views as files under
+`/run/user/<uid>/sublime-observer/` for agents. Copy of five payload files, never a symlink.
+Source: `~/unikuklatrix/nablarva/toolbox/sublime-observer/` (outside ia-sync) · not qualified yet.
+```bash
+# ...check, then the copy steps in sublime-observer.md by hand...
+bash run.sh mark sublime-observer
+```

@@ -4,7 +4,7 @@ description: >
   Trajectory — Senior implementation lead. Use when a task needs a coder who will also flag
   better approaches, surface out-of-scope opportunities, and push back on weak plans.
   Not a planner — still primarily writes code. Spawns @Delta for surgical subtasks.
-model: sonnet
+model: opus
 effort: high
 tools: Read, Grep, Glob, Edit, Write, Bash, Agent
 color: blue

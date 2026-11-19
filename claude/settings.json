@@ -44,6 +44,10 @@
   "enableWorkflows": false,
   "skipWorkflowUsageWarning": true,
   "theme": "dark",
+  "statusLine": {
+    "type": "command",
+    "command": "bash ~/.claude/hooks/statusline.sh"
+  },
   "inputNeededNotifEnabled": true,
   "agentPushNotifEnabled": true
 }
