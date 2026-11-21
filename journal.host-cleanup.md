@@ -10,6 +10,23 @@
 
 ---
 
+## HOME — 2026-11-20 · Trajectory · late record of the 2026-11-14 Claude settings merge, open hygiene
+
+Late entry (journal-first was missed on 11-14). On home, office and monitor, `.claude/settings.local.json` in
+`~/ia-sync` and `~/unikuklatrix/nablarva` was merged with one shared allow-list: read-only git plus
+add/commit/pull/push, `codex queue`, read-only tmux plus `set -w`, `tailscale status`, `echo`. Deliberately not
+allowed: tmux `send-keys` and `paste-buffer`. Home ia-sync lost 9 stale entries. Backups are host-local under
+`~/.local/state/claude-settings-backups/` (outside the repos). Monitor protects the file through `.git/info/exclude`.
+Open for majkee: `git push` now runs without a prompt for every seat; keep, or prompt everyone but the controller.
+
+Open hygiene, not acted on (needs majkee yes): 8 `_mail/*/archive` files are still tracked although
+`.gitignore` excludes `_mail/*/archive` (5 from 2026-11-12); `_mail/home/inbox/cartan.batch-return.2026-11-12.md`
+was processed but never archived; `nano.1844235.save` is tracked since 88da411. Also open: no persistent tmux
+config (`mouse on`, `history-limit` were set live only), and no Claude `Notification` hook for panes frozen on
+approval (offered 11-13, never written).
+
+---
+
 ## MONITOR — 2026-11-19 · Cartan · `tso` interactive peer selection
 
 The 2026-11-18 chooser accepted only digits; entering `office` returned silently to the
