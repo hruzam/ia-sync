@@ -12,7 +12,7 @@ description: >
   spawned unmanned.
 model: claude-sonnet-4-6
 effort: high
-maxTurns: 30
+maxTurns: 100
 color: yellow
 hooks:
   Stop:
