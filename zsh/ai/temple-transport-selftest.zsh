@@ -3,7 +3,7 @@
 # host: office  (MACHINE_NAME=office)
 # tests: temple-project-map.zsh · temple-mail.zsh · temple-doorbell.zsh
 #        temple-mail-inbox.zsh
-# (temple-recalibration leg removed — superseded by ai/harness-check, 0009 step 5)
+# (temple-recalibration leg removed — superseded by scheduled/harness-check, 0009 step 5)
 #
 # ISOLATION RULE: zero writes to any real project tree.
 # Checks 2-4 run inside subshells with a fully-overridden TEMPLE_PROJECT_MAP

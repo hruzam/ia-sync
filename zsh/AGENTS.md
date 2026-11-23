@@ -73,7 +73,7 @@ Pattern, generalized from `ai/` (the reference implementation):
 | `system/office.php-switch.zsh` | `system/base.zsh` on office | Same keyboard targets with native CLI + concurrent FPM/socket routing; `$MACHINE_NAME` guard keeps it inert elsewhere |
 | `.env/secrets.zsh` | `config.zsh` | API keys (GEMINI, OPENAI, etc.) |
 | `.env/fo-db.cnf` | `mariadb --defaults-extra-file` via `fo -db` | Local MariaDB client credentials (mode 600; `.env` is sync.deny'd) |
-| `registries/ai.json` | `ai/rc.sh`, `ai/keyboard.zsh`, `ai/harness-check.zsh` | AI runtime registry (remote-control projects etc.) |
+| `registries/ai.json` | `ai/rc.sh`, `ai/keyboard.zsh`, `scheduled/harness-check.zsh` | AI runtime registry (remote-control projects etc.) |
 | `registries/tcr/` | `ai/temple-tree.zsh` | per-project tree-snapshot configs (`tcr.<project>.json`; fallback `tcr.default.json`) |
 
 Project roots on office: FO/IM under `~/www/imago_cz/`; PSD at `~/www/psdvs/psdvsSys`
@@ -137,7 +137,7 @@ Partition maps + engine inventory (authoritative): `guides/guide-for-builder.md`
 - User guide for the mail family: `~/.config/zsh/guides/guide-temple-mail.md` (send · read · pick · manage)
 - `ai/temple-transport-selftest.zsh` — sandboxed end-to-end selftest. `zsh ~/.config/zsh/ai/temple-transport-selftest.zsh` → 4/4 green. (Gates LOGIC, not WIRING — see doorbell-smoke for the real-trigger gate.)
 - `ai/doorbell-smoke.zsh` — real-trigger smoke probe for the canon-doorbell (0009 L5). `zsh ~/.config/zsh/ai/doorbell-smoke.zsh --both` → green + deliberate-red. Exercises the live `commit → hook → base.zsh → temple-doorbell-run` path in a sandboxed temp git repo with `DOORBELL_DRY_FIRE=1`; asserts a drift-check (deployed hook vs template) + a planted-dead-path RED. Verified green + red 2026-07-02. This is the WIRING gate the selftest cannot be.
-- `ai/harness-check.zsh` — card freshness checker (Gemini sector). Supersedes the removed `temple-recalibration.zsh` (monthly) with weekly systemd scheduling. Interactive alias: `harness-stale` (renamed from `aihs-stale` 2026-07-11, keyboard grammar).
+- `scheduled/harness-check.zsh` — card freshness checker (Gemini sector). Supersedes the removed `temple-recalibration.zsh` (monthly) with weekly systemd scheduling. Interactive alias: `harness-stale` (renamed from `aihs-stale` 2026-07-11, keyboard grammar).
 - `ai/keyboard.zsh` — **AI interactive surface (control panel).** Aliases and comments only — no function bodies. Partitions: Gemini (P1–P6) · help panel (P7, `ai-help` = master) · Claude RC (P8) · temple panel (P9–P10) · devenv transport (P11) · keys panel (P12). P5 retired 2026-07-11 (Gemini Epoch killed). Sourced by `base.zsh`. Replaces `gemini-base.zsh` + `gemini-agents.zsh` (both killed 2026-07-03). Key map + grammar: `guides/keyboard.md`.
 - `ai/gemini-processor.sh` — **Gemini scope engine (dual-sourced).** Subprocess core sourced by per-agent launchers; interactive surface sourced by `base.zsh` PARTITION 8. Subprocess core: `_gai_api_key`, `_gai_payload`, `_gai_rest_call`, `_gai_extract`, `_gai_strip_noise`. Interactive surface: `agy-vega`, `agy-orby`, `agy-astro`, `agy-astro-yolo` (P4 bodies), `gemini-fresh`, `agy-fresh` (P6 bodies), `gemini-agents-help` (P7 body). Aliases in `keyboard.zsh` P4/P6/P7. (Merged from `gemini.zsh` 2026-07-11 — one file per scope; `gemini.zsh` removed.)
 - `ai/claude.zsh` — **Claude Code RC engine + help functions.** `_rc_stop` (→ `rc-stop`), `_temple_help` (→ `temple-help`), `_ai_help` (→ `ai-help`, the master panel). Sourced by `base.zsh` PARTITION 7. Aliases in `keyboard.zsh` PARTITION 7/8/10.
@@ -153,7 +153,7 @@ Partition maps + engine inventory (authoritative): `guides/guide-for-builder.md`
 - `ai/tree-converter.sh` — Node.js tree formatter (zero npm deps). Crawls CWD, outputs JSON/YAML. Flag: `-c <config.json>`. Called by temple-tree.zsh; also callable directly.
 - `registries/tcr/` — per-project tree-snapshot configs. Naming: `tcr.<project>.json` (key = TEMPLE_PROJECT_MAP key). Fallback: `tcr.default.json` (depth 4 · JSON · gitignore-aware · `vendor/` excluded).
 
-**Removed (0009 step 5):** `temple-recalibration.zsh` and its systemd units (`temple-recalibration.service`, `temple-recalibration.timer`) — superseded by `ai/harness-check.zsh` (weekly harness.timer).
+**Removed (0009 step 5):** `temple-recalibration.zsh` and its systemd units (`temple-recalibration.service`, `temple-recalibration.timer`) — superseded by `scheduled/harness-check.zsh` (weekly harness.timer).
 
 **Removed (Gemini rebuild 2026-07-03):** `ai/gemini-base.zsh` → split into `keyboard.zsh` (aliases) + per-agent scripts. `ai/gemini-agents.zsh` → split into `keyboard.zsh` (wrappers, epoch) + per-agent scripts. `ai/bluebottle.zsh` → `ai/bluebottle.sh` (headless-only, bash, sources gemini-processor.sh).
 

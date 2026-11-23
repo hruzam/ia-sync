@@ -25,7 +25,7 @@ Usage: `~/.config/zsh/guides/guide-for-user.md` · keyboard map: `guides/keyboar
 | `orby.sh` | Orby researcher — interactive + headless | `g-orby` | executed |
 | `astrobley.sh` | Astrobley implementer — interactive + headless + `--patch` multi-turn coder **(RETIRED 2026-07-31 — vendor-shifted to Codex; persona quarantined 2026-09-01)** | `g-astro` | executed |
 | `personas/astrobley-patch.md` | RETIRED with astrobley.sh — quarantined 2026-09-01 | `astrobley.sh --patch` | read by script |
-| `harness-check.zsh` | Card freshness checker; weekly systemd + `harness-stale` | systemd `harness.service` | executed |
+| `../scheduled/harness-check.zsh` (moved) | Card freshness checker; weekly systemd + `harness-stale` | systemd `harness.service` | executed |
 | `~/.wires/iterations.jsonl` | Machine-local living wires (1D flow files: append → cron-prune) — see `~/.wires/README.md` | `claude.zsh` (_ai_launch), medusa (crash check) | appended/read |
 | `temple-project-map.zsh` | P0: host-scoped project map (name → repo-root) | temple family | `base.zsh` P3 |
 | `temple-mail.zsh` | A: mail primitive (`temple-mail`) | temple family | `base.zsh` P3 |

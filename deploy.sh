@@ -20,6 +20,9 @@ if [ -z "$MACHINE" ] && [ -f "$REPO/machines.json" ]; then
 fi
 MACHINE="${MACHINE:-$(hostname -s)}"
 
+# Hosts that enable the scheduled systemd timers (zsh/scheduled/*.timer). Others get the units installed only.
+SCHEDULED_ENABLE_HOSTS="office"
+
 # --dry-run / -n: report every change without writing anything. rsync legs get
 # -n -i; cp legs report via copy_file().
 # Scope modes (mutually exclusive — a contradictory pair exits 2):
@@ -275,6 +278,33 @@ finish() {
   echo "=== $label complete ==="
 }
 
+deploy_scheduled_units() {
+  local unit_dst="$HOME/.config/systemd/user" f
+  ensure_dir "$unit_dst"
+  for f in "$REPO"/zsh/scheduled/*.service "$REPO"/zsh/scheduled/*.timer; do
+    [ -f "$f" ] || continue
+    copy_file "$f" "$unit_dst/$(basename "$f")" "scheduled/$(basename "$f") → systemd user"
+  done
+  if [ "$DRY" = 1 ]; then
+    echo "  [dry] would run systemctl --user daemon-reload"
+  else
+    systemctl --user daemon-reload 2>/dev/null || true
+  fi
+  case " $SCHEDULED_ENABLE_HOSTS " in
+    *" $MACHINE "*)
+      for f in "$REPO"/zsh/scheduled/*.timer; do
+        [ -f "$f" ] || continue
+        if [ "$DRY" = 1 ]; then
+          echo "  [dry] would enable --now $(basename "$f")"
+        else
+          systemctl --user enable --now "$(basename "$f")" 2>/dev/null || true
+        fi
+      done
+      ;;
+    *) echo "  units installed, timer not enabled on $MACHINE" ;;
+  esac
+}
+
 deploy_zsh() {
   # ── ~/.config/zsh ─────────────────────────────────────────────────────────────
   echo ""
@@ -306,6 +336,7 @@ deploy_zsh() {
     --exclude='config.*.zsh' \
     --exclude='zshrc.*' \
     "$REPO/zsh/" "$HOME/.config/zsh/"
+  deploy_scheduled_units
 
   # Deploy machine-specific config.zsh
   CFG="$REPO/zsh/config.${MACHINE}.zsh"

@@ -1,0 +1,6 @@
+[Unit]
+Description=Harness card freshness check
+
+[Service]
+Type=oneshot
+ExecStart=/bin/zsh %h/.config/zsh/scheduled/harness-check.zsh

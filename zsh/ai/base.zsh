@@ -20,7 +20,7 @@
 # PARTITION 2: Harness Freshness Checker Integration
 # -----------------------------------------------------------------------------
 # Interactive alias for card freshness checks
-alias harness-stale="~/.config/zsh/ai/harness-check.zsh --debug"
+alias harness-stale="~/.config/zsh/scheduled/harness-check.zsh --debug"
 
 # -----------------------------------------------------------------------------
 # PARTITION 3: Temple Transport Family (0009 — ai/ namespace signpost)
