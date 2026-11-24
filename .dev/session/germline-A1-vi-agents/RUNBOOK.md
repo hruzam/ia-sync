@@ -206,6 +206,30 @@ evidence is ready for Majkee's disposition. Full evidence and limits are
 in RESULT.md above. Original broader comparison remains parked; previous builder
 intake resumes without starting its build. Source changes remain uncommitted.
 
+### 006-supervisor — vendor-invariant attachable controller seat
+
+Majkee requested this group on 2026-11-24 (intake by Trajectory, home). It is one seat that can be called
+as a Claude agent and as a Codex agent: a persistent, full-permission open-bash process
+you can attach to, which reads as the system's controller. The name is kept as
+`supervisor`. The control/ctrl/controller root stays reserved to A3. Referent rule:
+the seat is the supervisor, and the launcher/session is mechanism. The authority contract
+comes before any full-permission launcher. Reconcile the existing `tunnel-codex.zsh`,
+`codex-harness` and `metaterminal` surfaces instead of duplicating them.
+
+Scope, naming evidence and wiring map: [group brief](raw/006-supervisor/BRIEF.md).
+Scoped acceptance: Majkee accepts a supervisor seat with a reviewed cross-vendor authority
+contract, native Claude and Codex entries plus an attachable launcher, a dry-run-verified
+deploy and fresh-session witnesses on both runtimes, or named deferrals.
+
+- [ ] P1 — receipt/disposition pending
+- [ ] P2 — receipt/disposition pending
+- [ ] P3 — receipt/disposition pending
+- [ ] P4 — receipt/disposition pending
+- [ ] P5 — receipt/disposition pending
+
+Result journal: intake recorded on 2026-11-24. No phase has started, and STATUS is not
+changed: 002-builder remains the selected group until Majkee selects 006.
+
 ## References and protected boundaries
 
 - CACHE.md — thin shared experience; raw/build-line/INHERITANCE.md, SOURCES.json and

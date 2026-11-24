@@ -54,6 +54,10 @@ fi
 # Expand paths
 PATTERN_EXPANDED=$(_expand_path "$pattern_raw")
 MAIL_DIR_EXPANDED=$(_expand_path "${mail_dir_raw:-~/reposoma/_mail/toAll/inbox}")
+# Normalise: strip all trailing slashes (registry value may end in '/'); a bare '/' stays '/'
+while [[ "$MAIL_DIR_EXPANDED" == ?*/ ]]; do
+  MAIL_DIR_EXPANDED="${MAIL_DIR_EXPANDED%/}"
+done
 GUIDES_DIR="${HOME}/reposoma/raw.guides"
 
 # Check for --debug or harness-stale command name
