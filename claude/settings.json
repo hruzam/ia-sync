@@ -40,6 +40,11 @@
     "ANTHROPIC_DEFAULT_SONNET_MODEL": "claude-sonnet-5-5"
   },
   "effortLevel": "high",
+  "modelSettings": {
+    "claude-fable-5-2": {
+      "autoCompactWindow": 900000
+    }
+  },
   "showThinkingSummaries": true,
   "enableWorkflows": false,
   "skipWorkflowUsageWarning": true,
