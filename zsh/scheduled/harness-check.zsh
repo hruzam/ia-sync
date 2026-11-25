@@ -452,7 +452,7 @@ sync_clone() {
 
 # The clone commits with a LOCAL identity only (deploy.sh sets it; this is the fallback).
 ensure_identity() {
-  local host="${MACHINE_NAME:-$(hostname -s)}" email
+  local host="$host_label" email   # host_label is resolved below, before the first call
   if [[ -z "$(git -C "$MAIL_REPO" config --local user.name)" ]]; then
     git -C "$MAIL_REPO" config --local user.name "harness-check ($host)"
   fi
@@ -484,7 +484,13 @@ fi
 mail_name="${MAIL_NAME_PREFIX}${CURRENT_WEEK}.md"
 mail_file="$MAIL_DIR_EXPANDED/$mail_name"
 mail_rel="${mail_file#"$MAIL_REPO"/}"
-host_label="${MACHINE_NAME:-$(hostname -s)}"
+# Logical host name. MACHINE_NAME is unset under systemd, so resolve it like deploy.sh does
+# (ia-sync machines.json: hostname -s → logical), else the raw hostname.
+host_label="${MACHINE_NAME:-}"
+if [[ -z "$host_label" && -f "$HOME/ia-sync/machines.json" ]] && command -v jq >/dev/null 2>&1; then
+  host_label=$(jq -r --arg h "$(hostname -s)" '.machines[$h].logical // empty' "$HOME/ia-sync/machines.json" 2>/dev/null)
+fi
+host_label="${host_label:-$(hostname -s)}"
 
 for (( attempt = 1; attempt <= MAIL_ATTEMPTS; attempt++ )); do
   sync_clone || exit 1
