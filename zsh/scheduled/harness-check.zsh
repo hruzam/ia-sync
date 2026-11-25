@@ -80,6 +80,19 @@ fi
 CURRENT_DATE=$(date +%Y-%m-%d)
 CURRENT_EPOCH=$(date +%s)
 FS=$'\x1f'  # unit separator — cannot occur in card frontmatter
+# awk trim(): strip surrounding whitespace, then exactly ONE matching outer quote pair ('…' or "…"),
+# then whitespace again — inner/closing quotes of the value itself survive. q is passed via -v q="'".
+AWK_TRIM='
+  function trim(s,   c) {
+    gsub(/^[ \t]+|[ \t]+$/, "", s)
+    c = substr(s, 1, 1)
+    if (length(s) >= 2 && (c == q || c == "\"") && substr(s, length(s), 1) == c) {
+      s = substr(s, 2, length(s) - 2)
+      gsub(/^[ \t]+|[ \t]+$/, "", s)
+    }
+    return s
+  }
+'
 CURRENT_WEEK=$(date +%G-W%V)
 
 # sync cards before scanning; never fail the job
@@ -114,7 +127,7 @@ for file in ${~PATTERN_EXPANDED}; do
       CMD=*) verify_cmd="${line#CMD=}" ;;
       RECHECKS=*) rechecks="${line#RECHECKS=}" ;;
     esac
-  done < <(awk '
+  done < <(awk -v q="'" "$AWK_TRIM"'
     /^---$/ { count++; next }
     count == 1 {
       if ($1 ~ /^card:/) { sub(/^card:[ \t]*/, ""); card=$0 }
@@ -131,11 +144,11 @@ for file in ${~PATTERN_EXPANDED}; do
     }
     count == 2 { exit }
     END {
-      gsub(/^[ \t'"'"'"]+|[ \t'"'"'"]+$/, "", card)
-      gsub(/^[ \t'"'"'"]+|[ \t'"'"'"]+$/, "", brand)
-      gsub(/^[ \t'"'"'"]+|[ \t'"'"'"]+$/, "", verified)
-      gsub(/^[ \t'"'"'"]+|[ \t'"'"'"]+$/, "", half_life_days)
-      gsub(/^[ \t'"'"'"]+|[ \t'"'"'"]+$/, "", verify_cmd)
+      card = trim(card)
+      brand = trim(brand)
+      verified = trim(verified)
+      half_life_days = trim(half_life_days)
+      verify_cmd = trim(verify_cmd)
       print "CARD=" card
       print "BRAND=" brand
       print "VERIFIED=" verified
@@ -216,7 +229,7 @@ if [[ -d "$GUIDES_DIR" ]]; then
         CMD=*) verify_cmd="${line#CMD=}" ;;
         RECHECKS=*) rechecks="${line#RECHECKS=}" ;;
       esac
-    done < <(awk '
+    done < <(awk -v q="'" "$AWK_TRIM"'
       /^---$/ { count++; next }
       count == 1 {
         if ($1 ~ /^card:/) { sub(/^card:[ \t]*/, ""); card=$0 }
@@ -227,11 +240,11 @@ if [[ -d "$GUIDES_DIR" ]]; then
       }
       count == 2 { exit }
       END {
-        gsub(/^[ \t'"'"'"]+|[ \t'"'"'"]+$/, "", card)
-        gsub(/^[ \t'"'"'"]+|[ \t'"'"'"]+$/, "", brand)
-        gsub(/^[ \t'"'"'"]+|[ \t'"'"'"]+$/, "", verified)
-        gsub(/^[ \t'"'"'"]+|[ \t'"'"'"]+$/, "", half_life_days)
-        gsub(/^[ \t'"'"'"]+|[ \t'"'"'"]+$/, "", verify_cmd)
+        card = trim(card)
+        brand = trim(brand)
+        verified = trim(verified)
+        half_life_days = trim(half_life_days)
+        verify_cmd = trim(verify_cmd)
         print "CARD=" card
         print "BRAND=" brand
         print "VERIFIED=" verified
