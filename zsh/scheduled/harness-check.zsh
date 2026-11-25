@@ -58,13 +58,77 @@ MAIL_DIR_EXPANDED=$(_expand_path "${mail_dir_raw:-~/reposoma/_mail/toAll/inbox}"
 while [[ "$MAIL_DIR_EXPANDED" == ?*/ ]]; do
   MAIL_DIR_EXPANDED="${MAIL_DIR_EXPANDED%/}"
 done
-GUIDES_DIR="${HOME}/reposoma/raw.guides"
 
 # Check for --debug or harness-stale command name
 DEBUG_MODE=0
 if [[ "$1" == "--debug" || "$0" == *harness-stale* ]]; then
   DEBUG_MODE=1
 fi
+
+# Two trees (option C, gaveled 2026-11-25):
+#   --debug / harness-stale  scans the LIVE tree ~/reposoma and writes nothing.
+#   mail mode (the timer)    scans, writes, commits and pushes ONLY inside its own clone
+#                            MAIL_REPO. It never touches ~/reposoma (no pull, no write).
+LIVE_REPO="${HOME}/reposoma"
+MAIL_REPO="${HARNESS_MAIL_REPO:-$HOME/.local/share/harness/reposoma-mail}"
+MAIL_BRANCH="core"
+MAIL_ATTEMPTS=3                                   # publish attempts (fetch→reset→write→push)
+FETCH_TRIES=3
+FETCH_DELAY="${HARNESS_FETCH_RETRY_DELAY:-60}"    # seconds between fetch tries
+MAIL_NAME_PREFIX="zsh.stale-settings-cards-"
+
+# Rewrite a "$HOME/reposoma/..." path onto another root. Prints nothing (status 1) if the
+# path is not under the live tree — mail mode must then refuse rather than write elsewhere.
+_rebase_live_path() {
+  local p=$1 root=$2
+  [[ "$p" == "$LIVE_REPO" ]] && { echo "$root"; return 0; }
+  [[ "$p" == "$LIVE_REPO/"* ]] || return 1
+  echo "$root/${p#"$LIVE_REPO/"}"
+}
+
+_die() { echo "harness-check: ERROR: $*" >&2; exit 1; }
+_log() { echo "harness-check: $*"; }
+
+if [[ $DEBUG_MODE -eq 1 ]]; then
+  SCAN_ROOT="$LIVE_REPO"
+else
+  # ── SAFETY GUARDS — all read-only; any failure aborts before anything is touched ──
+  [[ -d "$MAIL_REPO" ]] || _die "mail clone missing: $MAIL_REPO — run ia-sync deploy.sh on the scheduled host (it creates the clone), or set HARNESS_MAIL_REPO"
+  MAIL_REPO_REAL=$(realpath -e -- "$MAIL_REPO" 2>/dev/null) || _die "cannot resolve $MAIL_REPO"
+  LIVE_REPO_REAL=$(realpath -m -- "$LIVE_REPO" 2>/dev/null)
+  [[ "$MAIL_REPO_REAL" != "$LIVE_REPO_REAL" ]] || _die "MAIL_REPO resolves to the live tree $LIVE_REPO_REAL — refusing"
+  mail_top=$(git -C "$MAIL_REPO_REAL" rev-parse --show-toplevel 2>/dev/null) || _die "$MAIL_REPO_REAL is not a git work tree"
+  [[ "$(realpath -m -- "$mail_top")" == "$MAIL_REPO_REAL" ]] || _die "$MAIL_REPO_REAL is not the top of its repo (toplevel: $mail_top) — refusing"
+  want_origin=$(git -C "$LIVE_REPO" remote get-url origin 2>/dev/null) || _die "cannot read origin of $LIVE_REPO (needed to verify the clone)"
+  have_origin=$(git -C "$MAIL_REPO_REAL" remote get-url origin 2>/dev/null) || _die "$MAIL_REPO_REAL has no origin remote"
+  [[ -n "$want_origin" && "$have_origin" == "$want_origin" ]] || _die "clone origin '$have_origin' != live origin '$want_origin' — refusing"
+  MAIL_REPO="$MAIL_REPO_REAL"
+  SCAN_ROOT="$MAIL_REPO"
+
+  # One run at a time (timer, Restart=, and a manual start must not interleave).
+  exec 9>"${MAIL_REPO}.lock" || _die "cannot open lock ${MAIL_REPO}.lock"
+  if ! flock -n 9; then
+    _log "another harness-check run holds ${MAIL_REPO}.lock — skipping this run"
+    exit 0
+  fi
+
+  # Non-interactive git: never prompt (systemd has no tty and no SSH agent).
+  export GIT_TERMINAL_PROMPT=0
+  if [[ -z "${GIT_SSH_COMMAND:-}" && -z "$(git -C "$MAIL_REPO" config core.sshCommand)" ]]; then
+    export GIT_SSH_COMMAND="ssh -o BatchMode=yes -o ConnectTimeout=20"
+  fi
+fi
+
+# Map the registry paths onto the tree being scanned.
+if [[ "$SCAN_ROOT" != "$LIVE_REPO" ]]; then
+  PATTERN_EXPANDED=$(_rebase_live_path "$PATTERN_EXPANDED" "$SCAN_ROOT") \
+    || _die "native-primitives-update-pattern is not under ~/reposoma/ — cannot map it into $SCAN_ROOT"
+  MAIL_DIR_EXPANDED=$(_rebase_live_path "$MAIL_DIR_EXPANDED" "$SCAN_ROOT") \
+    || _die "mail-inbox-dir is not under ~/reposoma/ — cannot map it into $SCAN_ROOT"
+  MAIL_ARCHIVE_DIR="${MAIL_DIR_EXPANDED%/inbox}/archive"
+  [[ "$MAIL_ARCHIVE_DIR" != "$MAIL_DIR_EXPANDED" ]] || _die "mail-inbox-dir must end in /inbox (archive is its sibling)"
+fi
+GUIDES_DIR="${SCAN_ROOT}/raw.guides"
 
 # Header output for debug mode
 if [[ $DEBUG_MODE -eq 1 ]]; then
@@ -73,7 +137,7 @@ if [[ $DEBUG_MODE -eq 1 ]]; then
   echo "=========================================="
   echo "Pattern Checked:  $PATTERN_EXPANDED"
   echo "Guides Dir:       $GUIDES_DIR"
-  echo "Mail Destination: $MAIL_DIR_EXPANDED"
+  echo "Mail Destination: $(_rebase_live_path "$MAIL_DIR_EXPANDED" "$MAIL_REPO" || echo "$MAIL_DIR_EXPANDED") (written by the timer, in its own clone)"
   echo "------------------------------------------"
 fi
 
@@ -95,11 +159,9 @@ AWK_TRIM='
 '
 CURRENT_WEEK=$(date +%G-W%V)
 
-# sync cards before scanning; never fail the job
-if [[ $DEBUG_MODE -eq 0 ]]; then
-  timeout 30 git -C "$HOME/reposoma" pull --ff-only --quiet >/dev/null 2>&1 || true
-fi
-
+# Scan both sets (settings cards + guides) under SCAN_ROOT into STALE_CARDS.
+# The loop bodies are unchanged from the single-tree version; only the roots moved.
+scan_cards() {
 STALE_CARDS=()
 
 # Process each matching card file
@@ -262,8 +324,21 @@ if [[ -d "$GUIDES_DIR" ]]; then
       continue
     fi
 
-    # Derive card/brand from filename if not in frontmatter
-    [[ -z "$card" ]] && card="$(basename "$file" .md)"
+    # Derive card/brand from the path if not in frontmatter: <dir>/GUIDE.md → <dir>,
+    # <dir>/<name>.md → <dir>/<name>, top-level <name>.md → <name>. (Was basename only, so
+    # every <dir>/GUIDE.md row read "GUIDE" and the alert rows were indistinguishable.)
+    if [[ -z "$card" ]]; then
+      guide_rel="${file#"$GUIDES_DIR"/}"
+      guide_dir="${guide_rel:h}"
+      guide_base="${guide_rel:t:r}"
+      if [[ "$guide_dir" == "." || "$guide_dir" == "$guide_rel" ]]; then
+        card="$guide_base"
+      elif [[ "$guide_base" == "GUIDE" ]]; then
+        card="$guide_dir"
+      else
+        card="$guide_dir/$guide_base"
+      fi
+    fi
     [[ -z "$brand" ]] && brand="guide:$card"
     [[ -z "$brand" ]] && brand="$card"
 
@@ -301,11 +376,96 @@ if [[ -d "$GUIDES_DIR" ]]; then
     fi
   done < <(find "$GUIDES_DIR" -maxdepth 2 -name "*.md" -type f | sort)
 fi
+}
 
-# Output or mail release handling
-stale_count=${#STALE_CARDS[@]}
+# Render the alert for the current STALE_CARDS to stdout. Deterministic: same stale set and
+# week → same bytes (no timestamp, no host in the body).
+render_mail() {
+  local stale_count=${#STALE_CARDS[@]}
+  echo "---"
+  echo "title: Stale Settings Cards Alert"
+  echo "week: ${CURRENT_WEEK}"
+  echo "stale_count: ${stale_count}"
+  echo "---"
+  echo ""
+  echo "# Stale Settings Cards Alert"
+  echo ""
+  echo "The following settings/knowledge cards are past their freshness threshold (half-life) and require manual re-verification."
+  echo ""
+  echo "| Brand / Card | Last Verified | Threshold (Days) | Elapsed (Days) | Verification Command & Recheck Links |"
+  echo "| :--- | :---: | :---: | :---: | :--- |"
 
+  for item in "${STALE_CARDS[@]}"; do
+    IFS="$FS" read -r c b v t e cmd r <<< "$item"
+
+    # Format links if any
+    links_formatted=""
+    if [[ -n "$r" ]]; then
+      IFS=',' read -r -A links_arr <<< "$r"
+      for link in "${links_arr[@]}"; do
+        # Truncate link display
+        display_link="${link#https://}"
+        display_link="${display_link#www.}"
+        if [[ ${#display_link} -gt 35 ]]; then
+          display_link="${display_link:0:32}..."
+        fi
+        links_formatted+="[[link]($link)] "
+      done
+    fi
+
+    cmd_formatted=""
+    if [[ -n "$cmd" ]]; then
+      cmd_md="${cmd//|/\\|}"
+      cmd_formatted="\`$cmd_md\`"
+    fi
+
+    echo "| **$b**<br>($c) | $v | $t | **$e** | $cmd_formatted<br>$links_formatted |"
+  done
+
+  echo ""
+  echo "---"
+  echo "*Automated notification from the zsh card-freshness checker (week ${CURRENT_WEEK}), published once per ISO week by the scheduled host from its own clone. Do not edit. To dismiss, \`git mv\` it to \`_mail/toAll/archive/\` and commit. To run manually: \`harness-stale\`.*"
+}
+
+# Bring the clone to exactly origin/core: fetch (FETCH_TRIES tries, FETCH_DELAY apart), then
+# reset --hard + clean. Runs ONLY inside MAIL_REPO (guarded above).
+sync_clone() {
+  local try branch
+  branch=$(git -C "$MAIL_REPO" symbolic-ref --short -q HEAD) || branch=""
+  [[ "$branch" == "$MAIL_BRANCH" ]] || _die "clone $MAIL_REPO is on '${branch:-detached}', expected '$MAIL_BRANCH' — refusing"
+  for (( try = 1; try <= FETCH_TRIES; try++ )); do
+    if timeout 120 git -C "$MAIL_REPO" fetch --quiet --prune origin; then
+      break
+    fi
+    if (( try == FETCH_TRIES )); then
+      echo "harness-check: ERROR: fetch from origin failed $FETCH_TRIES times — nothing published" >&2
+      return 1
+    fi
+    _log "fetch failed (try $try/$FETCH_TRIES); retrying in ${FETCH_DELAY}s"
+    sleep "$FETCH_DELAY"
+  done
+  git -C "$MAIL_REPO" rev-parse -q --verify "refs/remotes/origin/$MAIL_BRANCH" >/dev/null \
+    || _die "origin/$MAIL_BRANCH missing in $MAIL_REPO after fetch"
+  git -C "$MAIL_REPO" reset --hard --quiet "origin/$MAIL_BRANCH" || _die "reset --hard failed in $MAIL_REPO"
+  git -C "$MAIL_REPO" clean -fdq || _die "clean failed in $MAIL_REPO"
+}
+
+# The clone commits with a LOCAL identity only (deploy.sh sets it; this is the fallback).
+ensure_identity() {
+  local host="${MACHINE_NAME:-$(hostname -s)}" email
+  if [[ -z "$(git -C "$MAIL_REPO" config --local user.name)" ]]; then
+    git -C "$MAIL_REPO" config --local user.name "harness-check ($host)"
+  fi
+  if [[ -z "$(git -C "$MAIL_REPO" config --local user.email)" ]]; then
+    email=$(git -C "$MAIL_REPO" config --global user.email)
+    git -C "$MAIL_REPO" config --local user.email "${email:-harness-check@$(hostname -s).localdomain}"
+  fi
+}
+
+# ── Debug / interactive: scan the live tree, print, write nothing ─────────────────
 if [[ $DEBUG_MODE -eq 1 ]]; then
+  scan_cards
+  stale_count=${#STALE_CARDS[@]}
   echo "------------------------------------------"
   echo "Total checked cards stale: $stale_count"
   if [[ $stale_count -gt 0 ]]; then
@@ -315,67 +475,44 @@ if [[ $DEBUG_MODE -eq 1 ]]; then
       echo "  - $b ($c) — verified: $v, stale since $e days ago (limit: $t)"
     done
   fi
-  echo "Proposed mail output: $MAIL_DIR_EXPANDED/zsh.stale-settings-cards-${CURRENT_WEEK}.md"
+  echo "Proposed mail output: $(_rebase_live_path "$MAIL_DIR_EXPANDED" "$MAIL_REPO" || echo "$MAIL_DIR_EXPANDED")/${MAIL_NAME_PREFIX}${CURRENT_WEEK}.md"
   echo "=========================================="
-else
-  # Mail release mode (Background / Cron / Default)
-  if [[ $stale_count -gt 0 ]]; then
-    mkdir -p "$MAIL_DIR_EXPANDED"
-    mail_file="$MAIL_DIR_EXPANDED/zsh.stale-settings-cards-${CURRENT_WEEK}.md"
-    tmp_file=$(mktemp "$MAIL_DIR_EXPANDED/.zsh-stale.XXXXXX")
-
-    {
-      echo "---"
-      echo "title: Stale Settings Cards Alert"
-      echo "week: ${CURRENT_WEEK}"
-      echo "stale_count: ${stale_count}"
-      echo "---"
-      echo ""
-      echo "# Stale Settings Cards Alert"
-      echo ""
-      echo "The following settings/knowledge cards are past their freshness threshold (half-life) and require manual re-verification."
-      echo ""
-      echo "| Brand / Card | Last Verified | Threshold (Days) | Elapsed (Days) | Verification Command & Recheck Links |"
-      echo "| :--- | :---: | :---: | :---: | :--- |"
-      
-      for item in "${STALE_CARDS[@]}"; do
-        IFS="$FS" read -r c b v t e cmd r <<< "$item"
-        
-        # Format links if any
-        links_formatted=""
-        if [[ -n "$r" ]]; then
-          IFS=',' read -r -A links_arr <<< "$r"
-          for link in "${links_arr[@]}"; do
-            # Truncate link display
-            display_link="${link#https://}"
-            display_link="${display_link#www.}"
-            if [[ ${#display_link} -gt 35 ]]; then
-              display_link="${display_link:0:32}..."
-            fi
-            links_formatted+="[[link]($link)] "
-          done
-        fi
-        
-        cmd_formatted=""
-        if [[ -n "$cmd" ]]; then
-          cmd_md="${cmd//|/\\|}"
-          cmd_formatted="\`$cmd_md\`"
-        fi
-        
-        echo "| **$b**<br>($c) | $v | $t | **$e** | $cmd_formatted<br>$links_formatted |"
-      done
-      
-      echo ""
-      echo "---"
-      echo "*This is an automated notification generated by the native zsh card-freshness checker (week ${CURRENT_WEEK}, deterministic output — safe to produce on several hosts; last writer wins).* To run manually and check details directly in terminal, execute: \`harness-stale\`."
-    } > "$tmp_file"
-
-    if [[ -f "$mail_file" ]] && cmp -s "$tmp_file" "$mail_file"; then
-      rm "$tmp_file"
-      echo "Stale cards alert unchanged: $mail_file"
-    else
-      mv "$tmp_file" "$mail_file"
-      echo "Released stale cards alert: $mail_file"
-    fi
-  fi
+  exit 0
 fi
+
+# ── Mail mode (timer / default): publish once per ISO week, from the clone only ───
+mail_name="${MAIL_NAME_PREFIX}${CURRENT_WEEK}.md"
+mail_file="$MAIL_DIR_EXPANDED/$mail_name"
+mail_rel="${mail_file#"$MAIL_REPO"/}"
+host_label="${MACHINE_NAME:-$(hostname -s)}"
+
+for (( attempt = 1; attempt <= MAIL_ATTEMPTS; attempt++ )); do
+  sync_clone || exit 1
+
+  if [[ -e "$MAIL_DIR_EXPANDED/$mail_name" || -e "$MAIL_ARCHIVE_DIR/$mail_name" ]]; then
+    _log "already published: $mail_name exists on origin/$MAIL_BRANCH (inbox or archive) — nothing to do"
+    exit 0
+  fi
+
+  scan_cards
+  if [[ ${#STALE_CARDS[@]} -eq 0 ]]; then
+    _log "no stale cards for $CURRENT_WEEK — nothing published"
+    exit 0
+  fi
+
+  mkdir -p "$MAIL_DIR_EXPANDED"
+  render_mail > "$mail_file" || _die "cannot write $mail_file"
+  ensure_identity
+  git -C "$MAIL_REPO" add -- "$mail_rel" || _die "git add failed for $mail_rel"
+  git -C "$MAIL_REPO" commit --quiet -m "_mail: stale-settings-cards ${CURRENT_WEEK} (harness, ${host_label})" -- "$mail_rel" \
+    || _die "git commit failed for $mail_rel"
+
+  if timeout 120 git -C "$MAIL_REPO" push --quiet origin "HEAD:$MAIL_BRANCH"; then
+    _log "published $mail_rel (${#STALE_CARDS[@]} stale) → origin/$MAIL_BRANCH at $(git -C "$MAIL_REPO" rev-parse --short HEAD)"
+    exit 0
+  fi
+  _log "push rejected or failed (attempt $attempt/$MAIL_ATTEMPTS); re-syncing and retrying"
+done
+
+echo "harness-check: ERROR: could not publish $mail_rel after $MAIL_ATTEMPTS attempts" >&2
+exit 1

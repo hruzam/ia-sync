@@ -278,6 +278,41 @@ finish() {
   echo "=== $label complete ==="
 }
 
+# The harness timer publishes its mail from its OWN clone of reposoma, never from the live
+# ~/reposoma (option C, gaveled 2026-11-25). Same path as the script's default (the systemd
+# unit sees no HARNESS_MAIL_REPO). Created once, on scheduled hosts only; never updated here
+# — the job fetches + resets it itself. Identity is clone-local (no global git config).
+HARNESS_MAIL_REPO_PATH="$HOME/.local/share/harness/reposoma-mail"
+ensure_harness_mail_clone() {
+  local dst="$HARNESS_MAIL_REPO_PATH" url email
+  if [ -e "$dst" ]; then
+    echo "  harness mail clone present: $dst"
+    return 0
+  fi
+  url="$(git -C "$HOME/reposoma" remote get-url origin 2>/dev/null || true)"
+  if [ -z "$url" ]; then
+    echo "  HOLD  harness mail clone missing and ~/reposoma has no origin — cannot clone"
+    HOLDS+=("scheduled: harness mail clone not created (no ~/reposoma origin)")
+    return 0
+  fi
+  email="$(git config --global user.email 2>/dev/null || true)"
+  email="${email:-harness-check@$(hostname -s).localdomain}"
+  if [ "$DRY" = 1 ]; then
+    echo "  [dry] would clone --branch core $url → $dst"
+    echo "  [dry] would set clone-local user.name 'harness-check ($MACHINE)' user.email '$email'"
+    return 0
+  fi
+  mkdir -p "$(dirname "$dst")"
+  if git clone --quiet --branch core "$url" "$dst"; then
+    git -C "$dst" config --local user.name "harness-check ($MACHINE)"
+    git -C "$dst" config --local user.email "$email"
+    echo "  harness mail clone created: $dst ($(git -C "$dst" rev-parse --short HEAD))"
+  else
+    echo "  HOLD  git clone $url → $dst failed"
+    HOLDS+=("scheduled: harness mail clone failed ($url)")
+  fi
+}
+
 deploy_scheduled_units() {
   local unit_dst="$HOME/.config/systemd/user" f
   ensure_dir "$unit_dst"
@@ -292,6 +327,7 @@ deploy_scheduled_units() {
   fi
   case " $SCHEDULED_ENABLE_HOSTS " in
     *" $MACHINE "*)
+      ensure_harness_mail_clone
       for f in "$REPO"/zsh/scheduled/*.timer; do
         [ -f "$f" ] || continue
         if [ "$DRY" = 1 ]; then

@@ -1,6 +1,13 @@
 [Unit]
 Description=Harness card freshness check
+# Bounded retries: at most 6 starts per day (first run + 5 retries ~15 min apart),
+# so a hard failure (e.g. missing clone) does not loop all week.
+StartLimitIntervalSec=1d
+StartLimitBurst=6
 
 [Service]
 Type=oneshot
 ExecStart=/bin/zsh %h/.config/zsh/scheduled/harness-check.zsh
+# Network not up yet at 09:00 / push race lost → try again later (the script is idempotent).
+Restart=on-failure
+RestartSec=15min
