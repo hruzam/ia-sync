@@ -79,6 +79,7 @@ fi
 
 CURRENT_DATE=$(date +%Y-%m-%d)
 CURRENT_EPOCH=$(date +%s)
+FS=$'\x1f'  # unit separator — cannot occur in card frontmatter
 CURRENT_WEEK=$(date +%G-W%V)
 
 # sync cards before scanning; never fail the job
@@ -174,8 +175,8 @@ for file in ${~PATTERN_EXPANDED}; do
   if [[ $elapsed_days -ge $threshold ]]; then
     is_stale=1
     # Store card data in array format:
-    # "card|brand|verified|threshold|elapsed|verify_cmd|rechecks"
-    STALE_CARDS+=("${card}|${brand}|${verified}|${threshold}|${elapsed_days}|${verify_cmd}|${rechecks}")
+    # card FS brand FS verified FS threshold FS elapsed FS verify_cmd FS rechecks
+    STALE_CARDS+=("${card}${FS}${brand}${FS}${verified}${FS}${threshold}${FS}${elapsed_days}${FS}${verify_cmd}${FS}${rechecks}")
   fi
 
   if [[ $DEBUG_MODE -eq 1 ]]; then
@@ -273,7 +274,7 @@ if [[ -d "$GUIDES_DIR" ]]; then
     is_stale=0
     if [[ $elapsed_days -ge $threshold ]]; then
       is_stale=1
-      STALE_CARDS+=("${card}|${brand}|${verified}|${threshold}|${elapsed_days}|${verify_cmd}|${rechecks}")
+      STALE_CARDS+=("${card}${FS}${brand}${FS}${verified}${FS}${threshold}${FS}${elapsed_days}${FS}${verify_cmd}${FS}${rechecks}")
     fi
 
     if [[ $DEBUG_MODE -eq 1 ]]; then
@@ -297,7 +298,7 @@ if [[ $DEBUG_MODE -eq 1 ]]; then
   if [[ $stale_count -gt 0 ]]; then
     echo "Stale items list:"
     for item in "${STALE_CARDS[@]}"; do
-      IFS='|' read -r c b v t e cmd r <<< "$item"
+      IFS="$FS" read -r c b v t e cmd r <<< "$item"
       echo "  - $b ($c) — verified: $v, stale since $e days ago (limit: $t)"
     done
   fi
@@ -325,7 +326,7 @@ else
       echo "| :--- | :---: | :---: | :---: | :--- |"
       
       for item in "${STALE_CARDS[@]}"; do
-        IFS='|' read -r c b v t e cmd r <<< "$item"
+        IFS="$FS" read -r c b v t e cmd r <<< "$item"
         
         # Format links if any
         links_formatted=""
@@ -344,7 +345,8 @@ else
         
         cmd_formatted=""
         if [[ -n "$cmd" ]]; then
-          cmd_formatted="\`$cmd\`"
+          cmd_md="${cmd//|/\\|}"
+          cmd_formatted="\`$cmd_md\`"
         fi
         
         echo "| **$b**<br>($c) | $v | $t | **$e** | $cmd_formatted<br>$links_formatted |"
